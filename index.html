@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prépa SELOR &amp; EPSO — Entraînement gratuit aux tests de raisonnement</title>
+  <meta name="description" content="Entraînez-vous gratuitement aux tests de logique et de raisonnement des sélections SELOR (Travaillerpour.be) et EPSO : raisonnement abstrait, raisonnement verbal et mode examen chronométré.">
+  <meta name="theme-color" content="#132a50">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:title" content="Prépa SELOR &amp; EPSO — Tests de raisonnement">
+  <meta property="og:description" content="Entraînement gratuit aux tests de raisonnement abstrait et verbal, avec un mode examen chronométré.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS v4 (CDN navigateur) : à remplacer par un build CSS statique avant la mise en production. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50: #eef4fb;
+      --color-brand-100: #d9e6f5;
+      --color-brand-200: #b6cdeb;
+      --color-brand-300: #8aaedd;
+      --color-brand-500: #2f5fae;
+      --color-brand-600: #244f99;
+      --color-brand-700: #1d4080;
+      --color-brand-800: #183566;
+      --color-brand-900: #132a50;
+      --color-brand-950: #0c1a33;
+      --color-accent-300: #f9d77a;
+      --color-accent-400: #f5c542;
+      --color-accent-500: #e0a91a;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-900 focus:shadow-lg">
+    Aller au contenu principal
+  </a>
+
+  <!-- En-tête -->
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-2.5 rounded-md">
+        <img src="assets/img/favicon.svg" alt="" width="36" height="36" class="h-9 w-9">
+        <span class="leading-tight">
+          <span class="block text-base font-bold tracking-tight text-brand-900">Prépa SELOR &amp; EPSO</span>
+          <span class="block text-xs text-slate-500">Tests de raisonnement</span>
+        </span>
+      </a>
+
+      <nav aria-label="Navigation principale" class="hidden md:block">
+        <ul class="flex items-center gap-1 text-sm font-medium">
+          <li><a href="#modules" class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">Modules</a></li>
+          <li><a href="#methode" class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">Comment ça marche</a></li>
+          <li><a href="#a-propos" class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">À propos</a></li>
+          <li class="ml-2"><a href="#module-examen" class="rounded-lg bg-brand-900 px-4 py-2 font-semibold text-white transition hover:bg-brand-800">Mode examen</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 md:hidden" aria-controls="menu-mobile" aria-expanded="false" data-menu-toggle>
+        <span class="sr-only" data-menu-label>Ouvrir le menu</span>
+        <svg data-menu-icon="open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg data-menu-icon="close" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" hidden><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+
+    <nav id="menu-mobile" aria-label="Navigation mobile" class="border-t border-slate-200 bg-white md:hidden" hidden>
+      <ul class="space-y-1 px-4 py-3 text-base font-medium">
+        <li><a href="#modules" class="block rounded-lg px-3 py-2.5 text-slate-700 hover:bg-slate-100">Modules</a></li>
+        <li><a href="#methode" class="block rounded-lg px-3 py-2.5 text-slate-700 hover:bg-slate-100">Comment ça marche</a></li>
+        <li><a href="#a-propos" class="block rounded-lg px-3 py-2.5 text-slate-700 hover:bg-slate-100">À propos</a></li>
+        <li class="pt-1"><a href="#module-examen" class="block rounded-lg bg-brand-900 px-3 py-2.5 text-center font-semibold text-white hover:bg-brand-800">Mode examen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <!-- Bandeau d'accueil -->
+    <section class="hero-backdrop surface-dark relative isolate overflow-hidden text-white" aria-labelledby="hero-titre">
+      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-brand-100">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent-400" aria-hidden="true"></span>
+            SELOR (Travaillerpour.be) · EPSO
+          </p>
+          <h1 id="hero-titre" class="mt-5 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+            Entraînez-vous <span class="text-accent-400">gratuitement</span> aux tests de logique et de raisonnement
+          </h1>
+          <p class="mt-5 max-w-xl text-base text-pretty text-brand-100 sm:text-lg">
+            Préparez les épreuves de sélection de la fonction publique belge et des institutions européennes avec des exercices de raisonnement abstrait et verbal, à votre rythme ou en conditions d'examen.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#modules" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-400 px-5 py-3 text-sm font-semibold text-brand-950 shadow-sm transition hover:bg-accent-300">
+              Commencer l'entraînement
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#module-examen" class="inline-flex items-center justify-center rounded-lg border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+              Découvrir le mode examen
+            </a>
+          </div>
+
+          <ul class="mt-10 grid gap-3 text-sm text-brand-100 sm:grid-cols-3">
+            <li class="flex items-center gap-2">
+              <svg class="h-5 w-5 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              100&nbsp;% gratuit
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-5 w-5 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              Sans inscription
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-5 w-5 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              Mobile &amp; ordinateur
+            </li>
+          </ul>
+        </div>
+
+        <!-- Aperçu illustratif d'une question (décoratif) -->
+        <div class="hidden lg:block" aria-hidden="true">
+          <svg class="hidden">
+            <symbol id="forme-fleche" viewBox="0 0 24 24">
+              <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+          </svg>
+          <div class="relative mx-auto w-full max-w-md">
+            <div class="absolute -inset-6 rounded-3xl bg-accent-400/10 blur-2xl"></div>
+            <div class="relative rounded-2xl bg-white p-6 text-slate-800 shadow-2xl ring-1 ring-black/5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-semibold tracking-wide text-brand-700 uppercase">Raisonnement abstrait</span>
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600 tabular-nums">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 10v3.5l2.5 1.5M10 3h4"/></svg>
+                  12:45
+                </span>
+              </div>
+              <p class="mt-3 text-sm font-medium text-slate-900">Quelle figure complète la série&nbsp;?</p>
+
+              <div class="mt-4 grid grid-cols-5 gap-2">
+                <div class="grid aspect-square place-items-center rounded-lg border border-slate-200 bg-slate-50 text-brand-900"><svg class="h-7 w-7"><use href="#forme-fleche"/></svg></div>
+                <div class="grid aspect-square place-items-center rounded-lg border border-slate-200 bg-slate-50 text-brand-900"><svg class="h-7 w-7 rotate-45"><use href="#forme-fleche"/></svg></div>
+                <div class="grid aspect-square place-items-center rounded-lg border border-slate-200 bg-slate-50 text-brand-900"><svg class="h-7 w-7 rotate-90"><use href="#forme-fleche"/></svg></div>
+                <div class="grid aspect-square place-items-center rounded-lg border border-slate-200 bg-slate-50 text-brand-900"><svg class="h-7 w-7 rotate-[135deg]"><use href="#forme-fleche"/></svg></div>
+                <div class="grid aspect-square place-items-center rounded-lg border-2 border-dashed border-brand-300 text-lg font-bold text-brand-500">?</div>
+              </div>
+
+              <div class="mt-5 grid grid-cols-4 gap-2 text-xs font-semibold text-slate-500">
+                <div class="rounded-lg border-2 border-brand-500 bg-brand-50 p-2 text-center text-brand-700">
+                  <svg class="mx-auto h-6 w-6 rotate-180 text-brand-900"><use href="#forme-fleche"/></svg>
+                  <span class="mt-1 block">A</span>
+                </div>
+                <div class="rounded-lg border border-slate-200 p-2 text-center">
+                  <svg class="mx-auto h-6 w-6 rotate-[225deg] text-slate-700"><use href="#forme-fleche"/></svg>
+                  <span class="mt-1 block">B</span>
+                </div>
+                <div class="rounded-lg border border-slate-200 p-2 text-center">
+                  <svg class="mx-auto h-6 w-6 rotate-90 text-slate-700"><use href="#forme-fleche"/></svg>
+                  <span class="mt-1 block">C</span>
+                </div>
+                <div class="rounded-lg border border-slate-200 p-2 text-center">
+                  <svg class="mx-auto h-6 w-6 text-slate-700"><use href="#forme-fleche"/></svg>
+                  <span class="mt-1 block">D</span>
+                </div>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3 text-xs text-slate-500">
+                <span class="shrink-0">Question 3 sur 20</span>
+                <span class="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100"><span class="block h-full w-[15%] rounded-full bg-brand-500"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modules d'entraînement -->
+    <section id="modules" class="scroll-mt-16 py-16 sm:py-24" aria-labelledby="modules-titre">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold tracking-wider text-brand-600 uppercase">Modules d'entraînement</p>
+          <h2 id="modules-titre" class="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Choisissez votre épreuve</h2>
+          <p class="mt-3 text-slate-600">Travaillez chaque compétence séparément, puis mesurez-vous aux conditions réelles avec le mode examen.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Module 1 : raisonnement abstrait -->
+          <article id="module-abstrait" class="relative flex scroll-mt-24 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex items-start justify-between gap-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-700">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="3.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><path d="m12 13.5 4.5 7h-9z"/></svg>
+              </span>
+              <span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 ring-1 ring-amber-200">Bientôt disponible</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-slate-900">Raisonnement abstrait</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              Observez une série de formes, identifiez la règle logique qui les relie et choisissez la figure qui la complète.
+            </p>
+            <ul class="mt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-600" aria-label="Au programme">
+              <li class="rounded-md bg-slate-100 px-2 py-1">Séries de formes</li>
+              <li class="rounded-md bg-slate-100 px-2 py-1">Rotations &amp; motifs</li>
+            </ul>
+            <a href="modules/abstrait/" data-coming-soon="Raisonnement abstrait" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition after:absolute after:inset-0 after:rounded-2xl hover:bg-brand-800">
+              Commencer<span class="sr-only"> le raisonnement abstrait</span>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <!-- Module 2 : raisonnement verbal -->
+          <article id="module-verbal" class="relative flex scroll-mt-24 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex items-start justify-between gap-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-700">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              </span>
+              <span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 ring-1 ring-amber-200">Bientôt disponible</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-slate-900">Raisonnement verbal</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              Lisez un court texte et déterminez si chaque affirmation est vraie, fausse ou impossible à vérifier sur la seule base du texte.
+            </p>
+            <ul class="mt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-600" aria-label="Au programme">
+              <li class="rounded-md bg-slate-100 px-2 py-1">Textes &amp; affirmations</li>
+              <li class="rounded-md bg-slate-100 px-2 py-1">Vrai · Faux · On ne sait pas</li>
+            </ul>
+            <a href="modules/verbal/" data-coming-soon="Raisonnement verbal" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition after:absolute after:inset-0 after:rounded-2xl hover:bg-brand-800">
+              Commencer<span class="sr-only"> le raisonnement verbal</span>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <!-- Module 3 : mode examen (mis en avant) -->
+          <article id="module-examen" class="surface-dark relative flex scroll-mt-24 flex-col rounded-2xl bg-brand-900 p-6 text-white shadow-lg ring-1 ring-brand-900 transition hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 lg:col-span-1">
+            <div class="flex items-start justify-between gap-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-accent-400 text-brand-950">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 10v3.5l2.5 1.5M10 3h4M12 3v3.5"/></svg>
+              </span>
+              <span class="rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-accent-300 ring-1 ring-white/20">Bientôt disponible</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold">Mode examen</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-brand-100">
+              Un test chronométré qui mélange questions abstraites et verbales pour vous placer dans des conditions proches de l'épreuve réelle.
+            </p>
+            <ul class="mt-4 flex flex-wrap gap-2 text-xs font-medium text-brand-100" aria-label="Au programme">
+              <li class="rounded-md bg-white/10 px-2 py-1">Chronométré</li>
+              <li class="rounded-md bg-white/10 px-2 py-1">Questions mélangées</li>
+              <li class="rounded-md bg-white/10 px-2 py-1">Score final</li>
+            </ul>
+            <a href="modules/examen/" data-coming-soon="Mode examen" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent-400 px-4 py-2.5 text-sm font-semibold text-brand-950 transition after:absolute after:inset-0 after:rounded-2xl hover:bg-accent-300">
+              Lancer un examen
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comment ça marche -->
+    <section id="methode" class="scroll-mt-16 border-y border-slate-200 bg-white py-16 sm:py-24" aria-labelledby="methode-titre">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold tracking-wider text-brand-600 uppercase">Méthode</p>
+          <h2 id="methode-titre" class="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Comment ça marche&nbsp;?</h2>
+        </div>
+        <ol class="mt-10 grid gap-8 md:grid-cols-3">
+          <li class="flex gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-900 text-sm font-bold text-white" aria-hidden="true">1</span>
+            <div>
+              <h3 class="font-semibold text-slate-900">Choisissez un module</h3>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">Commencez par la compétence que vous souhaitez renforcer&nbsp;: raisonnement abstrait ou verbal.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-900 text-sm font-bold text-white" aria-hidden="true">2</span>
+            <div>
+              <h3 class="font-semibold text-slate-900">Entraînez-vous à votre rythme</h3>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">Répondez aux questions sans pression et familiarisez-vous avec les types d'exercices.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent-400 text-sm font-bold text-brand-950" aria-hidden="true">3</span>
+            <div>
+              <h3 class="font-semibold text-slate-900">Passez en conditions réelles</h3>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">Le mode examen mélange les questions et impose un temps limité, comme le jour de l'épreuve.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer id="a-propos" class="surface-dark scroll-mt-16 bg-brand-950 text-brand-100">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-3">
+        <div class="md:col-span-2">
+          <p class="flex items-center gap-2.5 font-bold text-white">
+            <img src="assets/img/favicon.svg" alt="" width="28" height="28" class="h-7 w-7">
+            Prépa SELOR &amp; EPSO
+          </p>
+          <p class="mt-4 max-w-xl text-sm leading-relaxed">
+            Outil d'entraînement gratuit pour aider les candidats à se familiariser avec les tests de raisonnement utilisés lors des sélections de la fonction publique belge et des institutions européennes.
+          </p>
+          <p class="mt-4 max-w-xl text-xs leading-relaxed text-brand-300">
+            Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO). Les exercices proposés sont originaux et inspirés des formats de tests publics.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-white">Sites officiels</h2>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li>
+              <a href="https://travaillerpour.be/fr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded hover:text-white">
+                Travaillerpour.be
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg>
+                <span class="sr-only">(nouvel onglet)</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://eu-careers.europa.eu/fr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded hover:text-white">
+                EPSO — EU Careers
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M17 14v5H5V7h5"/></svg>
+                <span class="sr-only">(nouvel onglet)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-brand-300 sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span data-current-year>2026</span> Prépa SELOR &amp; EPSO</p>
+        <a href="#top" class="rounded hover:text-white">Retour en haut ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Zone de notification (annoncée aux lecteurs d'écran) -->
+  <div class="toast-region" role="status" aria-live="polite">
+    <div class="toast" data-toast></div>
+  </div>
+</body>
+</html>
