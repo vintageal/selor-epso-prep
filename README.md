@@ -8,7 +8,7 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 | --- | --- | --- |
 | Raisonnement abstrait | Séries de formes : trouver la figure qui complète la série | Disponible |
 | Raisonnement verbal | Textes et affirmations : vrai, faux ou on ne peut pas savoir | Disponible |
-| Mode examen | Test chronométré mélangeant questions abstraites et verbales | À venir |
+| Mode examen | Examen blanc chronométré mélangeant questions abstraites et verbales | Disponible |
 
 ### Raisonnement abstrait
 
@@ -40,6 +40,19 @@ Un bilan de fin de série détaille les résultats par type de réponse, pour re
 
 **Ajouter un texte :** compléter `data/verbal.json` (format décrit en tête de `assets/js/verbal/quiz.js`), puis lancer `npm test`. Les tests refusent notamment toute citation qui ne figure pas mot pour mot dans le texte ou qui ne correspond pas à une phrase complète.
 
+### Mode examen
+
+Un examen blanc dans les conditions de l'épreuve :
+
+- **20 questions** : 10 de raisonnement abstrait (générées, 2 par règle) et 10 affirmations verbales (réparties entre les textes), mélangées dans un ordre aléatoire ;
+- **chronomètre global strict de 20 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
+- **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir » ;
+- **aucune correction pendant l'épreuve** : après confirmation de « Terminer l'examen » (ou à la fin du temps), le bilan affiche :
+  - le score, le temps utilisé et le résultat par section ;
+  - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal.
+
+Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`).
+
 ## Stack
 
 - **HTML5** statique, sans étape de build
@@ -55,21 +68,28 @@ Un bilan de fin de série détaille les résultats par type de réponse, pour re
 ├── modules/
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
 │   ├── verbal/index.html       # Module « Raisonnement verbal »
-│   └── examen/                 # (à venir)
+│   └── examen/index.html       # Mode examen chronométré
 ├── assets/
 │   ├── css/styles.css          # Styles complémentaires à Tailwind
 │   ├── img/favicon.svg         # Logo / favicon
 │   └── js/
 │       ├── main.js             # Page d'accueil : menu mobile, notifications
-│       ├── lib/random.js       # Tirages aléatoires (graine reproductible pour les tests)
+│       ├── lib/
+│       │   ├── random.js       # Tirages aléatoires (graine reproductible pour les tests)
+│       │   └── dom.js          # Petits utilitaires DOM partagés
 │       ├── abstrait/
 │       │   ├── figures.js      # Formes, description textuelle, rendu SVG
 │       │   ├── rules.js        # Règles logiques
 │       │   ├── generator.js    # Assemblage des questions (sans DOM)
+│       │   ├── view.js         # Série et propositions (partagé avec le mode examen)
 │       │   └── app.js          # Interface du module
-│       └── verbal/
-│           ├── quiz.js         # Logique de l'exercice et validation de la banque (sans DOM)
-│           └── app.js          # Interface du module
+│       ├── verbal/
+│       │   ├── quiz.js         # Logique de l'exercice et validation de la banque (sans DOM)
+│       │   ├── view.js         # Texte, boutons de réponse, citations (partagé avec le mode examen)
+│       │   └── app.js          # Interface du module
+│       └── examen/
+│           ├── exam.js         # Composition, session chronométrée, notation (sans DOM)
+│           └── app.js          # Interface de l'examen et bilan
 ├── data/verbal.json            # Banque de textes et d'affirmations
 ├── tests/                      # Tests automatisés (node --test)
 └── package.json                # Scripts `start` et `test` (aucune dépendance)
@@ -90,7 +110,7 @@ npm start                    # ou : python3 -m http.server 8000
 npm test
 ```
 
-Les tests (Node.js 20 ou plus, sans dépendance) couvrent les deux modules :
+Les tests (Node.js 20 ou plus, sans dépendance) couvrent les trois modules :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -100,6 +120,11 @@ Les tests (Node.js 20 ou plus, sans dépendance) couvrent les deux modules :
   - équilibre entre les trois réponses et explications détaillées.
 
   S'y ajoutent les tests de l'enchaînement des questions, du surlignage, de la typographie et du bilan.
+- **Mode examen** :
+  - composition : 10 + 10 questions mélangées, affirmations distinctes et réparties entre les textes, tirage reproductible ;
+  - navigation libre : réponses modifiées ou effacées, questions marquées ;
+  - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
+  - notation (bonnes réponses, erreurs, questions vides, par section) et affichage du temps.
 
 ## Hébergement
 
@@ -109,7 +134,7 @@ Site 100 % statique : déployable tel quel sur GitHub Pages, Netlify, Cloudflare
 
 ## Publier un module
 
-Les cartes de la page d'accueil pointent vers `modules/<nom>/index.html`. Tant qu'un module n'est pas prêt, son lien porte l'attribut `data-coming-soon` et affiche un message « bientôt disponible ». Une fois la page du module créée, retirer cet attribut et le badge « Bientôt disponible » de la carte.
+Les trois modules sont en ligne. Pour en ajouter un nouveau, créer sa carte sur la page d'accueil avec un lien vers `modules/<nom>/index.html`. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
 
 ## Avertissement
 

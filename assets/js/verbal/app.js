@@ -9,9 +9,10 @@ import {
   answerLabel,
   buildSteps,
   frenchTypography,
-  highlightSegments,
   summarize,
 } from './quiz.js';
+import { createElement, moveFocusTo } from '../lib/dom.js';
+import { choiceButton, evidenceQuotes, passageParagraphs } from './view.js';
 
 const BANK_URL = new URL('../../../data/verbal.json', import.meta.url);
 const KEY_TO_ANSWER = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.map((key) => [key, id])));
@@ -44,14 +45,6 @@ const ui = {
 const state = { passages: [], steps: [], index: 0, answered: false, results: [] };
 const currentStep = () => state.steps[state.index];
 
-/** Crée un élément ; le texte passe par textContent (jamais interprété comme du HTML). */
-const createElement = (tag, className, text) => {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text !== undefined) element.textContent = text;
-  return element;
-};
-
 /* ----- Rendu ----- */
 
 const renderGuidelines = () => {
@@ -62,32 +55,12 @@ const renderGuidelines = () => {
 };
 
 const renderChoices = () => {
-  ui.choices.replaceChildren(
-    ...ANSWERS.map(({ id, label, icon, keys }) => {
-      const button = createElement('button', 'choice');
-      button.type = 'button';
-      button.dataset.answer = id;
-      const iconElement = createElement('span', 'choice__icon', icon);
-      const keyElement = createElement('kbd', 'kbd choice__key', keys[1].toUpperCase());
-      iconElement.setAttribute('aria-hidden', 'true');
-      keyElement.setAttribute('aria-hidden', 'true');
-      button.append(iconElement, createElement('span', 'choice__label', label), keyElement);
-      return button;
-    }),
-  );
+  ui.choices.replaceChildren(...ANSWERS.map(choiceButton));
 };
 
 /** Affiche les paragraphes du texte, en surlignant les citations fournies. */
 const renderPassageBody = (passage, quotes = []) => {
-  ui.passageBody.replaceChildren(
-    ...passage.paragraphs.map((paragraph) => {
-      const element = createElement('p');
-      for (const { text, highlighted } of highlightSegments(paragraph, quotes)) {
-        element.append(highlighted ? createElement('mark', 'evidence-mark', frenchTypography(text)) : frenchTypography(text));
-      }
-      return element;
-    }),
-  );
+  ui.passageBody.replaceChildren(...passageParagraphs(passage, quotes));
 };
 
 const updateStats = () => {
@@ -145,11 +118,7 @@ const renderFeedback = (statement, chosen) => {
         : `Vous avez répondu « ${answerLabel(chosen)} » ; la bonne réponse est « ${answerLabel(statement.answer)} ».`,
     ),
     createElement('p', 'feedback__label', statement.quotes.length > 1 ? 'Preuves dans le texte (surlignées)' : 'Preuve dans le texte (surlignée)'),
-    ...statement.quotes.map((quote) => {
-      const blockquote = createElement('blockquote', 'evidence');
-      blockquote.append(createElement('p', '', frenchTypography(`« ${quote} »`)));
-      return blockquote;
-    }),
+    ...evidenceQuotes(statement.quotes),
     createElement('p', 'feedback__label', 'Explication'),
     createElement('p', 'feedback__text', frenchTypography(statement.explanation)),
   );
@@ -189,12 +158,6 @@ const answer = (chosen) => {
   ui.nextLabel.textContent = nextButtonLabel();
   ui.nextWrapper.hidden = false;
   ui.next.focus();
-};
-
-/** Déplace le focus (clavier, lecteur d'écran) et, si nécessaire, le défilement. */
-const moveFocusTo = (element) => {
-  element.focus({ preventScroll: true });
-  element.scrollIntoView({ block: 'nearest' });
 };
 
 const showSummary = () => {
