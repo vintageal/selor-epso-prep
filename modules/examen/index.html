@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mode examen — Prépa SELOR &amp; EPSO</title>
+  <meta name="description" content="Passez un examen blanc chronométré mêlant raisonnement abstrait et raisonnement verbal, dans les conditions des tests SELOR (Travaillerpour.be) et EPSO, avec correction détaillée à la fin.">
+  <meta name="theme-color" content="#132a50">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS v4 (CDN navigateur) : même configuration que index.html. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-brand-50: #eef4fb;
+      --color-brand-100: #d9e6f5;
+      --color-brand-200: #b6cdeb;
+      --color-brand-300: #8aaedd;
+      --color-brand-500: #2f5fae;
+      --color-brand-600: #244f99;
+      --color-brand-700: #1d4080;
+      --color-brand-800: #183566;
+      --color-brand-900: #132a50;
+      --color-brand-950: #0c1a33;
+      --color-accent-300: #f9d77a;
+      --color-accent-400: #f5c542;
+      --color-accent-500: #e0a91a;
+    }
+  </style>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <script type="module" src="../../assets/js/examen/app.js"></script>
+</head>
+<body class="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased">
+  <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-900 focus:shadow-lg">
+    Aller au contenu principal
+  </a>
+
+  <!-- En-tête (non collant : pendant l'examen, c'est la barre du chronomètre qui reste en haut) -->
+  <header class="border-b border-slate-200/80 bg-white">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="../../index.html" class="flex items-center gap-2.5 rounded-md">
+        <img src="../../assets/img/favicon.svg" alt="" width="36" height="36" class="h-9 w-9">
+        <span class="leading-tight">
+          <span class="block text-base font-bold tracking-tight text-brand-900">Prépa SELOR &amp; EPSO</span>
+          <span class="block text-xs text-slate-500">Tests de raisonnement</span>
+        </span>
+      </a>
+      <a href="../../index.html#modules" class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span>Modules</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Barre d'examen : chronomètre global, toujours visible en haut de l'écran -->
+  <div class="exam-bar" data-exam-bar hidden>
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
+      <div class="min-w-0">
+        <p class="text-xs font-medium text-slate-500">Mode examen</p>
+        <p class="text-sm font-semibold text-slate-900 tabular-nums"><span data-answered-count>0</span>&nbsp;/&nbsp;<span data-total-count>20</span> <span class="hidden sm:inline">réponses</span><span class="sm:hidden">rép.</span></p>
+      </div>
+      <div class="timer" role="timer" aria-label="Temps restant" data-timer data-level="normal">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 10v3.5l2.5 1.5M10 3h4"/></svg>
+        <span data-timer-value>20:00</span>
+      </div>
+      <button type="button" class="rounded-lg bg-brand-900 px-3 py-2 text-sm font-semibold text-white transition hover:bg-brand-800 sm:px-4" data-finish>
+        Terminer<span class="hidden sm:inline"> l'examen</span>
+      </button>
+    </div>
+  </div>
+  <p class="sr-only" aria-live="assertive" data-timer-announcer></p>
+
+  <main id="contenu" class="mx-auto w-full max-w-6xl flex-1 px-4 pb-12 sm:px-6 lg:px-8">
+    <!-- 1. Présentation et consignes -->
+    <section class="mx-auto max-w-3xl pt-8 sm:pt-12" aria-labelledby="intro-titre" data-intro>
+      <nav aria-label="Fil d'Ariane" class="text-sm text-slate-500">
+        <ol class="flex flex-wrap items-center gap-1.5">
+          <li><a href="../../index.html" class="rounded hover:text-brand-900">Accueil</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="../../index.html#modules" class="rounded hover:text-brand-900">Modules</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="font-medium text-slate-700">Mode examen</li>
+        </ol>
+      </nav>
+      <h1 id="intro-titre" class="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl" tabindex="-1">Mode examen chronométré</h1>
+      <p class="mt-2 text-slate-600">Un examen blanc dans les conditions de l'épreuve&nbsp;: questions mélangées, temps limité, et aucune correction avant la fin.</p>
+
+      <div class="surface-dark mt-8 rounded-2xl bg-brand-900 p-6 text-white shadow-lg sm:p-8">
+        <dl class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <dt class="text-xs font-medium text-brand-200">Questions</dt>
+            <dd class="mt-1 text-2xl font-bold sm:text-3xl" data-intro-count>20</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-medium text-brand-200">Durée</dt>
+            <dd class="mt-1 text-2xl font-bold sm:text-3xl" data-intro-duration>20 min</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-medium text-brand-200">Épreuves</dt>
+            <dd class="mt-1 text-2xl font-bold sm:text-3xl">2</dd>
+          </div>
+        </dl>
+        <ul class="mt-8 space-y-3 text-sm text-brand-100 sm:text-base">
+          <li class="flex gap-3"><span class="text-accent-400" aria-hidden="true">●</span><span data-intro-mix>10 questions de raisonnement abstrait et 10 de raisonnement verbal, dans un ordre aléatoire.</span></li>
+          <li class="flex gap-3"><span class="text-accent-400" aria-hidden="true">●</span><span>Un chronomètre global strict&nbsp;: à zéro, l'examen s'arrête immédiatement et vos réponses sont notées en l'état.</span></li>
+          <li class="flex gap-3"><span class="text-accent-400" aria-hidden="true">●</span><span>Naviguez librement entre les questions, laissez-en une vide ou marquez-la «&nbsp;à revoir&nbsp;» pour y revenir plus tard.</span></li>
+          <li class="flex gap-3"><span class="text-accent-400" aria-hidden="true">●</span><span>Une question sans réponse vaut zéro, sans pénalité supplémentaire.</span></li>
+          <li class="flex gap-3"><span class="text-accent-400" aria-hidden="true">●</span><span>Comme au concours, aucune correction pendant l'épreuve&nbsp;: le score et la correction détaillée s'affichent à la fin.</span></li>
+        </ul>
+        <button type="button" class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent-400 px-6 py-3.5 text-base font-semibold text-brand-950 transition hover:bg-accent-300 disabled:cursor-wait disabled:opacity-60 sm:w-auto" data-start disabled>
+          <span data-start-label>Chargement des questions…</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Message affiché si la page est ouverte sans serveur (les modules ES ne fonctionnent pas en file://) -->
+      <p class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900" data-file-warning hidden>
+        Ce module doit être servi par un serveur web local (par exemple <code class="font-mono">npm start</code> ou <code class="font-mono">python3 -m http.server</code>), puis ouvert via <code class="font-mono">http://localhost</code>. Voir le README.
+      </p>
+      <p class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800" data-load-error hidden>
+        Impossible de charger les questions. Vérifiez que la page est servie par un serveur web (voir le README), puis rechargez-la.
+      </p>
+    </section>
+
+    <!-- 2. Épreuve -->
+    <div data-exam hidden>
+
+      <nav class="mt-6" aria-label="Accès direct aux questions">
+        <ol class="palette" data-palette></ol>
+        <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-slate-500" aria-hidden="true">
+          <li class="flex items-center gap-1.5"><span class="palette-legend" data-kind="answered"></span>Répondue</li>
+          <li class="flex items-center gap-1.5"><span class="palette-legend" data-kind="blank"></span>Sans réponse</li>
+          <li class="flex items-center gap-1.5"><span class="palette-legend" data-kind="flagged"></span>À revoir</li>
+        </ul>
+      </nav>
+
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6" aria-labelledby="question-titre">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 id="question-titre" class="scroll-mt-28 text-base font-bold text-slate-900 sm:text-lg" tabindex="-1" data-question-title>Question 1 sur 20</h2>
+            <span class="section-chip" data-section-chip></span>
+          </div>
+          <button type="button" class="flag-toggle" aria-pressed="false" data-flag>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>
+            <span data-flag-label>Marquer à revoir</span>
+          </button>
+        </div>
+
+        <div class="mt-5" data-question-body></div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
+          <button type="button" class="text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-slate-800" data-clear hidden>Effacer ma réponse</button>
+          <div class="ml-auto flex gap-2">
+            <button type="button" class="nav-button" data-prev>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              Précédent
+            </button>
+            <button type="button" class="nav-button nav-button--primary" data-next>
+              Suivant
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p class="mt-4 hidden text-center text-xs text-slate-500 sm:block">
+        Raccourcis&nbsp;: <kbd class="kbd">←</kbd> <kbd class="kbd">→</kbd> pour naviguer&nbsp;; <kbd class="kbd">A</kbd>–<kbd class="kbd">D</kbd> (abstrait) ou <kbd class="kbd">V</kbd> <kbd class="kbd">F</kbd> <kbd class="kbd">?</kbd> (verbal) pour répondre.
+      </p>
+    </div>
+
+    <!-- 3. Bilan d'examen -->
+    <div class="pt-8 sm:pt-12" data-results hidden>
+      <section class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm sm:p-8" aria-labelledby="bilan-titre">
+        <p class="end-banner" data-end-banner></p>
+        <h2 id="bilan-titre" class="mt-4 text-sm font-semibold tracking-wider text-brand-600 uppercase" tabindex="-1">Bilan d'examen</h2>
+        <p class="mt-3 text-5xl font-bold text-brand-900 tabular-nums" data-result-score></p>
+        <p class="mt-1 text-sm font-medium text-slate-500" data-result-percent></p>
+        <p class="mx-auto mt-4 max-w-2xl text-slate-600" data-result-message></p>
+        <dl class="mx-auto mt-6 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4" data-result-stats></dl>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <button type="button" class="inline-flex items-center justify-center rounded-lg bg-brand-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800" data-restart>Passer un nouvel examen</button>
+          <a href="../../index.html#modules" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">Autres modules</a>
+        </div>
+      </section>
+
+      <section class="mt-10" aria-labelledby="correction-titre">
+        <h2 id="correction-titre" class="text-xl font-bold tracking-tight text-slate-900">Correction détaillée</h2>
+        <p class="mt-1 text-sm text-slate-600">Les questions manquées ou laissées sans réponse sont dépliées&nbsp;; cliquez sur une question pour l'ouvrir ou la refermer.</p>
+        <ol class="mt-5 space-y-3" data-review-list></ol>
+      </section>
+    </div>
+  </main>
+
+  <!-- Confirmation avant de terminer -->
+  <dialog class="confirm-dialog" aria-labelledby="confirm-titre" data-confirm>
+    <h2 id="confirm-titre" class="text-lg font-bold text-slate-900">Terminer l'examen&nbsp;?</h2>
+    <p class="mt-2 text-sm text-slate-600" data-confirm-text></p>
+    <div class="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+      <button type="button" class="nav-button" data-confirm-cancel>Continuer l'examen</button>
+      <button type="button" class="nav-button nav-button--primary" data-confirm-ok>Terminer et voir mes résultats</button>
+    </div>
+  </dialog>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <p class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+      Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO).
+    </p>
+  </footer>
+
+  <script>
+    if (location.protocol === 'file:') document.querySelector('[data-file-warning]').hidden = false;
+  </script>
+</body>
+</html>

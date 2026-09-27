@@ -2,8 +2,9 @@
  * Module « Raisonnement abstrait » : interface d'entraînement.
  * Affiche une série, les 4 propositions, corrige immédiatement et explique la règle.
  */
-import { describeFigure, renderFigure } from './figures.js';
+import { createElement, moveFocusTo } from '../lib/dom.js';
 import { OPTION_LETTERS, createQuestionStream } from './generator.js';
+import { optionButton, revealedFigureCell, sequenceCells } from './view.js';
 
 const DIFFICULTY_LABELS = { facile: 'Facile', moyen: 'Moyen', difficile: 'Difficile' };
 const KEY_TO_OPTION = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
@@ -23,57 +24,12 @@ const ui = {
 const nextQuestion = createQuestionStream();
 const state = { question: null, number: 0, answered: 0, correct: 0, locked: false };
 
-/** Crée un élément avec classe et texte (le texte n'est jamais interprété comme du HTML). */
-const createElement = (tag, className, text) => {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text !== undefined) element.textContent = text;
-  return element;
-};
-
-const hiddenFromScreenReaders = (element) => {
-  element.setAttribute('aria-hidden', 'true');
-  return element;
-};
-
-/** Case de la série : la figure (ou le contenu fourni), son numéro et sa description accessible. */
-const figureCell = (position, description, fillBox) => {
-  const cell = createElement('li', 'figure-cell');
-  const box = hiddenFromScreenReaders(createElement('div', 'figure-cell__box'));
-  fillBox(box);
-  cell.append(
-    box,
-    hiddenFromScreenReaders(createElement('span', 'figure-cell__index', String(position))),
-    createElement('span', 'sr-only', `Figure ${position} : ${description}`),
-  );
-  return cell;
-};
-
-const shownFigureCell = (figure, position) =>
-  figureCell(position, describeFigure(figure), (box) => {
-    box.innerHTML = renderFigure(figure);
-  });
-
-const renderSequence = ({ sequence }) => {
-  const missing = figureCell(sequence.length + 1, 'à trouver', (box) => {
-    box.append(createElement('span', 'figure-cell__mark', '?'));
-  });
-  missing.classList.add('figure-cell--missing');
-  missing.dataset.missing = '';
-  ui.sequence.replaceChildren(...sequence.map((figure, i) => shownFigureCell(figure, i + 1)), missing);
+const renderSequence = (question) => {
+  ui.sequence.replaceChildren(...sequenceCells(question));
 };
 
 const renderOptions = ({ options }) => {
-  const buttons = options.map((figure, index) => {
-    const button = createElement('button', 'option');
-    button.type = 'button';
-    button.dataset.index = String(index);
-    button.append(hiddenFromScreenReaders(createElement('span', 'option__letter', OPTION_LETTERS[index])));
-    button.insertAdjacentHTML('beforeend', renderFigure(figure));
-    button.append(createElement('span', 'sr-only', `Proposition ${OPTION_LETTERS[index]} : ${describeFigure(figure)}`));
-    return button;
-  });
-  ui.options.replaceChildren(...buttons);
+  ui.options.replaceChildren(...options.map(optionButton));
 };
 
 const updateStats = () => {
@@ -101,10 +57,7 @@ const markOption = (button, status, label) => {
 
 /** Remplace le « ? » de la série par la bonne réponse. */
 const revealAnswer = ({ sequence, answer }) => {
-  const missing = ui.sequence.querySelector('[data-missing]');
-  const revealed = shownFigureCell(answer, sequence.length + 1);
-  revealed.dataset.state = 'revealed';
-  missing.replaceWith(revealed);
+  ui.sequence.querySelector('[data-missing]').replaceWith(revealedFigureCell(answer, sequence.length + 1));
 };
 
 const renderFeedback = ({ correctIndex, ruleTitle, explanation }, chosenIndex) => {
@@ -156,8 +109,7 @@ ui.options.addEventListener('click', (event) => {
 ui.next.addEventListener('click', () => {
   showQuestion();
   // Ramène l'attention (clavier, lecteur d'écran, défilement mobile) sur la nouvelle série.
-  ui.title.focus({ preventScroll: true });
-  ui.title.scrollIntoView({ block: 'nearest' });
+  moveFocusTo(ui.title);
 });
 
 // Raccourcis clavier : 1-4 ou A-D pour répondre.
