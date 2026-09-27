@@ -1,0 +1,13 @@
+{
+  "name": "selor-epso-prep",
+  "private": true,
+  "description": "Entraînement gratuit aux tests de raisonnement SELOR (Travaillerpour.be) et EPSO",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes http-server -c-1 -p 8000 .",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
