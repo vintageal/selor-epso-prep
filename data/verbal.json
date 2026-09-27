@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "passages": [
+    {
+      "id": "teletravail-structurel",
+      "title": "Note de service : télétravail structurel",
+      "theme": "Administration publique",
+      "paragraphs": [
+        "Depuis le 1er mars, les agents de l'Office fédéral de la gestion documentaire peuvent effectuer jusqu'à trois jours de télétravail par semaine, à condition que leur fonction ait été reconnue compatible avec le travail à distance par leur supérieur hiérarchique. Les fonctions impliquant un accueil physique du public en sont exclues par principe. Les agents concernés conservent toutefois la possibilité de solliciter un télétravail occasionnel, limité à dix jours par an, pour des motifs personnels dûment justifiés.",
+        "La demande doit être introduite par écrit au moins quinze jours ouvrables avant la date de début souhaitée. Le supérieur hiérarchique dispose ensuite de dix jours ouvrables pour se prononcer ; en l'absence de réponse dans ce délai, la demande est réputée acceptée. Tout refus doit être motivé et peut faire l'objet d'un recours auprès du service du personnel, qui statue dans le mois.",
+        "Les agents en télétravail structurel perçoivent une indemnité forfaitaire mensuelle destinée à couvrir leurs frais de connexion et de chauffage. Cette indemnité est réduite de moitié pour les agents qui télétravaillent moins de deux jours par semaine. Une évaluation du dispositif, portant notamment sur la productivité et le bien-être des agents, sera présentée au comité de direction à l'issue d'une période de douze mois."
+      ],
+      "statements": [
+        {
+          "id": "teletravail-accueil",
+          "text": "Un agent chargé de l'accueil physique du public peut, en principe, télétravailler deux jours par semaine.",
+          "answer": "faux",
+          "quotes": [
+            "Les fonctions impliquant un accueil physique du public en sont exclues par principe.",
+            "Les agents concernés conservent toutefois la possibilité de solliciter un télétravail occasionnel, limité à dix jours par an, pour des motifs personnels dûment justifiés."
+          ],
+          "explanation": "Le texte exclut « par principe » les fonctions d'accueil physique du public du télétravail structurel : peu importe que deux jours restent sous le plafond général de trois jours, cette exclusion s'applique avant le plafond. La seule ouverture prévue pour ces agents est un télétravail occasionnel, limité à dix jours par an et réservé à des motifs personnels justifiés, ce qui est incompatible avec un rythme régulier de deux jours par semaine (près de cent jours par an). L'affirmation contredit donc le texte : elle est fausse. Piège classique : l'expression « en principe » de l'affirmation fait écho au « par principe » du texte, mais pour dire exactement l'inverse."
+        },
+        {
+          "id": "teletravail-silence",
+          "text": "Le silence du supérieur hiérarchique au-delà du délai imparti vaut accord sur la demande de télétravail.",
+          "answer": "vrai",
+          "quotes": [
+            "Le supérieur hiérarchique dispose ensuite de dix jours ouvrables pour se prononcer ; en l'absence de réponse dans ce délai, la demande est réputée acceptée."
+          ],
+          "explanation": "L'affirmation reformule la règle du texte avec d'autres mots. « Le silence […] au-delà du délai imparti » correspond à « l'absence de réponse dans ce délai » de dix jours ouvrables, et « vaut accord » est l'équivalent juridique de « est réputée acceptée ». Il ne s'agit pas d'une déduction hasardeuse mais d'une paraphrase fidèle : l'affirmation est vraie. Dans ce type de test, entraînez-vous à reconnaître une même idée exprimée avec un vocabulaire différent : l'examinateur évite presque toujours de reprendre les mots exacts du texte."
+        },
+        {
+          "id": "teletravail-majorite",
+          "text": "La majorité des agents de l'Office télétravaillent désormais trois jours par semaine.",
+          "answer": "impossible",
+          "quotes": [
+            "Depuis le 1er mars, les agents de l'Office fédéral de la gestion documentaire peuvent effectuer jusqu'à trois jours de télétravail par semaine, à condition que leur fonction ait été reconnue compatible avec le travail à distance par leur supérieur hiérarchique."
+          ],
+          "explanation": "Le texte décrit ce qui est permis (« peuvent effectuer jusqu'à trois jours »), c'est-à-dire un maximum autorisé et soumis à condition, et non ce que font réellement les agents. Aucun chiffre n'indique combien d'agents ont introduit une demande, combien de fonctions ont été reconnues compatibles, ni combien de jours sont effectivement prestés à domicile. Le texte ne permet donc ni de confirmer ni d'infirmer que la majorité des agents télétravaille trois jours : on ne peut pas savoir. Méfiez-vous des affirmations qui transforment une possibilité (« peuvent ») en fait établi, ou un plafond (« jusqu'à ») en pratique générale."
+        },
+        {
+          "id": "teletravail-indemnite",
+          "text": "Un agent qui télétravaille un jour par semaine perçoit une indemnité inférieure à celle d'un collègue qui télétravaille trois jours par semaine.",
+          "answer": "vrai",
+          "quotes": [
+            "Cette indemnité est réduite de moitié pour les agents qui télétravaillent moins de deux jours par semaine."
+          ],
+          "explanation": "Il faut ici appliquer la règle du texte à deux cas concrets. Un jour par semaine, c'est « moins de deux jours » : l'indemnité de cet agent est réduite de moitié. Trois jours par semaine, ce n'est pas « moins de deux jours » : son collègue perçoit l'indemnité complète. Le premier touche donc bien une indemnité inférieure à celle du second. L'affirmation ne figure pas telle quelle dans le texte, mais elle en découle logiquement, sans recours à aucune information extérieure : elle est vraie. Une affirmation peut être « vraie » par déduction, et pas seulement lorsqu'elle recopie le texte."
+        }
+      ]
+    },
+    {
+      "id": "inflation-pouvoir-achat",
+      "title": "Rapport économique : inflation et pouvoir d'achat",
+      "theme": "Économie",
+      "paragraphs": [
+        "Selon le dernier rapport de l'Institut d'études conjoncturelles, l'inflation annuelle a atteint 6,2 % l'an dernier, son niveau le plus élevé depuis trois décennies. La hausse des prix de l'énergie explique à elle seule près de la moitié de cette progression, tandis que les produits alimentaires y ont contribué pour environ un quart.",
+        "Grâce au mécanisme d'indexation automatique, les salaires bruts ont progressé en moyenne de 5,8 % sur la même période. Le pouvoir d'achat des ménages salariés a donc légèrement reculé, mais dans une moindre mesure que dans les pays voisins dépourvus d'un tel mécanisme. Les auteurs soulignent toutefois que l'indexation intervient avec un décalage de plusieurs mois, ce qui pèse davantage sur les ménages à faibles revenus, dont une part plus importante du budget est consacrée à l'énergie et à l'alimentation.",
+        "Pour l'année en cours, l'Institut prévoit un ralentissement de l'inflation à 3,1 %, à condition que les prix de l'énergie se stabilisent. Il met néanmoins en garde contre un risque de « spirale prix-salaires » si les entreprises répercutaient intégralement la hausse de leurs coûts salariaux sur leurs prix de vente."
+      ],
+      "statements": [
+        {
+          "id": "inflation-energie",
+          "text": "L'énergie a pesé davantage que l'alimentation dans la hausse des prix de l'an dernier.",
+          "answer": "vrai",
+          "quotes": [
+            "La hausse des prix de l'énergie explique à elle seule près de la moitié de cette progression, tandis que les produits alimentaires y ont contribué pour environ un quart."
+          ],
+          "explanation": "Le texte attribue à l'énergie « près de la moitié » de la hausse des prix et aux produits alimentaires « environ un quart ». Même avec ces approximations (« près de », « environ »), une contribution proche de 50 % reste nettement supérieure à une contribution proche de 25 % : l'écart est trop important pour que l'ordre puisse s'inverser. L'affirmation se contente de comparer ces deux parts : elle est vraie. Retenez qu'une approximation ne rend pas une comparaison incertaine lorsque les ordres de grandeur sont clairement distincts."
+        },
+        {
+          "id": "inflation-recul-pouvoir-achat",
+          "text": "Grâce à l'indexation, le pouvoir d'achat des ménages salariés a progressé l'an dernier.",
+          "answer": "faux",
+          "quotes": [
+            "Grâce au mécanisme d'indexation automatique, les salaires bruts ont progressé en moyenne de 5,8 % sur la même période.",
+            "Le pouvoir d'achat des ménages salariés a donc légèrement reculé, mais dans une moindre mesure que dans les pays voisins dépourvus d'un tel mécanisme."
+          ],
+          "explanation": "Le texte indique que les salaires bruts ont augmenté de 5,8 %, alors que les prix ont augmenté de 6,2 % : les revenus ont donc progressé moins vite que les prix. Le texte en tire lui-même la conclusion que le pouvoir d'achat « a donc légèrement reculé ». L'indexation n'a pas fait progresser le pouvoir d'achat ; elle a seulement limité sa baisse par rapport aux pays voisins qui n'en disposent pas. L'affirmation dit le contraire du texte : elle est fausse. Le piège consiste à reprendre l'expression « grâce à l'indexation », bien présente dans le texte, pour l'associer à une conclusion erronée."
+        },
+        {
+          "id": "inflation-prevision",
+          "text": "L'inflation s'établira à 3,1 % cette année.",
+          "answer": "impossible",
+          "quotes": [
+            "Pour l'année en cours, l'Institut prévoit un ralentissement de l'inflation à 3,1 %, à condition que les prix de l'énergie se stabilisent."
+          ],
+          "explanation": "Le texte ne présente pas ce chiffre comme un fait, mais comme une prévision (« l'Institut prévoit »), elle-même soumise à une condition (« à condition que les prix de l'énergie se stabilisent »). Or le texte ne dit pas si les prix de l'énergie vont effectivement se stabiliser. L'affirmation transforme une prévision conditionnelle en certitude : le texte ne permet ni de la confirmer ni de l'infirmer, donc on ne peut pas savoir. Retenez que le futur de l'indicatif (« s'établira ») exprime une certitude que le texte n'apporte pas."
+        },
+        {
+          "id": "inflation-menages-modestes",
+          "text": "Les ménages à faibles revenus consacrent une part plus importante de leur budget à l'énergie et à l'alimentation que les autres ménages.",
+          "answer": "vrai",
+          "quotes": [
+            "Les auteurs soulignent toutefois que l'indexation intervient avec un décalage de plusieurs mois, ce qui pèse davantage sur les ménages à faibles revenus, dont une part plus importante du budget est consacrée à l'énergie et à l'alimentation."
+          ],
+          "explanation": "L'information figure dans une proposition subordonnée facile à survoler : « dont une part plus importante du budget est consacrée à l'énergie et à l'alimentation ». Le pronom « dont » renvoie aux « ménages à faibles revenus », et le comparatif « plus importante » les compare aux autres ménages. L'affirmation reprend fidèlement cette idée : elle est vraie. Dans les textes denses, les informations décisives se cachent souvent dans les propositions relatives ou les incises : lisez chaque phrase jusqu'au bout."
+        }
+      ]
+    },
+    {
+      "id": "qualite-air-ecoles",
+      "title": "Proposition de directive : qualité de l'air dans les écoles",
+      "theme": "Environnement et santé",
+      "paragraphs": [
+        "La proposition de directive examinée par le Parlement européen fixe, pour la première fois, une valeur limite contraignante pour la concentration de dioxyde de carbone (CO₂) dans les salles de classe. Le seuil retenu, 1 000 parties par million (ppm), est considéré par les experts comme un indicateur fiable du renouvellement de l'air, et non comme un seuil de toxicité du CO₂ lui-même.",
+        "Les États membres disposeraient d'un délai de quatre ans après l'entrée en vigueur du texte pour équiper chaque salle de classe d'un capteur de CO₂. Les établissements construits après 2030 devraient en outre être dotés d'un système de ventilation mécanique. Pour les bâtiments existants, la ventilation naturelle par ouverture des fenêtres resterait admise, à condition que les mesures démontrent le respect du seuil pendant au moins 90 % du temps d'occupation.",
+        "Plusieurs études citées dans l'analyse d'impact associent une meilleure ventilation à une diminution de l'absentéisme lié aux infections respiratoires. Les auteurs de l'analyse reconnaissent cependant que ces études, menées principalement dans des pays d'Europe du Nord, ne permettent pas d'établir un lien de causalité direct."
+      ],
+      "statements": [
+        {
+          "id": "air-toxicite",
+          "text": "Le seuil de 1 000 ppm a été retenu parce qu'au-delà de cette concentration, le CO₂ devient toxique pour les élèves.",
+          "answer": "faux",
+          "quotes": [
+            "Le seuil retenu, 1 000 parties par million (ppm), est considéré par les experts comme un indicateur fiable du renouvellement de l'air, et non comme un seuil de toxicité du CO₂ lui-même."
+          ],
+          "explanation": "L'affirmation avance une justification que le texte écarte expressément. Le seuil de 1 000 ppm est présenté comme « un indicateur fiable du renouvellement de l'air, et non comme un seuil de toxicité du CO₂ lui-même ». Autrement dit, dépasser ce seuil signale une aération insuffisante, pas un danger toxique propre au CO₂. Le texte contredit donc directement le « parce que » de l'affirmation : elle est fausse. Soyez attentif aux liens de cause (« parce que », « grâce à », « en raison de ») : une affirmation peut citer des éléments exacts tout en les reliant par une cause erronée."
+        },
+        {
+          "id": "air-capteurs",
+          "text": "Si la directive était adoptée, chaque salle de classe devrait à terme être équipée d'un capteur de CO₂.",
+          "answer": "vrai",
+          "quotes": [
+            "Les États membres disposeraient d'un délai de quatre ans après l'entrée en vigueur du texte pour équiper chaque salle de classe d'un capteur de CO₂."
+          ],
+          "explanation": "Le texte prévoit que les États membres disposeraient de quatre ans « pour équiper chaque salle de classe d'un capteur de CO₂ ». Accorder un délai pour réaliser une installation revient à la rendre obligatoire au terme de ce délai : « à terme » correspond à ces quatre ans. L'affirmation respecte en outre le caractère hypothétique du texte (« si la directive était adoptée »), puisqu'il s'agit d'une proposition encore examinée par le Parlement européen. Elle est vraie. Notez l'importance du conditionnel : sans la précision « si la directive était adoptée », l'affirmation aurait présenté comme acquis un texte qui n'est pas encore adopté."
+        },
+        {
+          "id": "air-ventilation",
+          "text": "Toutes les écoles existantes devront installer un système de ventilation mécanique.",
+          "answer": "faux",
+          "quotes": [
+            "Les établissements construits après 2030 devraient en outre être dotés d'un système de ventilation mécanique.",
+            "Pour les bâtiments existants, la ventilation naturelle par ouverture des fenêtres resterait admise, à condition que les mesures démontrent le respect du seuil pendant au moins 90 % du temps d'occupation."
+          ],
+          "explanation": "L'obligation de ventilation mécanique ne vise que « les établissements construits après 2030 ». Pour les bâtiments existants, le texte prévoit au contraire que « la ventilation naturelle par ouverture des fenêtres resterait admise », pourvu que le seuil soit respecté au moins 90 % du temps d'occupation. Une école existante qui remplit cette condition n'a donc pas à installer de ventilation mécanique. Avec le mot « toutes », l'affirmation généralise une obligation que le texte limite aux nouveaux bâtiments : elle est fausse. Les mots absolus (« tous », « toujours », « jamais ») doivent systématiquement éveiller votre vigilance."
+        },
+        {
+          "id": "air-absenteisme",
+          "text": "Une meilleure ventilation des salles de classe réduit l'absentéisme dû aux infections respiratoires.",
+          "answer": "impossible",
+          "quotes": [
+            "Plusieurs études citées dans l'analyse d'impact associent une meilleure ventilation à une diminution de l'absentéisme lié aux infections respiratoires.",
+            "Les auteurs de l'analyse reconnaissent cependant que ces études, menées principalement dans des pays d'Europe du Nord, ne permettent pas d'établir un lien de causalité direct."
+          ],
+          "explanation": "Le texte rapporte que des études « associent » une meilleure ventilation à une baisse de l'absentéisme, puis précise que ces études « ne permettent pas d'établir un lien de causalité direct ». Une association (corrélation) n'est pas une preuve de cause à effet : les écoles mieux ventilées pourraient, par exemple, se distinguer des autres sur bien d'autres points. L'affirmation, elle, pose une relation de cause (« réduit »). Le texte ne permet pas de la confirmer, mais pas davantage de l'infirmer, puisqu'il ne dit pas que l'effet est inexistant : on ne peut pas savoir. C'est le piège classique de la confusion entre corrélation et causalité."
+        }
+      ]
+    },
+    {
+      "id": "acces-documents",
+      "title": "Règlement intérieur d'une agence européenne : accès du public aux documents",
+      "theme": "Droit et institutions",
+      "paragraphs": [
+        "Toute personne physique ou morale peut demander l'accès aux documents détenus par l'Agence, sans avoir à justifier sa demande. L'Agence accuse réception de la demande dans un délai de cinq jours ouvrables et rend sa décision dans un délai de quinze jours ouvrables à compter de l'enregistrement de celle-ci.",
+        "Dans des cas exceptionnels, notamment lorsque la demande porte sur un document très long ou sur un grand nombre de documents, ce délai peut être prolongé une seule fois de quinze jours ouvrables, à condition que le demandeur en soit informé au préalable et que la prolongation soit dûment motivée.",
+        "L'accès est refusé lorsque la divulgation porterait atteinte à la protection de la vie privée ou à la sécurité publique. Lorsque seules certaines parties d'un document sont concernées par une exception, les autres parties sont divulguées. Les documents transmis à l'Agence par un État membre ne peuvent être divulgués sans l'accord préalable de celui-ci."
+      ],
+      "statements": [
+        {
+          "id": "documents-justification",
+          "text": "Pour obtenir un document, le demandeur doit expliquer les raisons de sa demande.",
+          "answer": "faux",
+          "quotes": [
+            "Toute personne physique ou morale peut demander l'accès aux documents détenus par l'Agence, sans avoir à justifier sa demande."
+          ],
+          "explanation": "Le texte précise que toute personne peut demander l'accès aux documents « sans avoir à justifier sa demande ». Exiger que le demandeur explique ses raisons reviendrait précisément à lui imposer une justification. L'affirmation est donc directement contredite par le texte : elle est fausse. Notez aussi que le texte vise « toute personne physique ou morale » : une entreprise ou une association bénéficie du même droit qu'un particulier, ce qui pourrait faire l'objet d'une autre question."
+        },
+        {
+          "id": "documents-delai",
+          "text": "Dans le cas le plus long prévu par le texte, l'Agence dispose de trente jours ouvrables pour rendre sa décision.",
+          "answer": "vrai",
+          "quotes": [
+            "L'Agence accuse réception de la demande dans un délai de cinq jours ouvrables et rend sa décision dans un délai de quinze jours ouvrables à compter de l'enregistrement de celle-ci.",
+            "Dans des cas exceptionnels, notamment lorsque la demande porte sur un document très long ou sur un grand nombre de documents, ce délai peut être prolongé une seule fois de quinze jours ouvrables, à condition que le demandeur en soit informé au préalable et que la prolongation soit dûment motivée."
+          ],
+          "explanation": "Il faut combiner deux passages. Le délai normal de décision est de quinze jours ouvrables à compter de l'enregistrement de la demande. Dans des cas exceptionnels, ce délai « peut être prolongé une seule fois de quinze jours ouvrables ». Le délai maximal est donc de 15 + 15 = 30 jours ouvrables, et la mention « une seule fois » exclut toute prolongation supplémentaire. L'affirmation est vraie. Ne vous laissez pas distraire par le délai de cinq jours : il concerne l'accusé de réception, pas la décision."
+        },
+        {
+          "id": "documents-acces-partiel",
+          "text": "Un document dont une seule page contient des informations relevant de la vie privée est refusé dans son intégralité.",
+          "answer": "faux",
+          "quotes": [
+            "L'accès est refusé lorsque la divulgation porterait atteinte à la protection de la vie privée ou à la sécurité publique.",
+            "Lorsque seules certaines parties d'un document sont concernées par une exception, les autres parties sont divulguées."
+          ],
+          "explanation": "La protection de la vie privée est bien un motif de refus. Mais la phrase suivante limite la portée de ce refus : « lorsque seules certaines parties d'un document sont concernées par une exception, les autres parties sont divulguées ». Seule la page concernée peut donc être occultée, et le reste du document doit être communiqué. L'affirmation (« dans son intégralité ») contredit ce principe d'accès partiel : elle est fausse. Lisez toujours la phrase qui suit une règle : elle en restreint souvent la portée."
+        },
+        {
+          "id": "documents-statistiques",
+          "text": "La plupart des demandes d'accès adressées à l'Agence reçoivent une réponse favorable.",
+          "answer": "impossible",
+          "quotes": [
+            "L'accès est refusé lorsque la divulgation porterait atteinte à la protection de la vie privée ou à la sécurité publique."
+          ],
+          "explanation": "Le texte expose les règles de procédure et les motifs de refus (vie privée, sécurité publique, absence d'accord d'un État membre), mais il ne fournit aucune donnée sur l'issue réelle des demandes : ni nombre, ni proportion d'acceptations ou de refus. Savoir dans quels cas l'accès est refusé ne dit rien de la fréquence de ces cas. Le texte ne permet donc ni de confirmer ni d'infirmer que la plupart des demandes aboutissent : on ne peut pas savoir. Une affirmation quantitative (« la plupart », « la majorité ») exige une information quantitative dans le texte."
+        }
+      ]
+    },
+    {
+      "id": "declin-pollinisateurs",
+      "title": "Rapport scientifique : le déclin des insectes pollinisateurs",
+      "theme": "Sciences",
+      "paragraphs": [
+        "Un rapport publié par un consortium de onze universités européennes estime que les populations d'insectes pollinisateurs ont diminué d'environ 30 % en vingt ans dans les zones agricoles étudiées. Le déclin est nettement moins marqué dans les zones protégées, où il ne dépasse pas 10 % sur la même période.",
+        "Les chercheurs identifient trois facteurs principaux : la disparition des haies et des prairies fleuries, l'usage de certains pesticides et la multiplication des épisodes de chaleur extrême. Ils précisent qu'aucun de ces facteurs ne suffit, à lui seul, à expliquer l'ampleur du phénomène observé.",
+        "Environ trois quarts des cultures destinées à l'alimentation humaine dépendent, au moins en partie, de la pollinisation animale. Le rapport recommande dès lors de consacrer au moins 7 % de la surface de chaque exploitation agricole à des éléments favorables à la biodiversité, tels que des bandes fleuries ou des haies. Il ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs."
+      ],
+      "statements": [
+        {
+          "id": "pollinisateurs-zones",
+          "text": "Dans les zones étudiées, les pollinisateurs ont davantage décliné en zone agricole qu'en zone protégée.",
+          "answer": "vrai",
+          "quotes": [
+            "Un rapport publié par un consortium de onze universités européennes estime que les populations d'insectes pollinisateurs ont diminué d'environ 30 % en vingt ans dans les zones agricoles étudiées.",
+            "Le déclin est nettement moins marqué dans les zones protégées, où il ne dépasse pas 10 % sur la même période."
+          ],
+          "explanation": "Le texte chiffre le déclin à « environ 30 % » dans les zones agricoles étudiées et précise qu'il « ne dépasse pas 10 % » dans les zones protégées, sur la même période de vingt ans. Il qualifie d'ailleurs lui-même ce déclin de « nettement moins marqué » en zone protégée. La comparaison de l'affirmation est donc confirmée à la fois par les chiffres et par le commentaire du texte : elle est vraie. Vérifiez toujours que les deux termes d'une comparaison portent sur la même période et le même périmètre, ce qui est bien le cas ici."
+        },
+        {
+          "id": "pollinisateurs-pesticides",
+          "text": "Selon les chercheurs, l'usage de pesticides est la principale cause du déclin des pollinisateurs.",
+          "answer": "impossible",
+          "quotes": [
+            "Les chercheurs identifient trois facteurs principaux : la disparition des haies et des prairies fleuries, l'usage de certains pesticides et la multiplication des épisodes de chaleur extrême.",
+            "Ils précisent qu'aucun de ces facteurs ne suffit, à lui seul, à expliquer l'ampleur du phénomène observé."
+          ],
+          "explanation": "Les chercheurs citent l'usage de certains pesticides parmi « trois facteurs principaux », sans établir de hiérarchie entre eux. Ils ajoutent qu'aucun facteur ne suffit « à lui seul » à expliquer le phénomène : cela signifie qu'aucun n'explique tout, mais pas qu'aucun ne prédomine. Le texte ne permet donc ni d'affirmer que les pesticides sont la cause principale, ni de l'exclure : on ne peut pas savoir. Attention : répondre « Faux » est une erreur fréquente, car « ne pas suffire à lui seul » et « ne pas être la cause principale » sont deux idées différentes."
+        },
+        {
+          "id": "pollinisateurs-cultures",
+          "text": "Environ la moitié des cultures destinées à l'alimentation humaine ne dépendent pas du tout de la pollinisation animale.",
+          "answer": "faux",
+          "quotes": [
+            "Environ trois quarts des cultures destinées à l'alimentation humaine dépendent, au moins en partie, de la pollinisation animale."
+          ],
+          "explanation": "Si environ trois quarts des cultures alimentaires dépendent « au moins en partie » de la pollinisation animale, alors seul le quart restant, environ, peut n'en dépendre aucunement. Il est donc impossible qu'environ la moitié des cultures n'en dépendent « pas du tout ». L'affirmation est incompatible avec le chiffre du texte : elle est fausse. Ce type de question exige un petit calcul complémentaire : raisonnez sur la part restante (100 % − 75 % = 25 %) plutôt que sur le chiffre affiché."
+        },
+        {
+          "id": "pollinisateurs-revenus",
+          "text": "La mesure recommandée par le rapport réduirait les revenus des agriculteurs.",
+          "answer": "impossible",
+          "quotes": [
+            "Il ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs."
+          ],
+          "explanation": "Le texte recommande de réserver au moins 7 % de la surface de chaque exploitation à des éléments favorables à la biodiversité, mais il précise qu'il « ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs ». Il ne dit rien non plus d'éventuelles compensations ni d'effets sur les rendements. Même si une perte de revenus peut sembler plausible, rien dans le texte ne permet de l'affirmer ou de l'exclure : on ne peut pas savoir. Ne complétez jamais le texte avec ce qui vous paraît probable ou avec vos connaissances générales : seul le texte fait foi."
+        }
+      ]
+    }
+  ]
+}
