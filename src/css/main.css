@@ -1,0 +1,30 @@
+/*
+ * Point d'entrée CSS du site, compilé par Tailwind CSS (npm run build:css)
+ * en une seule feuille minifiée : assets/css/app.css (générée, non versionnée).
+ */
+@import "tailwindcss" source(none);
+
+/* Fichiers analysés pour générer uniquement les classes réellement utilisées */
+@source "../../index.html";
+@source "../../modules";
+@source "../../assets/js";
+
+/* Charte graphique (bleu institutionnel et accent doré) */
+@theme {
+  --color-brand-50: #eef4fb;
+  --color-brand-100: #d9e6f5;
+  --color-brand-200: #b6cdeb;
+  --color-brand-300: #8aaedd;
+  --color-brand-500: #2f5fae;
+  --color-brand-600: #244f99;
+  --color-brand-700: #1d4080;
+  --color-brand-800: #183566;
+  --color-brand-900: #132a50;
+  --color-brand-950: #0c1a33;
+  --color-accent-300: #f9d77a;
+  --color-accent-400: #f5c542;
+  --color-accent-500: #e0a91a;
+}
+
+/* Composants propres au site (éléments générés par JavaScript, états, animations) */
+@import "./components.css";

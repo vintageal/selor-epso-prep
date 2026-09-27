@@ -1,6 +1,6 @@
 /*
- * Styles complémentaires à Tailwind CSS (chargé via CDN dans index.html).
- * Ce fichier ne contient que ce qui s'exprime mal en classes utilitaires.
+ * Composants propres au site, complémentaires aux classes utilitaires de Tailwind CSS
+ * (importés par main.css). Ce fichier ne contient que ce qui s'exprime mal en classes utilitaires.
  */
 
 /* Focus clavier bien visible, adapté aux fonds sombres */
