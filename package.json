@@ -4,10 +4,18 @@
   "description": "Entraînement gratuit aux tests de raisonnement SELOR (Travaillerpour.be) et EPSO",
   "type": "module",
   "scripts": {
-    "start": "npx --yes http-server -c-1 -p 8000 .",
+    "build:css": "tailwindcss -i src/css/main.css -o assets/css/app.css --minify",
+    "watch:css": "tailwindcss -i src/css/main.css -o assets/css/app.css --watch",
+    "build": "npm run build:css && node scripts/build-site.js",
+    "start": "npm run build:css && http-server -c-1 -p 8000 .",
+    "preview": "npm run build && http-server -c-1 -p 8000 dist",
     "test": "node --test"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "http-server": "^14.1.1"
   }
 }

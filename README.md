@@ -55,10 +55,13 @@ Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/e
 
 ## Stack
 
-- **HTML5** statique, sans étape de build
-- **Tailwind CSS v4** via le CDN navigateur (`@tailwindcss/browser`), thème défini dans chaque page
-- **JavaScript ES6+** natif, sans framework ni dépendance (modules ES pour les modules d'entraînement)
+- **HTML5** statique
+- **Tailwind CSS v4**, compilé par Tailwind CLI en une seule feuille minifiée (`assets/css/app.css`, environ 8 Ko compressée) ; thème et composants dans `src/css/`
+- **JavaScript ES6+** natif, sans framework ni dépendance d'exécution (modules ES)
 - **Tests** avec le lanceur intégré à Node.js (`node --test`)
+- **Déploiement** automatique sur GitHub Pages via GitHub Actions
+
+Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` (compilation du CSS) et `http-server` (serveur local).
 
 ## Arborescence
 
@@ -69,8 +72,11 @@ Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/e
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
 │   ├── verbal/index.html       # Module « Raisonnement verbal »
 │   └── examen/index.html       # Mode examen chronométré
+├── src/css/
+│   ├── main.css                # Point d'entrée Tailwind : thème, fichiers analysés
+│   └── components.css          # Composants propres au site
 ├── assets/
-│   ├── css/styles.css          # Styles complémentaires à Tailwind
+│   ├── css/app.css             # Feuille générée par `npm run build:css` (non versionnée)
 │   ├── img/favicon.svg         # Logo / favicon
 │   └── js/
 │       ├── main.js             # Page d'accueil : menu mobile, notifications
@@ -92,17 +98,28 @@ Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/e
 │           └── app.js          # Interface de l'examen et bilan
 ├── data/verbal.json            # Banque de textes et d'affirmations
 ├── tests/                      # Tests automatisés (node --test)
-└── package.json                # Scripts `start` et `test` (aucune dépendance)
+├── scripts/build-site.js       # Assemble le site publiable dans dist/
+├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
+└── package.json                # Scripts npm (build, start, test…)
 ```
 
 ## Lancer en local
 
-Les modules d'entraînement utilisent des modules ES, que les navigateurs refusent de charger depuis `file://`. Servez donc le dossier avec un petit serveur web :
+Prérequis : Node.js 20 ou plus. Les modules ES ne se chargent pas depuis `file://` : l'application doit être servie par un serveur web local.
 
 ```bash
-npm start                    # ou : python3 -m http.server 8000
-# puis http://localhost:8000
+npm install          # une seule fois
+npm start            # compile le CSS puis sert le site sur http://localhost:8000
 ```
+
+Pendant le développement, lancez `npm run watch:css` dans un second terminal : le CSS est recompilé à chaque modification des pages, des scripts ou de `src/css/`. Les classes Tailwind utilisées dans le JavaScript (`assets/js/`) sont détectées automatiquement.
+
+| Commande | Rôle |
+| --- | --- |
+| `npm run build:css` | Compile `src/css/main.css` en `assets/css/app.css` (minifié) |
+| `npm run build` | Compile le CSS et assemble le site publiable dans `dist/` |
+| `npm run preview` | Construit `dist/` et le sert localement, comme en production |
+| `npm test` | Lance tous les tests |
 
 ## Tests
 
@@ -110,7 +127,7 @@ npm start                    # ou : python3 -m http.server 8000
 npm test
 ```
 
-Les tests (Node.js 20 ou plus, sans dépendance) couvrent les trois modules :
+Les tests (Node.js 20 ou plus) couvrent les trois modules et le site :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -125,12 +142,20 @@ Les tests (Node.js 20 ou plus, sans dépendance) couvrent les trois modules :
   - navigation libre : réponses modifiées ou effacées, questions marquées ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
   - notation (bonnes réponses, erreurs, questions vides, par section) et affichage du temps.
+- **Site** : chaque page charge la feuille CSS compilée (plus aucun CDN) ; tous les liens et ressources locaux existent et sont en chemins relatifs, compatibles avec l'adresse en sous-dossier de GitHub Pages.
 
 ## Hébergement
 
-Site 100 % statique : déployable tel quel sur GitHub Pages, Netlify, Cloudflare Pages, etc.
+L'application est publiée sur **GitHub Pages** par le workflow `.github/workflows/deploy.yml`. À chaque mise à jour de `main`, il lance les tests, compile le CSS, assemble `dist/` et met le site en ligne. Si un test échoue, rien n'est publié.
 
-> Avant la mise en production, remplacer le CDN Tailwind par une feuille CSS générée (Tailwind CLI) : le CDN navigateur est prévu pour le développement.
+- **Activation (une seule fois)** : *Settings → Pages → Build and deployment → Source : GitHub Actions*.
+- **Adresse** : `https://<compte>.github.io/selor-epso-prep/`, affichée dans *Settings → Pages* et dans chaque exécution du workflow.
+- **Redéployer sans nouveau commit** : onglet *Actions* → « Déploiement GitHub Pages » → *Run workflow*.
+- **Dépôt privé** : GitHub Pages n'est disponible sur un dépôt privé qu'avec une offre payante (Pro, Team ou Enterprise). Avec un compte gratuit, le dépôt doit être public. Dans tous les cas, le site publié est public.
+
+Chaque pull request est aussi vérifiée (tests et construction) par `.github/workflows/ci.yml`.
+
+Le dossier `dist/` étant un site statique autonome, il peut aussi être déployé sur Netlify, Cloudflare Pages, etc. (commande de build : `npm run build`, dossier publié : `dist`).
 
 ## Publier un module
 

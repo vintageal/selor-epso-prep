@@ -141,3 +141,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Feuille CSS générée par Tailwind (npm run build:css) : reconstruite en local et lors du déploiement
+assets/css/app.css
