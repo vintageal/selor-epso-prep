@@ -11,6 +11,7 @@ import {
   gradeExam,
   isAnswered,
   itemQuestionId,
+  pickBalanced,
   pickSpread,
 } from '../assets/js/examen/exam.js';
 import { expectedPicks } from '../assets/js/jugement/quiz.js';
@@ -287,5 +288,37 @@ test('itemQuestionId renvoie l’identifiant de la question d’origine', () => 
   for (const item of items) {
     const expected = { abstrait: item.question?.id, verbal: item.statement?.id, numerique: item.question?.id, jugement: item.scenario?.id }[item.type];
     assert.equal(itemQuestionId(item), expected);
+  }
+});
+
+/* ----- Équilibre des niveaux de difficulté ----- */
+
+test('pickBalanced équilibre les niveaux de difficulté tout en répartissant entre les groupes', () => {
+  // 9 groupes de 3 éléments, un de chaque niveau ; on en tire 9.
+  const groups = Array.from({ length: 9 }, (_, g) => ({ id: g, items: [1, 2, 3].map((level) => ({ id: `${g}-${level}`, level })) }));
+  for (let seed = 1; seed <= 30; seed += 1) {
+    const picked = pickBalanced(groups, 'items', 9, createSeededRandom(seed), (item) => item.level);
+    const perLevel = [1, 2, 3].map((level) => picked.filter(({ item }) => item.level === level).length);
+    assert.deepEqual(perLevel, [3, 3, 3], `graine ${seed}`);
+    assert.equal(new Set(picked.map(({ group }) => group.id)).size, 9, 'un élément par groupe');
+  }
+});
+
+test('pickBalanced complète si un niveau manque, sans dépasser la banque', () => {
+  const groups = [{ items: [{ level: 1 }, { level: 1 }, { level: 1 }] }, { items: [{ level: 2 }] }];
+  const picked = pickBalanced(groups, 'items', 4, createSeededRandom(1), (item) => item.level);
+  assert.equal(picked.length, 4);
+  assert.equal(pickBalanced(groups, 'items', 10, createSeededRandom(1), (item) => item.level).length, 4);
+});
+
+test('les situations de jugement de l’examen mêlent les trois niveaux de difficulté', () => {
+  for (let seed = 1; seed <= 40; seed += 1) {
+    const levels = createExam(banks, { random: createSeededRandom(seed) })
+      .filter((item) => item.type === 'jugement')
+      .map((item) => item.scenario.difficulty);
+    for (const level of [1, 2, 3]) {
+      const count = levels.filter((value) => value === level).length;
+      assert.ok(count >= 1 && count <= 2, `graine ${seed} : ${count} situation(s) de niveau ${level}`);
+    }
   }
 });

@@ -23,21 +23,61 @@ export const SECTIONS = {
 };
 
 /**
+ * Quotas par niveau de difficulté : `count` réparti au plus égal entre les niveaux disponibles
+ * (le reste va à des niveaux tirés au hasard, dans la limite des éléments de chaque niveau).
+ */
+function levelQuotas(available, count, random) {
+  const levels = shuffle(random, Object.keys(available));
+  const quotas = Object.fromEntries(levels.map((level) => [level, 0]));
+  let remaining = Math.min(count, Object.values(available).reduce((sum, n) => sum + n, 0));
+  while (remaining > 0) {
+    for (const level of levels) {
+      if (remaining > 0 && quotas[level] < available[level]) {
+        quotas[level] += 1;
+        remaining -= 1;
+      }
+    }
+  }
+  return quotas;
+}
+
+/**
  * Tire `count` éléments (`group[itemsKey]`) en les répartissant le plus équitablement
  * possible entre les groupes : un par groupe, puis un deuxième, etc. Sert pour les
  * affirmations (réparties entre les textes) et les questions numériques (entre les jeux de données).
+ * Si `levelOf` est fourni, le tirage est aussi équilibré entre les niveaux de difficulté
+ * (environ un tiers par niveau), sans renoncer à la répartition entre les groupes.
  */
-export function pickSpread(groups, itemsKey, count, random = Math.random) {
+export function pickBalanced(groups, itemsKey, count, random = Math.random, levelOf = null) {
   const pools = shuffle(random, groups).map((group) => ({ group, items: shuffle(random, group[itemsKey]) }));
+  const level = (item) => (levelOf ? String(levelOf(item)) : 'tous');
+  const available = {};
+  for (const { items } of pools) for (const item of items) available[level(item)] = (available[level(item)] ?? 0) + 1;
+  const quotas = levelQuotas(available, count, random);
+
   const picked = [];
-  for (let round = 0; picked.length < count && pools.some((pool) => round < pool.items.length); round += 1) {
-    for (const { group, items } of pools) {
-      if (picked.length === count) break;
-      if (round < items.length) picked.push({ group, item: items[round] });
+  const take = (respectQuotas) => {
+    for (let progress = true; progress && picked.length < count; ) {
+      progress = false;
+      // Un tour : au plus un élément par groupe.
+      for (const pool of pools) {
+        if (picked.length === count) break;
+        const index = pool.items.findIndex((item) => !respectQuotas || quotas[level(item)] > 0);
+        if (index === -1) continue;
+        const [item] = pool.items.splice(index, 1);
+        quotas[level(item)] -= 1;
+        picked.push({ group: pool.group, item });
+        progress = true;
+      }
     }
-  }
+  };
+  take(true);
+  take(false); // quotas impossibles à tenir avec la répartition entre groupes : on complète
   return picked;
 }
+
+/** Tirage réparti entre les groupes, sans contrainte de difficulté. */
+export const pickSpread = (groups, itemsKey, count, random = Math.random) => pickBalanced(groups, itemsKey, count, random);
 
 /**
  * Compose un examen : questions abstraites générées, affirmations verbales,
@@ -50,9 +90,8 @@ export function createExam({ passages, scenarios, situations }, { random = Math.
     ...Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() })),
     ...pickSpread(passages, 'statements', config.verbalCount, random).map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
     ...pickSpread(scenarios, 'questions', config.numericCount, random).map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
-    ...shuffle(random, situations)
-      .slice(0, config.judgementCount)
-      .map((scenario) => ({ type: 'jugement', scenario, order: shuffledOrder(scenario, random) })),
+    ...pickBalanced(situations.map((scenario) => ({ scenario, items: [scenario] })), 'items', config.judgementCount, random, (scenario) => scenario.difficulty)
+      .map(({ item: scenario }) => ({ type: 'jugement', scenario, order: shuffledOrder(scenario, random) })),
   ];
   return shuffle(random, items).map((item, index) => ({ id: `q${index + 1}`, ...item }));
 }

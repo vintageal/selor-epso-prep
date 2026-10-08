@@ -3,6 +3,7 @@
  * Le candidat désigne l'action la plus adéquate et la moins adéquate ; la correction
  * attribue des points selon la proximité avec la grille de référence et explique chaque action.
  */
+import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
@@ -20,6 +21,7 @@ const ui = {
   guidelines: $('[data-guidelines]'),
   exercise: $('[data-exercise]'),
   theme: $('[data-scenario-theme]'),
+  level: $('[data-scenario-level]'),
   count: $('[data-scenario-count]'),
   title: $('[data-scenario-title]'),
   situation: $('[data-scenario-situation]'),
@@ -73,6 +75,8 @@ const showStep = () => {
   const { scenario, order, index, count } = currentStep();
   Object.assign(state, { picks: {}, answered: false });
   ui.theme.textContent = scenario.theme;
+  renderDifficulty(scenario.difficulty, ui.level);
+  ui.level.hidden = false;
   ui.count.textContent = `Situation ${index + 1} sur ${count}`;
   ui.title.textContent = frenchTypography(scenario.title);
   ui.situation.replaceChildren(...situationContent(scenario));
