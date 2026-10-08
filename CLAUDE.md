@@ -41,6 +41,7 @@ src/og-image.html       Source de og-image.png (non publiée)
 data/*.json             Banques d'exercices : verbal, numerique, jugement (validées par les tests)
 tests/                  Tests node --test (un fichier par module + site.test.js)
 scripts/build-site.js   Assemble dist/
+scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json (npm run calculer:numerique)
 ```
 
 ## Commandes
