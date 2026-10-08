@@ -6,6 +6,7 @@
 
 /* Fichiers analysés pour générer uniquement les classes réellement utilisées */
 @source "../../index.html";
+@source "../../404.html";
 @source "../../modules";
 @source "../../assets/js";
 

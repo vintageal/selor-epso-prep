@@ -2,6 +2,8 @@
 
 Application web gratuite pour s'entraîner aux tests de logique et de raisonnement des sélections **SELOR / Travaillerpour.be** (fonction publique belge) et **EPSO** (institutions européennes).
 
+**En ligne : https://selor-epso-prep.eu**
+
 ## Modules
 
 | Module | Contenu | Statut |
@@ -117,18 +119,24 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 ```
 .
 ├── index.html                  # Page d'accueil
+├── 404.html                    # Page « introuvable » servie par GitHub Pages
+├── robots.txt                  # Consignes aux moteurs de recherche, renvoi vers le sitemap
+├── sitemap.xml                 # Plan du site : accueil et 5 modules
+├── CLAUDE.md                   # Présentation et règles du projet pour Claude Code
 ├── modules/
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
 │   ├── verbal/index.html       # Module « Raisonnement verbal »
 │   ├── numerique/index.html    # Module « Raisonnement numérique »
 │   ├── jugement/index.html     # Module « Jugement situationnel »
 │   └── examen/index.html       # Mode examen chronométré
-├── src/css/
-│   ├── main.css                # Point d'entrée Tailwind : thème, fichiers analysés
-│   └── components.css          # Composants propres au site
+├── src/
+│   ├── css/main.css            # Point d'entrée Tailwind : thème, fichiers analysés
+│   ├── css/components.css      # Composants propres au site
+│   └── og-image.html           # Source de l'image de partage (non publiée)
 ├── assets/
 │   ├── css/app.css             # Feuille générée par `npm run build:css` (non versionnée)
 │   ├── img/favicon.svg         # Logo / favicon
+│   ├── img/og-image.png        # Image de partage (réseaux sociaux), 1200 × 630
 │   └── js/
 │       ├── main.js             # Page d'accueil : menu mobile, notifications
 │       ├── lib/
@@ -216,14 +224,30 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules et le site :
   - navigation libre : réponses modifiées ou effacées, questions marquées, situation de jugement complète seulement avec ses deux choix ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
   - notation (bonnes réponses, réponses partielles du jugement situationnel, erreurs, questions vides, par section) et affichage du temps.
-- **Site** : chaque page charge la feuille CSS compilée (plus aucun CDN) ; tous les liens et ressources locaux existent et sont en chemins relatifs, compatibles avec l'adresse en sous-dossier de GitHub Pages.
+- **Site** :
+  - chaque page charge la feuille CSS compilée (plus aucun CDN) ;
+  - tous les liens et ressources locaux existent et sont en chemins relatifs ;
+  - chaque page déclare son adresse canonique, `og:url` et `og:image` sur https://selor-epso-prep.eu ;
+  - le sitemap liste exactement les pages, et robots.txt y renvoie ;
+  - la page 404 n'est pas indexée et ses liens visent des fichiers existants ;
+  - plus aucune référence à l'ancienne adresse github.io ;
+  - la mention de non-affiliation figure sur chaque page.
 
 ## Hébergement
 
 L'application est publiée sur **GitHub Pages** par le workflow `.github/workflows/deploy.yml`. À chaque mise à jour de `main`, il lance les tests, compile le CSS, assemble `dist/` et met le site en ligne. Si un test échoue, rien n'est publié.
 
 - **Activation (une seule fois)** : *Settings → Pages → Build and deployment → Source : GitHub Actions*.
-- **Adresse** : `https://<compte>.github.io/selor-epso-prep/`, affichée dans *Settings → Pages* et dans chaque exécution du workflow.
+- **Adresse** : **https://selor-epso-prep.eu**, domaine personnalisé configuré :
+  - DNS chez Infomaniak ;
+  - domaine renseigné dans *Settings → Pages → Custom domain*.
+
+  L'ancienne adresse GitHub Pages du dépôt redirige automatiquement vers ce domaine (comportement standard de GitHub Pages).
+- **Pas de fichier `CNAME`** : avec une publication par GitHub Actions, le domaine est enregistré dans les réglages de Pages, et un fichier `CNAME` dans le dépôt serait ignoré.
+- **Référencement** :
+  - chaque page déclare son adresse canonique et ses balises Open Graph, dont l'image `assets/img/og-image.png` ;
+  - `sitemap.xml` et `robots.txt` sont publiés à la racine.
+- **Page 404** : `404.html` est servie pour toute adresse inexistante, à n'importe quelle profondeur. C'est pourquoi ses liens utilisent l'adresse absolue du site, seule exception à la règle des chemins relatifs.
 - **Redéployer sans nouveau commit** : onglet *Actions* → « Déploiement GitHub Pages » → *Run workflow*.
 - **Dépôt privé** : GitHub Pages n'est disponible sur un dépôt privé qu'avec une offre payante (Pro, Team ou Enterprise). Avec un compte gratuit, le dépôt doit être public. Dans tous les cas, le site publié est public.
 
@@ -233,7 +257,13 @@ Le dossier `dist/` étant un site statique autonome, il peut aussi être déploy
 
 ## Publier un module
 
-Les quatre modules sont en ligne. Pour en ajouter un nouveau, créer sa carte sur la page d'accueil avec un lien vers `modules/<nom>/index.html`. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
+Les cinq modules sont en ligne. Pour en ajouter un nouveau :
+
+- créer sa carte sur la page d'accueil, avec un lien vers `modules/<nom>/index.html` ;
+- ajouter son adresse à `sitemap.xml` ;
+- ajouter dans son `<head>` la balise `canonical` et les balises Open Graph, sur le modèle des autres modules.
+
+Les tests vérifient ces trois points. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
 
 ## Avertissement
 
