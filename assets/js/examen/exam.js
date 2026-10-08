@@ -4,19 +4,22 @@
  * ce qui rend le chronomètre testable sans attendre.
  */
 import { createQuestionStream } from '../abstrait/generator.js';
+import { MAX_POINTS, expectedPicks, isComplete, scoreChoice, shuffledOrder } from '../jugement/quiz.js';
 import { shuffle } from '../lib/random.js';
 
 export const EXAM_CONFIG = Object.freeze({
   abstractCount: 10,
   verbalCount: 10,
   numericCount: 10,
-  durationMs: 30 * 60 * 1000,
+  judgementCount: 5,
+  durationMs: 40 * 60 * 1000,
 });
 
 export const SECTIONS = {
   abstrait: 'Raisonnement abstrait',
   verbal: 'Raisonnement verbal',
   numerique: 'Raisonnement numérique',
+  jugement: 'Jugement situationnel',
 };
 
 /**
@@ -37,25 +40,39 @@ export function pickSpread(groups, itemsKey, count, random = Math.random) {
 }
 
 /**
- * Compose un examen : questions abstraites générées, affirmations verbales et
- * questions numériques tirées des banques, le tout mélangé.
+ * Compose un examen : questions abstraites générées, affirmations verbales,
+ * questions numériques et situations de jugement tirées des banques, le tout mélangé.
+ * Les actions de chaque situation sont présentées dans un ordre aléatoire (`order`).
  */
-export function createExam({ passages, scenarios }, { random = Math.random, config = EXAM_CONFIG } = {}) {
+export function createExam({ passages, scenarios, situations }, { random = Math.random, config = EXAM_CONFIG } = {}) {
   const nextAbstract = createQuestionStream(random);
   const items = [
     ...Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() })),
     ...pickSpread(passages, 'statements', config.verbalCount, random).map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
     ...pickSpread(scenarios, 'questions', config.numericCount, random).map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
+    ...shuffle(random, situations)
+      .slice(0, config.judgementCount)
+      .map((scenario) => ({ type: 'jugement', scenario, order: shuffledOrder(scenario, random) })),
   ];
   return shuffle(random, items).map((item, index) => ({ id: `q${index + 1}`, ...item }));
 }
 
-/** Réponse attendue : index de la proposition (abstrait, numérique) ou identifiant de réponse (verbal). */
+/**
+ * Réponse attendue : index de la proposition (abstrait, numérique), identifiant de réponse (verbal)
+ * ou, pour le jugement situationnel, index des actions la plus et la moins adéquates `{ best, worst }`.
+ */
 export const expectedAnswer = (item) => {
   if (item.type === 'abstrait') return item.question.correctIndex;
   if (item.type === 'numerique') return item.question.answer;
+  if (item.type === 'jugement') return expectedPicks(item.scenario);
   return item.statement.answer;
 };
+
+/**
+ * Vrai si la question a reçu une réponse complète. Une situation de jugement n'est
+ * complète qu'avec ses deux choix (« plus » et « moins » adéquate).
+ */
+export const isAnswered = (item, answer) => (item.type === 'jugement' ? isComplete(answer) : answer !== null && answer !== undefined);
 
 /** Session d'examen : réponses, questions marquées « à revoir » et chronomètre strict. */
 export class ExamSession {
@@ -75,7 +92,7 @@ export class ExamSession {
   }
 
   get answeredCount() {
-    return this.answers.filter((answer) => answer !== null).length;
+    return this.answers.filter((answer, index) => isAnswered(this.items[index], answer)).length;
   }
 
   remainingMs(now = Date.now()) {
@@ -112,22 +129,43 @@ export class ExamSession {
   }
 }
 
-/** Notation : chaque question est correcte, fausse ou sans réponse (une question vide vaut 0). */
+/** Note d'une situation de jugement : fraction de point selon la proximité avec la grille. */
+const gradeJudgement = (item, answer) => {
+  const { points } = scoreChoice(item.scenario, answer);
+  const picked = Number.isInteger(answer?.best) || Number.isInteger(answer?.worst);
+  const status = !picked ? 'blank' : points === MAX_POINTS ? 'correct' : points === 0 ? 'wrong' : 'partial';
+  return { status, score: points / MAX_POINTS, points };
+};
+
+/** Note d'une question à choix unique : 1 point si la réponse est exacte, 0 sinon. */
+const gradeSingle = (item, answer) => {
+  const status = answer === null || answer === undefined ? 'blank' : answer === expectedAnswer(item) ? 'correct' : 'wrong';
+  return { status, score: status === 'correct' ? 1 : 0 };
+};
+
+/**
+ * Notation : chaque question vaut 1 point. Une question à choix unique est correcte, fausse
+ * ou sans réponse (une question vide vaut 0). Une situation de jugement rapporte une fraction
+ * de point selon la proximité de ses deux choix avec la grille (statut « partial » entre 0 et 1).
+ */
 export function gradeExam(items, answers) {
-  const bySection = Object.fromEntries(Object.keys(SECTIONS).map((section) => [section, { total: 0, correct: 0 }]));
+  const bySection = Object.fromEntries(Object.keys(SECTIONS).map((section) => [section, { total: 0, correct: 0, score: 0 }]));
   const results = items.map((item, index) => {
-    const answer = answers[index];
-    const expected = expectedAnswer(item);
-    const status = answer === null ? 'blank' : answer === expected ? 'correct' : 'wrong';
-    bySection[item.type].total += 1;
-    if (status === 'correct') bySection[item.type].correct += 1;
-    return { item, answer, expected, status };
+    const answer = answers[index] ?? null;
+    const grade = item.type === 'jugement' ? gradeJudgement(item, answer) : gradeSingle(item, answer);
+    const section = bySection[item.type];
+    section.total += 1;
+    section.score += grade.score;
+    if (grade.status === 'correct') section.correct += 1;
+    return { item, answer, expected: expectedAnswer(item), ...grade };
   });
   const count = (status) => results.filter((result) => result.status === status).length;
   return {
     results,
     total: items.length,
+    score: results.reduce((sum, result) => sum + result.score, 0),
     correct: count('correct'),
+    partial: count('partial'),
     wrong: count('wrong'),
     blank: count('blank'),
     bySection,

@@ -9,7 +9,8 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 | Raisonnement abstrait | Séries de formes : trouver la figure qui complète la série | Disponible |
 | Raisonnement verbal | Textes et affirmations : vrai, faux ou on ne peut pas savoir | Disponible |
 | Raisonnement numérique | Tableaux et graphiques : variations, ratios, moyennes pondérées, extrapolations | Disponible |
-| Mode examen | Examen blanc chronométré mélangeant questions abstraites, verbales et numériques | Disponible |
+| Jugement situationnel | Situations professionnelles : action la plus et la moins adéquate, correction par compétence | Disponible |
+| Mode examen | Examen blanc chronométré mélangeant les quatre épreuves | Disponible |
 
 ### Raisonnement abstrait
 
@@ -68,16 +69,36 @@ Si la réponse est fausse, elle explique aussi **l'erreur de logique** correspon
 - Les tests vérifient que la bonne réponse correspond au résultat du calcul, et que chaque proposition fautive correspond au calcul de l'erreur décrite.
 - Ils vérifient aussi que les lignes « total » sont bien la somme des autres lignes.
 
+### Jugement situationnel
+
+Le candidat lit une situation professionnelle réaliste dans une administration (gestion de conflit, priorités contradictoires, relation avec la hiérarchie, déontologie…), puis évalue quatre actions possibles. Comme aux tests SJT des sélections EPSO et fédérales, il désigne **l'action la plus adéquate** et **l'action la moins adéquate**. Ce format se pilote au clic, au toucher ou au clavier (`Tab` puis flèches). Une même action ne peut pas être à la fois la plus et la moins adéquate. L'ordre des actions est mélangé à chaque série.
+
+La banque `data/jugement.json` contient 6 situations : deux demandes urgentes et contradictoires, un collègue qui ne tient plus ses délais, une erreur découverte dans un dossier déjà envoyé, un usager excédé au guichet, une demande d'information confidentielle et un nouvel outil qui ralentit le travail. Chaque situation classe ses quatre actions de 1 (la plus adéquate) à 4 (la moins adéquate).
+
+**Notation par proximité** (4 points par situation) :
+
+| Choix | Action classée 1re | 2e | 3e | 4e |
+| --- | --- | --- | --- | --- |
+| « Plus adéquate » | 2 points | 1 point | 0 | 0 |
+| « Moins adéquate » | 0 | 0 | 1 point | 2 points |
+
+Après validation, la correction affiche la place de chaque action dans la grille et une **explication psychologique et managériale** pour chacune. Elle relie chaque action aux compétences évaluées : résolution de problèmes, travail en équipe, orientation résultats, communication, organisation et priorités, orientation service, intégrité. Une synthèse « À retenir » conclut chaque situation. Le bilan de fin de série détaille les points par compétence et signale la compétence à travailler.
+
+La grille de référence a été élaborée pour l'entraînement, à partir des compétences génériques évaluées lors des sélections. Elle ne reproduit pas une grille officielle de l'EPSO ou du SPF BOSA.
+
+**Ajouter une situation :** compléter `data/jugement.json` (format décrit en tête de `assets/js/jugement/quiz.js`), puis lancer `npm test`. Les tests vérifient notamment que les rangs forment exactement 1, 2, 3 et 4, que les compétences citées existent et que chaque action a une explication détaillée.
+
 ### Mode examen
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **30 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes) et 10 questions numériques (réparties entre les jeux de données), mélangées dans un ordre aléatoire ;
-- **chronomètre global strict de 30 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
-- **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir » ;
+- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire ;
+- **chronomètre global strict de 40 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
+- **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir ». Une situation de jugement avec un seul de ses deux choix apparaît comme « incomplète » ;
+- **notation** : chaque question vaut 1 point. Une situation de jugement rapporte une fraction de point selon la même grille de proximité que le module (par exemple 3 points sur 4 = 0,75 point). Le score peut donc être décimal, par exemple 27,75 / 35 ;
 - **aucune correction pendant l'épreuve** : après confirmation de « Terminer l'examen » (ou à la fin du temps), le bilan affiche :
   - le score, le temps utilisé et le résultat par section ;
-  - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal, calcul étape par étape pour le numérique.
+  - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal, calcul étape par étape pour le numérique, place de chaque action dans la grille et explications pour le jugement situationnel.
 
 Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`).
 
@@ -100,6 +121,7 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
 │   ├── verbal/index.html       # Module « Raisonnement verbal »
 │   ├── numerique/index.html    # Module « Raisonnement numérique »
+│   ├── jugement/index.html     # Module « Jugement situationnel »
 │   └── examen/index.html       # Mode examen chronométré
 ├── src/css/
 │   ├── main.css                # Point d'entrée Tailwind : thème, fichiers analysés
@@ -126,12 +148,17 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │       │   ├── quiz.js         # Moteur de calcul, formatage, validation de la banque (sans DOM)
 │       │   ├── view.js         # Tableau, graphiques, propositions, correction détaillée (partagé avec le mode examen)
 │       │   └── app.js          # Interface du module
+│       ├── jugement/
+│       │   ├── quiz.js         # Compétences, notation par proximité, validation de la banque (sans DOM)
+│       │   ├── view.js         # Situation, choix « plus / moins adéquate », correction (partagé avec le mode examen)
+│       │   └── app.js          # Interface du module
 │       └── examen/
 │           ├── exam.js         # Composition, session chronométrée, notation (sans DOM)
 │           └── app.js          # Interface de l'examen et bilan
 ├── data/
 │   ├── verbal.json             # Banque de textes et d'affirmations
-│   └── numerique.json          # Banque de jeux de données et de questions chiffrées
+│   ├── numerique.json          # Banque de jeux de données et de questions chiffrées
+│   └── jugement.json           # Banque de situations professionnelles et grilles de correction
 ├── tests/                      # Tests automatisés (node --test)
 ├── scripts/build-site.js       # Assemble le site publiable dans dist/
 ├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
@@ -162,7 +189,7 @@ Pendant le développement, lancez `npm run watch:css` dans un second terminal : 
 npm test
 ```
 
-Les tests (Node.js 20 ou plus) couvrent les quatre modules et le site :
+Les tests (Node.js 20 ou plus) couvrent les cinq modules et le site :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -179,11 +206,16 @@ Les tests (Node.js 20 ou plus) couvrent les quatre modules et le site :
   - au moins 4 jeux de données de 3 à 4 questions, et les quatre compétences toutes présentes.
 
   S'y ajoutent les tests du moteur de calcul (priorités, puissances, refus des expressions invalides), du formatage à la française, de l'enchaînement et du bilan.
+- **Jugement situationnel** :
+  - validation de la banque : rangs 1 à 4, compétences connues, identifiants uniques, explications détaillées ;
+  - au moins 4 situations, thèmes demandés couverts (conflit, priorités, hiérarchie) ;
+  - notation par proximité, testée sur toutes les combinaisons de choix : le maximum n'est atteint qu'avec la grille ;
+  - ordre aléatoire des actions et bilan par compétence.
 - **Mode examen** :
-  - composition : 10 + 10 + 10 questions mélangées, réparties entre les textes et les jeux de données, tirage reproductible ;
-  - navigation libre : réponses modifiées ou effacées, questions marquées ;
+  - composition : 10 + 10 + 10 questions et 5 situations de jugement, mélangées et réparties entre les textes et les jeux de données, tirage reproductible ;
+  - navigation libre : réponses modifiées ou effacées, questions marquées, situation de jugement complète seulement avec ses deux choix ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
-  - notation (bonnes réponses, erreurs, questions vides, par section) et affichage du temps.
+  - notation (bonnes réponses, réponses partielles du jugement situationnel, erreurs, questions vides, par section) et affichage du temps.
 - **Site** : chaque page charge la feuille CSS compilée (plus aucun CDN) ; tous les liens et ressources locaux existent et sont en chemins relatifs, compatibles avec l'adresse en sous-dossier de GitHub Pages.
 
 ## Hébergement

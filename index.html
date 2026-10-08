@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prépa SELOR &amp; EPSO — Entraînement gratuit aux tests de raisonnement</title>
-  <meta name="description" content="Entraînez-vous gratuitement aux tests de logique et de raisonnement des sélections SELOR (Travaillerpour.be) et EPSO : raisonnement abstrait, verbal et numérique, et mode examen chronométré.">
+  <meta name="description" content="Entraînez-vous gratuitement aux tests de logique et de raisonnement des sélections SELOR (Travaillerpour.be) et EPSO : raisonnement abstrait, verbal et numérique, jugement situationnel et mode examen chronométré.">
   <meta name="theme-color" content="#132a50">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_BE">
   <meta property="og:title" content="Prépa SELOR &amp; EPSO — Tests de raisonnement">
-  <meta property="og:description" content="Entraînement gratuit aux tests de raisonnement abstrait, verbal et numérique, avec un mode examen chronométré.">
+  <meta property="og:description" content="Entraînement gratuit aux tests de raisonnement abstrait, verbal et numérique et de jugement situationnel, avec un mode examen chronométré.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <!-- Feuille générée par Tailwind CSS (npm run build:css) à partir de src/css/ -->
@@ -71,7 +71,7 @@
             Entraînez-vous <span class="text-accent-400">gratuitement</span> aux tests de logique et de raisonnement
           </h1>
           <p class="mt-5 max-w-xl text-base text-pretty text-brand-100 sm:text-lg">
-            Préparez les épreuves de sélection de la fonction publique belge et des institutions européennes avec des exercices de raisonnement abstrait, verbal et numérique, à votre rythme ou en conditions d'examen.
+            Préparez les épreuves de sélection de la fonction publique belge et des institutions européennes avec des exercices de raisonnement abstrait, verbal et numérique et des mises en situation professionnelles, à votre rythme ou en conditions d'examen.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -165,7 +165,7 @@
           <p class="mt-3 text-slate-600">Travaillez chaque compétence séparément, puis mesurez-vous aux conditions réelles avec le mode examen.</p>
         </div>
 
-        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <!-- Module 1 : raisonnement abstrait -->
           <article id="module-abstrait" class="relative flex scroll-mt-24 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
             <div class="flex items-start justify-between gap-4">
@@ -231,8 +231,30 @@
             </a>
           </article>
 
-          <!-- Module 4 : mode examen (mis en avant) -->
-          <article id="module-examen" class="surface-dark relative flex scroll-mt-24 flex-col rounded-2xl bg-brand-900 p-6 text-white shadow-lg ring-1 ring-brand-900 transition hover:-translate-y-0.5 hover:shadow-xl">
+          <!-- Module 4 : jugement situationnel -->
+          <article id="module-jugement" class="relative flex scroll-mt-24 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex items-start justify-between gap-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-700">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17M8 20.5h8M5 7h14M5 7l-3 6.5a3 3 0 0 0 6 0L5 7Zm14 0-3 6.5a3 3 0 0 0 6 0L19 7Z"/></svg>
+              </span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-slate-900">Jugement situationnel</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              Face à des situations de bureau réalistes (conflit, priorités, relation avec la hiérarchie), désignez l'action la plus et la moins adéquate parmi quatre propositions.
+            </p>
+            <ul class="mt-4 flex flex-wrap gap-2 text-xs font-medium text-slate-600" aria-label="Au programme">
+              <li class="rounded-md bg-slate-100 px-2 py-1">Plus · Moins adéquate</li>
+              <li class="rounded-md bg-slate-100 px-2 py-1">Compétences comportementales</li>
+              <li class="rounded-md bg-slate-100 px-2 py-1">Correction commentée</li>
+            </ul>
+            <a href="modules/jugement/index.html" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition after:absolute after:inset-0 after:rounded-2xl hover:bg-brand-800">
+              Commencer<span class="sr-only"> le jugement situationnel</span>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+
+          <!-- Module 5 : mode examen (mis en avant) -->
+          <article id="module-examen" class="surface-dark relative flex scroll-mt-24 md:col-span-2 flex-col rounded-2xl bg-brand-900 p-6 text-white shadow-lg ring-1 ring-brand-900 transition hover:-translate-y-0.5 hover:shadow-xl">
             <div class="flex items-start justify-between gap-4">
               <span class="grid h-12 w-12 place-items-center rounded-xl bg-accent-400 text-brand-950">
                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 10v3.5l2.5 1.5M10 3h4M12 3v3.5"/></svg>
@@ -240,14 +262,14 @@
             </div>
             <h3 class="mt-5 text-lg font-semibold">Mode examen</h3>
             <p class="mt-2 flex-1 text-sm leading-relaxed text-brand-100">
-              Un test chronométré qui mélange questions abstraites, verbales et numériques pour vous placer dans des conditions proches de l'épreuve réelle.
+              Un test chronométré qui mélange questions abstraites, verbales, numériques et situations de jugement pour vous placer dans des conditions proches de l'épreuve réelle.
             </p>
             <ul class="mt-4 flex flex-wrap gap-2 text-xs font-medium text-brand-100" aria-label="Au programme">
-              <li class="rounded-md bg-white/10 px-2 py-1">30 questions · 30 min</li>
+              <li class="rounded-md bg-white/10 px-2 py-1">35 questions · 40 min</li>
               <li class="rounded-md bg-white/10 px-2 py-1">Questions mélangées</li>
               <li class="rounded-md bg-white/10 px-2 py-1">Correction détaillée</li>
             </ul>
-            <a href="modules/examen/index.html" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent-400 px-4 py-2.5 text-sm font-semibold text-brand-950 transition after:absolute after:inset-0 after:rounded-2xl hover:bg-accent-300">
+            <a href="modules/examen/index.html" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent-400 px-4 py-2.5 md:self-start md:px-6 text-sm font-semibold text-brand-950 transition after:absolute after:inset-0 after:rounded-2xl hover:bg-accent-300">
               Lancer un examen
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -268,7 +290,7 @@
             <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-900 text-sm font-bold text-white" aria-hidden="true">1</span>
             <div>
               <h3 class="font-semibold text-slate-900">Choisissez un module</h3>
-              <p class="mt-1 text-sm leading-relaxed text-slate-600">Commencez par la compétence que vous souhaitez renforcer&nbsp;: raisonnement abstrait, verbal ou numérique.</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">Commencez par la compétence que vous souhaitez renforcer&nbsp;: raisonnement abstrait, verbal, numérique ou jugement situationnel.</p>
             </div>
           </li>
           <li class="flex gap-4">

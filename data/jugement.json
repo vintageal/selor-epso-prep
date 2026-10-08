@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "priorites-contradictoires",
+      "title": "Deux demandes urgentes et contradictoires",
+      "theme": "Relation avec la hiérarchie",
+      "competencies": ["priorites", "communication", "resultats"],
+      "context": "Vous êtes gestionnaire de dossiers dans un service public fédéral.",
+      "situation": [
+        "Lundi matin, votre cheffe d'équipe vous demande de finaliser pour mercredi un rapport destiné au cabinet du ministre.",
+        "Une heure plus tard, le chef d'un autre service, d'un grade plus élevé que votre cheffe, vous demande de traiter en priorité une série de dossiers urgents de citoyens, également pour mercredi. Vous estimez que vous ne pourrez pas mener les deux tâches de front dans ce délai."
+      ],
+      "debrief": "Face à des demandes contradictoires, la bonne pratique consiste à signaler tôt le conflit à son supérieur direct, avec des éléments objectifs, plutôt que de trancher seul ou d'espérer tout faire. L'arbitrage entre priorités relève de la hiérarchie ; votre rôle est de le rendre possible à temps.",
+      "actions": [
+        {
+          "id": "parallele",
+          "text": "Vous travaillez sur les deux tâches en parallèle, en faisant de votre mieux, et vous livrez mercredi ce que vous avez pu terminer.",
+          "rank": 3,
+          "competencies": ["priorites", "resultats"],
+          "explanation": "Réponse peu adéquate. Elle part d'une bonne volonté, mais elle revient à ignorer un problème que vous avez pourtant identifié dès lundi. En dispersant vos efforts, vous risquez de livrer deux travaux incomplets, et personne n'a eu l'occasion d'anticiper ni de réorganiser le travail. Sur le plan psychologique, c'est une stratégie d'évitement : on espère que la difficulté se résoudra d'elle-même. Elle est pénalisée en organisation et priorités comme en orientation résultats."
+        },
+        {
+          "id": "arbitrage",
+          "text": "Vous informez rapidement votre cheffe d'équipe du conflit de priorités, avec une estimation du temps nécessaire pour chaque tâche, et vous lui demandez d'arbitrer, si nécessaire avec l'autre chef de service.",
+          "rank": 1,
+          "competencies": ["priorites", "communication", "resultats"],
+          "explanation": "C'est l'action la plus adéquate. Vous ne restez pas seul(e) face à un dilemme qui dépasse votre niveau de décision : vous rendez le problème visible tôt (lundi, et non mercredi), vous l'objectivez par une estimation de charge et vous le confiez à la personne légitime pour arbitrer, votre supérieure directe. Sur le plan managérial, vous respectez la ligne hiérarchique tout en facilitant la décision. Compétences démontrées : organisation et priorités (anticiper le conflit de délais), communication (information factuelle et précoce) et orientation résultats (sécuriser les livrables plutôt que d'échouer sur les deux)."
+        },
+        {
+          "id": "negociation-directe",
+          "text": "Vous proposez directement au chef de service de traiter une partie de ses dossiers et de reporter le reste à la semaine suivante, puis vous en informez votre cheffe.",
+          "rank": 2,
+          "competencies": ["problemes", "communication"],
+          "explanation": "Réponse acceptable, mais pas optimale. Vous cherchez une solution concrète et vous informez votre cheffe, ce qui est positif sur le plan de la résolution de problèmes. Toutefois, vous négociez seul(e) un report avec un supérieur d'un autre service, sans savoir si le rapport destiné au cabinet est encore plus prioritaire : vous prenez une décision d'arbitrage qui revient à votre hiérarchie et vous placez votre cheffe devant le fait accompli."
+        },
+        {
+          "id": "grade",
+          "text": "Vous donnez la priorité aux dossiers du chef de service, puisqu'il a un grade plus élevé, sans en parler à votre cheffe.",
+          "rank": 4,
+          "competencies": ["communication", "priorites"],
+          "explanation": "C'est l'action la moins adéquate. Vous tranchez seul(e) sur la base du seul grade, sans prévenir la personne qui vous a confié la première tâche : votre cheffe découvrira mercredi que le rapport destiné au cabinet n'est pas prêt. Vous court-circuitez la ligne hiérarchique, dégradez la relation de confiance et mettez en péril un livrable sensible. Le grade d'un demandeur ne remplace pas un arbitrage ; l'absence de communication est ici la faute principale."
+        }
+      ]
+    },
+    {
+      "id": "collegue-en-retard",
+      "title": "Un collègue qui ne tient plus ses délais",
+      "theme": "Gestion de conflit",
+      "competencies": ["equipe", "communication", "resultats"],
+      "context": "Vous travaillez dans une équipe de cinq personnes chargée de préparer un appel à projets régional.",
+      "situation": [
+        "Depuis trois semaines, un collègue, Marc, rend ses contributions en retard et d'une qualité inégale. Les autres membres de l'équipe compensent en faisant des heures supplémentaires et commencent à se plaindre de lui entre eux.",
+        "La date de publication de l'appel à projets approche. Votre responsable n'est pas au courant de la situation."
+      ],
+      "debrief": "Dans un conflit d'équipe, on privilégie d'abord un dialogue direct, privé et factuel, puis des solutions collectives ; l'escalade vers la hiérarchie vient ensuite, de manière discrète, si la situation ne s'améliore pas.",
+      "actions": [
+        {
+          "id": "courriel-equipe",
+          "text": "Vous signalez immédiatement par courriel à votre responsable que Marc ne fait pas son travail, en mettant toute l'équipe en copie.",
+          "rank": 4,
+          "competencies": ["equipe", "communication"],
+          "explanation": "C'est l'action la moins adéquate. Dénoncer un collègue par écrit devant toute l'équipe, sans lui avoir parlé, l'humilie publiquement et provoque une réaction défensive. Le message, formulé comme un jugement sur la personne (« ne fait pas son travail ») plutôt que comme un constat sur des faits, envenime le conflit au lieu de le résoudre. Informer la hiérarchie peut devenir nécessaire, mais en privé et après avoir tenté le dialogue."
+        },
+        {
+          "id": "replanifier",
+          "text": "Vous suggérez, lors de la prochaine réunion d'équipe, de revoir ensemble la répartition des tâches et le planning pour que chacun puisse tenir ses échéances.",
+          "rank": 2,
+          "competencies": ["equipe", "resultats"],
+          "explanation": "Bonne réponse, mais incomplète. Revoir collectivement la répartition et le planning est une démarche d'équipe constructive, orientée résultats, qui évite de pointer quelqu'un du doigt. En revanche, elle ne traite pas directement la situation de Marc : s'il rencontre une difficulté particulière, une nouvelle répartition risque de la masquer plutôt que de la résoudre."
+        },
+        {
+          "id": "dialogue",
+          "text": "Vous proposez à Marc un entretien en tête-à-tête pour lui faire part, de manière factuelle, de l'impact des retards sur l'équipe et lui demander s'il rencontre une difficulté particulière.",
+          "rank": 1,
+          "competencies": ["equipe", "communication"],
+          "explanation": "C'est l'action la plus adéquate. Avant toute escalade, vous ouvrez un dialogue direct, respectueux et centré sur les faits (les retards, leur impact) plutôt que sur la personne. Vous laissez à Marc la possibilité d'expliquer une éventuelle difficulté (surcharge, problème personnel, tâche mal maîtrisée) et de corriger lui-même la situation. Sur le plan psychologique, un retour en privé limite la perte de face et la réaction défensive. Compétences démontrées : travail en équipe (traiter le désaccord de manière constructive) et communication (retour factuel et écoute active)."
+        },
+        {
+          "id": "compenser",
+          "text": "Vous continuez à compenser ses retards avec vos collègues, pour ne pas compromettre la publication de l'appel à projets.",
+          "rank": 3,
+          "competencies": ["equipe", "resultats"],
+          "explanation": "Réponse peu adéquate. Elle protège la date de publication à court terme, mais elle installe une situation injuste et épuisante : la charge supplémentaire et les plaintes entre collègues finissent par dégrader le climat d'équipe et la qualité du travail. Éviter le problème n'est pas le résoudre ; votre responsable reste en outre dans l'ignorance d'un risque qui pèse sur le projet."
+        }
+      ]
+    },
+    {
+      "id": "erreur-dossier",
+      "title": "Une erreur découverte dans un dossier déjà envoyé",
+      "theme": "Déontologie",
+      "competencies": ["integrite", "resultats", "problemes"],
+      "context": "Vous êtes gestionnaire dans un service qui calcule des allocations.",
+      "situation": [
+        "En relisant un dossier traité la semaine dernière, vous constatez que vous avez commis une erreur de calcul : un citoyen a reçu un courrier lui annonçant un montant inférieur à celui auquel il a droit.",
+        "Personne d'autre ne s'en est rendu compte, et le prochain contrôle interne n'aura lieu que dans six mois."
+      ],
+      "debrief": "Reconnaître une erreur, en informer sa hiérarchie, la corriger pour l'usager et vérifier si elle s'est produite ailleurs : c'est la combinaison attendue d'intégrité, de sens du service et de résolution de problèmes. Dissimuler ou attendre aggrave toujours la situation.",
+      "actions": [
+        {
+          "id": "corriger-discretement",
+          "text": "Vous corrigez discrètement le dossier dans le système, sans prévenir personne, puisque le montant correct sera désormais appliqué.",
+          "rank": 3,
+          "competencies": ["integrite", "service"],
+          "explanation": "Réponse peu adéquate. Corriger le montant est nécessaire, mais le faire en silence pose deux problèmes. D'une part, le citoyen n'est pas informé qu'il a reçu un courrier erroné ni qu'un rattrapage lui est dû. D'autre part, votre responsable ignore l'incident et ne peut ni vérifier la correction ni éviter que l'erreur se reproduise. Le manque de transparence est contraire à l'intégrité attendue d'un agent public, même lorsque l'intention est bonne."
+        },
+        {
+          "id": "courrier-direct",
+          "text": "Vous corrigez le dossier et envoyez vous-même un courrier rectificatif au citoyen, puis vous en parlez à votre responsable lors de votre prochain entretien individuel.",
+          "rank": 2,
+          "competencies": ["service", "resultats"],
+          "explanation": "Bonne réponse, mais pas la meilleure. Vous assumez votre erreur et vous la réparez pour le citoyen, ce qui témoigne d'un réel sens du service. En revanche, vous retardez l'information de votre responsable, alors qu'un courrier rectificatif engage l'administration et peut nécessiter une validation. Vous ne vérifiez pas non plus si la même erreur a pu toucher d'autres dossiers."
+        },
+        {
+          "id": "attendre",
+          "text": "Vous attendez de voir si le citoyen introduit une réclamation avant d'agir.",
+          "rank": 4,
+          "competencies": ["integrite", "service"],
+          "explanation": "C'est l'action la moins adéquate. Vous savez qu'un citoyen est privé d'une partie de ses droits et vous choisissez de ne rien faire : c'est un manquement grave à l'intégrité et à la mission de service public. Faire reposer la correction sur la vigilance de l'usager est injuste, surtout pour les personnes les plus fragiles, qui réclament le moins. Plus le temps passe, plus l'erreur coûte cher à corriger et plus la confiance envers l'administration se dégrade."
+        },
+        {
+          "id": "transparence",
+          "text": "Vous informez votre responsable de l'erreur, proposez la correction et un courrier rectificatif au citoyen, et vérifiez si d'autres dossiers ont pu être touchés par la même erreur.",
+          "rank": 1,
+          "competencies": ["integrite", "problemes", "resultats"],
+          "explanation": "C'est l'action la plus adéquate. Vous faites preuve de transparence en reconnaissant votre erreur auprès de votre responsable, vous proposez une solution complète (correction et courrier rectificatif) et vous allez au-delà du cas isolé en recherchant si la cause peut avoir touché d'autres dossiers. Sur le plan psychologique, assumer une erreur sans attendre renforce la confiance de la hiérarchie bien plus qu'une performance sans faute. Compétences démontrées : intégrité, résolution de problèmes (cause et portée de l'erreur) et orientation résultats (qualité du service rendu)."
+        }
+      ]
+    },
+    {
+      "id": "usager-mecontent",
+      "title": "Un usager excédé au guichet",
+      "theme": "Relation avec les usagers",
+      "competencies": ["service", "communication", "problemes"],
+      "context": "Vous travaillez à l'accueil d'une administration régionale qui gère des primes à la rénovation.",
+      "situation": [
+        "Un usager se présente pour la troisième fois au sujet du même dossier. Il s'énerve, élève la voix et affirme que l'administration « se moque de lui ». Plusieurs personnes attendent derrière lui.",
+        "D'après le système, il manque toujours une attestation que l'usager affirme avoir déjà envoyée."
+      ],
+      "debrief": "Face à un usager en colère, on désamorce d'abord l'émotion (écoute, reconnaissance), puis on traite le problème concret avec précision. Répondre sur le même ton ou renvoyer l'usager ailleurs entretient le conflit et la perte de confiance.",
+      "actions": [
+        {
+          "id": "ecoute-active",
+          "text": "Vous l'écoutez sans l'interrompre, reconnaissez sa frustration, puis vous lui montrez précisément quelle pièce manque et vous vérifiez avec lui si l'attestation n'a pas été enregistrée sous une autre référence.",
+          "rank": 1,
+          "competencies": ["service", "communication", "problemes"],
+          "explanation": "C'est l'action la plus adéquate. L'écoute sans interruption et la reconnaissance de la frustration font retomber la tension : une personne qui se sent entendue redevient disponible pour une solution. Vous passez ensuite au concret, en expliquant précisément ce qui manque, et vous envisagez une hypothèse crédible (une pièce reçue mais mal classée) au lieu de supposer que l'usager se trompe. Compétences démontrées : orientation service, communication (écoute active, explication claire) et résolution de problèmes."
+        },
+        {
+          "id": "meme-ton",
+          "text": "Vous lui répondez fermement que les règles sont les mêmes pour tout le monde et qu'il lui suffit de lire le courrier qu'il a reçu.",
+          "rank": 4,
+          "competencies": ["service", "communication"],
+          "explanation": "C'est l'action la moins adéquate. Répondre à la colère par la fermeté et un reproche implicite (« il suffit de lire ») fait monter la tension : l'usager se sent méprisé, ce qui confirme son sentiment que l'administration « se moque de lui ». Le problème de fond, une attestation peut-être égarée, n'est pas examiné. Cette réaction est contraire à l'orientation service et à une communication professionnelle, même face à un comportement difficile."
+        },
+        {
+          "id": "espace-calme",
+          "text": "Vous lui proposez de patienter quelques minutes dans un espace à l'écart, le temps de servir les personnes suivantes, puis de reprendre son dossier au calme avec lui.",
+          "rank": 2,
+          "competencies": ["service", "communication"],
+          "explanation": "Bonne réponse, mais pas la meilleure. Proposer un espace plus calme est une technique de désescalade utile, qui tient aussi compte des autres usagers. Toutefois, demander d'attendre à une personne déjà excédée, venue pour la troisième fois, risque d'être vécu comme une mise à l'écart ; mieux vaut d'abord reconnaître sa frustration et lui montrer que son dossier est pris en main."
+        },
+        {
+          "id": "autre-service",
+          "text": "Vous lui expliquez que ce n'est pas l'accueil qui traite les primes et vous lui donnez le numéro de téléphone du service compétent.",
+          "rank": 3,
+          "competencies": ["service", "problemes"],
+          "explanation": "Réponse peu adéquate. Elle est techniquement exacte, mais l'usager vient pour la troisième fois et le système vous permet de voir ce qui bloque : le renvoyer vers un autre service sans vérifier quoi que ce soit le fait tourner en rond et nourrit sa frustration. L'orientation service consiste à faire avancer la demande dans la limite de son rôle, pas à s'en décharger."
+        }
+      ]
+    },
+    {
+      "id": "information-confidentielle",
+      "title": "Une collègue demande une information confidentielle",
+      "theme": "Déontologie",
+      "competencies": ["integrite", "communication"],
+      "context": "Vous travaillez au service du personnel d'une administration fédérale et vous avez accès aux résultats d'une procédure de sélection interne en cours.",
+      "situation": [
+        "Une collègue d'un autre service, avec qui vous entretenez de bonnes relations, a participé à cette sélection.",
+        "Lors d'une pause, elle vous demande « juste de lui dire si elle est bien placée ». Les résultats officiels ne seront communiqués à tous les candidats que la semaine prochaine."
+      ],
+      "debrief": "La confidentialité d'une procédure de sélection protège l'égalité de traitement entre candidats : aucune information, même vague, ne peut être communiquée avant la publication officielle. Le refus peut toutefois être formulé avec tact, sans abîmer la relation.",
+      "actions": [
+        {
+          "id": "indice",
+          "text": "Vous lui donnez seulement une indication générale, du type « ne t'inquiète pas », sans citer de chiffre.",
+          "rank": 3,
+          "competencies": ["integrite"],
+          "explanation": "Réponse peu adéquate. Une « simple indication » reste une divulgation : elle donne à votre collègue une information dont les autres candidats ne disposent pas et rompt l'égalité de traitement. Elle vous expose aussi : si l'indication se révèle trompeuse, ou si elle est répétée, c'est votre loyauté qui sera mise en cause. L'intention bienveillante ne compense pas l'atteinte à la confidentialité."
+        },
+        {
+          "id": "refus-bienveillant",
+          "text": "Vous lui expliquez avec bienveillance que vous ne pouvez communiquer aucune information avant la publication officielle, et vous lui indiquez la date à laquelle tous les candidats recevront leurs résultats.",
+          "rank": 1,
+          "competencies": ["integrite", "communication"],
+          "explanation": "C'est l'action la plus adéquate. Vous respectez strictement la confidentialité de la procédure tout en préservant la relation : le refus est clair, expliqué par une règle qui protège tous les candidats (y compris elle), et accompagné d'une information utile, la date de publication. Sur le plan psychologique, ce type de réponse réduit l'insistance, car il ne laisse pas d'ambiguïté. Compétences démontrées : intégrité et communication (fermeté sur le fond, tact dans la forme)."
+        },
+        {
+          "id": "classement",
+          "text": "Vous lui communiquez son classement en lui demandant de garder l'information pour elle.",
+          "rank": 4,
+          "competencies": ["integrite"],
+          "explanation": "C'est l'action la moins adéquate. Communiquer un classement avant sa publication est une violation caractérisée de la confidentialité et de l'égalité entre candidats, qui peut entraîner des sanctions disciplinaires et fragiliser juridiquement toute la procédure. Demander le secret montre d'ailleurs que vous savez que l'acte est interdit. La relation personnelle ne justifie jamais un traitement de faveur."
+        },
+        {
+          "id": "refus-et-signalement",
+          "text": "Vous lui répondez que vous ne pouvez rien dire, puis vous signalez à votre responsable qu'elle vous a sollicité(e).",
+          "rank": 2,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Bonne réponse sur le fond, mais disproportionnée. Le refus est correct et la confidentialité est respectée. En revanche, signaler une demande isolée et informelle, sans insistance ni pression, est excessif : cela risque d'abîmer inutilement la relation de travail. Un signalement se justifierait si la demande se répétait ou s'accompagnait de pressions."
+        }
+      ]
+    },
+    {
+      "id": "nouvel-outil",
+      "title": "Un nouvel outil informatique qui ralentit le travail",
+      "theme": "Changement et amélioration",
+      "competencies": ["problemes", "resultats", "equipe"],
+      "context": "Vous êtes membre d'une équipe qui traite des demandes de subsides. Votre direction a mis en place un nouvel outil informatique il y a un mois.",
+      "situation": [
+        "Vous constatez que l'outil oblige à encoder deux fois les mêmes informations, ce qui fait perdre environ une heure par jour à chaque agent.",
+        "Plusieurs collègues se plaignent, et certains ont recommencé à utiliser leurs anciens fichiers Excel en parallèle, ce qui crée des incohérences entre les données."
+      ],
+      "debrief": "Face à un dysfonctionnement, on attend d'un agent qu'il objective le problème, propose une solution et la porte par le bon canal, en associant les personnes concernées. Contourner l'outil ou subir en silence laisse le problème intact.",
+      "actions": [
+        {
+          "id": "subir",
+          "text": "Vous continuez à utiliser l'outil tel quel, en vous disant que les difficultés disparaîtront avec l'habitude.",
+          "rank": 3,
+          "competencies": ["problemes", "resultats"],
+          "explanation": "Réponse peu adéquate. Vous respectez la décision de la direction, ce qui est un point positif, mais vous acceptez passivement une perte de temps importante et des incohérences de données que l'habitude ne fera pas disparaître : le double encodage est un défaut de l'outil, pas un manque d'entraînement. L'orientation résultats suppose de signaler ce qui empêche l'équipe d'atteindre ses objectifs."
+        },
+        {
+          "id": "liste-collective",
+          "text": "Vous proposez à vos collègues de rédiger ensemble la liste des difficultés rencontrées, pour la présenter lors de la prochaine réunion de service.",
+          "rank": 2,
+          "competencies": ["equipe", "problemes"],
+          "explanation": "Bonne réponse, mais moins efficace. La démarche collective est positive : elle canalise les plaintes vers une action constructive et associe l'équipe. Mais une liste de difficultés, sans analyse chiffrée ni proposition de solution, risque de tourner au simple recueil de griefs, et attendre la prochaine réunion de service retarde la prise en charge."
+        },
+        {
+          "id": "excel",
+          "text": "Vous recommencez vous aussi à travailler avec les fichiers Excel, puisque c'est plus rapide.",
+          "rank": 4,
+          "competencies": ["resultats", "equipe"],
+          "explanation": "C'est l'action la moins adéquate. Contourner l'outil officiel aggrave le problème que vous avez vous-même constaté : les incohérences de données se multiplient et deviennent plus difficiles à corriger, au détriment de la qualité du traitement des demandes. Vous contournez aussi une décision de la direction au lieu de la faire évoluer par les voies prévues. Gagner du temps à court terme ne justifie pas de dégrader la fiabilité des données."
+        },
+        {
+          "id": "analyse-proposition",
+          "text": "Vous documentez précisément le problème (étapes en double, temps perdu, exemples d'incohérences) et le transmettez à votre responsable avec une proposition de solution, en suggérant d'y associer les collègues concernés.",
+          "rank": 1,
+          "competencies": ["problemes", "resultats", "equipe"],
+          "explanation": "C'est l'action la plus adéquate. Vous transformez une plainte diffuse en problème objectivé et chiffré (une heure par jour et par agent, des exemples d'incohérences), ce qui donne à votre responsable les moyens d'agir. Vous proposez une solution plutôt que de vous contenter de signaler, et vous associez les utilisateurs, qui connaissent le mieux l'outil. Compétences démontrées : résolution de problèmes (analyse et proposition), orientation résultats (gain de productivité et qualité des données) et travail en équipe."
+        }
+      ]
+    }
+  ]
+}
