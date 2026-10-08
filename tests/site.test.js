@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const GENERATED_CSS = 'assets/css/app.css';
 const SITE = 'https://selor-epso-prep.eu';
-const pages = ['index.html', ...readdirSync(join(root, 'modules')).map((name) => `modules/${name}/index.html`)];
+const pages = ['index.html', ...readdirSync(join(root, 'modules')).map((name) => `modules/${name}/index.html`), 'progression/index.html'];
 const read = (page) => readFileSync(join(root, page), 'utf8');
 /** Adresse publique d'une page : https://selor-epso-prep.eu/ ou https://selor-epso-prep.eu/modules/<nom>/ */
 const publicUrl = (page) => `${SITE}/${page.replace(/index\.html$/, '')}`;
@@ -41,7 +41,7 @@ test('tous les liens et ressources locaux existent, en chemins relatifs (compati
 
 test('le site publié contient toutes les ressources nécessaires aux pages', () => {
   const buildScript = read('scripts/build-site.js');
-  for (const entry of ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'modules', 'assets', 'data']) {
+  for (const entry of ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'modules', 'progression', 'assets', 'data']) {
     assert.match(buildScript, new RegExp(`'${entry}'`), `${entry} absent de scripts/build-site.js`);
   }
 });
@@ -93,4 +93,32 @@ test('aucune page ne pointe vers l’ancienne adresse github.io, et la mention d
     assert.doesNotMatch(read(page), /github\.io|\/selor-epso-prep\//, `${page} : ancienne adresse`);
   }
   for (const page of pages) assert.match(read(page), /non affiliée au SPF BOSA/, `${page} : mention de non-affiliation absente`);
+});
+
+test('chaque page rappelle que les résultats restent sur l’appareil', () => {
+  for (const page of [...pages, '404.html']) {
+    assert.match(read(page), /Vos résultats restent sur cet appareil&nbsp;: rien n'est envoyé ni partagé\./, `${page} : phrase de transparence absente`);
+  }
+});
+
+test('la page « Ma progression » est accessible depuis le menu principal et chaque module', () => {
+  assert.match(read('index.html'), /<nav aria-label="Navigation principale"[\s\S]*?href="progression\/index\.html"/);
+  assert.match(read('index.html'), /<nav id="menu-mobile"[\s\S]*?href="progression\/index\.html"/);
+  for (const page of pages.filter((name) => name.startsWith('modules/'))) {
+    assert.match(read(page), /<header[\s\S]*?href="\.\.\/\.\.\/progression\/index\.html"[\s\S]*?<\/header>/, `${page} : lien absent de l’en-tête`);
+  }
+});
+
+test('un seul module accède au stockage du navigateur', () => {
+  const sources = [];
+  const walk = (dir) => {
+    for (const entry of readdirSync(join(root, dir), { withFileTypes: true })) {
+      const path = `${dir}/${entry.name}`;
+      if (entry.isDirectory()) walk(path);
+      else if (path.endsWith('.js')) sources.push(path);
+    }
+  };
+  walk('assets/js');
+  const users = sources.filter((path) => /localStorage|sessionStorage|indexedDB/.test(readFileSync(join(root, path), 'utf8')));
+  assert.deepEqual(users, ['assets/js/progression/store.js']);
 });

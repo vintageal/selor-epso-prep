@@ -68,6 +68,9 @@ export const expectedAnswer = (item) => {
   return item.statement.answer;
 };
 
+/** Identifiant de la question d'origine (celui du module), pour le suivi de progression. */
+export const itemQuestionId = (item) => (item.type === 'verbal' ? item.statement.id : item.type === 'jugement' ? item.scenario.id : item.question.id);
+
 /**
  * Vrai si la question a reçu une réponse complète. Une situation de jugement n'est
  * complète qu'avec ses deux choix (« plus » et « moins » adéquate).
@@ -82,7 +85,10 @@ export class ExamSession {
     this.startedAt = startedAt;
     this.deadline = startedAt + durationMs;
     this.answers = items.map(() => null);
+    this.answeredAt = items.map(() => null);
     this.flags = items.map(() => false);
+    this.timeSpentMs = items.map(() => 0);
+    this.viewing = null;
     this.finishedAt = null;
     this.endReason = null;
   }
@@ -107,7 +113,21 @@ export class ExamSession {
   setAnswer(index, answer, now = Date.now()) {
     if (this.#closeIfTimeUp(now)) return false;
     this.answers[index] = answer;
+    this.answeredAt[index] = answer === null ? null : now;
     return true;
+  }
+
+  /** La question `index` est affichée : le temps passé sur la question précédente est comptabilisé. */
+  view(index, now = Date.now()) {
+    if (this.#closeIfTimeUp(now)) return;
+    this.#stopViewing(now);
+    this.viewing = { index, since: now };
+  }
+
+  #stopViewing(now) {
+    if (!this.viewing) return;
+    this.timeSpentMs[this.viewing.index] += Math.max(0, Math.min(now, this.deadline) - this.viewing.since);
+    this.viewing = null;
   }
 
   toggleFlag(index, now = Date.now()) {
@@ -119,6 +139,7 @@ export class ExamSession {
   /** Termine l'examen (`reason` : 'submitted' ou 'timeout'). Sans effet s'il est déjà terminé. */
   finish(reason, now = Date.now()) {
     if (this.isFinished) return;
+    this.#stopViewing(now);
     this.finishedAt = Math.min(now, this.deadline);
     this.endReason = now >= this.deadline ? 'timeout' : reason;
   }

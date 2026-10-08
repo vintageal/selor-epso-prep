@@ -1257,3 +1257,127 @@
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ----- Révision des erreurs (bouton, bandeau et bilan dans chaque module) ----- */
+
+.revision-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.55rem 0.95rem;
+  border: 1.5px solid #e0a91a;
+  border-radius: 0.625rem;
+  background-color: #fffbeb;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #92400e;
+  transition: background-color 0.15s ease;
+}
+
+.revision-start:hover { background-color: #fef3c7; }
+
+.revision-icon { display: inline-flex; flex-shrink: 0; }
+.revision-icon svg { width: 1.125rem; height: 1.125rem; }
+
+.revision-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #fde68a;
+  border-radius: 0.75rem;
+  background-color: #fffbeb;
+  font-size: 0.875rem;
+  color: #92400e;
+}
+
+.revision-banner__text { flex: 1 1 14rem; font-weight: 600; }
+
+.revision-banner__quit {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #f5c542;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  font-weight: 600;
+  color: #92400e;
+  transition: background-color 0.15s ease;
+}
+
+.revision-banner__quit:hover { background-color: #fef3c7; }
+
+.revision-outcome {
+  margin-top: 1.25rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid #d9e6f5;
+  border-radius: 0.75rem;
+  background-color: #eef4fb;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #183566;
+}
+
+.revision-outcome:focus { outline: none; }
+.revision-outcome:focus-visible { box-shadow: 0 0 0 3px rgb(47 95 174 / 0.35); }
+
+.revision-outcome__link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: #1d4080;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.revision-outcome__link:hover { color: #132a50; }
+
+/* ----- Page « Ma progression » ----- */
+
+.privacy-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  background-color: #ecfdf5;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #065f46;
+}
+
+/* Jauge de réussite : la piste est un ton clair de la même teinte que le remplissage */
+.progress-meter {
+  height: 0.5rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #d9e6f5;
+}
+
+.progress-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #2f5fae;
+}
+
+.progress-table td { text-align: right; font-variant-numeric: tabular-nums; }
+
+.nav-button--danger { border-color: #fecaca; color: #b91c1c; }
+.nav-button--danger:hover:not(:disabled) { border-color: #f87171; background-color: #fef2f2; }
+.nav-button--danger-solid { border-color: #b91c1c; background-color: #b91c1c; color: #fff; }
+.nav-button--danger-solid:hover:not(:disabled) { border-color: #991b1b; background-color: #991b1b; }
+
+.data-status {
+  padding: 0.75rem 1rem;
+  border: 1px solid;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.data-status--success { border-color: #bbf7d0; background-color: #f0fdf4; color: #166534; }
+.data-status--error { border-color: #fecaca; background-color: #fef2f2; color: #991b1b; }
+.progress-table tbody th { white-space: nowrap; }

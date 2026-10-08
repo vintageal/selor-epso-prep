@@ -292,6 +292,27 @@ export function buildSteps(scenarios, random = Math.random) {
   );
 }
 
+/**
+ * Étapes d'une révision : les questions demandées, regroupées par jeu de données
+ * (dans l'ordre de la banque au sein d'un même jeu). Les identifiants inconnus sont ignorés.
+ */
+export function buildReviewSteps(scenarios, questionIds) {
+  const wanted = new Set(questionIds);
+  const groups = scenarios
+    .map((scenario) => ({ scenario, questions: scenario.questions.filter((question) => wanted.has(question.id)) }))
+    .filter(({ questions }) => questions.length > 0);
+  return groups.flatMap(({ scenario, questions }, scenarioIndex) =>
+    questions.map((question, questionIndex) => ({
+      scenario,
+      question,
+      scenarioIndex,
+      scenarioCount: groups.length,
+      questionIndex,
+      questionCount: questions.length,
+    })),
+  );
+}
+
 /** Bilan d'une série par compétence. */
 export function summarize(results) {
   const bySkill = Object.fromEntries(Object.keys(SKILLS).map((skill) => [skill, { total: 0, correct: 0 }]));

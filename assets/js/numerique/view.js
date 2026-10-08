@@ -7,6 +7,7 @@
  * infobulle au survol et au clavier, et toujours une vue « Tableau » équivalente.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
+import { createTooltip, svgElement } from '../lib/viz.js';
 import { frenchTypography } from '../verbal/quiz.js';
 import {
   OPTION_LETTERS,
@@ -18,13 +19,6 @@ import {
   usedData,
 } from './quiz.js';
 
-const SVG_NS = 'http://www.w3.org/2000/svg';
-const svgElement = (tag, attributes = {}) => {
-  const element = document.createElementNS(SVG_NS, tag);
-  for (const [name, value] of Object.entries(attributes)) element.setAttribute(name, String(value));
-  return element;
-};
-
 /** Graduations « rondes » couvrant [min, max] (pas de 1, 2, 2,5 ou 5 × 10ⁿ). */
 const niceTicks = (min, max, target = 5) => {
   const raw = (max - min) / target;
@@ -33,34 +27,6 @@ const niceTicks = (min, max, target = 5) => {
   const start = Math.floor(min / step) * step;
   const end = Math.ceil(max / step) * step;
   return Array.from({ length: Math.round((end - start) / step) + 1 }, (_, i) => start + i * step);
-};
-
-/* ----- Infobulle (une par visuel) ----- */
-
-const createTooltip = (host) => {
-  const tooltip = hiddenFromScreenReaders(createElement('div', 'viz-tooltip'));
-  tooltip.hidden = true;
-  host.append(tooltip);
-  return {
-    /** `rows` : [{ label, value, key: 'bar' | 'line', series }], affichés valeur d'abord. */
-    show(title, rows, x, y) {
-      tooltip.replaceChildren(createElement('p', 'viz-tooltip__title', title));
-      for (const row of rows) {
-        const line = createElement('p', 'viz-tooltip__row');
-        const key = createElement('span', `viz-key viz-key--${row.key}`);
-        key.dataset.series = String(row.series);
-        line.append(key, createElement('strong', '', row.value), createElement('span', 'viz-tooltip__label', row.label));
-        tooltip.append(line);
-      }
-      tooltip.hidden = false;
-      const maxLeft = host.clientWidth - tooltip.offsetWidth - 4;
-      tooltip.style.left = `${Math.max(4, Math.min(x + 12, maxLeft))}px`;
-      tooltip.style.top = `${Math.max(4, y - tooltip.offsetHeight - 8)}px`;
-    },
-    hide() {
-      tooltip.hidden = true;
-    },
-  };
 };
 
 /** Légende : une entrée par série (colonnes pour les barres, lignes pour les courbes). */

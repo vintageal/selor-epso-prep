@@ -7,13 +7,17 @@ import {
   ANSWERS,
   METHOD_TIPS,
   answerLabel,
+  buildReviewSteps,
   buildSteps,
   frenchTypography,
   summarize,
 } from './quiz.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { createReviewControls, requestedReview } from '../progression/review.js';
+import { createStore } from '../progression/store.js';
 import { choiceButton, evidenceQuotes, passageParagraphs } from './view.js';
 
+const MODULE = 'verbal';
 const BANK_URL = new URL('../../../data/verbal.json', import.meta.url);
 const KEY_TO_ANSWER = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.map((key) => [key, id])));
 
@@ -40,9 +44,11 @@ const ui = {
   summaryMessage: $('[data-summary-message]'),
   summaryDetails: $('[data-summary-details]'),
   restart: $('[data-restart]'),
+  review: $('[data-review]'),
 };
 
-const state = { passages: [], steps: [], index: 0, answered: false, results: [] };
+const progress = createStore();
+const state = { passages: [], steps: [], index: 0, answered: false, results: [], reviewing: false, shownAt: 0 };
 const currentStep = () => state.steps[state.index];
 
 /* ----- Rendu ----- */
@@ -99,6 +105,8 @@ const showStep = () => {
   ui.feedback.replaceChildren();
   ui.nextWrapper.hidden = true;
   state.answered = false;
+  state.shownAt = performance.now();
+  if (state.reviewing) review.progress(state.index, state.steps.length);
   updateStats();
   return isNewPassage;
 };
@@ -142,7 +150,16 @@ const answer = (chosen) => {
   if (!step || state.answered) return;
   state.answered = true;
   const { statement } = step;
-  state.results.push({ expected: statement.answer, correct: chosen === statement.answer });
+  const correct = chosen === statement.answer;
+  state.results.push({ expected: statement.answer, correct });
+  progress.recordAnswer({
+    module: MODULE,
+    questionId: statement.id,
+    correct,
+    durationMs: performance.now() - state.shownAt,
+    source: state.reviewing ? 'revision' : 'entrainement',
+  });
+  review.refresh();
 
   ui.choices.querySelectorAll('.choice').forEach((button) => {
     button.disabled = true;
@@ -191,7 +208,12 @@ const showSummary = () => {
 
   ui.exercise.hidden = true;
   ui.summary.hidden = false;
-  moveFocusTo(ui.summaryTitle);
+  if (state.reviewing) {
+    state.reviewing = false;
+    moveFocusTo(review.end({ correct, total }));
+  } else {
+    moveFocusTo(ui.summaryTitle);
+  }
 };
 
 const goToNext = () => {
@@ -205,11 +227,41 @@ const goToNext = () => {
 };
 
 const startSeries = () => {
-  Object.assign(state, { steps: buildSteps(state.passages), index: 0, answered: false, results: [] });
+  Object.assign(state, { steps: buildSteps(state.passages), index: 0, answered: false, results: [], reviewing: false });
+  review.clearOutcome();
   ui.summary.hidden = true;
   ui.exercise.hidden = false;
   showStep();
 };
+
+/** Révision : uniquement les affirmations ratées, avec la correction habituelle. */
+const startReview = (mode) => {
+  const ids = progress.reviewList(MODULE).map((entry) => entry.questionId);
+  const steps = buildReviewSteps(state.passages, ids);
+  // Affirmation retirée de la banque : elle sort de la liste.
+  const known = new Set(steps.map((step) => step.statement.id));
+  ids.filter((id) => !known.has(id)).forEach((id) => progress.dropReview(MODULE, id));
+
+  if (steps.length === 0) {
+    startSeries();
+    review.nothingToReview(mode);
+    return;
+  }
+  Object.assign(state, { steps, index: 0, answered: false, results: [], reviewing: true });
+  review.begin(steps.length, mode);
+  ui.summary.hidden = true;
+  ui.exercise.hidden = false;
+  showStep();
+  moveFocusTo(ui.passageTitle);
+};
+
+const quitReview = () => {
+  review.end();
+  startSeries();
+  moveFocusTo(ui.passageTitle);
+};
+
+const review = createReviewControls({ container: ui.review, store: progress, module: MODULE, onStart: startReview, onQuit: quitReview });
 
 /* ----- Événements ----- */
 
@@ -243,7 +295,9 @@ try {
   const response = await fetch(BANK_URL);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   state.passages = (await response.json()).passages;
-  startSeries();
+  const requested = requestedReview();
+  if (requested) startReview(requested);
+  else startSeries();
 } catch (error) {
   console.error('Chargement de la banque de questions impossible :', error);
   ui.passageTheme.textContent = 'Erreur';

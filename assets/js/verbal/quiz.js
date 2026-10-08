@@ -43,6 +43,31 @@ export function buildSteps(passages, random = Math.random) {
 }
 
 /**
+ * Étapes d'une révision : les affirmations demandées (dans l'ordre donné), regroupées par texte.
+ * Les identifiants inconnus (affirmation retirée de la banque) sont ignorés.
+ */
+export function buildReviewSteps(passages, statementIds) {
+  const byId = new Map(passages.flatMap((passage) => passage.statements.map((statement) => [statement.id, { passage, statement }])));
+  const groups = new Map();
+  for (const id of statementIds) {
+    const found = byId.get(id);
+    if (!found) continue;
+    if (!groups.has(found.passage)) groups.set(found.passage, []);
+    if (!groups.get(found.passage).includes(found.statement)) groups.get(found.passage).push(found.statement);
+  }
+  return [...groups].flatMap(([passage, statements], passageIndex) =>
+    statements.map((statement, statementIndex) => ({
+      passage,
+      statement,
+      passageIndex,
+      passageCount: groups.size,
+      statementIndex,
+      statementCount: statements.length,
+    })),
+  );
+}
+
+/**
  * Découpe un paragraphe en segments, en marquant ceux qui correspondent
  * à une citation (pour les surligner). Les citations qui se chevauchent sont fusionnées.
  */

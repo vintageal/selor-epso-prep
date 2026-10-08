@@ -38,10 +38,16 @@
           <span class="block text-xs text-slate-500">Tests de raisonnement</span>
         </span>
       </a>
-      <a href="../../index.html#modules" class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        <span>Modules</span>
-      </a>
+      <nav aria-label="Navigation" class="flex shrink-0 items-center sm:gap-1">
+        <a href="../../progression/index.html" title="Ma progression" class="inline-flex items-center gap-1.5 rounded-lg px-2 py-2 sm:px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M7 16l4-5 3 3 5-7"/></svg>
+          <span class="sr-only sm:not-sr-only">Ma progression</span>
+        </a>
+        <a href="../../index.html#modules" class="inline-flex items-center gap-1.5 rounded-lg px-2 py-2 sm:px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span>Modules</span>
+        </a>
+      </nav>
     </div>
   </header>
 
@@ -72,6 +78,9 @@
         </div>
       </dl>
     </div>
+
+    <!-- Révision des erreurs : bouton « Revoir mes erreurs (n) », bandeau et bilan (assets/js/progression/review.js) -->
+    <div data-review></div>
 
     <details class="mt-6 rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm text-slate-700">
       <summary class="cursor-pointer font-semibold text-brand-900">Rappel des consignes</summary>
@@ -134,9 +143,10 @@
   </main>
 
   <footer class="border-t border-slate-200 bg-white">
-    <p class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
-      Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO).
-    </p>
+    <div class="mx-auto max-w-6xl space-y-1 px-4 py-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+      <p>Vos résultats restent sur cet appareil&nbsp;: rien n'est envoyé ni partagé.</p>
+      <p>Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO).</p>
+    </div>
   </footer>
 
   <script>

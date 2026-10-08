@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const output = join(root, 'dist');
-const PUBLIC_ENTRIES = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'modules', 'assets', 'data'];
+const PUBLIC_ENTRIES = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'modules', 'progression', 'assets', 'data'];
 
 if (!existsSync(join(root, 'assets/css/app.css'))) {
   console.error('assets/css/app.css est introuvable : lancez d\'abord « npm run build:css ».');
