@@ -748,6 +748,11 @@
 .viz {
   --series-1: #2f5fae;
   --series-2: #eb6834;
+  --series-3: #2a8a6e;
+  --series-4: #8a5cc2;
+  --series-5: #ad7f0a;
+  --series-6: #d0507f;
+  --series-7: #3d9bd4;
   --viz-grid: #e2e8f0;
   --viz-axis: #cbd5e1;
   --viz-muted: #64748b;
@@ -757,6 +762,11 @@
 
 .viz [data-series="1"] { --series: var(--series-1); }
 .viz [data-series="2"] { --series: var(--series-2); }
+.viz [data-series="3"] { --series: var(--series-3); }
+.viz [data-series="4"] { --series: var(--series-4); }
+.viz [data-series="5"] { --series: var(--series-5); }
+.viz [data-series="6"] { --series: var(--series-6); }
+.viz [data-series="7"] { --series: var(--series-7); }
 
 .viz-toggle {
   display: inline-flex;
@@ -982,6 +992,65 @@
 }
 
 .line-chart__marker.is-active { r: 6; }
+
+/* Secteurs (anneau) : parts séparées par un filet blanc, légende avec les valeurs */
+.pie-chart {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pie-chart__figure {
+  width: min(100%, 15rem);
+  margin-inline: auto;
+}
+
+.pie-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.pie-chart__slice {
+  fill: var(--series);
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: opacity 0.15s ease;
+}
+
+.pie-chart__svg:has(.is-active) .pie-chart__slice:not(.is-active) { opacity: 0.45; }
+
+.pie-chart__legend {
+  display: grid;
+  gap: 0.15rem;
+  font-size: 0.8125rem;
+  color: #334155;
+}
+
+.pie-chart__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.pie-chart__legend li.is-active { background-color: #f1f5f9; }
+.pie-chart__label { flex: 1; }
+
+.pie-chart__value {
+  font-weight: 600;
+  color: var(--viz-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (min-width: 40rem) {
+  .pie-chart { grid-template-columns: 15rem 1fr; gap: 2rem; }
+}
 
 /* ----- Module « Raisonnement numérique » : correction détaillée ----- */
 

@@ -3,8 +3,8 @@
  * d'entraînement et le mode examen : tableau, graphiques, propositions et
  * correction détaillée (données, formule, calcul étape par étape).
  *
- * Graphiques : traits fins, extrémités arrondies, étiquettes de valeur sobres,
- * infobulle au survol et au clavier, et toujours une vue « Tableau » équivalente.
+ * Graphiques (barres, courbes, secteurs) : traits fins, extrémités arrondies, étiquettes
+ * de valeur sobres, infobulle au survol et au clavier, et toujours une vue « Tableau » équivalente.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
 import { createTooltip, svgElement } from '../lib/viz.js';
@@ -246,6 +246,100 @@ export function lineChart(scenario) {
   return chart;
 }
 
+/* ----- Graphique en secteurs (anneau) : une colonne, une part par ligne ----- */
+
+/** Chemin SVG d'un secteur d'anneau entre deux angles (en radians, 0 = midi, sens horaire). */
+const ringSlice = (cx, cy, outer, inner, start, end) => {
+  const point = (radius, angle) => [cx + radius * Math.sin(angle), cy - radius * Math.cos(angle)].map((v) => v.toFixed(2)).join(' ');
+  const large = end - start > Math.PI ? 1 : 0;
+  return [
+    `M ${point(outer, start)}`,
+    `A ${outer} ${outer} 0 ${large} 1 ${point(outer, end)}`,
+    `L ${point(inner, end)}`,
+    `A ${inner} ${inner} 0 ${large} 0 ${point(inner, start)}`,
+    'Z',
+  ].join(' ');
+};
+
+export function pieChart(scenario) {
+  const key = scenario.pieColumn;
+  const column = scenario.columns.find((candidate) => candidate.key === key);
+  const rows = scenario.rows.filter((row) => !row.total);
+  const total = rows.reduce((sum, row) => sum + row.values[key], 0);
+
+  const chart = createElement('div', 'pie-chart');
+  const tooltip = createTooltip(chart);
+  const size = 220;
+  const [cx, cy, outer, inner] = [size / 2, size / 2, size / 2 - 4, size / 2 - 50];
+  const svg = svgElement('svg', { class: 'pie-chart__svg', viewBox: `0 0 ${size} ${size}`, role: 'img', tabindex: 0 });
+  svg.setAttribute(
+    'aria-label',
+    `${scenario.title}. Graphique en secteurs (${column.label}) ; utilisez les flèches pour lire chaque part, ou affichez le tableau.`,
+  );
+
+  let angle = 0;
+  const slices = rows.map((row, index) => {
+    const sweep = (row.values[key] / total) * 2 * Math.PI;
+    const path = svgElement('path', { class: 'pie-chart__slice', 'data-series': index + 1, d: ringSlice(cx, cy, outer, inner, angle, angle + sweep) });
+    const middle = angle + sweep / 2;
+    angle += sweep;
+    svg.append(path);
+    return { row, path, middle, series: index + 1 };
+  });
+
+  const list = createElement('ul', 'pie-chart__legend');
+  const items = slices.map(({ row, series }) => {
+    const item = createElement('li');
+    const swatch = hiddenFromScreenReaders(createElement('span', 'viz-key viz-key--bar'));
+    swatch.dataset.series = String(series);
+    item.append(swatch, createElement('span', 'pie-chart__label', row.label), createElement('span', 'pie-chart__value', formatData(scenario, key, row.values[key])));
+    list.append(item);
+    return item;
+  });
+
+  let active = -1;
+  const show = (index) => {
+    active = (index + slices.length) % slices.length;
+    const { row, middle, series } = slices[active];
+    slices.forEach((slice, i) => slice.path.classList.toggle('is-active', i === active));
+    items.forEach((item, i) => item.classList.toggle('is-active', i === active));
+    const box = svg.getBoundingClientRect();
+    const host = chart.getBoundingClientRect();
+    const scale = box.width / size;
+    const radius = (outer + inner) / 2;
+    tooltip.show(
+      row.label,
+      [{ label: column.label, value: formatData(scenario, key, row.values[key]), key: 'bar', series }],
+      box.left - host.left + (cx + radius * Math.sin(middle)) * scale,
+      box.top - host.top + (cy - radius * Math.cos(middle)) * scale,
+    );
+  };
+  const hide = () => {
+    active = -1;
+    slices.forEach((slice) => slice.path.classList.remove('is-active'));
+    items.forEach((item) => item.classList.remove('is-active'));
+    tooltip.hide();
+  };
+
+  slices.forEach(({ path }, index) => {
+    path.addEventListener('pointerenter', () => show(index));
+    path.addEventListener('pointerleave', hide);
+  });
+  svg.addEventListener('focus', () => show(Math.max(active, 0)));
+  svg.addEventListener('blur', hide);
+  svg.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+    event.preventDefault();
+    event.stopPropagation(); // les flèches servent ici à lire le graphique, pas à changer de question
+    show(active + (event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1));
+  });
+
+  const figure = createElement('div', 'pie-chart__figure');
+  figure.append(svg);
+  chart.append(figure, list);
+  return chart;
+}
+
 /* ----- Visuel complet d'un scénario ----- */
 
 /** Visuel d'un scénario : tableau, ou graphique avec bascule « Graphique / Tableau ». */
@@ -256,7 +350,8 @@ export function scenarioVisual(scenario) {
     return visual;
   }
 
-  const views = { chart: scenario.display === 'bar' ? barChart(scenario) : lineChart(scenario), table: dataTable(scenario) };
+  const charts = { bar: barChart, line: lineChart, pie: pieChart };
+  const views = { chart: charts[scenario.display](scenario), table: dataTable(scenario) };
   const toggle = createElement('div', 'viz-toggle');
   toggle.setAttribute('role', 'group');
   toggle.setAttribute('aria-label', 'Affichage des données');

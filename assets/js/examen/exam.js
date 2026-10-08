@@ -90,7 +90,8 @@ export function createExam({ passages, scenarios, situations }, { random = Math.
     ...Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() })),
     ...pickBalanced(passages, 'statements', config.verbalCount, random, (statement) => statement.difficulty)
       .map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
-    ...pickSpread(scenarios, 'questions', config.numericCount, random).map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
+    ...pickBalanced(scenarios, 'questions', config.numericCount, random, (question) => question.difficulty)
+      .map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
     ...pickBalanced(situations.map((scenario) => ({ scenario, items: [scenario] })), 'items', config.judgementCount, random, (scenario) => scenario.difficulty)
       .map(({ item: scenario }) => ({ type: 'jugement', scenario, order: shuffledOrder(scenario, random) })),
   ];

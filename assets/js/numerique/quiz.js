@@ -3,12 +3,16 @@
  * (réutilisée par le mode examen et testable sous Node).
  *
  * La banque est stockée dans data/numerique.json :
- *   { scenarios: [{ id, title, theme, display: 'table' | 'bar' | 'line', unit, decimals?,
+ *   { scenarios: [{ id, title, theme, display: 'table' | 'bar' | 'line' | 'pie', pieColumn?, unit, decimals?,
  *       columns: [{ key, label, unit?, decimals? }],
  *       rows: [{ key, label, total?, values: { <colonne>: nombre } }],
- *       questions: [{ id, skill, text, formula, steps: [{ id?, label, expression }],
+ *       questions: [{ id, skill, difficulty: 1 | 2 | 3, text, formula, steps: [{ id?, label, expression }],
  *         format: { decimals, unit?, signed? }, answer, options: [{ value, why?, expression? }],
  *         explanation }] }] }
+ *
+ * Un graphique en secteurs (`pie`) représente la colonne `pieColumn` (hors lignes « total ») ;
+ * le tableau complet reste accessible. La difficulté s'affiche avec la question et équilibre le mode examen.
+ * Les valeurs des propositions, leur ordre et `answer` sont calculés par scripts/calculer-numerique.js.
  *
  * Les expressions de calcul sont écrites en clair, par exemple
  * « ({total.2024} - {total.2023}) / {total.2023} * 100 » : {ligne.colonne} renvoie à une
@@ -16,9 +20,13 @@
  * (jamais exécutées comme du code) : le calcul affiché et la bonne réponse découlent
  * donc toujours des données.
  */
+import { isDifficulty } from '../lib/difficulty.js';
 import { shuffle } from '../lib/random.js';
 
 export const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
+
+/** Modes d'affichage des données. */
+export const DISPLAYS = ['table', 'bar', 'line', 'pie'];
 
 /** Compétences évaluées, avec le rappel de méthode affiché dans la correction. */
 export const SKILLS = {
@@ -346,10 +354,16 @@ export function validateBank(bank) {
     const where = `Scénario « ${scenario.id} »`;
     registerId(scenario.id, where);
     if (!scenario.title || !scenario.theme) errors.push(`${where} : titre ou thème manquant.`);
-    if (!['table', 'bar', 'line'].includes(scenario.display)) errors.push(`${where} : affichage « ${scenario.display} » inconnu.`);
+    if (!DISPLAYS.includes(scenario.display)) errors.push(`${where} : affichage « ${scenario.display} » inconnu.`);
     if (!scenario.columns?.length || !scenario.rows?.length) {
       errors.push(`${where} : colonnes ou lignes manquantes.`);
       continue;
+    }
+    if (scenario.display === 'pie') {
+      if (!findColumn(scenario, scenario.pieColumn)) errors.push(`${where} : colonne « ${scenario.pieColumn} » du graphique en secteurs inconnue.`);
+      else if (scenario.rows.some((row) => !row.total && !(row.values?.[scenario.pieColumn] > 0))) {
+        errors.push(`${where} : un graphique en secteurs exige des valeurs strictement positives.`);
+      }
     }
     for (const row of scenario.rows) {
       for (const { key } of scenario.columns) {
@@ -367,6 +381,7 @@ export function validateBank(bank) {
       const at = `${where}, question « ${question.id} »`;
       registerId(question.id, at);
       if (!SKILLS[question.skill]) errors.push(`${at} : compétence « ${question.skill} » inconnue.`);
+      if (!isDifficulty(question.difficulty)) errors.push(`${at} : difficulté 1, 2 ou 3 attendue.`);
       if (!question.text || !question.formula || !question.explanation) errors.push(`${at} : énoncé, formule ou explication manquant.`);
       if (!Array.isArray(question.options) || question.options.length !== OPTION_LETTERS.length) {
         errors.push(`${at} : ${OPTION_LETTERS.length} propositions attendues.`);

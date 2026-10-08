@@ -49,7 +49,7 @@ Un bilan de fin de série détaille les résultats par type de réponse, pour re
 
 ### Raisonnement numérique
 
-Le candidat analyse des données administratives fictives (à gauche sur ordinateur, en haut sur mobile) et choisit la bonne réponse parmi quatre propositions chiffrées (à droite, ou en bas). La banque `data/numerique.json` contient 5 jeux de données : budget d'un SPF, effectifs par direction, demandes de permis, résultats d'une sélection et achats de fournitures. Ils totalisent 17 questions réparties entre les quatre compétences clés :
+Le candidat analyse des données administratives fictives (à gauche sur ordinateur, en haut sur mobile) et choisit la bonne réponse parmi quatre propositions chiffrées (à droite, ou en bas). La banque `data/numerique.json` contient **14 jeux de données et 53 questions** : budgets d'un SPF et d'une commune, effectifs, permis, sélection, achats, centre de contact, énergie d'un bâtiment, contrôles d'une inspection, antennes régionales, canaux de demande, absentéisme, subsides sportifs et restaurant administratif. Les questions sont réparties entre les quatre compétences clés :
 
 | Compétence | Exemples |
 | --- | --- |
@@ -58,7 +58,17 @@ Le candidat analyse des données administratives fictives (à gauche sur ordinat
 | Moyenne pondérée | note moyenne de centres de tailles différentes, prix moyen pondéré par les quantités |
 | Extrapolation de tendance | projection linéaire (hausse constante) ou composée (taux constant) |
 
-Les données s'affichent en **tableau**, en **barres horizontales** ou en **courbes**, dessinés en HTML et SVG légers. Les couleurs sont validées pour les contrastes et le daltonisme, avec une infobulle au survol et au clavier. Chaque graphique dispose aussi d'une **vue « Tableau »** équivalente.
+Les données s'affichent en **tableau**, en **barres horizontales**, en **courbes** ou en **secteurs** (anneau), dessinés en HTML et SVG légers. Les couleurs sont validées pour les contrastes et le daltonisme, avec une infobulle au survol et au clavier (flèches pour parcourir les parts d'un graphique en secteurs). La légende des secteurs donne les valeurs, jamais les pourcentages, pour ne pas souffler la réponse. Chaque graphique dispose aussi d'une **vue « Tableau »** équivalente.
+
+Chaque question a un **niveau de difficulté** (1, 2 ou 3 ; 17, 18 et 18 questions), affiché au-dessus de l'énoncé.
+
+**Réponses calculées, jamais écrites à la main.** Le script `scripts/calculer-numerique.js` (`npm run calculer:numerique`) recalcule chaque proposition à partir des données :
+
+- la bonne réponse est le résultat du calcul détaillé (`steps`) ;
+- chaque piège est le résultat de son `expression`, qui reproduit une erreur typique : mauvaise base de pourcentage, ligne oubliée, ratio inversé, mauvaise année, taux additionnés au lieu d'être composés… ;
+- les propositions sont arrondies au format de la question, puis triées par ordre croissant, et `answer` désigne la bonne.
+
+Le script refuse deux propositions identiques, toute valeur à mi-chemin entre deux arrondis, que la correction afficherait autrement que la proposition, et tout calcul détaillé qui, refait avec les résultats intermédiaires arrondis tels qu'ils sont affichés, ne mènerait pas à la bonne réponse. Un test échoue si le fichier n'est pas exactement celui que produit le script.
 
 À chaque réponse, la correction affiche :
 
@@ -69,7 +79,7 @@ Les données s'affichent en **tableau**, en **barres horizontales** ou en **cour
 
 Si la réponse est fausse, elle explique aussi **l'erreur de logique** correspondant à la proposition choisie : mauvaise année, division par la valeur d'arrivée, moyenne non pondérée, croissance simple au lieu de composée…
 
-**Ajouter un jeu de données :** compléter `data/numerique.json` (format décrit en tête de `assets/js/numerique/quiz.js`), puis lancer `npm test`.
+**Ajouter un jeu de données :** compléter `data/numerique.json` (format décrit en tête de `assets/js/numerique/quiz.js`) avec les expressions de calcul, sans les valeurs des propositions, puis lancer `npm run calculer:numerique` et `npm test`. Ne jamais modifier l'identifiant d'une question existante.
 - Les calculs s'écrivent sous forme d'expressions, par exemple `({total.2024} - {total.2023}) / {total.2023} * 100`, qui sont évaluées et jamais exécutées.
 - Les tests vérifient que la bonne réponse correspond au résultat du calcul, et que chaque proposition fautive correspond au calcul de l'erreur décrite.
 - Ils vérifient aussi que les lignes « total » sont bien la somme des autres lignes.
@@ -137,7 +147,7 @@ La page **Ma progression** (`progression/index.html`) suit les résultats **sans
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du raisonnement verbal et du jugement situationnel ;
+- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du raisonnement verbal, du raisonnement numérique et du jugement situationnel ;
 - **chronomètre global strict de 40 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
 - **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir ». Une situation de jugement avec un seul de ses deux choix apparaît comme « incomplète » ;
 - **notation** : chaque question vaut 1 point. Une situation de jugement rapporte une fraction de point selon la même grille de proximité que le module (par exemple 3 points sur 4 = 0,75 point). Le score peut donc être décimal, par exemple 27,75 / 35 ;
@@ -219,7 +229,9 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │   ├── numerique.json          # Banque de jeux de données et de questions chiffrées
 │   └── jugement.json           # Banque de situations professionnelles et grilles de correction
 ├── tests/                      # Tests automatisés (node --test)
-├── scripts/build-site.js       # Assemble le site publiable dans dist/
+├── scripts/
+│   ├── build-site.js           # Assemble le site publiable dans dist/
+│   └── calculer-numerique.js   # Calcule les propositions du raisonnement numérique
 ├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
 └── package.json                # Scripts npm (build, start, test…)
 ```
@@ -240,6 +252,7 @@ Pendant le développement, lancez `npm run watch:css` dans un second terminal : 
 | `npm run build:css` | Compile `src/css/main.css` en `assets/css/app.css` (minifié) |
 | `npm run build` | Compile le CSS et assemble le site publiable dans `dist/` |
 | `npm run preview` | Construit `dist/` et le sert localement, comme en production |
+| `npm run calculer:numerique` | Recalcule les propositions du raisonnement numérique à partir des données |
 | `npm test` | Lance tous les tests |
 
 ## Tests
@@ -261,10 +274,11 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
 
   S'y ajoutent les tests de l'enchaînement des questions, du surlignage, de la typographie et du bilan.
 - **Raisonnement numérique** : validation de la banque :
-  - chaque bonne réponse est recalculée à partir des données ;
-  - chaque piège correspond au calcul de l'erreur qu'il décrit ;
+  - chaque bonne réponse et chaque piège sont recalculés par `scripts/calculer-numerique.js` : aucun écart toléré avec le fichier ;
+  - chaque piège correspond au calcul de l'erreur qu'il décrit, et les erreurs typiques (mauvaise base, ligne oubliée, ratio inversé) sont bien représentées ;
   - les totaux sont cohérents ;
-  - au moins 4 jeux de données de 3 à 4 questions, et les quatre compétences toutes présentes.
+  - au moins 51 questions, identifiants initiaux conservés, les quatre compétences et les quatre formats (tableau, barres, courbes, secteurs) présents ;
+  - environ un tiers par niveau de difficulté, aucun quasi-doublon, usage belge des nombres.
 
   S'y ajoutent les tests du moteur de calcul (priorités, puissances, refus des expressions invalides), du formatage à la française, de l'enchaînement et du bilan.
 - **Jugement situationnel** :

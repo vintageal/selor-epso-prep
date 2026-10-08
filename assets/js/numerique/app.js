@@ -3,6 +3,7 @@
  * Données (tableau ou graphique) à gauche, question à droite ; correction immédiate
  * avec les données utilisées, la formule et le calcul étape par étape.
  */
+import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
@@ -26,6 +27,7 @@ const ui = {
   note: $('[data-scenario-note]'),
   visual: $('[data-scenario-visual]'),
   questionLabel: $('[data-question-label]'),
+  questionLevel: $('[data-question-level]'),
   questionText: $('[data-question-text]'),
   choices: $('[data-choices]'),
   feedback: $('[data-feedback]'),
@@ -86,6 +88,8 @@ const showStep = () => {
   ui.count.textContent = `Données ${step.scenarioIndex + 1} sur ${step.scenarioCount}`;
   ui.questionLabel.textContent = `Question ${step.questionIndex + 1} sur ${step.questionCount}`;
   ui.questionText.textContent = frenchTypography(question.text);
+  renderDifficulty(question.difficulty, ui.questionLevel);
+  ui.questionLevel.hidden = false;
   ui.choices.replaceChildren(...question.options.map((option, index) => optionButton(question, option, index)));
   ui.feedback.replaceChildren();
   ui.nextWrapper.hidden = true;
