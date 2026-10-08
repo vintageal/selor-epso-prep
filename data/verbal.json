@@ -283,35 +283,37 @@
           "answer": "faux",
           "difficulty": 1,
           "quotes": ["Les deux avantages ne peuvent pas être cumulés pour un même mois."],
-          "explanation": "Le texte prévoit bien deux avantages, le remboursement de l'abonnement de train ou de bus et l'indemnité kilométrique pour le vélo, mais il précise que « les deux avantages ne peuvent pas être cumulés pour un même mois ». L'affirmation décrit exactement le cumul interdit : elle contredit le texte et est donc fausse. Lisez toujours la phrase qui suit l'énoncé d'un avantage : c'est souvent là que se trouve la condition ou la limite qui change tout."
+          "explanation": "Le texte prévoit bien deux avantages, le remboursement de l'abonnement de train ou de bus et l'indemnité kilométrique pour le vélo, mais il précise que « les deux avantages ne peuvent pas être cumulés pour un même mois ». L'affirmation décrit exactement le cumul interdit : elle contredit le texte et est donc fausse. Quand un texte accorde plusieurs avantages, vérifiez toujours s'ils peuvent se combiner : une seule règle de non-cumul suffit à rendre l'affirmation fausse."
         },
         {
           "id": "mobilite-parking-priorite",
           "text": "Pour l'attribution d'une place de parking, un agent à mobilité réduite passe avant un collègue dont le domicile n'est pas desservi par les transports en commun avant 7 h.",
           "answer": "vrai",
-          "difficulty": 2,
+          "difficulty": 1,
           "quotes": [
             "Les places restantes seront attribuées en priorité aux agents à mobilité réduite, puis aux agents dont le domicile n'est pas desservi par les transports en commun avant 7 h."
           ],
           "explanation": "Le texte établit un ordre de priorité : les places sont attribuées « en priorité aux agents à mobilité réduite, puis aux agents dont le domicile n'est pas desservi par les transports en commun avant 7 h ». Le mot « puis » indique que la seconde catégorie ne vient qu'après la première. L'affirmation reformule fidèlement cet ordre : elle est vraie. Dans ce type de phrase, repérez les mots qui marquent une hiérarchie (« d'abord », « puis », « à défaut ») : ils portent souvent toute l'information."
         },
         {
-          "id": "mobilite-objectif-voiture",
-          "text": "Dans trois ans, moins de 30 % des agents de l'Agence utiliseront principalement la voiture pour se rendre au travail.",
+          "id": "mobilite-avant-septembre",
+          "text": "Avant le 1er septembre, l'Agence ne remboursait qu'une partie de l'abonnement de train ou de bus de ses agents.",
           "answer": "impossible",
           "difficulty": 2,
-          "quotes": ["Le plan vise à ramener cette proportion sous la barre des 30 % en trois ans."],
-          "explanation": "Le texte indique que le plan « vise à ramener cette proportion sous la barre des 30 % en trois ans ». Il s'agit d'un objectif, pas d'un résultat constaté ni d'une certitude : rien dans le texte ne permet de dire s'il sera atteint, et un premier bilan n'est même prévu qu'après dix-huit mois. L'affirmation transforme l'intention en fait accompli. On ne peut donc pas savoir si elle est vraie : ni le texte ni une déduction logique ne permettent de trancher."
+          "quotes": [
+            "À partir du 1er septembre, l'Agence régionale de la fiscalité locale rembourse intégralement l'abonnement de train ou de bus de ses agents pour le trajet entre leur domicile et leur lieu de travail."
+          ],
+          "explanation": "Le texte indique qu'« à partir du 1er septembre », l'Agence « rembourse intégralement » l'abonnement de train ou de bus. L'expression « à partir du » marque le début de cette règle, mais le texte ne dit rien de la situation antérieure : l'Agence pouvait ne rien rembourser, rembourser une partie de l'abonnement, ou appliquer d'autres conditions. Rien ne permet de choisir entre ces hypothèses. L'affirmation n'est ni confirmée ni contredite : on ne peut pas savoir. Une règle nouvelle ne renseigne pas sur celle qu'elle remplace."
         },
         {
-          "id": "mobilite-distance-cyclistes",
-          "text": "La plupart des agents qui viennent à vélo parcourent moins de quarante kilomètres par jour aller-retour.",
+          "id": "mobilite-train-bus",
+          "text": "Lors de l'enquête de mars, plus de six agents sur dix se rendaient principalement au travail en train ou en bus.",
           "answer": "impossible",
           "difficulty": 3,
           "quotes": [
-            "Les agents qui se rendent au travail à vélo perçoivent une indemnité kilométrique, plafonnée à quarante kilomètres par jour aller-retour."
+            "Une enquête menée en mars auprès du personnel a montré que 38 % des agents utilisent principalement la voiture pour se rendre au travail."
           ],
-          "explanation": "Le chiffre de quarante kilomètres n'apparaît que comme un plafond : l'indemnité est « plafonnée à quarante kilomètres par jour aller-retour ». Un plafond fixe la limite du remboursement, il ne renseigne pas sur les distances réellement parcourues. Le texte ne donne aucune information sur la répartition des trajets des cyclistes. Il est tentant de supposer que le plafond a été fixé au-dessus de la plupart des trajets, mais c'est une hypothèse extérieure au texte : on ne peut pas savoir."
+          "explanation": "L'enquête indique que « 38 % des agents utilisent principalement la voiture ». Les 62 % restants n'utilisent donc pas principalement la voiture, mais le texte ne dit pas comment ils se répartissent : train, bus, vélo, marche ou autre moyen. Le texte cite d'ailleurs lui-même les cyclistes. Il est tentant d'attribuer ces 62 % aux transports en commun, mais rien ne permet de le faire : l'affirmation n'est ni confirmée ni contredite, on ne peut pas savoir. Le complément d'une proportion regroupe souvent plusieurs catégories distinctes."
         }
       ]
     },
@@ -331,30 +333,33 @@
           "answer": "vrai",
           "difficulty": 1,
           "quotes": [
+            "Les registres de l'état civil sont conservés sans limite de durée.",
             "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier."
           ],
-          "explanation": "Le texte autorise la destruction des originaux numérisés et certifiés, mais il prévoit une exception explicite : « sauf les registres de l'état civil, qui sont toujours conservés sur papier ». Le mot « toujours » ne laisse aucune place à une autre interprétation, même après numérisation et certification. L'affirmation est donc vraie. Ce type de question teste votre attention aux exceptions introduites par « sauf », « à l'exception de » ou « hormis »."
+          "explanation": "Le texte autorise la destruction des originaux numérisés et certifiés, mais il prévoit une exception explicite : « sauf les registres de l'état civil, qui sont toujours conservés sur papier ». Il précise aussi que ces registres « sont conservés sans limite de durée ». Même numérisé et certifié, un registre de l'état civil doit donc être conservé sur papier : l'affirmation est vraie. Ce type de question teste votre attention aux exceptions introduites par « sauf », « à l'exception de » ou « hormis »."
         },
         {
-          "id": "archives-permis-vingt-ans",
-          "text": "Le dossier d'un permis d'urbanisme peut être détruit vingt ans après la délivrance du permis.",
-          "answer": "faux",
-          "difficulty": 1,
+          "id": "archives-versement-permis",
+          "text": "Le dossier d'un permis d'urbanisme délivré il y a trente-cinq ans a déjà été versé aux archives historiques.",
+          "answer": "impossible",
+          "difficulty": 2,
           "quotes": [
             "Les dossiers de permis d'urbanisme sont conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques."
           ],
-          "explanation": "Le texte impose une durée minimale : les dossiers de permis d'urbanisme sont « conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques ». Une destruction après vingt ans intervient avant la fin de cette durée minimale, et le texte prévoit ensuite un versement aux archives, non une destruction. L'affirmation contredit le texte : elle est fausse. Les expressions « au moins » et « au plus » sont décisives : vérifiez toujours dans quel sens joue la limite."
+          "explanation": "Le texte fixe une durée minimale : les dossiers de permis d'urbanisme sont « conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques ». « Au moins » signifie que la conservation peut se prolonger au-delà de trente ans : le texte ne dit pas quand le versement a lieu. Après trente-cinq ans, le dossier peut donc avoir été versé comme il peut encore être conservé par les services. Le texte ne permet ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir. Une durée minimale n'est pas une date."
         },
         {
-          "id": "archives-destruction-permis",
-          "text": "L'original papier d'un dossier de permis d'urbanisme ne peut être détruit que s'il a été numérisé et que sa version numérique a été certifiée par l'archiviste communal.",
+          "id": "archives-original-permis",
+          "text": "L'original papier d'un dossier de permis d'urbanisme peut, dans certains cas, être détruit moins de trente ans après la délivrance du permis.",
           "answer": "vrai",
           "difficulty": 3,
           "quotes": [
             "Les dossiers de permis d'urbanisme sont conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques.",
-            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier."
+            "La version numérique a la même valeur que l'original, à condition d'avoir été certifiée par l'archiviste communal.",
+            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier.",
+            "Aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal."
           ],
-          "explanation": "Il faut combiner deux passages. D'une part, les dossiers de permis d'urbanisme sont « conservés au moins trente ans », « puis versés aux archives historiques » : la règle générale ne prévoit donc jamais leur destruction. D'autre part, « les originaux numérisés et certifiés peuvent être détruits », la seule exception visant les registres de l'état civil. La numérisation suivie d'une certification est donc la seule voie qui permette de détruire l'original d'un permis : l'affirmation est vraie. Elle énonce une condition nécessaire, ce que le texte établit sans ambiguïté."
+          "explanation": "La durée minimale de trente ans pousse à répondre « Faux », mais il faut combiner plusieurs passages. Le dossier doit être « conservé au moins trente ans », or sa version numérique certifiée « a la même valeur que l'original ». Le texte ajoute que « les originaux numérisés et certifiés peuvent être détruits », avec une seule exception, les registres de l'état civil, et sans fixer de délai. Sous réserve de l'accord écrit de l'archiviste, l'original papier d'un permis numérisé et certifié peut donc être détruit avant trente ans, le dossier restant conservé sous forme numérique : l'affirmation, qui parle de « certains cas », est vraie."
         },
         {
           "id": "archives-dossier-consulte",
@@ -363,9 +368,10 @@
           "difficulty": 3,
           "quotes": [
             "Depuis l'an dernier, les dossiers papier sont numérisés lorsqu'ils sont consultés plus de trois fois par an.",
+            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier.",
             "Aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal."
           ],
-          "explanation": "Un dossier consulté quatre fois l'an dernier entre bien dans la règle de numérisation, qui vise les dossiers « consultés plus de trois fois par an ». Mais la numérisation n'entraîne pas automatiquement la destruction : l'original ne « peut » être détruit qu'après certification, et « aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal ». Le texte ne dit pas si ces étapes ont eu lieu pour ce dossier. Il ne permet donc ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir."
+          "explanation": "Un dossier consulté quatre fois l'an dernier entre bien dans la règle de numérisation, qui vise les dossiers « consultés plus de trois fois par an ». Mais la numérisation n'entraîne pas la destruction : le texte indique que les originaux numérisés et certifiés « peuvent être détruits », ce qui est une simple faculté, et qu'« aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal ». Le texte ne dit pas si ce dossier a été certifié, ni si l'archiviste a donné son accord. Il ne permet donc ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir."
         }
       ]
     },
@@ -375,19 +381,19 @@
       "theme": "Droit et institutions",
       "paragraphs": [
         "Pour tout achat de fournitures ou de services, le service acheteur estime d'abord le montant total du marché, hors TVA, sur toute sa durée. Ce montant détermine la procédure applicable. Il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante.",
-        "En dessous de 30 000 euros, le service peut attribuer le marché sur simple facture acceptée, après avoir consulté au moins trois fournisseurs lorsque c'est possible. Entre 30 000 et 140 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs. Au-delà de 140 000 euros, le marché doit faire l'objet d'une publication officielle.",
+        "En dessous de 25 000 euros, le service peut attribuer le marché sur simple facture acceptée, après avoir consulté au moins trois fournisseurs lorsque c'est possible. Entre 25 000 et 120 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs. Au-delà de 120 000 euros, le marché doit faire l'objet d'une publication officielle.",
         "Le choix de l'offre repose sur des critères annoncés dès le départ aux fournisseurs consultés. Le prix doit toujours figurer parmi ces critères, mais il n'est pas nécessairement le seul. Chaque décision d'attribution est motivée par écrit et conservée dans le dossier du marché."
       ],
       "statements": [
         {
           "id": "marches-scission",
-          "text": "Pour pouvoir l'attribuer sur simple facture acceptée, un service peut diviser un achat de 50 000 euros en deux commandes de 25 000 euros.",
+          "text": "Pour pouvoir passer par la simple facture acceptée, un service peut scinder un marché de 40 000 euros en deux commandes de 20 000 euros.",
           "answer": "faux",
           "difficulty": 1,
           "quotes": [
             "Il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante."
           ],
-          "explanation": "Le texte interdit précisément ce montage : « il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante ». Diviser un achat de 50 000 euros en deux commandes de 25 000 euros pour passer sous le seuil de la facture acceptée est exactement une scission destinée à éviter la procédure applicable entre 30 000 et 140 000 euros. L'affirmation contredit le texte : elle est fausse."
+          "explanation": "Le texte interdit précisément ce montage : « il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante ». Diviser un marché de 40 000 euros en deux commandes de 20 000 euros pour passer sous le seuil de la facture acceptée est exactement une scission destinée à éviter la procédure applicable entre 25 000 et 120 000 euros. L'affirmation contredit le texte : elle est fausse."
         },
         {
           "id": "marches-prix-exclu",
@@ -405,9 +411,9 @@
           "answer": "vrai",
           "difficulty": 2,
           "quotes": [
-            "Entre 30 000 et 140 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs."
+            "Entre 25 000 et 120 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs."
           ],
-          "explanation": "Un marché de 100 000 euros se situe dans la tranche comprise entre 30 000 et 140 000 euros, pour laquelle le texte autorise une procédure « sans publication préalable », « avec consultation obligatoire d'au moins trois fournisseurs ». Le mot « obligatoire » distingue cette tranche de la précédente, où la consultation n'est requise que « lorsque c'est possible ». L'affirmation, qui vise bien un marché attribué sans publication, est vraie."
+          "explanation": "Un marché de 100 000 euros se situe dans la tranche comprise entre 25 000 et 120 000 euros, pour laquelle le texte autorise une procédure « sans publication préalable », « avec consultation obligatoire d'au moins trois fournisseurs ». Le mot « obligatoire » distingue cette tranche de la précédente, où la consultation n'est requise que « lorsque c'est possible ». L'affirmation, qui vise bien un marché attribué sans publication, est vraie."
         },
         {
           "id": "marches-ponderation",
@@ -426,7 +432,7 @@
       "title": "Note au personnel : le compte formation",
       "theme": "Ressources humaines",
       "paragraphs": [
-        "Chaque agent dispose d'un compte formation crédité de quarante heures au 1er janvier de chaque année. Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, dans la limite de quatre-vingts heures au total. Les formations obligatoires liées à la sécurité ne sont pas décomptées du compte.",
+        "Chaque agent dispose d'un compte formation crédité de quarante heures au 1er janvier de chaque année. Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, mais le solde du compte ne peut jamais dépasser quatre-vingts heures. Les formations obligatoires liées à la sécurité ne sont pas décomptées du compte.",
         "Pour suivre une formation pendant les heures de service, l'agent introduit une demande auprès de son supérieur au moins un mois avant la date de début. Le supérieur ne peut refuser que pour des raisons liées à la continuité du service, et un même refus ne peut être opposé plus de deux fois de suite. Les formations suivies en dehors des heures de service sont prises en charge financièrement, mais ne donnent pas lieu à récupération.",
         "En fin d'année, le service du personnel publie le nombre moyen d'heures de formation suivies par agent dans chaque direction. L'an dernier, cette moyenne variait de douze heures dans la direction des infrastructures à trente et une heures dans la direction juridique."
       ],
@@ -435,12 +441,12 @@
           "id": "formation-plafond",
           "text": "Un agent qui n'a suivi aucune formation pendant deux années complètes dispose de cent vingt heures sur son compte au 1er janvier de la troisième année.",
           "answer": "faux",
-          "difficulty": 2,
+          "difficulty": 3,
           "quotes": [
             "Chaque agent dispose d'un compte formation crédité de quarante heures au 1er janvier de chaque année.",
-            "Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, dans la limite de quatre-vingts heures au total."
+            "Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, mais le solde du compte ne peut jamais dépasser quatre-vingts heures."
           ],
-          "explanation": "Sans plafond, trois crédits successifs de quarante heures donneraient bien cent vingt heures. Mais le texte précise que les heures non utilisées sont reportées « dans la limite de quatre-vingts heures au total ». Le compte ne peut donc jamais dépasser quatre-vingts heures, quel que soit le nombre d'années sans formation. L'affirmation contredit cette limite : elle est fausse. Dans les questions qui demandent un calcul, vérifiez toujours si le texte prévoit un plafond ou un minimum qui modifie le résultat."
+          "explanation": "Sans plafond, trois crédits successifs de quarante heures donneraient bien cent vingt heures : quarante heures la première année, quatre-vingts après le report de la deuxième, puis cent vingt. Mais le texte précise que « le solde du compte ne peut jamais dépasser quatre-vingts heures ». Au 1er janvier de la troisième année, l'agent dispose donc de quatre-vingts heures, et non de cent vingt. L'affirmation contredit cette limite : elle est fausse. Dans les questions qui demandent un calcul, vérifiez toujours si le texte prévoit un plafond ou un minimum qui modifie le résultat."
         },
         {
           "id": "formation-securite",
@@ -448,23 +454,23 @@
           "answer": "vrai",
           "difficulty": 1,
           "quotes": ["Les formations obligatoires liées à la sécurité ne sont pas décomptées du compte."],
-          "explanation": "Le texte indique que « les formations obligatoires liées à la sécurité ne sont pas décomptées du compte ». Ne pas être décomptée signifie précisément ne pas réduire le solde d'heures disponibles. L'affirmation reformule cette règle avec d'autres mots : elle est vraie. Les épreuves de raisonnement verbal reprennent rarement les termes exacts du texte : il faut reconnaître une même idée sous une formulation différente."
+          "explanation": "Le texte indique que « les formations obligatoires liées à la sécurité ne sont pas décomptées du compte ». Ne pas être décomptée signifie précisément ne pas réduire le solde d'heures disponibles. L'affirmation reformule cette règle avec d'autres mots : elle est vraie. Retenez le schéma : une règle générale (le compte est débité des formations suivies) suivie d'une exception (les formations obligatoires liées à la sécurité) ; l'affirmation porte ici sur l'exception."
         },
         {
-          "id": "formation-refus-infrastructures",
-          "text": "L'an dernier, des demandes de formation ont été refusées dans la direction des infrastructures.",
-          "answer": "impossible",
-          "difficulty": 3,
+          "id": "formation-motif-refus",
+          "text": "Un supérieur peut refuser une formation pendant les heures de service parce qu'il la juge sans rapport avec la fonction de l'agent.",
+          "answer": "faux",
+          "difficulty": 2,
           "quotes": [
-            "L'an dernier, cette moyenne variait de douze heures dans la direction des infrastructures à trente et une heures dans la direction juridique."
+            "Le supérieur ne peut refuser que pour des raisons liées à la continuité du service, et un même refus ne peut être opposé plus de deux fois de suite."
           ],
-          "explanation": "Le texte indique seulement que la moyenne d'heures de formation était la plus basse dans la direction des infrastructures : « douze heures dans la direction des infrastructures ». Une moyenne faible peut s'expliquer de bien des façons, par exemple par un faible nombre de demandes, et le texte ne donne aucune information sur les refus dans cette direction. Il est tentant d'y voir la trace de refus, mais c'est une supposition : on ne peut pas savoir."
+          "explanation": "Le texte limite strictement les motifs de refus : le supérieur « ne peut refuser que pour des raisons liées à la continuité du service ». La tournure « ne… que » exclut tout autre motif, y compris l'absence de lien entre la formation et la fonction de l'agent. Un refus fondé sur ce motif n'est donc pas permis : l'affirmation contredit le texte et elle est fausse. Repérez les restrictions exprimées par « ne… que », « uniquement » ou « seulement » : elles ferment la porte à tous les cas qu'elles ne citent pas."
         },
         {
           "id": "formation-minimum-juridique",
           "text": "L'an dernier, chaque agent de la direction juridique a suivi au moins douze heures de formation.",
           "answer": "impossible",
-          "difficulty": 3,
+          "difficulty": 2,
           "quotes": [
             "L'an dernier, cette moyenne variait de douze heures dans la direction des infrastructures à trente et une heures dans la direction juridique."
           ],
@@ -486,32 +492,30 @@
           "id": "donnees-acces-collegue",
           "text": "Un assistant social peut consulter le dossier d'une personne suivie par un collègue, pour autant que la consultation soit enregistrée.",
           "answer": "faux",
-          "difficulty": 1,
+          "difficulty": 2,
           "quotes": [
             "Les assistants sociaux du CPAS ne peuvent consulter que les dossiers des personnes dont ils assurent le suivi."
           ],
           "explanation": "Le texte limite strictement l'accès : les assistants sociaux « ne peuvent consulter que les dossiers des personnes dont ils assurent le suivi ». L'enregistrement automatique des consultations est un moyen de contrôle, pas une autorisation : il ne permet pas d'accéder au dossier d'une personne suivie par un collègue. L'affirmation contredit la règle : elle est fausse. Ne confondez pas une mesure de contrôle avec une condition qui rendrait l'accès légitime."
         },
         {
-          "id": "donnees-prolongation",
-          "text": "Le CPAS peut répondre plus d'un mois après une demande complexe de consultation, à condition d'avoir prévenu le demandeur à temps.",
+          "id": "donnees-gratuite",
+          "text": "Une personne aidée n'a rien à payer pour consulter les données qui la concernent, même lorsque sa demande est complexe.",
           "answer": "vrai",
-          "difficulty": 2,
-          "quotes": [
-            "Le CPAS dispose d'un mois pour répondre, délai qui peut être prolongé de deux mois lorsque la demande est complexe, à condition d'en informer le demandeur au cours du premier mois."
-          ],
-          "explanation": "Le délai de base est d'un mois, mais le texte prévoit qu'il « peut être prolongé de deux mois lorsque la demande est complexe, à condition d'en informer le demandeur au cours du premier mois ». « Prévenu à temps » reformule cette condition d'information pendant le premier mois. Pour une demande complexe, une réponse au-delà d'un mois est donc possible si cette condition est remplie : l'affirmation est vraie."
+          "difficulty": 1,
+          "quotes": ["La consultation est gratuite."],
+          "explanation": "Le texte est sans réserve : « la consultation est gratuite ». La complexité de la demande n'a d'effet que sur le délai de réponse, qui peut être prolongé de deux mois, et le texte ne prévoit aucun frais dans ce cas. Une personne aidée n'a donc rien à payer pour consulter ses données, que sa demande soit simple ou complexe : l'affirmation est vraie. Ne laissez pas une condition qui concerne un autre aspect de la règle, ici le délai, modifier votre lecture de celle qui vous est posée."
         },
         {
           "id": "donnees-conservation",
-          "text": "Les données d'une personne dont la dernière aide remonte à quatre ans sont encore conservées par le CPAS.",
+          "text": "Les données d'une personne dont la dernière aide remonte à cinq ans et demi sont encore conservées par le CPAS.",
           "answer": "vrai",
           "difficulty": 3,
           "quotes": [
             "Les données d'un dossier clôturé sont conservées pendant cinq ans, puis supprimées.",
             "Un dossier est clôturé lorsque la personne n'a plus bénéficié d'aucune aide pendant douze mois consécutifs."
           ],
-          "explanation": "Il faut combiner les deux règles. Le dossier n'est clôturé que lorsque la personne « n'a plus bénéficié d'aucune aide pendant douze mois consécutifs », soit un an après la dernière aide. Les données sont ensuite « conservées pendant cinq ans, puis supprimées », c'est-à-dire jusqu'à six ans après la dernière aide. Quatre ans après la dernière aide, les données sont donc toujours conservées : l'affirmation est vraie. L'erreur la plus fréquente consiste à faire courir les cinq ans à partir de la dernière aide plutôt qu'à partir de la clôture."
+          "explanation": "Il faut combiner les deux règles. Le dossier n'est clôturé que lorsque la personne « n'a plus bénéficié d'aucune aide pendant douze mois consécutifs », soit un an après la dernière aide. Les données sont ensuite « conservées pendant cinq ans, puis supprimées », c'est-à-dire jusqu'à six ans après la dernière aide. Cinq ans et demi après la dernière aide, les données sont donc toujours conservées : l'affirmation est vraie. Le piège consiste à faire courir les cinq ans à partir de la dernière aide plutôt qu'à partir de la clôture : on conclurait alors, à tort, que les données ont été supprimées."
         },
         {
           "id": "donnees-abus-detectes",
@@ -549,13 +553,13 @@
         },
         {
           "id": "mediation-annee-precedente",
-          "text": "L'année précédente, le service de médiation avait reçu moins de 4 000 plaintes.",
+          "text": "L'année précédente, le service de médiation avait reçu plus de 3 700 plaintes.",
           "answer": "vrai",
-          "difficulty": 2,
+          "difficulty": 3,
           "quotes": [
             "L'an dernier, le service de médiation de la Région a reçu 4 200 plaintes, soit 12 % de plus que l'année précédente."
           ],
-          "explanation": "Le texte indique que les « 4 200 plaintes » de l'an dernier représentent « 12 % de plus que l'année précédente ». Le nombre de l'année précédente vaut donc 4 200 ÷ 1,12, soit 3 750 plaintes, ce qui est bien inférieur à 4 000. L'affirmation est vraie. Attention à l'erreur fréquente qui consiste à retirer 12 % de 4 200 (ce qui donnerait 3 696) : la hausse de 12 % s'applique à l'année précédente, pas à l'année en cours. Ici, les deux calculs mènent toutefois à la même conclusion."
+          "explanation": "Le texte indique que les « 4 200 plaintes » de l'an dernier représentent « 12 % de plus que l'année précédente ». Le nombre de l'année précédente vaut donc 4 200 ÷ 1,12, soit 3 750 plaintes, ce qui dépasse bien 3 700 : l'affirmation est vraie. Le piège consiste à retirer 12 % de 4 200, ce qui donne 3 696 et conduit à répondre « Faux » : la hausse de 12 % se calcule sur l'année précédente, pas sur l'année en cours."
         },
         {
           "id": "mediation-delai-allonge",
@@ -566,14 +570,14 @@
           "explanation": "Le texte précise que « le délai moyen d'instruction est passé de 75 à 68 jours ». Passer de 75 à 68 jours, c'est une diminution de sept jours : le délai s'est raccourci, et non allongé. L'affirmation contredit le texte : elle est fausse. Même pour une question simple, relisez l'ordre des valeurs : l'expression « passé de… à… » indique la valeur de départ puis la valeur d'arrivée."
         },
         {
-          "id": "mediation-effet-delais",
-          "text": "Publier un délai indicatif de traitement fait diminuer le nombre de plaintes relatives aux délais.",
+          "id": "mediation-plaintes-valeur-absolue",
+          "text": "Les administrations qui publient déjà un délai indicatif reçoivent, en valeur absolue, moins de plaintes relatives aux délais que les autres.",
           "answer": "impossible",
           "difficulty": 3,
           "quotes": [
             "Il relève que les administrations qui l'ont déjà fait reçoivent proportionnellement moins de plaintes relatives aux délais."
           ],
-          "explanation": "Le texte constate une association : les administrations qui publient un délai indicatif « reçoivent proportionnellement moins de plaintes relatives aux délais ». Mais il n'établit pas de lien de cause à effet : ces administrations étaient peut-être déjà plus rapides, ou mieux organisées, avant de publier leurs délais. L'affirmation présente la publication comme la cause de la baisse, ce que le texte ne démontre pas. On ne peut pas savoir. C'est le piège classique de la corrélation prise pour une causalité."
+          "explanation": "Le texte indique que ces administrations « reçoivent proportionnellement moins de plaintes relatives aux délais ». « Proportionnellement » signifie que la comparaison porte sur une part, par exemple la part des plaintes relatives aux délais dans l'ensemble de leurs plaintes, et non sur un nombre de plaintes. Une grande administration peut recevoir une part plus faible de plaintes sur les délais, mais un nombre plus élevé. Le texte ne donne aucun nombre : on ne peut pas savoir. Ne confondez pas une proportion et une valeur absolue."
         }
       ]
     },
@@ -601,7 +605,7 @@
           "id": "renovation-vente",
           "text": "Un bâtiment dont la vente est prévue dans trois ans sera rénové si son audit montre une rénovation très rentable.",
           "answer": "faux",
-          "difficulty": 1,
+          "difficulty": 2,
           "quotes": [
             "Un bâtiment dont la vente ou la démolition est prévue dans les cinq ans n'est pas rénové."
           ],
@@ -611,7 +615,7 @@
           "id": "renovation-monuments",
           "text": "Les bâtiments classés comme monuments seront rénovés après les autres bâtiments administratifs.",
           "answer": "impossible",
-          "difficulty": 3,
+          "difficulty": 2,
           "quotes": [
             "Les bâtiments classés comme monuments sont soumis à un audit adapté, qui tient compte des contraintes de conservation du patrimoine."
           ],
@@ -664,7 +668,7 @@
           "id": "echange-forfaits-differents",
           "text": "Deux participants partis dans des pays différents peuvent recevoir des forfaits de séjour mensuels de montants différents.",
           "answer": "vrai",
-          "difficulty": 2,
+          "difficulty": 3,
           "quotes": [
             "Le programme prend en charge un forfait de séjour mensuel, dont le montant varie selon le coût de la vie dans le pays d'accueil, ainsi qu'un aller-retour en début et en fin d'échange."
           ],
@@ -674,7 +678,7 @@
           "id": "echange-loyer",
           "text": "Le forfait de séjour suffit à couvrir le loyer du participant dans le pays d'accueil.",
           "answer": "impossible",
-          "difficulty": 3,
+          "difficulty": 1,
           "quotes": [
             "Le programme prend en charge un forfait de séjour mensuel, dont le montant varie selon le coût de la vie dans le pays d'accueil, ainsi qu'un aller-retour en début et en fin d'échange."
           ],
@@ -706,7 +710,7 @@
           "id": "sommeil-effectifs",
           "text": "L'étude a porté sur 300 agents travaillant de nuit et 600 agents travaillant de jour.",
           "answer": "faux",
-          "difficulty": 2,
+          "difficulty": 3,
           "quotes": [
             "Une étude a suivi pendant un an 600 agents de services de secours et d'entretien, dont la moitié travaillait régulièrement de nuit."
           ],
@@ -746,13 +750,13 @@
       "statements": [
         {
           "id": "commerce-moins-de-30-ans",
-          "text": "Parmi les habitants interrogés de moins de 30 ans, moins de quatre sur dix font des achats au moins une fois par semaine dans un commerce du centre.",
+          "text": "Parmi les habitants interrogés de moins de 30 ans, moins de quatre sur dix déclarent faire des achats au moins une fois par semaine dans un commerce du centre.",
           "answer": "vrai",
           "difficulty": 2,
           "quotes": [
             "Cette proportion atteint 71 % chez les habitants de plus de 65 ans, mais tombe à 38 % chez les moins de 30 ans."
           ],
-          "explanation": "La proportion d'habitants qui font des achats hebdomadaires dans le centre « tombe à 38 % chez les moins de 30 ans ». Or quatre sur dix correspondent à 40 % : 38 % est bien inférieur à ce seuil. L'affirmation reformule donc correctement le chiffre du texte : elle est vraie. Les épreuves transforment souvent un pourcentage en fraction (« quatre sur dix », « un tiers », « la moitié ») : entraînez-vous à faire ces conversions rapidement."
+          "explanation": "La proportion des habitants qui déclarent faire des achats hebdomadaires dans le centre « tombe à 38 % chez les moins de 30 ans ». Or quatre sur dix correspondent à 40 % : 38 % est bien inférieur à ce seuil. L'affirmation reprend correctement le chiffre du texte, en parlant comme lui de ce que les personnes déclarent : elle est vraie. Les épreuves transforment souvent un pourcentage en fraction (« quatre sur dix », « un tiers », « la moitié ») : entraînez-vous à faire ces conversions rapidement."
         },
         {
           "id": "commerce-prix",
@@ -766,14 +770,14 @@
           "explanation": "Le texte classe les attentes des habitants : ils citent « d'abord des horaires d'ouverture plus tardifs, puis une offre de stationnement de courte durée », tandis que « seuls 9 % mentionnent des prix plus bas ». Les prix plus bas ne sont donc pas le moyen le plus cité, puisque deux autres le devancent. L'affirmation contredit le texte : elle est fausse. Le mot « seuls » souligne d'ailleurs le caractère minoritaire de cette réponse."
         },
         {
-          "id": "commerce-effet-taxe",
-          "text": "La réduction de la taxe communale permettra de réduire le nombre de cellules commerciales vides dans le centre.",
+          "id": "commerce-cellules-chaque-annee",
+          "text": "Le nombre de cellules commerciales vides dans le centre a augmenté chaque année au cours des cinq dernières années.",
           "answer": "impossible",
           "difficulty": 2,
           "quotes": [
-            "Le collège envisage de réduire la taxe communale pour les commerçants qui s'installent dans une cellule vide depuis plus d'un an."
+            "Le nombre de cellules commerciales vides dans le centre est passé de 14 à 23 en cinq ans."
           ],
-          "explanation": "Le texte indique seulement que le collège « envisage » de réduire la taxe pour les commerçants qui s'installent dans une cellule vide. La mesure n'est pas encore décidée, et le texte ne dit rien de ses effets attendus ou observés. Affirmer qu'elle réduira le nombre de cellules vides, c'est supposer à la fois qu'elle sera adoptée et qu'elle sera efficace. Le texte ne permet de trancher ni l'un ni l'autre : on ne peut pas savoir."
+          "explanation": "Le texte compare seulement deux valeurs : le nombre de cellules vides « est passé de 14 à 23 en cinq ans ». Cette hausse globale ne dit rien de l'évolution d'une année à l'autre : le nombre a pu augmenter chaque année, mais aussi stagner ou baisser certaines années avant de remonter. Le texte ne donne aucun chiffre intermédiaire. Il ne permet donc ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir. Une évolution entre deux dates n'indique pas le chemin parcouru entre elles."
         },
         {
           "id": "commerce-age-population",
@@ -784,7 +788,7 @@
             "Parmi eux, 54 % déclarent faire au moins une fois par semaine des achats dans un commerce du centre.",
             "Cette proportion atteint 71 % chez les habitants de plus de 65 ans, mais tombe à 38 % chez les moins de 30 ans."
           ],
-          "explanation": "Le texte donne la fréquentation du centre par tranche d'âge (« 71 % » chez les plus de 65 ans, « 38 % » chez les moins de 30 ans) et pour l'ensemble des personnes interrogées (« 54 % »), mais il ne dit rien de la répartition de la population par âge. On ne peut pas déduire cette répartition des pourcentages, car la proportion des 30 à 65 ans n'est pas donnée. Le texte ne permet ni d'affirmer ni de nier que la majorité des habitants a plus de 65 ans : on ne peut pas savoir."
+          "explanation": "Les pourcentages du texte sont des taux mesurés à l'intérieur de chaque groupe : « 71 % » des plus de 65 ans interrogés et « 38 % » des moins de 30 ans font leurs achats dans le centre, contre « 54 % » de l'ensemble. Ce ne sont pas des parts de la population : ils ne disent pas combien d'habitants appartiennent à chaque tranche d'âge. De plus, l'enquête porte sur 1 200 personnes interrogées, pas sur tous les habitants de la commune. Le texte ne permet ni d'affirmer ni de nier que la majorité des habitants a plus de 65 ans : on ne peut pas savoir."
         }
       ]
     }

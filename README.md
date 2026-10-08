@@ -35,7 +35,7 @@ Après chaque réponse, l'application indique si elle est correcte, révèle la 
 
 Le candidat lit un texte dense (à gauche sur ordinateur, en haut sur mobile) et évalue une affirmation (à droite, ou en bas) : **Vrai**, **Faux** ou **On ne peut pas savoir**. La banque contient **15 textes originaux et 60 affirmations** (4 par texte) : notes de service, règlements, rapports, études et enquêtes d'administrations belges et européennes fictives (administration publique, droit et institutions, institutions européennes, ressources humaines, économie, environnement, sciences). Les trois réponses sont équilibrées (20 affirmations chacune).
 
-Chaque affirmation a un **niveau de difficulté** (1, 2 ou 3, avec 20 affirmations par niveau), affiché au-dessus de l'affirmation. Au niveau 1, la réponse se lit dans une phrase du texte. Au niveau 3, il faut croiser plusieurs informations ou déjouer un piège : objectif présenté comme un résultat, corrélation présentée comme une cause, plafond pris pour une moyenne…
+Chaque affirmation a un **niveau de difficulté** (1, 2 ou 3, avec 20 affirmations par niveau), affiché au-dessus de l'affirmation. Au niveau 1, la réponse se lit dans une phrase du texte. Au niveau 3, il faut croiser plusieurs informations ou déjouer un piège : durée minimale prise pour une date, proportion confondue avec un nombre, corrélation présentée comme une cause… Aucune réponse ne domine un niveau : le niveau affiché ne trahit pas la réponse.
 
 À chaque réponse, la correction :
 
@@ -255,7 +255,7 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   - identifiants uniques et réponses valides ;
   - au moins 60 affirmations, 3 à 4 par texte, et identifiants de la banque initiale conservés ;
   - chaque citation est une phrase complète reprise mot pour mot du texte ;
-  - environ un tiers par réponse et par niveau de difficulté, explications détaillées ;
+  - environ un tiers par réponse et par niveau de difficulté, sans réponse dominante dans un niveau, explications détaillées ;
   - chaque « On ne peut pas savoir » est justifié comme tel dans l'explication ;
   - aucun quasi-doublon entre textes ni entre affirmations, usage belge des nombres.
 

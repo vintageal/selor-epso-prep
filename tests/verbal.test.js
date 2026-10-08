@@ -74,6 +74,16 @@ test('difficulté 1, 2 ou 3 pour chaque affirmation, environ un tiers par niveau
   }
 });
 
+test('le niveau affiché ne trahit pas la réponse : aucune réponse ne domine un niveau', () => {
+  for (const level of [1, 2, 3]) {
+    const atLevel = statements.filter(({ statement }) => statement.difficulty === level);
+    for (const { id } of ANSWERS) {
+      const count = atLevel.filter(({ statement }) => statement.answer === id).length;
+      assert.ok(count <= atLevel.length / 2, `niveau ${level} : ${count} « ${id} » sur ${atLevel.length}`);
+    }
+  }
+});
+
 test('« On ne peut pas savoir » : l’explication établit que le texte ne permet pas de trancher', () => {
   for (const { statement } of statements.filter(({ statement }) => statement.answer === 'impossible')) {
     assert.match(statement.explanation, /on ne peut (donc )?pas savoir/i, `« ${statement.id} »`);
