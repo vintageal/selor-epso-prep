@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "budget-spf",
+      "title": "Dépenses d'un service public fédéral par poste, 2021-2024",
+      "theme": "Finances publiques",
+      "display": "table",
+      "rowHeader": "Poste",
+      "unit": "M€",
+      "note": "Montants en millions d'euros (M€).",
+      "columns": [
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "personnel", "label": "Personnel", "values": { "2021": 412, "2022": 425, "2023": 438, "2024": 461 } },
+        { "key": "fonctionnement", "label": "Fonctionnement", "values": { "2021": 168, "2022": 175, "2023": 171, "2024": 180 } },
+        { "key": "investissements", "label": "Investissements", "values": { "2021": 95, "2022": 88, "2023": 104, "2024": 118 } },
+        { "key": "subsides", "label": "Subsides", "values": { "2021": 225, "2022": 232, "2023": 247, "2024": 251 } },
+        { "key": "total", "label": "Total", "total": true, "values": { "2021": 900, "2022": 920, "2023": 960, "2024": 1010 } }
+      ],
+      "questions": [
+        {
+          "id": "budget-variation-total",
+          "skill": "variation",
+          "text": "De quel pourcentage le budget total a-t-il augmenté entre 2023 et 2024 ?",
+          "formula": "Taux de variation (%) = (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100",
+          "steps": [
+            { "id": "ecart", "label": "Écart entre 2024 et 2023", "expression": "{total.2024} - {total.2023}" },
+            { "label": "Écart rapporté à la valeur de départ (2023), en %", "expression": "{@ecart} / {total.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 4.3, "expression": "({total.2023} - {total.2022}) / {total.2022} * 100", "why": "C'est la hausse de 2022 à 2023 : la période est décalée d'un an." },
+            { "value": 5.0, "expression": "{@ecart} / {total.2024} * 100", "why": "L'écart a été divisé par la valeur d'arrivée (2024) au lieu de la valeur de départ (2023)." },
+            { "value": 5.2 },
+            { "value": 12.2, "expression": "({total.2024} - {total.2021}) / {total.2021} * 100", "why": "C'est la hausse cumulée depuis 2021, pas la hausse de la seule dernière année." }
+          ],
+          "explanation": "Le taux de variation se calcule toujours par rapport à l'année de départ, ici 2023. Diviser par 1 010 au lieu de 960 donne un résultat proche mais faux : les propositions sont précisément conçues pour piéger cette confusion."
+        },
+        {
+          "id": "budget-part-personnel",
+          "skill": "ratio",
+          "text": "En 2024, quelle part du budget total les dépenses de personnel représentent-elles ?",
+          "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
+          "steps": [
+            { "label": "Personnel 2024 rapporté au total 2024, en %", "expression": "{personnel.2024} / {total.2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 0,
+          "options": [
+            { "value": 45.6 },
+            { "value": 45.8, "expression": "{personnel.2021} / {total.2021} * 100", "why": "C'est la part du personnel en 2021 : la mauvaise colonne du tableau a été lue." },
+            { "value": 54.4, "expression": "({total.2024} - {personnel.2024}) / {total.2024} * 100", "why": "C'est la part de tous les autres postes réunis, c'est-à-dire le complément à 100 %." },
+            { "value": 84.0, "expression": "{personnel.2024} / ({total.2024} - {personnel.2024}) * 100", "why": "Le personnel a été comparé aux autres postes au lieu du total : le dénominateur doit être le tout (1 010 M€)." }
+          ],
+          "explanation": "Une part se calcule par rapport au tout de la même année : ici le total 2024 (1 010 M€). Avant de diviser, vérifiez l'année de la colonne et la nature du dénominateur."
+        },
+        {
+          "id": "budget-projection-investissements",
+          "skill": "extrapolation",
+          "text": "Les dépenses d'investissement ont augmenté de façon régulière entre 2022 et 2024. Si leur hausse annuelle moyenne, en millions d'euros, se maintient, à combien s'élèveront-elles en 2026 ?",
+          "formula": "Valeur projetée = dernière valeur + nombre d'années × hausse annuelle moyenne",
+          "steps": [
+            { "id": "hausse", "label": "Hausse annuelle moyenne de 2022 à 2024 (2 ans)", "expression": "({investissements.2024} - {investissements.2022}) / 2" },
+            { "label": "Projection de 2024 à 2026 (2 ans)", "expression": "{investissements.2024} + 2 * {@hausse}" }
+          ],
+          "format": { "decimals": 0, "unit": "M€" },
+          "answer": 2,
+          "options": [
+            { "value": 133, "expression": "{investissements.2024} + {@hausse}", "why": "La hausse n'a été ajoutée qu'une fois : c'est la projection pour 2025, pas pour 2026." },
+            { "value": 146, "expression": "{investissements.2024} + 2 * ({investissements.2024} - {investissements.2023})", "why": "Seule la dernière hausse (14 M€ de 2023 à 2024) a été prise en compte, au lieu de la moyenne sur la période indiquée." },
+            { "value": 148 },
+            { "value": 158, "expression": "{investissements.2024} * {investissements.2024} / {investissements.2022}", "why": "Une croissance en pourcentage (environ +15,8 % par an) a été appliquée, alors que l'énoncé porte sur une hausse constante en millions d'euros." }
+          ],
+          "explanation": "L'énoncé précise que la hausse se maintient « en millions d'euros » : c'est une tendance linéaire. On calcule la hausse annuelle moyenne sur la période indiquée, puis on l'ajoute autant de fois qu'il y a d'années à projeter (2025 et 2026)."
+        },
+        {
+          "id": "budget-ratio-subsides",
+          "skill": "ratio",
+          "text": "En 2024, combien d'euros de subsides le service verse-t-il pour chaque euro de dépenses de fonctionnement ?",
+          "formula": "Ratio = grandeur comparée ÷ grandeur de référence",
+          "steps": [
+            { "label": "Subsides 2024 divisés par le fonctionnement 2024", "expression": "{subsides.2024} / {fonctionnement.2024}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 3,
+          "options": [
+            { "value": 0.25, "expression": "{subsides.2024} / {total.2024}", "why": "C'est la part des subsides dans le budget total, pas leur rapport aux dépenses de fonctionnement." },
+            { "value": 0.39, "expression": "({subsides.2024} - {fonctionnement.2024}) / {fonctionnement.2024}", "why": "C'est l'écart relatif entre les deux postes (+39 %) : le rapport demandé est 251 ÷ 180, pas (251 − 180) ÷ 180." },
+            { "value": 0.72, "expression": "{fonctionnement.2024} / {subsides.2024}", "why": "Le rapport a été inversé : c'est le nombre d'euros de fonctionnement par euro de subsides." },
+            { "value": 1.39 }
+          ],
+          "explanation": "« Combien de A pour chaque B » se traduit par A ÷ B : la grandeur citée en premier (les subsides) va au numérateur, la référence (« chaque euro de fonctionnement ») au dénominateur."
+        }
+      ]
+    },
+    {
+      "id": "effectifs-directions",
+      "title": "Effectifs par direction d'une administration régionale, 2023 et 2024",
+      "theme": "Ressources humaines",
+      "display": "bar",
+      "rowHeader": "Direction",
+      "unit": "ETP",
+      "note": "Effectifs en équivalents temps plein (ETP) au 31 décembre de chaque année.",
+      "columns": [
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "accueil", "label": "Accueil et services aux citoyens", "values": { "2023": 240, "2024": 228 } },
+        { "key": "controle", "label": "Contrôle et inspection", "values": { "2023": 180, "2024": 207 } },
+        { "key": "informatique", "label": "Informatique", "values": { "2023": 95, "2024": 114 } },
+        { "key": "rh", "label": "Ressources humaines", "values": { "2023": 64, "2024": 62 } },
+        { "key": "juridique", "label": "Affaires juridiques", "values": { "2023": 46, "2024": 49 } }
+      ],
+      "questions": [
+        {
+          "id": "effectifs-variation-totale",
+          "skill": "variation",
+          "text": "De quel pourcentage l'effectif total de l'administration a-t-il augmenté entre 2023 et 2024 ?",
+          "formula": "Taux de variation (%) = (total d'arrivée − total de départ) ÷ total de départ × 100",
+          "steps": [
+            { "id": "t2023", "label": "Effectif total 2023 (somme des cinq directions)", "expression": "{accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}" },
+            { "id": "t2024", "label": "Effectif total 2024 (somme des cinq directions)", "expression": "{accueil.2024} + {controle.2024} + {informatique.2024} + {rh.2024} + {juridique.2024}" },
+            { "label": "Taux de variation du total, en %", "expression": "({@t2024} - {@t2023}) / {@t2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 5.3, "expression": "({@t2024} - {@t2023}) / {@t2024} * 100", "why": "L'écart (35 ETP) a été divisé par le total de 2024 au lieu de celui de 2023." },
+            { "value": 5.6 },
+            { "value": 6.7, "expression": "(({accueil.2024} - {accueil.2023}) / {accueil.2023} + ({controle.2024} - {controle.2023}) / {controle.2023} + ({informatique.2024} - {informatique.2023}) / {informatique.2023} + ({rh.2024} - {rh.2023}) / {rh.2023} + ({juridique.2024} - {juridique.2023}) / {juridique.2023}) / 5 * 100", "why": "C'est la moyenne simple des taux des cinq directions : elle donne le même poids à une petite direction (46 ETP) qu'à une grande (240 ETP). Il faut raisonner sur les totaux." },
+            { "value": 20.0, "expression": "({informatique.2024} - {informatique.2023}) / {informatique.2023} * 100", "why": "C'est la hausse de la seule direction Informatique (la plus forte), pas celle de l'ensemble de l'administration." }
+          ],
+          "explanation": "Pour une variation globale, additionnez d'abord les effectifs de chaque année, puis calculez un seul taux sur les totaux. Faire la moyenne des taux par direction revient à ignorer leur taille : c'est l'erreur de pondération la plus fréquente."
+        },
+        {
+          "id": "effectifs-ratio-accueil-rh",
+          "skill": "ratio",
+          "text": "En 2024, combien d'agents la direction Accueil et services aux citoyens compte-t-elle pour un agent des Ressources humaines ?",
+          "formula": "Ratio = effectif comparé ÷ effectif de référence",
+          "steps": [
+            { "label": "Accueil 2024 divisé par Ressources humaines 2024", "expression": "{accueil.2024} / {rh.2024}" }
+          ],
+          "format": { "decimals": 1, "unit": "agents" },
+          "answer": 1,
+          "options": [
+            { "value": 0.3, "expression": "{rh.2024} / {accueil.2024}", "why": "Le rapport a été inversé : c'est le nombre d'agents des Ressources humaines par agent de l'accueil." },
+            { "value": 3.7 },
+            { "value": 3.8, "expression": "{accueil.2023} / {rh.2023}", "why": "Ce sont les effectifs de 2023 (240 et 64) : la mauvaise série du graphique a été lue." },
+            { "value": 4.7, "expression": "{accueil.2024} / {juridique.2024}", "why": "Le calcul utilise les Affaires juridiques (49 ETP) au lieu des Ressources humaines." }
+          ],
+          "explanation": "« Combien de A pour un B » se traduit par A ÷ B. Sur un graphique à deux séries, repérez l'année dans la légende avant de lire une barre : chaque direction a une barre pour 2023 et une pour 2024."
+        },
+        {
+          "id": "effectifs-part-controle",
+          "skill": "ratio",
+          "text": "En 2024, quelle part de l'effectif total travaille dans la direction Contrôle et inspection ?",
+          "formula": "Part (%) = effectif de la direction ÷ effectif total × 100",
+          "steps": [
+            { "id": "t2024", "label": "Effectif total 2024 (somme des cinq directions)", "expression": "{accueil.2024} + {controle.2024} + {informatique.2024} + {rh.2024} + {juridique.2024}" },
+            { "label": "Contrôle et inspection 2024 rapporté au total 2024, en %", "expression": "{controle.2024} / {@t2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 28.8, "expression": "{controle.2023} / ({accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}) * 100", "why": "C'est la part en 2023 (180 ETP sur 625) : mauvaise année." },
+            { "value": 31.4 },
+            { "value": 33.1, "expression": "{controle.2024} / ({accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}) * 100", "why": "L'effectif 2024 de la direction a été divisé par le total de 2023 : les deux années sont mélangées." },
+            { "value": 45.7, "expression": "{controle.2024} / ({@t2024} - {controle.2024}) * 100", "why": "La direction a été comparée aux quatre autres directions au lieu de l'effectif total." }
+          ],
+          "explanation": "Le total n'étant pas indiqué sur le graphique, il faut d'abord additionner les cinq barres de la même année (660 ETP en 2024). Gardez la même année au numérateur et au dénominateur."
+        },
+        {
+          "id": "effectifs-projection-informatique",
+          "skill": "extrapolation",
+          "text": "Si l'effectif de la direction Informatique continue de croître chaque année au même taux qu'entre 2023 et 2024, quel sera-t-il en 2026 ?",
+          "formula": "Valeur projetée = dernière valeur × (1 + taux annuel)ⁿ, où n est le nombre d'années",
+          "steps": [
+            { "id": "coef", "label": "Coefficient multiplicateur annuel (1 + taux de 2023 à 2024)", "expression": "{informatique.2024} / {informatique.2023}" },
+            { "label": "Projection sur deux ans (2025 puis 2026)", "expression": "{informatique.2024} * {@coef} ^ 2" }
+          ],
+          "format": { "decimals": 0, "unit": "ETP" },
+          "answer": 3,
+          "options": [
+            { "value": 137, "expression": "{informatique.2024} * {@coef}", "why": "Le taux n'a été appliqué qu'une fois : c'est la projection pour 2025." },
+            { "value": 152, "expression": "{informatique.2024} + 2 * ({informatique.2024} - {informatique.2023})", "why": "Une hausse constante en nombre d'agents (+19 par an) a été appliquée, alors que l'énoncé parle d'un taux de croissance constant." },
+            { "value": 160, "expression": "{informatique.2024} * (1 + 2 * ({@coef} - 1))", "why": "Les deux hausses de 20 % ont été additionnées (+40 %) au lieu d'être composées : la seconde hausse s'applique à un effectif déjà augmenté." },
+            { "value": 164 }
+          ],
+          "explanation": "Un taux constant se compose : on multiplie par le coefficient (1 + taux) autant de fois qu'il y a d'années. Deux hausses successives de 20 % font +44 % (1,2² = 1,44), et non +40 %."
+        }
+      ]
+    },
+    {
+      "id": "permis-environnement",
+      "title": "Demandes de permis d'environnement reçues et traitées, 2019-2024",
+      "theme": "Services aux citoyens",
+      "display": "line",
+      "rowHeader": "Série",
+      "unit": "demandes",
+      "note": "Nombre de demandes reçues et de demandes traitées chaque année par une administration régionale.",
+      "columns": [
+        { "key": "2019", "label": "2019" },
+        { "key": "2020", "label": "2020" },
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "recues", "label": "Demandes reçues", "values": { "2019": 4200, "2020": 3900, "2021": 4500, "2022": 4800, "2023": 5100, "2024": 5400 } },
+        { "key": "traitees", "label": "Demandes traitées", "values": { "2019": 3900, "2020": 3600, "2021": 4300, "2022": 4600, "2023": 4700, "2024": 5100 } }
+      ],
+      "questions": [
+        {
+          "id": "permis-taux-traitement",
+          "skill": "ratio",
+          "text": "En 2023, quel pourcentage des demandes reçues dans l'année a été traité ?",
+          "formula": "Taux de traitement (%) = demandes traitées ÷ demandes reçues × 100",
+          "steps": [
+            { "label": "Demandes traitées en 2023 rapportées aux demandes reçues en 2023, en %", "expression": "{traitees.2023} / {recues.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 0,
+          "options": [
+            { "value": 92.2 },
+            { "value": 93.9, "expression": "({traitees.2019} + {traitees.2020} + {traitees.2021} + {traitees.2022} + {traitees.2023} + {traitees.2024}) / ({recues.2019} + {recues.2020} + {recues.2021} + {recues.2022} + {recues.2023} + {recues.2024}) * 100", "why": "C'est le taux de traitement sur l'ensemble de la période 2019-2024, pas celui de la seule année 2023." },
+            { "value": 94.4, "expression": "{traitees.2024} / {recues.2024} * 100", "why": "Ce sont les chiffres de 2024 : mauvaise année." },
+            { "value": 108.5, "expression": "{recues.2023} / {traitees.2023} * 100", "why": "Le rapport a été inversé : les demandes traitées vont au numérateur, les demandes reçues au dénominateur." }
+          ],
+          "explanation": "Le taux de traitement compare ce qui a été traité à ce qui a été reçu la même année. Sur un graphique à deux courbes, repérez chaque série dans la légende avant de lire les valeurs."
+        },
+        {
+          "id": "permis-variation-recues",
+          "skill": "variation",
+          "text": "De quel pourcentage le nombre de demandes reçues a-t-il augmenté entre 2020 et 2024 ?",
+          "formula": "Taux de variation (%) = (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100",
+          "steps": [
+            { "id": "ecart", "label": "Écart entre 2024 et 2020", "expression": "{recues.2024} - {recues.2020}" },
+            { "label": "Écart rapporté à la valeur de départ (2020), en %", "expression": "{@ecart} / {recues.2020} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 3,
+          "options": [
+            { "value": 9.6, "expression": "{@ecart} / {recues.2020} * 100 / 4", "why": "La hausse totale a été divisée par le nombre d'années : ce n'est ni la hausse demandée, ni un vrai taux annuel moyen (qui ne s'obtient pas par une simple division)." },
+            { "value": 27.8, "expression": "{@ecart} / {recues.2024} * 100", "why": "L'écart a été divisé par la valeur d'arrivée (2024) au lieu de la valeur de départ (2020)." },
+            { "value": 28.6, "expression": "({recues.2024} - {recues.2019}) / {recues.2019} * 100", "why": "La période commence en 2019 au lieu de 2020 : le point de départ n'est pas le bon." },
+            { "value": 38.5 }
+          ],
+          "explanation": "Repérez d'abord les deux bornes de la période demandée (2020 et 2024), puis rapportez l'écart à la valeur de départ. La question porte sur la hausse totale, pas sur une hausse annuelle."
+        },
+        {
+          "id": "permis-projection-lineaire",
+          "skill": "extrapolation",
+          "text": "De 2021 à 2024, les demandes reçues ont augmenté chaque année du même nombre. Si cette tendance se poursuit, combien de demandes seront reçues en 2027 ?",
+          "formula": "Valeur projetée = dernière valeur + nombre d'années × hausse annuelle",
+          "steps": [
+            { "id": "hausse", "label": "Hausse annuelle de 2021 à 2024 (3 ans)", "expression": "({recues.2024} - {recues.2021}) / 3" },
+            { "label": "Projection de 2024 à 2027 (3 ans)", "expression": "{recues.2024} + 3 * {@hausse}" }
+          ],
+          "format": { "decimals": 0, "unit": "demandes" },
+          "answer": 3,
+          "options": [
+            { "value": 5700, "expression": "{recues.2024} + {@hausse}", "why": "La hausse n'a été ajoutée qu'une fois : c'est la projection pour 2025." },
+            { "value": 6000, "expression": "{recues.2024} + 2 * {@hausse}", "why": "La projection s'arrête en 2026 : il y a trois années entre 2024 et 2027, pas deux." },
+            { "value": 6120, "expression": "{recues.2024} + 3 * ({recues.2024} - {recues.2019}) / 5", "why": "La hausse annuelle a été calculée depuis 2019 (240 par an), en incluant la baisse de 2020, alors que l'énoncé limite la tendance à 2021-2024." },
+            { "value": 6300 }
+          ],
+          "explanation": "Une hausse « du même nombre » chaque année est une tendance linéaire : on ajoute la même quantité (300 demandes) pour chacune des trois années à projeter. Comptez les années avec soin : de 2024 à 2027, il y en a trois."
+        }
+      ]
+    },
+    {
+      "id": "selection-centres",
+      "title": "Résultats d'une épreuve de sélection par centre d'examen",
+      "theme": "Sélection et recrutement",
+      "display": "table",
+      "rowHeader": "Centre",
+      "note": "Nombre de candidats, note moyenne et taux de réussite dans chaque centre.",
+      "columns": [
+        { "key": "candidats", "label": "Candidats", "unit": "candidats" },
+        { "key": "moyenne", "label": "Note moyenne (sur 20)", "unit": "sur 20", "decimals": 1 },
+        { "key": "reussite", "label": "Taux de réussite (%)", "unit": "%" }
+      ],
+      "rows": [
+        { "key": "bruxelles", "label": "Bruxelles", "values": { "candidats": 420, "moyenne": 12.5, "reussite": 35 } },
+        { "key": "liege", "label": "Liège", "values": { "candidats": 180, "moyenne": 11.0, "reussite": 30 } },
+        { "key": "namur", "label": "Namur", "values": { "candidats": 150, "moyenne": 13.2, "reussite": 36 } },
+        { "key": "mons", "label": "Mons", "values": { "candidats": 80, "moyenne": 10.4, "reussite": 25 } }
+      ],
+      "questions": [
+        {
+          "id": "centres-moyenne-generale",
+          "skill": "moyenne-ponderee",
+          "text": "Quelle est la note moyenne de l'ensemble des candidats, tous centres confondus ?",
+          "formula": "Moyenne pondérée = Σ (note moyenne × nombre de candidats) ÷ Σ nombre de candidats",
+          "steps": [
+            { "id": "points", "label": "Somme des points : note moyenne × candidats, pour chaque centre", "expression": "{bruxelles.moyenne} * {bruxelles.candidats} + {liege.moyenne} * {liege.candidats} + {namur.moyenne} * {namur.candidats} + {mons.moyenne} * {mons.candidats}" },
+            { "id": "effectif", "label": "Nombre total de candidats", "expression": "{bruxelles.candidats} + {liege.candidats} + {namur.candidats} + {mons.candidats}" },
+            { "label": "Moyenne pondérée", "expression": "{@points} / {@effectif}" }
+          ],
+          "format": { "decimals": 1, "unit": "sur 20" },
+          "answer": 2,
+          "options": [
+            { "value": 11.8, "expression": "({bruxelles.moyenne} + {liege.moyenne} + {namur.moyenne} + {mons.moyenne}) / 4", "why": "C'est la moyenne simple des quatre centres : elle donne autant de poids à Mons (80 candidats) qu'à Bruxelles (420 candidats)." },
+            { "value": 11.9, "expression": "({bruxelles.moyenne} * {bruxelles.reussite} + {liege.moyenne} * {liege.reussite} + {namur.moyenne} * {namur.reussite} + {mons.moyenne} * {mons.reussite}) / ({bruxelles.reussite} + {liege.reussite} + {namur.reussite} + {mons.reussite})", "why": "Les notes ont été pondérées par les taux de réussite au lieu du nombre de candidats : le poids de chaque groupe est son effectif." },
+            { "value": 12.1 },
+            { "value": 12.5, "expression": "{bruxelles.moyenne}", "why": "C'est la moyenne du seul centre de Bruxelles : le plus grand centre pèse lourd dans le résultat, mais ne le résume pas." }
+          ],
+          "explanation": "Les centres n'ont pas le même nombre de candidats : la moyenne générale est une moyenne pondérée par les effectifs. On reconstitue le total des points, puis on le divise par le nombre total de candidats."
+        },
+        {
+          "id": "centres-reussite-globale",
+          "skill": "moyenne-ponderee",
+          "text": "Quel est le taux de réussite global, tous centres confondus ?",
+          "formula": "Taux global (%) = nombre total de lauréats ÷ nombre total de candidats × 100, avec lauréats = candidats × taux de réussite",
+          "steps": [
+            { "id": "laureats", "label": "Nombre total de lauréats : candidats × taux de réussite, pour chaque centre", "expression": "{bruxelles.candidats} * {bruxelles.reussite} / 100 + {liege.candidats} * {liege.reussite} / 100 + {namur.candidats} * {namur.reussite} / 100 + {mons.candidats} * {mons.reussite} / 100" },
+            { "id": "effectif", "label": "Nombre total de candidats", "expression": "{bruxelles.candidats} + {liege.candidats} + {namur.candidats} + {mons.candidats}" },
+            { "label": "Taux de réussite global, en %", "expression": "{@laureats} / {@effectif} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 31.5, "expression": "({bruxelles.reussite} + {liege.reussite} + {namur.reussite} + {mons.reussite}) / 4", "why": "C'est la moyenne simple des quatre taux : elle ignore que Bruxelles compte plus de cinq fois plus de candidats que Mons." },
+            { "value": 32.5, "expression": "({liege.reussite} + {bruxelles.reussite}) / 2", "why": "C'est la médiane des quatre taux (la moyenne des deux valeurs centrales, 30 % et 35 %), pas le taux global." },
+            { "value": 33.1 },
+            { "value": 35.0, "expression": "{bruxelles.reussite}", "why": "C'est le taux du seul centre de Bruxelles." }
+          ],
+          "explanation": "Un taux global se calcule sur les totaux : on reconstitue le nombre de lauréats de chaque centre (candidats × taux), on les additionne, puis on divise par le nombre total de candidats."
+        },
+        {
+          "id": "centres-projection-namur",
+          "skill": "extrapolation",
+          "text": "L'an prochain, le nombre de candidats à Namur devrait augmenter de 20 %, avec le même taux de réussite. Combien de lauréats faut-il alors prévoir à Namur ?",
+          "formula": "Lauréats prévus = candidats actuels × (1 + hausse) × taux de réussite",
+          "steps": [
+            { "id": "candidats", "label": "Candidats prévus à Namur (+20 %)", "expression": "{namur.candidats} * 1.2" },
+            { "label": "Lauréats prévus, au même taux de réussite", "expression": "{@candidats} * {namur.reussite} / 100" }
+          ],
+          "format": { "decimals": 0, "unit": "lauréats" },
+          "answer": 1,
+          "options": [
+            { "value": 54, "expression": "{namur.candidats} * {namur.reussite} / 100", "why": "C'est le nombre actuel de lauréats : la hausse de 20 % des candidats a été oubliée." },
+            { "value": 65 },
+            { "value": 74, "expression": "{namur.candidats} * {namur.reussite} / 100 + 20", "why": "La hausse de 20 % a été ajoutée comme 20 lauréats supplémentaires, au lieu d'un pourcentage." },
+            { "value": 78, "expression": "{namur.candidats} * 1.2 * 1.2 * {namur.reussite} / 100", "why": "La hausse de 20 % a été appliquée deux fois, aux candidats puis aux lauréats." }
+          ],
+          "explanation": "On applique d'abord la hausse au nombre de candidats (150 × 1,2 = 180), puis le taux de réussite inchangé (36 %). Le résultat, 64,8, s'arrondit à 65 lauréats."
+        }
+      ]
+    },
+    {
+      "id": "achats-fournitures",
+      "title": "Achats de fournitures de bureau : quantités et prix unitaires, 2023 et 2024",
+      "theme": "Marchés publics",
+      "display": "table",
+      "rowHeader": "Fourniture",
+      "note": "Prix unitaires hors TVA.",
+      "columns": [
+        { "key": "q2023", "label": "Quantité 2023", "unit": "unités" },
+        { "key": "p2023", "label": "Prix unitaire 2023 (€)", "unit": "€", "decimals": 2 },
+        { "key": "q2024", "label": "Quantité 2024", "unit": "unités" },
+        { "key": "p2024", "label": "Prix unitaire 2024 (€)", "unit": "€", "decimals": 2 }
+      ],
+      "rows": [
+        { "key": "papier", "label": "Papier (ramettes)", "values": { "q2023": 1200, "p2023": 4.2, "q2024": 1000, "p2024": 4.6 } },
+        { "key": "toner", "label": "Toner (cartouches)", "values": { "q2023": 150, "p2023": 62, "q2024": 160, "p2024": 58 } },
+        { "key": "classeurs", "label": "Classeurs", "values": { "q2023": 800, "p2023": 2.5, "q2024": 900, "p2024": 2.4 } }
+      ],
+      "questions": [
+        {
+          "id": "fournitures-prix-moyen",
+          "skill": "moyenne-ponderee",
+          "text": "En 2024, quel est le prix moyen d'un article acheté, toutes fournitures confondues ?",
+          "formula": "Prix moyen pondéré = Σ (quantité × prix unitaire) ÷ Σ quantités = dépense totale ÷ nombre d'articles",
+          "steps": [
+            { "id": "depense", "label": "Dépense totale 2024 : quantité × prix, pour chaque fourniture", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "id": "articles", "label": "Nombre total d'articles achetés en 2024", "expression": "{papier.q2024} + {toner.q2024} + {classeurs.q2024}" },
+            { "label": "Prix moyen par article", "expression": "{@depense} / {@articles}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 2,
+          "options": [
+            { "value": 7.51, "expression": "({papier.q2023} * {papier.p2024} + {toner.q2023} * {toner.p2024} + {classeurs.q2023} * {classeurs.p2024}) / ({papier.q2023} + {toner.q2023} + {classeurs.q2023})", "why": "Les prix de 2024 ont été pondérés par les quantités de 2023 : les deux années sont mélangées." },
+            { "value": 7.6, "expression": "({papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}) / ({papier.q2023} + {toner.q2023} + {classeurs.q2023})", "why": "C'est le prix moyen de 2023 : mauvaise année." },
+            { "value": 7.79 },
+            { "value": 21.67, "expression": "({papier.p2024} + {toner.p2024} + {classeurs.p2024}) / 3", "why": "C'est la moyenne simple des trois prix : elle donne au toner (160 cartouches) le même poids qu'au papier (1 000 ramettes)." }
+          ],
+          "explanation": "Le prix moyen d'un article est la dépense totale divisée par le nombre total d'articles. Les fournitures bon marché achetées en grande quantité tirent la moyenne vers le bas : c'est l'effet de la pondération."
+        },
+        {
+          "id": "fournitures-variation-depense",
+          "skill": "variation",
+          "text": "De quel pourcentage la dépense totale en fournitures a-t-elle varié entre 2023 et 2024 ?",
+          "formula": "Taux de variation (%) = (dépense 2024 − dépense 2023) ÷ dépense 2023 × 100",
+          "steps": [
+            { "id": "d2023", "label": "Dépense totale 2023 : Σ quantité × prix", "expression": "{papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}" },
+            { "id": "d2024", "label": "Dépense totale 2024 : Σ quantité × prix", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "label": "Taux de variation de la dépense, en %", "expression": "({@d2024} - {@d2023}) / {@d2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%", "signed": true },
+          "answer": 1,
+          "options": [
+            { "value": -1.9, "expression": "({@d2024} - {@d2023}) / {@d2024} * 100", "why": "L'écart a été divisé par la dépense de 2024 (valeur d'arrivée) au lieu de celle de 2023." },
+            { "value": -1.8 },
+            { "value": -0.3, "expression": "(({papier.p2024} - {papier.p2023}) / {papier.p2023} + ({toner.p2024} - {toner.p2023}) / {toner.p2023} + ({classeurs.p2024} - {classeurs.p2023}) / {classeurs.p2023}) / 3 * 100", "why": "C'est la moyenne des variations de prix : elle ignore les quantités achetées, qui ont aussi changé, et le poids de chaque fourniture dans la dépense." },
+            { "value": 1.8, "expression": "({@d2023} - {@d2024}) / {@d2023} * 100", "why": "Le sens de la variation est inversé : la dépense a baissé (de 16 340 € à 16 040 €), le taux doit donc être négatif." }
+          ],
+          "explanation": "Une dépense totale se reconstitue en multipliant chaque quantité par son prix, puis en additionnant. Le taux de variation se calcule ensuite sur ces totaux, et son signe indique le sens : ici, une baisse."
+        },
+        {
+          "id": "fournitures-part-toner",
+          "skill": "ratio",
+          "text": "En 2024, quelle part de la dépense totale en fournitures le toner représente-t-il ?",
+          "formula": "Part (%) = dépense en toner ÷ dépense totale × 100",
+          "steps": [
+            { "id": "toner", "label": "Dépense en toner 2024 : quantité × prix", "expression": "{toner.q2024} * {toner.p2024}" },
+            { "id": "total", "label": "Dépense totale 2024", "expression": "{papier.q2024} * {papier.p2024} + {@toner} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "label": "Part du toner dans la dépense, en %", "expression": "{@toner} / {@total} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 7.8, "expression": "{toner.q2024} / ({papier.q2024} + {toner.q2024} + {classeurs.q2024}) * 100", "why": "C'est la part du toner dans le nombre d'articles achetés, pas dans la dépense : il faut tenir compte des prix." },
+            { "value": 56.9, "expression": "{toner.q2023} * {toner.p2023} / ({papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}) * 100", "why": "C'est la part du toner en 2023 : mauvaise année." },
+            { "value": 57.9 },
+            { "value": 137.3, "expression": "{@toner} / ({@total} - {@toner}) * 100", "why": "Le toner a été comparé aux autres fournitures au lieu de la dépense totale." }
+          ],
+          "explanation": "Une part de dépense se calcule sur des montants (quantité × prix), pas sur des quantités. Peu nombreuses mais chères, les cartouches de toner représentent plus de la moitié de la dépense."
+        }
+      ]
+    }
+  ]
+}

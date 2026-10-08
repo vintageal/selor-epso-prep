@@ -8,9 +8,20 @@ import { optionButton, sequenceCells } from '../abstrait/view.js';
 import { createElement, hiddenFromScreenReaders, moveFocusTo } from '../lib/dom.js';
 import { ANSWERS, METHOD_TIPS, answerLabel, frenchTypography } from '../verbal/quiz.js';
 import { choiceButton, evidenceQuotes, passageParagraphs } from '../verbal/view.js';
+import {
+  answerSentence,
+  calculationDetails,
+  dataTable,
+  errorHint,
+  optionButton as numericOptionButton,
+  scenarioVisual,
+} from '../numerique/view.js';
 import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam } from './exam.js';
 
-const BANK_URL = new URL('../../../data/verbal.json', import.meta.url);
+const BANK_URLS = {
+  passages: new URL('../../../data/verbal.json', import.meta.url),
+  scenarios: new URL('../../../data/numerique.json', import.meta.url),
+};
 const TICK_MS = 250;
 const WARNING_MS = 5 * 60 * 1000;
 const CRITICAL_MS = 60 * 1000;
@@ -18,7 +29,7 @@ const ANNOUNCEMENTS = [
   { at: 5 * 60 * 1000, text: 'Attention : il reste 5 minutes.' },
   { at: 60 * 1000, text: 'Attention : il reste 1 minute.' },
 ];
-const ABSTRACT_KEYS = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
+const OPTION_KEYS = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
 const VERBAL_KEYS = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.map((key) => [key, id])));
 const REVIEW_STATUS = {
   correct: { icon: '✓', label: 'Bonne réponse' },
@@ -32,6 +43,7 @@ const ui = {
   introTitle: $('#intro-titre'),
   introCount: $('[data-intro-count]'),
   introDuration: $('[data-intro-duration]'),
+  introSections: $('[data-intro-sections]'),
   introMix: $('[data-intro-mix]'),
   start: $('[data-start]'),
   startLabel: $('[data-start-label]'),
@@ -68,7 +80,7 @@ const ui = {
   restart: $('[data-restart]'),
 };
 
-const state = { passages: [], session: null, index: 0, running: false, timerId: null, announced: new Set() };
+const state = { banks: null, session: null, index: 0, running: false, timerId: null, announced: new Set() };
 const currentItem = () => state.session.items[state.index];
 const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
 
@@ -134,12 +146,43 @@ const renderVerbalQuestion = ({ passage, statement }, answer) => {
     choices,
   );
 
-  const layout = createElement('div', 'exam-verbal');
+  const layout = createElement('div', 'exam-split');
   layout.append(article, side);
   return [layout];
 };
 
-const buttonValue = (button) => (button.classList.contains('option') ? Number(button.dataset.index) : button.dataset.answer);
+const renderNumericQuestion = ({ scenario, question }, answer) => {
+  const article = createElement('article', 'exam-passage');
+  article.append(
+    createElement('span', 'exam-passage__theme', scenario.theme),
+    createElement('h3', 'exam-passage__title', frenchTypography(scenario.title)),
+    createElement('p', 'exam-passage__note', frenchTypography(`${scenario.note ?? ''} Données fictives.`.trim())),
+    scenarioVisual(scenario),
+  );
+
+  const label = createElement('p', 'exam-prompt', 'Votre réponse');
+  label.id = 'examen-choix';
+  const choices = labelledGroup('choice-list', label.id);
+  choices.append(
+    ...question.options.map((option, index) => {
+      const button = numericOptionButton(question, option, index);
+      button.setAttribute('aria-pressed', String(answer === index));
+      return button;
+    }),
+  );
+
+  const side = createElement('div', 'exam-statement');
+  side.append(createElement('p', 'exam-label', 'Question'), createElement('p', 'statement-box', frenchTypography(question.text)), label, choices);
+
+  const layout = createElement('div', 'exam-split');
+  layout.append(article, side);
+  return [layout];
+};
+
+const QUESTION_RENDERERS = { abstrait: renderAbstractQuestion, verbal: renderVerbalQuestion, numerique: renderNumericQuestion };
+
+/** Valeur d'un bouton de réponse : identifiant (verbal) ou index de la proposition (abstrait, numérique). */
+const buttonValue = (button) => button.dataset.answer ?? Number(button.dataset.index);
 
 const renderPalette = () => {
   const { session } = state;
@@ -183,7 +226,7 @@ const showQuestion = (index, { focus = true } = {}) => {
   ui.questionTitle.textContent = `Question ${state.index + 1} sur ${session.items.length}`;
   ui.sectionChip.textContent = SECTIONS[item.type];
   ui.sectionChip.dataset.section = item.type;
-  ui.body.replaceChildren(...(item.type === 'abstrait' ? renderAbstractQuestion(item, answer) : renderVerbalQuestion(item, answer)));
+  ui.body.replaceChildren(...QUESTION_RENDERERS[item.type](item, answer));
   ui.prev.disabled = state.index === 0;
   ui.next.disabled = state.index === session.items.length - 1;
   updateQuestionControls();
@@ -227,7 +270,7 @@ const tick = () => {
 };
 
 const startExam = () => {
-  const items = createExam(state.passages);
+  const items = createExam(state.banks);
   state.session = new ExamSession(items, { durationMs: EXAM_CONFIG.durationMs, startedAt: Date.now() });
   state.running = true;
   // Les alertes supérieures à la durée de l'examen n'ont pas lieu d'être.
@@ -292,7 +335,7 @@ const verdictMessage = (grade, session) => {
       ? 'Excellent résultat dans les conditions de l\'épreuve.'
       : rate >= 0.6
         ? 'Bon résultat : analysez la correction des questions manquées pour gagner encore quelques points.'
-        : 'Continuez à vous entraîner dans les modules abstrait et verbal, puis retentez l\'examen.',
+        : 'Continuez à vous entraîner dans les modules d\'entraînement, puis retentez l\'examen.',
   ];
   const sections = Object.entries(grade.bySection).map(([id, { correct, total }]) => ({ id, rate: correct / total, correct, total }));
   const [weakest, strongest] = [...sections].sort((a, b) => a.rate - b.rate);
@@ -376,6 +419,36 @@ const reviewVerbal = ({ item: { passage, statement }, answer, status }) => {
   ];
 };
 
+const reviewNumeric = ({ item: { scenario, question }, answer }) => {
+  const choices = createElement('div', 'choice-list');
+  choices.append(
+    ...question.options.map((option, index) => {
+      const button = numericOptionButton(question, option, index);
+      button.disabled = true;
+      if (index === question.answer) markButton(button, 'correct', 'Bonne réponse', 'choice__status');
+      else if (index === answer) markButton(button, 'wrong', 'Votre choix', 'choice__status');
+      else button.dataset.state = 'dimmed';
+      return button;
+    }),
+  );
+
+  const data = createElement('details', 'review-passage');
+  data.append(createElement('summary', '', 'Afficher les données'), createElement('p', 'exam-passage__title', frenchTypography(scenario.title)), dataTable(scenario));
+
+  const hint = answer === null ? null : errorHint(question, answer);
+  return [
+    createElement('p', 'exam-label', frenchTypography(`Données : ${scenario.title}`)),
+    createElement('p', 'statement-box', frenchTypography(question.text)),
+    choices,
+    createElement('p', 'review-answer', frenchTypography(answerSentence(question, answer))),
+    ...(hint ? [hint] : []),
+    ...calculationDetails(scenario, question),
+    data,
+  ];
+};
+
+const REVIEW_RENDERERS = { abstrait: reviewAbstract, verbal: reviewVerbal, numerique: reviewNumeric };
+
 const reviewItem = (result, index) => {
   const { item, status } = result;
   const details = createElement('details', 'review-item');
@@ -391,7 +464,7 @@ const reviewItem = (result, index) => {
   );
 
   const body = createElement('div', 'review-item__body');
-  body.append(...(item.type === 'abstrait' ? reviewAbstract(result) : reviewVerbal(result)));
+  body.append(...REVIEW_RENDERERS[item.type](result));
   details.append(summary, body);
 
   const entry = createElement('li');
@@ -450,7 +523,7 @@ ui.body.addEventListener('click', (event) => {
   if (button) selectAnswer(buttonValue(button));
 });
 
-// Raccourcis : flèches pour naviguer, A-D / 1-4 (abstrait) ou V, F, ? / 1-3 (verbal) pour répondre.
+// Raccourcis : flèches pour naviguer, A-D / 1-4 (abstrait, numérique) ou V, F, ? / 1-3 (verbal) pour répondre.
 document.addEventListener('keydown', (event) => {
   if (!state.running || ui.confirm.open || event.altKey || event.ctrlKey || event.metaKey) return;
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -461,7 +534,7 @@ document.addEventListener('keydown', (event) => {
     }
     return;
   }
-  const keys = currentItem().type === 'abstrait' ? ABSTRACT_KEYS : VERBAL_KEYS;
+  const keys = currentItem().type === 'verbal' ? VERBAL_KEYS : OPTION_KEYS;
   const value = keys[event.key.toLowerCase()];
   if (value === undefined) return;
   event.preventDefault();
@@ -470,18 +543,24 @@ document.addEventListener('keydown', (event) => {
 
 /* ----- Démarrage ----- */
 
-const { abstractCount, verbalCount, durationMs } = EXAM_CONFIG;
-ui.introCount.textContent = String(abstractCount + verbalCount);
+const { abstractCount, verbalCount, numericCount, durationMs } = EXAM_CONFIG;
+ui.introCount.textContent = String(abstractCount + verbalCount + numericCount);
+ui.introSections.textContent = String(Object.keys(SECTIONS).length);
 ui.introDuration.textContent = `${durationMs / 60000} min`;
 ui.introMix.textContent = frenchTypography(
-  `${abstractCount} questions de raisonnement abstrait et ${verbalCount} de raisonnement verbal, dans un ordre aléatoire.`,
+  `${abstractCount} questions de raisonnement abstrait, ${verbalCount} de raisonnement verbal et ${numericCount} de raisonnement numérique, dans un ordre aléatoire.`,
 );
 ui.timerValue.textContent = formatClock(durationMs);
 
 try {
-  const response = await fetch(BANK_URL);
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  state.passages = (await response.json()).passages;
+  const [passages, scenarios] = await Promise.all(
+    Object.entries(BANK_URLS).map(async ([key, url]) => {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`${url.pathname} : HTTP ${response.status}`);
+      return (await response.json())[key];
+    }),
+  );
+  state.banks = { passages, scenarios };
   ui.start.disabled = false;
   ui.startLabel.textContent = 'Commencer l\'examen';
 } catch (error) {

@@ -9,40 +9,53 @@ import { shuffle } from '../lib/random.js';
 export const EXAM_CONFIG = Object.freeze({
   abstractCount: 10,
   verbalCount: 10,
-  durationMs: 20 * 60 * 1000,
+  numericCount: 10,
+  durationMs: 30 * 60 * 1000,
 });
 
 export const SECTIONS = {
   abstrait: 'Raisonnement abstrait',
   verbal: 'Raisonnement verbal',
+  numerique: 'Raisonnement numérique',
 };
 
 /**
- * Tire `count` affirmations en les répartissant le plus équitablement possible
- * entre les textes (une par texte, puis une deuxième, etc.).
+ * Tire `count` éléments (`group[itemsKey]`) en les répartissant le plus équitablement
+ * possible entre les groupes : un par groupe, puis un deuxième, etc. Sert pour les
+ * affirmations (réparties entre les textes) et les questions numériques (entre les jeux de données).
  */
-export function pickVerbalItems(passages, count, random = Math.random) {
-  const pools = shuffle(random, passages).map((passage) => ({ passage, statements: shuffle(random, passage.statements) }));
+export function pickSpread(groups, itemsKey, count, random = Math.random) {
+  const pools = shuffle(random, groups).map((group) => ({ group, items: shuffle(random, group[itemsKey]) }));
   const picked = [];
-  for (let round = 0; picked.length < count && pools.some((pool) => round < pool.statements.length); round += 1) {
-    for (const { passage, statements } of pools) {
+  for (let round = 0; picked.length < count && pools.some((pool) => round < pool.items.length); round += 1) {
+    for (const { group, items } of pools) {
       if (picked.length === count) break;
-      if (round < statements.length) picked.push({ passage, statement: statements[round] });
+      if (round < items.length) picked.push({ group, item: items[round] });
     }
   }
   return picked;
 }
 
-/** Compose un examen : questions abstraites générées et affirmations verbales tirées, puis mélangées. */
-export function createExam(passages, { random = Math.random, config = EXAM_CONFIG } = {}) {
+/**
+ * Compose un examen : questions abstraites générées, affirmations verbales et
+ * questions numériques tirées des banques, le tout mélangé.
+ */
+export function createExam({ passages, scenarios }, { random = Math.random, config = EXAM_CONFIG } = {}) {
   const nextAbstract = createQuestionStream(random);
-  const abstractItems = Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() }));
-  const verbalItems = pickVerbalItems(passages, config.verbalCount, random).map((item) => ({ type: 'verbal', ...item }));
-  return shuffle(random, [...abstractItems, ...verbalItems]).map((item, index) => ({ id: `q${index + 1}`, ...item }));
+  const items = [
+    ...Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() })),
+    ...pickSpread(passages, 'statements', config.verbalCount, random).map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
+    ...pickSpread(scenarios, 'questions', config.numericCount, random).map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
+  ];
+  return shuffle(random, items).map((item, index) => ({ id: `q${index + 1}`, ...item }));
 }
 
-/** Réponse attendue : index de la proposition (abstrait) ou identifiant de réponse (verbal). */
-export const expectedAnswer = (item) => (item.type === 'abstrait' ? item.question.correctIndex : item.statement.answer);
+/** Réponse attendue : index de la proposition (abstrait, numérique) ou identifiant de réponse (verbal). */
+export const expectedAnswer = (item) => {
+  if (item.type === 'abstrait') return item.question.correctIndex;
+  if (item.type === 'numerique') return item.question.answer;
+  return item.statement.answer;
+};
 
 /** Session d'examen : réponses, questions marquées « à revoir » et chronomètre strict. */
 export class ExamSession {
