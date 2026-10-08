@@ -74,6 +74,15 @@ test('la plus et la moins adéquate sont sans ambiguïté : l’explication l’
   }
 });
 
+test('la longueur ne trahit pas la réponse : l’action la plus adéquate n’est pas toujours la plus longue', () => {
+  const longestIsBest = bank.scenarios.filter((scenario) => {
+    const longest = scenario.actions.reduce((a, b) => (b.text.length > a.text.length ? b : a));
+    return longest.rank === 1;
+  });
+  assert.ok(longestIsBest.length <= bank.scenarios.length * 0.6,
+    `l'action la plus adéquate est la plus longue dans ${longestIsBest.length} situations sur ${bank.scenarios.length}`);
+});
+
 test('aucun doublon ni quasi-doublon : titres, situations et actions', () => {
   const titles = bank.scenarios.map((scenario) => scenario.title);
   assert.equal(new Set(titles).size, titles.length, 'titres en double');

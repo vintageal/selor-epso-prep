@@ -281,24 +281,24 @@
       "actions": [
         {
           "id": "accompagner",
-          "text": "Vous proposez à Amina de lui montrer les points délicats de l'encodage et de rester disponible pour ses questions, puis vous suggérez à votre cheffe d'organiser un parrainage pour les nouveaux arrivants.",
+          "text": "Vous proposez à Amina de lui montrer les points délicats de l'encodage et de répondre à ses questions, puis vous suggérez à votre cheffe un parrainage des nouveaux arrivants.",
           "rank": 1,
           "competencies": ["equipe", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous agissez tôt, directement et avec bienveillance : Amina reçoit l'aide concrète qui lui manque, sans être mise en difficulté devant les autres. Sur le plan psychologique, une nouvelle recrue qui pose peu de questions craint souvent de déranger ; une offre d'aide explicite lève cette barrière. Sur le plan managérial, votre suggestion de parrainage transforme une solution ponctuelle en pratique d'équipe durable. Compétences démontrées : travail en équipe et communication, au service de la qualité des dossiers."
         },
         {
           "id": "signaler-cheffe",
-          "text": "Vous informez votre cheffe d'équipe que la formation d'Amina semble insuffisante et qu'elle commet des erreurs d'encodage, pour qu'elle organise un accompagnement.",
+          "text": "Vous signalez à votre cheffe d'équipe qu'Amina n'a pas été suffisamment formée et commet des erreurs d'encodage, et vous lui demandez d'organiser un accompagnement.",
           "rank": 2,
           "competencies": ["communication", "resultats"],
           "explanation": "Réponse acceptable. Informer votre cheffe permet d'organiser une formation adaptée et de prévenir de nouvelles erreurs, ce qui est utile pour la qualité du service. Mais vous déléguez entièrement une aide que vous pourriez apporter vous-même tout de suite, et Amina risque de vivre cette démarche comme un signalement plutôt que comme un soutien. Une aide directe, complétée par cette information, aurait été plus efficace."
         },
         {
-          "id": "corriger-discretement",
-          "text": "Vous corrigez discrètement les dossiers erronés d'Amina chaque fois que vous les repérez, sans lui en parler pour ne pas la vexer.",
+          "id": "renvoyer-au-manuel",
+          "text": "Vous conseillez à Amina de relire le manuel des procédures publié sur l'intranet et de vérifier deux fois chaque dossier avant de l'encoder, pour qu'elle apprenne à se corriger par elle-même.",
           "rank": 3,
-          "competencies": ["resultats"],
-          "explanation": "Réponse peu adéquate. L'intention est bienveillante et les dossiers sont corrigés, mais le problème de fond demeure : Amina ne sait pas qu'elle se trompe et continuera à commettre les mêmes erreurs. Vous prenez sur vous une charge de travail invisible, qui finira par peser sur vous et sur l'équipe. Éviter une conversation par crainte de vexer prive aussi votre collègue de l'occasion de progresser."
+          "competencies": ["communication", "equipe"],
+          "explanation": "Réponse peu adéquate. Vous lui faites remarquer ses erreurs, ce qui vaut mieux que le silence, mais vous la renvoyez seule vers un document, alors que son problème vient justement d'un manque d'explications. Un manuel ne répond pas aux questions pratiques qu'une nouvelle recrue n'ose pas poser, et la double vérification ralentit son travail sans lui apprendre ce qui ne va pas. Vous transformez un besoin d'accompagnement en exigence individuelle, et les collègues continueront à corriger ses dossiers."
         },
         {
           "id": "reunion-equipe",
@@ -315,8 +315,8 @@
       "theme": "Gestion de conflit",
       "competency": "equipe",
       "competencies": ["equipe", "problemes", "communication"],
-      "difficulty": 2,
-      "context": "Vous faites partie d'une équipe de quatre analystes dans une agence de l'Union européenne, chargée de préparer un rapport annuel.",
+      "difficulty": 3,
+      "context": "Vous faites partie d'une équipe de quatre analystes chargée de préparer le rapport annuel d'une agence de l'Union européenne.",
       "situation": [
         "Pieter et Sofia, deux collègues expérimentés, ne s'accordent pas sur la structure du rapport : Pieter veut le présenter par pays, Sofia par thème. Les deux dernières réunions se sont terminées sans décision, dans une ambiance tendue.",
         "La coordinatrice de l'équipe est en mission cette semaine, mais joignable. Le premier projet de rapport doit être remis dans deux semaines."
@@ -325,24 +325,24 @@
       "actions": [
         {
           "id": "criteres-communs",
-          "text": "Vous proposez à Pieter et Sofia de comparer les deux structures à partir de critères communs, comme les attentes des lecteurs et le délai, de tester chacune sur un chapitre, puis de soumettre l'option retenue à la coordinatrice.",
+          "text": "Vous proposez à Pieter et Sofia de comparer les deux structures selon des critères communs, comme les attentes des lecteurs et le délai, puis de soumettre l'option retenue à la coordinatrice.",
           "rank": 1,
           "competencies": ["equipe", "problemes", "communication"],
-          "explanation": "C'est l'action la plus adéquate. Vous déplacez le débat des personnes vers des critères partagés, ce qui apaise la tension : personne ne « gagne » contre l'autre, l'équipe choisit la solution la mieux adaptée. Le test sur un chapitre apporte des éléments concrets plutôt que des opinions. En associant la coordinatrice à la décision finale, vous respectez son rôle sans lui déléguer tout le travail. Compétences démontrées : travail en équipe, résolution de problèmes et communication."
+          "explanation": "C'est l'action la plus adéquate. Vous déplacez le débat des personnes vers des critères partagés, ce qui apaise la tension : personne ne « gagne » contre l'autre, l'équipe choisit la solution la mieux adaptée aux lecteurs et au calendrier. Des critères explicites apportent des éléments concrets plutôt que des opinions. En associant la coordinatrice à la décision finale, vous respectez son rôle sans lui déléguer tout le travail. Compétences démontrées : travail en équipe, résolution de problèmes et communication."
         },
         {
           "id": "demander-coordinatrice",
-          "text": "Vous écrivez à la coordinatrice pour lui expliquer le blocage et lui demander de trancher entre les deux structures avant la fin de la semaine.",
+          "text": "Vous écrivez à la coordinatrice pour lui résumer les arguments de Pieter et de Sofia, et vous lui demandez de trancher entre les deux structures avant la fin de la semaine pour ne pas compromettre le délai.",
           "rank": 2,
           "competencies": ["communication"],
-          "explanation": "Réponse acceptable. Le blocage menace le délai, et la coordinatrice a la légitimité pour trancher : l'informer est utile. Toutefois, vous lui faites remonter le problème sans avoir tenté de le faire avancer au sein de l'équipe, alors que des critères objectifs auraient peut-être suffi à dégager un accord. Une décision imposée à distance risque aussi de laisser l'un des deux collègues frustré."
+          "explanation": "Réponse acceptable. Le blocage menace le délai, et la coordinatrice a la légitimité pour trancher : l'informer est utile. Toutefois, vous lui faites remonter le problème sans avoir proposé à l'équipe une méthode pour sortir du blocage, alors que des critères objectifs auraient peut-être suffi à dégager un accord. Une décision imposée à distance risque aussi de laisser l'un des deux collègues frustré."
         },
         {
           "id": "chacun-sa-partie",
           "text": "Vous avancez sur vos propres chapitres avec la structure qui vous semble la plus logique, en laissant Pieter et Sofia régler leur différend entre eux.",
           "rank": 3,
           "competencies": ["resultats"],
-          "explanation": "Réponse peu adéquate. Vous restez productif, mais vous vous retirez d'un problème qui concerne toute l'équipe. Sans structure commune, vos chapitres devront peut-être être réécrits, et le blocage risque de durer jusqu'à compromettre le délai. Ne pas prendre parti est une bonne chose, mais l'indifférence face à un conflit qui paralyse le projet n'est pas une attitude de travail en équipe."
+          "explanation": "Réponse peu adéquate. Vous restez productif(ve), mais vous vous retirez d'un problème qui concerne toute l'équipe. Sans structure commune, vos chapitres devront peut-être être réécrits, et le blocage risque de durer jusqu'à compromettre le délai. Ne pas prendre parti est une bonne chose, mais l'indifférence face à un conflit qui paralyse le projet n'est pas une attitude de travail en équipe."
         },
         {
           "id": "prendre-parti",
@@ -369,7 +369,7 @@
       "actions": [
         {
           "id": "entretien-thomas",
-          "text": "Après la réunion, vous demandez à Thomas un moment en privé pour lui dire calmement que vous auriez souhaité que votre rôle soit mentionné, et vous convenez avec lui de présenter ensemble le travail au comité.",
+          "text": "Après la réunion, vous demandez à Thomas un moment en privé pour lui dire calmement que vous auriez souhaité que votre rôle soit mentionné, et vous convenez avec lui de proposer à la directrice de présenter le travail à deux au comité.",
           "rank": 1,
           "competencies": ["equipe", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous traitez le problème à sa source, avec la personne concernée, sans l'accuser : il peut s'agir d'une maladresse due au stress plutôt que d'une volonté de s'approprier le travail. Le cadre privé lui permet de rectifier sans perdre la face. En fixant une règle concrète pour la prochaine présentation, vous préservez la collaboration et rendez votre contribution visible. Compétences démontrées : travail en équipe et communication assertive."
@@ -390,10 +390,10 @@
         },
         {
           "id": "interrompre",
-          "text": "Vous interrompez la présentation devant la directrice pour préciser que c'est vous qui avez conçu la méthode d'analyse.",
+          "text": "Vous intervenez aussitôt, devant la directrice, pour dire que Thomas s'attribue un travail dont vous avez conçu toute la méthode.",
           "rank": 4,
           "competencies": ["communication", "equipe"],
-          "explanation": "C'est l'action la moins adéquate. Corriger un collègue en pleine réunion, devant la hiérarchie, le met en difficulté et transforme une question de reconnaissance en affrontement public. Même si votre rôle est réel, la forme vous dessert : vous apparaissez plus soucieux(se) de votre image que du travail commun. La relation avec Thomas en sortira durablement abîmée, et la directrice retiendra surtout la tension."
+          "explanation": "C'est l'action la moins adéquate. Accuser un collègue devant la hiérarchie, sans lui avoir parlé, le met en difficulté et transforme une question de reconnaissance en affrontement public. Même si votre rôle est réel, la forme vous dessert : vous apparaissez plus soucieux(euse) de votre image que du travail commun. La relation avec Thomas en sortira durablement abîmée, et la directrice retiendra surtout la tension."
         }
       ]
     },
@@ -413,14 +413,14 @@
       "actions": [
         {
           "id": "echeances-du-jour",
-          "text": "Vous demandez à Lucas s'il y a eu des urgences pendant votre absence, vous préparez la réunion de 10 h et les chiffres pour midi, puis vous triez vos messages par expéditeur et par échéance.",
+          "text": "Vous demandez à Lucas s'il y a eu des urgences, vous préparez la réunion de 10 h et les chiffres pour midi, puis vous triez vos messages par échéance.",
           "rank": 1,
           "competencies": ["priorites", "resultats", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous identifiez d'abord les échéances fermes de la journée, la réunion et la demande de votre chef, et vous les sécurisez. Le point avec Lucas vous donne en quelques minutes une vue sur les urgences que deux cents messages vous auraient cachées. Le tri méthodique du reste évite ensuite de vous disperser. Compétences démontrées : organisation et priorités, orientation résultats et communication au sein de l'équipe."
         },
         {
           "id": "trier-dabord",
-          "text": "Vous consacrez la première heure à trier vos messages par ordre d'importance, pour avoir une vue complète avant de commencer quoi que ce soit.",
+          "text": "Vous consacrez la première heure à trier vos messages par expéditeur et par ordre d'importance, pour avoir une vue complète de la situation avant de préparer la réunion et les chiffres.",
           "rank": 2,
           "competencies": ["priorites"],
           "explanation": "Réponse acceptable. Trier ses messages est une bonne méthode, et une vue d'ensemble aide à fixer les priorités. Mais vous consacrez votre première heure à une tâche sans échéance, alors que la réunion de 10 h et les chiffres pour midi sont déjà connus. Vous risquez d'arriver mal préparé(e) à la réunion, et vous n'exploitez pas l'aide de Lucas, qui connaît les urgences de ces deux semaines."
@@ -445,40 +445,40 @@
       "id": "delai-irrealiste",
       "title": "Un délai impossible à tenir",
       "theme": "Relation avec la hiérarchie",
-      "competency": "priorites",
-      "competencies": ["priorites", "resultats", "communication"],
+      "competency": "resultats",
+      "competencies": ["resultats", "priorites", "communication"],
       "difficulty": 2,
       "context": "Vous êtes analyste dans une direction générale d'un service public fédéral.",
       "situation": [
-        "Mardi, votre directeur vous demande une analyse complète de quatre cents dossiers de subsides pour vendredi : le ministre doit répondre à une question parlementaire la semaine suivante.",
-        "Selon votre estimation, une analyse complète et fiable demande au moins deux semaines de travail. Vos autres dossiers en cours ont aussi des échéances."
+        "Votre directeur vous demande une analyse complète de quatre cents dossiers de subsides d'ici cinq jours ouvrables : le ministre doit répondre à une question parlementaire la semaine suivante.",
+        "Selon votre estimation, une analyse complète et fiable demande au moins quinze jours ouvrables. Vos autres dossiers en cours ont aussi des échéances."
       ],
-      "debrief": "Face à un délai irréaliste, accepter en silence ou refuser en bloc sont deux impasses. La réponse professionnelle consiste à objectiver la charge, puis à proposer des options réalistes, par exemple un résultat partiel fiable dans le délai, pour que la hiérarchie décide en connaissance de cause.",
+      "debrief": "Face à un délai irréaliste, accepter en silence ou refuser en bloc sont deux impasses. La réponse professionnelle consiste à ne pas sacrifier la fiabilité du résultat : objectiver la charge, puis proposer des options réalistes, par exemple un résultat partiel fiable dans le délai, pour que la hiérarchie décide en connaissance de cause.",
       "actions": [
         {
           "id": "proposer-options",
-          "text": "Vous exposez rapidement à votre directeur votre estimation de charge et vous lui proposez des options : l'analyse d'un échantillon représentatif pour vendredi, suivie de l'analyse complète, ou un renfort temporaire.",
+          "text": "Vous exposez à votre directeur votre estimation de charge et vous lui proposez d'analyser pour l'échéance un échantillon représentatif, puis l'ensemble des dossiers, ou d'obtenir un renfort.",
           "rank": 1,
-          "competencies": ["priorites", "resultats", "communication"],
-          "explanation": "C'est l'action la plus adéquate. Vous alertez dès le premier jour, avec une estimation chiffrée, et vous ne vous contentez pas de signaler le problème : vous proposez des solutions qui répondent au besoin réel, c'est-à-dire fournir à temps au ministre des éléments fiables. Le directeur peut ainsi décider en connaissance de cause. Compétences démontrées : organisation et priorités, orientation résultats et communication avec la hiérarchie."
+          "competencies": ["resultats", "priorites", "communication"],
+          "explanation": "C'est l'action la plus adéquate. Vous refusez de choisir entre le délai et la fiabilité : votre estimation chiffrée objective la charge, et vos options répondent au besoin réel, c'est-à-dire fournir à temps au ministre des éléments sur lesquels il peut s'appuyer. Un échantillon représentatif bien analysé vaut mieux qu'une analyse complète bâclée. Le directeur peut ainsi décider en connaissance de cause. Compétences démontrées : orientation résultats, organisation et priorités, communication avec la hiérarchie."
         },
         {
           "id": "demander-report",
           "text": "Vous signalez à votre directeur que le délai est irréaliste et vous lui demandez de reporter l'échéance d'une semaine.",
           "rank": 2,
           "competencies": ["communication", "priorites"],
-          "explanation": "Réponse acceptable. Vous êtes transparent(e) sur la faisabilité, ce qui est essentiel. Mais vous ne proposez qu'une seule solution, qui ne tient pas compte de la contrainte réelle : la réponse parlementaire ne se déplace pas. Sans option intermédiaire, comme un résultat partiel fiable, vous placez votre directeur devant un choix difficile au lieu de l'aider à résoudre le problème."
+          "explanation": "Réponse acceptable. Vous êtes transparent(e) sur la faisabilité, ce qui est essentiel. Mais vous ne proposez qu'une seule solution, qui ne tient pas compte de la contrainte réelle : la réponse parlementaire ne se déplace pas. Sans option intermédiaire, comme un résultat partiel fiable, vous placez votre directeur devant un choix difficile au lieu de l'aider à résoudre le problème. De plus, une semaine supplémentaire ne suffirait pas à couvrir votre propre estimation."
         },
         {
           "id": "aide-collegues",
-          "text": "Vous demandez discrètement à deux collègues de vous aider à traiter une partie des dossiers, sans en parler à votre directeur.",
+          "text": "Vous demandez discrètement à deux collègues de traiter une partie des dossiers avec vous, sans en parler à votre directeur, pour lui remettre malgré tout une analyse complète à l'échéance.",
           "rank": 3,
           "competencies": ["resultats", "equipe"],
           "explanation": "Réponse peu adéquate. Chercher de l'aide est une bonne idée sur le fond, mais vous réorganisez le travail d'autres personnes sans l'accord de la hiérarchie, ce qui peut compromettre leurs propres échéances. Votre directeur ignore la difficulté et ne peut ni arbitrer ni ajuster ses attentes. Si les délais de vos collègues glissent à leur tour, le problème n'aura été que déplacé."
         },
         {
           "id": "baclage",
-          "text": "Vous acceptez sans discuter et vous traitez les dossiers au plus vite, en sautant les vérifications, pour rendre une analyse complète vendredi.",
+          "text": "Vous acceptez sans discuter et vous traitez les dossiers au plus vite, en sautant les vérifications, pour rendre une analyse complète à l'échéance.",
           "rank": 4,
           "competencies": ["resultats", "integrite"],
           "explanation": "C'est l'action la moins adéquate. Vous livrez à temps en apparence, mais au prix de la fiabilité : le ministre risque de s'appuyer sur des chiffres erronés devant le Parlement, ce qui est bien plus grave qu'un délai négocié. Sur le plan psychologique, accepter sans discuter pour éviter un échange inconfortable est une stratégie d'évitement. Sur le plan managérial, votre directeur ignore tout du risque qu'il prend."
@@ -491,7 +491,7 @@
       "theme": "Organisation du travail",
       "competency": "priorites",
       "competencies": ["priorites", "equipe", "communication"],
-      "difficulty": 3,
+      "difficulty": 2,
       "context": "Vous êtes la personne la plus expérimentée d'une équipe de huit agents qui gère des marchés publics.",
       "situation": [
         "Vos collègues viennent constamment vous poser des questions : vous êtes interrompu(e) une quinzaine de fois par jour. Vous aimez transmettre votre expérience, mais vos propres dossiers prennent du retard.",
@@ -501,21 +501,21 @@
       "actions": [
         {
           "id": "cadre-collectif",
-          "text": "Vous parlez du problème à votre cheffe d'équipe et vous lui proposez de fixer des plages horaires pour les questions, de rassembler les réponses fréquentes dans un document partagé et de réserver des moments sans interruption pour vos dossiers.",
+          "text": "Vous exposez le problème à votre cheffe d'équipe et vous lui proposez des plages fixes pour les questions, un document partagé de réponses fréquentes et du temps protégé pour vos dossiers.",
           "rank": 1,
           "competencies": ["priorites", "equipe", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous traitez la cause plutôt que les symptômes : les interruptions traduisent un besoin réel de l'équipe, qu'il faut organiser plutôt que supprimer. Le document partagé fait circuler votre expertise sans dépendre de votre disponibilité, et votre cheffe est associée à une décision qui touche toute l'équipe. Compétences démontrées : organisation et priorités, travail en équipe et communication."
         },
         {
           "id": "plages-bloquees",
-          "text": "Vous bloquez dans votre agenda deux demi-journées par semaine pour vos dossiers et vous indiquez à vos collègues que vous ne répondrez pas pendant ces moments-là.",
+          "text": "Sans en parler à votre cheffe, vous bloquez dans votre agenda deux demi-journées par semaine pour vos dossiers et vous prévenez vos collègues que vous ne répondrez pas pendant ces moments-là.",
           "rank": 2,
           "competencies": ["priorites"],
           "explanation": "Réponse acceptable. Vous protégez du temps pour vos échéances, ce qui est nécessaire, et vous l'annoncez clairement. Mais vous ne réglez qu'une partie du problème : le reste du temps, les interruptions continuent, et le besoin d'information de vos collègues n'est pas mieux organisé. Sans en parler à votre cheffe, vous agissez seul(e) sur une question qui concerne la circulation du savoir dans toute l'équipe."
         },
         {
           "id": "soirs",
-          "text": "Vous continuez à répondre à toutes les questions dans la journée et vous rattrapez vos dossiers en travaillant plus tard le soir.",
+          "text": "Vous continuez à répondre à toutes les questions dans la journée, car votre aide est précieuse pour l'équipe, et vous rattrapez vos dossiers en restant plus tard le soir jusqu'à la fin du mois.",
           "rank": 3,
           "competencies": ["resultats", "equipe"],
           "explanation": "Réponse peu adéquate. Votre disponibilité est appréciée et vos dossiers avancent, mais au prix d'une surcharge qui n'est pas tenable. Sur le plan psychologique, ce fonctionnement mène souvent à l'épuisement et à une irritation croissante envers les collègues. Sur le plan managérial, le problème reste invisible : votre cheffe ne peut pas réagir, et l'équipe reste dépendante d'une seule personne."
@@ -533,8 +533,8 @@
       "id": "courrier-incomprehensible",
       "title": "Un courrier que personne ne comprend",
       "theme": "Communication",
-      "competency": "communication",
-      "competencies": ["communication", "service", "problemes"],
+      "competency": "problemes",
+      "competencies": ["problemes", "communication", "service"],
       "difficulty": 2,
       "context": "Vous travaillez au centre d'appels d'une administration fiscale régionale.",
       "situation": [
@@ -545,14 +545,14 @@
       "actions": [
         {
           "id": "remonter-propositions",
-          "text": "Vous notez les questions qui reviennent le plus souvent et vous les transmettez à votre responsable, avec une proposition de formulation plus claire à soumettre au service juridique.",
+          "text": "Vous notez les questions les plus fréquentes et vous les transmettez à votre responsable, avec une formulation plus claire à proposer au service juridique.",
           "rank": 1,
-          "competencies": ["communication", "service", "problemes"],
-          "explanation": "C'est l'action la plus adéquate. Vous transformez une difficulté vécue au quotidien en information exploitable : les questions récurrentes montrent précisément ce qui n'est pas compris. En passant par votre responsable et en proposant une formulation, vous facilitez l'amélioration du courrier tout en respectant le rôle du service juridique, qui reste garant de son exactitude. Compétences démontrées : communication, orientation service et résolution de problèmes."
+          "competencies": ["problemes", "communication", "service"],
+          "explanation": "C'est l'action la plus adéquate. Les questions récurrentes sont une information précieuse : elles montrent précisément ce que les contribuables ne comprennent pas. En passant par votre responsable et en proposant une formulation, vous facilitez l'amélioration du courrier tout en respectant le rôle du service juridique, qui reste garant de son exactitude. Le problème est traité à la source, pour tous les destinataires. Compétences démontrées : résolution de problèmes, communication et orientation service."
         },
         {
           "id": "fiche-reponses",
-          "text": "Vous rédigez avec vos collègues une fiche de réponses types pour expliquer la procédure de manière uniforme au téléphone.",
+          "text": "Vous rédigez avec vos collègues une fiche de réponses types qui explique la procédure et la date limite, pour que tout le centre d'appels réponde de manière uniforme et plus rapide.",
           "rank": 2,
           "competencies": ["service", "communication"],
           "explanation": "Réponse acceptable. La fiche améliore la qualité et la cohérence des réponses données par le centre d'appels, ce qui sert directement les contribuables. Mais elle ne traite que les conséquences : le courrier continue d'être envoyé tel quel, et chaque nouveau destinataire devra encore appeler. Le service qui a rédigé le courrier ignore qu'il pose problème."
@@ -596,7 +596,7 @@
         },
         {
           "id": "refaire-seul",
-          "text": "Vous recommencez le travail selon le format mensuel par thème, en mettant les bouchées doubles pour le terminer vendredi.",
+          "text": "Vous recommencez entièrement le travail selon le format mensuel par thème, en y consacrant vos soirées s'il le faut, pour remettre vendredi un tableau conforme sans inquiéter Nathalie.",
           "rank": 2,
           "competencies": ["resultats"],
           "explanation": "Réponse acceptable. Vous corrigez la trajectoire et vous visez le bon résultat, ce qui montre votre engagement. Mais vous le faites sans vérifier avec Nathalie que vous avez cette fois bien compris : vous risquez un nouvel écart. Vous ne lui laissez pas non plus la possibilité de vous dire si la synthèse déjà réalisée peut servir, ou si le délai peut être ajusté."
@@ -623,7 +623,7 @@
       "theme": "Communication",
       "competency": "communication",
       "competencies": ["communication", "equipe"],
-      "difficulty": 2,
+      "difficulty": 3,
       "context": "Vous êtes chargé(e) de mission dans une administration de la Région de Bruxelles-Capitale.",
       "situation": [
         "Votre collègue Inès doit présenter demain au comité de direction un projet sur lequel elle travaille depuis des mois. Elle vous demande votre avis sincère sur ses diapositives.",
@@ -633,24 +633,24 @@
       "actions": [
         {
           "id": "retour-constructif",
-          "text": "Vous soulignez la qualité de son travail de fond, puis vous lui proposez deux ou trois améliorations prioritaires et réalistes d'ici demain : annoncer le message principal dès le début et réduire fortement le nombre de diapositives.",
+          "text": "Vous soulignez la qualité de son travail de fond, puis vous lui proposez deux améliorations réalisables d'ici demain : annoncer le message principal dès le début et alléger les diapositives les plus chargées, en plaçant les détails en annexe.",
           "rank": 1,
           "competencies": ["communication", "equipe"],
           "explanation": "C'est l'action la plus adéquate. Vous répondez honnêtement à la demande d'Inès tout en tenant compte de sa fatigue : vous ne lui présentez pas une liste de défauts, mais quelques priorités applicables en une soirée. Reconnaître la qualité de son travail rend la critique plus facile à entendre. Compétences démontrées : communication constructive et soutien à une collègue, au bénéfice du projet présenté à la direction."
         },
         {
           "id": "liste-complete",
-          "text": "Vous lui donnez une liste détaillée de toutes les améliorations possibles, diapositive par diapositive, pour qu'elle dispose d'un avis complet.",
+          "text": "Vous lui remettez une liste détaillée de toutes les améliorations possibles, diapositive par diapositive, en signalant chaque passage trop chargé, pour qu'elle dispose d'un avis complet et sincère.",
           "rank": 2,
           "competencies": ["communication"],
           "explanation": "Réponse acceptable. Votre retour est sincère et précis, ce qui répond à la demande. Mais une liste exhaustive, la veille d'une présentation, risque de décourager une collègue déjà stressée et de la pousser à tout remanier dans l'urgence. Sans hiérarchiser vos remarques, vous ne l'aidez pas à décider par où commencer. Un bon retour tient compte de ce que la personne peut réellement en faire."
         },
         {
           "id": "refaire-a-sa-place",
-          "text": "Vous lui proposez de reprendre vous-même les diapositives ce soir pour les raccourcir, afin de lui épargner ce travail.",
+          "text": "Vous lui annoncez que vous allez reprendre vous-même ses diapositives ce soir pour les raccourcir, afin de lui épargner ce travail.",
           "rank": 3,
           "competencies": ["equipe"],
-          "explanation": "Réponse peu adéquate. L'intention est généreuse, mais vous vous appropriez une présentation qu'Inès devra défendre seule demain : elle risque de ne plus s'y retrouver devant la direction. Vous évitez aussi de lui dire clairement ce qui pose problème, ce qui la prive d'un apprentissage utile pour ses prochaines présentations. Aider ne signifie pas faire à la place de l'autre."
+          "explanation": "Réponse peu adéquate. L'intention est généreuse, mais vous vous appropriez une présentation qu'Inès devra défendre seule demain : elle risque de ne plus s'y retrouver devant la direction. En corrigeant à sa place, vous la privez aussi d'un apprentissage utile pour ses prochaines présentations. Aider ne signifie pas faire à la place de l'autre."
         },
         {
           "id": "tout-va-bien",
@@ -667,13 +667,13 @@
       "theme": "Communication",
       "competency": "communication",
       "competencies": ["communication", "leadership", "equipe"],
-      "difficulty": 3,
+      "difficulty": 2,
       "context": "Vous coordonnez une équipe de six personnes dans une administration communale.",
       "situation": [
         "Une rumeur circule depuis quelques jours : votre service serait fusionné avec un autre et certains postes supprimés. Vos collaborateurs sont inquiets, leur concentration baisse et plusieurs viennent vous demander ce que vous savez.",
         "Vous n'avez reçu aucune information officielle. Une séance d'information du personnel est prévue dans trois semaines."
       ],
-      "debrief": "Face à une rumeur, le silence comme les spéculations alimentent l'inquiétude. Un coordinateur dit honnêtement ce qu'il sait et ce qu'il ne sait pas, cherche l'information auprès de la direction et reste à l'écoute, sans promettre ce qu'il ne peut pas garantir.",
+      "debrief": "Face à une rumeur, le silence comme les spéculations alimentent l'inquiétude. La personne qui coordonne une équipe dit honnêtement ce qu'elle sait et ce qu'elle ne sait pas, cherche l'information auprès de la direction et reste à l'écoute, sans promettre ce qu'elle ne peut pas garantir.",
       "actions": [
         {
           "id": "transparence",
@@ -687,11 +687,11 @@
           "text": "Vous indiquez à chaque collaborateur qui vous interroge que vous n'avez aucune information et qu'il faut attendre la séance officielle dans trois semaines.",
           "rank": 2,
           "competencies": ["communication"],
-          "explanation": "Réponse acceptable. Vous êtes honnête et vous ne propagez pas la rumeur, ce qui est important. Mais vous restez passif pendant trois semaines alors que l'inquiétude pèse sur l'équipe : vous ne cherchez pas d'information auprès de la direction et vous ne créez pas d'espace pour exprimer les craintes. Les rumeurs prospèrent précisément dans ce vide d'information."
+          "explanation": "Réponse acceptable. Vous êtes honnête et vous ne propagez pas la rumeur, ce qui est important. Mais vous restez passif(ve) pendant trois semaines alors que l'inquiétude pèse sur l'équipe : vous ne cherchez pas d'information auprès de la direction et vous ne créez pas d'espace pour exprimer les craintes. Les rumeurs prospèrent précisément dans ce vide d'information."
         },
         {
           "id": "rassurer",
-          "text": "Vous rassurez vos collaborateurs en leur affirmant qu'aucun poste ne sera supprimé dans votre équipe, pour apaiser le climat.",
+          "text": "Vous rassurez vos collaborateurs en leur affirmant qu'aucun poste ne sera supprimé dans votre équipe et que la fusion ne changera rien à leur travail, pour apaiser rapidement le climat.",
           "rank": 3,
           "competencies": ["communication", "leadership"],
           "explanation": "Réponse peu adéquate. Vous voulez protéger votre équipe, mais vous affirmez quelque chose que vous ne savez pas. Si la réorganisation entraîne finalement des changements de postes, votre crédibilité sera durablement atteinte. Sur le plan managérial, une promesse non fondée apaise à court terme mais fragilise la confiance au moment où elle sera le plus nécessaire."
@@ -701,7 +701,7 @@
           "text": "Vous confiez à vos collaborateurs ce que vous avez entendu à la cafétéria sur les postes visés, pour qu'ils puissent se préparer.",
           "rank": 4,
           "competencies": ["communication", "integrite"],
-          "explanation": "C'est l'action la moins adéquate. En tant que coordinateur, votre parole a du poids : relayer des informations non vérifiées les transforme en quasi-certitudes et amplifie l'angoisse. Certains collaborateurs pourraient prendre des décisions personnelles sur la base de bruits de couloir. Vous alimentez la rumeur au lieu de la contenir, ce qui est contraire à votre rôle."
+          "explanation": "C'est l'action la moins adéquate. En tant que responsable de l'équipe, votre parole a du poids : relayer des informations non vérifiées les transforme en quasi-certitudes et amplifie l'angoisse. Certains collaborateurs pourraient prendre des décisions personnelles sur la base de bruits de couloir. Vous alimentez la rumeur au lieu de la contenir, ce qui est contraire à votre rôle."
         }
       ]
     },
@@ -711,24 +711,24 @@
       "theme": "Gestion du stress",
       "competency": "resilience",
       "competencies": ["resilience", "communication"],
-      "difficulty": 2,
+      "difficulty": 3,
       "context": "Vous êtes gestionnaire de dossiers dans une direction générale de la Commission européenne.",
       "situation": [
-        "Lors de la réunion hebdomadaire, votre cheffe d'unité, Marta, critique sèchement devant toute l'équipe une note que vous avez rédigée : un chiffre y était erroné, ce qui l'a mise en difficulté lors d'une réunion avec un autre service.",
+        "Lors de la réunion hebdomadaire, votre cheffe d'unité, Marta, critique sèchement devant toute l'équipe une note que vous avez rédigée : un chiffre y était erroné, ce qui l'a mise en difficulté lors d'une réunion avec une autre direction générale.",
         "L'erreur est réelle. Elle provient d'un tableau transmis par un autre service, que vous n'aviez pas revérifié."
       ],
       "debrief": "Recevoir une critique publique est désagréable, surtout quand le ton est dur. La réaction attendue est de garder son calme, d'assumer sa part, de corriger rapidement, puis de revenir sur la manière dans un échange privé si nécessaire. Se justifier à chaud ou ressasser ne règle rien.",
       "actions": [
         {
           "id": "calme-et-suite",
-          "text": "Vous reconnaissez calmement l'erreur et vous annoncez qu'elle sera corrigée aujourd'hui ; plus tard dans la semaine, vous demandez un entretien à Marta pour parler de la vérification des données et de la manière dont la critique a été formulée.",
+          "text": "Vous reconnaissez calmement l'erreur et vous la corrigez le jour même ; plus tard dans la semaine, vous demandez à Marta un entretien sur la vérification des données et sur la manière dont la critique a été formulée.",
           "rank": 1,
           "competencies": ["resilience", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous gardez votre sang-froid sous la pression et vous assumez votre part de responsabilité, puisque vous n'aviez pas revérifié les données. L'entretien privé, à froid, permet d'aborder deux sujets utiles : comment éviter que l'erreur se reproduise et comment les critiques sont formulées. Compétences démontrées : résilience, maîtrise de soi et communication assertive."
         },
         {
           "id": "corriger-en-silence",
-          "text": "Vous ne répondez pas pendant la réunion, puis vous corrigez la note et vous l'envoyez à Marta avec un court message d'excuse.",
+          "text": "Vous ne répondez pas pendant la réunion, puis vous corrigez la note dans l'heure et vous l'envoyez à Marta avec un court message d'excuses, sans revenir ensuite sur ce qui s'est passé.",
           "rank": 2,
           "competencies": ["resilience", "resultats"],
           "explanation": "Réponse acceptable. Vous restez calme et vous corrigez rapidement, ce qui est l'essentiel. Mais votre silence en réunion peut être perçu comme un malaise ou comme une absence de prise en compte, et vous ne tirez pas d'enseignement collectif : la vérification des données transmises par d'autres services n'est pas abordée. La question du ton employé reste aussi sans réponse, ce qui peut peser sur la relation."
@@ -765,21 +765,21 @@
       "actions": [
         {
           "id": "valoriser-acquis",
-          "text": "Vous reconnaissez la déception de l'équipe, puis vous proposez de documenter ce qui a été réalisé et de le transmettre aux responsables de la future solution commune.",
+          "text": "Vous reconnaissez la déception de l'équipe, puis vous proposez de documenter le travail réalisé pour le transmettre aux responsables de la future solution commune.",
           "rank": 1,
           "competencies": ["resilience", "equipe", "resultats"],
           "explanation": "C'est l'action la plus adéquate. Vous accueillez la déception sans la nier, ce qui permet à l'équipe de tourner la page, puis vous l'orientez vers une action utile : six mois de travail contiennent des analyses et des retours d'usagers précieux pour le futur projet. Le travail effectué garde ainsi un sens. Compétences démontrées : résilience, travail en équipe et orientation résultats."
         },
         {
           "id": "demander-explications",
-          "text": "Vous demandez à la direction d'expliquer plus en détail les raisons de l'arrêt et ce qui est prévu pour l'équipe dans les prochains mois.",
+          "text": "Vous demandez à la direction d'expliquer, lors d'une réunion avec toute l'équipe, les raisons de l'arrêt du projet et ce qui est prévu pour chacun dans les prochains mois.",
           "rank": 2,
           "competencies": ["communication", "resilience"],
           "explanation": "Réponse acceptable. Comprendre une décision aide à l'accepter, et la question de l'avenir de l'équipe est légitime. Mais vous restez dans l'attente de réponses venues d'en haut, sans proposer vous-même une suite constructive. Le découragement de vos collègues n'est pas traité, et le travail réalisé risque d'être perdu faute d'avoir été documenté."
         },
         {
           "id": "chercher-ailleurs",
-          "text": "Vous en concluez que vos efforts ne sont pas reconnus et vous commencez à postuler pour d'autres fonctions, sans en parler à l'équipe.",
+          "text": "Vous en concluez que vos efforts ne sont pas reconnus et vous commencez aussitôt à postuler pour d'autres fonctions.",
           "rank": 3,
           "competencies": ["resilience"],
           "explanation": "Réponse peu adéquate. Vouloir évoluer professionnellement est légitime, mais prendre cette décision sous le coup de la déception revient à tirer une conclusion générale d'un événement ponctuel. Vous vous retirez au moment où l'équipe aurait besoin de mobilisation. Une décision budgétaire ne signifie pas que votre travail n'a pas de valeur : c'est précisément ce qu'une attitude résiliente permet de distinguer."
@@ -825,15 +825,15 @@
           "id": "ordre-arrivee",
           "text": "Vous traitez toutes les demandes dans leur ordre d'arrivée, pour rester équitable envers chaque demandeur.",
           "rank": 3,
-          "competencies": ["resultats"],
-          "explanation": "Réponse peu adéquate. Le souci d'équité est louable, mais traiter dans l'ordre d'arrivée des demandes d'urgence très différente revient à faire attendre des personnes menacées d'expulsion derrière des dossiers qui pouvaient attendre. Dans un service social, l'équité consiste justement à tenir compte de la gravité des situations. Vous ne réglez pas non plus le problème de surcharge."
+          "competencies": ["priorites", "service"],
+          "explanation": "Réponse peu adéquate. Le souci d'équité est louable, mais traiter dans l'ordre d'arrivée des demandes dont l'urgence varie fortement revient à faire attendre des personnes menacées d'expulsion derrière des dossiers qui pouvaient attendre. Dans un service social, l'équité consiste justement à tenir compte de la gravité des situations. Vous ne réglez pas non plus le problème de surcharge."
         },
         {
           "id": "tout-porter-seul",
-          "text": "Vous travaillez tous les soirs et pendant le week-end pour tout traiter vous-même, sans en parler à personne.",
+          "text": "Vous travaillez tous les soirs et pendant le week-end pour traiter vous-même toutes les demandes au fur et à mesure de leur arrivée, sans en parler à personne.",
           "rank": 4,
           "competencies": ["resilience"],
-          "explanation": "C'est l'action la moins adéquate. Ce rythme n'est pas tenable : la fatigue que vous ressentez déjà augmente le risque d'erreurs dans des dossiers sensibles, puis d'épuisement professionnel. Votre responsable ignore la situation et ne peut pas organiser de renfort. Sur le plan psychologique, vouloir tout porter seul(e) est un mécanisme fréquent chez les professionnels engagés, mais il met en danger à la fois la personne et la qualité du service."
+          "explanation": "C'est l'action la moins adéquate. Ce rythme n'est pas tenable : la fatigue que vous ressentez déjà augmente le risque d'erreurs dans des dossiers sensibles, puis d'épuisement professionnel. Faute de tri, les situations les plus graves ne sont pas non plus traitées en premier. Votre responsable ignore la situation et ne peut pas organiser de renfort. Sur le plan psychologique, vouloir tout porter seul(e) est un mécanisme fréquent chez les professionnels engagés, mais il met en danger à la fois la personne et la qualité du service."
         }
       ]
     },
@@ -843,7 +843,7 @@
       "theme": "Gestion du stress",
       "competency": "resilience",
       "competencies": ["resilience", "equipe", "communication"],
-      "difficulty": 3,
+      "difficulty": 2,
       "context": "Vous travaillez depuis huit ans dans une administration régionale.",
       "situation": [
         "Vous vous êtes présenté(e) à une sélection interne pour devenir chef(fe) d'équipe. Vous apprenez que vous n'avez pas été retenu(e) : c'est votre collègue Elif, arrivée dans le service il y a trois ans, qui obtient le poste.",
@@ -856,7 +856,7 @@
           "text": "Vous félicitez Elif, vous demandez au jury un retour détaillé sur vos résultats et vous en tirez un plan de développement à discuter lors de votre prochain entretien d'évaluation.",
           "rank": 1,
           "competencies": ["resilience", "equipe", "communication"],
-          "explanation": "C'est l'action la plus adéquate. Vous dissociez la déception, légitime, de votre attitude professionnelle : féliciter Elif pose les bases d'une collaboration saine. Le retour du jury transforme l'échec en information utile sur ce qui était évalué, au-delà de l'ancienneté. Sur le plan psychologique, c'est la démarche qui permet de rebondir plutôt que de ruminer. Compétences démontrées : résilience, esprit d'équipe et communication."
+          "explanation": "C'est l'action la plus adéquate. Vous dissociez la déception, légitime, de votre attitude professionnelle : féliciter Elif pose les bases d'une collaboration saine. Le retour du jury transforme l'échec en information utile sur ce qui était évalué, au-delà de l'ancienneté. Sur le plan psychologique, c'est la démarche qui permet de rebondir plutôt que de ruminer. Compétences démontrées : résilience, travail en équipe et communication."
         },
         {
           "id": "feliciter-tourner-la-page",
@@ -867,7 +867,7 @@
         },
         {
           "id": "demander-mutation",
-          "text": "Vous demandez immédiatement votre mutation dans un autre service, pour ne pas travailler sous la responsabilité d'une collègue moins expérimentée.",
+          "text": "Vous demandez immédiatement votre mutation dans un autre service, en expliquant à votre directeur que vous ne souhaitez pas travailler sous la responsabilité d'une collègue moins expérimentée.",
           "rank": 3,
           "competencies": ["resilience"],
           "explanation": "Réponse peu adéquate. Changer de service peut être un choix réfléchi, mais pris à chaud, il traduit surtout une difficulté à accepter le résultat. Vous partez sans avoir compris ce qui a manqué et vous privez l'équipe de votre expérience au moment d'un changement de responsable. Sur le plan psychologique, fuir la situation empêche de la surmonter, et la même difficulté risque de se reproduire."
@@ -890,10 +890,10 @@
       "difficulty": 1,
       "context": "Vous êtes membre du comité qui évalue les offres d'un marché public de services informatiques pour une administration fédérale.",
       "situation": [
-        "Pendant la période d'évaluation, vous recevez à votre bureau un colis de l'une des entreprises candidates : une bouteille de champagne et deux places de concert, accompagnées d'une carte de remerciement « pour votre collaboration ».",
+        "Pendant la période d'évaluation, vous recevez à votre bureau un colis de l'une des entreprises soumissionnaires : une bouteille de champagne et deux places de concert, accompagnées d'une carte de remerciement « pour votre collaboration ».",
         "Le règlement de votre administration interdit d'accepter des cadeaux susceptibles d'influencer une décision."
       ],
-      "debrief": "Dans un marché public, l'impartialité doit être réelle et visible. Un cadeau d'un candidat pendant l'évaluation doit être refusé et signalé selon les règles internes, même si vous êtes certain(e) qu'il n'influencerait pas votre jugement.",
+      "debrief": "Dans un marché public, l'impartialité doit être réelle et visible. Un cadeau d'un soumissionnaire pendant l'évaluation doit être refusé et signalé selon les règles internes, même si vous êtes certain(e) qu'il n'influencerait pas votre jugement.",
       "actions": [
         {
           "id": "refuser-signaler",
@@ -904,24 +904,24 @@
         },
         {
           "id": "refuser-sans-signaler",
-          "text": "Vous renvoyez le colis à l'entreprise avec un message rappelant que vous ne pouvez rien accepter, sans en parler à personne pour ne pas faire d'histoire.",
+          "text": "Vous renvoyez le colis à l'entreprise avec un message rappelant que vous ne pouvez rien accepter, sans en parler ni à votre hiérarchie ni aux autres membres du comité, pour ne pas faire d'histoire.",
           "rank": 2,
           "competencies": ["integrite"],
           "explanation": "Réponse acceptable. L'essentiel est fait : vous refusez le cadeau et vous rappelez les règles à l'entreprise. Mais en gardant la démarche pour vous, vous privez votre hiérarchie d'une information importante : l'entreprise a peut-être tenté la même approche auprès d'autres membres du comité, et la procédure pourrait devoir en tenir compte. La transparence fait partie de l'intégrité."
         },
         {
           "id": "partager-avec-equipe",
-          "text": "Vous gardez la bouteille pour la partager avec votre équipe lors d'un pot, et vous laissez les places de concert de côté.",
+          "text": "Vous gardez la bouteille pour la partager avec votre équipe lors d'un pot, et vous n'utilisez pas les places de concert.",
           "rank": 3,
-          "competencies": ["equipe"],
-          "explanation": "Réponse peu adéquate. Partager le cadeau ne change rien à sa nature : vous l'avez accepté pendant une procédure dont vous êtes l'un des évaluateurs. Le fait de ne pas en profiter vous-même ne supprime pas l'apparence de conflit d'intérêts, et vous impliquez vos collègues dans une situation contraire aux règles. Ce qui compte, c'est la provenance et le moment du cadeau, pas l'usage qu'on en fait."
+          "competencies": ["integrite", "equipe"],
+          "explanation": "Réponse peu adéquate. Partager le cadeau ne change rien à sa nature : vous l'avez accepté pendant une procédure dans laquelle vous évaluez les offres. Le fait de ne pas en profiter vous-même ne supprime pas l'apparence de conflit d'intérêts, et vous impliquez vos collègues dans une situation contraire aux règles. Ce qui compte, c'est la provenance et le moment du cadeau, pas l'usage qu'on en fait."
         },
         {
           "id": "garder-le-cadeau",
           "text": "Vous gardez le cadeau, en estimant qu'il ne changera rien à votre évaluation, qui restera objective.",
           "rank": 4,
           "competencies": ["integrite"],
-          "explanation": "C'est l'action la moins adéquate. Vous enfreignez le règlement et vous créez un conflit d'intérêts, au moins apparent, au cœur d'une procédure de marché public. Votre conviction de rester objectif(ve) ne suffit pas : l'impartialité doit aussi être visible pour les autres candidats et pour les contrôles. Sur le plan psychologique, un cadeau crée souvent un sentiment de redevabilité, même inconscient : c'est précisément pour cela que les règles l'interdisent."
+          "explanation": "C'est l'action la moins adéquate. Vous enfreignez le règlement et vous créez un conflit d'intérêts, au moins apparent, au cœur d'une procédure de marché public. Votre conviction de rester objectif(ve) ne suffit pas : l'impartialité doit aussi être visible pour les autres soumissionnaires et pour les contrôles. Sur le plan psychologique, un cadeau crée souvent un sentiment de redevabilité, même inconscient : c'est précisément pour cela que les règles l'interdisent."
         }
       ]
     },
@@ -955,17 +955,17 @@
         },
         {
           "id": "rendre-sans-expliquer",
-          "text": "Vous demandez à un(e) collègue de reprendre le dossier en invoquant votre charge de travail, sans mentionner le lien familial.",
+          "text": "Vous demandez à un(e) collègue de reprendre le dossier en invoquant votre charge de travail, sans mentionner le lien familial, et en lui précisant que le dossier est solide et peut être accepté rapidement.",
           "rank": 3,
           "competencies": ["integrite", "communication"],
-          "explanation": "Réponse peu adéquate. Vous vous retirez du dossier, ce qui évite le conflit d'intérêts sur le fond, mais vous le faites en donnant une fausse raison. Le lien n'est pas déclaré : votre hiérarchie ne peut ni en garder la trace ni en tenir compte pour d'autres dossiers de la même ASBL. L'intégrité suppose aussi la transparence sur les motifs."
+          "explanation": "Réponse peu adéquate. Vous vous retirez formellement du dossier, mais en donnant une fausse raison, et vous orientez l'avis de votre collègue, qui ignore votre lien avec l'ASBL : votre influence sur la décision demeure. Le lien n'est pas déclaré, si bien que votre hiérarchie ne peut ni en garder la trace ni en tenir compte pour d'autres dossiers de la même association. L'intégrité suppose la transparence sur les motifs, pas seulement un changement de signature."
         },
         {
           "id": "traiter-normalement",
           "text": "Vous traitez le dossier normalement, puisqu'il est conforme aux critères et que vous êtes certain(e) de rester objectif(ve).",
           "rank": 4,
           "competencies": ["integrite"],
-          "explanation": "C'est l'action la moins adéquate. Vous décidez seul(e) qu'un lien familial direct ne pose pas de problème, alors que c'est la définition même d'un conflit d'intérêts. Même si le dossier est solide, le subside pourrait être contesté s'il apparaissait que la trésorière de l'ASBL est votre belle-sœur, au détriment de l'association elle-même. L'objectivité ressentie ne remplace pas une impartialité vérifiable."
+          "explanation": "C'est l'action la moins adéquate. Vous décidez seul(e) qu'un lien familial proche ne pose pas de problème, alors qu'il s'agit d'un cas typique de conflit d'intérêts. Même si le dossier est solide, le subside pourrait être contesté s'il apparaissait que la trésorière de l'ASBL est votre belle-sœur, au détriment de l'association elle-même. L'objectivité ressentie ne remplace pas une impartialité vérifiable."
         }
       ]
     },
@@ -979,7 +979,7 @@
       "context": "Vous travaillez au guichet d'une administration communale.",
       "situation": [
         "Un homme âgé se présente pour obtenir un document qui, depuis peu, se demande en principe en ligne avec la carte d'identité électronique. Il n'a ni ordinateur ni smartphone et ne sait pas utiliser internet.",
-        "La procédure de votre commune permet aux agents d'introduire la demande au guichet pour les personnes qui ne peuvent pas utiliser le service en ligne. Il y a peu de monde ce matin."
+        "La procédure de votre commune permet aux agents d'introduire la demande au guichet pour les personnes qui ne peuvent pas utiliser le service en ligne. Un ordinateur en libre-service est installé dans le hall d'accueil, et il y a peu de monde ce matin."
       ],
       "debrief": "La numérisation des services ne doit exclure personne. Quand une alternative existe, l'agent l'applique et explique clairement les étapes, en traitant la personne avec respect plutôt qu'en la renvoyant vers un outil qu'elle ne maîtrise pas.",
       "actions": [
@@ -991,11 +991,11 @@
           "explanation": "C'est l'action la plus adéquate. Vous appliquez l'alternative prévue pour les personnes éloignées du numérique et vous prenez le temps d'expliquer, ce qui rend la démarche compréhensible et rassurante. L'usager repart avec sa demande introduite et une information claire. Compétences démontrées : orientation service au citoyen, communication adaptée à la personne et sens de l'égalité d'accès au service public."
         },
         {
-          "id": "guide-imprime",
-          "text": "Vous lui remettez un guide imprimé expliquant la démarche en ligne étape par étape, ainsi que le numéro du service d'aide téléphonique.",
+          "id": "aider-en-libre-service",
+          "text": "Vous l'installez devant l'ordinateur en libre-service de l'accueil et vous l'aidez à faire lui-même la demande en ligne, en le guidant pas à pas avec sa carte d'identité.",
           "rank": 2,
           "competencies": ["service", "communication"],
-          "explanation": "Réponse acceptable. Le guide et le numéro d'aide sont des outils utiles, et vous restez courtois(e). Mais ils supposent que la personne dispose d'un appareil et puisse suivre les étapes, ce qui n'est pas le cas. Alors qu'une solution immédiate est prévue par la procédure et que vous avez le temps, vous renvoyez l'usager vers une démarche qu'il ne peut pas réaliser."
+          "explanation": "Réponse acceptable. La demande aboutit aujourd'hui et vous accompagnez l'usager avec patience, ce qui montre votre volonté d'aider. Mais vous lui imposez un outil qu'il ne maîtrise pas, alors que la procédure prévoit précisément que vous introduisiez la demande pour lui. La démarche prend plus de temps, peut le mettre mal à l'aise et suppose qu'il connaisse le code de sa carte d'identité. L'alternative prévue par la commune est plus simple et plus respectueuse."
         },
         {
           "id": "espace-public-numerique",
@@ -1020,7 +1020,7 @@
       "competency": "service",
       "competencies": ["service", "problemes", "integrite"],
       "difficulty": 2,
-      "context": "Vous traitez les demandes de prime communale pour l'achat d'un vélo dans une administration communale.",
+      "context": "Dans une administration communale, vous traitez les demandes de prime à l'achat d'un vélo.",
       "situation": [
         "Une citoyenne vous écrit, mécontente : sa demande de prime, introduite il y a cinq mois, n'a toujours pas reçu de réponse, alors que le règlement prévoit une décision dans les trois mois.",
         "En vérifiant, vous constatez que son dossier, complet, est resté bloqué après le départ d'un collègue, sans être réattribué. D'autres dossiers de ce collègue pourraient être dans le même cas."
@@ -1029,17 +1029,17 @@
       "actions": [
         {
           "id": "regler-et-signaler",
-          "text": "Vous répondez à la citoyenne en reconnaissant le retard et en lui indiquant un délai précis, vous traitez son dossier en priorité et vous signalez à votre responsable que les autres dossiers du collègue parti doivent être vérifiés.",
+          "text": "Vous reconnaissez le retard auprès de la citoyenne en lui donnant un délai précis, vous traitez son dossier en priorité et vous signalez à votre responsable les autres dossiers du collègue parti.",
           "rank": 1,
           "competencies": ["service", "problemes", "integrite"],
           "explanation": "C'est l'action la plus adéquate. Vous reconnaissez honnêtement le dysfonctionnement, ce qui restaure la confiance, et vous réglez concrètement la situation de la citoyenne. Surtout, vous traitez la cause : en signalant les dossiers potentiellement bloqués, vous évitez à d'autres usagers le même retard. Compétences démontrées : orientation service, résolution de problèmes et intégrité."
         },
         {
           "id": "regler-le-dossier",
-          "text": "Vous traitez immédiatement son dossier et vous lui envoyez la décision avec un mot d'excuse pour le retard.",
+          "text": "Vous traitez immédiatement son dossier et vous signalez à votre responsable les dossiers non réattribués, sans répondre à la citoyenne avant de lui envoyer la décision.",
           "rank": 2,
-          "competencies": ["service"],
-          "explanation": "Réponse acceptable. La citoyenne obtient rapidement sa décision et des excuses, ce qui répond à sa réclamation. Mais vous traitez le cas individuel sans vous attaquer à la cause : les autres dossiers du collègue parti restent peut-être bloqués, et d'autres usagers attendent sans le savoir. Un bon service public ne se contente pas de répondre aux plaintes, il corrige ce qui les a provoquées."
+          "competencies": ["service", "problemes"],
+          "explanation": "Réponse acceptable. Vous réglez rapidement son dossier et vous traitez la cause en signalant les dossiers non réattribués, ce qui est essentiel. Mais la citoyenne, qui attend depuis cinq mois et a pris la peine de vous écrire, ne reçoit ni réponse ni excuses en attendant la décision : elle ignore que sa réclamation a été entendue et que son dossier avance. Reconnaître le retard sans attendre fait partie d'un bon service, et restaure la confiance."
         },
         {
           "id": "transferer-au-responsable",
@@ -1073,14 +1073,14 @@
       "actions": [
         {
           "id": "orienter-precisement",
-          "text": "Vous lui expliquez quel organisme est compétent, vous lui donnez ses coordonnées et la liste des documents à préparer, puis vous signalez à votre responsable que ces appels sont fréquents.",
+          "text": "Vous lui indiquez l'organisme compétent, ses coordonnées et les documents à préparer, puis vous signalez à votre responsable que ces appels sont fréquents.",
           "rank": 1,
           "competencies": ["service", "communication"],
           "explanation": "C'est l'action la plus adéquate. Vous ne pouvez pas traiter la demande, mais vous faites en sorte que l'appel soit utile : Fatou sait exactement à qui s'adresser et comment, ce qui met fin au renvoi d'un service à l'autre. En signalant la fréquence de ces appels, vous ouvrez la voie à une meilleure information pour tous les usagers. Compétences démontrées : orientation service et communication claire."
         },
         {
           "id": "transferer-appel",
-          "text": "Vous lui proposez de transférer immédiatement son appel vers le numéro général de l'organisme compétent.",
+          "text": "Vous lui proposez de transférer immédiatement son appel vers le numéro général de l'organisme compétent, pour qu'elle n'ait pas à chercher elle-même le bon interlocuteur.",
           "rank": 2,
           "competencies": ["service"],
           "explanation": "Réponse acceptable. Le transfert lui évite de chercher le bon numéro et montre votre volonté d'aider. Mais un numéro général implique souvent une nouvelle attente et un nouvel interlocuteur à qui tout réexpliquer, alors que Fatou a déjà été renvoyée deux fois. Sans lui indiquer les documents à préparer ni le service précis à demander, vous ne sécurisez pas la suite de sa démarche."
@@ -1094,7 +1094,7 @@
         },
         {
           "id": "pas-chez-nous",
-          "text": "Vous lui répondez que cette question ne relève pas de votre service et vous mettez fin à l'appel.",
+          "text": "Vous lui répondez que cette question ne relève pas de votre service, sans lui indiquer à qui s'adresser, et vous mettez fin à l'appel.",
           "rank": 4,
           "competencies": ["service", "communication"],
           "explanation": "C'est l'action la moins adéquate. Votre réponse est exacte sur le fond, mais elle laisse une personne inquiète sans aucune piste, alors qu'elle a déjà été renvoyée deux fois. Pour l'usager, l'administration forme un tout : ce genre de réponse renforce le sentiment d'être ballotté d'un guichet à l'autre. Orienter correctement fait partie du service, même quand la demande ne relève pas de sa compétence."
@@ -1117,14 +1117,14 @@
       "actions": [
         {
           "id": "entretien-individuel",
-          "text": "Vous proposez à Bram un entretien individuel : vous reconnaissez son expertise, vous l'associez à l'amélioration de la nouvelle procédure et vous lui dites clairement que les décisions prises doivent être appliquées.",
+          "text": "Vous proposez à Bram un entretien individuel : vous reconnaissez son expertise, vous l'associez à l'amélioration de la procédure et vous lui rappelez que les décisions prises s'appliquent à tous.",
           "rank": 1,
           "competencies": ["leadership", "communication", "equipe"],
-          "explanation": "C'est l'action la plus adéquate. Vous traitez la situation directement, en privé, ce qui permet à Bram de s'exprimer sans perdre la face devant l'équipe. Reconnaître son expertise et l'associer aux améliorations répond à une possible frustration liée à la sélection, tout en posant un cadre clair sur l'application des décisions. Compétences démontrées : leadership, communication assertive et sens de l'équipe."
+          "explanation": "C'est l'action la plus adéquate. Vous traitez la situation directement, en privé, ce qui permet à Bram de s'exprimer sans perdre la face devant l'équipe. Reconnaître son expertise et l'associer aux améliorations répond à une possible frustration liée à la sélection, tout en posant un cadre clair sur l'application des décisions. Compétences démontrées : leadership, communication assertive et travail en équipe."
         },
         {
           "id": "consulter-directeur",
-          "text": "Vous informez votre directeur du comportement de Bram et vous lui demandez conseil avant d'intervenir.",
+          "text": "Vous décrivez à votre directeur les faits précis qui vous posent problème avec Bram, et vous lui demandez conseil sur la manière de réagir avant d'intervenir vous-même.",
           "rank": 2,
           "competencies": ["leadership", "communication"],
           "explanation": "Réponse acceptable. Demander conseil à sa hiérarchie est utile dans une nouvelle fonction, et votre directeur devra être informé si la situation persiste. Mais en commençant par lui, vous retardez l'échange direct avec Bram, qui reste la première étape attendue d'un responsable. Si Bram apprend que vous l'avez signalé avant de lui parler, la relation pourrait se tendre davantage."
@@ -1138,7 +1138,7 @@
         },
         {
           "id": "recadrer-en-public",
-          "text": "Lors de la prochaine réunion, vous rappelez devant toute l'équipe que vous êtes désormais responsable du service et que Bram doit appliquer vos décisions comme les autres.",
+          "text": "Lors de la prochaine réunion, vous rappelez devant tous que vous êtes désormais responsable de l'équipe, que vos décisions ne se discutent plus une fois prises et que Bram doit les appliquer comme les autres.",
           "rank": 4,
           "competencies": ["leadership", "communication"],
           "explanation": "C'est l'action la moins adéquate. Recadrer publiquement un collègue expérimenté l'humilie et transforme un désaccord en rapport de force. Vous affirmez votre autorité par le statut plutôt que par la confiance, ce qui risque de braquer Bram et de mettre l'équipe mal à l'aise. Sur le plan managérial, une remarque individuelle se fait en privé ; l'autorité se construit par la clarté et le respect, pas par la démonstration."
@@ -1147,7 +1147,7 @@
     },
     {
       "id": "deleguer-plutot-que-tout-faire",
-      "title": "Un responsable qui fait tout lui-même",
+      "title": "Tout faire soi-même",
       "theme": "Management d'équipe",
       "competency": "leadership",
       "competencies": ["leadership", "priorites", "equipe"],
@@ -1161,31 +1161,31 @@
       "actions": [
         {
           "id": "deleguer-avec-suivi",
-          "text": "Vous répartissez les parties du rapport entre vos collaborateurs et vous confiez à Mehdi la coordination de l'une d'elles, avec des consignes claires et des points d'étape réguliers.",
+          "text": "Vous répartissez les parties du rapport entre vos collaborateurs et vous confiez à Mehdi la coordination de l'une d'elles, avec des consignes claires et des points d'étape.",
           "rank": 1,
           "competencies": ["leadership", "priorites", "equipe"],
-          "explanation": "C'est l'action la plus adéquate. Vous déléguez réellement, avec un cadre qui sécurise la qualité : des consignes claires et des points d'étape. Vous répondez aussi à la demande de Mehdi, ce qui le motive et développe ses compétences. Vous retrouvez du temps pour piloter le rapport plutôt que de tout produire vous-même. Compétences démontrées : leadership, organisation et priorités, confiance dans l'équipe."
+          "explanation": "C'est l'action la plus adéquate. Vous déléguez réellement, avec un cadre qui sécurise la qualité : des consignes claires et des points d'étape. Vous répondez aussi à la demande de Mehdi, ce qui le motive et développe ses compétences. Vous retrouvez du temps pour piloter le rapport plutôt que de tout produire vous-même. Compétences démontrées : leadership, organisation et priorités, travail en équipe."
         },
         {
-          "id": "reporter-echeance",
-          "text": "Vous demandez à votre direction de reporter l'échéance du rapport de deux semaines, pour avoir le temps de tout vérifier vous-même.",
+          "id": "deleguer-en-corrigeant",
+          "text": "Vous confiez à vos collaborateurs les parties les plus simples du rapport, mais vous continuez à relire et à corriger vous-même chacune de leurs contributions.",
           "rank": 2,
-          "competencies": ["communication", "priorites"],
-          "explanation": "Réponse acceptable. Vous prenez conscience que le délai est compromis et vous en informez la direction, ce qui évite une mauvaise surprise. Mais vous ne traitez pas la cause : vous continuez à tout porter seul(e), alors que votre équipe a du temps disponible et qu'un collaborateur demande plus de responsabilités. Le report ne fait que déplacer la surcharge."
+          "competencies": ["leadership", "priorites"],
+          "explanation": "Réponse acceptable. Vous commencez à déléguer, ce qui allège une partie de votre charge et associe l'équipe au rapport. Mais vous ne confiez que des tâches simples et vous continuez à tout corriger : vous gardez l'essentiel du travail, vos collaborateurs apprennent peu et la demande de Mehdi reste sans réponse. Une délégation réelle repose sur des consignes claires et des points d'étape, pas sur une correction systématique qui signale à l'équipe que vous ne lui faites pas confiance."
         },
         {
           "id": "deleguer-sans-consignes",
-          "text": "Vous confiez d'un coup l'ensemble du rapport à votre équipe, sans consignes particulières, en lui faisant confiance pour s'organiser.",
+          "text": "Vous confiez d'un coup l'ensemble du rapport à votre équipe, en lui expliquant que vous lui faites entièrement confiance pour s'organiser, et vous ne vous réservez que la relecture finale.",
           "rank": 3,
           "competencies": ["leadership"],
-          "explanation": "Réponse peu adéquate. Vous déléguez enfin, mais sans cadre : sans consignes ni points de suivi, l'équipe risque de produire un travail inégal, que vous serez tenté(e) de reprendre à nouveau. Déléguer ne consiste pas à se décharger, mais à confier une tâche en donnant les moyens de la réussir. Ce passage brutal d'un extrême à l'autre peut aussi désorienter vos collaborateurs."
+          "explanation": "Réponse peu adéquate. Vous déléguez enfin, mais sans cadre : sans consignes ni points de suivi, l'équipe risque de produire un travail inégal, que vous découvrirez seulement à la relecture finale, trop tard pour le corriger sereinement. Déléguer ne consiste pas à se décharger, mais à confier une tâche en donnant les moyens de la réussir. Ce passage brutal d'un extrême à l'autre peut aussi désorienter vos collaborateurs et compromettre un rapport important."
         },
         {
           "id": "tout-reprendre-seul",
-          "text": "Vous continuez à tout reprendre vous-même, en travaillant aussi le week-end, car vous êtes la personne la mieux placée pour garantir la qualité du rapport.",
+          "text": "Vous continuez à tout reprendre vous-même et vous refusez la demande de Mehdi, en lui expliquant que le rapport est trop important pour être confié à quelqu'un d'autre.",
           "rank": 4,
           "competencies": ["leadership", "resilience"],
-          "explanation": "C'est l'action la moins adéquate. Ce fonctionnement épuise le responsable et prive l'équipe de toute autonomie : vos collaborateurs n'apprennent pas, et Mehdi, qui demandait plus de responsabilités, risque de se démotiver. Sur le plan managérial, un responsable indispensable à chaque tâche fragilise le service, qui s'arrête dès qu'il est absent. Sur le plan psychologique, ce perfectionnisme mène souvent à l'épuisement."
+          "explanation": "C'est l'action la moins adéquate. Vous maintenez un fonctionnement qui vous épuise et prive l'équipe de toute autonomie : vos collaborateurs n'apprennent pas, et Mehdi, dont vous refusez explicitement la demande, risque de se démotiver. Sur le plan managérial, un responsable indispensable à chaque tâche fragilise le service, qui s'arrête dès qu'il est absent. Sur le plan psychologique, ce perfectionnisme mène souvent à l'épuisement."
         }
       ]
     },
@@ -1205,10 +1205,10 @@
       "actions": [
         {
           "id": "entretien-bienveillant",
-          "text": "Vous proposez rapidement à Karim un entretien confidentiel : vous lui décrivez les faits constatés sans le juger, vous lui demandez comment il va, vous évoquez les soutiens possibles et vous convenez avec lui d'objectifs clairs pour les prochaines semaines.",
+          "text": "Vous proposez rapidement à Karim un entretien confidentiel pour lui décrire les faits constatés, lui demander comment il va et convenir ensemble de la suite.",
           "rank": 1,
           "competencies": ["leadership", "communication"],
-          "explanation": "C'est l'action la plus adéquate. Vous réagissez vite, sur la base de faits, en laissant à Karim la possibilité d'expliquer ce qui se passe : un changement brutal chez un agent fiable a souvent une cause, professionnelle ou personnelle. En évoquant les soutiens possibles, comme un aménagement temporaire ou le service social, vous l'aidez sans vous immiscer dans sa vie privée. Les objectifs fixés protègent aussi les usagers et le travail de l'équipe. Compétences démontrées : leadership et communication."
+          "explanation": "C'est l'action la plus adéquate. Vous réagissez vite, sur la base de faits, en laissant à Karim la possibilité d'expliquer ce qui se passe : un changement brutal chez un agent fiable a souvent une cause, professionnelle ou personnelle. L'entretien permet d'évoquer les soutiens possibles, comme un aménagement temporaire ou le service social, sans vous immiscer dans sa vie privée, et de convenir d'objectifs qui protègent aussi les usagers et le travail de l'équipe. Compétences démontrées : leadership et communication."
         },
         {
           "id": "retirer-du-telephone",
@@ -1226,10 +1226,10 @@
         },
         {
           "id": "avertissement-ecrit",
-          "text": "Vous adressez à Karim un avertissement écrit pour ses erreurs et pour la plainte de l'usager, avec copie à la direction, afin de marquer clairement que ce comportement n'est pas acceptable.",
+          "text": "Vous adressez à Karim un courriel de recadrage formel pour ses erreurs et pour la plainte de l'usager, avec copie à la direction, afin de marquer clairement que ce comportement n'est pas acceptable.",
           "rank": 4,
           "competencies": ["leadership", "communication"],
-          "explanation": "C'est l'action la moins adéquate. Vous passez directement à une mesure formelle, sans avoir parlé avec Karim ni cherché à comprendre un changement de comportement aussi soudain chez un agent fiable. Si ses difficultés ont une cause personnelle ou de santé, cette réponse risque de l'accabler davantage. Sur le plan managérial, la sanction en premier recours détruit la confiance et ne règle pas la cause du problème."
+          "explanation": "C'est l'action la moins adéquate. Vous passez directement à une mesure formelle, sans avoir parlé avec Karim ni cherché à comprendre un changement de comportement aussi soudain chez un agent fiable. Si ses difficultés ont une cause personnelle ou de santé, cette réponse risque de l'accabler davantage. Sur le plan managérial, le recadrage formel en premier recours détruit la confiance et ne règle pas la cause du problème."
         }
       ]
     },
@@ -1240,26 +1240,26 @@
       "competency": "leadership",
       "competencies": ["leadership", "communication", "equipe"],
       "difficulty": 3,
-      "context": "Vous êtes responsable d'une équipe de dix personnes dans une institution européenne à Bruxelles.",
+      "context": "Vous êtes responsable d'une équipe de dix personnes dans une agence de l'Union européenne.",
       "situation": [
-        "La direction a décidé que votre équipe passera, dans deux mois, à des bureaux partagés sans place attitrée, avec deux jours de télétravail obligatoires par semaine. Vous n'avez pas été consulté(e) et vous trouvez certaines modalités discutables.",
+        "La direction a décidé que votre équipe passera, dans deux mois, à des bureaux partagés sans place attitrée, avec deux jours de télétravail par semaine, faute de places suffisantes. Vous n'avez pas été consulté(e) et vous trouvez certaines modalités discutables.",
         "Vous devez annoncer cette décision à votre équipe demain. Plusieurs collaborateurs sont très attachés à leur bureau actuel."
       ],
-      "debrief": "Un responsable porte loyalement les décisions de sa direction, même quand il ne les a pas prises. Il les explique avec transparence, reconnaît les inquiétudes, fait remonter les besoins concrets et exprime ses réserves par les canaux internes, plutôt que de s'en désolidariser devant l'équipe.",
+      "debrief": "Un responsable porte loyalement les décisions de sa direction, même quand il ne les a pas prises. Il les explique avec transparence, associe l'équipe à leur mise en œuvre et exprime ses réserves par les canaux internes, plutôt que de s'en désolidariser devant l'équipe.",
       "actions": [
         {
           "id": "annoncer-loyalement",
-          "text": "Vous présentez la décision et ses raisons, vous reconnaissez que le changement peut inquiéter, vous recueillez les questions et les besoins pratiques de l'équipe, et vous les transmettez à la direction avec vos propres remarques.",
+          "text": "Vous annoncez la décision en réunion avec ses raisons, vous proposez d'organiser avec l'équipe la répartition des jours de télétravail et vous exprimez vos réserves à la direction lors d'un entretien séparé.",
           "rank": 1,
           "competencies": ["leadership", "communication", "equipe"],
-          "explanation": "C'est l'action la plus adéquate. Vous assumez votre rôle de relais : la décision est annoncée clairement et loyalement, tandis que les inquiétudes sont entendues et traduites en besoins concrets à faire remonter. Vos réserves personnelles sont exprimées au bon endroit, auprès de la direction, ce qui peut améliorer les modalités sans fragiliser l'équipe. Compétences démontrées : leadership, communication et accompagnement de l'équipe dans le changement."
+          "explanation": "C'est l'action la plus adéquate. Vous assumez votre rôle de relais : la décision est annoncée de vive voix, clairement et loyalement, et l'équipe retrouve une prise sur le changement en organisant elle-même la répartition des jours de télétravail. Vos réserves personnelles sont exprimées au bon endroit, auprès de la direction, ce qui peut améliorer les modalités sans fragiliser l'équipe. Compétences démontrées : leadership, communication et accompagnement de l'équipe dans le changement."
         },
         {
           "id": "annonce-par-courriel",
-          "text": "Vous envoyez à l'équipe un courriel qui reprend la décision de la direction et les modalités pratiques, en invitant chacun à vous contacter en cas de question.",
+          "text": "Vous envoyez à l'équipe un courriel détaillé qui reprend la décision de la direction, ses raisons et les modalités pratiques, en invitant chacun à vous contacter s'il a des questions.",
           "rank": 2,
           "competencies": ["communication"],
-          "explanation": "Réponse acceptable. L'information est transmise de manière claire et complète, et vous restez disponible. Mais un courriel convient mal à l'annonce d'un changement qui touche le quotidien de chacun : il ne permet ni d'expliquer les raisons de vive voix, ni d'entendre les réactions. Les inquiétudes risquent de s'exprimer dans les couloirs plutôt qu'avec vous, et les besoins de l'équipe ne remontent pas."
+          "explanation": "Réponse acceptable. L'information est transmise de manière claire et complète, et vous restez disponible. Mais un courriel convient mal à l'annonce d'un changement qui touche le quotidien de chacun : il ne permet ni d'expliquer les raisons de vive voix, ni d'entendre les réactions. Les inquiétudes risquent de s'exprimer dans les couloirs plutôt qu'avec vous, et l'équipe n'est pas associée à l'organisation du changement."
         },
         {
           "id": "retarder-annonce",
@@ -1300,17 +1300,17 @@
         },
         {
           "id": "respecter-sans-rien-dire",
-          "text": "Vous continuez à appliquer la procédure complète et vous acceptez de rester en dessous de l'objectif, sans en parler à votre responsable.",
+          "text": "Vous continuez à appliquer la procédure complète, quitte à rester en dessous de l'objectif, et vous ne dites rien à votre responsable, puisque votre propre travail est irréprochable.",
           "rank": 2,
           "competencies": ["integrite", "resultats"],
-          "explanation": "Réponse acceptable. Vous respectez la procédure, ce qui garantit la qualité de vos propres dossiers. Mais vous ne faites rien pour résoudre un problème qui touche toute l'équipe : les dossiers renvoyés pour correction continuent de coûter du temps, et votre responsable ignore pourquoi votre production est inférieure à l'objectif. Votre silence risque d'être mal interprété lors de votre évaluation."
+          "explanation": "Réponse acceptable. Vous respectez la procédure, ce qui garantit la qualité de vos propres dossiers. Mais vous ne faites rien pour résoudre un problème qui touche toute l'équipe : les dossiers renvoyés pour correction continuent de coûter du temps, et votre responsable ignore pourquoi votre production est inférieure à l'objectif. En taisant une pratique contraire à la procédure, vous laissez aussi perdurer un risque pour les usagers, et votre silence risque d'être mal interprété lors de votre évaluation."
         },
         {
           "id": "signaler-les-collegues",
-          "text": "Vous transmettez à votre responsable la liste des collègues qui ont cessé d'effectuer la vérification, pour qu'il intervienne.",
+          "text": "Vous transmettez à votre responsable la liste nominative des collègues qui ont cessé d'effectuer la vérification, en demandant qu'ils soient sanctionnés.",
           "rank": 3,
           "competencies": ["integrite", "equipe"],
-          "explanation": "Réponse peu adéquate. Le problème mérite d'être signalé, mais vous le présentez comme une faute individuelle de collègues, alors qu'il découle d'un objectif qui pousse à contourner la procédure. Cette démarche risque de détériorer le climat de l'équipe sans régler la cause : de nouveaux collègues seraient soumis à la même pression. Mieux vaut signaler le fonctionnement et ses effets, données à l'appui."
+          "explanation": "Réponse peu adéquate. Le problème mérite d'être signalé, mais vous le présentez comme une faute individuelle et vous réclamez des sanctions, alors qu'il découle d'un objectif qui pousse à contourner la procédure. Cette démarche détériore le climat de l'équipe sans régler la cause : de nouveaux collègues seraient soumis à la même pression. Mieux vaut signaler le fonctionnement et ses effets, données à l'appui, et laisser à la hiérarchie le soin de juger les situations individuelles."
         },
         {
           "id": "suivre-le-mouvement",

@@ -78,7 +78,7 @@ Le candidat lit une situation professionnelle réaliste dans une administration 
 
 La banque `data/jugement.json` contient **30 situations** originales, dans des administrations belges (communes, CPAS, régions, Communautés, SPF) et européennes. Chaque situation classe ses quatre actions de 1 (la plus adéquate) à 4 (la moins adéquate). Elle indique aussi :
 
-- sa **compétence principale** : travail en équipe, organisation et priorités, communication, résilience, intégrité, orientation service au citoyen et leadership (4 situations chacune), plus résolution de problèmes et orientation résultats (1 chacune) ;
+- sa **compétence principale** : travail en équipe, résilience, intégrité, orientation service au citoyen et leadership (4 situations chacune), organisation et priorités, communication (3 chacune), résolution de problèmes et orientation résultats (2 chacune) ;
 - son **niveau de difficulté** : 1, 2 ou 3, avec 10 situations par niveau. Le niveau s'affiche au-dessus de la situation. Au niveau 3, les actions sont plus proches les unes des autres et les valeurs en jeu entrent en tension.
 
 **Notation par proximité** (4 points par situation) :
@@ -98,7 +98,8 @@ La grille de référence a été élaborée pour l'entraînement, à partir des 
 - que les compétences citées existent ;
 - que la difficulté vaut 1, 2 ou 3, avec environ un tiers par niveau ;
 - que chaque action a une explication détaillée qui annonce clairement son rang ;
-- qu'il n'y a pas de quasi-doublon entre situations.
+- que l'action la plus adéquate n'est pas systématiquement la plus longue (au plus 60 % des situations), pour que la longueur ne trahisse pas la réponse ;
+- qu'il n'y a pas de quasi-doublon entre situations ni entre actions de situations différentes.
 
 Ne jamais modifier l'identifiant d'une situation existante : la progression enregistrée des candidats y fait référence.
 
@@ -264,7 +265,8 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   S'y ajoutent les tests du moteur de calcul (priorités, puissances, refus des expressions invalides), du formatage à la française, de l'enchaînement et du bilan.
 - **Jugement situationnel** :
   - validation de la banque : rangs 1 à 4, compétences connues, identifiants uniques, explications détaillées ;
-  - au moins 4 situations, thèmes demandés couverts (conflit, priorités, hiérarchie) ;
+  - au moins 30 situations, compétence principale bien couverte, environ un tiers par niveau de difficulté, thèmes demandés couverts (conflit, priorités, hiérarchie) ;
+  - aucun quasi-doublon, longueur des actions sans biais, usage belge des nombres ;
   - notation par proximité, testée sur toutes les combinaisons de choix : le maximum n'est atteint qu'avec la grille ;
   - ordre aléatoire des actions et bilan par compétence.
 - **Mode examen** :
