@@ -166,7 +166,7 @@
         {
           "id": "effectifs-part-controle",
           "skill": "ratio",
-          "difficulty": 1,
+          "difficulty": 2,
           "text": "En 2024, quelle part de l'effectif total travaille dans la direction Contrôle et inspection ?",
           "formula": "Part (%) = effectif de la direction ÷ effectif total × 100",
           "steps": [
@@ -499,7 +499,7 @@
         {
           "id": "commune-rapport-enseignement-culture",
           "skill": "ratio",
-          "difficulty": 2,
+          "difficulty": 1,
           "text": "Combien la commune dépense-t-elle pour l'enseignement pour 1 € consacré à la culture et au sport ?",
           "formula": "Rapport = valeur comparée ÷ valeur de référence",
           "steps": [
@@ -542,16 +542,15 @@
           "text": "Le budget de l'enseignement doit augmenter de 3 % par an pendant cinq ans. Quel sera-t-il au terme de ces cinq ans ?",
           "formula": "Valeur projetée = dernière valeur × (1 + taux annuel)ⁿ, où n est le nombre d'années",
           "steps": [
-            { "id": "coef", "label": "Coefficient multiplicateur sur cinq ans (1,03 à la puissance 5)", "expression": "1.03 ^ 5" },
-            { "label": "Budget de l'enseignement après cinq hausses successives", "expression": "{enseignement.2025} * {@coef}" }
+            { "label": "Cinq hausses successives de 3 % (× 1,03 cinq fois)", "expression": "{enseignement.2025} * 1.03 ^ 5" }
           ],
           "format": { "decimals": 1, "unit": "M€" },
-          "answer": 2,
+          "answer": 3,
           "options": [
             { "value": 19.0, "expression": "{enseignement.2025} * 1.03", "why": "La hausse de 3 % n'a été appliquée qu'une fois : c'est le budget après un an." },
+            { "value": 20.7, "expression": "{enseignement.2025} * 1.03 ^ 4", "why": "Seules quatre hausses ont été appliquées : il y en a cinq, une par année." },
             { "value": 21.2, "expression": "{enseignement.2025} * (1 + 5 * 0.03)", "why": "Les cinq hausses ont été additionnées (+15 %) au lieu d'être composées : chaque hausse s'applique à un montant déjà augmenté." },
-            { "value": 21.3 },
-            { "value": 85.8, "expression": "{total.2025} * {@coef}", "why": "C'est le budget total de la commune qui a été projeté, pas celui de l'enseignement." }
+            { "value": 21.3 }
           ],
           "explanation": "Des hausses successives de 3 % se composent : 1,03⁵ ≈ 1,159, soit +15,9 % en cinq ans, et non +15 %. L'écart paraît faible, mais c'est précisément ce que ce type de question vérifie."
         }
@@ -580,7 +579,7 @@
         {
           "id": "appels-part-paiements",
           "skill": "ratio",
-          "difficulty": 1,
+          "difficulty": 2,
           "text": "Quelle part des appels reçus concernait les dates de paiement ?",
           "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
           "steps": [
@@ -600,42 +599,41 @@
         {
           "id": "appels-rapport-allocations-attestations",
           "skill": "ratio",
-          "difficulty": 2,
+          "difficulty": 1,
           "text": "Combien d'appels sur le montant des allocations le centre a-t-il reçus pour un appel portant sur une demande d'attestation ?",
           "formula": "Rapport = valeur comparée ÷ valeur de référence",
           "steps": [
             { "label": "Appels sur les allocations rapportés aux appels sur les attestations", "expression": "{allocations.appels} / {attestations.appels}" }
           ],
           "format": { "decimals": 2 },
-          "answer": 3,
+          "answer": 2,
           "options": [
-            { "value": 0.58, "expression": "({allocations.appels} - {attestations.appels}) / {attestations.appels}", "why": "C'est l'écart relatif entre les deux motifs (+58 %), pas leur rapport." },
-            { "value": 0.61, "expression": "{allocations.appels} / ({allocations.appels} + {attestations.appels})", "why": "Les allocations ont été rapportées à la somme des deux motifs au lieu des seules attestations." },
             { "value": 0.63, "expression": "{attestations.appels} / {allocations.appels}", "why": "Le rapport a été inversé : c'est le nombre d'appels sur les attestations pour un appel sur les allocations." },
-            { "value": 1.58 }
+            { "value": 1.33, "expression": "{paiements.appels} / {attestations.appels}", "why": "Ce rapport porte sur les dates de paiement : la mauvaise ligne a été lue." },
+            { "value": 1.58 },
+            { "value": 2.17, "expression": "{allocations.duree} / {attestations.duree}", "why": "C'est le rapport des durées moyennes, et non celui des nombres d'appels." }
           ],
           "explanation": "« Combien de A pour un B ? » se calcule A ÷ B. Un rapport de 1,58 signifie que le centre reçoit environ trois appels sur les allocations pour deux sur les attestations."
         },
         {
-          "id": "appels-duree-moyenne",
+          "id": "appels-part-temps-allocations",
           "skill": "moyenne-ponderee",
           "difficulty": 3,
-          "text": "Quelle était la durée moyenne d'un appel, tous motifs confondus ?",
-          "formula": "Moyenne pondérée = Σ (effectif × valeur) ÷ Σ effectifs",
+          "text": "Quelle part du temps total passé au téléphone a été consacrée aux appels sur le montant des allocations ?",
+          "formula": "Part du temps (%) = (appels × durée) du motif ÷ Σ (appels × durée) × 100",
           "steps": [
-            { "id": "minutes", "label": "Durée totale des appels (Σ appels × durée moyenne), en minutes", "expression": "{allocations.appels} * {allocations.duree} + {attestations.appels} * {attestations.duree} + {situation.appels} * {situation.duree} + {paiements.appels} * {paiements.duree} + {autres.appels} * {autres.duree}" },
-            { "id": "total", "label": "Nombre total d'appels", "expression": "{allocations.appels} + {attestations.appels} + {situation.appels} + {paiements.appels} + {autres.appels}" },
-            { "label": "Durée totale rapportée au nombre d'appels", "expression": "{@minutes} / {@total}" }
+            { "id": "minutes", "label": "Temps total au téléphone, en minutes (Σ appels × durée)", "expression": "{allocations.appels} * {allocations.duree} + {attestations.appels} * {attestations.duree} + {situation.appels} * {situation.duree} + {paiements.appels} * {paiements.duree} + {autres.appels} * {autres.duree}" },
+            { "label": "Temps des appels sur les allocations rapporté au temps total, en %", "expression": "{allocations.appels} * {allocations.duree} / {@minutes} * 100" }
           ],
-          "format": { "decimals": 1, "unit": "min" },
-          "answer": 1,
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
           "options": [
-            { "value": 5.4, "expression": "({allocations.duree} + {attestations.duree} + {situation.duree} + {paiements.duree} + {autres.duree}) / 5", "why": "C'est la moyenne simple des cinq durées : les motifs n'ont pas le même nombre d'appels, il faut pondérer." },
-            { "value": 5.5 },
-            { "value": 5.8, "expression": "({@minutes} - {autres.appels} * {autres.duree}) / ({@total} - {autres.appels})", "why": "La ligne « Autres motifs » a été oubliée dans les deux sommes." },
-            { "value": 6.0, "expression": "({allocations.duree} + {paiements.duree}) / 2", "why": "Seuls les deux motifs les plus fréquents ont été retenus, et sans pondération." }
+            { "value": 24.1, "expression": "{allocations.duree} / ({allocations.duree} + {attestations.duree} + {situation.duree} + {paiements.duree} + {autres.duree}) * 100", "why": "Seules les durées moyennes ont été comparées : le nombre d'appels de chaque motif a été ignoré." },
+            { "value": 28.5, "expression": "{allocations.appels} / ({allocations.appels} + {attestations.appels} + {situation.appels} + {paiements.appels} + {autres.appels}) * 100", "why": "C'est la part des allocations dans le nombre d'appels : la durée de chaque appel n'a pas été prise en compte." },
+            { "value": 33.5 },
+            { "value": 50.5, "expression": "{allocations.appels} * {allocations.duree} / ({@minutes} - {allocations.appels} * {allocations.duree}) * 100", "why": "Le temps des allocations a été comparé au temps des autres motifs, et non au temps total." }
           ],
-          "explanation": "Une durée moyenne globale se pondère par le nombre d'appels : les motifs fréquents pèsent davantage. La moyenne simple des cinq durées (5,4 min) donne trop de poids aux motifs rares."
+          "explanation": "Le temps consacré à un motif dépend à la fois du nombre d'appels et de leur durée : il faut multiplier les deux pour chaque motif, puis rapporter le temps des allocations au temps total. Les appels sur les allocations sont nombreux et plutôt longs : leur part du temps dépasse leur part du nombre d'appels."
         },
         {
           "id": "appels-projection-paiements",
@@ -652,8 +650,8 @@
           "options": [
             { "value": 2016, "expression": "{paiements.appels} * (1 - 2 * 0.15)", "why": "Les deux baisses ont été additionnées (−30 %) au lieu d'être composées : la seconde baisse s'applique à un nombre déjà réduit." },
             { "value": 2081 },
-            { "value": 2448, "expression": "{paiements.appels} * {@coef}", "why": "La baisse n'a été appliquée qu'une fois : c'est la projection après un an." },
-            { "value": 3809, "expression": "{paiements.appels} * (1 + 0.15) ^ 2", "why": "Une hausse de 15 % a été appliquée au lieu d'une baisse : le signe de la variation est inversé." }
+            { "value": 2178, "expression": "{paiements.appels} / 1.15 ^ 2", "why": "La baisse de 15 % a été traitée comme l'inverse d'une hausse de 15 % : diviser par 1,15 revient à une baisse d'environ 13 %, et non de 15 %." },
+            { "value": 2448, "expression": "{paiements.appels} * {@coef}", "why": "La baisse n'a été appliquée qu'une fois : c'est la projection après un an." }
           ],
           "explanation": "Deux baisses successives de 15 % font 0,85 × 0,85 = 0,7225, soit −27,75 %, et non −30 % : la seconde baisse porte sur un volume déjà réduit."
         }
@@ -692,10 +690,10 @@
             { "label": "Baisse rapportée à la valeur de départ (2023), en %", "expression": "{@baisse} / {total.2023} * 100" }
           ],
           "format": { "decimals": 1, "unit": "%" },
-          "answer": 0,
+          "answer": 1,
           "options": [
+            { "value": 4.4, "expression": "(({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} + ({informatique.2023} - {informatique.2024}) / {informatique.2023} + ({eclairage.2023} - {eclairage.2024}) / {eclairage.2023} + ({ventilation.2023} - {ventilation.2024}) / {ventilation.2023} + ({eau.2023} - {eau.2024}) / {eau.2023}) / 5 * 100", "why": "C'est la moyenne des taux de baisse des cinq usages : elle donne le même poids à l'eau chaude qu'au chauffage." },
             { "value": 7.4 },
-            { "value": 7.7, "expression": "({total.2023} - {eau.2023} - ({total.2024} - {eau.2024})) / ({total.2023} - {eau.2023}) * 100", "why": "Les totaux ont été recalculés en oubliant une ligne, l'eau chaude." },
             { "value": 8.0, "expression": "{@baisse} / {total.2024} * 100", "why": "La baisse a été divisée par la valeur d'arrivée (2024) au lieu de la valeur de départ (2023)." },
             { "value": 10.4, "expression": "({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} * 100", "why": "C'est la baisse du seul chauffage, pas celle de la consommation totale." }
           ],
@@ -746,18 +744,17 @@
           "text": "Si la consommation du chauffage continue de baisser chaque année au même taux qu'entre 2023 et 2024, quelle sera-t-elle en 2027 ?",
           "formula": "Valeur projetée = dernière valeur × (1 + taux annuel)ⁿ, où n est le nombre d'années",
           "steps": [
-            { "id": "coef", "label": "Coefficient multiplicateur annuel (2024 ÷ 2023)", "expression": "{chauffage.2024} / {chauffage.2023}" },
-            { "label": "Projection sur trois ans (2025, 2026 puis 2027)", "expression": "{chauffage.2024} * {@coef} ^ 3" }
+            { "label": "Coefficient annuel (2024 ÷ 2023) appliqué trois fois (2025, 2026 et 2027)", "expression": "{chauffage.2024} * ({chauffage.2024} / {chauffage.2023}) ^ 3" }
           ],
           "format": { "decimals": 0, "unit": "MWh" },
           "answer": 2,
           "options": [
             { "value": 535, "expression": "{chauffage.2024} - 3 * ({chauffage.2023} - {chauffage.2024})", "why": "Une baisse constante en MWh (−95 par an) a été appliquée, alors que l'énoncé parle d'un taux constant." },
-            { "value": 565, "expression": "{chauffage.2024} * (1 - 3 * (1 - {@coef}))", "why": "Les trois baisses en % ont été additionnées au lieu d'être composées." },
+            { "value": 565, "expression": "{chauffage.2024} * (1 - 3 * (1 - {chauffage.2024} / {chauffage.2023}))", "why": "Les trois baisses en % ont été additionnées au lieu d'être composées." },
             { "value": 590 },
-            { "value": 659, "expression": "{chauffage.2024} * {@coef} ^ 2", "why": "Le taux n'a été appliqué que deux fois : c'est la projection pour 2026, pas pour 2027." }
+            { "value": 659, "expression": "{chauffage.2024} * ({chauffage.2024} / {chauffage.2023}) ^ 2", "why": "Le taux n'a été appliqué que deux fois : c'est la projection pour 2026, pas pour 2027." }
           ],
-          "explanation": "Un taux constant se compose : on multiplie la dernière valeur par le coefficient annuel autant de fois qu'il y a d'années à projeter, ici trois (2025, 2026 et 2027). Comptez les années avec soin : de 2024 à 2027, il y a trois hausses ou baisses, et non quatre."
+          "explanation": "Un taux constant se compose : on multiplie la dernière valeur par le coefficient annuel (820 ÷ 915) autant de fois qu'il y a d'années à projeter. Comptez les années avec soin : de 2024 à 2027, il y a trois baisses successives (2025, 2026 et 2027), et non deux."
         }
       ]
     },
@@ -802,65 +799,66 @@
           "explanation": "52 contrôles de plus sur une base de 260 font une hausse de 20 %. Le même écart rapporté à 312 donnerait 16,7 % : la base est déterminante."
         },
         {
-          "id": "controles-variation-totale",
+          "id": "controles-retour-construction",
           "skill": "variation",
-          "difficulty": 3,
-          "text": "Quelle est la variation, en pourcentage, du nombre total de contrôles entre 2023 et 2024 ?",
+          "difficulty": 2,
+          "text": "De quel pourcentage les contrôles dans la construction devraient-ils augmenter en 2025 pour retrouver leur niveau de 2023 ?",
           "formula": "Taux de variation (%) = (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100",
           "steps": [
-            { "id": "t2023", "label": "Total 2023 (somme des cinq secteurs)", "expression": "{horeca.2023} + {construction.2023} + {commerce.2023} + {transport.2023} + {agriculture.2023}" },
-            { "id": "t2024", "label": "Total 2024 (somme des cinq secteurs)", "expression": "{horeca.2024} + {construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
-            { "label": "Variation rapportée au total de 2023, en %", "expression": "({@t2024} - {@t2023}) / {@t2023} * 100" }
-          ],
-          "format": { "decimals": 1, "unit": "%", "signed": true },
-          "answer": 2,
-          "options": [
-            { "value": 3.6, "expression": "({@t2024} - {agriculture.2024} - ({@t2023} - {agriculture.2023})) / ({@t2023} - {agriculture.2023}) * 100", "why": "L'agriculture a été oubliée dans les deux totaux." },
-            { "value": 3.9, "expression": "({@t2024} - {@t2023}) / {@t2024} * 100", "why": "La variation a été divisée par le total de 2024 au lieu de celui de 2023." },
-            { "value": 4.1 },
-            { "value": 5.8, "expression": "(({horeca.2024} - {horeca.2023}) / {horeca.2023} + ({construction.2024} - {construction.2023}) / {construction.2023} + ({commerce.2024} - {commerce.2023}) / {commerce.2023} + ({transport.2024} - {transport.2023}) / {transport.2023} + ({agriculture.2024} - {agriculture.2023}) / {agriculture.2023}) / 5 * 100", "why": "C'est la moyenne des taux de variation des cinq secteurs : elle ne tient pas compte de leur taille, contrairement à la variation du total." }
-          ],
-          "explanation": "La variation d'un total ne se calcule pas en faisant la moyenne des variations de chaque secteur : il faut additionner les valeurs de chaque année, puis comparer les deux totaux (1 760 et 1 832)."
-        },
-        {
-          "id": "controles-part-commerce",
-          "skill": "ratio",
-          "difficulty": 2,
-          "text": "En 2024, quelle part de l'ensemble des contrôles a porté sur le commerce de détail ?",
-          "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
-          "steps": [
-            { "id": "total", "label": "Total 2024 (somme des cinq secteurs)", "expression": "{horeca.2024} + {construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
-            { "label": "Commerce de détail rapporté au total 2024, en %", "expression": "{commerce.2024} / {@total} * 100" }
+            { "id": "ecart", "label": "Contrôles à regagner (2023 − 2024)", "expression": "{construction.2023} - {construction.2024}" },
+            { "label": "Écart rapporté au niveau de départ (2024), en %", "expression": "{@ecart} / {construction.2024} * 100" }
           ],
           "format": { "decimals": 1, "unit": "%" },
-          "answer": 0,
+          "answer": 2,
           "options": [
-            { "value": 27.2 },
-            { "value": 28.3, "expression": "{commerce.2024} / ({horeca.2023} + {construction.2023} + {commerce.2023} + {transport.2023} + {agriculture.2023}) * 100", "why": "Le commerce de 2024 a été rapporté au total de 2023." },
-            { "value": 29.0, "expression": "{commerce.2023} / ({horeca.2023} + {construction.2023} + {commerce.2023} + {transport.2023} + {agriculture.2023}) * 100", "why": "C'est la part du commerce en 2023 : la mauvaise année a été lue." },
-            { "value": 30.6, "expression": "{commerce.2024} / ({@total} - {agriculture.2024}) * 100", "why": "Le total a été calculé en oubliant une ligne, l'agriculture." }
+            { "value": 2.4, "expression": "({commerce.2023} - {commerce.2024}) / {commerce.2024} * 100", "why": "Ce calcul porte sur le commerce de détail : la mauvaise ligne a été lue." },
+            { "value": 7.4, "expression": "{@ecart} / {construction.2023} * 100", "why": "C'est le taux de baisse de 2023 à 2024 : une baisse puis une hausse du même pourcentage ne ramènent pas au point de départ." },
+            { "value": 8.0 },
+            { "value": 28.0, "expression": "{@ecart}", "why": "C'est l'écart en nombre de contrôles (28), présenté à tort comme un pourcentage." }
           ],
-          "explanation": "Sans ligne de total, additionnez les cinq secteurs de la bonne année (1 832 contrôles en 2024) avant de calculer la part."
+          "explanation": "Pour revenir au niveau de 2023, la hausse se calcule à partir du niveau de 2024, qui est le point de départ en 2025 : 28 contrôles sur 352. Réutiliser le taux de baisse (28 sur 380) est une erreur fréquente : une baisse de x % suivie d'une hausse de x % ne ramène jamais à la valeur initiale."
         },
         {
-          "id": "controles-projection-construction",
-          "skill": "extrapolation",
-          "difficulty": 2,
-          "text": "Si le nombre de contrôles dans la construction continue de diminuer chaque année du même nombre qu'entre 2023 et 2024, combien en réalisera-t-on en 2027 ?",
-          "formula": "Valeur projetée = dernière valeur + n × variation annuelle, où n est le nombre d'années",
+          "id": "controles-horeca-trente-pour-cent",
+          "skill": "ratio",
+          "difficulty": 3,
+          "text": "En 2024, combien de contrôles l'horeca aurait-elle dû compter pour représenter 30 % de l'ensemble des contrôles, les autres secteurs restant inchangés ?",
+          "formula": "Si une partie doit représenter p % du total : total = autres ÷ (1 − p), et partie = p × total",
           "steps": [
-            { "id": "baisse", "label": "Baisse annuelle en nombre de contrôles", "expression": "{construction.2023} - {construction.2024}" },
-            { "label": "Projection sur trois ans (2025, 2026 et 2027)", "expression": "{construction.2024} - 3 * {@baisse}" }
+            { "id": "autres", "label": "Contrôles des quatre autres secteurs en 2024", "expression": "{construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
+            { "id": "total", "label": "Nouveau total : les autres secteurs en représentent 70 %", "expression": "{@autres} / 0.7" },
+            { "label": "Horeca : 30 % du nouveau total", "expression": "0.3 * {@total}" }
           ],
           "format": { "decimals": 0, "unit": "contrôles" },
-          "answer": 0,
+          "answer": 3,
           "options": [
-            { "value": 268 },
-            { "value": 280, "expression": "{construction.2024} * ({construction.2024} / {construction.2023}) ^ 3", "why": "Un taux de baisse constant a été appliqué, alors que l'énoncé parle d'une baisse constante en nombre." },
-            { "value": 296, "expression": "{construction.2024} - 2 * {@baisse}", "why": "Seules deux années ont été comptées : c'est la projection pour 2026." },
-            { "value": 324, "expression": "{construction.2024} - {@baisse}", "why": "La baisse n'a été appliquée qu'une fois : c'est la projection pour 2025." }
+            { "value": 121, "expression": "0.3 * {@total} - {horeca.2024}", "why": "C'est le nombre de contrôles à ajouter, et non le nombre total de contrôles de l'horeca." },
+            { "value": 410, "expression": "0.3 * {@autres}", "why": "C'est 30 % des seuls autres secteurs : l'horeca doit représenter 30 % de l'ensemble, horeca comprise." },
+            { "value": 550, "expression": "0.3 * ({horeca.2024} + {@autres})", "why": "C'est 30 % du total actuel : ce total augmente pourtant avec les contrôles ajoutés dans l'horeca." },
+            { "value": 586 }
           ],
-          "explanation": "« Le même nombre chaque année » indique une évolution linéaire : on retire 28 contrôles par an. De 2024 à 2027, il y a trois années à projeter."
+          "explanation": "Si l'horeca doit peser 30 % de l'ensemble, les quatre autres secteurs, inchangés, en représentent 70 %. Le nouveau total vaut donc leur somme divisée par 0,7, et l'horeca en représente 30 %. Prendre 30 % du total actuel oublie que ce total grandit en même temps que l'horeca."
+        },
+        {
+          "id": "controles-projection-total",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Si le nombre total de contrôles continue d'augmenter chaque année du même nombre qu'entre 2023 et 2024, combien en réalisera-t-on en 2026 ?",
+          "formula": "Valeur projetée = dernière valeur + n × variation annuelle, où n est le nombre d'années",
+          "steps": [
+            { "id": "t2023", "label": "Total des contrôles en 2023", "expression": "{horeca.2023} + {construction.2023} + {commerce.2023} + {transport.2023} + {agriculture.2023}" },
+            { "id": "t2024", "label": "Total des contrôles en 2024", "expression": "{horeca.2024} + {construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
+            { "label": "Projection sur deux ans (2025 puis 2026)", "expression": "{@t2024} + 2 * ({@t2024} - {@t2023})" }
+          ],
+          "format": { "decimals": 0, "unit": "contrôles" },
+          "answer": 2,
+          "options": [
+            { "value": 1741, "expression": "({@t2024} - {agriculture.2024}) + 2 * (({@t2024} - {agriculture.2024}) - ({@t2023} - {agriculture.2023}))", "why": "Les totaux ont été calculés en oubliant une ligne, l'agriculture." },
+            { "value": 1904, "expression": "{@t2024} + ({@t2024} - {@t2023})", "why": "La hausse n'a été ajoutée qu'une fois : c'est la projection pour 2025." },
+            { "value": 1976 },
+            { "value": 1985, "expression": "{@t2024} * ({@t2024} / {@t2023}) ^ 2", "why": "Un taux de hausse constant a été appliqué, alors que l'énoncé parle d'une hausse constante en nombre." }
+          ],
+          "explanation": "Le graphique ne donne pas de total : additionnez d'abord les cinq secteurs pour chaque année (1 760 puis 1 832). « Le même nombre chaque année » indique une évolution linéaire : on ajoute 72 contrôles par an, deux fois pour atteindre 2026."
         }
       ]
     },
@@ -895,19 +893,19 @@
             { "label": "Jours de traitement rapportés au nombre de dossiers", "expression": "{@jours} / {@total}" }
           ],
           "format": { "decimals": 1, "unit": "jours" },
-          "answer": 1,
+          "answer": 2,
           "options": [
+            { "value": 18.9, "expression": "({@jours} - {centre.dossiers} * {centre.delai}) / {@total}", "why": "L'antenne Centre a été oubliée dans la somme des jours, mais pas dans le nombre de dossiers." },
             { "value": 20.3, "expression": "({@jours} - {centre.dossiers} * {centre.delai}) / ({@total} - {centre.dossiers})", "why": "L'antenne Centre a été oubliée dans les deux sommes." },
             { "value": 21.7 },
-            { "value": 26.2, "expression": "({nord.delai} + {sud.delai} + {est.delai} + {ouest.delai} + {centre.delai}) / 5", "why": "C'est la moyenne simple des cinq délais : les antennes ne traitent pas le même nombre de dossiers." },
-            { "value": 28.5, "expression": "({ouest.delai} + {centre.delai}) / 2", "why": "C'est la moyenne du délai le plus court et du délai le plus long, sans tenir compte des volumes." }
+            { "value": 26.2, "expression": "({nord.delai} + {sud.delai} + {est.delai} + {ouest.delai} + {centre.delai}) / 5", "why": "C'est la moyenne simple des cinq délais : les antennes ne traitent pas le même nombre de dossiers." }
           ],
           "explanation": "L'antenne Centre a le délai le plus long, mais elle traite peu de dossiers : dans une moyenne pondérée, elle pèse peu. La moyenne simple des délais (26,2 jours) surestime donc le délai réel."
         },
         {
           "id": "antennes-part-ouest",
           "skill": "ratio",
-          "difficulty": 1,
+          "difficulty": 2,
           "text": "Quelle part de l'ensemble des dossiers l'antenne Ouest a-t-elle traitée ?",
           "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
           "steps": [
@@ -1000,12 +998,12 @@
             { "label": "Demandes en ligne rapportées au total, en %", "expression": "{enligne.2025} / {@total} * 100" }
           ],
           "format": { "decimals": 1, "unit": "%" },
-          "answer": 2,
+          "answer": 3,
           "options": [
             { "value": 42.8, "expression": "{guichet.2025} / {@total} * 100", "why": "C'est la part des demandes introduites au guichet." },
+            { "value": 43.3, "expression": "({enligne.2019} + {enligne.2020} + {enligne.2021} + {enligne.2022} + {enligne.2023} + {enligne.2024} + {enligne.2025}) / ({enligne.2019} + {enligne.2020} + {enligne.2021} + {enligne.2022} + {enligne.2023} + {enligne.2024} + {enligne.2025} + {guichet.2019} + {guichet.2020} + {guichet.2021} + {guichet.2022} + {guichet.2023} + {guichet.2024} + {guichet.2025}) * 100", "why": "C'est la part en ligne sur toute la période 2019-2025, et non pour la seule année 2025." },
             { "value": 52.8, "expression": "{enligne.2024} / ({enligne.2024} + {guichet.2024}) * 100", "why": "C'est la part des demandes en ligne en 2024 : la mauvaise année a été lue." },
-            { "value": 57.2 },
-            { "value": 59.4, "expression": "{enligne.2025} / ({enligne.2019} + {guichet.2019}) * 100", "why": "Les demandes en ligne de 2025 ont été rapportées au total de 2019." }
+            { "value": 57.2 }
           ],
           "explanation": "Le tout comprend les deux canaux de la même année : 95 + 71 = 166 milliers de demandes en 2025."
         },
@@ -1021,14 +1019,14 @@
             { "label": "Écart entre les deux parts, en points", "expression": "{@p2025} - {@p2019}" }
           ],
           "format": { "decimals": 1, "unit": "points" },
-          "answer": 0,
+          "answer": 1,
           "options": [
+            { "value": 24.3, "expression": "{@p2025} - {enligne.2020} / ({enligne.2020} + {guichet.2020}) * 100", "why": "La période commence en 2020 au lieu de 2019 : le point de départ n'est pas le bon." },
             { "value": 31.0 },
             { "value": 31.9, "expression": "({enligne.2025} - {enligne.2019}) / ({enligne.2025} + {guichet.2025}) * 100", "why": "La hausse du nombre de demandes en ligne a été rapportée au total de 2025 : ce n'est pas l'écart entre deux parts." },
-            { "value": 118.0, "expression": "({@p2025} - {@p2019}) / {@p2019} * 100", "why": "C'est la variation relative de la part, en %, et non l'écart en points de pourcentage." },
-            { "value": 126.2, "expression": "({enligne.2025} - {enligne.2019}) / {enligne.2019} * 100", "why": "C'est la hausse du nombre de demandes en ligne, en %, et non celle de leur part dans le total." }
+            { "value": 33.1, "expression": "{enligne.2025} / ({enligne.2019} + {guichet.2019}) * 100 - {@p2019}", "why": "La part de 2025 a été calculée sur le total de 2019 : chaque part doit se rapporter au total de sa propre année." }
           ],
-          "explanation": "Un écart entre deux pourcentages s'exprime en points : on calcule la part des demandes en ligne pour chaque année, chacune par rapport au total de la même année, puis on fait la différence. Une variation relative de la part, en %, répond à une autre question et donne un résultat bien plus élevé."
+          "explanation": "Un écart entre deux pourcentages s'exprime en points : on calcule la part des demandes en ligne pour chaque année, chacune par rapport au total de la même année, puis on fait la différence. Vérifiez aussi les deux bornes de la période."
         },
         {
           "id": "canal-projection-guichet",
@@ -1095,8 +1093,8 @@
         {
           "id": "absenteisme-hausse-support",
           "skill": "variation",
-          "difficulty": 3,
-          "text": "De quel pourcentage le taux d'absentéisme de la direction support a-t-il augmenté entre 2020 et 2024 ?",
+          "difficulty": 2,
+          "text": "En valeur relative, de quel pourcentage le taux d'absentéisme de la direction support a-t-il augmenté entre 2020 et 2024 ?",
           "formula": "Taux de variation (%) = (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100",
           "steps": [
             { "id": "points", "label": "Hausse du taux, en points de pourcentage", "expression": "{support.2024} - {support.2020}" },
@@ -1127,7 +1125,7 @@
             { "value": 4.9, "expression": "({operations.2024} * 140 + {support.2024} * 360) / (360 + 140)", "why": "Les effectifs ont été inversés entre les deux directions." },
             { "value": 5.4, "expression": "({operations.2024} + {support.2024}) / 2", "why": "C'est la moyenne simple des deux taux : la direction des opérations compte bien plus d'agents." },
             { "value": 5.9 },
-            { "value": 10.8, "expression": "{operations.2024} + {support.2024}", "why": "Les deux taux ont été additionnés : un taux global ne peut pas dépasser les taux de chaque direction." }
+            { "value": 6.2, "expression": "({operations.2023} * 360 + {support.2023} * 140) / (360 + 140)", "why": "Les taux de 2023 ont été utilisés au lieu de ceux de 2024 : la mauvaise année a été lue." }
           ],
           "explanation": "Le taux de l'ensemble se rapproche de celui de la direction la plus nombreuse. Chaque taux est pondéré par l'effectif : (6,6 × 360 + 4,2 × 140) ÷ 500."
         },
@@ -1155,7 +1153,7 @@
           "id": "absenteisme-rapport-2022",
           "skill": "ratio",
           "difficulty": 1,
-          "text": "En 2022, le taux d'absentéisme de la direction des opérations était combien de fois plus élevé que celui de la direction support ?",
+          "text": "En 2022, combien de fois le taux d'absentéisme de la direction des opérations était-il plus élevé que celui de la direction support ?",
           "formula": "Rapport = valeur comparée ÷ valeur de référence",
           "steps": [
             { "label": "Taux des opérations rapporté au taux du support (2022)", "expression": "{operations.2022} / {support.2022}" }
@@ -1203,12 +1201,12 @@
             { "label": "Demandes acceptées rapportées aux demandes introduites, en %", "expression": "{adapte.acceptees} / {adapte.demandes} * 100" }
           ],
           "format": { "decimals": 1, "unit": "%" },
-          "answer": 2,
+          "answer": 3,
           "options": [
             { "value": 8.7, "expression": "{adapte.acceptees} / {total.demandes} * 100", "why": "Les demandes acceptées ont été rapportées à l'ensemble des demandes, toutes catégories confondues." },
             { "value": 14.8, "expression": "{adapte.acceptees} / {total.acceptees} * 100", "why": "C'est la part du sport adapté dans les demandes acceptées, pas son taux d'acceptation." },
-            { "value": 86.7 },
-            { "value": 115.4, "expression": "{adapte.demandes} / {adapte.acceptees} * 100", "why": "Le rapport a été inversé : les demandes introduites ont été divisées par les demandes acceptées." }
+            { "value": 58.7, "expression": "{total.acceptees} / {total.demandes} * 100", "why": "C'est le taux d'acceptation de l'ensemble des catégories, et non celui du sport adapté." },
+            { "value": 86.7 }
           ],
           "explanation": "Un taux d'acceptation compare, pour une même catégorie, les demandes acceptées aux demandes introduites : 39 sur 45."
         },
@@ -1217,7 +1215,7 @@
           "skill": "moyenne-ponderee",
           "difficulty": 2,
           "text": "Quel est le montant moyen accordé par demande acceptée, toutes catégories confondues ?",
-          "formula": "Moyenne pondérée = Σ (effectif × valeur) ÷ Σ effectifs",
+          "formula": "Montant moyen = montant total accordé ÷ nombre total de demandes acceptées",
           "steps": [
             { "label": "Montant total rapporté au nombre total de demandes acceptées", "expression": "{total.montant} / {total.acceptees}" }
           ],
@@ -1234,7 +1232,7 @@
         {
           "id": "subsides-part-jeunes",
           "skill": "ratio",
-          "difficulty": 2,
+          "difficulty": 1,
           "text": "Quelle part du montant total accordé revient aux clubs de jeunes ?",
           "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
           "steps": [
@@ -1316,7 +1314,7 @@
         {
           "id": "restaurant-variation-recette-menus",
           "skill": "variation",
-          "difficulty": 2,
+          "difficulty": 3,
           "text": "De quel pourcentage la recette des menus complets a-t-elle varié entre 2023 et 2024 ?",
           "formula": "Taux de variation (%) = (valeur d'arrivée − valeur de départ) ÷ valeur de départ × 100",
           "steps": [
@@ -1337,8 +1335,8 @@
         {
           "id": "restaurant-part-salades",
           "skill": "ratio",
-          "difficulty": 1,
-          "text": "En 2024, quelle part des repas vendus étaient des salades ?",
+          "difficulty": 2,
+          "text": "En 2024, quelle part des repas vendus les salades représentaient-elles ?",
           "formula": "Part (%) = valeur de la partie ÷ valeur du tout × 100",
           "steps": [
             { "id": "repas", "label": "Nombre de repas vendus en 2024", "expression": "{plat.repas2024} + {menu.repas2024} + {salade.repas2024} + {sandwich.repas2024}" },
@@ -1358,7 +1356,7 @@
           "id": "restaurant-projection-recette-salades",
           "skill": "extrapolation",
           "difficulty": 2,
-          "text": "On prévoit que le nombre de salades vendues augmentera de 10 % par an à partir de 2024, à prix inchangé. Quelle recette les salades rapporteraient-elles en 2026 ?",
+          "text": "On prévoit que le nombre de salades vendues augmentera de 10 % par an après 2024, le prix restant celui de 2024. Quelle recette les salades rapporteront-elles en 2026 ?",
           "formula": "Valeur projetée = dernière valeur × (1 + taux annuel)ⁿ, où n est le nombre d'années",
           "steps": [
             { "id": "salades", "label": "Salades vendues en 2026 (deux hausses de 10 %)", "expression": "{salade.repas2024} * 1.1 ^ 2" },

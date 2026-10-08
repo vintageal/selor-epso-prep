@@ -18,7 +18,7 @@ import {
   usedData,
   validateBank,
 } from '../assets/js/numerique/quiz.js';
-import { computeBank, computeOptions, serialize } from '../scripts/calculer-numerique.js';
+import { computeBank, computeOptions, displayedResult, serialize } from '../scripts/calculer-numerique.js';
 import { NON_BELGIAN_NUMERALS, similarity } from './helpers/texte.js';
 
 const bankText = readFileSync(new URL('../data/numerique.json', import.meta.url), 'utf8');
@@ -61,6 +61,18 @@ test('le script refuse une valeur à mi-chemin entre deux arrondis et deux propo
   const ambiguous = { ...structuredClone(question), format: { decimals: 2, unit: '' } };
   ambiguous.steps = [{ label: 'Rapport', expression: '18.4 / 6.4' }];
   assert.throws(() => computeOptions(scenario, ambiguous), /mi-chemin/);
+  // Coefficient 0,896 affiché « 0,9 » : le calcul affiché (820 × 0,9³ ≈ 598) contredirait la réponse (590).
+  const rounded = { ...structuredClone(question), format: { decimals: 0, unit: '' } };
+  rounded.steps = [{ id: 'coef', label: 'Coefficient', expression: '820 / 915' }, { label: 'Projection', expression: '820 * {@coef} ^ 3' }];
+  rounded.options = rounded.options.map((option) => (option.expression ? { ...option, expression: `${option.expression} + 1000` } : option));
+  assert.throws(() => computeOptions(scenario, rounded), /résultats intermédiaires affichés/);
+});
+
+test('le calcul affiché, refait avec les résultats intermédiaires arrondis, mène à la bonne réponse', () => {
+  for (const { scenario, question } of questions) {
+    const shown = formatAnswer(displayedResult(scenario, question), question.format);
+    assert.equal(shown, formatAnswer(question.options[question.answer].value, question.format), `« ${question.id} »`);
+  }
 });
 
 test('les identifiants des questions initiales sont conservés', () => {

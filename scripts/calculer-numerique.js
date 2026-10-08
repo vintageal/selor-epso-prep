@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-import { columnFormat, computeSteps, distractorValue, formatAnswer } from '../assets/js/numerique/quiz.js';
+import { columnFormat, computeSteps, dataValue, distractorValue, evaluate, formatAnswer } from '../assets/js/numerique/quiz.js';
 
 export const BANK_PATH = fileURLToPath(new URL('../data/numerique.json', import.meta.url));
 
@@ -24,6 +24,21 @@ const round = (value, decimals) => {
   const factor = 10 ** decimals;
   return Math.round(value * factor + Math.sign(value) * 1e-9) / factor;
 };
+
+/**
+ * Résultat du calcul refait avec les résultats intermédiaires tels que la correction les affiche
+ * (arrondis à deux décimales). Il doit mener à la même réponse, sinon le calcul affiché
+ * contredirait la bonne réponse (par exemple « 820 × 0,9³ » pour un coefficient de 0,896).
+ */
+export function displayedResult(scenario, question) {
+  const shown = {};
+  let result;
+  for (const step of question.steps) {
+    result = evaluate(step.expression, (name) => (name.startsWith('@') ? shown[name.slice(1)] : dataValue(scenario, name)));
+    if (step.id) shown[step.id] = Math.round(result * 100) / 100;
+  }
+  return result;
+}
 
 /** Propositions et index de la bonne réponse, recalculés à partir des données et des expressions. */
 export function computeOptions(scenario, question) {
@@ -44,6 +59,12 @@ export function computeOptions(scenario, question) {
     delete rest.value;
     return { value, ...rest };
   });
+  const shownResult = formatAnswer(displayedResult(scenario, question), question.format);
+  const correctValue = options.find((option) => !option.expression).value;
+  if (shownResult !== formatAnswer(correctValue, question.format)) {
+    throw new Error(`« ${question.id} » : refait avec les résultats intermédiaires affichés, le calcul donne ${shownResult}.`);
+  }
+
   const values = options.map((option) => option.value);
   if (new Set(values).size !== values.length) throw new Error(`« ${question.id} » : propositions identiques après arrondi (${values.join(' | ')}).`);
 

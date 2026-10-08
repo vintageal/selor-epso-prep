@@ -60,7 +60,7 @@ Le candidat analyse des données administratives fictives (à gauche sur ordinat
 
 Les données s'affichent en **tableau**, en **barres horizontales**, en **courbes** ou en **secteurs** (anneau), dessinés en HTML et SVG légers. Les couleurs sont validées pour les contrastes et le daltonisme, avec une infobulle au survol et au clavier (flèches pour parcourir les parts d'un graphique en secteurs). La légende des secteurs donne les valeurs, jamais les pourcentages, pour ne pas souffler la réponse. Chaque graphique dispose aussi d'une **vue « Tableau »** équivalente.
 
-Chaque question a un **niveau de difficulté** (1, 2 ou 3 ; 18, 18 et 17 questions), affiché au-dessus de l'énoncé.
+Chaque question a un **niveau de difficulté** (1, 2 ou 3 ; 17, 18 et 18 questions), affiché au-dessus de l'énoncé.
 
 **Réponses calculées, jamais écrites à la main.** Le script `scripts/calculer-numerique.js` (`npm run calculer:numerique`) recalcule chaque proposition à partir des données :
 
@@ -68,7 +68,7 @@ Chaque question a un **niveau de difficulté** (1, 2 ou 3 ; 18, 18 et 17 questio
 - chaque piège est le résultat de son `expression`, qui reproduit une erreur typique : mauvaise base de pourcentage, ligne oubliée, ratio inversé, mauvaise année, taux additionnés au lieu d'être composés… ;
 - les propositions sont arrondies au format de la question, puis triées par ordre croissant, et `answer` désigne la bonne.
 
-Le script refuse deux propositions identiques et toute valeur à mi-chemin entre deux arrondis, que la correction afficherait autrement que la proposition. Un test échoue si le fichier n'est pas exactement celui que produit le script.
+Le script refuse deux propositions identiques, toute valeur à mi-chemin entre deux arrondis, que la correction afficherait autrement que la proposition, et tout calcul détaillé qui, refait avec les résultats intermédiaires arrondis tels qu'ils sont affichés, ne mènerait pas à la bonne réponse. Un test échoue si le fichier n'est pas exactement celui que produit le script.
 
 À chaque réponse, la correction affiche :
 
