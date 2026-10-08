@@ -6,6 +6,7 @@ import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
+import { frenchTypography } from '../verbal/quiz.js';
 import { OPTION_LETTERS, createQuestionStream, questionFromId } from './generator.js';
 import { optionButton, revealedFigureCell, sequenceCells } from './view.js';
 
@@ -82,7 +83,7 @@ const renderFeedback = ({ correctIndex, ruleTitle, explanation }, chosenIndex) =
         : `Vous avez choisi ${OPTION_LETTERS[chosenIndex]} ; la bonne réponse était ${correctLetter}.`,
     ),
     createElement('p', 'feedback__rule', `Règle : ${ruleTitle}`),
-    createElement('p', 'feedback__text', explanation),
+    createElement('p', 'feedback__text', frenchTypography(explanation)),
   );
   ui.feedback.replaceChildren(box);
 };

@@ -26,12 +26,12 @@ Les questions sont générées à la volée (quantité illimitée) et dessinées
 | Cycle de formes | La forme suit un cycle de deux ou trois formes, la couleur ne change pas | 1 · Facile |
 | Rotation | Une flèche ou un triangle tourne de 45° ou 90° à chaque étape | 2 · Moyen |
 | Déplacement | Un disque fait le tour de la forme, case par case ou de coin en coin | 2 · Moyen |
-| Nombre de côtés | Le polygone gagne ou perd un côté à chaque étape (du triangle à l'octogone) | 2 · Moyen |
+| Nombre de côtés | La figure gagne ou perd un côté à chaque étape, quelle que soit sa forme (de 3 à 8 côtés ; la flèche en compte 7) | 2 · Moyen |
 | Double règle : rotation et couleur | Rotation et alternance de couleur en même temps | 3 · Difficile |
-| Rotation à pas croissant | L'angle de rotation augmente de 45° à chaque étape (45°, 90°, 135°…) | 3 · Difficile |
-| Double règle : points et couleur | Compteur de points et alternance de deux couleurs en même temps | 3 · Difficile |
+| Rotation à pas progressif | L'angle de rotation augmente (45°, 90°, 135°…) ou diminue (180°, 135°, 90°…) de 45° à chaque étape | 3 · Difficile |
+| Double règle : points et couleur | Compteur de points et cycle de trois couleurs en même temps | 3 · Difficile |
 
-Le niveau s'affiche au-dessus de la série. Chaque question est identifiée par sa règle et la graine de son tirage (« règle/graine ») : la génération d'une règle existante ne doit jamais changer, sinon les questions déjà enregistrées dans la progression ne seraient plus les mêmes. Un test vérifie l'empreinte des questions produites par chaque règle d'origine.
+Le niveau s'affiche au-dessus de la série. Chaque question est identifiée par sa règle et la graine de son tirage (« règle/graine ») : la génération d'une règle existante ne doit jamais changer, sinon les questions déjà enregistrées dans la progression ne seraient plus les mêmes. Un test vérifie l'empreinte des questions produites par chaque règle.
 
 Après chaque réponse, l'application indique si elle est correcte, révèle la bonne figure et explique la règle. Les propositions ont une description textuelle pour les lecteurs d'écran, et le module se pilote au clavier (touches `1`–`4` ou `A`–`D`, puis `Entrée`).
 
@@ -269,7 +269,7 @@ npm test
 
 Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progression et le site :
 
-- **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série (invariant propre à chaque règle), des descriptions accessibles distinctes et une explication complète. S'y ajoutent l'empreinte des règles d'origine (identifiants stables), la répartition de trois règles par niveau et le nombre de sommets des polygones.
+- **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série (invariant propre à chaque règle), des descriptions accessibles distinctes et une explication complète. S'y ajoutent l'empreinte de chaque règle (identifiants stables), la répartition de trois règles par niveau et le nombre de sommets des polygones.
 - **Raisonnement verbal** : validation de la banque de questions :
   - identifiants uniques et réponses valides ;
   - au moins 60 affirmations, 3 à 4 par texte, et identifiants de la banque initiale conservés ;

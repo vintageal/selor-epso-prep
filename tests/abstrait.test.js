@@ -59,7 +59,7 @@ const RULE_INVARIANTS = {
     assert.equal(new Set(figures.map((f) => f.fill)).size, 1);
   },
   'rotation-acceleree': (figures) => {
-    // Les angles ajoutés (45°, 90°, 135°, 180°) augmentent eux-mêmes d'un pas constant de 45°.
+    // Les angles ajoutés (45°, 90°, 135°, 180° ou l'inverse) varient eux-mêmes d'un pas constant de 45°.
     const steps = figures.slice(1).map((f, i) => f.rotation - figures[i].rotation);
     assertConstantStep(steps, 360);
     assert.ok([45, 315].includes(((steps[1] - steps[0]) % 360 + 360) % 360));
@@ -67,8 +67,8 @@ const RULE_INVARIANTS = {
   },
   'points-couleur': (figures) => {
     assertConstantStep(figures.map((f) => f.dots));
-    figures.slice(2).forEach((f, i) => assert.equal(f.fill, figures[i].fill));
-    assert.notEqual(figures[0].fill, figures[1].fill);
+    figures.slice(3).forEach((f, i) => assert.equal(f.fill, figures[i].fill));
+    assert.equal(new Set(figures.slice(0, 3).map((f) => f.fill)).size, 3);
     assert.equal(new Set(figures.map((f) => f.shape)).size, 1);
   },
 };
@@ -86,21 +86,29 @@ const fingerprint = (rule) =>
       .join('\n'),
   );
 
-/** Règles existantes et empreinte de leurs questions : les identifiants « règle/graine » déjà enregistrés en dépendent. */
-const ORIGINAL_FINGERPRINTS = {
+/**
+ * Empreinte des questions de chaque règle : les identifiants « règle/graine » déjà enregistrés dans les
+ * progressions en dépendent. Une empreinte ne doit jamais changer ; pour faire évoluer une règle, en créer une nouvelle.
+ */
+const RULE_FINGERPRINTS = {
   rotation: 'cfcd43a4',
   couleur: '0ff63822',
   points: '6622e014',
   deplacement: '86dbbc4a',
   'rotation-couleur': 'b4d2ad7d',
+  'cycle-formes': '0382bfa8',
+  cotes: '76d3ce4a',
+  'rotation-acceleree': '089e8ed5',
+  'points-couleur': '35f26688',
 };
 
-test('les règles existantes produisent exactement les mêmes questions (identifiants stables)', () => {
-  for (const [id, expected] of Object.entries(ORIGINAL_FINGERPRINTS)) {
+test('chaque règle produit exactement les mêmes questions qu’à sa création (identifiants stables)', () => {
+  for (const [id, expected] of Object.entries(RULE_FINGERPRINTS)) {
     const rule = RULES.find((candidate) => candidate.id === id);
     assert.ok(rule, `règle « ${id} » disparue`);
     assert.equal(fingerprint(rule), expected, `la génération de la règle « ${id} » a changé`);
   }
+  for (const rule of RULES) assert.ok(RULE_FINGERPRINTS[rule.id], `empreinte manquante pour la règle « ${rule.id} »`);
 });
 
 test('neuf règles, trois par niveau de difficulté (1, 2, 3)', () => {
