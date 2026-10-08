@@ -24,15 +24,23 @@ const polygonPoints = (radii, count) =>
     return `${x},${y}`;
   }).join(' ');
 
-/** Formes disponibles. Les formes « orientées » n'ont aucune symétrie de rotation. */
+/**
+ * Formes disponibles. Les formes « orientées » n'ont aucune symétrie de rotation.
+ * `sides` : nombre de côtés du contour (règle « Nombre de côtés ») ; la flèche en compte 7.
+ */
 export const SHAPES = {
-  arrow: { name: 'flèche', feminine: true, oriented: true, svg: '<path d="M50 22 71 47H58V78H42V47H29Z"/>' },
-  triangle: { name: 'triangle', feminine: false, oriented: true, svg: '<path d="M50 20 63 80H37Z"/>' },
+  arrow: { name: 'flèche', feminine: true, oriented: true, sides: 7, svg: '<path d="M50 22 71 47H58V78H42V47H29Z"/>' },
+  triangle: { name: 'triangle', feminine: false, oriented: true, sides: 3, svg: '<path d="M50 20 63 80H37Z"/>' },
   circle: { name: 'cercle', feminine: false, oriented: false, svg: '<circle cx="50" cy="50" r="26"/>' },
-  square: { name: 'carré', feminine: false, oriented: false, svg: '<rect x="27" y="27" width="46" height="46"/>' },
-  diamond: { name: 'losange', feminine: false, oriented: false, svg: '<path d="M50 22 76 50 50 78 24 50Z"/>' },
-  hexagon: { name: 'hexagone', feminine: false, oriented: false, svg: `<polygon points="${polygonPoints([27], 6)}"/>` },
+  square: { name: 'carré', feminine: false, oriented: false, sides: 4, svg: '<rect x="27" y="27" width="46" height="46"/>' },
+  diamond: { name: 'losange', feminine: false, oriented: false, sides: 4, svg: '<path d="M50 22 76 50 50 78 24 50Z"/>' },
+  hexagon: { name: 'hexagone', feminine: false, oriented: false, sides: 6, svg: `<polygon points="${polygonPoints([27], 6)}"/>` },
   star: { name: 'étoile', feminine: true, oriented: false, svg: `<polygon points="${polygonPoints([29, 12], 10)}"/>` },
+  trigon: { name: 'triangle équilatéral', feminine: false, oriented: false, sides: 3, svg: `<polygon points="${polygonPoints([31], 3)}" transform="translate(0 5)"/>` },
+  pentagon: { name: 'pentagone', feminine: false, oriented: false, sides: 5, svg: `<polygon points="${polygonPoints([28], 5)}" transform="translate(0 2)"/>` },
+  heptagon: { name: 'heptagone', feminine: false, oriented: false, sides: 7, svg: `<polygon points="${polygonPoints([28], 7)}" transform="translate(0 1)"/>` },
+  // Octogone posé sur un côté (et non sur une pointe) : bien distinct de l'heptagone et du cercle, même en petit.
+  octagon: { name: 'octogone', feminine: false, oriented: false, sides: 8, svg: `<polygon points="${polygonPoints([28], 8)}" transform="rotate(22.5 50 50)"/>` },
 };
 
 const INK = '#0f172a';

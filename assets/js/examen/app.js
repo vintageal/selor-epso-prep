@@ -431,7 +431,7 @@ const reviewAbstract = ({ item: { question }, answer, status }) => {
     options,
     createElement('p', 'review-answer', frenchTypography(verdict)),
     createElement('p', 'feedback__rule', frenchTypography(`Règle : ${question.ruleTitle}`)),
-    createElement('p', 'feedback__text', question.explanation),
+    createElement('p', 'feedback__text', frenchTypography(question.explanation)),
   ];
 };
 

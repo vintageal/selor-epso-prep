@@ -80,7 +80,7 @@ scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json (
    - Le site doit fonctionner normalement si le stockage est indisponible.
 8. **Identifiants de questions stables.** Les progressions enregistrées y font référence.
    - Ne jamais changer ni réutiliser l'identifiant d'une question existante.
-   - Pour le raisonnement abstrait, l'identifiant est « règle/graine » (`questionFromId`) : modifier la génération d'une règle change les questions associées aux identifiants déjà enregistrés.
+   - Pour le raisonnement abstrait, l'identifiant est « règle/graine » (`questionFromId`) : modifier la génération d'une règle change les questions associées aux identifiants déjà enregistrés. Un test d'empreinte (`tests/abstrait.test.js`) le détecte ; pour une variante, créer une nouvelle règle.
    - Toute évolution du format des données passe par `SCHEMA_VERSION` et une migration dans `MIGRATIONS` (`store.js`), avec un test.
 
 ## Conventions de travail

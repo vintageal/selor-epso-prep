@@ -17,19 +17,25 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 
 ### Raisonnement abstrait
 
-Les questions sont générées à la volée (quantité illimitée) et dessinées en SVG, sans aucune image externe. Cinq règles logiques sont proposées, de difficulté croissante :
+Les questions sont générées à la volée (quantité illimitée) et dessinées en SVG, sans aucune image externe. Neuf règles logiques sont proposées, trois par niveau de difficulté :
 
-| Règle | Principe | Difficulté |
+| Règle | Principe | Niveau |
 | --- | --- | --- |
-| Alternance de couleurs | La couleur suit un cycle (noir/blanc ou noir/gris/blanc) | Facile |
-| Compteur de points | Le nombre de points augmente ou diminue d'un pas constant | Facile |
-| Rotation | Une flèche ou un triangle tourne de 45° ou 90° à chaque étape | Moyen |
-| Déplacement | Un disque fait le tour de la forme, case par case ou de coin en coin | Moyen |
-| Double règle | Rotation et alternance de couleur en même temps | Difficile |
+| Alternance de couleurs | La couleur suit un cycle (noir/blanc ou noir/gris/blanc) | 1 · Facile |
+| Compteur de points | Le nombre de points augmente ou diminue d'un pas constant | 1 · Facile |
+| Cycle de formes | La forme suit un cycle de deux ou trois formes, la couleur ne change pas | 1 · Facile |
+| Rotation | Une flèche ou un triangle tourne de 45° ou 90° à chaque étape | 2 · Moyen |
+| Déplacement | Un disque fait le tour de la forme, case par case ou de coin en coin | 2 · Moyen |
+| Nombre de côtés | La figure gagne ou perd un côté à chaque étape, quelle que soit sa forme (de 3 à 8 côtés ; la flèche en compte 7) | 2 · Moyen |
+| Double règle : rotation et couleur | Rotation et alternance de couleur en même temps | 3 · Difficile |
+| Rotation à pas progressif | L'angle de rotation augmente (45°, 90°, 135°…) ou diminue (180°, 135°, 90°…) de 45° à chaque étape | 3 · Difficile |
+| Double règle : points et couleur | Compteur de points et cycle de trois couleurs en même temps | 3 · Difficile |
+
+Le niveau s'affiche au-dessus de la série. Chaque question est identifiée par sa règle et la graine de son tirage (« règle/graine ») : la génération d'une règle existante ne doit jamais changer, sinon les questions déjà enregistrées dans la progression ne seraient plus les mêmes. Un test vérifie l'empreinte des questions produites par chaque règle.
 
 Après chaque réponse, l'application indique si elle est correcte, révèle la bonne figure et explique la règle. Les propositions ont une description textuelle pour les lecteurs d'écran, et le module se pilote au clavier (touches `1`–`4` ou `A`–`D`, puis `Entrée`).
 
-**Ajouter une règle :** ajouter un objet dans `assets/js/abstrait/rules.js` (voir les règles existantes : `generate()` renvoie la série, la réponse, des distracteurs et l'explication), puis son invariant dans `tests/abstrait.test.js`.
+**Ajouter une règle :** ajouter un objet à la fin de `RULES` dans `assets/js/abstrait/rules.js` (voir les règles existantes : `generate()` renvoie la série, la réponse, des distracteurs et l'explication ; `difficulty` vaut 1, 2 ou 3), puis son invariant dans `tests/abstrait.test.js`. Pour modifier une règle existante, créer plutôt une nouvelle règle.
 
 ### Raisonnement verbal
 
@@ -147,7 +153,7 @@ La page **Ma progression** (`progression/index.html`) suit les résultats **sans
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du raisonnement verbal, du raisonnement numérique et du jugement situationnel ;
+- **35 questions** : 10 de raisonnement abstrait (générées, chaque règle au moins une fois), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas de tous les modules (pour l'abstrait, les règles sont réparties à parts égales entre les trois niveaux) ;
 - **chronomètre global strict de 40 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
 - **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir ». Une situation de jugement avec un seul de ses deux choix apparaît comme « incomplète » ;
 - **notation** : chaque question vaut 1 point. Une situation de jugement rapporte une fraction de point selon la même grille de proximité que le module (par exemple 3 points sur 4 = 0,75 point). Le score peut donc être décimal, par exemple 27,75 / 35 ;
@@ -263,7 +269,7 @@ npm test
 
 Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progression et le site :
 
-- **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
+- **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série (invariant propre à chaque règle), des descriptions accessibles distinctes et une explication complète. S'y ajoutent l'empreinte de chaque règle (identifiants stables), la répartition de trois règles par niveau et le nombre de sommets des polygones.
 - **Raisonnement verbal** : validation de la banque de questions :
   - identifiants uniques et réponses valides ;
   - au moins 60 affirmations, 3 à 4 par texte, et identifiants de la banque initiale conservés ;
