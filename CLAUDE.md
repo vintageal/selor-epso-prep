@@ -45,6 +45,11 @@ scripts/build-site.js   Assemble dist/
 - `npm run watch:css` : recompile le CSS en continu pendant le développement.
 - `npm test` : lance tous les tests ; ils doivent passer avant chaque commit.
 - `npm run build` : produit `dist/`, comme en production.
+- Lint, sans dépendance ajoutée au projet :
+
+  ```bash
+  npx --yes eslint@9 --no-config-lookup --rule '{"no-unused-vars":"error","no-undef":"off"}' --parser-options=ecmaVersion:latest,sourceType:module assets/js tests scripts
+  ```
 
 ## Règles du projet
 
@@ -66,6 +71,10 @@ scripts/build-site.js   Assemble dist/
 ## Conventions de travail
 
 - **Une branche et une pull request par fonctionnalité**, vers `main`. La fusion déclenche la mise en ligne.
+- **À la fin de chaque tâche : ouvrir une PR vers main et la fusionner si les tests, le build et le lint passent, puis vérifier que le déploiement réussit.**
+  - Tests : `npm test`. Build : `npm run build`. Lint : la commande ci-dessus.
+  - La vérification « Tests et construction » de la PR (`.github/workflows/ci.yml`) doit aussi être verte avant la fusion.
+  - Après la fusion, l'exécution du workflow « Déploiement GitHub Pages » sur `main` doit se terminer en succès. Sinon, corriger dans une nouvelle PR.
 - **Nouvelle page** :
   - l'ajouter à `sitemap.xml` ;
   - lui donner dans son `<head>` la balise `canonical`, `og:url` et `og:image`, sur le modèle des modules existants ;
