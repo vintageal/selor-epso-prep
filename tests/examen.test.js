@@ -10,6 +10,7 @@ import {
   formatClock,
   gradeExam,
   isAnswered,
+  itemQuestionId,
   pickSpread,
 } from '../assets/js/examen/exam.js';
 import { expectedPicks } from '../assets/js/jugement/quiz.js';
@@ -254,4 +255,37 @@ test('formatClock affiche un compte à rebours mm:ss', () => {
   assert.equal(formatClock(0), '00:00');
   assert.equal(formatClock(-50), '00:00');
   assert.equal(formatClock(59_900, Math.floor), '00:59');
+});
+
+/* ----- Suivi de progression ----- */
+
+test('le temps passé sur chaque question est comptabilisé, y compris en y revenant', () => {
+  const session = newSession();
+  session.view(0, 0);
+  session.view(1, 30_000);
+  session.setAnswer(1, 2, 40_000);
+  session.view(0, 50_000);
+  session.finish('submitted', 65_000);
+  assert.equal(session.timeSpentMs[0], 30_000 + 15_000);
+  assert.equal(session.timeSpentMs[1], 20_000);
+  assert.equal(session.answeredAt[1], 40_000);
+  assert.equal(session.answeredAt[0], null);
+  session.view(2, 70_000);
+  assert.equal(session.timeSpentMs[2], 0, 'plus rien n’est compté après la fin');
+});
+
+test('le temps d’une question est plafonné à la fin de l’épreuve', () => {
+  const session = newSession();
+  session.view(3, 19 * MINUTE);
+  session.view(4, 25 * MINUTE);
+  assert.equal(session.timeSpentMs[3], MINUTE);
+  assert.equal(session.endReason, 'timeout');
+});
+
+test('itemQuestionId renvoie l’identifiant de la question d’origine', () => {
+  const items = createExam(banks, { random: createSeededRandom(3) });
+  for (const item of items) {
+    const expected = { abstrait: item.question?.id, verbal: item.statement?.id, numerique: item.question?.id, jugement: item.scenario?.id }[item.type];
+    assert.equal(itemQuestionId(item), expected);
+  }
 });

@@ -13,6 +13,7 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 | Raisonnement numérique | Tableaux et graphiques : variations, ratios, moyennes pondérées, extrapolations | Disponible |
 | Jugement situationnel | Situations professionnelles : action la plus et la moins adéquate, correction par compétence | Disponible |
 | Mode examen | Examen blanc chronométré mélangeant les quatre épreuves | Disponible |
+| Ma progression | Suivi sans inscription : réussite par module, examens, point faible, révision des erreurs | Disponible |
 
 ### Raisonnement abstrait
 
@@ -90,6 +91,34 @@ La grille de référence a été élaborée pour l'entraînement, à partir des 
 
 **Ajouter une situation :** compléter `data/jugement.json` (format décrit en tête de `assets/js/jugement/quiz.js`), puis lancer `npm test`. Les tests vérifient notamment que les rangs forment exactement 1, 2, 3 et 4, que les compétences citées existent et que chaque action a une explication détaillée.
 
+### Ma progression (sans inscription)
+
+La page **Ma progression** (`progression/index.html`) suit les résultats **sans compte ni inscription**. Les données restent dans le navigateur de l'appareil (`localStorage`) : **rien n'est envoyé ni partagé**. Une phrase le rappelle sur la page et dans le pied de page de chaque page.
+
+- **Enregistrement** :
+  - pour chaque réponse : module, identifiant de la question, juste ou faux, date et temps de réponse. Le temps est mesuré depuis l'affichage de la question ; en examen, c'est le temps passé sur la question ;
+  - pour chaque examen blanc : score global, score par catégorie, durée et date. Les réponses de l'examen sont aussi enregistrées.
+- **Page Ma progression** :
+  - par module : nombre de questions faites et taux de réussite ;
+  - évolution des scores d'examen dans un graphique SVG sans bibliothèque. Il offre une infobulle au survol et au clavier, un résumé textuel pour les lecteurs d'écran et un tableau ;
+  - historique des 10 derniers examens ;
+  - **point faible** : le module le moins réussi (au moins 5 réponses), avec un lien vers ce module.
+- **Revoir mes erreurs** :
+  - dans chaque module, un bouton « Revoir mes erreurs (n) » apparaît dès qu'il y a des erreurs ;
+  - il repropose les questions ratées, en entraînement comme en examen, avec la correction habituelle ;
+  - une question sort de la liste après **2 bonnes réponses consécutives**, et une nouvelle erreur remet le compteur à zéro ;
+  - au jugement situationnel, seule une situation au maximum des points compte comme réussie ;
+  - les séries abstraites ratées sont régénérées à l'identique grâce à leur identifiant (règle + graine du tirage) ;
+  - « Revoir toutes mes erreurs », sur la page Ma progression, enchaîne les modules qui ont des erreurs.
+- **Mes données** :
+  - export de la progression dans un fichier JSON ;
+  - import d'un fichier pour passer d'un appareil à l'autre. Le fichier est contrôlé : format, version, contenu de chaque entrée. Un fichier invalide est refusé, avec la raison, sans toucher aux données ;
+  - réinitialisation, après confirmation.
+- **Robustesse** :
+  - un seul module accède au stockage : `assets/js/progression/store.js`. Chaque lecture et écriture y est protégée ;
+  - si le stockage est indisponible (navigation privée, données bloquées), le site fonctionne normalement : seules les fonctions de suivi sont désactivées, avec un message sur la page Ma progression ;
+  - les données portent un **numéro de version de schéma**. Pour faire évoluer le format, on ajoute une migration dans `MIGRATIONS`. Des données venant d'une version plus récente du site ne sont jamais écrasées.
+
 ### Mode examen
 
 Un examen blanc dans les conditions de l'épreuve :
@@ -102,7 +131,7 @@ Un examen blanc dans les conditions de l'épreuve :
   - le score, le temps utilisé et le résultat par section ;
   - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal, calcul étape par étape pour le numérique, place de chaque action dans la grille et explications pour le jugement situationnel.
 
-Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`).
+Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`). Chaque examen terminé est enregistré dans Ma progression, sur l'appareil.
 
 ## Stack
 
@@ -121,7 +150,7 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 ├── index.html                  # Page d'accueil
 ├── 404.html                    # Page « introuvable » servie par GitHub Pages
 ├── robots.txt                  # Consignes aux moteurs de recherche, renvoi vers le sitemap
-├── sitemap.xml                 # Plan du site : accueil et 5 modules
+├── sitemap.xml                 # Plan du site : accueil, 5 modules et Ma progression
 ├── CLAUDE.md                   # Présentation et règles du projet pour Claude Code
 ├── modules/
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
@@ -129,6 +158,7 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │   ├── numerique/index.html    # Module « Raisonnement numérique »
 │   ├── jugement/index.html     # Module « Jugement situationnel »
 │   └── examen/index.html       # Mode examen chronométré
+├── progression/index.html      # Page « Ma progression »
 ├── src/
 │   ├── css/main.css            # Point d'entrée Tailwind : thème, fichiers analysés
 │   ├── css/components.css      # Composants propres au site
@@ -141,7 +171,8 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │       ├── main.js             # Page d'accueil : menu mobile, notifications
 │       ├── lib/
 │       │   ├── random.js       # Tirages aléatoires (graine reproductible pour les tests)
-│       │   └── dom.js          # Petits utilitaires DOM partagés
+│       │   ├── dom.js          # Petits utilitaires DOM partagés
+│       │   └── viz.js          # Graphiques SVG : éléments et infobulle
 │       ├── abstrait/
 │       │   ├── figures.js      # Formes, description textuelle, rendu SVG
 │       │   ├── rules.js        # Règles logiques
@@ -160,9 +191,15 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │       │   ├── quiz.js         # Compétences, notation par proximité, validation de la banque (sans DOM)
 │       │   ├── view.js         # Situation, choix « plus / moins adéquate », correction (partagé avec le mode examen)
 │       │   └── app.js          # Interface du module
-│       └── examen/
-│           ├── exam.js         # Composition, session chronométrée, notation (sans DOM)
-│           └── app.js          # Interface de l'examen et bilan
+│       ├── examen/
+│       │   ├── exam.js         # Composition, session chronométrée, notation (sans DOM)
+│       │   └── app.js          # Interface de l'examen et bilan
+│       └── progression/
+│           ├── store.js        # Seul accès au stockage du navigateur : format versionné, import, export
+│           ├── stats.js        # Statistiques, point faible, formatage (sans DOM)
+│           ├── review.js       # « Revoir mes erreurs » : bouton, bandeau et bilan dans les modules
+│           ├── chart.js        # Graphique d'évolution des examens (SVG)
+│           └── app.js          # Page « Ma progression »
 ├── data/
 │   ├── verbal.json             # Banque de textes et d'affirmations
 │   ├── numerique.json          # Banque de jeux de données et de questions chiffrées
@@ -197,7 +234,7 @@ Pendant le développement, lancez `npm run watch:css` dans un second terminal : 
 npm test
 ```
 
-Les tests (Node.js 20 ou plus) couvrent les cinq modules et le site :
+Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progression et le site :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -223,7 +260,22 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules et le site :
   - composition : 10 + 10 + 10 questions et 5 situations de jugement, mélangées et réparties entre les textes et les jeux de données, tirage reproductible ;
   - navigation libre : réponses modifiées ou effacées, questions marquées, situation de jugement complète seulement avec ses deux choix ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
-  - notation (bonnes réponses, réponses partielles du jugement situationnel, erreurs, questions vides, par section) et affichage du temps.
+  - notation (bonnes réponses, réponses partielles du jugement situationnel, erreurs, questions vides, par section) et affichage du temps ;
+  - temps passé sur chaque question, pour le suivi de progression.
+- **Ma progression** :
+  - stockage indisponible ou bloqué : le suivi est désactivé, sans erreur ;
+  - quota atteint ;
+  - enregistrement des réponses et des examens ;
+  - règle des 2 réussites consécutives et remise à zéro après une erreur ;
+  - export puis import ;
+  - fichiers d'import invalides (JSON, version, contenu), avec les données conservées ;
+  - migration de version et refus d'écraser des données plus récentes ;
+  - données illisibles mises de côté ;
+  - statistiques, point faible, résumé du graphique et formatage à la française.
+- **Identifiants** :
+  - chaque question a un identifiant unique et stable : aucun doublon, dans un module comme entre modules ;
+  - les séries abstraites sont régénérées à l'identique à partir de leur identifiant ;
+  - les questions d'examen gardent l'identifiant de leur question d'origine.
 - **Site** :
   - chaque page charge la feuille CSS compilée (plus aucun CDN) ;
   - tous les liens et ressources locaux existent et sont en chemins relatifs ;
@@ -231,7 +283,9 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules et le site :
   - le sitemap liste exactement les pages, et robots.txt y renvoie ;
   - la page 404 n'est pas indexée et ses liens visent des fichiers existants ;
   - plus aucune référence à l'ancienne adresse github.io ;
-  - la mention de non-affiliation figure sur chaque page.
+  - la mention de non-affiliation et la phrase « Vos résultats restent sur cet appareil » figurent sur chaque page ;
+  - Ma progression est accessible depuis le menu principal et chaque module ;
+  - un seul module accède au stockage du navigateur.
 
 ## Hébergement
 
@@ -261,9 +315,13 @@ Les cinq modules sont en ligne. Pour en ajouter un nouveau :
 
 - créer sa carte sur la page d'accueil, avec un lien vers `modules/<nom>/index.html` ;
 - ajouter son adresse à `sitemap.xml` ;
-- ajouter dans son `<head>` la balise `canonical` et les balises Open Graph, sur le modèle des autres modules.
+- ajouter dans son `<head>` la balise `canonical` et les balises Open Graph, sur le modèle des autres modules ;
+- pour le suivi de progression :
+  - ajouter le module à `MODULE_IDS` (`assets/js/progression/store.js`) et à `MODULES` (`stats.js`) ;
+  - enregistrer chaque réponse avec `recordAnswer` et un identifiant de question stable ;
+  - installer le bouton de révision avec `createReviewControls`, comme dans les modules existants.
 
-Les tests vérifient ces trois points. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
+Les tests vérifient les trois premiers points. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
 
 ## Avertissement
 

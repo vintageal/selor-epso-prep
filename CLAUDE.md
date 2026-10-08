@@ -6,7 +6,8 @@ Application web **gratuite**, sans inscription, pour s'entraîner aux tests de s
 - raisonnement verbal ;
 - raisonnement numérique ;
 - jugement situationnel ;
-- mode examen.
+- mode examen ;
+- page « Ma progression » : suivi sans inscription et révision des erreurs, avec des données stockées uniquement dans le navigateur.
 
 Le README détaille chaque module, les commandes et les tests.
 
@@ -25,11 +26,14 @@ Le README détaille chaque module, les commandes et les tests.
 ```
 index.html              Page d'accueil (cartes des modules)
 404.html                Page « introuvable » (servie à n'importe quelle adresse inexistante)
-robots.txt, sitemap.xml Référencement (accueil + 5 modules)
+robots.txt, sitemap.xml Référencement (accueil + 5 modules + Ma progression)
 modules/<nom>/index.html  Une page par module : abstrait, verbal, numerique, jugement, examen
+progression/index.html  Page « Ma progression »
 assets/js/<module>/     quiz.js ou generator.js (logique sans DOM, testée sous Node),
                         view.js (rendu partagé avec le mode examen), app.js (interface)
-assets/js/lib/          Utilitaires partagés : random.js (tirages avec graine), dom.js
+assets/js/lib/          Utilitaires partagés : random.js (tirages avec graine), dom.js, viz.js (SVG, infobulle)
+assets/js/progression/  Suivi de progression : store.js (SEUL accès à localStorage), stats.js,
+                        review.js (« Revoir mes erreurs » dans les modules), chart.js, app.js (page)
 assets/img/             favicon.svg, og-image.png (image de partage 1200 × 630)
 assets/css/app.css      Généré par Tailwind (npm run build:css), non versionné
 src/css/                main.css (thème Tailwind, fichiers analysés), components.css
@@ -67,6 +71,16 @@ scripts/build-site.js   Assemble dist/
    - pas de CDN, pas de framework, pas de bibliothèque d'exécution : HTML, Tailwind compilé et JavaScript natif en modules ES ;
    - les seules dépendances de développement sont `@tailwindcss/cli` et `http-server` ;
    - toute nouvelle dépendance doit être justifiée.
+
+7. **Données de progression : sur l'appareil uniquement.**
+   - Aucune donnée n'est envoyée ni partagée, et la phrase « Vos résultats restent sur cet appareil : rien n'est envoyé ni partagé. » doit rester vraie. Elle figure sur la page Ma progression et dans le pied de page de chaque page.
+   - Pas de mesure d'audience, de cookie ni d'appel réseau vers un tiers sans décision explicite et mise à jour de ce texte.
+   - Seul `assets/js/progression/store.js` accède à `localStorage`. Chaque accès y est protégé par try/catch, et un test le vérifie.
+   - Le site doit fonctionner normalement si le stockage est indisponible.
+8. **Identifiants de questions stables.** Les progressions enregistrées y font référence.
+   - Ne jamais changer ni réutiliser l'identifiant d'une question existante.
+   - Pour le raisonnement abstrait, l'identifiant est « règle/graine » (`questionFromId`) : modifier la génération d'une règle change les questions associées aux identifiants déjà enregistrés.
+   - Toute évolution du format des données passe par `SCHEMA_VERSION` et une migration dans `MIGRATIONS` (`store.js`), avec un test.
 
 ## Conventions de travail
 

@@ -4,10 +4,13 @@
  * attribue des points selon la proximité avec la grille de référence et explique chaque action.
  */
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { createReviewControls, requestedReview } from '../progression/review.js';
+import { createStore } from '../progression/store.js';
 import { frenchTypography } from '../verbal/quiz.js';
 import { COMPETENCIES, MAX_POINTS, buildSteps, isComplete, scoreChoice, summarize } from './quiz.js';
 import { actionPicker, correctionList, debriefContent, scoreLines, situationContent } from './view.js';
 
+const MODULE = 'jugement';
 const BANK_URL = new URL('../../../data/jugement.json', import.meta.url);
 
 const $ = (selector) => document.querySelector(selector);
@@ -34,9 +37,11 @@ const ui = {
   summaryMessage: $('[data-summary-message]'),
   summaryDetails: $('[data-summary-details]'),
   restart: $('[data-restart]'),
+  review: $('[data-review]'),
 };
 
-const state = { scenarios: [], steps: [], index: 0, picks: {}, answered: false, results: [] };
+const progress = createStore();
+const state = { scenarios: [], steps: [], index: 0, picks: {}, answered: false, results: [], reviewing: false, shownAt: 0 };
 const currentStep = () => state.steps[state.index];
 
 /* ----- Rendu ----- */
@@ -83,6 +88,8 @@ const showStep = () => {
   ui.feedback.replaceChildren();
   ui.validateWrapper.hidden = false;
   ui.nextWrapper.hidden = true;
+  state.shownAt = performance.now();
+  if (state.reviewing) review.progress(state.index, state.steps.length);
   updateValidate();
   updateStats();
 };
@@ -100,6 +107,16 @@ const validate = () => {
   const { scenario, order } = step;
   const { points, max } = scoreChoice(scenario, state.picks);
   state.results.push({ scenario, points, max });
+  // Une situation est réussie avec le maximum de points ; le score partiel est conservé.
+  progress.recordAnswer({
+    module: MODULE,
+    questionId: scenario.id,
+    correct: points === max,
+    score: points / max,
+    durationMs: performance.now() - state.shownAt,
+    source: state.reviewing ? 'revision' : 'entrainement',
+  });
+  review.refresh();
 
   ui.actions.replaceChildren(correctionList(scenario, order, state.picks));
   const box = createElement('div', 'feedback');
@@ -144,7 +161,13 @@ const showSummary = () => {
   );
   ui.exercise.hidden = true;
   ui.summary.hidden = false;
-  moveFocusTo(ui.summaryTitle);
+  if (state.reviewing) {
+    state.reviewing = false;
+    const full = state.results.filter((result) => result.points === result.max).length;
+    moveFocusTo(review.end({ correct: full, total: state.results.length }));
+  } else {
+    moveFocusTo(ui.summaryTitle);
+  }
 };
 
 const goToNext = () => {
@@ -158,11 +181,40 @@ const goToNext = () => {
 };
 
 const startSeries = () => {
-  Object.assign(state, { steps: buildSteps(state.scenarios), index: 0, results: [] });
+  Object.assign(state, { steps: buildSteps(state.scenarios), index: 0, results: [], reviewing: false });
+  review.clearOutcome();
   ui.summary.hidden = true;
   ui.exercise.hidden = false;
   showStep();
 };
+
+/** Révision : uniquement les situations où le maximum de points n'a pas été obtenu. */
+const startReview = (mode) => {
+  const ids = progress.reviewList(MODULE).map((entry) => entry.questionId);
+  const scenarios = ids.map((id) => state.scenarios.find((scenario) => scenario.id === id)).filter(Boolean);
+  // Situation retirée de la banque : elle sort de la liste.
+  ids.filter((id) => !scenarios.some((scenario) => scenario.id === id)).forEach((id) => progress.dropReview(MODULE, id));
+
+  if (scenarios.length === 0) {
+    startSeries();
+    review.nothingToReview(mode);
+    return;
+  }
+  Object.assign(state, { steps: buildSteps(scenarios), index: 0, results: [], reviewing: true });
+  review.begin(scenarios.length, mode);
+  ui.summary.hidden = true;
+  ui.exercise.hidden = false;
+  showStep();
+  moveFocusTo(ui.title);
+};
+
+const quitReview = () => {
+  review.end();
+  startSeries();
+  moveFocusTo(ui.title);
+};
+
+const review = createReviewControls({ container: ui.review, store: progress, module: MODULE, onStart: startReview, onQuit: quitReview });
 
 /* ----- Événements ----- */
 
@@ -181,7 +233,9 @@ try {
   const response = await fetch(BANK_URL);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   state.scenarios = (await response.json()).scenarios;
-  startSeries();
+  const requested = requestedReview();
+  if (requested) startReview(requested);
+  else startSeries();
 } catch (error) {
   console.error('Chargement de la banque de situations impossible :', error);
   ui.theme.textContent = 'Erreur';

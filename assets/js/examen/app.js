@@ -18,7 +18,8 @@ import {
 } from '../numerique/view.js';
 import { MAX_POINTS } from '../jugement/quiz.js';
 import { actionPicker, correctionList, debriefContent, scoreLines, situationContent } from '../jugement/view.js';
-import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam, isAnswered } from './exam.js';
+import { createStore } from '../progression/store.js';
+import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam, isAnswered, itemQuestionId } from './exam.js';
 
 /** Banques chargées au démarrage : nom dans l'examen → fichier et clé du tableau dans le JSON. */
 const BANKS = {
@@ -83,8 +84,10 @@ const ui = {
   resultStats: $('[data-result-stats]'),
   reviewList: $('[data-review-list]'),
   restart: $('[data-restart]'),
+  progressNote: $('[data-progress-note]'),
 };
 
+const progress = createStore();
 const state = { banks: null, session: null, index: 0, running: false, timerId: null, announced: new Set() };
 const currentItem = () => state.session.items[state.index];
 const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
@@ -258,6 +261,7 @@ const showQuestion = (index, { focus = true } = {}) => {
   ui.sectionChip.textContent = SECTIONS[item.type];
   ui.sectionChip.dataset.section = item.type;
   ui.body.replaceChildren(...QUESTION_RENDERERS[item.type](item, answer));
+  if (state.running) session.view(state.index); // temps passé par question (suivi de progression)
   ui.prev.disabled = state.index === 0;
   ui.next.disabled = state.index === session.items.length - 1;
   updateQuestionControls();
@@ -354,7 +358,7 @@ const endExam = (reason) => {
   if (ui.confirm.open) ui.confirm.close();
   window.removeEventListener('beforeunload', warnBeforeLeaving);
 
-  renderResults();
+  saveToProgress(renderResults());
   ui.exam.hidden = true;
   ui.examBar.hidden = true;
   ui.results.hidden = false;
@@ -556,6 +560,35 @@ const renderResults = () => {
     ...Object.entries(grade.bySection).map(([id, { score, total }]) => statTile(SECTIONS[id], `${formatScore(score)} / ${total}`)),
   );
   ui.reviewList.replaceChildren(...grade.results.map(reviewItem));
+  return grade;
+};
+
+/**
+ * Suivi de progression (sur cet appareil uniquement) : score global, scores par catégorie,
+ * durée, et chaque réponse donnée (les erreurs rejoignent la liste « Revoir mes erreurs » du module).
+ */
+const saveToProgress = (grade) => {
+  const { session } = state;
+  const saved = progress.recordExam({
+    score: grade.score,
+    total: grade.total,
+    sections: Object.fromEntries(Object.entries(grade.bySection).map(([id, { score, total }]) => [id, { score, total }])),
+    durationMs: session.elapsedMs(),
+    endReason: session.endReason,
+    answers: grade.results.flatMap((result, index) =>
+      result.status === 'blank'
+        ? []
+        : [{
+          module: result.item.type,
+          questionId: itemQuestionId(result.item),
+          correct: result.status === 'correct',
+          score: result.item.type === 'jugement' ? result.score : undefined,
+          durationMs: session.timeSpentMs[index],
+          date: new Date(session.answeredAt[index]).toISOString(),
+        }],
+    ),
+  });
+  ui.progressNote.hidden = !saved;
 };
 
 const showIntro = () => {
