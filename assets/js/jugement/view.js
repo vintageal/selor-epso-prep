@@ -126,12 +126,15 @@ export function correctionList(scenario, order, picks = {}) {
   return list;
 }
 
-/** Synthèse du scénario et compétences évaluées. */
+/** Synthèse du scénario et compétences évaluées (la compétence principale en premier). */
 export function debriefContent(scenario) {
   const competencies = createElement('ul', 'sjt-competencies');
-  for (const id of scenario.competencies) {
+  // La compétence principale de la situation en premier.
+  const ordered = [scenario.competency, ...scenario.competencies.filter((id) => id !== scenario.competency)];
+  for (const id of ordered) {
     const item = createElement('li');
-    item.append(createElement('strong', '', `${COMPETENCIES[id].label} : `), frenchTypography(COMPETENCIES[id].description));
+    const main = id === scenario.competency ? ' (compétence principale)' : '';
+    item.append(createElement('strong', '', `${COMPETENCIES[id].label}${main} : `), frenchTypography(COMPETENCIES[id].description));
     competencies.append(item);
   }
   return [

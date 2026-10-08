@@ -76,7 +76,10 @@ Si la réponse est fausse, elle explique aussi **l'erreur de logique** correspon
 
 Le candidat lit une situation professionnelle réaliste dans une administration (gestion de conflit, priorités contradictoires, relation avec la hiérarchie, déontologie…), puis évalue quatre actions possibles. Comme aux tests SJT des sélections EPSO et fédérales, il désigne **l'action la plus adéquate** et **l'action la moins adéquate**. Ce format se pilote au clic, au toucher ou au clavier (`Tab` puis flèches). Une même action ne peut pas être à la fois la plus et la moins adéquate. L'ordre des actions est mélangé à chaque série.
 
-La banque `data/jugement.json` contient 6 situations : deux demandes urgentes et contradictoires, un collègue qui ne tient plus ses délais, une erreur découverte dans un dossier déjà envoyé, un usager excédé au guichet, une demande d'information confidentielle et un nouvel outil qui ralentit le travail. Chaque situation classe ses quatre actions de 1 (la plus adéquate) à 4 (la moins adéquate).
+La banque `data/jugement.json` contient **30 situations** originales, dans des administrations belges (communes, CPAS, régions, Communautés, SPF) et européennes. Chaque situation classe ses quatre actions de 1 (la plus adéquate) à 4 (la moins adéquate). Elle indique aussi :
+
+- sa **compétence principale** : travail en équipe, résilience, intégrité, orientation service au citoyen et leadership (4 situations chacune), organisation et priorités, communication (3 chacune), résolution de problèmes et orientation résultats (2 chacune) ;
+- son **niveau de difficulté** : 1, 2 ou 3, avec 10 situations par niveau. Le niveau s'affiche au-dessus de la situation. Au niveau 3, les actions sont plus proches les unes des autres et les valeurs en jeu entrent en tension.
 
 **Notation par proximité** (4 points par situation) :
 
@@ -85,11 +88,20 @@ La banque `data/jugement.json` contient 6 situations : deux demandes urgentes et
 | « Plus adéquate » | 2 points | 1 point | 0 | 0 |
 | « Moins adéquate » | 0 | 0 | 1 point | 2 points |
 
-Après validation, la correction affiche la place de chaque action dans la grille et une **explication psychologique et managériale** pour chacune. Elle relie chaque action aux compétences évaluées : résolution de problèmes, travail en équipe, orientation résultats, communication, organisation et priorités, orientation service, intégrité. Une synthèse « À retenir » conclut chaque situation. Le bilan de fin de série détaille les points par compétence et signale la compétence à travailler.
+Après validation, la correction affiche la place de chaque action dans la grille et une **explication psychologique et managériale** pour chacune. Elle relie chaque action aux compétences évaluées : résolution de problèmes, travail en équipe, orientation résultats, communication, organisation et priorités, orientation service, intégrité, résilience et leadership. La compétence principale de la situation est indiquée en premier. Une synthèse « À retenir » conclut chaque situation. Le bilan de fin de série détaille les points par compétence et signale la compétence à travailler.
 
 La grille de référence a été élaborée pour l'entraînement, à partir des compétences génériques évaluées lors des sélections. Elle ne reproduit pas une grille officielle de l'EPSO ou du SPF BOSA.
 
-**Ajouter une situation :** compléter `data/jugement.json` (format décrit en tête de `assets/js/jugement/quiz.js`), puis lancer `npm test`. Les tests vérifient notamment que les rangs forment exactement 1, 2, 3 et 4, que les compétences citées existent et que chaque action a une explication détaillée.
+**Ajouter une situation :** compléter `data/jugement.json` (format décrit en tête de `assets/js/jugement/quiz.js`), puis lancer `npm test`. Les tests vérifient notamment :
+
+- que les rangs forment exactement 1, 2, 3 et 4 ;
+- que les compétences citées existent ;
+- que la difficulté vaut 1, 2 ou 3, avec environ un tiers par niveau ;
+- que chaque action a une explication détaillée qui annonce clairement son rang ;
+- que l'action la plus adéquate n'est pas systématiquement la plus longue (au plus 60 % des situations), pour que la longueur ne trahisse pas la réponse ;
+- qu'il n'y a pas de quasi-doublon entre situations ni entre actions de situations différentes.
+
+Ne jamais modifier l'identifiant d'une situation existante : la progression enregistrée des candidats y fait référence.
 
 ### Ma progression (sans inscription)
 
@@ -123,7 +135,7 @@ La page **Ma progression** (`progression/index.html`) suit les résultats **sans
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire ;
+- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du jugement situationnel ;
 - **chronomètre global strict de 40 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
 - **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir ». Une situation de jugement avec un seul de ses deux choix apparaît comme « incomplète » ;
 - **notation** : chaque question vaut 1 point. Une situation de jugement rapporte une fraction de point selon la même grille de proximité que le module (par exemple 3 points sur 4 = 0,75 point). Le score peut donc être décimal, par exemple 27,75 / 35 ;
@@ -253,11 +265,13 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   S'y ajoutent les tests du moteur de calcul (priorités, puissances, refus des expressions invalides), du formatage à la française, de l'enchaînement et du bilan.
 - **Jugement situationnel** :
   - validation de la banque : rangs 1 à 4, compétences connues, identifiants uniques, explications détaillées ;
-  - au moins 4 situations, thèmes demandés couverts (conflit, priorités, hiérarchie) ;
+  - au moins 30 situations, compétence principale bien couverte, environ un tiers par niveau de difficulté, thèmes demandés couverts (conflit, priorités, hiérarchie) ;
+  - aucun quasi-doublon, longueur des actions sans biais, usage belge des nombres ;
   - notation par proximité, testée sur toutes les combinaisons de choix : le maximum n'est atteint qu'avec la grille ;
   - ordre aléatoire des actions et bilan par compétence.
 - **Mode examen** :
   - composition : 10 + 10 + 10 questions et 5 situations de jugement, mélangées et réparties entre les textes et les jeux de données, tirage reproductible ;
+  - équilibre des niveaux de difficulté, sans renoncer à la répartition entre les groupes ;
   - navigation libre : réponses modifiées ou effacées, questions marquées, situation de jugement complète seulement avec ses deux choix ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
   - notation (bonnes réponses, réponses partielles du jugement situationnel, erreurs, questions vides, par section) et affichage du temps ;

@@ -3,11 +3,15 @@
  * (réutilisée par le mode examen et testable sous Node).
  *
  * La banque est stockée dans data/jugement.json :
- *   { scenarios: [{ id, title, theme, competencies: [...], context, situation: [...], debrief,
- *       actions: [{ id, text, rank: 1 à 4, competencies: [...], explanation }] }] }
+ *   { scenarios: [{ id, title, theme, competency, competencies: [...], difficulty, context,
+ *       situation: [...], debrief, actions: [{ id, text, rank: 1 à 4, competencies: [...], explanation }] }] }
+ * `competency` est la compétence principale de la situation (elle figure aussi dans `competencies`) ;
+ * `difficulty` vaut 1 (facile), 2 (moyen) ou 3 (difficile).
  * `rank` est la place de l'action dans la grille de référence : 1 = la plus adéquate,
  * 4 = la moins adéquate. Le candidat désigne l'action la plus adéquate et la moins adéquate.
+ * Les identifiants ne changent jamais : la progression enregistrée des candidats y fait référence.
  */
+import { isDifficulty } from '../lib/difficulty.js';
 import { shuffle } from '../lib/random.js';
 
 export const ACTION_COUNT = 4;
@@ -49,6 +53,14 @@ export const COMPETENCIES = {
   integrite: {
     label: 'Intégrité',
     description: 'Agir de manière loyale, impartiale et transparente, dans le respect des règles et de la confidentialité.',
+  },
+  resilience: {
+    label: 'Résilience',
+    description: 'Garder son calme et son efficacité sous la pression, face aux critiques, aux imprévus et aux échecs, et en tirer des enseignements.',
+  },
+  leadership: {
+    label: 'Leadership',
+    description: 'Guider et mobiliser une équipe : fixer un cap, déléguer, soutenir chacun et assumer les décisions.',
   },
 };
 
@@ -134,6 +146,8 @@ export function validateBank(bank) {
     if (!scenario.title || !scenario.theme || !scenario.context || !scenario.debrief) errors.push(`${where} : titre, thème, contexte ou synthèse manquant.`);
     if (!Array.isArray(scenario.situation) || scenario.situation.length === 0) errors.push(`${where} : situation manquante.`);
     checkCompetencies(scenario.competencies, where);
+    if (!scenario.competencies?.includes(scenario.competency)) errors.push(`${where} : compétence principale absente ou hors de la liste des compétences.`);
+    if (!isDifficulty(scenario.difficulty)) errors.push(`${where} : difficulté 1, 2 ou 3 attendue.`);
     if (!Array.isArray(scenario.actions) || scenario.actions.length !== ACTION_COUNT) {
       errors.push(`${where} : ${ACTION_COUNT} actions attendues.`);
       continue;
