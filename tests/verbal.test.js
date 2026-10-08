@@ -12,6 +12,7 @@ import {
   summarize,
   validateBank,
 } from '../assets/js/verbal/quiz.js';
+import { NON_BELGIAN_NUMERALS, mostSimilarPair, similarity } from './helpers/texte.js';
 
 const bank = JSON.parse(readFileSync(new URL('../data/verbal.json', import.meta.url), 'utf8'));
 const statements = bank.passages.flatMap((passage) => passage.statements.map((statement) => ({ passage, statement })));
@@ -22,8 +23,22 @@ test('la banque est valide : identifiants uniques, réponses connues, citations 
   assert.deepEqual(validateBank(bank), []);
 });
 
-test('au moins 4 textes, chacun avec 3 à 4 affirmations', () => {
-  assert.ok(bank.passages.length >= 4, `${bank.passages.length} textes seulement`);
+/** Affirmations de la banque initiale : leurs identifiants ne doivent jamais changer (progression enregistrée). */
+const ORIGINAL_IDS = [
+  'teletravail-accueil', 'teletravail-silence', 'teletravail-majorite', 'teletravail-indemnite',
+  'inflation-energie', 'inflation-recul-pouvoir-achat', 'inflation-prevision', 'inflation-menages-modestes',
+  'air-toxicite', 'air-capteurs', 'air-ventilation', 'air-absenteisme',
+  'documents-justification', 'documents-delai', 'documents-acces-partiel', 'documents-statistiques',
+  'pollinisateurs-zones', 'pollinisateurs-pesticides', 'pollinisateurs-cultures', 'pollinisateurs-revenus',
+];
+
+test('les identifiants des affirmations initiales sont conservés', () => {
+  const ids = new Set(statements.map(({ statement }) => statement.id));
+  for (const id of ORIGINAL_IDS) assert.ok(ids.has(id), `« ${id} » a disparu`);
+});
+
+test('au moins 60 affirmations (le triple de la banque initiale), 3 à 4 par texte', () => {
+  assert.ok(statements.length >= 3 * ORIGINAL_IDS.length, `${statements.length} affirmations seulement`);
   for (const passage of bank.passages) {
     assert.ok(passage.statements.length >= 3 && passage.statements.length <= 4, `« ${passage.id} » : ${passage.statements.length} affirmations`);
   }
@@ -41,11 +56,56 @@ test('chaque citation est une phrase complète et exacte du texte', () => {
   }
 });
 
-test('les trois réponses sont représentées de façon équilibrée', () => {
+test('les trois réponses sont représentées de façon équilibrée (environ un tiers chacune)', () => {
   for (const { id } of ANSWERS) {
     const count = statements.filter(({ statement }) => statement.answer === id).length;
-    assert.ok(count / statements.length >= 0.25, `« ${id} » : ${count} sur ${statements.length}`);
+    assert.ok(Math.abs(count - statements.length / 3) <= statements.length * 0.05, `« ${id} » : ${count} sur ${statements.length}`);
   }
+});
+
+test('difficulté 1, 2 ou 3 pour chaque affirmation, environ un tiers par niveau', () => {
+  for (const level of [1, 2, 3]) {
+    const count = statements.filter(({ statement }) => statement.difficulty === level).length;
+    assert.ok(Math.abs(count - statements.length / 3) <= statements.length * 0.07, `niveau ${level} : ${count} sur ${statements.length}`);
+  }
+  for (const passage of bank.passages) {
+    const levels = new Set(passage.statements.map((statement) => statement.difficulty));
+    assert.ok(levels.size >= 2, `« ${passage.id} » : toutes les affirmations ont le même niveau`);
+  }
+});
+
+test('le niveau affiché ne trahit pas la réponse : aucune réponse ne domine un niveau', () => {
+  for (const level of [1, 2, 3]) {
+    const atLevel = statements.filter(({ statement }) => statement.difficulty === level);
+    for (const { id } of ANSWERS) {
+      const count = atLevel.filter(({ statement }) => statement.answer === id).length;
+      assert.ok(count <= atLevel.length / 2, `niveau ${level} : ${count} « ${id} » sur ${atLevel.length}`);
+    }
+  }
+});
+
+test('« On ne peut pas savoir » : l’explication établit que le texte ne permet pas de trancher', () => {
+  for (const { statement } of statements.filter(({ statement }) => statement.answer === 'impossible')) {
+    assert.match(statement.explanation, /on ne peut (donc )?pas savoir/i, `« ${statement.id} »`);
+  }
+});
+
+test('aucun doublon ni quasi-doublon : titres, textes et affirmations', () => {
+  const titles = bank.passages.map((passage) => passage.title);
+  assert.equal(new Set(titles).size, titles.length, 'titres en double');
+  const closest = mostSimilarPair(bank.passages.map((passage) => passage.paragraphs.join(' ')));
+  assert.ok(closest.score < 0.3, `textes trop proches : ${bank.passages[closest.i]?.id} et ${bank.passages[closest.j]?.id}`);
+  for (let i = 0; i < statements.length; i += 1) {
+    for (let j = i + 1; j < statements.length; j += 1) {
+      const [a, b] = [statements[i], statements[j]];
+      const limit = a.passage === b.passage ? 0.5 : 0.4;
+      assert.ok(similarity(a.statement.text, b.statement.text) < limit, `affirmations trop proches : ${a.statement.id} et ${b.statement.id}`);
+    }
+  }
+});
+
+test('usage belge : septante et nonante, jamais soixante-dix ni quatre-vingt-dix', () => {
+  assert.doesNotMatch(JSON.stringify(bank), NON_BELGIAN_NUMERALS);
 });
 
 test('chaque explication est détaillée et cite le texte', () => {
@@ -74,8 +134,10 @@ test('validateBank détecte une citation inexacte ou un identifiant en double', 
   broken.passages[0].statements[0].quotes[0] += ' (modifié)';
   broken.passages[1].statements[0].id = broken.passages[0].statements[1].id;
   broken.passages[2].statements[0].answer = 'peut-être';
+  delete broken.passages[3].statements[0].difficulty;
   const errors = validateBank(broken);
-  assert.equal(errors.length, 3);
+  assert.equal(errors.length, 4);
+  assert.match(errors.join('\n'), /difficulté 1, 2 ou 3 attendue/);
   assert.match(errors.join('\n'), /citation introuvable/);
   assert.match(errors.join('\n'), /en double/);
   assert.match(errors.join('\n'), /réponse « peut-être » invalide/);

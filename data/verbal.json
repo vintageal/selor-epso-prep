@@ -15,6 +15,7 @@
           "id": "teletravail-accueil",
           "text": "Un agent chargé de l'accueil physique du public peut, en principe, télétravailler deux jours par semaine.",
           "answer": "faux",
+          "difficulty": 2,
           "quotes": [
             "Les fonctions impliquant un accueil physique du public en sont exclues par principe.",
             "Les agents concernés conservent toutefois la possibilité de solliciter un télétravail occasionnel, limité à dix jours par an, pour des motifs personnels dûment justifiés."
@@ -25,6 +26,7 @@
           "id": "teletravail-silence",
           "text": "Le silence du supérieur hiérarchique au-delà du délai imparti vaut accord sur la demande de télétravail.",
           "answer": "vrai",
+          "difficulty": 1,
           "quotes": [
             "Le supérieur hiérarchique dispose ensuite de dix jours ouvrables pour se prononcer ; en l'absence de réponse dans ce délai, la demande est réputée acceptée."
           ],
@@ -34,6 +36,7 @@
           "id": "teletravail-majorite",
           "text": "La majorité des agents de l'Office télétravaillent désormais trois jours par semaine.",
           "answer": "impossible",
+          "difficulty": 1,
           "quotes": [
             "Depuis le 1er mars, les agents de l'Office fédéral de la gestion documentaire peuvent effectuer jusqu'à trois jours de télétravail par semaine, à condition que leur fonction ait été reconnue compatible avec le travail à distance par leur supérieur hiérarchique."
           ],
@@ -43,6 +46,7 @@
           "id": "teletravail-indemnite",
           "text": "Un agent qui télétravaille un jour par semaine perçoit une indemnité inférieure à celle d'un collègue qui télétravaille trois jours par semaine.",
           "answer": "vrai",
+          "difficulty": 2,
           "quotes": [
             "Cette indemnité est réduite de moitié pour les agents qui télétravaillent moins de deux jours par semaine."
           ],
@@ -64,6 +68,7 @@
           "id": "inflation-energie",
           "text": "L'énergie a pesé davantage que l'alimentation dans la hausse des prix de l'an dernier.",
           "answer": "vrai",
+          "difficulty": 1,
           "quotes": [
             "La hausse des prix de l'énergie explique à elle seule près de la moitié de cette progression, tandis que les produits alimentaires y ont contribué pour environ un quart."
           ],
@@ -73,6 +78,7 @@
           "id": "inflation-recul-pouvoir-achat",
           "text": "Grâce à l'indexation, le pouvoir d'achat des ménages salariés a progressé l'an dernier.",
           "answer": "faux",
+          "difficulty": 2,
           "quotes": [
             "Grâce au mécanisme d'indexation automatique, les salaires bruts ont progressé en moyenne de 5,8 % sur la même période.",
             "Le pouvoir d'achat des ménages salariés a donc légèrement reculé, mais dans une moindre mesure que dans les pays voisins dépourvus d'un tel mécanisme."
@@ -83,6 +89,7 @@
           "id": "inflation-prevision",
           "text": "L'inflation s'établira à 3,1 % cette année.",
           "answer": "impossible",
+          "difficulty": 2,
           "quotes": [
             "Pour l'année en cours, l'Institut prévoit un ralentissement de l'inflation à 3,1 %, à condition que les prix de l'énergie se stabilisent."
           ],
@@ -92,6 +99,7 @@
           "id": "inflation-menages-modestes",
           "text": "Les ménages à faibles revenus consacrent une part plus importante de leur budget à l'énergie et à l'alimentation que les autres ménages.",
           "answer": "vrai",
+          "difficulty": 1,
           "quotes": [
             "Les auteurs soulignent toutefois que l'indexation intervient avec un décalage de plusieurs mois, ce qui pèse davantage sur les ménages à faibles revenus, dont une part plus importante du budget est consacrée à l'énergie et à l'alimentation."
           ],
@@ -113,6 +121,7 @@
           "id": "air-toxicite",
           "text": "Le seuil de 1 000 ppm a été retenu parce qu'au-delà de cette concentration, le CO₂ devient toxique pour les élèves.",
           "answer": "faux",
+          "difficulty": 3,
           "quotes": [
             "Le seuil retenu, 1 000 parties par million (ppm), est considéré par les experts comme un indicateur fiable du renouvellement de l'air, et non comme un seuil de toxicité du CO₂ lui-même."
           ],
@@ -122,6 +131,7 @@
           "id": "air-capteurs",
           "text": "Si la directive était adoptée, chaque salle de classe devrait à terme être équipée d'un capteur de CO₂.",
           "answer": "vrai",
+          "difficulty": 2,
           "quotes": [
             "Les États membres disposeraient d'un délai de quatre ans après l'entrée en vigueur du texte pour équiper chaque salle de classe d'un capteur de CO₂."
           ],
@@ -131,6 +141,7 @@
           "id": "air-ventilation",
           "text": "Toutes les écoles existantes devront installer un système de ventilation mécanique.",
           "answer": "faux",
+          "difficulty": 2,
           "quotes": [
             "Les établissements construits après 2030 devraient en outre être dotés d'un système de ventilation mécanique.",
             "Pour les bâtiments existants, la ventilation naturelle par ouverture des fenêtres resterait admise, à condition que les mesures démontrent le respect du seuil pendant au moins 90 % du temps d'occupation."
@@ -141,6 +152,7 @@
           "id": "air-absenteisme",
           "text": "Une meilleure ventilation des salles de classe réduit l'absentéisme dû aux infections respiratoires.",
           "answer": "impossible",
+          "difficulty": 3,
           "quotes": [
             "Plusieurs études citées dans l'analyse d'impact associent une meilleure ventilation à une diminution de l'absentéisme lié aux infections respiratoires.",
             "Les auteurs de l'analyse reconnaissent cependant que ces études, menées principalement dans des pays d'Europe du Nord, ne permettent pas d'établir un lien de causalité direct."
@@ -163,6 +175,7 @@
           "id": "documents-justification",
           "text": "Pour obtenir un document, le demandeur doit expliquer les raisons de sa demande.",
           "answer": "faux",
+          "difficulty": 1,
           "quotes": [
             "Toute personne physique ou morale peut demander l'accès aux documents détenus par l'Agence, sans avoir à justifier sa demande."
           ],
@@ -172,6 +185,7 @@
           "id": "documents-delai",
           "text": "Dans le cas le plus long prévu par le texte, l'Agence dispose de trente jours ouvrables pour rendre sa décision.",
           "answer": "vrai",
+          "difficulty": 3,
           "quotes": [
             "L'Agence accuse réception de la demande dans un délai de cinq jours ouvrables et rend sa décision dans un délai de quinze jours ouvrables à compter de l'enregistrement de celle-ci.",
             "Dans des cas exceptionnels, notamment lorsque la demande porte sur un document très long ou sur un grand nombre de documents, ce délai peut être prolongé une seule fois de quinze jours ouvrables, à condition que le demandeur en soit informé au préalable et que la prolongation soit dûment motivée."
@@ -182,6 +196,7 @@
           "id": "documents-acces-partiel",
           "text": "Un document dont une seule page contient des informations relevant de la vie privée est refusé dans son intégralité.",
           "answer": "faux",
+          "difficulty": 2,
           "quotes": [
             "L'accès est refusé lorsque la divulgation porterait atteinte à la protection de la vie privée ou à la sécurité publique.",
             "Lorsque seules certaines parties d'un document sont concernées par une exception, les autres parties sont divulguées."
@@ -192,6 +207,7 @@
           "id": "documents-statistiques",
           "text": "La plupart des demandes d'accès adressées à l'Agence reçoivent une réponse favorable.",
           "answer": "impossible",
+          "difficulty": 1,
           "quotes": [
             "L'accès est refusé lorsque la divulgation porterait atteinte à la protection de la vie privée ou à la sécurité publique."
           ],
@@ -213,6 +229,7 @@
           "id": "pollinisateurs-zones",
           "text": "Dans les zones étudiées, les pollinisateurs ont davantage décliné en zone agricole qu'en zone protégée.",
           "answer": "vrai",
+          "difficulty": 1,
           "quotes": [
             "Un rapport publié par un consortium de onze universités européennes estime que les populations d'insectes pollinisateurs ont diminué d'environ 30 % en vingt ans dans les zones agricoles étudiées.",
             "Le déclin est nettement moins marqué dans les zones protégées, où il ne dépasse pas 10 % sur la même période."
@@ -223,6 +240,7 @@
           "id": "pollinisateurs-pesticides",
           "text": "Selon les chercheurs, l'usage de pesticides est la principale cause du déclin des pollinisateurs.",
           "answer": "impossible",
+          "difficulty": 3,
           "quotes": [
             "Les chercheurs identifient trois facteurs principaux : la disparition des haies et des prairies fleuries, l'usage de certains pesticides et la multiplication des épisodes de chaleur extrême.",
             "Ils précisent qu'aucun de ces facteurs ne suffit, à lui seul, à expliquer l'ampleur du phénomène observé."
@@ -233,6 +251,7 @@
           "id": "pollinisateurs-cultures",
           "text": "Environ la moitié des cultures destinées à l'alimentation humaine ne dépendent pas du tout de la pollinisation animale.",
           "answer": "faux",
+          "difficulty": 3,
           "quotes": [
             "Environ trois quarts des cultures destinées à l'alimentation humaine dépendent, au moins en partie, de la pollinisation animale."
           ],
@@ -242,10 +261,534 @@
           "id": "pollinisateurs-revenus",
           "text": "La mesure recommandée par le rapport réduirait les revenus des agriculteurs.",
           "answer": "impossible",
-          "quotes": [
-            "Il ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs."
-          ],
+          "difficulty": 2,
+          "quotes": ["Il ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs."],
           "explanation": "Le texte recommande de réserver au moins 7 % de la surface de chaque exploitation à des éléments favorables à la biodiversité, mais il précise qu'il « ne chiffre toutefois pas le coût de cette mesure pour les agriculteurs ». Il ne dit rien non plus d'éventuelles compensations ni d'effets sur les rendements. Même si une perte de revenus peut sembler plausible, rien dans le texte ne permet de l'affirmer ou de l'exclure : on ne peut pas savoir. Ne complétez jamais le texte avec ce qui vous paraît probable ou avec vos connaissances générales : seul le texte fait foi."
+        }
+      ]
+    },
+    {
+      "id": "plan-mobilite-agents",
+      "title": "Circulaire : plan de mobilité des agents",
+      "theme": "Administration publique",
+      "paragraphs": [
+        "À partir du 1er septembre, l'Agence régionale de la fiscalité locale rembourse intégralement l'abonnement de train ou de bus de ses agents pour le trajet entre leur domicile et leur lieu de travail. Les agents qui se rendent au travail à vélo perçoivent une indemnité kilométrique, plafonnée à quarante kilomètres par jour aller-retour. Les deux avantages ne peuvent pas être cumulés pour un même mois.",
+        "Le nombre de places de parking réservées au personnel sera réduit d'un tiers d'ici la fin de l'année prochaine. Les places restantes seront attribuées en priorité aux agents à mobilité réduite, puis aux agents dont le domicile n'est pas desservi par les transports en commun avant 7 h. Les autres agents pourront solliciter une place pour une durée limitée, en cas de circonstances exceptionnelles.",
+        "Une enquête menée en mars auprès du personnel a montré que 38 % des agents utilisent principalement la voiture pour se rendre au travail. Le plan vise à ramener cette proportion sous la barre des 30 % en trois ans. Un premier bilan sera établi après dix-huit mois, sur la base d'une nouvelle enquête."
+      ],
+      "statements": [
+        {
+          "id": "mobilite-cumul",
+          "text": "Un agent peut, pour un même mois, se faire rembourser son abonnement de bus et percevoir l'indemnité vélo.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["Les deux avantages ne peuvent pas être cumulés pour un même mois."],
+          "explanation": "Le texte prévoit bien deux avantages, le remboursement de l'abonnement de train ou de bus et l'indemnité kilométrique pour le vélo, mais il précise que « les deux avantages ne peuvent pas être cumulés pour un même mois ». L'affirmation décrit exactement le cumul interdit : elle contredit le texte et est donc fausse. Quand un texte accorde plusieurs avantages, vérifiez toujours s'ils peuvent se combiner : une seule règle de non-cumul suffit à rendre l'affirmation fausse."
+        },
+        {
+          "id": "mobilite-parking-priorite",
+          "text": "Pour l'attribution d'une place de parking, un agent à mobilité réduite passe avant un collègue dont le domicile n'est pas desservi par les transports en commun avant 7 h.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": [
+            "Les places restantes seront attribuées en priorité aux agents à mobilité réduite, puis aux agents dont le domicile n'est pas desservi par les transports en commun avant 7 h."
+          ],
+          "explanation": "Le texte établit un ordre de priorité : les places sont attribuées « en priorité aux agents à mobilité réduite, puis aux agents dont le domicile n'est pas desservi par les transports en commun avant 7 h ». Le mot « puis » indique que la seconde catégorie ne vient qu'après la première. L'affirmation reformule fidèlement cet ordre : elle est vraie. Dans ce type de phrase, repérez les mots qui marquent une hiérarchie (« d'abord », « puis », « à défaut ») : ils portent souvent toute l'information."
+        },
+        {
+          "id": "mobilite-avant-septembre",
+          "text": "Avant le 1er septembre, l'Agence ne remboursait qu'une partie de l'abonnement de train ou de bus de ses agents.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": [
+            "À partir du 1er septembre, l'Agence régionale de la fiscalité locale rembourse intégralement l'abonnement de train ou de bus de ses agents pour le trajet entre leur domicile et leur lieu de travail."
+          ],
+          "explanation": "Le texte indique qu'« à partir du 1er septembre », l'Agence « rembourse intégralement » l'abonnement de train ou de bus. L'expression « à partir du » marque le début de cette règle, mais le texte ne dit rien de la situation antérieure : l'Agence pouvait ne rien rembourser, rembourser une partie de l'abonnement, ou appliquer d'autres conditions. Rien ne permet de choisir entre ces hypothèses. L'affirmation n'est ni confirmée ni contredite : on ne peut pas savoir. Une règle nouvelle ne renseigne pas sur celle qu'elle remplace."
+        },
+        {
+          "id": "mobilite-train-bus",
+          "text": "Lors de l'enquête de mars, plus de six agents sur dix se rendaient principalement au travail en train ou en bus.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Une enquête menée en mars auprès du personnel a montré que 38 % des agents utilisent principalement la voiture pour se rendre au travail."
+          ],
+          "explanation": "L'enquête indique que « 38 % des agents utilisent principalement la voiture ». Les 62 % restants n'utilisent donc pas principalement la voiture, mais le texte ne dit pas comment ils se répartissent : train, bus, vélo, marche ou autre moyen. Le texte cite d'ailleurs lui-même les cyclistes. Il est tentant d'attribuer ces 62 % aux transports en commun, mais rien ne permet de le faire : l'affirmation n'est ni confirmée ni contredite, on ne peut pas savoir. Le complément d'une proportion regroupe souvent plusieurs catégories distinctes."
+        }
+      ]
+    },
+    {
+      "id": "archives-numerisation",
+      "title": "Règlement : conservation et numérisation des archives communales",
+      "theme": "Administration publique",
+      "paragraphs": [
+        "Les documents produits par les services communaux sont conservés selon un tableau de tri qui fixe, pour chaque catégorie, une durée de conservation administrative. À l'expiration de ce délai, les documents sont soit détruits, soit versés aux archives historiques de la commune. Aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal.",
+        "Les registres de l'état civil sont conservés sans limite de durée. Les dossiers de permis d'urbanisme sont conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques. Les pièces comptables sont conservées dix ans, après quoi elles peuvent être détruites.",
+        "Depuis l'an dernier, les dossiers papier sont numérisés lorsqu'ils sont consultés plus de trois fois par an. La version numérique a la même valeur que l'original, à condition d'avoir été certifiée par l'archiviste communal. Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier."
+      ],
+      "statements": [
+        {
+          "id": "archives-etat-civil",
+          "text": "Un registre de l'état civil numérisé et certifié doit malgré tout être conservé sur papier.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": [
+            "Les registres de l'état civil sont conservés sans limite de durée.",
+            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier."
+          ],
+          "explanation": "Le texte autorise la destruction des originaux numérisés et certifiés, mais il prévoit une exception explicite : « sauf les registres de l'état civil, qui sont toujours conservés sur papier ». Il précise aussi que ces registres « sont conservés sans limite de durée ». Même numérisé et certifié, un registre de l'état civil doit donc être conservé sur papier : l'affirmation est vraie. Ce type de question teste votre attention aux exceptions introduites par « sauf », « à l'exception de » ou « hormis »."
+        },
+        {
+          "id": "archives-versement-permis",
+          "text": "Le dossier d'un permis d'urbanisme délivré il y a trente-cinq ans a déjà été versé aux archives historiques.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": [
+            "Les dossiers de permis d'urbanisme sont conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques."
+          ],
+          "explanation": "Le texte fixe une durée minimale : les dossiers de permis d'urbanisme sont « conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques ». « Au moins » signifie que la conservation peut se prolonger au-delà de trente ans : le texte ne dit pas quand le versement a lieu. Après trente-cinq ans, le dossier peut donc avoir été versé comme il peut encore être conservé par les services. Le texte ne permet ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir. Une durée minimale n'est pas une date."
+        },
+        {
+          "id": "archives-original-permis",
+          "text": "L'original papier d'un dossier de permis d'urbanisme peut, dans certains cas, être détruit moins de trente ans après la délivrance du permis.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "Les dossiers de permis d'urbanisme sont conservés au moins trente ans après la délivrance du permis, puis versés aux archives historiques.",
+            "La version numérique a la même valeur que l'original, à condition d'avoir été certifiée par l'archiviste communal.",
+            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier.",
+            "Aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal."
+          ],
+          "explanation": "La durée minimale de trente ans pousse à répondre « Faux », mais il faut combiner plusieurs passages. Le dossier doit être « conservé au moins trente ans », or sa version numérique certifiée « a la même valeur que l'original ». Le texte ajoute que « les originaux numérisés et certifiés peuvent être détruits », avec une seule exception, les registres de l'état civil, et sans fixer de délai. Sous réserve de l'accord écrit de l'archiviste, l'original papier d'un permis numérisé et certifié peut donc être détruit avant trente ans, le dossier restant conservé sous forme numérique : l'affirmation, qui parle de « certains cas », est vraie."
+        },
+        {
+          "id": "archives-dossier-consulte",
+          "text": "Un dossier papier consulté quatre fois l'an dernier a été détruit.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Depuis l'an dernier, les dossiers papier sont numérisés lorsqu'ils sont consultés plus de trois fois par an.",
+            "Les originaux numérisés et certifiés peuvent être détruits, sauf les registres de l'état civil, qui sont toujours conservés sur papier.",
+            "Aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal."
+          ],
+          "explanation": "Un dossier consulté quatre fois l'an dernier entre bien dans la règle de numérisation, qui vise les dossiers « consultés plus de trois fois par an ». Mais la numérisation n'entraîne pas la destruction : le texte indique que les originaux numérisés et certifiés « peuvent être détruits », ce qui est une simple faculté, et qu'« aucune destruction ne peut avoir lieu sans l'accord écrit de l'archiviste communal ». Le texte ne dit pas si ce dossier a été certifié, ni si l'archiviste a donné son accord. Il ne permet donc ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir."
+        }
+      ]
+    },
+    {
+      "id": "procedure-marches-publics",
+      "title": "Guide interne : choisir la procédure d'un marché public",
+      "theme": "Droit et institutions",
+      "paragraphs": [
+        "Pour tout achat de fournitures ou de services, le service acheteur estime d'abord le montant total du marché, hors TVA, sur toute sa durée. Ce montant détermine la procédure applicable. Il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante.",
+        "En dessous de 25 000 euros, le service peut attribuer le marché sur simple facture acceptée, après avoir consulté au moins trois fournisseurs lorsque c'est possible. Entre 25 000 et 120 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs. Au-delà de 120 000 euros, le marché doit faire l'objet d'une publication officielle.",
+        "Le choix de l'offre repose sur des critères annoncés dès le départ aux fournisseurs consultés. Le prix doit toujours figurer parmi ces critères, mais il n'est pas nécessairement le seul. Chaque décision d'attribution est motivée par écrit et conservée dans le dossier du marché."
+      ],
+      "statements": [
+        {
+          "id": "marches-scission",
+          "text": "Pour pouvoir passer par la simple facture acceptée, un service peut scinder un marché de 40 000 euros en deux commandes de 20 000 euros.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": [
+            "Il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante."
+          ],
+          "explanation": "Le texte interdit précisément ce montage : « il est interdit de scinder un marché en plusieurs commandes dans le but d'échapper à une procédure plus exigeante ». Diviser un marché de 40 000 euros en deux commandes de 20 000 euros pour passer sous le seuil de la facture acceptée est exactement une scission destinée à éviter la procédure applicable entre 25 000 et 120 000 euros. L'affirmation contredit le texte : elle est fausse."
+        },
+        {
+          "id": "marches-prix-exclu",
+          "text": "Lorsque la qualité est déterminante, le prix peut être exclu des critères de choix de l'offre.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Le prix doit toujours figurer parmi ces critères, mais il n'est pas nécessairement le seul."
+          ],
+          "explanation": "Le texte est formel : « le prix doit toujours figurer parmi ces critères, mais il n'est pas nécessairement le seul ». La qualité peut donc s'ajouter au prix comme critère, mais jamais le remplacer. L'affirmation, qui envisage d'exclure le prix, contredit le mot « toujours » : elle est fausse. Piège fréquent : la seconde moitié de la phrase (« pas nécessairement le seul ») ouvre la porte à d'autres critères, mais elle ne remet pas en cause la première."
+        },
+        {
+          "id": "marches-trois-fournisseurs",
+          "text": "Un service qui attribue sans publication préalable un marché estimé à 100 000 euros hors TVA doit avoir consulté au moins trois fournisseurs.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": [
+            "Entre 25 000 et 120 000 euros, une procédure négociée sans publication préalable est autorisée, avec consultation obligatoire d'au moins trois fournisseurs."
+          ],
+          "explanation": "Un marché de 100 000 euros se situe dans la tranche comprise entre 25 000 et 120 000 euros, pour laquelle le texte autorise une procédure « sans publication préalable », « avec consultation obligatoire d'au moins trois fournisseurs ». Le mot « obligatoire » distingue cette tranche de la précédente, où la consultation n'est requise que « lorsque c'est possible ». L'affirmation, qui vise bien un marché attribué sans publication, est vraie."
+        },
+        {
+          "id": "marches-ponderation",
+          "text": "Les fournisseurs consultés connaissent, dès le départ, le poids accordé au prix dans le choix de l'offre.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Le choix de l'offre repose sur des critères annoncés dès le départ aux fournisseurs consultés."
+          ],
+          "explanation": "Le texte indique que les critères sont « annoncés dès le départ aux fournisseurs consultés », et que le prix figure toujours parmi eux. Mais il ne dit rien de leur pondération : annoncer les critères ne signifie pas nécessairement annoncer l'importance relative de chacun. Le texte ne permet ni d'affirmer ni de nier que les fournisseurs connaissent le poids du prix. On ne peut donc pas savoir. Attention à ne pas confondre la liste des critères et leur poids, deux informations distinctes."
+        }
+      ]
+    },
+    {
+      "id": "compte-formation",
+      "title": "Note au personnel : le compte formation",
+      "theme": "Ressources humaines",
+      "paragraphs": [
+        "Chaque agent dispose d'un compte formation crédité de quarante heures au 1er janvier de chaque année. Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, mais le solde du compte ne peut jamais dépasser quatre-vingts heures. Les formations obligatoires liées à la sécurité ne sont pas décomptées du compte.",
+        "Pour suivre une formation pendant les heures de service, l'agent introduit une demande auprès de son supérieur au moins un mois avant la date de début. Le supérieur ne peut refuser que pour des raisons liées à la continuité du service, et un même refus ne peut être opposé plus de deux fois de suite. Les formations suivies en dehors des heures de service sont prises en charge financièrement, mais ne donnent pas lieu à récupération.",
+        "En fin d'année, le service du personnel publie le nombre moyen d'heures de formation suivies par agent dans chaque direction. L'an dernier, cette moyenne variait de douze heures dans la direction des infrastructures à trente et une heures dans la direction juridique."
+      ],
+      "statements": [
+        {
+          "id": "formation-plafond",
+          "text": "Un agent qui n'a suivi aucune formation pendant deux années complètes dispose de cent vingt heures sur son compte au 1er janvier de la troisième année.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": [
+            "Chaque agent dispose d'un compte formation crédité de quarante heures au 1er janvier de chaque année.",
+            "Les heures non utilisées au 31 décembre sont reportées sur l'année suivante, mais le solde du compte ne peut jamais dépasser quatre-vingts heures."
+          ],
+          "explanation": "Sans plafond, trois crédits successifs de quarante heures donneraient bien cent vingt heures : quarante heures la première année, quatre-vingts après le report de la deuxième, puis cent vingt. Mais le texte précise que « le solde du compte ne peut jamais dépasser quatre-vingts heures ». Au 1er janvier de la troisième année, l'agent dispose donc de quatre-vingts heures, et non de cent vingt. L'affirmation contredit cette limite : elle est fausse. Dans les questions qui demandent un calcul, vérifiez toujours si le texte prévoit un plafond ou un minimum qui modifie le résultat."
+        },
+        {
+          "id": "formation-securite",
+          "text": "Une formation obligatoire en matière de sécurité ne réduit pas le nombre d'heures disponibles sur le compte formation.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["Les formations obligatoires liées à la sécurité ne sont pas décomptées du compte."],
+          "explanation": "Le texte indique que « les formations obligatoires liées à la sécurité ne sont pas décomptées du compte ». Ne pas être décomptée signifie précisément ne pas réduire le solde d'heures disponibles. L'affirmation reformule cette règle avec d'autres mots : elle est vraie. Retenez le schéma : une règle générale (le compte est débité des formations suivies) suivie d'une exception (les formations obligatoires liées à la sécurité) ; l'affirmation porte ici sur l'exception."
+        },
+        {
+          "id": "formation-motif-refus",
+          "text": "Un supérieur peut refuser une formation pendant les heures de service parce qu'il la juge sans rapport avec la fonction de l'agent.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Le supérieur ne peut refuser que pour des raisons liées à la continuité du service, et un même refus ne peut être opposé plus de deux fois de suite."
+          ],
+          "explanation": "Le texte limite strictement les motifs de refus : le supérieur « ne peut refuser que pour des raisons liées à la continuité du service ». La tournure « ne… que » exclut tout autre motif, y compris l'absence de lien entre la formation et la fonction de l'agent. Un refus fondé sur ce motif n'est donc pas permis : l'affirmation contredit le texte et elle est fausse. Repérez les restrictions exprimées par « ne… que », « uniquement » ou « seulement » : elles ferment la porte à tous les cas qu'elles ne citent pas."
+        },
+        {
+          "id": "formation-minimum-juridique",
+          "text": "L'an dernier, chaque agent de la direction juridique a suivi au moins douze heures de formation.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": [
+            "L'an dernier, cette moyenne variait de douze heures dans la direction des infrastructures à trente et une heures dans la direction juridique."
+          ],
+          "explanation": "Le texte donne pour la direction juridique une moyenne de « trente et une heures » par agent. Une moyenne ne renseigne pas sur la situation de chaque agent : certains ont pu suivre beaucoup plus d'heures, d'autres beaucoup moins, voire aucune. Rien ne garantit donc que chaque agent ait atteint douze heures, mais rien ne permet non plus d'affirmer le contraire. On ne peut pas savoir. Piège classique : déduire d'une moyenne une information sur chaque individu."
+        }
+      ]
+    },
+    {
+      "id": "protection-donnees-cpas",
+      "title": "Fiche pratique : la protection des données au CPAS",
+      "theme": "Droit et institutions",
+      "paragraphs": [
+        "Les assistants sociaux du CPAS ne peuvent consulter que les dossiers des personnes dont ils assurent le suivi. Chaque consultation d'un dossier est enregistrée automatiquement, avec la date et l'identité de l'agent. Ces enregistrements sont vérifiés chaque trimestre par le délégué à la protection des données.",
+        "Toute personne aidée peut demander à consulter les données qui la concernent. Le CPAS dispose d'un mois pour répondre, délai qui peut être prolongé de deux mois lorsque la demande est complexe, à condition d'en informer le demandeur au cours du premier mois. La consultation est gratuite.",
+        "Les données d'un dossier clôturé sont conservées pendant cinq ans, puis supprimées. Un dossier est clôturé lorsque la personne n'a plus bénéficié d'aucune aide pendant douze mois consécutifs."
+      ],
+      "statements": [
+        {
+          "id": "donnees-acces-collegue",
+          "text": "Un assistant social peut consulter le dossier d'une personne suivie par un collègue, pour autant que la consultation soit enregistrée.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Les assistants sociaux du CPAS ne peuvent consulter que les dossiers des personnes dont ils assurent le suivi."
+          ],
+          "explanation": "Le texte limite strictement l'accès : les assistants sociaux « ne peuvent consulter que les dossiers des personnes dont ils assurent le suivi ». L'enregistrement automatique des consultations est un moyen de contrôle, pas une autorisation : il ne permet pas d'accéder au dossier d'une personne suivie par un collègue. L'affirmation contredit la règle : elle est fausse. Ne confondez pas une mesure de contrôle avec une condition qui rendrait l'accès légitime."
+        },
+        {
+          "id": "donnees-gratuite",
+          "text": "Une personne aidée n'a rien à payer pour consulter les données qui la concernent, même lorsque sa demande est complexe.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["La consultation est gratuite."],
+          "explanation": "Le texte est sans réserve : « la consultation est gratuite ». La complexité de la demande n'a d'effet que sur le délai de réponse, qui peut être prolongé de deux mois, et le texte ne prévoit aucun frais dans ce cas. Une personne aidée n'a donc rien à payer pour consulter ses données, que sa demande soit simple ou complexe : l'affirmation est vraie. Ne laissez pas une condition qui concerne un autre aspect de la règle, ici le délai, modifier votre lecture de celle qui vous est posée."
+        },
+        {
+          "id": "donnees-conservation",
+          "text": "Les données d'une personne dont la dernière aide remonte à cinq ans et demi sont encore conservées par le CPAS.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "Les données d'un dossier clôturé sont conservées pendant cinq ans, puis supprimées.",
+            "Un dossier est clôturé lorsque la personne n'a plus bénéficié d'aucune aide pendant douze mois consécutifs."
+          ],
+          "explanation": "Il faut combiner les deux règles. Le dossier n'est clôturé que lorsque la personne « n'a plus bénéficié d'aucune aide pendant douze mois consécutifs », soit un an après la dernière aide. Les données sont ensuite « conservées pendant cinq ans, puis supprimées », c'est-à-dire jusqu'à six ans après la dernière aide. Cinq ans et demi après la dernière aide, les données sont donc toujours conservées : l'affirmation est vraie. Le piège consiste à faire courir les cinq ans à partir de la dernière aide plutôt qu'à partir de la clôture : on conclurait alors, à tort, que les données ont été supprimées."
+        },
+        {
+          "id": "donnees-abus-detectes",
+          "text": "Les vérifications trimestrielles du délégué à la protection des données ont déjà permis de détecter des consultations abusives.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": [
+            "Ces enregistrements sont vérifiés chaque trimestre par le délégué à la protection des données."
+          ],
+          "explanation": "Le texte décrit un dispositif de contrôle : les enregistrements « sont vérifiés chaque trimestre par le délégué à la protection des données ». Il ne dit rien des résultats de ces vérifications, ni de l'existence éventuelle de consultations abusives. L'affirmation porte sur un fait que le texte n'aborde pas : on ne peut pas savoir. L'existence d'un contrôle ne prouve ni qu'il a détecté des abus, ni qu'il n'en a pas détecté."
+        }
+      ]
+    },
+    {
+      "id": "rapport-mediateur",
+      "title": "Rapport annuel du service de médiation régional (extrait)",
+      "theme": "Administration publique",
+      "paragraphs": [
+        "L'an dernier, le service de médiation de la Région a reçu 4 200 plaintes, soit 12 % de plus que l'année précédente. Parmi elles, 1 300 ont été déclarées irrecevables, le plus souvent parce que le plaignant n'avait pas d'abord contacté l'administration concernée. Les autres plaintes ont fait l'objet d'une instruction.",
+        "Près de la moitié des plaintes instruites concernaient les délais de traitement des dossiers. Dans 62 % des cas instruits, la médiation a permis d'obtenir une solution totale ou partielle pour le citoyen. Le délai moyen d'instruction est passé de 75 à 68 jours.",
+        "Le médiateur recommande que chaque administration régionale publie un délai indicatif de traitement pour ses principales démarches. Il relève que les administrations qui l'ont déjà fait reçoivent proportionnellement moins de plaintes relatives aux délais."
+      ],
+      "statements": [
+        {
+          "id": "mediation-part-instruite",
+          "text": "Plus des trois quarts des plaintes reçues l'an dernier ont fait l'objet d'une instruction.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": [
+            "L'an dernier, le service de médiation de la Région a reçu 4 200 plaintes, soit 12 % de plus que l'année précédente.",
+            "Parmi elles, 1 300 ont été déclarées irrecevables, le plus souvent parce que le plaignant n'avait pas d'abord contacté l'administration concernée.",
+            "Les autres plaintes ont fait l'objet d'une instruction."
+          ],
+          "explanation": "Le service a reçu « 4 200 plaintes », dont « 1 300 ont été déclarées irrecevables » ; « les autres plaintes ont fait l'objet d'une instruction ». Les plaintes instruites sont donc 4 200 − 1 300 = 2 900. Or les trois quarts de 4 200 font 3 150 : 2 900 est inférieur à ce seuil, puisqu'il représente environ 69 % des plaintes reçues. L'affirmation est donc fausse. Quand une affirmation contient une proportion, refaites le calcul plutôt que de vous fier à une impression."
+        },
+        {
+          "id": "mediation-annee-precedente",
+          "text": "L'année précédente, le service de médiation avait reçu plus de 3 700 plaintes.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "L'an dernier, le service de médiation de la Région a reçu 4 200 plaintes, soit 12 % de plus que l'année précédente."
+          ],
+          "explanation": "Le texte indique que les « 4 200 plaintes » de l'an dernier représentent « 12 % de plus que l'année précédente ». Le nombre de l'année précédente vaut donc 4 200 ÷ 1,12, soit 3 750 plaintes, ce qui dépasse bien 3 700 : l'affirmation est vraie. Le piège consiste à retirer 12 % de 4 200, ce qui donne 3 696 et conduit à répondre « Faux » : la hausse de 12 % se calcule sur l'année précédente, pas sur l'année en cours."
+        },
+        {
+          "id": "mediation-delai-allonge",
+          "text": "Le délai moyen d'instruction des plaintes s'est allongé par rapport à l'année précédente.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["Le délai moyen d'instruction est passé de 75 à 68 jours."],
+          "explanation": "Le texte précise que « le délai moyen d'instruction est passé de 75 à 68 jours ». Passer de 75 à 68 jours, c'est une diminution de sept jours : le délai s'est raccourci, et non allongé. L'affirmation contredit le texte : elle est fausse. Même pour une question simple, relisez l'ordre des valeurs : l'expression « passé de… à… » indique la valeur de départ puis la valeur d'arrivée."
+        },
+        {
+          "id": "mediation-plaintes-valeur-absolue",
+          "text": "Les administrations qui publient déjà un délai indicatif reçoivent, en valeur absolue, moins de plaintes relatives aux délais que les autres.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Il relève que les administrations qui l'ont déjà fait reçoivent proportionnellement moins de plaintes relatives aux délais."
+          ],
+          "explanation": "Le texte indique que ces administrations « reçoivent proportionnellement moins de plaintes relatives aux délais ». « Proportionnellement » signifie que la comparaison porte sur une part, par exemple la part des plaintes relatives aux délais dans l'ensemble de leurs plaintes, et non sur un nombre de plaintes. Une grande administration peut recevoir une part plus faible de plaintes sur les délais, mais un nombre plus élevé. Le texte ne donne aucun nombre : on ne peut pas savoir. Ne confondez pas une proportion et une valeur absolue."
+        }
+      ]
+    },
+    {
+      "id": "renovation-batiments-publics",
+      "title": "Plan régional : rénovation énergétique des bâtiments publics",
+      "theme": "Environnement et énergie",
+      "paragraphs": [
+        "La Région s'est fixé pour objectif de réduire de 40 % la consommation d'énergie de ses bâtiments administratifs d'ici 2035, par rapport à l'année 2019. Pour y parvenir, chaque bâtiment de plus de 1 000 m² fera l'objet d'un audit énergétique avant la fin de 2026. Les bâtiments classés comme monuments sont soumis à un audit adapté, qui tient compte des contraintes de conservation du patrimoine.",
+        "Les travaux sont programmés selon le rapport entre le coût de la rénovation et les économies d'énergie attendues : les rénovations les plus rentables sont réalisées en premier. Un bâtiment dont la vente ou la démolition est prévue dans les cinq ans n'est pas rénové.",
+        "Les premiers audits ont porté sur 85 bâtiments. Ils montrent que le remplacement des systèmes de chauffage permettrait, à lui seul, de réduire la consommation de ces bâtiments de 18 % en moyenne."
+      ],
+      "statements": [
+        {
+          "id": "renovation-ordre",
+          "text": "Une rénovation coûteuse peut être réalisée avant une rénovation moins coûteuse.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "Les travaux sont programmés selon le rapport entre le coût de la rénovation et les économies d'énergie attendues : les rénovations les plus rentables sont réalisées en premier."
+          ],
+          "explanation": "Le critère de programmation n'est pas le coût seul, mais « le rapport entre le coût de la rénovation et les économies d'énergie attendues » : « les rénovations les plus rentables sont réalisées en premier ». Une rénovation chère qui produit de très fortes économies peut donc être plus rentable, et passer avant une rénovation bon marché aux économies modestes. L'affirmation, formulée avec « peut », est compatible avec le texte et découle de son critère : elle est vraie. Ne confondez pas le coût d'une rénovation avec sa rentabilité."
+        },
+        {
+          "id": "renovation-vente",
+          "text": "Un bâtiment dont la vente est prévue dans trois ans sera rénové si son audit montre une rénovation très rentable.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Un bâtiment dont la vente ou la démolition est prévue dans les cinq ans n'est pas rénové."
+          ],
+          "explanation": "Le texte exclut ce cas sans exception : « un bâtiment dont la vente ou la démolition est prévue dans les cinq ans n'est pas rénové ». Une vente prévue dans trois ans tombe dans ce délai de cinq ans, quelle que soit la rentabilité de la rénovation. L'affirmation contredit le texte : elle est fausse. Une règle d'exclusion générale l'emporte sur le critère de priorité, qui ne s'applique qu'aux bâtiments à rénover."
+        },
+        {
+          "id": "renovation-monuments",
+          "text": "Les bâtiments classés comme monuments seront rénovés après les autres bâtiments administratifs.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": [
+            "Les bâtiments classés comme monuments sont soumis à un audit adapté, qui tient compte des contraintes de conservation du patrimoine."
+          ],
+          "explanation": "Le texte indique seulement que les bâtiments classés « sont soumis à un audit adapté, qui tient compte des contraintes de conservation du patrimoine ». Il ne dit rien de leur place dans le calendrier des travaux, qui dépend du rapport entre coût et économies. On pourrait supposer que les contraintes patrimoniales rendent ces rénovations moins rentables, donc plus tardives, mais le texte ne permet pas de l'affirmer. On ne peut pas savoir."
+        },
+        {
+          "id": "renovation-surface-audites",
+          "text": "Les 85 bâtiments déjà audités ont tous une surface supérieure à 1 000 m².",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Pour y parvenir, chaque bâtiment de plus de 1 000 m² fera l'objet d'un audit énergétique avant la fin de 2026.",
+            "Les premiers audits ont porté sur 85 bâtiments."
+          ],
+          "explanation": "Le texte impose un audit pour « chaque bâtiment de plus de 1 000 m² », mais il n'interdit pas d'auditer des bâtiments plus petits. Il précise seulement que « les premiers audits ont porté sur 85 bâtiments », sans donner leur surface. Rien ne permet donc d'affirmer, ni de nier, que ces 85 bâtiments dépassent tous 1 000 m². On ne peut pas savoir. Une obligation qui vise une catégorie ne signifie pas que seule cette catégorie est concernée."
+        }
+      ]
+    },
+    {
+      "id": "echange-fonctionnaires",
+      "title": "Appel à candidatures : programme européen d'échange de fonctionnaires",
+      "theme": "Institutions européennes",
+      "paragraphs": [
+        "Le programme permet à des fonctionnaires nationaux, régionaux ou locaux de travailler pendant trois à six mois dans une administration d'un autre État membre de l'Union européenne. Les candidats doivent compter au moins deux ans d'ancienneté dans leur administration et maîtriser la langue de travail du service d'accueil.",
+        "L'administration d'origine continue à verser le traitement du fonctionnaire pendant l'échange. Le programme prend en charge un forfait de séjour mensuel, dont le montant varie selon le coût de la vie dans le pays d'accueil, ainsi qu'un aller-retour en début et en fin d'échange. Les frais de déménagement ne sont pas remboursés.",
+        "Les candidatures sont classées par un comité de sélection en fonction de la qualité du projet d'échange et de son intérêt pour l'administration d'origine. Une même personne ne peut participer qu'une seule fois au programme."
+      ],
+      "statements": [
+        {
+          "id": "echange-traitement",
+          "text": "Pendant l'échange, le fonctionnaire reste payé par son administration d'origine.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": [
+            "L'administration d'origine continue à verser le traitement du fonctionnaire pendant l'échange."
+          ],
+          "explanation": "Le texte indique que « l'administration d'origine continue à verser le traitement du fonctionnaire pendant l'échange ». « Rester payé par son administration d'origine » reformule exactement cette règle, le traitement étant la rémunération du fonctionnaire. L'affirmation est vraie. Le forfait de séjour pris en charge par le programme s'ajoute à ce traitement : il ne le remplace pas."
+        },
+        {
+          "id": "echange-anciennete",
+          "text": "Un fonctionnaire entré en service il y a dix-huit mois peut participer au programme s'il maîtrise la langue du service d'accueil.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": [
+            "Les candidats doivent compter au moins deux ans d'ancienneté dans leur administration et maîtriser la langue de travail du service d'accueil."
+          ],
+          "explanation": "Le texte pose deux conditions cumulatives : les candidats doivent « compter au moins deux ans d'ancienneté dans leur administration et maîtriser la langue de travail du service d'accueil ». Avec dix-huit mois d'ancienneté, la première condition n'est pas remplie, même si la seconde l'est. L'affirmation contredit donc le texte : elle est fausse. Le mot « et » signale des conditions cumulatives : il suffit qu'une seule manque pour que la candidature soit exclue."
+        },
+        {
+          "id": "echange-forfaits-differents",
+          "text": "Deux participants partis dans des pays différents peuvent recevoir des forfaits de séjour mensuels de montants différents.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "Le programme prend en charge un forfait de séjour mensuel, dont le montant varie selon le coût de la vie dans le pays d'accueil, ainsi qu'un aller-retour en début et en fin d'échange."
+          ],
+          "explanation": "Le texte précise que le montant du forfait de séjour « varie selon le coût de la vie dans le pays d'accueil ». Deux participants accueillis dans des pays où le coût de la vie diffère peuvent donc recevoir des forfaits différents. L'affirmation, prudemment formulée avec « peuvent », découle directement de cette règle : elle est vraie. Elle serait discutable si elle affirmait que les montants sont toujours différents, car deux pays peuvent avoir un coût de la vie comparable."
+        },
+        {
+          "id": "echange-loyer",
+          "text": "Le forfait de séjour suffit à couvrir le loyer du participant dans le pays d'accueil.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": [
+            "Le programme prend en charge un forfait de séjour mensuel, dont le montant varie selon le coût de la vie dans le pays d'accueil, ainsi qu'un aller-retour en début et en fin d'échange."
+          ],
+          "explanation": "Le texte indique que le forfait de séjour « varie selon le coût de la vie dans le pays d'accueil », mais il ne donne ni son montant ni celui des loyers. Adapter un forfait au coût de la vie ne garantit pas qu'il couvre un loyer, qui peut varier fortement selon la ville et le logement choisis. Rien ne permet donc d'affirmer ni de nier que le forfait suffit : on ne peut pas savoir. Méfiez-vous des affirmations qui ajoutent une conséquence pratique à une règle de calcul."
+        }
+      ]
+    },
+    {
+      "id": "sommeil-travail-nuit",
+      "title": "Étude : le sommeil des agents qui travaillent de nuit",
+      "theme": "Sciences",
+      "paragraphs": [
+        "Une étude a suivi pendant un an 600 agents de services de secours et d'entretien, dont la moitié travaillait régulièrement de nuit. Les participants portaient un bracelet qui mesurait la durée de leur sommeil, et ils répondaient chaque mois à un questionnaire sur leur fatigue.",
+        "Les agents travaillant de nuit dormaient en moyenne cinquante-cinq minutes de moins par jour que leurs collègues de jour. Ils déclaraient aussi davantage de fatigue, surtout pendant les deux premiers mois suivant un changement d'horaire. En revanche, aucune différence significative n'a été observée entre les deux groupes quant au nombre d'accidents du travail.",
+        "Les auteurs soulignent que les participants n'ont pas été répartis au hasard entre travail de jour et travail de nuit : chacun avait choisi son horaire ou l'occupait depuis longtemps. Ils recommandent de mener une étude complémentaire avant de modifier l'organisation des horaires."
+      ],
+      "statements": [
+        {
+          "id": "sommeil-ecart",
+          "text": "Les agents de nuit dormaient en moyenne près de deux heures de moins par jour que leurs collègues de jour.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": [
+            "Les agents travaillant de nuit dormaient en moyenne cinquante-cinq minutes de moins par jour que leurs collègues de jour."
+          ],
+          "explanation": "Le texte chiffre précisément l'écart : les agents de nuit dormaient « en moyenne cinquante-cinq minutes de moins par jour que leurs collègues de jour ». Cinquante-cinq minutes, c'est moins d'une heure, et non près de deux heures. L'affirmation contredit ce chiffre : elle est fausse. Dans les questions chiffrées, comparez soigneusement l'ordre de grandeur annoncé dans l'affirmation avec la valeur exacte du texte."
+        },
+        {
+          "id": "sommeil-effectifs",
+          "text": "L'étude a porté sur 300 agents travaillant de nuit et 600 agents travaillant de jour.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": [
+            "Une étude a suivi pendant un an 600 agents de services de secours et d'entretien, dont la moitié travaillait régulièrement de nuit."
+          ],
+          "explanation": "Le texte indique que l'étude a suivi « 600 agents », « dont la moitié travaillait régulièrement de nuit ». Les 600 agents forment donc l'effectif total : 300 travaillaient de nuit et 300 de jour. L'affirmation additionne à tort 300 agents de nuit et 600 agents de jour, soit 900 participants : elle contredit le texte et est fausse. Piège fréquent : prendre un total pour la taille de l'un des groupes."
+        },
+        {
+          "id": "sommeil-fatigue-changement",
+          "text": "Les agents de nuit se disaient particulièrement fatigués peu après un changement d'horaire.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": [
+            "Ils déclaraient aussi davantage de fatigue, surtout pendant les deux premiers mois suivant un changement d'horaire."
+          ],
+          "explanation": "Le texte indique que les agents de nuit « déclaraient aussi davantage de fatigue, surtout pendant les deux premiers mois suivant un changement d'horaire ». « Se disaient » correspond à « déclaraient », et « peu après un changement d'horaire » renvoie aux « deux premiers mois » qui suivent ce changement. L'affirmation reformule fidèlement le texte : elle est vraie. Notez qu'elle parle de fatigue déclarée, mesurée par questionnaire, ce qui correspond bien au dispositif de l'étude."
+        },
+        {
+          "id": "sommeil-cause",
+          "text": "Le travail de nuit est la cause de la réduction de la durée de sommeil observée chez ces agents.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Les auteurs soulignent que les participants n'ont pas été répartis au hasard entre travail de jour et travail de nuit : chacun avait choisi son horaire ou l'occupait depuis longtemps."
+          ],
+          "explanation": "L'étude constate que les agents de nuit dorment moins, mais les auteurs eux-mêmes soulignent que « les participants n'ont pas été répartis au hasard entre travail de jour et travail de nuit ». Les deux groupes peuvent donc différer par d'autres caractéristiques, par exemple l'âge ou la situation familiale, qui influencent aussi le sommeil. Le texte ne permet ni de confirmer ni d'exclure que le travail de nuit soit la cause de l'écart observé : on ne peut pas savoir. Une différence observée n'est pas, à elle seule, la preuve d'une cause."
+        }
+      ]
+    },
+    {
+      "id": "commerce-de-proximite",
+      "title": "Enquête : la fréquentation des commerces du centre-ville",
+      "theme": "Économie",
+      "paragraphs": [
+        "À la demande du collège communal, une enquête a été menée en mai auprès de 1 200 habitants de la commune. Parmi eux, 54 % déclarent faire au moins une fois par semaine des achats dans un commerce du centre. Cette proportion atteint 71 % chez les habitants de plus de 65 ans, mais tombe à 38 % chez les moins de 30 ans.",
+        "Interrogés sur ce qui les inciterait à fréquenter davantage le centre, les habitants citent d'abord des horaires d'ouverture plus tardifs, puis une offre de stationnement de courte durée. Seuls 9 % mentionnent des prix plus bas.",
+        "Le nombre de cellules commerciales vides dans le centre est passé de 14 à 23 en cinq ans. Le collège envisage de réduire la taxe communale pour les commerçants qui s'installent dans une cellule vide depuis plus d'un an."
+      ],
+      "statements": [
+        {
+          "id": "commerce-moins-de-30-ans",
+          "text": "Parmi les habitants interrogés de moins de 30 ans, moins de quatre sur dix déclarent faire des achats au moins une fois par semaine dans un commerce du centre.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": [
+            "Cette proportion atteint 71 % chez les habitants de plus de 65 ans, mais tombe à 38 % chez les moins de 30 ans."
+          ],
+          "explanation": "La proportion des habitants qui déclarent faire des achats hebdomadaires dans le centre « tombe à 38 % chez les moins de 30 ans ». Or quatre sur dix correspondent à 40 % : 38 % est bien inférieur à ce seuil. L'affirmation reprend correctement le chiffre du texte, en parlant comme lui de ce que les personnes déclarent : elle est vraie. Les épreuves transforment souvent un pourcentage en fraction (« quatre sur dix », « un tiers », « la moitié ») : entraînez-vous à faire ces conversions rapidement."
+        },
+        {
+          "id": "commerce-prix",
+          "text": "Des prix plus bas sont le moyen le plus souvent cité pour inciter les habitants à fréquenter davantage le centre.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": [
+            "Interrogés sur ce qui les inciterait à fréquenter davantage le centre, les habitants citent d'abord des horaires d'ouverture plus tardifs, puis une offre de stationnement de courte durée.",
+            "Seuls 9 % mentionnent des prix plus bas."
+          ],
+          "explanation": "Le texte classe les attentes des habitants : ils citent « d'abord des horaires d'ouverture plus tardifs, puis une offre de stationnement de courte durée », tandis que « seuls 9 % mentionnent des prix plus bas ». Les prix plus bas ne sont donc pas le moyen le plus cité, puisque deux autres le devancent. L'affirmation contredit le texte : elle est fausse. Le mot « seuls » souligne d'ailleurs le caractère minoritaire de cette réponse."
+        },
+        {
+          "id": "commerce-cellules-chaque-annee",
+          "text": "Le nombre de cellules commerciales vides dans le centre a augmenté chaque année au cours des cinq dernières années.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": [
+            "Le nombre de cellules commerciales vides dans le centre est passé de 14 à 23 en cinq ans."
+          ],
+          "explanation": "Le texte compare seulement deux valeurs : le nombre de cellules vides « est passé de 14 à 23 en cinq ans ». Cette hausse globale ne dit rien de l'évolution d'une année à l'autre : le nombre a pu augmenter chaque année, mais aussi stagner ou baisser certaines années avant de remonter. Le texte ne donne aucun chiffre intermédiaire. Il ne permet donc ni de confirmer ni d'infirmer l'affirmation : on ne peut pas savoir. Une évolution entre deux dates n'indique pas le chemin parcouru entre elles."
+        },
+        {
+          "id": "commerce-age-population",
+          "text": "La majorité des habitants de la commune ont plus de 65 ans.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Parmi eux, 54 % déclarent faire au moins une fois par semaine des achats dans un commerce du centre.",
+            "Cette proportion atteint 71 % chez les habitants de plus de 65 ans, mais tombe à 38 % chez les moins de 30 ans."
+          ],
+          "explanation": "Les pourcentages du texte sont des taux mesurés à l'intérieur de chaque groupe : « 71 % » des plus de 65 ans interrogés et « 38 % » des moins de 30 ans font leurs achats dans le centre, contre « 54 % » de l'ensemble. Ce ne sont pas des parts de la population : ils ne disent pas combien d'habitants appartiennent à chaque tranche d'âge. De plus, l'enquête porte sur 1 200 personnes interrogées, pas sur tous les habitants de la commune. Le texte ne permet ni d'affirmer ni de nier que la majorité des habitants a plus de 65 ans : on ne peut pas savoir."
         }
       ]
     }

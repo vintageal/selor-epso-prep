@@ -33,7 +33,9 @@ Après chaque réponse, l'application indique si elle est correcte, révèle la 
 
 ### Raisonnement verbal
 
-Le candidat lit un texte dense (à gauche sur ordinateur, en haut sur mobile) et évalue une affirmation (à droite, ou en bas) : **Vrai**, **Faux** ou **On ne peut pas savoir**. La banque contient 5 textes originaux (administration publique, économie, environnement et santé, droit et institutions, sciences), avec 4 affirmations chacun.
+Le candidat lit un texte dense (à gauche sur ordinateur, en haut sur mobile) et évalue une affirmation (à droite, ou en bas) : **Vrai**, **Faux** ou **On ne peut pas savoir**. La banque contient **15 textes originaux et 60 affirmations** (4 par texte) : notes de service, règlements, rapports, études et enquêtes d'administrations belges et européennes fictives (administration publique, droit et institutions, institutions européennes, ressources humaines, économie, environnement, sciences). Les trois réponses sont équilibrées (20 affirmations chacune).
+
+Chaque affirmation a un **niveau de difficulté** (1, 2 ou 3, avec 20 affirmations par niveau), affiché au-dessus de l'affirmation. Au niveau 1, la réponse se lit dans une phrase du texte. Au niveau 3, il faut croiser plusieurs informations ou déjouer un piège : durée minimale prise pour une date, proportion confondue avec un nombre, corrélation présentée comme une cause… Aucune réponse ne domine un niveau : le niveau affiché ne trahit pas la réponse.
 
 À chaque réponse, la correction :
 
@@ -43,7 +45,7 @@ Le candidat lit un texte dense (à gauche sur ordinateur, en haut sur mobile) et
 
 Un bilan de fin de série détaille les résultats par type de réponse, pour repérer ses points faibles (souvent « On ne peut pas savoir »).
 
-**Ajouter un texte :** compléter `data/verbal.json` (format décrit en tête de `assets/js/verbal/quiz.js`), puis lancer `npm test`. Les tests refusent notamment toute citation qui ne figure pas mot pour mot dans le texte ou qui ne correspond pas à une phrase complète.
+**Ajouter un texte :** compléter `data/verbal.json` (format décrit en tête de `assets/js/verbal/quiz.js`), puis lancer `npm test`. Les tests refusent notamment toute citation qui ne figure pas mot pour mot dans le texte ou qui ne correspond pas à une phrase complète, une difficulté manquante et les quasi-doublons. Ne jamais modifier l'identifiant d'une affirmation existante : la progression enregistrée des candidats y fait référence.
 
 ### Raisonnement numérique
 
@@ -135,7 +137,7 @@ La page **Ma progression** (`progression/index.html`) suit les résultats **sans
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du jugement situationnel ;
+- **35 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes), 10 questions numériques (réparties entre les jeux de données) et 5 situations de jugement, mélangées dans un ordre aléatoire. Le tirage équilibre les niveaux de difficulté, avec environ un tiers par niveau, dès qu'une banque les indique : c'est le cas du raisonnement verbal et du jugement situationnel ;
 - **chronomètre global strict de 40 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
 - **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir ». Une situation de jugement avec un seul de ses deux choix apparaît comme « incomplète » ;
 - **notation** : chaque question vaut 1 point. Une situation de jugement rapporte une fraction de point selon la même grille de proximité que le module (par exemple 3 points sur 4 = 0,75 point). Le score peut donc être décimal, par exemple 27,75 / 35 ;
@@ -251,9 +253,11 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
   - identifiants uniques et réponses valides ;
-  - au moins 4 textes de 3 à 4 affirmations ;
+  - au moins 60 affirmations, 3 à 4 par texte, et identifiants de la banque initiale conservés ;
   - chaque citation est une phrase complète reprise mot pour mot du texte ;
-  - équilibre entre les trois réponses et explications détaillées.
+  - environ un tiers par réponse et par niveau de difficulté, sans réponse dominante dans un niveau, explications détaillées ;
+  - chaque « On ne peut pas savoir » est justifié comme tel dans l'explication ;
+  - aucun quasi-doublon entre textes ni entre affirmations, usage belge des nombres.
 
   S'y ajoutent les tests de l'enchaînement des questions, du surlignage, de la typographie et du bilan.
 - **Raisonnement numérique** : validation de la banque :

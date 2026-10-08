@@ -88,7 +88,8 @@ export function createExam({ passages, scenarios, situations }, { random = Math.
   const nextAbstract = createQuestionStream(random);
   const items = [
     ...Array.from({ length: config.abstractCount }, () => ({ type: 'abstrait', question: nextAbstract() })),
-    ...pickSpread(passages, 'statements', config.verbalCount, random).map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
+    ...pickBalanced(passages, 'statements', config.verbalCount, random, (statement) => statement.difficulty)
+      .map(({ group, item }) => ({ type: 'verbal', passage: group, statement: item })),
     ...pickSpread(scenarios, 'questions', config.numericCount, random).map(({ group, item }) => ({ type: 'numerique', scenario: group, question: item })),
     ...pickBalanced(situations.map((scenario) => ({ scenario, items: [scenario] })), 'items', config.judgementCount, random, (scenario) => scenario.difficulty)
       .map(({ item: scenario }) => ({ type: 'jugement', scenario, order: shuffledOrder(scenario, random) })),

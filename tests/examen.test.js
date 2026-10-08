@@ -322,3 +322,14 @@ test('les situations de jugement de l’examen mêlent les trois niveaux de diff
     }
   }
 });
+
+test('les affirmations verbales de l’examen mêlent les trois niveaux, environ un tiers chacun', () => {
+  for (let seed = 1; seed <= 40; seed += 1) {
+    const items = createExam(banks, { random: createSeededRandom(seed) }).filter((item) => item.type === 'verbal');
+    assert.equal(new Set(items.map((item) => item.passage.id)).size, items.length, `graine ${seed} : un texte en double`);
+    for (const level of [1, 2, 3]) {
+      const count = items.filter((item) => item.statement.difficulty === level).length;
+      assert.ok(count >= 3 && count <= 4, `graine ${seed} : ${count} affirmation(s) de niveau ${level}`);
+    }
+  }
+});
