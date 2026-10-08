@@ -6,13 +6,15 @@
  *   - answer      : la figure qui complète la série ;
  *   - distractors : des figures fausses mais plausibles (le générateur écarte
  *                   les doublons et les figures invalides, puis en garde 3) ;
- *   - explanation : l'explication de la règle, affichée après la réponse.
+ *   - explanation : l'explication de la règle, affichée après la réponse, en français et en
+ *                   néerlandais ({ fr, nl }) ; le générateur garde celle de la langue de la page.
  * `difficulty` : 1 (facile), 2 (moyen) ou 3 (difficile), trois règles par niveau.
  *
  * Identifiants stables : une question est identifiée par « règle/graine ». Ne jamais modifier
  * la génération d'une règle existante (un test vérifie l'empreinte des questions produites) :
  * pour une variante, créer une nouvelle règle.
  */
+import { t } from '../lib/i18n.js';
 import { pick, randInt, shuffle } from '../lib/random.js';
 import {
   FILLS,
@@ -23,6 +25,7 @@ import {
   describeFigure,
   indefiniteArticle,
   indefiniteShape,
+  nl,
   orientationLabel,
   pointsLabel,
   withPreposition,
@@ -42,11 +45,13 @@ const otherFill = (fill) => (fill === 'black' ? 'white' : 'black');
 const buildSequence = (at) => Array.from({ length: SEQUENCE_LENGTH }, (_, i) => at(i));
 const directionLabel = (direction) =>
   direction === CLOCKWISE ? "dans le sens des aiguilles d'une montre" : "dans le sens inverse des aiguilles d'une montre";
+const nlDirection = (direction) => (direction === CLOCKWISE ? 'met de klok mee' : 'tegen de klok in');
+/** Titre de la règle dans la langue de la page. */
+const titled = (rule) => Object.defineProperty(rule, 'title', { enumerable: true, get: () => t(`abstrait.rules.${rule.id}`) });
 
 /** 1. Une forme orientée tourne d'un angle constant à chaque étape. */
 const rotation = {
   id: 'rotation',
-  title: 'Rotation',
   difficulty: 2,
   generate(random) {
     const shape = pick(random, ORIENTED_SHAPES);
@@ -70,12 +75,20 @@ const rotation = {
         at(SEQUENCE_LENGTH, { rotation: answer.rotation + 90 }),
         at(SEQUENCE_LENGTH, { fill: otherFill(fill) }), // bonne orientation, mauvaise couleur
       ],
-      explanation: [
-        `${capitalize(definiteShape(shape))} tourne de ${step}° ${directionLabel(direction)} à chaque étape.`,
-        `La 4e figure pointe vers ${orientationLabel(last.rotation)} : une rotation supplémentaire de ${step}° la fait pointer vers ${orientationLabel(answer.rotation)}.`,
-        step * SEQUENCE_LENGTH === 360 ? 'Après quatre quarts de tour, la figure est revenue à sa position de départ.' : '',
-        'Sa couleur ne change pas.',
-      ].filter(Boolean).join(' '),
+      explanation: {
+        fr: [
+          `${capitalize(definiteShape(shape))} tourne de ${step}° ${directionLabel(direction)} à chaque étape.`,
+          `La 4e figure pointe vers ${orientationLabel(last.rotation)} : une rotation supplémentaire de ${step}° la fait pointer vers ${orientationLabel(answer.rotation)}.`,
+          step * SEQUENCE_LENGTH === 360 ? 'Après quatre quarts de tour, la figure est revenue à sa position de départ.' : '',
+          'Sa couleur ne change pas.',
+        ].filter(Boolean).join(' '),
+        nl: [
+          `${capitalize(nl.definite(shape))} draait bij elke stap ${step}° ${nlDirection(direction)}.`,
+          `De 4e figuur wijst naar ${nl.orientation(last.rotation)}; na nog een draaiing van ${step}° wijst ze naar ${nl.orientation(answer.rotation)}.`,
+          step * SEQUENCE_LENGTH === 360 ? 'Na vier kwartslagen staat de figuur weer in haar beginpositie.' : '',
+          'De kleur verandert niet.',
+        ].filter(Boolean).join(' '),
+      },
     };
   },
 };
@@ -83,7 +96,6 @@ const rotation = {
 /** 2. La couleur suit un cycle (noir/blanc, ou noir/gris/blanc). */
 const colourCycle = {
   id: 'couleur',
-  title: 'Alternance de couleurs',
   difficulty: 1,
   generate(random) {
     const shape = pick(random, SYMMETRIC_SHAPES);
@@ -99,6 +111,11 @@ const colourCycle = {
       cycle.length === 2
         ? `La couleur alterne entre ${names[0]} et ${names[1]} à chaque étape : ${sequence.map((f) => FILLS[f.fill].m).join(', ')}. La 5e figure est donc ${FILLS[answer.fill].f}.`
         : `Les couleurs suivent toujours le même cycle de trois : ${names.join(', ')}. La 4e figure recommence le cycle (${names[0]}) ; la 5e figure est donc ${FILLS[answer.fill].f}, comme la 2e.`;
+    const nlNames = cycle.map(nl.color);
+    const nlRule =
+      cycle.length === 2
+        ? `De kleur wisselt bij elke stap af tussen ${nlNames[0]} en ${nlNames[1]}: ${sequence.map((f) => nl.color(f.fill)).join(', ')}. De 5e figuur is dus ${nl.color(answer.fill)}.`
+        : `De kleuren volgen altijd dezelfde cyclus van drie: ${nlNames.join(', ')}. De 4e figuur begint de cyclus opnieuw (${nlNames[0]}); de 5e figuur is dus ${nl.color(answer.fill)}, net als de 2e.`;
 
     return {
       sequence,
@@ -108,7 +125,10 @@ const colourCycle = {
         createFigure({ shape: decoyShape, fill: answer.fill }), // bonne couleur, mauvaise forme
         createFigure({ shape: decoyShape, fill: wrongFills[0] }),
       ],
-      explanation: `${rule} La forme, ${indefiniteShape(shape)}, ne change pas.`,
+      explanation: {
+        fr: `${rule} La forme, ${indefiniteShape(shape)}, ne change pas.`,
+        nl: `${nlRule} De vorm, ${nl.indefinite(shape)}, verandert niet.`,
+      },
     };
   },
 };
@@ -116,7 +136,6 @@ const colourCycle = {
 /** 3. Le nombre de points augmente ou diminue d'une valeur constante. */
 const dotCounter = {
   id: 'points',
-  title: 'Compteur de points',
   difficulty: 1,
   generate(random) {
     const shape = pick(random, SYMMETRIC_SHAPES);
@@ -142,10 +161,16 @@ const dotCounter = {
         at(SEQUENCE_LENGTH, { dots: answer.dots - 1 }),
         at(SEQUENCE_LENGTH, { shape: otherShape(random, shape) }), // bon compte, mauvaise forme
       ],
-      explanation:
-        `Le nombre de points ${step > 0 ? 'augmente' : 'diminue'} de ${Math.abs(step)} à chaque étape : ` +
-        `${sequence.map((f) => f.dots).join(', ')}. La 5e figure porte donc ${pointsLabel(answer.dots)}. ` +
-        'La forme et sa couleur ne changent pas.',
+      explanation: {
+        fr:
+          `Le nombre de points ${step > 0 ? 'augmente' : 'diminue'} de ${Math.abs(step)} à chaque étape : ` +
+          `${sequence.map((f) => f.dots).join(', ')}. La 5e figure porte donc ${pointsLabel(answer.dots)}. ` +
+          'La forme et sa couleur ne changent pas.',
+        nl:
+          `Het aantal stippen neemt bij elke stap met ${Math.abs(step)} ${step > 0 ? 'toe' : 'af'}: ` +
+          `${sequence.map((f) => f.dots).join(', ')}. De 5e figuur heeft dus ${nl.points(answer.dots)}. ` +
+          'De vorm en de kleur veranderen niet.',
+      },
     };
   },
 };
@@ -153,7 +178,6 @@ const dotCounter = {
 /** 4. Un disque se déplace autour de la forme, d'un pas constant. */
 const markerMove = {
   id: 'deplacement',
-  title: 'Déplacement',
   difficulty: 2,
   generate(random) {
     const shape = pick(random, SYMMETRIC_SHAPES);
@@ -178,14 +202,24 @@ const markerMove = {
         at(SEQUENCE_LENGTH, { marker: mod(answer.marker + positionCount / 2, positionCount) }), // position opposée
         at(SEQUENCE_LENGTH, { shape: otherShape(random, shape) }), // bonne position, mauvaise forme
       ],
-      explanation: [
-        step === 1
-          ? `Le disque noir avance d'une position (coins et milieux des côtés) ${directionLabel(direction)} à chaque étape.`
-          : `Le disque noir saute d'un coin au suivant ${directionLabel(direction)} à chaque étape.`,
-        `Il passe donc ${from} ${to}.`,
-        answer.marker === start ? 'Il a fait un tour complet et retrouve sa position de départ.' : '',
-        'La forme centrale ne change pas.',
-      ].filter(Boolean).join(' '),
+      explanation: {
+        fr: [
+          step === 1
+            ? `Le disque noir avance d'une position (coins et milieux des côtés) ${directionLabel(direction)} à chaque étape.`
+            : `Le disque noir saute d'un coin au suivant ${directionLabel(direction)} à chaque étape.`,
+          `Il passe donc ${from} ${to}.`,
+          answer.marker === start ? 'Il a fait un tour complet et retrouve sa position de départ.' : '',
+          'La forme centrale ne change pas.',
+        ].filter(Boolean).join(' '),
+        nl: [
+          step === 1
+            ? `Het zwarte schijfje schuift bij elke stap één positie op (hoeken en middens van de zijden), ${nlDirection(direction)}.`
+            : `Het zwarte schijfje springt bij elke stap ${nlDirection(direction)} van een hoek naar de volgende.`,
+          `Het gaat dus van ${nl.position(position(SEQUENCE_LENGTH - 1))} naar ${nl.position(answer.marker)}.`,
+          answer.marker === start ? 'Het heeft een volledige ronde gemaakt en staat weer op zijn beginpositie.' : '',
+          'De vorm in het midden verandert niet.',
+        ].filter(Boolean).join(' '),
+      },
     };
   },
 };
@@ -193,7 +227,6 @@ const markerMove = {
 /** 5. Deux règles simultanées : rotation et alternance noir/blanc. */
 const rotationAndColour = {
   id: 'rotation-couleur',
-  title: 'Double règle : rotation et couleur',
   difficulty: 3,
   generate(random) {
     const shape = pick(random, ORIENTED_SHAPES);
@@ -217,11 +250,17 @@ const rotationAndColour = {
         at(SEQUENCE_LENGTH - 1), // la série ne progresse plus
         at(SEQUENCE_LENGTH, { rotation: answer.rotation + 180 }),
       ],
-      explanation:
-        `Deux règles s'appliquent en même temps. D'une part, ${definiteShape(shape)} tourne de ${step}° ` +
-        `${directionLabel(direction)} à chaque étape ; d'autre part, sa couleur alterne entre ` +
-        `${FILLS[fills[0]].m} et ${FILLS[fills[1]].m}. La 5e figure est donc ` +
-        `${indefiniteArticle(shape)} ${describeFigure(answer)}.`,
+      explanation: {
+        fr:
+          `Deux règles s'appliquent en même temps. D'une part, ${definiteShape(shape)} tourne de ${step}° ` +
+          `${directionLabel(direction)} à chaque étape ; d'autre part, sa couleur alterne entre ` +
+          `${FILLS[fills[0]].m} et ${FILLS[fills[1]].m}. La 5e figure est donc ` +
+          `${indefiniteArticle(shape)} ${describeFigure(answer, 'fr')}.`,
+        nl:
+          `Er gelden twee regels tegelijk. Enerzijds draait ${nl.definite(shape)} bij elke stap ${step}° ` +
+          `${nlDirection(direction)}; anderzijds wisselt de kleur af tussen ${nl.color(fills[0])} en ${nl.color(fills[1])}. ` +
+          `De 5e figuur is dus een ${describeFigure(answer, 'nl')}.`,
+      },
     };
   },
 };
@@ -229,7 +268,6 @@ const rotationAndColour = {
 /** 6. La forme suit un cycle de deux ou trois formes ; la couleur ne change pas. */
 const shapeCycle = {
   id: 'cycle-formes',
-  title: 'Cycle de formes',
   difficulty: 1,
   generate(random) {
     const cycle = shuffle(random, SYMMETRIC_SHAPES).slice(0, random() < 0.5 ? 2 : 3);
@@ -255,7 +293,14 @@ const shapeCycle = {
         // Avec un cycle de deux formes seulement, un troisième leurre est nécessaire : bonne forme, mauvaise couleur.
         ...(cycle.length === 2 ? [at(SEQUENCE_LENGTH, { fill: fill === 'black' ? 'white' : 'black' })] : []),
       ],
-      explanation: `${rule} La 5e figure est donc ${indefiniteShape(answer.shape)}. Sa couleur ne change pas.`,
+      explanation: {
+        fr: `${rule} La 5e figure est donc ${indefiniteShape(answer.shape)}. Sa couleur ne change pas.`,
+        nl: `${
+          cycle.length === 2
+            ? `De vorm wisselt bij elke stap af tussen ${nl.indefinite(cycle[0])} en ${nl.indefinite(cycle[1])}.`
+            : `De vormen volgen altijd dezelfde cyclus van drie: ${cycle.map(nl.name).join(', ')}. De 4e figuur begint de cyclus opnieuw.`
+        } De 5e figuur is dus ${nl.indefinite(answer.shape)}. De kleur verandert niet.`,
+      },
     };
   },
 };
@@ -275,7 +320,6 @@ const SHAPES_BY_SIDES = {
 
 const sideCount = {
   id: 'cotes',
-  title: 'Nombre de côtés',
   difficulty: 2,
   generate(random) {
     const fill = pick(random, ['black', 'grey', 'white']);
@@ -300,10 +344,16 @@ const sideCount = {
         at(SEQUENCE_LENGTH - 1), // la série ne progresse plus
         at(SEQUENCE_LENGTH - 2), // retour en arrière
       ],
-      explanation:
-        `Le nombre de côtés ${step === 1 ? 'augmente' : 'diminue'} d'un à chaque étape, quelle que soit la forme : ` +
-        `${sequence.map((figure) => `${sides(figure)} (${SHAPES[figure.shape].name})`).join(', ')}. ` +
-        `La 5e figure a donc ${sides(answer)} côtés : c'est ${indefiniteShape(answer.shape)}. Sa couleur ne change pas.`,
+      explanation: {
+        fr:
+          `Le nombre de côtés ${step === 1 ? 'augmente' : 'diminue'} d'un à chaque étape, quelle que soit la forme : ` +
+          `${sequence.map((figure) => `${sides(figure)} (${SHAPES[figure.shape].name})`).join(', ')}. ` +
+          `La 5e figure a donc ${sides(answer)} côtés : c'est ${indefiniteShape(answer.shape)}. Sa couleur ne change pas.`,
+        nl:
+          `Het aantal zijden neemt bij elke stap met één ${step === 1 ? 'toe' : 'af'}, ongeacht de vorm: ` +
+          `${sequence.map((figure) => `${sides(figure)} (${nl.name(figure.shape)})`).join(', ')}. ` +
+          `De 5e figuur heeft dus ${sides(answer)} zijden: het is ${nl.indefinite(answer.shape)}. De kleur verandert niet.`,
+      },
     };
   },
 };
@@ -311,7 +361,6 @@ const sideCount = {
 /** 8. Rotation à pas progressif : l'angle ajouté augmente (45°, 90°, 135°…) ou diminue (180°, 135°, 90°…) de 45° à chaque étape. */
 const progressiveRotation = {
   id: 'rotation-acceleree',
-  title: 'Rotation à pas progressif',
   difficulty: 3,
   generate(random) {
     const shape = pick(random, ORIENTED_SHAPES);
@@ -342,11 +391,18 @@ const progressiveRotation = {
             turnedFromLast(135), // le pas augmente au lieu de diminuer
             turnedFromLast(225), // orientation opposée à la bonne réponse
           ],
-      explanation:
-        `${capitalize(definiteShape(shape))} tourne ${directionLabel(direction)}, d'un angle qui ${growing ? 'augmente' : 'diminue'} de 45° à chaque étape : ` +
-        `${increments.slice(0, SEQUENCE_LENGTH - 1).map((angle) => `${angle}°`).join(', puis ')}. La rotation suivante est donc de ${increments[SEQUENCE_LENGTH - 1]}° : ` +
-        `${definiteShape(shape)}, qui pointait vers ${orientationLabel(last.rotation)}, pointe maintenant vers ${orientationLabel(answer.rotation)}. ` +
-        'Sa couleur ne change pas.',
+      explanation: {
+        fr:
+          `${capitalize(definiteShape(shape))} tourne ${directionLabel(direction)}, d'un angle qui ${growing ? 'augmente' : 'diminue'} de 45° à chaque étape : ` +
+          `${increments.slice(0, SEQUENCE_LENGTH - 1).map((angle) => `${angle}°`).join(', puis ')}. La rotation suivante est donc de ${increments[SEQUENCE_LENGTH - 1]}° : ` +
+          `${definiteShape(shape)}, qui pointait vers ${orientationLabel(last.rotation)}, pointe maintenant vers ${orientationLabel(answer.rotation)}. ` +
+          'Sa couleur ne change pas.',
+        nl:
+          `${capitalize(nl.definite(shape))} draait ${nlDirection(direction)}, over een hoek die bij elke stap 45° ${growing ? 'groter' : 'kleiner'} wordt: ` +
+          `${increments.slice(0, SEQUENCE_LENGTH - 1).map((angle) => `${angle}°`).join(', dan ')}. De volgende draaiing bedraagt dus ${increments[SEQUENCE_LENGTH - 1]}°: ` +
+          `${nl.definite(shape)}, die naar ${nl.orientation(last.rotation)} wees, wijst nu naar ${nl.orientation(answer.rotation)}. ` +
+          'De kleur verandert niet.',
+      },
     };
   },
 };
@@ -354,7 +410,6 @@ const progressiveRotation = {
 /** 9. Deux règles simultanées : compteur de points et cycle de trois couleurs. */
 const dotsAndColour = {
   id: 'points-couleur',
-  title: 'Double règle : points et couleur',
   difficulty: 3,
   generate(random) {
     const shape = pick(random, SYMMETRIC_SHAPES);
@@ -381,11 +436,18 @@ const dotsAndColour = {
         at(SEQUENCE_LENGTH - 1, { fill: answer.fill }), // bonne couleur, points inchangés
         at(SEQUENCE_LENGTH, { dots: answer.dots + (step > 0 ? -1 : 1), fill: wrongFillA }),
       ],
-      explanation:
-        `Deux règles s'appliquent en même temps. D'une part, le nombre de points ${step > 0 ? 'augmente' : 'diminue'} de ${Math.abs(step)} ` +
-        `à chaque étape : ${sequence.map((figure) => figure.dots).join(', ')}. D'autre part, la couleur suit toujours le même cycle de trois : ` +
-        `${fills.map((fill) => FILLS[fill].m).join(', ')} ; la 4e figure recommence le cycle. ` +
-        `La 5e figure est donc ${indefiniteArticle(shape)} ${describeFigure(answer)}.`,
+      explanation: {
+        fr:
+          `Deux règles s'appliquent en même temps. D'une part, le nombre de points ${step > 0 ? 'augmente' : 'diminue'} de ${Math.abs(step)} ` +
+          `à chaque étape : ${sequence.map((figure) => figure.dots).join(', ')}. D'autre part, la couleur suit toujours le même cycle de trois : ` +
+          `${fills.map((fill) => FILLS[fill].m).join(', ')} ; la 4e figure recommence le cycle. ` +
+          `La 5e figure est donc ${indefiniteArticle(shape)} ${describeFigure(answer, 'fr')}.`,
+        nl:
+          `Er gelden twee regels tegelijk. Enerzijds neemt het aantal stippen bij elke stap met ${Math.abs(step)} ${step > 0 ? 'toe' : 'af'}: ` +
+          `${sequence.map((figure) => figure.dots).join(', ')}. Anderzijds volgt de kleur altijd dezelfde cyclus van drie: ` +
+          `${fills.map(nl.color).join(', ')}; de 4e figuur begint de cyclus opnieuw. ` +
+          `De 5e figuur is dus een ${describeFigure(answer, 'nl')}.`,
+      },
     };
   },
 };
@@ -401,4 +463,4 @@ export const RULES = [
   sideCount,
   progressiveRotation,
   dotsAndColour,
-];
+].map(titled);

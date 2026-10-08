@@ -23,6 +23,8 @@
  * la fonction qui convertit les données de la version précédente.
  */
 
+import { t } from '../lib/i18n.js';
+
 export const SCHEMA_VERSION = 1;
 export const STORAGE_KEY = 'selor-epso-prep:progression';
 export const MODULE_IDS = ['abstrait', 'verbal', 'numerique', 'jugement'];
@@ -52,29 +54,29 @@ const isCount = (value) => Number.isFinite(value) && value >= 0;
 const isDuration = (value) => value === null || isCount(value);
 
 const answerErrors = (answer) => {
-  if (!isObject(answer)) return ['entrée invalide'];
+  if (!isObject(answer)) return [t('store.invalidEntry')];
   const errors = [];
-  if (!isModule(answer.module)) errors.push(`module « ${answer.module} » inconnu`);
-  if (!isId(answer.questionId)) errors.push('identifiant de question invalide');
-  if (typeof answer.correct !== 'boolean') errors.push('résultat (juste ou faux) manquant');
-  if (!isDate(answer.date)) errors.push('date invalide');
-  if (!isDuration(answer.durationMs)) errors.push('temps de réponse invalide');
-  if (!SOURCES.includes(answer.source)) errors.push('origine de la réponse invalide');
-  if (answer.score !== undefined && !isRatio(answer.score)) errors.push('score partiel invalide');
+  if (!isModule(answer.module)) errors.push(t('store.unknownModule', { module: answer.module }));
+  if (!isId(answer.questionId)) errors.push(t('store.invalidQuestionId'));
+  if (typeof answer.correct !== 'boolean') errors.push(t('store.missingResult'));
+  if (!isDate(answer.date)) errors.push(t('store.invalidDate'));
+  if (!isDuration(answer.durationMs)) errors.push(t('store.invalidAnswerTime'));
+  if (!SOURCES.includes(answer.source)) errors.push(t('store.invalidSource'));
+  if (answer.score !== undefined && !isRatio(answer.score)) errors.push(t('store.invalidPartialScore'));
   return errors;
 };
 
 const examErrors = (exam) => {
-  if (!isObject(exam)) return ['entrée invalide'];
+  if (!isObject(exam)) return [t('store.invalidEntry')];
   const errors = [];
-  if (!isDate(exam.date)) errors.push('date invalide');
-  if (!isDuration(exam.durationMs)) errors.push('durée invalide');
-  if (!isCount(exam.total) || exam.total === 0 || !isCount(exam.score) || exam.score > exam.total) errors.push('score invalide');
-  if (!isObject(exam.sections)) errors.push('scores par catégorie manquants');
+  if (!isDate(exam.date)) errors.push(t('store.invalidDate'));
+  if (!isDuration(exam.durationMs)) errors.push(t('store.invalidDuration'));
+  if (!isCount(exam.total) || exam.total === 0 || !isCount(exam.score) || exam.score > exam.total) errors.push(t('store.invalidScore'));
+  if (!isObject(exam.sections)) errors.push(t('store.missingSections'));
   else {
     for (const [module, section] of Object.entries(exam.sections)) {
       if (!isModule(module) || !isObject(section) || !isCount(section.total) || !isCount(section.score) || section.score > section.total) {
-        errors.push(`score de la catégorie « ${module} » invalide`);
+        errors.push(t('store.invalidSection', { module }));
       }
     }
   }
@@ -82,27 +84,27 @@ const examErrors = (exam) => {
 };
 
 const reviewErrors = (key, entry) => {
-  if (!isObject(entry) || !isModule(entry.module) || !isId(entry.questionId) || key !== reviewKey(entry.module, entry.questionId)) return ['entrée invalide'];
+  if (!isObject(entry) || !isModule(entry.module) || !isId(entry.questionId) || key !== reviewKey(entry.module, entry.questionId)) return [t('store.invalidEntry')];
   const errors = [];
-  if (!Number.isInteger(entry.streak) || entry.streak < 0 || entry.streak >= REVIEW_STREAK) errors.push('compteur de réussites invalide');
-  if (!isDate(entry.failedAt)) errors.push('date invalide');
+  if (!Number.isInteger(entry.streak) || entry.streak < 0 || entry.streak >= REVIEW_STREAK) errors.push(t('store.invalidStreak'));
+  if (!isDate(entry.failedAt)) errors.push(t('store.invalidDate'));
   return errors;
 };
 
 /** Vérifie des données au format actuel ; renvoie la liste des erreurs (vide si tout va bien). */
 export function validateData(data) {
-  if (!isObject(data)) return ['Le contenu n\'est pas un objet de données de progression.'];
-  if (data.version !== SCHEMA_VERSION) return [`Version de schéma ${data.version} inattendue (version actuelle : ${SCHEMA_VERSION}).`];
+  if (!isObject(data)) return [t('store.notProgressData')];
+  if (data.version !== SCHEMA_VERSION) return [t('store.unexpectedVersion', { version: data.version, current: SCHEMA_VERSION })];
   if (!Array.isArray(data.answers) || !Array.isArray(data.exams) || !isObject(data.review)) {
-    return ['Les rubriques « answers », « exams » et « review » sont obligatoires.'];
+    return [t('store.missingSectionsAll')];
   }
   const errors = [
-    ...data.answers.flatMap((answer, index) => answerErrors(answer).map((error) => `Réponse n° ${index + 1} : ${error}.`)),
-    ...data.exams.flatMap((exam, index) => examErrors(exam).map((error) => `Examen n° ${index + 1} : ${error}.`)),
-    ...Object.entries(data.review).flatMap(([key, entry]) => reviewErrors(key, entry).map((error) => `Question à revoir « ${key} » : ${error}.`)),
+    ...data.answers.flatMap((answer, index) => answerErrors(answer).map((error) => t('store.answerError', { index: index + 1, error }))),
+    ...data.exams.flatMap((exam, index) => examErrors(exam).map((error) => t('store.examError', { index: index + 1, error }))),
+    ...Object.entries(data.review).flatMap(([key, entry]) => reviewErrors(key, entry).map((error) => t('store.reviewError', { key, error }))),
   ];
-  if (data.answers.length > LIMITS.answers) errors.push(`Trop de réponses (${data.answers.length}, maximum ${LIMITS.answers}).`);
-  if (data.exams.length > LIMITS.exams) errors.push(`Trop d'examens (${data.exams.length}, maximum ${LIMITS.exams}).`);
+  if (data.answers.length > LIMITS.answers) errors.push(t('store.tooManyAnswers', { count: data.answers.length, max: LIMITS.answers }));
+  if (data.exams.length > LIMITS.exams) errors.push(t('store.tooManyExams', { count: data.exams.length, max: LIMITS.exams }));
   return errors;
 }
 
@@ -112,15 +114,15 @@ export function validateData(data) {
  */
 export function migrate(raw, { migrations = MIGRATIONS, version = SCHEMA_VERSION } = {}) {
   if (!isObject(raw) || !Number.isInteger(raw.version) || raw.version < 1) {
-    return { error: 'Format non reconnu : numéro de version de schéma absent ou invalide.' };
+    return { error: t('store.unknownFormat') };
   }
   if (raw.version > version) {
-    return { error: `Ces données viennent d'une version plus récente du site (schéma ${raw.version}, version prise en charge : ${version}).`, newer: true };
+    return { error: t('store.newerVersion', { version: raw.version, supported: version }), newer: true };
   }
   let data = raw;
   while (data.version < version) {
     const step = migrations[data.version];
-    if (typeof step !== 'function') return { error: `Aucune migration disponible depuis la version ${data.version}.` };
+    if (typeof step !== 'function') return { error: t('store.noMigration', { version: data.version }) };
     data = { ...step(data), version: data.version + 1 };
   }
   return { data };
@@ -159,23 +161,23 @@ export const reviewEntries = (data, module) =>
  * Renvoie { data } ou { errors }.
  */
 export function parseImport(text) {
-  if (typeof text !== 'string' || text.trim() === '') return { errors: ['Le fichier est vide.'] };
-  if (text.length > LIMITS.importBytes) return { errors: ['Le fichier est trop volumineux pour être un export de progression.'] };
+  if (typeof text !== 'string' || text.trim() === '') return { errors: [t('store.emptyFile')] };
+  if (text.length > LIMITS.importBytes) return { errors: [t('store.fileTooLarge')] };
   let raw;
   try {
     raw = JSON.parse(text);
   } catch {
-    return { errors: ['Le fichier n\'est pas un fichier JSON valide.'] };
+    return { errors: [t('store.invalidJson')] };
   }
   if (isObject(raw) && raw.application !== undefined && raw.application !== EXPORT_MARKER) {
-    return { errors: ['Ce fichier ne provient pas de Prépa SELOR & EPSO.'] };
+    return { errors: [t('store.foreignFile')] };
   }
   const { data, error } = migrate(raw);
   if (error) return { errors: [error] };
   const content = { version: data.version, answers: data.answers, exams: data.exams, review: data.review };
   const errors = validateData(content);
   if (errors.length > 0) {
-    const extra = errors.length > MAX_REPORTED_ERRORS ? [`… et ${errors.length - MAX_REPORTED_ERRORS} autre(s) erreur(s).`] : [];
+    const extra = errors.length > MAX_REPORTED_ERRORS ? [t('store.moreErrors', { count: errors.length - MAX_REPORTED_ERRORS })] : [];
     return { errors: [...errors.slice(0, MAX_REPORTED_ERRORS), ...extra] };
   }
   return { data: content };
@@ -327,10 +329,10 @@ export function createStore({ storage = browserStorage(), now = () => new Date()
 
     /** Remplace les données par celles d'un fichier exporté, après contrôle. Renvoie { ok, data?, errors? }. */
     importJson(text) {
-      if (!available) return { ok: false, errors: ['Le stockage de ce navigateur est indisponible.'] };
+      if (!available) return { ok: false, errors: [t('store.unavailable')] };
       const { data, errors } = parseImport(text);
       if (errors) return { ok: false, errors };
-      return write(data) ? { ok: true, data } : { ok: false, errors: ['L\'enregistrement dans ce navigateur a échoué (espace insuffisant ?).'] };
+      return write(data) ? { ok: true, data } : { ok: false, errors: [t('store.writeFailed')] };
     },
 
     /** Efface toute la progression enregistrée sur cet appareil. */

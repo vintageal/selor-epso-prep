@@ -34,35 +34,38 @@
   pointer-events: none;
 }
 
-/* Notification éphémère (« toast ») */
-.toast-region {
-  position: fixed;
-  inset-inline: 0;
-  bottom: 1rem;
-  z-index: 50;
-  display: flex;
-  justify-content: center;
-  padding-inline: 1rem;
-  pointer-events: none;
+/* Sélecteur de langue FR | NL (en-tête) : la langue affichée, puis un lien vers la page équivalente */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-end: 0.25rem;
+  padding: 0.125rem;
+  border: 1px solid rgb(226 232 240);
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
-.toast {
-  max-width: 28rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
+.lang-switch__current,
+.lang-switch__link {
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.lang-switch__current {
   background-color: #0c1a33;
   color: #fff;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  box-shadow: 0 10px 30px rgb(12 26 51 / 0.3);
-  opacity: 0;
-  transform: translateY(0.5rem);
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.toast.is-visible {
-  opacity: 1;
-  transform: none;
+.lang-switch__link {
+  color: rgb(71 85 105);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch__link:hover {
+  background-color: rgb(241 245 249);
+  color: #0c1a33;
 }
 
 /* Titres rendus focalisables par script (tabindex="-1") : pas de contour */

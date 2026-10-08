@@ -7,8 +7,8 @@
  * de valeur sobres, infobulle au survol et au clavier, et toujours une vue « Tableau » équivalente.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
+import { t, typography } from '../lib/i18n.js';
 import { createTooltip, svgElement } from '../lib/viz.js';
-import { frenchTypography } from '../verbal/quiz.js';
 import {
   OPTION_LETTERS,
   SKILLS,
@@ -85,7 +85,10 @@ export function barChart(scenario) {
     group.tabIndex = 0;
     group.setAttribute(
       'aria-label',
-      `${row.label} : ${series.map(({ key, label }) => `${label}, ${formatData(scenario, key, row.values[key])}`).join(' ; ')}`,
+      t('numerique.barGroup', {
+        label: row.label,
+        values: series.map(({ key, label }) => `${label}, ${formatData(scenario, key, row.values[key])}`).join(t('common.listSeparator')),
+      }),
     );
     const bars = hiddenFromScreenReaders(createElement('div', 'bar-group__bars'));
     series.forEach(({ key }, index) => {
@@ -136,7 +139,7 @@ export function lineChart(scenario) {
   const svg = svgElement('svg', { class: 'line-chart__svg', role: 'img', tabindex: 0 });
   svg.setAttribute(
     'aria-label',
-    `${scenario.title}. Graphique en courbes ; utilisez les flèches gauche et droite pour lire les valeurs de chaque année, ou affichez le tableau.`,
+    typography(t('numerique.lineChart', { title: scenario.title })),
   );
   stage.append(svg);
 
@@ -274,7 +277,7 @@ export function pieChart(scenario) {
   const svg = svgElement('svg', { class: 'pie-chart__svg', viewBox: `0 0 ${size} ${size}`, role: 'img', tabindex: 0 });
   svg.setAttribute(
     'aria-label',
-    `${scenario.title}. Graphique en secteurs (${column.label}) ; utilisez les flèches pour lire chaque part, ou affichez le tableau.`,
+    typography(t('numerique.pieChart', { title: scenario.title, column: column.label })),
   );
 
   let angle = 0;
@@ -354,13 +357,13 @@ export function scenarioVisual(scenario) {
   const views = { chart: charts[scenario.display](scenario), table: dataTable(scenario) };
   const toggle = createElement('div', 'viz-toggle');
   toggle.setAttribute('role', 'group');
-  toggle.setAttribute('aria-label', 'Affichage des données');
+  toggle.setAttribute('aria-label', t('numerique.dataView'));
   const show = (name) => {
     views.chart.hidden = name !== 'chart';
     views.table.hidden = name !== 'table';
     toggle.querySelectorAll('button').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.view === name)));
   };
-  for (const [name, label] of [['chart', 'Graphique'], ['table', 'Tableau']]) {
+  for (const [name, label] of [['chart', t('numerique.chart')], ['table', t('numerique.table')]]) {
     const button = createElement('button', 'viz-toggle__button', label);
     button.type = 'button';
     button.dataset.view = name;
@@ -384,7 +387,7 @@ export function optionButton(question, option, index) {
     createElement('span', 'choice__label', formatAnswer(option.value, question.format)),
     hiddenFromScreenReaders(createElement('kbd', 'kbd choice__key', OPTION_LETTERS[index])),
   );
-  button.setAttribute('aria-label', `Proposition ${OPTION_LETTERS[index]} : ${formatAnswer(option.value, question.format)}`);
+  button.setAttribute('aria-label', typography(t('common.option', { letter: OPTION_LETTERS[index], text: formatAnswer(option.value, question.format) })));
   return button;
 }
 
@@ -393,9 +396,9 @@ const optionText = (question, index) => `${OPTION_LETTERS[index]} (${formatAnswe
 /** Phrase de verdict : réponse choisie et bonne réponse. */
 export function answerSentence(question, chosen) {
   const expected = optionText(question, question.answer);
-  if (chosen === null || chosen === undefined) return `Sans réponse. La bonne réponse était ${expected}.`;
-  if (chosen === question.answer) return `Vous avez choisi ${expected} : c'est la bonne réponse.`;
-  return `Vous avez choisi ${optionText(question, chosen)} ; la bonne réponse était ${expected}.`;
+  if (chosen === null || chosen === undefined) return t('common.noAnswer', { correct: expected });
+  if (chosen === question.answer) return t('common.correctChoice', { chosen: expected });
+  return t('common.wrongChoice', { chosen: optionText(question, chosen), correct: expected });
 }
 
 /** Explication de l'erreur correspondant à la proposition fautive choisie. */
@@ -403,7 +406,7 @@ export function errorHint(question, chosen) {
   const why = question.options[chosen]?.why;
   if (chosen === question.answer || !why) return null;
   const hint = createElement('p', 'error-hint');
-  hint.append(createElement('strong', '', 'Votre erreur probable : '), frenchTypography(why));
+  hint.append(createElement('strong', '', typography(t('numerique.errorHint'))), typography(why));
   return hint;
 }
 
@@ -429,22 +432,22 @@ export function calculationDetails(scenario, question) {
   }
 
   const resultLine = createElement('p', 'calc-result');
-  resultLine.append('Résultat arrondi : ', createElement('strong', '', formatAnswer(result, question.format)));
+  resultLine.append(typography(t('numerique.roundedResult')), createElement('strong', '', formatAnswer(result, question.format)));
 
   const tip = createElement('p', 'method-tip');
-  tip.append(createElement('strong', '', 'Rappel de méthode : '), frenchTypography(SKILLS[question.skill].tip));
+  tip.append(createElement('strong', '', typography(t('common.methodReminder'))), typography(SKILLS[question.skill].tip));
 
   return [
-    createElement('p', 'feedback__rule', frenchTypography(`Compétence : ${SKILLS[question.skill].label}`)),
-    createElement('p', 'feedback__label', 'Données utilisées'),
+    createElement('p', 'feedback__rule', typography(t('numerique.skill', { label: SKILLS[question.skill].label }))),
+    createElement('p', 'feedback__label', t('numerique.usedData')),
     data,
-    createElement('p', 'feedback__label', 'Formule'),
+    createElement('p', 'feedback__label', t('numerique.formula')),
     createElement('p', 'calc-formula', question.formula),
-    createElement('p', 'feedback__label', 'Calcul étape par étape'),
+    createElement('p', 'feedback__label', t('numerique.steps')),
     list,
     resultLine,
-    createElement('p', 'feedback__label', 'À retenir'),
-    createElement('p', 'feedback__text', frenchTypography(question.explanation)),
+    createElement('p', 'feedback__label', t('numerique.keyPoint')),
+    createElement('p', 'feedback__text', typography(question.explanation)),
     tip,
   ];
 }

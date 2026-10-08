@@ -5,14 +5,14 @@
  */
 import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { bankUrl, t, typography } from '../lib/i18n.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
-import { frenchTypography } from '../verbal/quiz.js';
 import { SKILLS, buildReviewSteps, buildSteps, summarize } from './quiz.js';
 import { answerSentence, calculationDetails, errorHint, optionButton, scenarioVisual } from './view.js';
 
 const MODULE = 'numerique';
-const BANK_URL = new URL('../../../data/numerique.json', import.meta.url);
+const BANK_URL = bankUrl('numerique');
 const KEY_TO_OPTION = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -53,10 +53,10 @@ const renderGuidelines = () => {
   ui.guidelines.replaceChildren(
     ...Object.values(SKILLS).map(({ label, tip }) => {
       const item = createElement('li');
-      item.append(createElement('strong', 'font-semibold', `${label} : `), frenchTypography(tip));
+      item.append(createElement('strong', 'font-semibold', typography(t('numerique.guidelineLabel', { label }))), typography(tip));
       return item;
     }),
-    createElement('li', '', frenchTypography('Une calculatrice peut vous aider : gardez-la à portée de main, comme le jour de l\'épreuve.')),
+    createElement('li', '', typography(t('numerique.calculatorTip'))),
   );
 };
 
@@ -69,8 +69,8 @@ const updateStats = () => {
 
 const nextButtonLabel = () => {
   const upcoming = state.steps[state.index + 1];
-  if (!upcoming) return 'Voir le bilan';
-  return upcoming.scenario === currentStep().scenario ? 'Question suivante' : 'Données suivantes';
+  if (!upcoming) return t('common.seeSummary');
+  return upcoming.scenario === currentStep().scenario ? t('common.nextQuestion') : t('numerique.nextData');
 };
 
 const showStep = () => {
@@ -81,13 +81,13 @@ const showStep = () => {
 
   if (isNewScenario) {
     ui.theme.textContent = scenario.theme;
-    ui.title.textContent = frenchTypography(scenario.title);
-    ui.note.textContent = frenchTypography(`${scenario.note ?? ''} Données fictives.`.trim());
+    ui.title.textContent = typography(scenario.title);
+    ui.note.textContent = typography(`${scenario.note ?? ''} ${t('numerique.fictional')}`.trim());
     ui.visual.replaceChildren(scenarioVisual(scenario));
   }
-  ui.count.textContent = `Données ${step.scenarioIndex + 1} sur ${step.scenarioCount}`;
-  ui.questionLabel.textContent = `Question ${step.questionIndex + 1} sur ${step.questionCount}`;
-  ui.questionText.textContent = frenchTypography(question.text);
+  ui.count.textContent = t('numerique.dataCount', { index: step.scenarioIndex + 1, count: step.scenarioCount });
+  ui.questionLabel.textContent = t('common.questionCount', { index: step.questionIndex + 1, count: step.questionCount });
+  ui.questionText.textContent = typography(question.text);
   renderDifficulty(question.difficulty, ui.questionLevel);
   ui.questionLevel.hidden = false;
   ui.choices.replaceChildren(...question.options.map((option, index) => optionButton(question, option, index)));
@@ -110,8 +110,8 @@ const renderFeedback = (scenario, question, chosen) => {
   const box = createElement('div', 'feedback');
   box.dataset.result = isCorrect ? 'correct' : 'wrong';
   box.append(
-    createElement('p', 'feedback__title', isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse'),
-    createElement('p', 'feedback__answer', frenchTypography(answerSentence(question, chosen))),
+    createElement('p', 'feedback__title', typography(t(isCorrect ? 'common.correctTitle' : 'common.wrongTitle'))),
+    createElement('p', 'feedback__answer', typography(answerSentence(question, chosen))),
   );
   const hint = errorHint(question, chosen);
   if (hint) box.append(hint);
@@ -139,8 +139,8 @@ const answer = (chosen) => {
 
   ui.choices.querySelectorAll('.choice').forEach((button, index) => {
     button.disabled = true;
-    if (index === question.answer) markChoice(button, 'correct', 'Bonne réponse');
-    else if (index === chosen) markChoice(button, 'wrong', 'Votre choix');
+    if (index === question.answer) markChoice(button, 'correct', t('common.correctMark'));
+    else if (index === chosen) markChoice(button, 'wrong', t('common.yourChoice'));
     else button.dataset.state = 'dimmed';
   });
 
@@ -160,16 +160,11 @@ const showSummary = () => {
     .filter(([, { total: count }]) => count > 0)
     .map(([skill, stats]) => ({ label: SKILLS[skill].label, ...stats }))
     .sort((a, b) => a.correct / a.total - b.correct / b.total)[0];
-  const verdict =
-    rate >= 0.8
-      ? 'Excellent travail : vos calculs sont solides et rigoureux.'
-      : rate >= 0.6
-        ? 'Bon résultat : relisez le détail des calculs manqués pour repérer vos erreurs de méthode.'
-        : 'Continuez à vous entraîner : le détail de chaque calcul vous montre où se cache le piège.';
+  const verdict = rate >= 0.8 ? t('numerique.verdict.excellent') : rate >= 0.6 ? t('numerique.verdict.good') : t('numerique.verdict.keepGoing');
   const focus = weakest && weakest.correct < weakest.total
-    ? ` Point à travailler : ${weakest.label.toLowerCase()} (${weakest.correct} sur ${weakest.total} réussies).`
+    ? ` ${t('numerique.focus', { label: weakest.label.toLowerCase(), correct: weakest.correct, total: weakest.total })}`
     : '';
-  ui.summaryMessage.textContent = frenchTypography(verdict + focus);
+  ui.summaryMessage.textContent = typography(verdict + focus);
 
   ui.summaryDetails.replaceChildren(
     ...Object.entries(bySkill).map(([skill, stats]) => {
@@ -272,9 +267,7 @@ try {
   else startSeries();
 } catch (error) {
   console.error('Chargement de la banque de questions impossible :', error);
-  ui.theme.textContent = 'Erreur';
-  ui.visual.replaceChildren(
-    createElement('p', 'text-red-700', 'Impossible de charger les données. Vérifiez que la page est servie par un serveur web (voir le README), puis rechargez-la.'),
-  );
+  ui.theme.textContent = t('common.error');
+  ui.visual.replaceChildren(createElement('p', 'text-red-700', t('numerique.loadError')));
 }
 

@@ -6,7 +6,8 @@
 import { OPTION_LETTERS } from '../abstrait/generator.js';
 import { optionButton, sequenceCells } from '../abstrait/view.js';
 import { createElement, hiddenFromScreenReaders, moveFocusTo } from '../lib/dom.js';
-import { ANSWERS, METHOD_TIPS, answerLabel, frenchTypography } from '../verbal/quiz.js';
+import { bankUrl, intlLocale, t, typography } from '../lib/i18n.js';
+import { ANSWERS, METHOD_TIPS, answerLabel } from '../verbal/quiz.js';
 import { choiceButton, evidenceQuotes, passageParagraphs } from '../verbal/view.js';
 import {
   answerSentence,
@@ -23,25 +24,20 @@ import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam,
 
 /** Banques chargées au démarrage : nom dans l'examen → fichier et clé du tableau dans le JSON. */
 const BANKS = {
-  passages: { url: new URL('../../../data/verbal.json', import.meta.url), key: 'passages' },
-  scenarios: { url: new URL('../../../data/numerique.json', import.meta.url), key: 'scenarios' },
-  situations: { url: new URL('../../../data/jugement.json', import.meta.url), key: 'scenarios' },
+  passages: { url: bankUrl('verbal'), key: 'passages' },
+  scenarios: { url: bankUrl('numerique'), key: 'scenarios' },
+  situations: { url: bankUrl('jugement'), key: 'scenarios' },
 };
 const TICK_MS = 250;
 const WARNING_MS = 5 * 60 * 1000;
 const CRITICAL_MS = 60 * 1000;
 const ANNOUNCEMENTS = [
-  { at: 5 * 60 * 1000, text: 'Attention : il reste 5 minutes.' },
-  { at: 60 * 1000, text: 'Attention : il reste 1 minute.' },
+  { at: 5 * 60 * 1000, key: 'examen.announce.five' },
+  { at: 60 * 1000, key: 'examen.announce.one' },
 ];
 const OPTION_KEYS = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
 const VERBAL_KEYS = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.map((key) => [key, id])));
-const REVIEW_STATUS = {
-  correct: { icon: '✓', label: 'Bonne réponse' },
-  wrong: { icon: '✕', label: 'Mauvaise réponse' },
-  partial: { icon: '½', label: 'Réponse partielle' },
-  blank: { icon: '–', label: 'Sans réponse' },
-};
+const REVIEW_ICONS = { correct: '✓', wrong: '✕', partial: '½', blank: '–' };
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
@@ -90,10 +86,9 @@ const ui = {
 const progress = createStore();
 const state = { banks: null, session: null, index: 0, running: false, timerId: null, announced: new Set() };
 const currentItem = () => state.session.items[state.index];
-const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
-const pointsLabel = (points) => `${points} point${points > 1 ? 's' : ''} sur ${MAX_POINTS}`;
-/** Score éventuellement fractionnaire (jugement situationnel), à la française : 31,75. */
-const formatScore = (value) => value.toLocaleString('fr-BE', { maximumFractionDigits: 2 });
+const pointsLabel = (points) => t('jugement.points', { points, max: MAX_POINTS });
+/** Score éventuellement fractionnaire (jugement situationnel), avec une virgule décimale : 31,75. */
+const formatScore = (value) => value.toLocaleString(intlLocale(), { maximumFractionDigits: 2 });
 
 const warnBeforeLeaving = (event) => {
   event.preventDefault();
@@ -111,10 +106,10 @@ const labelledGroup = (className, labelId) => {
 
 const renderAbstractQuestion = ({ question }, answer) => {
   const sequence = createElement('ol', 'figure-row');
-  sequence.setAttribute('aria-label', 'Série de figures');
+  sequence.setAttribute('aria-label', t('examen.sequence'));
   sequence.append(...sequenceCells(question));
 
-  const label = createElement('p', 'exam-label', 'Propositions');
+  const label = createElement('p', 'exam-label', t('examen.options'));
   label.id = 'examen-propositions';
   const options = labelledGroup('option-row', label.id);
   options.append(
@@ -125,7 +120,7 @@ const renderAbstractQuestion = ({ question }, answer) => {
     }),
   );
 
-  return [createElement('p', 'exam-prompt', frenchTypography('Quelle figure complète la série ?')), sequence, label, options];
+  return [createElement('p', 'exam-prompt', typography(t('examen.abstractPrompt'))), sequence, label, options];
 };
 
 const renderVerbalQuestion = ({ passage, statement }, answer) => {
@@ -134,11 +129,11 @@ const renderVerbalQuestion = ({ passage, statement }, answer) => {
   body.append(...passageParagraphs(passage));
   article.append(
     createElement('span', 'exam-passage__theme', passage.theme),
-    createElement('h3', 'exam-passage__title', frenchTypography(passage.title)),
+    createElement('h3', 'exam-passage__title', typography(passage.title)),
     body,
   );
 
-  const label = createElement('p', 'exam-prompt', 'Selon le texte, cette affirmation est…');
+  const label = createElement('p', 'exam-prompt', t('examen.verbalPrompt'));
   label.id = 'examen-choix';
   const choices = labelledGroup('choice-list', label.id);
   choices.append(
@@ -151,8 +146,8 @@ const renderVerbalQuestion = ({ passage, statement }, answer) => {
 
   const side = createElement('div', 'exam-statement');
   side.append(
-    createElement('p', 'exam-label', 'Affirmation'),
-    createElement('p', 'statement-box', frenchTypography(statement.text)),
+    createElement('p', 'exam-label', t('examen.statement')),
+    createElement('p', 'statement-box', typography(statement.text)),
     label,
     choices,
   );
@@ -166,12 +161,12 @@ const renderNumericQuestion = ({ scenario, question }, answer) => {
   const article = createElement('article', 'exam-passage');
   article.append(
     createElement('span', 'exam-passage__theme', scenario.theme),
-    createElement('h3', 'exam-passage__title', frenchTypography(scenario.title)),
-    createElement('p', 'exam-passage__note', frenchTypography(`${scenario.note ?? ''} Données fictives.`.trim())),
+    createElement('h3', 'exam-passage__title', typography(scenario.title)),
+    createElement('p', 'exam-passage__note', typography(`${scenario.note ?? ''} ${t('numerique.fictional')}`.trim())),
     scenarioVisual(scenario),
   );
 
-  const label = createElement('p', 'exam-prompt', 'Votre réponse');
+  const label = createElement('p', 'exam-prompt', t('examen.yourAnswer'));
   label.id = 'examen-choix';
   const choices = labelledGroup('choice-list', label.id);
   choices.append(
@@ -183,7 +178,7 @@ const renderNumericQuestion = ({ scenario, question }, answer) => {
   );
 
   const side = createElement('div', 'exam-statement');
-  side.append(createElement('p', 'exam-label', 'Question'), createElement('p', 'statement-box', frenchTypography(question.text)), label, choices);
+  side.append(createElement('p', 'exam-label', t('examen.question')), createElement('p', 'statement-box', typography(question.text)), label, choices);
 
   const layout = createElement('div', 'exam-split');
   layout.append(article, side);
@@ -196,7 +191,7 @@ const renderJudgementQuestion = ({ id, scenario, order }, answer) => {
   const article = createElement('article', 'exam-passage');
   article.append(
     createElement('span', 'exam-passage__theme', scenario.theme),
-    createElement('h3', 'exam-passage__title', frenchTypography(scenario.title)),
+    createElement('h3', 'exam-passage__title', typography(scenario.title)),
     ...content,
   );
 
@@ -232,8 +227,11 @@ const renderPalette = () => {
       button.dataset.state = answered ? 'answered' : started ? 'partial' : 'blank';
       if (flagged) button.dataset.flagged = '';
       if (index === state.index) button.setAttribute('aria-current', 'step');
-      const status = answered ? 'répondue' : started ? 'réponse incomplète' : 'sans réponse';
-      button.setAttribute('aria-label', `Question ${index + 1}, ${SECTIONS[item.type].toLowerCase()}, ${status}${flagged ? ', à revoir' : ''}`);
+      const status = t(`examen.palette.${answered ? 'answered' : started ? 'partial' : 'blank'}`);
+      button.setAttribute(
+        'aria-label',
+        t('examen.palette.label', { index: index + 1, section: SECTIONS[item.type].toLowerCase(), status, flagged: flagged ? t('examen.palette.flagged') : '' }),
+      );
       const entry = createElement('li');
       entry.append(button);
       return entry;
@@ -245,7 +243,7 @@ const updateQuestionControls = () => {
   const { session, index } = state;
   const flagged = session.flags[index];
   ui.flag.setAttribute('aria-pressed', String(flagged));
-  ui.flagLabel.textContent = flagged ? 'Marquée à revoir' : 'Marquer à revoir';
+  ui.flagLabel.textContent = t(flagged ? 'examen.flagged' : 'examen.flag');
   ui.clear.hidden = session.answers[index] === null;
   ui.answeredCount.textContent = String(session.answeredCount);
   renderPalette();
@@ -257,7 +255,7 @@ const showQuestion = (index, { focus = true } = {}) => {
   const item = currentItem();
   const answer = session.answers[state.index];
 
-  ui.questionTitle.textContent = `Question ${state.index + 1} sur ${session.items.length}`;
+  ui.questionTitle.textContent = t('common.questionCount', { index: state.index + 1, count: session.items.length });
   ui.sectionChip.textContent = SECTIONS[item.type];
   ui.sectionChip.dataset.section = item.type;
   ui.body.replaceChildren(...QUESTION_RENDERERS[item.type](item, answer));
@@ -301,10 +299,10 @@ const tick = () => {
   const remaining = state.session.remainingMs(Date.now());
   ui.timerValue.textContent = formatClock(remaining);
   ui.timer.dataset.level = remaining <= CRITICAL_MS ? 'critical' : remaining <= WARNING_MS ? 'warning' : 'normal';
-  for (const { at, text } of ANNOUNCEMENTS) {
+  for (const { at, key } of ANNOUNCEMENTS) {
     if (remaining <= at && remaining > 0 && !state.announced.has(at)) {
       state.announced.add(at);
-      ui.announcer.textContent = frenchTypography(text);
+      ui.announcer.textContent = typography(t(key));
     }
   }
   if (remaining <= 0) endExam('timeout');
@@ -336,17 +334,13 @@ const askToFinish = () => {
   const blank = session.items.length - session.answeredCount - incomplete;
   const flagged = session.flags.filter(Boolean).length;
   const parts = [
-    blank + incomplete === 0 ? 'Vous avez répondu à toutes les questions.' : '',
-    blank > 0
-      ? `${plural(blank, 'question')} sans réponse ${blank > 1 ? 'seront comptées' : 'sera comptée'} comme ${blank > 1 ? 'fausses' : 'fausse'}.`
-      : '',
-    incomplete > 0
-      ? `${plural(incomplete, 'situation de jugement', 'situations de jugement')} ${incomplete > 1 ? 'n\'ont' : 'n\'a'} qu'un choix sur deux : seul ce choix sera noté.`
-      : '',
-    flagged > 0 ? `${plural(flagged, 'question marquée', 'questions marquées')} « à revoir ».` : '',
-    'Une fois l\'examen terminé, vous ne pourrez plus modifier vos réponses.',
+    blank + incomplete === 0 ? t('examen.confirm.complete') : '',
+    blank > 0 ? t('examen.confirm.blank', { count: blank }) : '',
+    incomplete > 0 ? t('examen.confirm.incomplete', { count: incomplete }) : '',
+    flagged > 0 ? t('examen.confirm.flagged', { count: flagged }) : '',
+    t('examen.confirm.final'),
   ];
-  ui.confirmText.textContent = frenchTypography(parts.filter(Boolean).join(' '));
+  ui.confirmText.textContent = typography(parts.filter(Boolean).join(' '));
   ui.confirm.showModal();
 };
 
@@ -377,11 +371,7 @@ const statTile = (label, value) => {
 const verdictMessage = (grade, session) => {
   const rate = grade.score / grade.total;
   const parts = [
-    rate >= 0.8
-      ? 'Excellent résultat dans les conditions de l\'épreuve.'
-      : rate >= 0.6
-        ? 'Bon résultat : analysez la correction des questions manquées pour gagner encore quelques points.'
-        : 'Continuez à vous entraîner dans les modules d\'entraînement, puis retentez l\'examen.',
+    rate >= 0.8 ? t('examen.verdict.excellent') : rate >= 0.6 ? t('examen.verdict.good') : t('examen.verdict.keepGoing'),
   ];
   const sections = Object.entries(grade.bySection)
     .filter(([, { total }]) => total > 0)
@@ -389,12 +379,12 @@ const verdictMessage = (grade, session) => {
   const sorted = [...sections].sort((a, b) => a.rate - b.rate);
   const [weakest, strongest] = [sorted[0], sorted.at(-1)];
   if (weakest && strongest && weakest.rate < strongest.rate) {
-    parts.push(`Section à travailler en priorité : ${SECTIONS[weakest.id].toLowerCase()} (${formatScore(weakest.score)} sur ${weakest.total}).`);
+    parts.push(t('examen.verdict.weakest', { section: SECTIONS[weakest.id].toLowerCase(), score: formatScore(weakest.score), total: weakest.total }));
   }
   if (session.endReason === 'timeout' && grade.blank > 0) {
-    parts.push(`${plural(grade.blank, 'question est restée', 'questions sont restées')} sans réponse : travaillez aussi votre gestion du temps.`);
+    parts.push(t('examen.verdict.timeout', { count: grade.blank }));
   }
-  return frenchTypography(parts.join(' '));
+  return typography(parts.join(' '));
 };
 
 const markButton = (button, status, label, statusClass) => {
@@ -404,7 +394,7 @@ const markButton = (button, status, label, statusClass) => {
 
 const reviewAbstract = ({ item: { question }, answer, status }) => {
   const sequence = createElement('ol', 'figure-row');
-  sequence.setAttribute('aria-label', 'Série de figures complétée');
+  sequence.setAttribute('aria-label', t('examen.sequenceDone'));
   sequence.append(...sequenceCells(question, { reveal: true }));
 
   const options = createElement('div', 'option-row');
@@ -412,8 +402,8 @@ const reviewAbstract = ({ item: { question }, answer, status }) => {
     ...question.options.map((figure, index) => {
       const button = optionButton(figure, index);
       button.disabled = true;
-      if (index === question.correctIndex) markButton(button, 'correct', 'Bonne réponse', 'option__status');
-      else if (index === answer) markButton(button, 'wrong', 'Votre choix', 'option__status');
+      if (index === question.correctIndex) markButton(button, 'correct', t('common.correctMark'), 'option__status');
+      else if (index === answer) markButton(button, 'wrong', t('common.yourChoice'), 'option__status');
       else button.dataset.state = 'dimmed';
       return button;
     }),
@@ -421,48 +411,48 @@ const reviewAbstract = ({ item: { question }, answer, status }) => {
 
   const expected = OPTION_LETTERS[question.correctIndex];
   const verdict = {
-    correct: `Vous avez choisi ${expected} : c'est la bonne réponse.`,
-    wrong: `Vous avez choisi ${OPTION_LETTERS[answer]} ; la bonne réponse était ${expected}.`,
-    blank: `Sans réponse. La bonne réponse était ${expected}.`,
-  }[status];
+    correct: () => t('common.correctChoice', { chosen: expected }),
+    wrong: () => t('common.wrongChoice', { chosen: OPTION_LETTERS[answer], correct: expected }),
+    blank: () => t('common.noAnswer', { correct: expected }),
+  }[status]();
 
   return [
     sequence,
     options,
-    createElement('p', 'review-answer', frenchTypography(verdict)),
-    createElement('p', 'feedback__rule', frenchTypography(`Règle : ${question.ruleTitle}`)),
-    createElement('p', 'feedback__text', frenchTypography(question.explanation)),
+    createElement('p', 'review-answer', typography(verdict)),
+    createElement('p', 'feedback__rule', typography(t('abstrait.rule', { title: question.ruleTitle }))),
+    createElement('p', 'feedback__text', typography(question.explanation)),
   ];
 };
 
 const reviewVerbal = ({ item: { passage, statement }, answer, status }) => {
   const expected = answerLabel(statement.answer);
   const verdict = {
-    correct: `Vous avez répondu « ${expected} » : c'est la bonne réponse.`,
-    wrong: `Vous avez répondu « ${answerLabel(answer)} » ; la bonne réponse était « ${expected} ».`,
-    blank: `Sans réponse. La bonne réponse était « ${expected} ».`,
-  }[status];
+    correct: () => t('examen.verbal.correct', { answer: expected }),
+    wrong: () => t('examen.verbal.wrong', { chosen: answerLabel(answer), answer: expected }),
+    blank: () => t('examen.verbal.blank', { answer: expected }),
+  }[status]();
 
   const tip = createElement('p', 'method-tip');
-  tip.append(createElement('strong', '', 'Rappel de méthode : '), frenchTypography(METHOD_TIPS[statement.answer]));
+  tip.append(createElement('strong', '', typography(t('common.methodReminder'))), typography(METHOD_TIPS[statement.answer]));
 
   const fullText = createElement('details', 'review-passage');
   const body = createElement('div', 'passage');
   body.append(...passageParagraphs(passage, statement.quotes));
   fullText.append(
-    createElement('summary', '', 'Afficher le texte complet'),
-    createElement('p', 'exam-passage__title', frenchTypography(passage.title)),
+    createElement('summary', '', t('examen.showText')),
+    createElement('p', 'exam-passage__title', typography(passage.title)),
     body,
   );
 
   return [
-    createElement('p', 'exam-label', frenchTypography(`Texte : ${passage.title}`)),
-    createElement('p', 'statement-box', frenchTypography(statement.text)),
-    createElement('p', 'review-answer', frenchTypography(verdict)),
-    createElement('p', 'feedback__label', statement.quotes.length > 1 ? 'Preuves dans le texte' : 'Preuve dans le texte'),
+    createElement('p', 'exam-label', typography(t('examen.textLabel', { title: passage.title }))),
+    createElement('p', 'statement-box', typography(statement.text)),
+    createElement('p', 'review-answer', typography(verdict)),
+    createElement('p', 'feedback__label', t(statement.quotes.length > 1 ? 'examen.evidenceMany' : 'examen.evidenceOne')),
     ...evidenceQuotes(statement.quotes),
-    createElement('p', 'feedback__label', 'Explication'),
-    createElement('p', 'feedback__text', frenchTypography(statement.explanation)),
+    createElement('p', 'feedback__label', t('common.explanation')),
+    createElement('p', 'feedback__text', typography(statement.explanation)),
     tip,
     fullText,
   ];
@@ -474,22 +464,22 @@ const reviewNumeric = ({ item: { scenario, question }, answer }) => {
     ...question.options.map((option, index) => {
       const button = numericOptionButton(question, option, index);
       button.disabled = true;
-      if (index === question.answer) markButton(button, 'correct', 'Bonne réponse', 'choice__status');
-      else if (index === answer) markButton(button, 'wrong', 'Votre choix', 'choice__status');
+      if (index === question.answer) markButton(button, 'correct', t('common.correctMark'), 'choice__status');
+      else if (index === answer) markButton(button, 'wrong', t('common.yourChoice'), 'choice__status');
       else button.dataset.state = 'dimmed';
       return button;
     }),
   );
 
   const data = createElement('details', 'review-passage');
-  data.append(createElement('summary', '', 'Afficher les données'), createElement('p', 'exam-passage__title', frenchTypography(scenario.title)), dataTable(scenario));
+  data.append(createElement('summary', '', t('examen.showData')), createElement('p', 'exam-passage__title', typography(scenario.title)), dataTable(scenario));
 
   const hint = answer === null ? null : errorHint(question, answer);
   return [
-    createElement('p', 'exam-label', frenchTypography(`Données : ${scenario.title}`)),
-    createElement('p', 'statement-box', frenchTypography(question.text)),
+    createElement('p', 'exam-label', typography(t('examen.dataLabel', { title: scenario.title }))),
+    createElement('p', 'statement-box', typography(question.text)),
     choices,
-    createElement('p', 'review-answer', frenchTypography(answerSentence(question, answer))),
+    createElement('p', 'review-answer', typography(answerSentence(question, answer))),
     ...(hint ? [hint] : []),
     ...calculationDetails(scenario, question),
     data,
@@ -499,16 +489,19 @@ const reviewNumeric = ({ item: { scenario, question }, answer }) => {
 const reviewJudgement = ({ item: { scenario, order }, answer, points }) => {
   const situation = createElement('details', 'review-passage');
   situation.append(
-    createElement('summary', '', 'Afficher la situation'),
-    createElement('p', 'exam-passage__title', frenchTypography(scenario.title)),
+    createElement('summary', '', t('examen.showSituation')),
+    createElement('p', 'exam-passage__title', typography(scenario.title)),
     ...situationContent(scenario).slice(0, -1),
   );
-  const verdict = answer === null ? `Sans réponse : 0 point sur ${MAX_POINTS}.` : `Vous obtenez ${pointsLabel(points)}, soit ${formatScore(points / MAX_POINTS)} point à l'examen.`;
+  const verdict =
+    answer === null
+      ? t('examen.judgement.blank', { max: MAX_POINTS })
+      : t('examen.judgement.score', { points: pointsLabel(points), examPoints: formatScore(points / MAX_POINTS) });
 
   return [
-    createElement('p', 'exam-label', frenchTypography(`Situation : ${scenario.title}`)),
+    createElement('p', 'exam-label', typography(t('examen.situationLabel', { title: scenario.title }))),
     situation,
-    createElement('p', 'review-answer', frenchTypography(verdict)),
+    createElement('p', 'review-answer', typography(verdict)),
     scoreLines(scenario, order, answer).list,
     correctionList(scenario, order, answer),
     ...debriefContent(scenario),
@@ -518,7 +511,7 @@ const reviewJudgement = ({ item: { scenario, order }, answer, points }) => {
 const REVIEW_RENDERERS = { abstrait: reviewAbstract, verbal: reviewVerbal, numerique: reviewNumeric, jugement: reviewJudgement };
 
 /** Libellé du statut : points obtenus pour une situation de jugement, sinon bonne / mauvaise réponse. */
-const statusLabel = ({ item, status, points }) => (item.type === 'jugement' && status !== 'blank' ? pointsLabel(points) : REVIEW_STATUS[status].label);
+const statusLabel = ({ item, status, points }) => (item.type === 'jugement' && status !== 'blank' ? pointsLabel(points) : t(`examen.status.${status}`));
 
 const reviewItem = (result, index) => {
   const { item, status } = result;
@@ -528,8 +521,8 @@ const reviewItem = (result, index) => {
 
   const summary = createElement('summary', 'review-item__summary');
   summary.append(
-    hiddenFromScreenReaders(createElement('span', 'review-item__badge', REVIEW_STATUS[status].icon)),
-    createElement('span', 'review-item__title', `Question ${index + 1}`),
+    hiddenFromScreenReaders(createElement('span', 'review-item__badge', REVIEW_ICONS[status])),
+    createElement('span', 'review-item__title', t('examen.questionNumber', { index: index + 1 })),
     createElement('span', 'review-item__section', SECTIONS[item.type]),
     createElement('span', 'review-item__status', statusLabel(result)),
   );
@@ -548,15 +541,13 @@ const renderResults = () => {
   const grade = gradeExam(session.items, session.answers);
 
   ui.endBanner.dataset.reason = session.endReason;
-  ui.endBanner.textContent = frenchTypography(
-    session.endReason === 'timeout' ? 'Temps écoulé : l\'examen s\'est arrêté automatiquement.' : 'Examen terminé.',
-  );
+  ui.endBanner.textContent = typography(t(session.endReason === 'timeout' ? 'examen.end.timeout' : 'examen.end.submitted'));
   ui.resultScore.textContent = `${formatScore(grade.score)} / ${grade.total}`;
-  ui.resultPercent.textContent = frenchTypography(`${Math.round((grade.score / grade.total) * 100)} % des points`);
+  ui.resultPercent.textContent = typography(t('examen.percentOfPoints', { percent: t('format.percent', { value: Math.round((grade.score / grade.total) * 100) }) }));
   ui.resultMessage.textContent = verdictMessage(grade, session);
   ui.resultStats.replaceChildren(
-    statTile('Temps utilisé', `${formatClock(session.elapsedMs(), Math.floor)} / ${formatClock(session.durationMs)}`),
-    statTile('Sans réponse', String(grade.blank)),
+    statTile(t('examen.timeUsed'), `${formatClock(session.elapsedMs(), Math.floor)} / ${formatClock(session.durationMs)}`),
+    statTile(t('examen.status.blank'), String(grade.blank)),
     ...Object.entries(grade.bySection).map(([id, { score, total }]) => statTile(SECTIONS[id], `${formatScore(score)} / ${total}`)),
   );
   ui.reviewList.replaceChildren(...grade.results.map(reviewItem));
@@ -650,9 +641,9 @@ document.addEventListener('keydown', (event) => {
 const { abstractCount, verbalCount, numericCount, judgementCount, durationMs } = EXAM_CONFIG;
 ui.introCount.textContent = String(abstractCount + verbalCount + numericCount + judgementCount);
 ui.introSections.textContent = String(Object.keys(SECTIONS).length);
-ui.introDuration.textContent = `${durationMs / 60000} min`;
-ui.introMix.textContent = frenchTypography(
-  `${abstractCount} questions de raisonnement abstrait, ${verbalCount} de raisonnement verbal, ${numericCount} de raisonnement numérique et ${judgementCount} situations de jugement, dans un ordre aléatoire.`,
+ui.introDuration.textContent = t('examen.minutes', { minutes: durationMs / 60000 });
+ui.introMix.textContent = typography(
+  t('examen.mix', { abstract: abstractCount, verbal: verbalCount, numeric: numericCount, judgement: judgementCount }),
 );
 ui.timerValue.textContent = formatClock(durationMs);
 
@@ -666,9 +657,9 @@ try {
   );
   state.banks = Object.fromEntries(entries);
   ui.start.disabled = false;
-  ui.startLabel.textContent = 'Commencer l\'examen';
+  ui.startLabel.textContent = t('examen.start');
 } catch (error) {
   console.error('Chargement de la banque de questions impossible :', error);
-  ui.startLabel.textContent = 'Examen indisponible';
+  ui.startLabel.textContent = t('examen.unavailable');
   ui.loadError.hidden = false;
 }

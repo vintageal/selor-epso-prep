@@ -1,0 +1,25 @@
+{{> skip-link}}
+
+  <!-- En-tête -->
+  <header class="{{#if staticHeader}}border-b border-slate-200/80 bg-white{{else}}sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur{{/if}}">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="{{home}}index.html" class="flex items-center gap-2.5 rounded-md">
+        <img src="{{root}}assets/img/favicon.svg" alt="" width="36" height="36" class="h-9 w-9">
+        <span class="leading-tight">
+          <span class="block text-base font-bold tracking-tight text-brand-900">{{t:site.brand}}</span>
+          <span class="block text-xs text-slate-500">{{t:site.tagline}}</span>
+        </span>
+      </a>
+      <nav aria-label="{{t:site.navLabel}}" class="flex shrink-0 items-center sm:gap-1">
+        {{> lang-switch}}
+{{#if isProgressPage}}{{else}}        <a href="{{home}}progression/index.html" title="{{t:site.myProgress}}" class="inline-flex items-center gap-1.5 rounded-lg px-2 py-2 sm:px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M7 16l4-5 3 3 5-7"/></svg>
+          <span class="sr-only sm:not-sr-only">{{t:site.myProgress}}</span>
+        </a>
+{{/if}}        <a href="{{home}}index.html#modules" class="inline-flex items-center gap-1.5 rounded-lg px-2 py-2 sm:px-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span>{{t:site.modules}}</span>
+        </a>
+      </nav>
+    </div>
+  </header>

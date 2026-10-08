@@ -3,14 +3,15 @@
  * partagés par le module d'entraînement et le mode examen.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
-import { frenchTypography, highlightSegments } from './quiz.js';
+import { t, typography } from '../lib/i18n.js';
+import { highlightSegments } from './quiz.js';
 
 /** Paragraphes du texte, avec les citations fournies surlignées. */
 export const passageParagraphs = (passage, quotes = []) =>
   passage.paragraphs.map((paragraph) => {
     const element = createElement('p');
     for (const { text, highlighted } of highlightSegments(paragraph, quotes)) {
-      element.append(highlighted ? createElement('mark', 'evidence-mark', frenchTypography(text)) : frenchTypography(text));
+      element.append(highlighted ? createElement('mark', 'evidence-mark', typography(text)) : typography(text));
     }
     return element;
   });
@@ -32,6 +33,6 @@ export const choiceButton = ({ id, label, icon, keys }) => {
 export const evidenceQuotes = (quotes) =>
   quotes.map((quote) => {
     const blockquote = createElement('blockquote', 'evidence');
-    blockquote.append(createElement('p', '', frenchTypography(`« ${quote} »`)));
+    blockquote.append(createElement('p', '', typography(t('common.quote', { quote }))));
     return blockquote;
   });

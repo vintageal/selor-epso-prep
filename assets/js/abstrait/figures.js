@@ -11,7 +11,9 @@
  *   - marker   : position du disque sur le pourtour (index de MARKER_POSITIONS) ou null
  *
  * Toutes les formes sont dessinées dans un carré de 100 × 100 centré en (50, 50).
+ * Les textes (noms, descriptions) existent en français et en néerlandais (objet `nl`).
  */
+import { getLocale } from '../lib/i18n.js';
 
 export const MAX_DOTS = 8;
 
@@ -114,12 +116,73 @@ export const pointsLabel = (count) => `${count} point${count > 1 ? 's' : ''}`;
 export const withPreposition = (label, preposition) =>
   label.replace(/^le /, preposition === 'de' ? 'du ' : 'au ');
 
+/* ----- Textes en néerlandais ----- */
+
+/** Nom et article (de / het) de chaque forme. */
+const NL_SHAPES = {
+  arrow: ['pijl', 'de'],
+  triangle: ['driehoek', 'de'],
+  circle: ['cirkel', 'de'],
+  square: ['vierkant', 'het'],
+  diamond: ['ruit', 'de'],
+  hexagon: ['zeshoek', 'de'],
+  star: ['ster', 'de'],
+  trigon: ['gelijkzijdige driehoek', 'de'],
+  pentagon: ['vijfhoek', 'de'],
+  heptagon: ['zevenhoek', 'de'],
+  octagon: ['achthoek', 'de'],
+};
+const NL_FILLS = { black: ['zwart', 'zwarte'], grey: ['grijs', 'grijze'], white: ['wit', 'witte'] };
+const NL_ORIENTATIONS = ['boven', 'rechtsboven', 'rechts', 'rechtsonder', 'beneden', 'linksonder', 'links', 'linksboven'];
+const NL_MARKER_POSITIONS = [
+  'de linkerbovenhoek',
+  'het midden van de bovenrand',
+  'de rechterbovenhoek',
+  'het midden van de rechterrand',
+  'de rechteronderhoek',
+  'het midden van de onderrand',
+  'de linkeronderhoek',
+  'het midden van de linkerrand',
+];
+
+/** Vocabulaire néerlandais des figures (explications et descriptions accessibles). */
+export const nl = {
+  /** « pijl », « vierkant » */
+  name: (shape) => NL_SHAPES[shape][0],
+  /** « de pijl », « het vierkant » */
+  definite: (shape) => `${NL_SHAPES[shape][1]} ${NL_SHAPES[shape][0]}`,
+  /** « een pijl », « een vierkant » */
+  indefinite: (shape) => `een ${NL_SHAPES[shape][0]}`,
+  /** Couleur en attribut ou dans une énumération : « zwart ». */
+  color: (fill) => NL_FILLS[fill][0],
+  /** Couleur devant le nom, sans article défini : « zwarte pijl », mais « zwart vierkant ». */
+  colorBefore: (fill, shape) => NL_FILLS[fill][NL_SHAPES[shape][1] === 'het' ? 0 : 1],
+  /** « boven », « rechtsonder »… (« wijst naar boven ») */
+  orientation: (rotation) => NL_ORIENTATIONS[normalizeAngle(rotation) / 45],
+  /** « 1 stip », « 3 stippen » */
+  points: (count) => `${count} ${count === 1 ? 'stip' : 'stippen'}`,
+  /** « de linkerbovenhoek », « het midden van de bovenrand »… */
+  position: (index) => NL_MARKER_POSITIONS[index],
+};
+
+/** Description néerlandaise : « zwarte pijl die naar onder wijst », « witte cirkel met 3 stippen ». */
+function describeFigureNl(figure) {
+  const parts = [`${nl.colorBefore(figure.fill, figure.shape)} ${nl.name(figure.shape)}`];
+  if (SHAPES[figure.shape].oriented) parts.push(`die naar ${nl.orientation(figure.rotation)} wijst`);
+  const extras = [];
+  if (figure.dots > 0) extras.push(nl.points(figure.dots));
+  if (figure.marker !== null) extras.push(`een schijfje in ${nl.position(figure.marker)}`);
+  if (extras.length > 0) parts.push(`met ${extras.join(' en ')}`);
+  return parts.join(' ');
+}
+
 /**
- * Description textuelle d'une figure, par exemple
+ * Description textuelle d'une figure dans la langue demandée (par défaut celle de la page), par exemple
  * « flèche noire orientée vers le bas » ou « cercle blanc à 3 points ».
  * Elle sert aux lecteurs d'écran et aux explications.
  */
-export function describeFigure(figure) {
+export function describeFigure(figure, locale = getLocale()) {
+  if (locale === 'nl') return describeFigureNl(figure);
   const shape = SHAPES[figure.shape];
   const gender = shape.feminine ? 'f' : 'm';
   const parts = [`${shape.name} ${FILLS[figure.fill][gender]}`];

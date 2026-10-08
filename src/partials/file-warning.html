@@ -1,0 +1,4 @@
+<!-- Message affiché si la page est ouverte sans serveur (les modules ES ne fonctionnent pas en file://) -->
+    <p class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900" data-file-warning hidden>
+      {{#if isProgressPage}}{{t:site.fileWarningPage}}{{else}}{{t:site.fileWarning}}{{/if}}
+    </p>

@@ -7,10 +7,9 @@
 (() => {
   'use strict';
 
-  const TOAST_DURATION_MS = 4000;
   const DESKTOP_QUERY = '(min-width: 48rem)'; // Point de rupture `md` de Tailwind
 
-  /** Menu de navigation mobile : ouverture/fermeture accessible. */
+  /** Menu de navigation mobile : ouverture/fermeture accessible (libellés dans la langue de la page, portés par le bouton). */
   const initMobileMenu = () => {
     const toggle = document.querySelector('[data-menu-toggle]');
     const panel = toggle && document.getElementById(toggle.getAttribute('aria-controls'));
@@ -22,7 +21,7 @@
 
     const setOpen = (open) => {
       toggle.setAttribute('aria-expanded', String(open));
-      label.textContent = open ? 'Fermer le menu' : 'Ouvrir le menu';
+      label.textContent = open ? toggle.dataset.labelClose : toggle.dataset.labelOpen;
       iconOpen.hidden = open;
       iconClose.hidden = !open;
       panel.hidden = !open;
@@ -50,39 +49,6 @@
     });
   };
 
-  /** Crée la fonction d'affichage des notifications éphémères. */
-  const createNotifier = () => {
-    const toast = document.querySelector('[data-toast]');
-    let hideTimer;
-
-    return (message) => {
-      if (!toast) return;
-      clearTimeout(hideTimer);
-      // Vider puis réécrire le texte force l'annonce par les lecteurs d'écran,
-      // même si le même message est affiché deux fois de suite.
-      toast.textContent = '';
-      requestAnimationFrame(() => {
-        toast.textContent = message;
-        toast.classList.add('is-visible');
-      });
-      hideTimer = setTimeout(() => toast.classList.remove('is-visible'), TOAST_DURATION_MS);
-    };
-  };
-
-  /**
-   * Modules pas encore publiés : le lien reste en place (pour l'accessibilité
-   * et la future navigation) mais affiche un message au lieu d'une page vide.
-   * Pour publier un module, il suffit de retirer l'attribut `data-coming-soon`.
-   */
-  const initComingSoonLinks = (notify) => {
-    document.addEventListener('click', (event) => {
-      const link = event.target.closest('[data-coming-soon]');
-      if (!link) return;
-      event.preventDefault();
-      notify(`Le module « ${link.dataset.comingSoon} » est en cours de préparation. Revenez bientôt !`);
-    });
-  };
-
   const initCurrentYear = () => {
     const year = String(new Date().getFullYear());
     document.querySelectorAll('[data-current-year]').forEach((element) => {
@@ -91,6 +57,5 @@
   };
 
   initMobileMenu();
-  initComingSoonLinks(createNotifier());
   initCurrentYear();
 })();

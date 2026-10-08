@@ -8,7 +8,7 @@
  * ou ?revision=toutes (tous les modules, l'un après l'autre).
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
-import { frenchTypography } from '../verbal/quiz.js';
+import { t, typography } from '../lib/i18n.js';
 import { MODULES, nextModuleToReview } from './stats.js';
 import { REVIEW_STREAK } from './store.js';
 
@@ -24,8 +24,6 @@ export function requestedReview() {
 
 /** Adresse de la page d'un module en mode révision (`prefix` : chemin vers la racine du site). */
 export const reviewHref = (module, mode, prefix = '../../') => `${prefix}${MODULES[module].path}?${REVIEW_PARAM}=${mode}`;
-
-const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
 
 const icon = (path) => {
   const wrapper = hiddenFromScreenReaders(createElement('span', 'revision-icon'));
@@ -56,7 +54,7 @@ export function createReviewControls({ container, store, module, onStart, onQuit
   start.addEventListener('click', () => onStart('1'));
 
   const bannerText = createElement('p', 'revision-banner__text');
-  const quit = createElement('button', 'revision-banner__quit', 'Quitter la révision');
+  const quit = createElement('button', 'revision-banner__quit', t('review.quit'));
   quit.type = 'button';
   quit.addEventListener('click', () => onQuit());
   const banner = createElement('div', 'revision-banner');
@@ -72,7 +70,7 @@ export function createReviewControls({ container, store, module, onStart, onQuit
 
   const refresh = () => {
     const pending = count();
-    label.textContent = `Revoir mes erreurs (${pending})`;
+    label.textContent = t('review.start', { count: pending });
     start.hidden = !store.available || state.active || pending === 0;
     banner.hidden = !state.active;
   };
@@ -81,23 +79,23 @@ export function createReviewControls({ container, store, module, onStart, onQuit
   const showOutcome = ({ correct, total }) => {
     const pending = count();
     const parts = [];
-    if (total > 0) parts.push(`Révision terminée : ${plural(correct, 'bonne réponse', 'bonnes réponses')} sur ${total}.`);
+    if (total > 0) parts.push(t('review.done', { correct, total }));
     parts.push(
       pending === 0
-        ? 'Plus aucune erreur à revoir dans ce module.'
-        : `Encore ${plural(pending, 'question')} à revoir dans ce module : une question sort de la liste après ${REVIEW_STREAK} bonnes réponses consécutives.`,
+        ? t('review.noneLeft')
+        : t('review.left', { count: pending, streak: REVIEW_STREAK }),
     );
 
     const next = state.mode === REVIEW_ALL ? nextModuleToReview(store.getData(), module) : null;
     const link = createElement('a', 'revision-outcome__link');
     if (next) {
       link.href = reviewHref(next, REVIEW_ALL);
-      link.textContent = `Continuer la révision : ${MODULES[next].label} (${store.reviewCount(next)})`;
+      link.textContent = typography(t('review.continue', { module: MODULES[next].label, count: store.reviewCount(next) }));
     } else {
       link.href = PROGRESS_PAGE;
-      link.textContent = state.mode === REVIEW_ALL ? 'Révision terminée : voir ma progression' : 'Voir ma progression';
+      link.textContent = state.mode === REVIEW_ALL ? typography(t('review.doneSeeProgress')) : t('review.seeProgress');
     }
-    outcome.replaceChildren(createElement('p', '', frenchTypography(parts.join(' '))), link);
+    outcome.replaceChildren(createElement('p', '', typography(parts.join(' '))), link);
     outcome.hidden = false;
   };
 
@@ -120,7 +118,7 @@ export function createReviewControls({ container, store, module, onStart, onQuit
       refresh();
     },
     progress(index, total) {
-      bannerText.textContent = `Révision de vos erreurs : question ${index + 1} sur ${total}.`;
+      bannerText.textContent = typography(t('review.progress', { index: index + 1, total }));
     },
     /** Fin de la révision (terminée ou quittée) ; `result` affiche le bilan. Renvoie l'élément du bilan. */
     end(result) {

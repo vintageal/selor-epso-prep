@@ -10,22 +10,35 @@
  * La difficulté (1 facile, 2 moyen, 3 difficile) s'affiche avec l'affirmation et équilibre le mode examen.
  */
 import { isDifficulty } from '../lib/difficulty.js';
+import { t } from '../lib/i18n.js';
 import { shuffle } from '../lib/random.js';
 
-export const ANSWERS = [
-  { id: 'vrai', label: 'Vrai', icon: '✓', keys: ['1', 'v'] },
-  { id: 'faux', label: 'Faux', icon: '✕', keys: ['2', 'f'] },
-  { id: 'impossible', label: 'On ne peut pas savoir', icon: '?', keys: ['3', '?'] },
-];
+export { frenchTypography } from '../lib/typography.js';
 
-export const answerLabel = (id) => ANSWERS.find((answer) => answer.id === id)?.label;
+/**
+ * Types de réponse. Les identifiants (vrai, faux, impossible) sont ceux des banques, dans toutes les langues ;
+ * le libellé et la touche de raccourci suivent la langue de la page (V / F / ? en français, W / N / ? en néerlandais).
+ */
+const answerType = (id, icon, digit) => ({
+  id,
+  icon,
+  get label() {
+    return t(`verbal.answers.${id}`);
+  },
+  get keys() {
+    return [digit, t(`verbal.keys.${id}`)];
+  },
+});
+
+export const ANSWERS = [answerType('vrai', '✓', '1'), answerType('faux', '✕', '2'), answerType('impossible', '?', '3')];
+
+export const answerLabel = (id) => ANSWERS.find((entry) => entry.id === id)?.label;
 
 /** Rappel de méthode associé à chaque type de réponse. */
-export const METHOD_TIPS = {
-  vrai: "« Vrai » : l'affirmation est confirmée par le texte, soit explicitement, soit parce qu'elle en découle logiquement, sans rien y ajouter.",
-  faux: "« Faux » : le texte affirme le contraire, ou contient une information incompatible avec l'affirmation.",
-  impossible: "« On ne peut pas savoir » : le texte ne permet ni de confirmer ni d'infirmer l'affirmation. Vos connaissances personnelles ne comptent pas : seul le texte fait foi.",
-};
+export const METHOD_TIPS = Object.defineProperties(
+  {},
+  Object.fromEntries(['vrai', 'faux', 'impossible'].map((id) => [id, { enumerable: true, get: () => t(`verbal.tips.${id}`) }])),
+);
 
 /**
  * Enchaînement d'une série : textes dans un ordre aléatoire, affirmations
@@ -97,17 +110,6 @@ export function highlightSegments(paragraph, quotes) {
   if (cursor < paragraph.length) segments.push({ text: paragraph.slice(cursor), highlighted: false });
   return segments;
 }
-
-/**
- * Typographie française à l'affichage : espaces insécables avant « ; : ! ? % »,
- * à l'intérieur des guillemets et dans les grands nombres (« 1 000 »).
- * Les données restent en espaces simples, ce qui garde les citations faciles à écrire.
- */
-export const frenchTypography = (text) =>
-  text
-    .replace(/ ([;:!?»%])/g, ' $1')
-    .replace(/« /g, '« ')
-    .replace(/(\d) (?=\d{3}\b)/g, '$1 ');
 
 /** Bilan d'une série : score global et détail par type de réponse attendue. */
 export function summarize(results) {

@@ -5,6 +5,7 @@
  */
 import { createQuestionStream } from '../abstrait/generator.js';
 import { MAX_POINTS, expectedPicks, isComplete, scoreChoice, shuffledOrder } from '../jugement/quiz.js';
+import { t } from '../lib/i18n.js';
 import { shuffle } from '../lib/random.js';
 
 export const EXAM_CONFIG = Object.freeze({
@@ -15,12 +16,11 @@ export const EXAM_CONFIG = Object.freeze({
   durationMs: 40 * 60 * 1000,
 });
 
-export const SECTIONS = {
-  abstrait: 'Raisonnement abstrait',
-  verbal: 'Raisonnement verbal',
-  numerique: 'Raisonnement numérique',
-  jugement: 'Jugement situationnel',
-};
+/** Sections de l'examen et leur libellé (dans la langue de la page). */
+export const SECTIONS = {};
+for (const id of ['abstrait', 'verbal', 'numerique', 'jugement']) {
+  Object.defineProperty(SECTIONS, id, { enumerable: true, get: () => t(`modules.${id}`) });
+}
 
 /**
  * Quotas par niveau de difficulté : `count` réparti au plus égal entre les niveaux disponibles

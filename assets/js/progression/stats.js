@@ -2,15 +2,24 @@
  * Suivi de progression : calculs affichés sur la page « Ma progression » (sans DOM, testés sous Node).
  * Les données sont celles de store.js.
  */
+import { intlLocale, t } from '../lib/i18n.js';
 import { MODULE_IDS, reviewEntries } from './store.js';
 
-/** Modules suivis : libellé et page (chemin relatif depuis la racine du site). */
-export const MODULES = {
-  abstrait: { label: 'Raisonnement abstrait', path: 'modules/abstrait/index.html' },
-  verbal: { label: 'Raisonnement verbal', path: 'modules/verbal/index.html' },
-  numerique: { label: 'Raisonnement numérique', path: 'modules/numerique/index.html' },
-  jugement: { label: 'Jugement situationnel', path: 'modules/jugement/index.html' },
-};
+/**
+ * Modules suivis : libellé (dans la langue de la page) et page, en chemin relatif depuis la racine
+ * de la langue (même arborescence en français et en néerlandais).
+ */
+const trackedModule = (id) => ({
+  path: `modules/${id}/index.html`,
+  get label() {
+    return t(`modules.${id}`);
+  },
+  get shortLabel() {
+    return t(`modules.short.${id}`);
+  },
+});
+
+export const MODULES = Object.fromEntries(['abstrait', 'verbal', 'numerique', 'jugement'].map((id) => [id, trackedModule(id)]));
 
 /** Nombre minimal de réponses pour qu'un module puisse être désigné comme point faible. */
 export const WEAK_POINT_MIN_ANSWERS = 5;
@@ -67,15 +76,15 @@ export function nextModuleToReview(data, module) {
   return MODULE_IDS.slice(MODULE_IDS.indexOf(module) + 1).find((candidate) => counts[candidate] > 0) ?? null;
 }
 
-/* ----- Formatage (français de Belgique) ----- */
+/* ----- Formatage (français ou néerlandais de Belgique) ----- */
 
 const NBSP = '\u00a0';
 
-/** Pourcentage arrondi : « 72 % ». */
-export const formatPercent = (value) => `${Math.round(value)}${NBSP}%`;
+/** Pourcentage arrondi : « 72 % » en français, « 72% » en néerlandais. */
+export const formatPercent = (value) => t('format.percent', { value: Math.round(value) });
 
 /** Nombre éventuellement décimal : « 27,75 ». */
-export const formatNumber = (value) => value.toLocaleString('fr-BE', { maximumFractionDigits: 2 });
+export const formatNumber = (value) => value.toLocaleString(intlLocale(), { maximumFractionDigits: 2 });
 
 /** Durée : « 32 min 05 s », « 45 s ». */
 export function formatDuration(ms) {
@@ -87,14 +96,21 @@ export function formatDuration(ms) {
 
 /** Date et heure : « 8 oct. 2026, 14:05 » ; `short` : « 8 oct. ». */
 export const formatDate = (iso, { short = false } = {}) =>
-  new Intl.DateTimeFormat('fr-BE', short ? { day: 'numeric', month: 'short' } : { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(iso));
+  new Intl.DateTimeFormat(intlLocale(), short ? { day: 'numeric', month: 'short' } : { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(iso));
 
 /** Résumé textuel du graphique d'évolution des examens (alternative pour les lecteurs d'écran). */
 export function describeExamSeries(points) {
-  if (points.length === 0) return 'Aucun examen blanc enregistré.';
+  if (points.length === 0) return t('progression.series.none');
   const percents = points.map((point) => point.percent);
-  if (points.length === 1) return `Un examen blanc enregistré, avec un score de ${formatPercent(percents[0])}.`;
+  if (points.length === 1) return t('progression.series.one', { score: formatPercent(percents[0]) });
   const [first, last] = [percents[0], percents.at(-1)];
-  const trend = last > first ? 'en progression' : last < first ? 'en recul' : 'stable';
-  return `Évolution de vos scores sur ${points.length} examens blancs, ${trend} : ${formatPercent(first)} au premier, ${formatPercent(last)} au dernier. Meilleur score : ${formatPercent(Math.max(...percents))} ; plus bas : ${formatPercent(Math.min(...percents))}.`;
+  const trend = t(`progression.series.trend.${last > first ? 'up' : last < first ? 'down' : 'stable'}`);
+  return t('progression.series.many', {
+    count: points.length,
+    trend,
+    first: formatPercent(first),
+    last: formatPercent(last),
+    best: formatPercent(Math.max(...percents)),
+    lowest: formatPercent(Math.min(...percents)),
+  });
 }

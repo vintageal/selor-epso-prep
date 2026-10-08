@@ -21,6 +21,7 @@
  * donc toujours des données.
  */
 import { isDifficulty } from '../lib/difficulty.js';
+import { intlLocale, t } from '../lib/i18n.js';
 import { shuffle } from '../lib/random.js';
 
 export const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
@@ -28,25 +29,16 @@ export const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
 /** Modes d'affichage des données. */
 export const DISPLAYS = ['table', 'bar', 'line', 'pie'];
 
-/** Compétences évaluées, avec le rappel de méthode affiché dans la correction. */
-export const SKILLS = {
-  variation: {
-    label: 'Taux de variation',
-    tip: "Un taux de variation se calcule toujours par rapport à la valeur de départ : (arrivée − départ) ÷ départ × 100.",
+/** Compétences évaluées, avec le rappel de méthode affiché dans la correction (textes dans la langue de la page). */
+const skill = (id) => ({
+  get label() {
+    return t(`numerique.skills.${id}.label`);
   },
-  ratio: {
-    label: 'Ratio et proportion',
-    tip: "Identifiez précisément ce qui est au numérateur (la partie) et au dénominateur (le tout ou la référence) avant de diviser.",
+  get tip() {
+    return t(`numerique.skills.${id}.tip`);
   },
-  'moyenne-ponderee': {
-    label: 'Moyenne pondérée',
-    tip: "Quand les groupes n'ont pas la même taille, la moyenne des moyennes est fausse : chaque valeur doit être pondérée par son effectif.",
-  },
-  extrapolation: {
-    label: 'Extrapolation de tendance',
-    tip: "Distinguez une hausse constante en valeur (on ajoute le même montant chaque année) d'une hausse constante en pourcentage (on multiplie par le même coefficient).",
-  },
-};
+});
+export const SKILLS = Object.fromEntries(['variation', 'ratio', 'moyenne-ponderee', 'extrapolation'].map((id) => [id, skill(id)]));
 
 /* ----- Expressions ----- */
 
@@ -154,11 +146,12 @@ export const dataReferences = (expression) =>
 
 const formatters = new Map();
 const formatter = (decimals, signed) => {
-  const key = `${decimals}|${signed}`;
+  const locale = intlLocale();
+  const key = `${locale}|${decimals}|${signed}`;
   if (!formatters.has(key)) {
     formatters.set(
       key,
-      new Intl.NumberFormat('fr-BE', {
+      new Intl.NumberFormat(locale, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
         signDisplay: signed ? 'exceptZero' : 'auto',
@@ -168,11 +161,11 @@ const formatter = (decimals, signed) => {
   return formatters.get(key);
 };
 
-/** Nombre à la française : « 1 010 », « 7,8 », signe moins typographique « − ». */
+/** Nombre au format de la langue (fr-BE : « 1 010 », nl-BE : « 1.010 »), virgule décimale, signe moins typographique « − ». */
 export const formatNumber = (value, decimals = 0, { signed = false } = {}) =>
   formatter(decimals, signed).format(value).replace('-', '−');
 
-const withUnit = (text, unit) => (unit ? `${text} ${unit}` : text);
+const withUnit = (text, unit) => (unit ? t('numerique.withUnit', { value: text, unit }) : text);
 
 /** Valeur d'une proposition ou d'un résultat, au format de la question. */
 export const formatAnswer = (value, { decimals = 0, unit = '', signed = false }) =>

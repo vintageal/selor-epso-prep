@@ -9,17 +9,17 @@ import {
   answerLabel,
   buildReviewSteps,
   buildSteps,
-  frenchTypography,
   summarize,
 } from './quiz.js';
 import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { bankUrl, t, typography } from '../lib/i18n.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
 import { choiceButton, evidenceQuotes, passageParagraphs } from './view.js';
 
 const MODULE = 'verbal';
-const BANK_URL = new URL('../../../data/verbal.json', import.meta.url);
+const BANK_URL = bankUrl('verbal');
 const KEY_TO_ANSWER = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.map((key) => [key, id])));
 
 const $ = (selector) => document.querySelector(selector);
@@ -57,8 +57,8 @@ const currentStep = () => state.steps[state.index];
 
 const renderGuidelines = () => {
   ui.guidelines.replaceChildren(
-    ...Object.values(METHOD_TIPS).map((tip) => createElement('li', '', frenchTypography(tip))),
-    createElement('li', '', frenchTypography('Lisez chaque phrase jusqu\'au bout : les nuances (« au moins », « sauf », « en principe », conditionnel…) font souvent la différence.')),
+    ...Object.values(METHOD_TIPS).map((tip) => createElement('li', '', typography(tip))),
+    createElement('li', '', typography(t('verbal.guidelineNuances'))),
   );
 };
 
@@ -80,8 +80,8 @@ const updateStats = () => {
 
 const nextButtonLabel = () => {
   const upcoming = state.steps[state.index + 1];
-  if (!upcoming) return 'Voir le bilan';
-  return upcoming.passage === currentStep().passage ? 'Affirmation suivante' : 'Texte suivant';
+  if (!upcoming) return t('common.seeSummary');
+  return upcoming.passage === currentStep().passage ? t('verbal.nextStatement') : t('verbal.nextText');
 };
 
 const showStep = () => {
@@ -91,13 +91,13 @@ const showStep = () => {
 
   if (isNewPassage) {
     ui.passageTheme.textContent = step.passage.theme;
-    ui.passageTitle.textContent = frenchTypography(step.passage.title);
+    ui.passageTitle.textContent = typography(step.passage.title);
   }
-  ui.passageCount.textContent = `Texte ${step.passageIndex + 1} sur ${step.passageCount}`;
+  ui.passageCount.textContent = t('verbal.textCount', { index: step.passageIndex + 1, count: step.passageCount });
   renderPassageBody(step.passage);
 
-  ui.statementLabel.textContent = `Affirmation ${step.statementIndex + 1} sur ${step.statementCount}`;
-  ui.statementText.textContent = frenchTypography(step.statement.text);
+  ui.statementLabel.textContent = t('verbal.statementCount', { index: step.statementIndex + 1, count: step.statementCount });
+  ui.statementText.textContent = typography(step.statement.text);
   renderDifficulty(step.statement.difficulty, ui.statementLevel);
   ui.statementLevel.hidden = false;
 
@@ -121,22 +121,24 @@ const renderFeedback = (statement, chosen) => {
   box.dataset.result = isCorrect ? 'correct' : 'wrong';
 
   box.append(
-    createElement('p', 'feedback__title', isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse'),
+    createElement('p', 'feedback__title', typography(isCorrect ? t('common.correctTitle') : t('common.wrongTitle'))),
     createElement(
       'p',
       'feedback__answer',
-      isCorrect
-        ? `La réponse est bien « ${answerLabel(statement.answer)} ».`
-        : `Vous avez répondu « ${answerLabel(chosen)} » ; la bonne réponse est « ${answerLabel(statement.answer)} ».`,
+      typography(
+        isCorrect
+          ? t('verbal.correctAnswer', { answer: answerLabel(statement.answer) })
+          : t('verbal.wrongAnswer', { chosen: answerLabel(chosen), answer: answerLabel(statement.answer) }),
+      ),
     ),
-    createElement('p', 'feedback__label', statement.quotes.length > 1 ? 'Preuves dans le texte (surlignées)' : 'Preuve dans le texte (surlignée)'),
+    createElement('p', 'feedback__label', statement.quotes.length > 1 ? t('verbal.evidenceMany') : t('verbal.evidenceOne')),
     ...evidenceQuotes(statement.quotes),
-    createElement('p', 'feedback__label', 'Explication'),
-    createElement('p', 'feedback__text', frenchTypography(statement.explanation)),
+    createElement('p', 'feedback__label', t('common.explanation')),
+    createElement('p', 'feedback__text', typography(statement.explanation)),
   );
 
   const tip = createElement('p', 'method-tip');
-  tip.append(createElement('strong', '', 'Rappel de méthode : '), frenchTypography(METHOD_TIPS[statement.answer]));
+  tip.append(createElement('strong', '', typography(t('common.methodReminder'))), typography(METHOD_TIPS[statement.answer]));
   box.append(tip);
 
   ui.feedback.replaceChildren(box);
@@ -168,8 +170,8 @@ const answer = (chosen) => {
   ui.choices.querySelectorAll('.choice').forEach((button) => {
     button.disabled = true;
     const id = button.dataset.answer;
-    if (id === statement.answer) markChoice(button, 'correct', 'Bonne réponse');
-    else if (id === chosen) markChoice(button, 'wrong', 'Votre choix');
+    if (id === statement.answer) markChoice(button, 'correct', t('common.correctMark'));
+    else if (id === chosen) markChoice(button, 'wrong', t('common.yourChoice'));
     else button.dataset.state = 'dimmed';
   });
 
@@ -191,13 +193,9 @@ const showSummary = () => {
     .filter(({ total: count }) => count > 0)
     .sort((a, b) => a.correct / a.total - b.correct / b.total)[0];
   const verdict =
-    rate >= 0.8 ? 'Excellent travail : vous maîtrisez la logique de ces épreuves.'
-      : rate >= 0.6 ? 'Bon résultat : relisez les explications des questions manquées pour progresser encore.'
-        : 'Continuez à vous entraîner : lisez attentivement chaque explication, les pièges reviennent souvent.';
-  const focus = weakest && weakest.correct < weakest.total
-    ? ` Point à travailler : les affirmations « ${weakest.label} » (${weakest.correct} sur ${weakest.total} réussies).`
-    : '';
-  ui.summaryMessage.textContent = frenchTypography(verdict + focus);
+    rate >= 0.8 ? t('verbal.verdict.excellent') : rate >= 0.6 ? t('verbal.verdict.good') : t('verbal.verdict.keepGoing');
+  const focus = weakest && weakest.correct < weakest.total ? ` ${t('verbal.focus', { label: weakest.label, correct: weakest.correct, total: weakest.total })}` : '';
+  ui.summaryMessage.textContent = typography(verdict + focus);
 
   ui.summaryDetails.replaceChildren(
     ...ANSWERS.map(({ id, label }) => {
@@ -281,7 +279,7 @@ ui.restart.addEventListener('click', () => {
   moveFocusTo(ui.passageTitle);
 });
 
-// Raccourcis clavier : V / F / ? (ou 1 à 3) pour répondre.
+// Raccourcis clavier : V / F / ? en français, W / N / ? en néerlandais (ou 1 à 3) pour répondre.
 document.addEventListener('keydown', (event) => {
   if (state.answered || !currentStep() || event.altKey || event.ctrlKey || event.metaKey) return;
   const chosen = KEY_TO_ANSWER[event.key.toLowerCase()];
@@ -304,9 +302,9 @@ try {
   else startSeries();
 } catch (error) {
   console.error('Chargement de la banque de questions impossible :', error);
-  ui.passageTheme.textContent = 'Erreur';
+  ui.passageTheme.textContent = t('common.error');
   ui.passageBody.replaceChildren(
-    createElement('p', 'text-red-700', 'Impossible de charger les textes. Vérifiez que la page est servie par un serveur web (voir le README), puis rechargez-la.'),
+    createElement('p', 'text-red-700', t('verbal.loadError')),
   );
   ui.choices.querySelectorAll('.choice').forEach((button) => {
     button.disabled = true;
