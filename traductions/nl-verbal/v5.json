@@ -1,0 +1,113 @@
+{
+  "echange-fonctionnaires": {
+    "title": "Oproep tot kandidaten: Europees uitwisselingsprogramma voor ambtenaren",
+    "theme": "Europese instellingen",
+    "paragraphs": [
+      [
+        "Met het programma kunnen nationale, regionale of lokale ambtenaren drie tot zes maanden werken bij een administratie van een andere lidstaat van de Europese Unie.",
+        "De kandidaten moeten minstens twee jaar anciënniteit hebben in hun administratie en de werktaal van de ontvangende dienst beheersen."
+      ],
+      [
+        "De administratie van herkomst blijft tijdens de uitwisseling de wedde van de ambtenaar uitbetalen.",
+        "Het programma neemt een maandelijks verblijfsforfait ten laste, waarvan het bedrag afhangt van de levensduurte in het ontvangende land, en daarnaast een heen- en terugreis bij het begin en op het einde van de uitwisseling.",
+        "Verhuiskosten worden niet terugbetaald."
+      ],
+      [
+        "De kandidaturen worden door een selectiecomité gerangschikt op basis van de kwaliteit van het uitwisselingsproject en het belang ervan voor de administratie van herkomst.",
+        "Eenzelfde persoon kan maar één keer aan het programma deelnemen."
+      ]
+    ],
+    "statements": {
+      "echange-traitement": {
+        "text": "Tijdens de uitwisseling wordt de ambtenaar nog altijd door zijn administratie van herkomst betaald.",
+        "explanation": "De tekst vermeldt: “De administratie van herkomst blijft tijdens de uitwisseling de wedde van de ambtenaar uitbetalen.” “Nog altijd door zijn administratie van herkomst betaald worden” herformuleert precies die regel, aangezien de wedde de bezoldiging van de ambtenaar is. De bewering is waar. Het verblijfsforfait dat het programma ten laste neemt, komt bovenop die wedde: het vervangt ze niet."
+      },
+      "echange-anciennete": {
+        "text": "Een ambtenaar die achttien maanden geleden in dienst is getreden, kan aan het programma deelnemen als hij de taal van de ontvangende dienst beheerst.",
+        "explanation": "De tekst stelt twee cumulatieve voorwaarden: de kandidaten moeten “minstens twee jaar anciënniteit hebben in hun administratie en de werktaal van de ontvangende dienst beheersen”. Met achttien maanden anciënniteit is aan de eerste voorwaarde niet voldaan, ook al is aan de tweede wel voldaan. De bewering spreekt de tekst dus tegen: ze is niet waar. Het woord “en” wijst op cumulatieve voorwaarden: als er maar één ontbreekt, is de kandidatuur uitgesloten."
+      },
+      "echange-forfaits-differents": {
+        "text": "Twee deelnemers die naar verschillende landen zijn vertrokken, kunnen maandelijkse verblijfsforfaits van verschillende bedragen krijgen.",
+        "explanation": "De tekst preciseert dat het bedrag van het verblijfsforfait “afhangt van de levensduurte in het ontvangende land”. Twee deelnemers die worden ontvangen in landen waar de levensduurte verschilt, kunnen dus verschillende forfaits krijgen. De bewering, voorzichtig geformuleerd met “kunnen”, volgt rechtstreeks uit die regel: ze is waar. Ze zou betwistbaar zijn als ze beweerde dat de bedragen altijd verschillen, want twee landen kunnen een vergelijkbare levensduurte hebben."
+      },
+      "echange-loyer": {
+        "text": "Het verblijfsforfait volstaat om de huur van de deelnemer in het ontvangende land te dekken.",
+        "explanation": "De tekst vermeldt dat het bedrag van het verblijfsforfait “afhangt van de levensduurte in het ontvangende land”, maar geeft het bedrag niet, en ook niet dat van de huurprijzen. Een forfait afstemmen op de levensduurte garandeert niet dat het een huur dekt, die sterk kan verschillen naargelang van de stad en de gekozen woning. Niets laat dus toe te bevestigen of te ontkennen dat het forfait volstaat: dit kan niet worden bepaald. Wees op je hoede voor beweringen die een praktisch gevolg toevoegen aan een berekeningsregel."
+      }
+    }
+  },
+  "sommeil-travail-nuit": {
+    "title": "Studie: de slaap van personeelsleden die ’s nachts werken",
+    "theme": "Wetenschap",
+    "paragraphs": [
+      [
+        "Een studie volgde een jaar lang 600 personeelsleden van hulp- en onderhoudsdiensten, van wie de helft geregeld ’s nachts werkte.",
+        "De deelnemers droegen een polsbandje dat hun slaapduur mat, en ze vulden elke maand een vragenlijst over hun vermoeidheid in."
+      ],
+      [
+        "De personeelsleden die ’s nachts werkten, sliepen gemiddeld vijfenvijftig minuten per dag minder dan hun collega’s met dagwerk.",
+        "Ze gaven ook aan meer vermoeidheid te ervaren, vooral in de eerste twee maanden na een wijziging van hun uurrooster.",
+        "Er werd daarentegen geen significant verschil tussen de twee groepen vastgesteld wat het aantal arbeidsongevallen betreft."
+      ],
+      [
+        "De auteurs benadrukken dat de deelnemers niet willekeurig over dag- en nachtwerk werden verdeeld: iedereen had zijn uurrooster zelf gekozen of werkte al lang in dat uurrooster.",
+        "Ze bevelen aan een aanvullende studie uit te voeren voor de organisatie van de uurroosters wordt gewijzigd."
+      ]
+    ],
+    "statements": {
+      "sommeil-ecart": {
+        "text": "De personeelsleden met nachtwerk sliepen gemiddeld bijna twee uur per dag minder dan hun collega’s met dagwerk.",
+        "explanation": "De tekst becijfert het verschil nauwkeurig: de personeelsleden die ’s nachts werkten, sliepen “gemiddeld vijfenvijftig minuten per dag minder dan hun collega’s met dagwerk”. Vijfenvijftig minuten is minder dan een uur, en niet bijna twee uur. De bewering spreekt dat cijfer tegen: ze is niet waar. Vergelijk bij vragen met cijfers zorgvuldig de grootteorde in de bewering met de exacte waarde in de tekst."
+      },
+      "sommeil-effectifs": {
+        "text": "De studie ging over 300 personeelsleden met nachtwerk en 600 personeelsleden met dagwerk.",
+        "explanation": "De tekst vermeldt dat de studie “600 personeelsleden” volgde, “van wie de helft geregeld ’s nachts werkte”. De 600 personeelsleden vormen dus het totale aantal: 300 werkten ’s nachts en 300 overdag. De bewering telt ten onrechte 300 personeelsleden met nachtwerk en 600 met dagwerk op, samen 900 deelnemers: ze spreekt de tekst tegen en is niet waar. Veelvoorkomende valkuil: een totaal aanzien voor de omvang van een van de groepen."
+      },
+      "sommeil-fatigue-changement": {
+        "text": "De personeelsleden met nachtwerk zeiden dat ze zich vooral kort na een wijziging van hun uurrooster vermoeid voelden.",
+        "explanation": "Over de personeelsleden met nachtwerk vermeldt de tekst: “Ze gaven ook aan meer vermoeidheid te ervaren, vooral in de eerste twee maanden na een wijziging van hun uurrooster.” “Zeiden dat ze zich vermoeid voelden” stemt overeen met “gaven aan meer vermoeidheid te ervaren”, en “kort na een wijziging van hun uurrooster” verwijst naar de “eerste twee maanden” na die wijziging. De bewering geeft de tekst getrouw weer: ze is waar. Merk op dat ze het heeft over aangegeven vermoeidheid, gemeten met een vragenlijst, wat goed overeenstemt met de opzet van de studie."
+      },
+      "sommeil-cause": {
+        "text": "Het nachtwerk is de oorzaak van de kortere slaapduur die bij die personeelsleden werd vastgesteld.",
+        "explanation": "De studie stelt vast dat de personeelsleden met nachtwerk minder slapen, maar de auteurs benadrukken zelf dat “de deelnemers niet willekeurig over dag- en nachtwerk werden verdeeld”. De twee groepen kunnen dus verschillen in andere kenmerken, bijvoorbeeld leeftijd of gezinssituatie, die ook de slaap beïnvloeden. Op basis van de tekst kan je niet bevestigen en ook niet uitsluiten dat het nachtwerk de oorzaak is van het vastgestelde verschil: dit kan niet worden bepaald. Een vastgesteld verschil is op zich geen bewijs van een oorzaak."
+      }
+    }
+  },
+  "commerce-de-proximite": {
+    "title": "Bevraging: het bezoek aan de winkels in het stadscentrum",
+    "theme": "Economie",
+    "paragraphs": [
+      [
+        "Op vraag van het college van burgemeester en schepenen werd in mei een bevraging gehouden bij 1.200 inwoners van de gemeente.",
+        "Van hen zegt 54% minstens een keer per week aankopen te doen in een winkel in het centrum.",
+        "Dat aandeel bedraagt 71% bij de inwoners ouder dan 65 jaar, maar daalt tot 38% bij de inwoners jonger dan 30 jaar."
+      ],
+      [
+        "Op de vraag wat hen ertoe zou aanzetten vaker naar het centrum te komen, noemen de inwoners eerst langere openingsuren en daarna parkeerplaatsen voor kort parkeren.",
+        "Slechts 9% vermeldt lagere prijzen."
+      ],
+      [
+        "Het aantal leegstaande handelspanden in het centrum is in vijf jaar gestegen van 14 tot 23.",
+        "Het college overweegt de gemeentebelasting te verlagen voor handelaars die zich vestigen in een pand dat al meer dan een jaar leegstaat."
+      ]
+    ],
+    "statements": {
+      "commerce-moins-de-30-ans": {
+        "text": "Van de ondervraagde inwoners jonger dan 30 jaar zeggen minder dan vier op de tien minstens een keer per week aankopen te doen in een winkel in het centrum.",
+        "explanation": "Het aandeel van de inwoners die zeggen wekelijks aankopen te doen in het centrum, “daalt tot 38% bij de inwoners jonger dan 30 jaar”. Vier op de tien is 40%: 38% ligt wel degelijk onder die drempel. De bewering neemt het cijfer uit de tekst correct over en heeft het, net als de tekst, over wat de mensen zeggen: ze is waar. In de tests wordt een percentage vaak omgezet in een breuk (“vier op de tien”, “een derde”, “de helft”): oefen je om die omzettingen snel te maken."
+      },
+      "commerce-prix": {
+        "text": "Lagere prijzen worden het vaakst genoemd als middel om de inwoners vaker naar het centrum te laten komen.",
+        "explanation": "De tekst rangschikt de verwachtingen van de inwoners: ze noemen “eerst langere openingsuren en daarna parkeerplaatsen voor kort parkeren”, terwijl: “Slechts 9% vermeldt lagere prijzen.” Lagere prijzen zijn dus niet het vaakst genoemde middel, aangezien twee andere middelen voorgaan. De bewering spreekt de tekst tegen: ze is niet waar. Het woord “slechts” benadrukt trouwens dat het om een minderheidsantwoord gaat."
+      },
+      "commerce-cellules-chaque-annee": {
+        "text": "Het aantal leegstaande handelspanden in het centrum is de voorbije vijf jaar elk jaar gestegen.",
+        "explanation": "De tekst vergelijkt alleen twee waarden: het aantal leegstaande panden “is in vijf jaar gestegen van 14 tot 23”. Die globale stijging zegt niets over de evolutie van jaar tot jaar: het aantal kan elk jaar zijn gestegen, maar ook in sommige jaren gelijk zijn gebleven of gedaald voor het weer steeg. De tekst geeft geen enkel tussentijds cijfer. Op basis van de tekst kan je de bewering dus bevestigen noch weerleggen: dit kan niet worden bepaald. Een evolutie tussen twee data zegt niets over het verloop daartussen."
+      },
+      "commerce-age-population": {
+        "text": "De meerderheid van de inwoners van de gemeente is ouder dan 65 jaar.",
+        "explanation": "De percentages in de tekst zijn aandelen die binnen elke groep werden gemeten: “71%” van de ondervraagde 65-plussers en “38%” van de jongeren onder 30 doen hun aankopen in het centrum, tegenover “54%” van alle ondervraagden. Het zijn geen aandelen van de bevolking: ze zeggen niet hoeveel inwoners tot elke leeftijdsgroep behoren. Bovendien gaat de bevraging over 1.200 ondervraagde personen, niet over alle inwoners van de gemeente. Op basis van de tekst kan je niet bevestigen en ook niet ontkennen dat de meerderheid van de inwoners ouder is dan 65 jaar: dit kan niet worden bepaald."
+      }
+    }
+  }
+}

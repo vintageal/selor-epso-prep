@@ -1,0 +1,114 @@
+{
+  "acces-documents": {
+    "title": "Huishoudelijk reglement van een Europees agentschap: toegang van het publiek tot documenten",
+    "theme": "Recht en instellingen",
+    "paragraphs": [
+      [
+        "Elke natuurlijke persoon of rechtspersoon kan toegang vragen tot de documenten die het Agentschap in zijn bezit heeft, zonder zijn verzoek te moeten motiveren.",
+        "Het Agentschap bevestigt de ontvangst van het verzoek binnen vijf werkdagen en neemt een beslissing binnen vijftien werkdagen na de registratie ervan."
+      ],
+      [
+        "In uitzonderlijke gevallen, met name wanneer het verzoek betrekking heeft op een zeer lang document of op een groot aantal documenten, kan die termijn slechts één keer met vijftien werkdagen worden verlengd, op voorwaarde dat de aanvrager daarvan vooraf op de hoogte wordt gebracht en dat de verlenging naar behoren wordt gemotiveerd."
+      ],
+      [
+        "De toegang wordt geweigerd wanneer de openbaarmaking afbreuk zou doen aan de bescherming van de persoonlijke levenssfeer of aan de openbare veiligheid.",
+        "Wanneer slechts bepaalde delen van een document onder een uitzondering vallen, worden de overige delen openbaar gemaakt.",
+        "Documenten die een lidstaat aan het Agentschap heeft bezorgd, mogen niet openbaar worden gemaakt zonder de voorafgaande toestemming van die lidstaat."
+      ]
+    ],
+    "statements": {
+      "documents-justification": {
+        "text": "Om een document te krijgen, moet de aanvrager de redenen voor zijn verzoek uitleggen.",
+        "explanation": "De tekst preciseert dat iedereen toegang tot de documenten kan vragen “zonder zijn verzoek te moeten motiveren”. Eisen dat de aanvrager zijn redenen uitlegt, zou precies betekenen dat hij zijn verzoek moet motiveren. De bewering wordt dus rechtstreeks tegengesproken door de tekst: ze is niet waar. Merk ook op dat de tekst het heeft over “elke natuurlijke persoon of rechtspersoon”: een bedrijf of een vereniging heeft hetzelfde recht als een particulier, wat het onderwerp van een andere vraag zou kunnen zijn."
+      },
+      "documents-delai": {
+        "text": "In het langste geval waarin de tekst voorziet, heeft het Agentschap dertig werkdagen om een beslissing te nemen.",
+        "explanation": "Je moet twee passages combineren. De gewone termijn voor de beslissing is vijftien werkdagen na de registratie van het verzoek. In uitzonderlijke gevallen “kan die termijn slechts één keer met vijftien werkdagen worden verlengd”. De maximale termijn is dus 15 + 15 = 30 werkdagen, en de vermelding “slechts één keer” sluit elke bijkomende verlenging uit. De bewering is waar. Laat je niet afleiden door de termijn van vijf werkdagen: die gaat over de ontvangstbevestiging, niet over de beslissing."
+      },
+      "documents-acces-partiel": {
+        "text": "Een document waarvan één enkele pagina informatie over de persoonlijke levenssfeer bevat, wordt in zijn geheel geweigerd.",
+        "explanation": "De bescherming van de persoonlijke levenssfeer is wel degelijk een reden tot weigering. Maar de volgende zin beperkt de draagwijdte van die weigering: “Wanneer slechts bepaalde delen van een document onder een uitzondering vallen, worden de overige delen openbaar gemaakt.” Alleen de betrokken pagina mag dus worden afgeschermd, en de rest van het document moet worden meegedeeld. De bewering (“in zijn geheel”) spreekt dat principe van gedeeltelijke toegang tegen: ze is niet waar. Lees altijd de zin die op een regel volgt: die beperkt vaak de draagwijdte ervan."
+      },
+      "documents-statistiques": {
+        "text": "De meeste verzoeken om toegang die het Agentschap ontvangt, krijgen een gunstig antwoord.",
+        "explanation": "De tekst zet de procedureregels en de redenen tot weigering uiteen (persoonlijke levenssfeer, openbare veiligheid, geen toestemming van een lidstaat), maar geeft geen enkel gegeven over de werkelijke afloop van de verzoeken: geen aantallen en geen aandeel van aanvaardingen of weigeringen. Weten in welke gevallen de toegang wordt geweigerd, zegt niets over hoe vaak die gevallen voorkomen. Op basis van de tekst kan je dus niet bevestigen en ook niet weerleggen dat de meeste verzoeken worden ingewilligd: dit kan niet worden bepaald. Een kwantitatieve bewering (“de meeste”, “de meerderheid”) vereist kwantitatieve informatie in de tekst."
+      }
+    }
+  },
+  "declin-pollinisateurs": {
+    "title": "Wetenschappelijk rapport: de achteruitgang van bestuivende insecten",
+    "theme": "Wetenschap",
+    "paragraphs": [
+      [
+        "Een rapport van een consortium van elf Europese universiteiten schat dat de populaties bestuivende insecten in de onderzochte landbouwgebieden in twintig jaar met ongeveer 30% zijn afgenomen.",
+        "De achteruitgang is duidelijk minder uitgesproken in beschermde gebieden, waar hij over dezelfde periode niet meer dan 10% bedraagt."
+      ],
+      [
+        "De onderzoekers wijzen drie hoofdfactoren aan: het verdwijnen van hagen en bloemrijke graslanden, het gebruik van bepaalde pesticiden en het toenemende aantal periodes van extreme hitte.",
+        "Ze preciseren dat geen van die factoren op zich volstaat om de omvang van het waargenomen fenomeen te verklaren."
+      ],
+      [
+        "Ongeveer drie kwart van de gewassen voor menselijke voeding is minstens gedeeltelijk afhankelijk van bestuiving door dieren.",
+        "Het rapport beveelt daarom aan om minstens 7% van de oppervlakte van elk landbouwbedrijf te bestemmen voor elementen die gunstig zijn voor de biodiversiteit, zoals bloemstroken of hagen.",
+        "Het becijfert echter niet wat die maatregel de landbouwers kost."
+      ]
+    ],
+    "statements": {
+      "pollinisateurs-zones": {
+        "text": "In de onderzochte gebieden zijn de bestuivers sterker achteruitgegaan in landbouwgebieden dan in beschermde gebieden.",
+        "explanation": "De tekst becijfert de achteruitgang op “ongeveer 30%” in de onderzochte landbouwgebieden en preciseert dat hij in beschermde gebieden “niet meer dan 10%” bedraagt, over dezelfde periode van twintig jaar. De tekst noemt die achteruitgang in beschermde gebieden trouwens zelf “duidelijk minder uitgesproken”. De vergelijking in de bewering wordt dus zowel door de cijfers als door de commentaar van de tekst bevestigd: ze is waar. Ga altijd na of beide termen van een vergelijking over dezelfde periode en hetzelfde gebied gaan, wat hier wel degelijk het geval is."
+      },
+      "pollinisateurs-pesticides": {
+        "text": "Volgens de onderzoekers is het gebruik van pesticiden de voornaamste oorzaak van de achteruitgang van de bestuivers.",
+        "explanation": "De onderzoekers noemen het gebruik van bepaalde pesticiden als een van “drie hoofdfactoren”, zonder een rangorde tussen die factoren vast te leggen. Ze voegen eraan toe dat geen enkele factor “op zich” volstaat om het fenomeen te verklaren: dat betekent dat geen enkele factor alles verklaart, maar niet dat geen enkele factor doorweegt. Op basis van de tekst kan je dus niet beweren dat pesticiden de voornaamste oorzaak zijn, maar evenmin dat uitsluiten: dit kan niet worden bepaald. Opgelet: “Niet waar” antwoorden is een veelgemaakte fout, want “niet op zich volstaan” en “niet de voornaamste oorzaak zijn” zijn twee verschillende ideeën."
+      },
+      "pollinisateurs-cultures": {
+        "text": "Ongeveer de helft van de gewassen voor menselijke voeding is helemaal niet afhankelijk van bestuiving door dieren.",
+        "explanation": "Als ongeveer drie kwart van de voedingsgewassen “minstens gedeeltelijk” afhankelijk is van bestuiving door dieren, dan kan alleen het resterende kwart, ongeveer, er helemaal niet van afhangen. Het is dus onmogelijk dat ongeveer de helft van de gewassen er “helemaal niet” van afhankelijk is. De bewering is onverenigbaar met het cijfer uit de tekst: ze is niet waar. Dit soort vraag vereist een kleine bijkomende berekening: redeneer over het resterende deel (100% − 75% = 25%) in plaats van over het vermelde cijfer."
+      },
+      "pollinisateurs-revenus": {
+        "text": "De door het rapport aanbevolen maatregel zou de inkomens van de landbouwers verminderen.",
+        "explanation": "De tekst beveelt aan om minstens 7% van de oppervlakte van elk landbouwbedrijf voor te behouden aan elementen die gunstig zijn voor de biodiversiteit, maar preciseert dat het rapport “echter niet” becijfert “wat die maatregel de landbouwers kost”. Hij zegt ook niets over eventuele compensaties of over de gevolgen voor de opbrengsten. Ook al lijkt een inkomensverlies aannemelijk, niets in de tekst laat toe het te bevestigen of uit te sluiten: dit kan niet worden bepaald. Vul de tekst nooit aan met wat je waarschijnlijk lijkt of met je algemene kennis: alleen de tekst is bepalend."
+      }
+    }
+  },
+  "plan-mobilite-agents": {
+    "title": "Omzendbrief: mobiliteitsplan voor het personeel",
+    "theme": "Openbaar bestuur",
+    "paragraphs": [
+      [
+        "Vanaf 1 september betaalt het Gewestelijk Agentschap voor Lokale Belastingen het trein- of busabonnement van zijn personeelsleden voor de verplaatsing tussen hun woonplaats en hun werkplek volledig terug.",
+        "Personeelsleden die met de fiets naar het werk komen, krijgen een kilometervergoeding, met een maximum van veertig kilometer per dag heen en terug.",
+        "Beide voordelen kunnen niet voor dezelfde maand worden gecumuleerd."
+      ],
+      [
+        "Het aantal parkeerplaatsen voor het personeel wordt tegen het einde van volgend jaar met een derde verminderd.",
+        "De resterende plaatsen worden bij voorrang toegekend aan personeelsleden met een beperkte mobiliteit, daarna aan personeelsleden van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend.",
+        "De andere personeelsleden kunnen in uitzonderlijke omstandigheden een plaats voor een beperkte duur aanvragen."
+      ],
+      [
+        "Uit een bevraging van het personeel in maart bleek dat 38% van de personeelsleden voornamelijk met de auto naar het werk komt.",
+        "Het plan wil dat aandeel binnen drie jaar onder de 30% brengen.",
+        "Na achttien maanden wordt een eerste balans opgemaakt, op basis van een nieuwe bevraging."
+      ]
+    ],
+    "statements": {
+      "mobilite-cumul": {
+        "text": "Een personeelslid kan voor dezelfde maand zijn busabonnement laten terugbetalen en de fietsvergoeding krijgen.",
+        "explanation": "De tekst voorziet wel degelijk in twee voordelen, de terugbetaling van het trein- of busabonnement en de kilometervergoeding voor de fiets, maar preciseert: “Beide voordelen kunnen niet voor dezelfde maand worden gecumuleerd.” De bewering beschrijft precies de verboden cumulatie: ze spreekt de tekst tegen en is dus niet waar. Als een tekst meerdere voordelen toekent, ga dan altijd na of ze kunnen worden gecombineerd: één enkele regel die cumulatie verbiedt, volstaat om de bewering onwaar te maken."
+      },
+      "mobilite-parking-priorite": {
+        "text": "Bij de toekenning van een parkeerplaats gaat een personeelslid met een beperkte mobiliteit voor op een collega van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend.",
+        "explanation": "De tekst legt een volgorde van voorrang vast: de plaatsen worden “bij voorrang toegekend aan personeelsleden met een beperkte mobiliteit, daarna aan personeelsleden van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend”. Het woord “daarna” geeft aan dat de tweede categorie pas na de eerste komt. De bewering geeft die volgorde getrouw weer: ze is waar. Spoor in dit soort zinnen de woorden op die een rangorde aangeven (“eerst”, “daarna”, “bij gebrek daaraan”): ze dragen vaak alle informatie."
+      },
+      "mobilite-avant-septembre": {
+        "text": "Vóór 1 september betaalde het Agentschap slechts een deel van het trein- of busabonnement van zijn personeelsleden terug.",
+        "explanation": "De tekst vermeldt dat het Agentschap “vanaf 1 september” het trein- of busabonnement “volledig terug” betaalt. De uitdrukking “vanaf” geeft het begin van die regel aan, maar de tekst zegt niets over de vroegere situatie: het Agentschap betaalde misschien niets terug, of een deel van het abonnement, of paste andere voorwaarden toe. Niets laat toe tussen die hypotheses te kiezen. De bewering wordt bevestigd noch tegengesproken: dit kan niet worden bepaald. Een nieuwe regel geeft geen informatie over de regel die hij vervangt."
+      },
+      "mobilite-train-bus": {
+        "text": "Bij de bevraging in maart kwamen meer dan zes op de tien personeelsleden voornamelijk met de trein of de bus naar het werk.",
+        "explanation": "De bevraging toont dat “38% van de personeelsleden voornamelijk met de auto naar het werk komt”. De overige 62% komen dus niet voornamelijk met de auto, maar de tekst zegt niet hoe zij verdeeld zijn: trein, bus, fiets, te voet of een ander vervoermiddel. De tekst vermeldt trouwens zelf de fietsers. Het is verleidelijk die 62% aan het openbaar vervoer toe te schrijven, maar niets laat dat toe: de bewering wordt bevestigd noch tegengesproken, dit kan niet worden bepaald. Het complement van een aandeel omvat vaak verschillende afzonderlijke categorieën."
+      }
+    }
+  }
+}

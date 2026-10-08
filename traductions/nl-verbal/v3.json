@@ -1,0 +1,118 @@
+{
+  "archives-numerisation": {
+    "title": "Reglement: bewaring en digitalisering van het gemeentearchief",
+    "theme": "Openbaar bestuur",
+    "paragraphs": [
+      [
+        "De documenten die de gemeentediensten opmaken, worden bewaard volgens een selectielijst die voor elke categorie een administratieve bewaartermijn vastlegt.",
+        "Na afloop van die termijn worden de documenten ofwel vernietigd, ofwel overgebracht naar het historisch archief van de gemeente.",
+        "Geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris."
+      ],
+      [
+        "De registers van de burgerlijke stand worden zonder tijdslimiet bewaard.",
+        "De dossiers van stedenbouwkundige vergunningen worden minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief.",
+        "Boekhoudkundige stukken worden tien jaar bewaard, waarna ze mogen worden vernietigd."
+      ],
+      [
+        "Sinds vorig jaar worden papieren dossiers gedigitaliseerd wanneer ze meer dan drie keer per jaar worden geraadpleegd.",
+        "De digitale versie heeft dezelfde waarde als het origineel, op voorwaarde dat ze door de gemeentearchivaris werd gecertificeerd.",
+        "Gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd, behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard."
+      ]
+    ],
+    "statements": {
+      "archives-etat-civil": {
+        "text": "Een gedigitaliseerd en gecertificeerd register van de burgerlijke stand moet toch op papier worden bewaard.",
+        "explanation": "De tekst staat toe dat gedigitaliseerde en gecertificeerde originelen worden vernietigd, maar voorziet in een uitdrukkelijke uitzondering: “behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard”. Hij preciseert ook dat die registers “zonder tijdslimiet bewaard” worden. Ook als het gedigitaliseerd en gecertificeerd is, moet een register van de burgerlijke stand dus op papier worden bewaard: de bewering is waar. Dit soort vraag test je aandacht voor uitzonderingen die worden ingeleid met “behalve”, “met uitzondering van” of “uitgezonderd”."
+      },
+      "archives-versement-permis": {
+        "text": "Het dossier van een stedenbouwkundige vergunning die vijfendertig jaar geleden werd afgegeven, is al naar het historisch archief overgebracht.",
+        "explanation": "De tekst legt een minimumduur vast: de dossiers van stedenbouwkundige vergunningen worden “minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief”. “Minstens” betekent dat de bewaring langer dan dertig jaar kan duren: de tekst zegt niet wanneer de overbrenging plaatsvindt. Na vijfendertig jaar kan het dossier dus al overgebracht zijn, maar het kan ook nog door de diensten worden bewaard. Op basis van de tekst kan je de bewering bevestigen noch weerleggen: dit kan niet worden bepaald. Een minimumduur is geen datum."
+      },
+      "archives-original-permis": {
+        "text": "Het papieren origineel van een dossier van een stedenbouwkundige vergunning mag in sommige gevallen minder dan dertig jaar na de afgifte van de vergunning worden vernietigd.",
+        "explanation": "De minimumduur van dertig jaar zet je ertoe aan “Niet waar” te antwoorden, maar je moet verschillende passages combineren. Het dossier moet “minstens dertig jaar” worden bewaard, en de gecertificeerde digitale versie ervan “heeft dezelfde waarde als het origineel”. De tekst voegt eraan toe dat “gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd”, met één enkele uitzondering, de registers van de burgerlijke stand, en zonder een termijn vast te leggen. Mits de schriftelijke toestemming van de archivaris mag het papieren origineel van een gedigitaliseerde en gecertificeerde vergunning dus vóór dertig jaar worden vernietigd, terwijl het dossier in digitale vorm bewaard blijft: de bewering, die het over “sommige gevallen” heeft, is waar."
+      },
+      "archives-dossier-consulte": {
+        "text": "Een papieren dossier dat vorig jaar vier keer werd geraadpleegd, is vernietigd.",
+        "explanation": "Een dossier dat vorig jaar vier keer werd geraadpleegd, valt wel degelijk onder de digitaliseringsregel, die geldt voor dossiers die “meer dan drie keer per jaar worden geraadpleegd”. Maar digitalisering leidt niet tot vernietiging: de tekst vermeldt dat gedigitaliseerde en gecertificeerde originelen “mogen worden vernietigd”, wat louter een mogelijkheid is, en dat “geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris”. De tekst zegt niet of dat dossier werd gecertificeerd, en ook niet of de archivaris zijn toestemming heeft gegeven. Op basis van de tekst kan je de bewering dus bevestigen noch weerleggen: dit kan niet worden bepaald."
+      }
+    }
+  },
+  "procedure-marches-publics": {
+    "title": "Interne gids: de procedure voor een overheidsopdracht kiezen",
+    "theme": "Recht en instellingen",
+    "paragraphs": [
+      [
+        "Voor elke aankoop van leveringen of diensten raamt de aankopende dienst eerst het totale bedrag van de opdracht, exclusief btw, over de hele looptijd ervan.",
+        "Dat bedrag bepaalt welke procedure van toepassing is.",
+        "Het is verboden een opdracht op te splitsen in verschillende bestellingen om aan een strengere procedure te ontsnappen."
+      ],
+      [
+        "Onder 25.000 euro mag de dienst de opdracht gunnen via een aanvaarde factuur, nadat hij, waar mogelijk, minstens drie leveranciers heeft geraadpleegd.",
+        "Tussen 25.000 en 120.000 euro is een onderhandelingsprocedure zonder voorafgaande bekendmaking toegestaan, waarbij minstens drie leveranciers verplicht moeten worden geraadpleegd.",
+        "Boven 120.000 euro moet de opdracht officieel worden bekendgemaakt."
+      ],
+      [
+        "De keuze van de offerte steunt op criteria die van bij het begin aan de geraadpleegde leveranciers worden meegedeeld.",
+        "De prijs moet altijd een van die criteria zijn, maar is niet noodzakelijk het enige.",
+        "Elke gunningsbeslissing wordt schriftelijk gemotiveerd en in het dossier van de opdracht bewaard."
+      ]
+    ],
+    "statements": {
+      "marches-scission": {
+        "text": "Om via een aanvaarde factuur te kunnen werken, mag een dienst een opdracht van 40.000 euro opsplitsen in twee bestellingen van 20.000 euro.",
+        "explanation": "De tekst verbiedt precies die constructie: “Het is verboden een opdracht op te splitsen in verschillende bestellingen om aan een strengere procedure te ontsnappen.” Een opdracht van 40.000 euro opdelen in twee bestellingen van 20.000 euro om onder de drempel van de aanvaarde factuur te blijven, is precies een opsplitsing om de procedure te vermijden die tussen 25.000 en 120.000 euro van toepassing is. De bewering spreekt de tekst tegen: ze is niet waar."
+      },
+      "marches-prix-exclu": {
+        "text": "Wanneer de kwaliteit doorslaggevend is, mag de prijs uit de criteria voor de keuze van de offerte worden weggelaten.",
+        "explanation": "De tekst is duidelijk: “De prijs moet altijd een van die criteria zijn, maar is niet noodzakelijk het enige.” Kwaliteit kan dus naast de prijs als criterium worden toegevoegd, maar de prijs nooit vervangen. De bewering, die overweegt de prijs weg te laten, spreekt het woord “altijd” tegen: ze is niet waar. Veelvoorkomende valkuil: de tweede helft van de zin (“niet noodzakelijk het enige”) opent de deur voor andere criteria, maar doet niets af aan de eerste helft."
+      },
+      "marches-trois-fournisseurs": {
+        "text": "Een dienst die een opdracht die op 100.000 euro exclusief btw is geraamd, zonder voorafgaande bekendmaking gunt, moet minstens drie leveranciers hebben geraadpleegd.",
+        "explanation": "Een opdracht van 100.000 euro valt in de schijf tussen 25.000 en 120.000 euro, waarvoor de tekst een procedure “zonder voorafgaande bekendmaking” toestaat, “waarbij minstens drie leveranciers verplicht moeten worden geraadpleegd”. Het woord “verplicht” onderscheidt die schijf van de vorige, waar de raadpleging alleen vereist is “waar mogelijk”. De bewering, die wel degelijk gaat over een opdracht die zonder bekendmaking wordt gegund, is waar."
+      },
+      "marches-ponderation": {
+        "text": "De geraadpleegde leveranciers weten van bij het begin welk gewicht de prijs krijgt bij de keuze van de offerte.",
+        "explanation": "De tekst vermeldt dat de criteria “van bij het begin aan de geraadpleegde leveranciers worden meegedeeld”, en dat de prijs daar altijd bij hoort. Maar hij zegt niets over hun weging: de criteria meedelen betekent niet noodzakelijk dat je ook het relatieve belang van elk criterium meedeelt. Op basis van de tekst kan je niet bevestigen en ook niet ontkennen dat de leveranciers het gewicht van de prijs kennen. Dit kan dus niet worden bepaald. Let op dat je de lijst van de criteria en hun gewicht, twee verschillende gegevens, niet door elkaar haalt."
+      }
+    }
+  },
+  "compte-formation": {
+    "title": "Nota aan het personeel: de opleidingsrekening",
+    "theme": "Human resources",
+    "paragraphs": [
+      [
+        "Elk personeelslid beschikt over een opleidingsrekening waarop op 1 januari van elk jaar veertig uur wordt gestort.",
+        "De uren die op 31 december niet zijn gebruikt, worden naar het volgende jaar overgedragen, maar het saldo van de rekening mag nooit hoger zijn dan tachtig uur.",
+        "Verplichte opleidingen in verband met veiligheid worden niet van de rekening afgetrokken."
+      ],
+      [
+        "Om een opleiding tijdens de diensturen te volgen, dient het personeelslid minstens een maand vóór de begindatum een aanvraag in bij zijn leidinggevende.",
+        "De leidinggevende kan alleen weigeren om redenen die verband houden met de continuïteit van de dienst, en eenzelfde weigering mag niet meer dan twee keer na elkaar worden gegeven.",
+        "Opleidingen die buiten de diensturen worden gevolgd, worden financieel ten laste genomen, maar geven geen recht op recuperatie."
+      ],
+      [
+        "Op het einde van het jaar publiceert de personeelsdienst het gemiddelde aantal opleidingsuren per personeelslid in elke directie.",
+        "Vorig jaar varieerde dat gemiddelde van twaalf uur in de directie Infrastructuur tot eenendertig uur in de juridische directie."
+      ]
+    ],
+    "statements": {
+      "formation-plafond": {
+        "text": "Een personeelslid dat twee volledige jaren geen enkele opleiding heeft gevolgd, heeft op 1 januari van het derde jaar honderdtwintig uur op zijn rekening.",
+        "explanation": "Zonder maximum zouden drie opeenvolgende stortingen van veertig uur wel degelijk honderdtwintig uur opleveren: veertig uur het eerste jaar, tachtig na de overdracht van het tweede jaar, en daarna honderdtwintig. Maar de tekst preciseert: “het saldo van de rekening mag nooit hoger zijn dan tachtig uur”. Op 1 januari van het derde jaar beschikt het personeelslid dus over tachtig uur, en niet over honderdtwintig. De bewering spreekt die grens tegen: ze is niet waar. Ga bij vragen die een berekening vereisen altijd na of de tekst een maximum of een minimum vastlegt dat het resultaat verandert."
+      },
+      "formation-securite": {
+        "text": "Een verplichte opleiding over veiligheid vermindert het aantal beschikbare uren op de opleidingsrekening niet.",
+        "explanation": "De tekst vermeldt: “Verplichte opleidingen in verband met veiligheid worden niet van de rekening afgetrokken.” Niet worden afgetrokken betekent precies dat het saldo van de beschikbare uren niet vermindert. De bewering herformuleert die regel met andere woorden: ze is waar. Onthoud het patroon: een algemene regel (de gevolgde opleidingen worden van de rekening afgetrokken) gevolgd door een uitzondering (de verplichte opleidingen in verband met veiligheid); de bewering gaat hier over de uitzondering."
+      },
+      "formation-motif-refus": {
+        "text": "Een leidinggevende mag een opleiding tijdens de diensturen weigeren omdat hij vindt dat ze niets te maken heeft met de functie van het personeelslid.",
+        "explanation": "De tekst beperkt de redenen tot weigering strikt: de leidinggevende “kan alleen weigeren om redenen die verband houden met de continuïteit van de dienst”. Het woord “alleen” sluit elke andere reden uit, ook het ontbreken van een verband tussen de opleiding en de functie van het personeelslid. Een weigering om die reden is dus niet toegestaan: de bewering spreekt de tekst tegen en is niet waar. Spoor de beperkingen op die worden uitgedrukt met “alleen”, “uitsluitend” of “enkel”: ze sluiten alle gevallen uit die ze niet vermelden."
+      },
+      "formation-minimum-juridique": {
+        "text": "Vorig jaar heeft elk personeelslid van de juridische directie minstens twaalf uur opleiding gevolgd.",
+        "explanation": "De tekst geeft voor de juridische directie een gemiddelde van “eenendertig uur” per personeelslid. Een gemiddelde zegt niets over de situatie van elk personeelslid: sommigen kunnen veel meer uren hebben gevolgd, anderen veel minder, of zelfs geen enkel uur. Niets garandeert dus dat elk personeelslid twaalf uur heeft bereikt, maar niets laat ook toe het tegendeel te beweren. Dit kan niet worden bepaald. Klassieke valkuil: uit een gemiddelde informatie over elk individu afleiden."
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "teletravail-structurel": {
+    "title": "Dienstnota: structureel telewerk",
+    "theme": "Openbaar bestuur",
+    "paragraphs": [
+      [
+        "Sinds 1 maart mogen de personeelsleden van de Federale Dienst voor Documentbeheer tot drie dagen per week telewerken, op voorwaarde dat hun hiërarchische meerdere hun functie verenigbaar heeft verklaard met werken op afstand.",
+        "Functies waarbij het publiek fysiek wordt onthaald, zijn daar in principe van uitgesloten.",
+        "De betrokken personeelsleden kunnen echter wel occasioneel telewerk aanvragen, beperkt tot tien dagen per jaar, om naar behoren gestaafde persoonlijke redenen."
+      ],
+      [
+        "De aanvraag moet schriftelijk worden ingediend, minstens vijftien werkdagen vóór de gewenste begindatum.",
+        "De hiërarchische meerdere heeft daarna tien werkdagen om zich uit te spreken; als er binnen die termijn geen antwoord komt, wordt de aanvraag geacht te zijn aanvaard.",
+        "Elke weigering moet worden gemotiveerd en kan worden aangevochten bij de personeelsdienst, die binnen de maand uitspraak doet."
+      ],
+      [
+        "Personeelsleden die structureel telewerken, krijgen een maandelijkse forfaitaire vergoeding voor hun verbindings- en verwarmingskosten.",
+        "Die vergoeding wordt gehalveerd voor personeelsleden die minder dan twee dagen per week telewerken.",
+        "Na een periode van twaalf maanden wordt aan het directiecomité een evaluatie van de regeling voorgelegd, die onder meer betrekking heeft op de productiviteit en het welzijn van de personeelsleden."
+      ]
+    ],
+    "statements": {
+      "teletravail-accueil": {
+        "text": "Een personeelslid dat instaat voor het fysieke onthaal van het publiek, mag in principe twee dagen per week telewerken.",
+        "explanation": "De tekst sluit functies met fysiek onthaal van het publiek “in principe” uit van structureel telewerk: dat twee dagen onder het algemene maximum van drie dagen blijft, doet er niet toe, want die uitsluiting geldt nog vóór het maximum. De enige opening voor die personeelsleden is occasioneel telewerk, beperkt tot tien dagen per jaar en voorbehouden aan gestaafde persoonlijke redenen, wat onverenigbaar is met een vast ritme van twee dagen per week (bijna honderd dagen per jaar). De bewering spreekt de tekst dus tegen: ze is niet waar. Klassieke valkuil: de uitdrukking “in principe” in de bewering herneemt de woorden van de tekst, maar om precies het omgekeerde te zeggen."
+      },
+      "teletravail-silence": {
+        "text": "Als de hiërarchische meerdere na afloop van de gestelde termijn zwijgt, geldt dat als akkoord met de telewerkaanvraag.",
+        "explanation": "De bewering herformuleert de regel uit de tekst met andere woorden. “Als de hiërarchische meerdere na afloop van de gestelde termijn zwijgt” stemt overeen met “als er binnen die termijn geen antwoord komt” (tien werkdagen), en “geldt als akkoord” is het juridische equivalent van “wordt de aanvraag geacht te zijn aanvaard”. Het gaat niet om een gewaagde afleiding maar om een getrouwe parafrase: de bewering is waar. Oefen je bij dit soort tests om eenzelfde idee te herkennen dat met een andere woordenschat wordt uitgedrukt: de opsteller van de test vermijdt bijna altijd de exacte woorden van de tekst."
+      },
+      "teletravail-majorite": {
+        "text": "De meerderheid van de personeelsleden van de Dienst telewerkt voortaan drie dagen per week.",
+        "explanation": "De tekst beschrijft wat toegestaan is (“mogen tot drie dagen per week telewerken”), dus een toegestaan maximum dat aan een voorwaarde is gebonden, en niet wat de personeelsleden werkelijk doen. Geen enkel cijfer vermeldt hoeveel personeelsleden een aanvraag hebben ingediend, hoeveel functies verenigbaar werden verklaard of hoeveel dagen er effectief thuis worden gewerkt. Op basis van de tekst kan je dus niet bevestigen en ook niet weerleggen dat de meerderheid van de personeelsleden drie dagen telewerkt: dit kan niet worden bepaald. Wees op je hoede voor beweringen die een mogelijkheid (“mogen”) voorstellen als een vaststaand feit, of een maximum (“tot”) als een algemene praktijk."
+      },
+      "teletravail-indemnite": {
+        "text": "Een personeelslid dat één dag per week telewerkt, krijgt een lagere vergoeding dan een collega die drie dagen per week telewerkt.",
+        "explanation": "Hier moet je de regel uit de tekst toepassen op twee concrete gevallen. Eén dag per week is “minder dan twee dagen”: de vergoeding van dat personeelslid wordt gehalveerd. Drie dagen per week is niet “minder dan twee dagen”: de collega krijgt de volledige vergoeding. De eerste krijgt dus wel degelijk een lagere vergoeding dan de tweede. De bewering staat niet letterlijk in de tekst, maar volgt er logisch uit, zonder dat je externe informatie nodig hebt: ze is waar. Een bewering kan “waar” zijn door afleiding, en niet alleen wanneer ze de tekst overneemt."
+      }
+    }
+  },
+  "inflation-pouvoir-achat": {
+    "title": "Economisch rapport: inflatie en koopkracht",
+    "theme": "Economie",
+    "paragraphs": [
+      [
+        "Volgens het jongste rapport van het Instituut voor Conjunctuuronderzoek bedroeg de jaarlijkse inflatie vorig jaar 6,2%, het hoogste peil in drie decennia.",
+        "De stijging van de energieprijzen verklaart op zich bijna de helft van die toename, terwijl voedingsmiddelen er ongeveer een kwart toe hebben bijgedragen."
+      ],
+      [
+        "Dankzij het mechanisme van automatische indexering zijn de brutolonen in dezelfde periode gemiddeld met 5,8% gestegen.",
+        "De koopkracht van de gezinnen van werknemers is dus licht gedaald, maar minder sterk dan in de buurlanden die geen dergelijk mechanisme hebben.",
+        "De auteurs benadrukken echter dat de indexering met een vertraging van enkele maanden gebeurt, wat zwaarder weegt op gezinnen met een laag inkomen, die een groter deel van hun budget aan energie en voeding besteden."
+      ],
+      [
+        "Voor dit jaar voorspelt het Instituut een vertraging van de inflatie tot 3,1%, op voorwaarde dat de energieprijzen stabiliseren.",
+        "Het waarschuwt wel voor het risico van een “loon-prijsspiraal” als de bedrijven de stijging van hun loonkosten volledig zouden doorrekenen in hun verkoopprijzen."
+      ]
+    ],
+    "statements": {
+      "inflation-energie": {
+        "text": "Energie woog vorig jaar zwaarder door in de prijsstijging dan voeding.",
+        "explanation": "De tekst schrijft “bijna de helft” van de prijsstijging toe aan energie en “ongeveer een kwart” aan voedingsmiddelen. Ook met die benaderingen (“bijna”, “ongeveer”) blijft een bijdrage van bijna 50% duidelijk groter dan een bijdrage van ongeveer 25%: het verschil is te groot om de volgorde te kunnen omkeren. De bewering vergelijkt alleen die twee aandelen: ze is waar. Onthoud dat een benadering een vergelijking niet onzeker maakt wanneer de grootteordes duidelijk verschillen."
+      },
+      "inflation-recul-pouvoir-achat": {
+        "text": "Dankzij de indexering is de koopkracht van de gezinnen van werknemers vorig jaar gestegen.",
+        "explanation": "De tekst vermeldt dat de brutolonen met 5,8% zijn gestegen, terwijl de prijzen met 6,2% zijn gestegen: de inkomens zijn dus minder snel gestegen dan de prijzen. De tekst trekt daar zelf de conclusie uit dat de koopkracht “dus licht gedaald” is. De indexering heeft de koopkracht niet doen stijgen; ze heeft de daling alleen beperkt in vergelijking met de buurlanden die geen indexering hebben. De bewering zegt het omgekeerde van de tekst: ze is niet waar. De valkuil bestaat erin het woord “dankzij”, dat wel in de tekst staat, te koppelen aan een verkeerde conclusie."
+      },
+      "inflation-prevision": {
+        "text": "De inflatie zal dit jaar 3,1% bedragen.",
+        "explanation": "De tekst stelt dat cijfer niet voor als een feit, maar als een voorspelling (“voorspelt het Instituut”), die bovendien aan een voorwaarde is gebonden (“op voorwaarde dat de energieprijzen stabiliseren”). De tekst zegt echter niet of de energieprijzen werkelijk zullen stabiliseren. De bewering maakt van een voorwaardelijke voorspelling een zekerheid: op basis van de tekst kan je ze bevestigen noch weerleggen, dus dit kan niet worden bepaald. Onthoud dat de toekomende tijd (“zal … bedragen”) een zekerheid uitdrukt die de tekst niet biedt."
+      },
+      "inflation-menages-modestes": {
+        "text": "Gezinnen met een laag inkomen besteden een groter deel van hun budget aan energie en voeding dan andere gezinnen.",
+        "explanation": "De informatie staat in een bijzin die je makkelijk over het hoofd ziet: “die een groter deel van hun budget aan energie en voeding besteden”. Het betrekkelijk voornaamwoord “die” verwijst naar de “gezinnen met een laag inkomen”, en de vergrotende trap “groter” vergelijkt hen met de andere gezinnen. De bewering geeft dat idee getrouw weer: ze is waar. In dichte teksten zitten de beslissende gegevens vaak verstopt in bijzinnen of tussenzinnen: lees elke zin helemaal uit."
+      }
+    }
+  },
+  "qualite-air-ecoles": {
+    "title": "Voorstel voor een richtlijn: luchtkwaliteit in scholen",
+    "theme": "Milieu en gezondheid",
+    "paragraphs": [
+      [
+        "Het voorstel voor een richtlijn dat het Europees Parlement momenteel bespreekt, legt voor het eerst een bindende grenswaarde vast voor de concentratie van koolstofdioxide (CO₂) in klaslokalen.",
+        "De gekozen drempel, 1.000 deeltjes per miljoen (ppm), wordt door deskundigen beschouwd als een betrouwbare indicator van de luchtverversing, en niet als een toxiciteitsdrempel voor CO₂ zelf."
+      ],
+      [
+        "De lidstaten zouden na de inwerkingtreding van de tekst vier jaar de tijd krijgen om elk klaslokaal met een CO₂-sensor uit te rusten.",
+        "Scholen die na 2030 worden gebouwd, zouden bovendien met een mechanisch ventilatiesysteem moeten worden uitgerust.",
+        "Voor bestaande gebouwen zou natuurlijke ventilatie door het openen van ramen toegestaan blijven, op voorwaarde dat de metingen aantonen dat de drempel gedurende minstens 90% van de gebruikstijd wordt nageleefd."
+      ],
+      [
+        "Verschillende studies die in de effectbeoordeling worden aangehaald, leggen een verband tussen een betere ventilatie en een daling van het absenteïsme door luchtweginfecties.",
+        "De auteurs van de analyse erkennen echter dat die studies, die vooral in Noord-Europese landen werden uitgevoerd, het niet mogelijk maken een rechtstreeks oorzakelijk verband vast te stellen."
+      ]
+    ],
+    "statements": {
+      "air-toxicite": {
+        "text": "De drempel van 1.000 ppm werd gekozen omdat CO₂ boven die concentratie giftig wordt voor de leerlingen.",
+        "explanation": "De bewering geeft een verantwoording die de tekst uitdrukkelijk afwijst. De drempel van 1.000 ppm wordt voorgesteld als “een betrouwbare indicator van de luchtverversing, en niet als een toxiciteitsdrempel voor CO₂ zelf”. Met andere woorden: wie die drempel overschrijdt, verlucht onvoldoende, maar CO₂ vormt daardoor op zich geen giftig gevaar. De tekst spreekt het “omdat” van de bewering dus rechtstreeks tegen: ze is niet waar. Let op oorzakelijke verbanden (“omdat”, “dankzij”, “door”): een bewering kan juiste elementen vermelden en ze toch met een verkeerde oorzaak verbinden."
+      },
+      "air-capteurs": {
+        "text": "Als de richtlijn zou worden aangenomen, zou elk klaslokaal op termijn met een CO₂-sensor moeten worden uitgerust.",
+        "explanation": "De tekst bepaalt dat de lidstaten vier jaar de tijd zouden krijgen “om elk klaslokaal met een CO₂-sensor uit te rusten”. Een termijn toekennen om iets te installeren, betekent dat de installatie na afloop van die termijn verplicht is: “op termijn” stemt overeen met die vier jaar. De bewering respecteert bovendien het hypothetische karakter van de tekst (“als de richtlijn zou worden aangenomen”), aangezien het gaat om een voorstel dat het Europees Parlement nog bespreekt. Ze is waar. Let op het belang van de voorwaardelijke wijs: zonder de precisering “als de richtlijn zou worden aangenomen” zou de bewering een tekst die nog niet is aangenomen, als verworven hebben voorgesteld."
+      },
+      "air-ventilation": {
+        "text": "Alle bestaande scholen zullen een mechanisch ventilatiesysteem moeten installeren.",
+        "explanation": "De verplichting tot mechanische ventilatie geldt alleen voor “scholen die na 2030 worden gebouwd”. Voor bestaande gebouwen bepaalt de tekst integendeel dat “natuurlijke ventilatie door het openen van ramen toegestaan” zou blijven, op voorwaarde dat de drempel gedurende minstens 90% van de gebruikstijd wordt nageleefd. Een bestaande school die aan die voorwaarde voldoet, hoeft dus geen mechanische ventilatie te installeren. Met het woord “alle” veralgemeent de bewering een verplichting die de tekst tot nieuwe gebouwen beperkt: ze is niet waar. Absolute woorden (“alle”, “altijd”, “nooit”) moeten altijd je aandacht trekken."
+      },
+      "air-absenteisme": {
+        "text": "Een betere ventilatie van de klaslokalen vermindert het absenteïsme door luchtweginfecties.",
+        "explanation": "De tekst vermeldt dat studies “een verband” leggen tussen een betere ventilatie en een daling van het absenteïsme, en preciseert daarna dat die studies het “niet mogelijk maken een rechtstreeks oorzakelijk verband vast te stellen”. Een verband (correlatie) is geen bewijs van oorzaak en gevolg: beter verluchte scholen kunnen bijvoorbeeld op heel wat andere punten van de andere scholen verschillen. De bewering legt wel een oorzakelijk verband (“vermindert”). De tekst laat niet toe ze te bevestigen, maar evenmin ze te weerleggen, aangezien hij niet zegt dat het effect onbestaande is: dit kan niet worden bepaald. Dit is de klassieke valkuil van de verwarring tussen correlatie en oorzakelijkheid."
+      }
+    }
+  }
+}

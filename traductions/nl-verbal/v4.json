@@ -1,0 +1,115 @@
+{
+  "protection-donnees-cpas": {
+    "title": "Praktische fiche: gegevensbescherming bij het OCMW",
+    "theme": "Recht en instellingen",
+    "paragraphs": [
+      [
+        "De maatschappelijk werkers van het OCMW mogen alleen de dossiers raadplegen van de personen die zij opvolgen.",
+        "Elke raadpleging van een dossier wordt automatisch geregistreerd, met de datum en de identiteit van het personeelslid.",
+        "Die registraties worden elk kwartaal gecontroleerd door de functionaris voor gegevensbescherming."
+      ],
+      [
+        "Elke persoon die hulp krijgt, kan vragen om de gegevens over hem of haar in te kijken.",
+        "Het OCMW heeft een maand om te antwoorden, een termijn die met twee maanden kan worden verlengd wanneer het verzoek complex is, op voorwaarde dat de aanvrager daarvan in de loop van de eerste maand op de hoogte wordt gebracht.",
+        "De inzage is gratis."
+      ],
+      [
+        "De gegevens van een afgesloten dossier worden vijf jaar bewaard en daarna verwijderd.",
+        "Een dossier wordt afgesloten wanneer de persoon twaalf opeenvolgende maanden geen enkele hulp meer heeft gekregen."
+      ]
+    ],
+    "statements": {
+      "donnees-acces-collegue": {
+        "text": "Een maatschappelijk werker mag het dossier raadplegen van een persoon die door een collega wordt opgevolgd, op voorwaarde dat de raadpleging wordt geregistreerd.",
+        "explanation": "De tekst beperkt de toegang strikt: de maatschappelijk werkers “mogen alleen de dossiers raadplegen van de personen die zij opvolgen”. De automatische registratie van de raadplegingen is een controlemiddel, geen toestemming: ze geeft geen toegang tot het dossier van een persoon die door een collega wordt opgevolgd. De bewering spreekt de regel tegen: ze is niet waar. Verwar een controlemaatregel niet met een voorwaarde die de toegang rechtmatig zou maken."
+      },
+      "donnees-gratuite": {
+        "text": "Een persoon die hulp krijgt, hoeft niets te betalen om de gegevens over hem of haar in te kijken, ook niet als het verzoek complex is.",
+        "explanation": "De tekst maakt geen enkel voorbehoud: “De inzage is gratis.” De complexiteit van het verzoek heeft alleen gevolgen voor de antwoordtermijn, die met twee maanden kan worden verlengd, en de tekst voorziet in dat geval in geen enkele kost. Een persoon die hulp krijgt, hoeft dus niets te betalen om zijn of haar gegevens in te kijken, of het verzoek nu eenvoudig of complex is: de bewering is waar. Laat een voorwaarde die over een ander aspect van de regel gaat, hier de termijn, je lezing van de vraag die je wordt gesteld niet beïnvloeden."
+      },
+      "donnees-conservation": {
+        "text": "De gegevens van een persoon van wie de laatste hulp vijfenhalf jaar geleden is, worden nog door het OCMW bewaard.",
+        "explanation": "Je moet de twee regels combineren. Het dossier wordt pas afgesloten wanneer de persoon “twaalf opeenvolgende maanden geen enkele hulp meer heeft gekregen”, dus een jaar na de laatste hulp. Daarna worden de gegevens “vijf jaar bewaard en daarna verwijderd”, dus tot zes jaar na de laatste hulp. Vijfenhalf jaar na de laatste hulp worden de gegevens dus nog altijd bewaard: de bewering is waar. De valkuil bestaat erin de vijf jaar te laten lopen vanaf de laatste hulp in plaats van vanaf de afsluiting: dan zou je ten onrechte besluiten dat de gegevens al verwijderd zijn."
+      },
+      "donnees-abus-detectes": {
+        "text": "Met de driemaandelijkse controles van de functionaris voor gegevensbescherming werden al onrechtmatige raadplegingen opgespoord.",
+        "explanation": "De tekst beschrijft een controlesysteem: de registraties “worden elk kwartaal gecontroleerd door de functionaris voor gegevensbescherming”. Hij zegt niets over de resultaten van die controles, en ook niet over het eventuele bestaan van onrechtmatige raadplegingen. De bewering gaat over een feit dat de tekst niet behandelt: dit kan niet worden bepaald. Het bestaan van een controle bewijst niet dat er misbruik werd vastgesteld, en ook niet dat er geen werd vastgesteld."
+      }
+    }
+  },
+  "rapport-mediateur": {
+    "title": "Jaarverslag van de gewestelijke ombudsdienst (uittreksel)",
+    "theme": "Openbaar bestuur",
+    "paragraphs": [
+      [
+        "Vorig jaar ontving de ombudsdienst van het Gewest 4.200 klachten, of 12% meer dan het jaar daarvoor.",
+        "Daarvan werden er 1.300 onontvankelijk verklaard, meestal omdat de klager niet eerst contact had opgenomen met de betrokken administratie.",
+        "De andere klachten werden onderzocht."
+      ],
+      [
+        "Bijna de helft van de onderzochte klachten ging over de behandelingstermijnen van de dossiers.",
+        "In 62% van de onderzochte gevallen kon de bemiddeling een volledige of gedeeltelijke oplossing voor de burger opleveren.",
+        "De gemiddelde onderzoekstermijn daalde van 75 tot 68 dagen."
+      ],
+      [
+        "De ombudsman beveelt aan dat elke gewestelijke administratie voor haar belangrijkste procedures een indicatieve behandelingstermijn bekendmaakt.",
+        "Hij stelt vast dat de administraties die dat al doen, verhoudingsgewijs minder klachten over termijnen ontvangen."
+      ]
+    ],
+    "statements": {
+      "mediation-part-instruite": {
+        "text": "Meer dan drie kwart van de klachten die vorig jaar werden ontvangen, werd onderzocht.",
+        "explanation": "De dienst ontving “4.200 klachten”, waarvan er “1.300 onontvankelijk verklaard” werden; “de andere klachten werden onderzocht”. Er werden dus 4.200 − 1.300 = 2.900 klachten onderzocht. Drie kwart van 4.200 is 3.150: 2.900 ligt onder die drempel, want het is ongeveer 69% van de ontvangen klachten. De bewering is dus niet waar. Als een bewering een verhouding bevat, maak dan de berekening opnieuw in plaats van op een indruk te vertrouwen."
+      },
+      "mediation-annee-precedente": {
+        "text": "Het jaar daarvoor had de ombudsdienst meer dan 3.700 klachten ontvangen.",
+        "explanation": "De tekst vermeldt dat de “4.200 klachten” van vorig jaar “12% meer dan het jaar daarvoor” vertegenwoordigen. Het aantal van het jaar daarvoor is dus 4.200 ÷ 1,12, of 3.750 klachten, wat wel degelijk meer is dan 3.700: de bewering is waar. De valkuil bestaat erin 12% van 4.200 af te trekken, wat 3.696 oplevert en je “Niet waar” doet antwoorden: de stijging van 12% wordt berekend op het jaar daarvoor, niet op het huidige jaar."
+      },
+      "mediation-delai-allonge": {
+        "text": "De gemiddelde onderzoekstermijn van de klachten is langer geworden dan het jaar daarvoor.",
+        "explanation": "De tekst preciseert: “De gemiddelde onderzoekstermijn daalde van 75 tot 68 dagen.” Van 75 naar 68 dagen gaan, is een daling met zeven dagen: de termijn is korter geworden, niet langer. De bewering spreekt de tekst tegen: ze is niet waar. Lees ook bij een eenvoudige vraag de volgorde van de waarden opnieuw: de uitdrukking “van … tot …” geeft eerst de beginwaarde en daarna de eindwaarde."
+      },
+      "mediation-plaintes-valeur-absolue": {
+        "text": "De administraties die al een indicatieve termijn bekendmaken, ontvangen in absolute aantallen minder klachten over termijnen dan de andere.",
+        "explanation": "De tekst vermeldt dat die administraties “verhoudingsgewijs minder klachten over termijnen ontvangen”. “Verhoudingsgewijs” betekent dat de vergelijking over een aandeel gaat, bijvoorbeeld het aandeel van de klachten over termijnen in al hun klachten, en niet over een aantal klachten. Een grote administratie kan een kleiner aandeel klachten over termijnen ontvangen, maar een groter aantal. De tekst geeft geen enkel aantal: dit kan niet worden bepaald. Verwar een verhouding niet met een absolute waarde."
+      }
+    }
+  },
+  "renovation-batiments-publics": {
+    "title": "Gewestelijk plan: energierenovatie van de openbare gebouwen",
+    "theme": "Milieu en energie",
+    "paragraphs": [
+      [
+        "Het Gewest heeft zich tot doel gesteld het energieverbruik van zijn administratieve gebouwen tegen 2035 met 40% te verminderen ten opzichte van 2019.",
+        "Om dat te bereiken, wordt elk gebouw van meer dan 1.000 m² vóór eind 2026 aan een energieaudit onderworpen.",
+        "Gebouwen die als monument beschermd zijn, krijgen een aangepaste audit, die rekening houdt met de beperkingen van de erfgoedzorg."
+      ],
+      [
+        "De werken worden gepland volgens de verhouding tussen de kosten van de renovatie en de verwachte energiebesparing: de meest rendabele renovaties worden eerst uitgevoerd.",
+        "Een gebouw waarvan de verkoop of de afbraak binnen vijf jaar gepland is, wordt niet gerenoveerd."
+      ],
+      [
+        "De eerste audits hadden betrekking op 85 gebouwen.",
+        "Ze tonen aan dat het vervangen van de verwarmingssystemen op zich het verbruik van die gebouwen gemiddeld met 18% zou kunnen verminderen."
+      ]
+    ],
+    "statements": {
+      "renovation-ordre": {
+        "text": "Een dure renovatie kan worden uitgevoerd vóór een minder dure renovatie.",
+        "explanation": "Het planningscriterium is niet alleen de kostprijs, maar “de verhouding tussen de kosten van de renovatie en de verwachte energiebesparing”: “de meest rendabele renovaties worden eerst uitgevoerd”. Een dure renovatie die zeer grote besparingen oplevert, kan dus rendabeler zijn en voorgaan op een goedkope renovatie met bescheiden besparingen. De bewering, geformuleerd met “kan”, is verenigbaar met de tekst en volgt uit het criterium ervan: ze is waar. Verwar de kostprijs van een renovatie niet met de rendabiliteit ervan."
+      },
+      "renovation-vente": {
+        "text": "Een gebouw waarvan de verkoop binnen drie jaar gepland is, wordt gerenoveerd als de audit een zeer rendabele renovatie aantoont.",
+        "explanation": "De tekst sluit dat geval zonder uitzondering uit: “Een gebouw waarvan de verkoop of de afbraak binnen vijf jaar gepland is, wordt niet gerenoveerd.” Een verkoop die binnen drie jaar gepland is, valt binnen die termijn van vijf jaar, ongeacht hoe rendabel de renovatie is. De bewering spreekt de tekst tegen: ze is niet waar. Een algemene uitsluitingsregel gaat voor op het criterium van de voorrang, dat alleen geldt voor de gebouwen die gerenoveerd moeten worden."
+      },
+      "renovation-monuments": {
+        "text": "Gebouwen die als monument beschermd zijn, zullen na de andere administratieve gebouwen worden gerenoveerd.",
+        "explanation": "De tekst vermeldt alleen dat beschermde gebouwen “een aangepaste audit” krijgen, “die rekening houdt met de beperkingen van de erfgoedzorg”. Hij zegt niets over hun plaats in de planning van de werken, die afhangt van de verhouding tussen kosten en besparingen. Je zou kunnen veronderstellen dat de erfgoedbeperkingen die renovaties minder rendabel en dus later maken, maar de tekst laat niet toe dat te beweren. Dit kan niet worden bepaald."
+      },
+      "renovation-surface-audites": {
+        "text": "De 85 gebouwen die al een audit kregen, hebben allemaal een oppervlakte van meer dan 1.000 m².",
+        "explanation": "De tekst legt een audit op voor “elk gebouw van meer dan 1.000 m²”, maar verbiedt niet om kleinere gebouwen aan een audit te onderwerpen. Hij preciseert alleen: “De eerste audits hadden betrekking op 85 gebouwen.” Hun oppervlakte wordt niet vermeld. Niets laat dus toe te bevestigen of te ontkennen dat die 85 gebouwen allemaal groter zijn dan 1.000 m². Dit kan niet worden bepaald. Een verplichting voor een bepaalde categorie betekent niet dat alleen die categorie betrokken is."
+      }
+    }
+  }
+}
