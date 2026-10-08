@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { describeFigure, figureKey, isValidFigure, renderFigure } from '../assets/js/abstrait/figures.js';
-import { OPTION_LETTERS, createQuestion, createQuestionStream } from '../assets/js/abstrait/generator.js';
+import { SHAPES, describeFigure, figureKey, isValidFigure, renderFigure } from '../assets/js/abstrait/figures.js';
+import { OPTION_LETTERS, createQuestion, createQuestionStream, createSeededQuestion } from '../assets/js/abstrait/generator.js';
 import { RULES, SEQUENCE_LENGTH } from '../assets/js/abstrait/rules.js';
 import { createSeededRandom } from '../assets/js/lib/random.js';
 
@@ -46,10 +46,79 @@ const RULE_INVARIANTS = {
     figures.slice(2).forEach((f, i) => assert.equal(f.fill, figures[i].fill));
     assert.notEqual(figures[0].fill, figures[1].fill);
   },
+  'cycle-formes': (figures) => {
+    const period = figures[0].shape === figures[2].shape ? 2 : 3;
+    figures.slice(period).forEach((f, i) => assert.equal(f.shape, figures[i].shape));
+    assert.equal(new Set(figures.slice(0, period).map((f) => f.shape)).size, period);
+    assert.equal(new Set(figures.map((f) => f.fill)).size, 1);
+  },
+  cotes: (figures) => {
+    const sides = figures.map((f) => SHAPES[f.shape].sides);
+    assertConstantStep(sides);
+    assert.equal(Math.abs(sides[1] - sides[0]), 1);
+    assert.equal(new Set(figures.map((f) => f.fill)).size, 1);
+  },
+  'rotation-acceleree': (figures) => {
+    // Les angles ajoutés (45°, 90°, 135°, 180°) augmentent eux-mêmes d'un pas constant de 45°.
+    const steps = figures.slice(1).map((f, i) => f.rotation - figures[i].rotation);
+    assertConstantStep(steps, 360);
+    assert.ok([45, 315].includes(((steps[1] - steps[0]) % 360 + 360) % 360));
+    assert.equal(new Set(figures.map((f) => f.fill)).size, 1);
+  },
+  'points-couleur': (figures) => {
+    assertConstantStep(figures.map((f) => f.dots));
+    figures.slice(2).forEach((f, i) => assert.equal(f.fill, figures[i].fill));
+    assert.notEqual(figures[0].fill, figures[1].fill);
+    assert.equal(new Set(figures.map((f) => f.shape)).size, 1);
+  },
 };
 
-test('au moins trois règles logiques, chacune avec un invariant testé', () => {
-  assert.ok(RULES.length >= 3);
+/** Empreinte des questions d'une règle (série, propositions, bonne réponse, explication), sur 200 graines. */
+const fnv = (text) => {
+  let hash = 0x811c9dc5;
+  for (const char of text) hash = Math.imul(hash ^ char.codePointAt(0), 0x01000193) >>> 0;
+  return hash.toString(16).padStart(8, '0');
+};
+const fingerprint = (rule) =>
+  fnv(
+    Array.from({ length: 200 }, (_, i) => createSeededQuestion(rule, (i * 2654435761) % 2 ** 32))
+      .map((q) => [q.sequence.map(figureKey).join(';'), q.options.map(figureKey).join(';'), q.correctIndex, q.explanation].join('#'))
+      .join('\n'),
+  );
+
+/** Règles existantes et empreinte de leurs questions : les identifiants « règle/graine » déjà enregistrés en dépendent. */
+const ORIGINAL_FINGERPRINTS = {
+  rotation: 'cfcd43a4',
+  couleur: '0ff63822',
+  points: '6622e014',
+  deplacement: '86dbbc4a',
+  'rotation-couleur': 'b4d2ad7d',
+};
+
+test('les règles existantes produisent exactement les mêmes questions (identifiants stables)', () => {
+  for (const [id, expected] of Object.entries(ORIGINAL_FINGERPRINTS)) {
+    const rule = RULES.find((candidate) => candidate.id === id);
+    assert.ok(rule, `règle « ${id} » disparue`);
+    assert.equal(fingerprint(rule), expected, `la génération de la règle « ${id} » a changé`);
+  }
+});
+
+test('neuf règles, trois par niveau de difficulté (1, 2, 3)', () => {
+  assert.ok(RULES.length >= 9, `${RULES.length} règles seulement`);
+  assert.equal(new Set(RULES.map((rule) => rule.id)).size, RULES.length, 'identifiants de règle en double');
+  for (const level of [1, 2, 3]) {
+    assert.equal(RULES.filter((rule) => rule.difficulty === level).length, RULES.length / 3, `niveau ${level}`);
+  }
+});
+
+test('les polygones réguliers ont le nombre de sommets annoncé', () => {
+  for (const shape of Object.values(SHAPES).filter((candidate) => candidate.sides && candidate.svg.startsWith('<polygon'))) {
+    const points = /points="([^"]+)"/.exec(shape.svg)[1].trim().split(/\s+/);
+    assert.equal(points.length, shape.sides, shape.name);
+  }
+});
+
+test('chaque règle logique a un invariant testé', () => {
   RULES.forEach((rule) => assert.ok(RULE_INVARIANTS[rule.id], `invariant manquant pour « ${rule.id} »`));
 });
 

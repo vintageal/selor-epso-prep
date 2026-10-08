@@ -344,3 +344,14 @@ test('les questions numériques de l’examen mêlent les trois niveaux, environ
     }
   }
 });
+
+test('les séries abstraites de l’examen couvrent toutes les règles et mêlent les trois niveaux', () => {
+  for (let seed = 1; seed <= 40; seed += 1) {
+    const items = createExam(banks, { random: createSeededRandom(seed) }).filter((item) => item.type === 'abstrait');
+    assert.ok(new Set(items.map((item) => item.question.ruleId)).size >= Math.min(items.length, 9), `graine ${seed} : règles manquantes`);
+    for (const level of [1, 2, 3]) {
+      const count = items.filter((item) => item.question.difficulty === level).length;
+      assert.ok(count >= 3 && count <= 4, `graine ${seed} : ${count} série(s) de niveau ${level}`);
+    }
+  }
+});

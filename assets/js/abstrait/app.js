@@ -2,6 +2,7 @@
  * Module « Raisonnement abstrait » : interface d'entraînement.
  * Affiche une série, les 4 propositions, corrige immédiatement et explique la règle.
  */
+import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
@@ -9,7 +10,6 @@ import { OPTION_LETTERS, createQuestionStream, questionFromId } from './generato
 import { optionButton, revealedFigureCell, sequenceCells } from './view.js';
 
 const MODULE = 'abstrait';
-const DIFFICULTY_LABELS = { facile: 'Facile', moyen: 'Moyen', difficile: 'Difficile' };
 const KEY_TO_OPTION = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
 
 const ui = {
@@ -49,8 +49,7 @@ const showQuestion = () => {
   Object.assign(state, { question, number: state.number + 1, locked: false, shownAt: performance.now() });
   if (reviewing()) review.progress(state.reviewIndex, state.reviewQueue.length);
 
-  ui.difficulty.textContent = DIFFICULTY_LABELS[question.difficulty];
-  ui.difficulty.dataset.level = question.difficulty;
+  renderDifficulty(question.difficulty, ui.difficulty);
   renderSequence(question);
   renderOptions(question);
   ui.feedback.replaceChildren();
