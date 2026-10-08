@@ -12,6 +12,7 @@ import {
   frenchTypography,
   summarize,
 } from './quiz.js';
+import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
@@ -32,6 +33,7 @@ const ui = {
   passageTitle: $('[data-passage-title]'),
   passageBody: $('[data-passage-body]'),
   statementLabel: $('[data-statement-label]'),
+  statementLevel: $('[data-statement-level]'),
   statementText: $('[data-statement-text]'),
   choices: $('[data-choices]'),
   feedback: $('[data-feedback]'),
@@ -96,6 +98,8 @@ const showStep = () => {
 
   ui.statementLabel.textContent = `Affirmation ${step.statementIndex + 1} sur ${step.statementCount}`;
   ui.statementText.textContent = frenchTypography(step.statement.text);
+  renderDifficulty(step.statement.difficulty, ui.statementLevel);
+  ui.statementLevel.hidden = false;
 
   ui.choices.querySelectorAll('.choice').forEach((button) => {
     button.disabled = false;

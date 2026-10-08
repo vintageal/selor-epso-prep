@@ -4,10 +4,12 @@
  *
  * La banque de questions est stockée dans data/verbal.json :
  *   { passages: [{ id, title, theme, paragraphs: [...], statements: [
- *       { id, text, answer: 'vrai' | 'faux' | 'impossible', quotes: [...], explanation }
+ *       { id, text, answer: 'vrai' | 'faux' | 'impossible', difficulty: 1 | 2 | 3, quotes: [...], explanation }
  *   ] }] }
  * Chaque citation (`quotes`) doit reprendre à l'identique une phrase du texte.
+ * La difficulté (1 facile, 2 moyen, 3 difficile) s'affiche avec l'affirmation et équilibre le mode examen.
  */
+import { isDifficulty } from '../lib/difficulty.js';
 import { shuffle } from '../lib/random.js';
 
 export const ANSWERS = [
@@ -155,6 +157,7 @@ export function validateBank(bank) {
       registerId(statement.id, at);
       if (!statement.text) errors.push(`${at} : énoncé manquant.`);
       if (!answerLabel(statement.answer)) errors.push(`${at} : réponse « ${statement.answer} » invalide.`);
+      if (!isDifficulty(statement.difficulty)) errors.push(`${at} : difficulté 1, 2 ou 3 attendue.`);
       if (!statement.explanation) errors.push(`${at} : explication manquante.`);
       if (!Array.isArray(statement.quotes) || statement.quotes.length === 0) {
         errors.push(`${at} : aucune citation du texte.`);
