@@ -1,0 +1,106 @@
+<!doctype html>
+<!--
+  Page d'erreur bilingue servie par GitHub Pages pour toute adresse inexistante, quelle que soit sa profondeur
+  (par exemple /modules/inconnu/page). Seule exception à la règle des chemins relatifs : les ressources
+  et les liens utilisent l'adresse absolue du site, sinon ils seraient résolus depuis l'adresse demandée.
+  Tant que la version néerlandaise n'est pas activée (NL_PUBLIC, scripts/site/config.js), seule la partie française est rendue.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{t.fr:notFound.title}} — {{t.fr:site.brand}}{{#if nlPublic}} · {{t.nl:notFound.title}}{{/if}}</title>
+  <meta name="description" content="{{t.fr:notFound.description}}">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#132a50">
+  <link rel="icon" href="{{site}}/assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Feuille générée par Tailwind CSS (npm run build:css) à partir de src/css/ -->
+  <link rel="stylesheet" href="{{site}}/assets/css/app.css">
+</head>
+<body class="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased">
+  <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-900 focus:shadow-lg">
+    {{t.fr:site.skipLink}}
+  </a>
+
+  <!-- En-tête -->
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="{{site}}/" class="flex items-center gap-2.5 rounded-md">
+        <img src="{{site}}/assets/img/favicon.svg" alt="" width="36" height="36" class="h-9 w-9">
+        <span class="leading-tight">
+          <span class="block text-base font-bold tracking-tight text-brand-900">{{t.fr:site.brand}}</span>
+          <span class="block text-xs text-slate-500">{{t.fr:site.tagline}}</span>
+        </span>
+      </a>
+      <a href="{{site}}/#modules" class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-900">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span>{{t.fr:site.modules}}</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenu" class="mx-auto flex w-full {{#if nlPublic}}max-w-5xl{{else}}max-w-3xl{{/if}} flex-1 flex-col justify-center px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="grid gap-6{{#if nlPublic}} md:grid-cols-2{{/if}}">
+      <!-- Français -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm sm:p-8" aria-labelledby="erreur-titre" lang="fr">
+        <p class="text-sm font-semibold tracking-wider text-brand-600 uppercase">{{t.fr:notFound.kicker}}</p>
+        <h1 id="erreur-titre" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{{t.fr:notFound.title}}</h1>
+        <p class="mx-auto mt-3 max-w-xl text-slate-600">{{t.fr:notFound.text}}</p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:flex-col lg:flex-row">
+          <a href="{{site}}/" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800">
+            {{t.fr:notFound.backHome}}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="{{site}}/modules/examen/" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{{t.fr:notFound.startExam}}</a>
+        </div>
+        <nav class="mt-8 border-t border-slate-100 pt-6" aria-labelledby="modules-titre">
+          <h2 id="modules-titre" class="text-sm font-semibold text-slate-900">{{t.fr:notFound.modules}}</h2>
+          <ul class="mt-3 flex flex-wrap justify-center gap-2 text-sm">
+            <li><a href="{{site}}/modules/abstrait/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.fr:pages.abstrait}}</a></li>
+            <li><a href="{{site}}/modules/verbal/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.fr:pages.verbal}}</a></li>
+            <li><a href="{{site}}/modules/numerique/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.fr:pages.numerique}}</a></li>
+            <li><a href="{{site}}/modules/jugement/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.fr:pages.jugement}}</a></li>
+          </ul>
+        </nav>
+      </section>
+
+{{#if nlPublic}}      <!-- Nederlands -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm sm:p-8" aria-labelledby="fout-titel" lang="nl">
+        <p class="text-sm font-semibold tracking-wider text-brand-600 uppercase">{{t.nl:notFound.kicker}}</p>
+        <h2 id="fout-titel" class="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{{t.nl:notFound.title}}</h2>
+        <p class="mx-auto mt-3 max-w-xl text-slate-600">{{t.nl:notFound.text}}</p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:flex-col lg:flex-row">
+          <a href="{{site}}/nl/" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800">
+            {{t.nl:notFound.backHome}}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="{{site}}/nl/modules/examen/" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{{t.nl:notFound.startExam}}</a>
+        </div>
+        <nav class="mt-8 border-t border-slate-100 pt-6" aria-labelledby="modules-titel">
+          <h3 id="modules-titel" class="text-sm font-semibold text-slate-900">{{t.nl:notFound.modules}}</h3>
+          <ul class="mt-3 flex flex-wrap justify-center gap-2 text-sm">
+            <li><a href="{{site}}/nl/modules/abstrait/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.nl:pages.abstrait}}</a></li>
+            <li><a href="{{site}}/nl/modules/verbal/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.nl:pages.verbal}}</a></li>
+            <li><a href="{{site}}/nl/modules/numerique/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.nl:pages.numerique}}</a></li>
+            <li><a href="{{site}}/nl/modules/jugement/" class="inline-block rounded-md bg-slate-100 px-3 py-1.5 font-medium text-slate-700 transition hover:bg-brand-50 hover:text-brand-900">{{t.nl:pages.jugement}}</a></li>
+          </ul>
+        </nav>
+      </section>
+{{/if}}    </div>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-6 text-xs text-slate-500 sm:px-6{{#if nlPublic}} md:grid-cols-2{{/if}} lg:px-8">
+      <div class="space-y-1" lang="fr">
+        <p>{{t.fr:site.transparency}}</p>
+        <p>{{t.fr:site.independence}}</p>
+      </div>
+{{#if nlPublic}}      <div class="space-y-1" lang="nl">
+        <p>{{t.nl:site.transparency}}</p>
+        <p>{{t.nl:site.independence}}</p>
+      </div>
+{{/if}}    </div>
+  </footer>
+</body>
+</html>

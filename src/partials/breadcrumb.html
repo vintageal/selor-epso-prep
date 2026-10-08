@@ -1,0 +1,9 @@
+<nav aria-label="{{t:site.breadcrumb}}" class="text-sm text-slate-500">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="{{home}}index.html" class="rounded hover:text-brand-900">{{t:site.home}}</a></li>
+        <li aria-hidden="true">/</li>
+{{#if isProgressPage}}{{else}}        <li><a href="{{home}}index.html#modules" class="rounded hover:text-brand-900">{{t:site.modules}}</a></li>
+        <li aria-hidden="true">/</li>
+{{/if}}        <li aria-current="page" class="font-medium text-slate-700">{{t:$crumb}}</li>
+      </ol>
+    </nav>

@@ -5,10 +5,9 @@
 @import "tailwindcss" source(none);
 
 /* Fichiers analysés pour générer uniquement les classes réellement utilisées */
-@source "../../index.html";
-@source "../../404.html";
-@source "../../progression";
-@source "../../modules";
+@source "../pages";
+@source "../partials";
+@source "../i18n";
 @source "../../assets/js";
 
 /* Charte graphique (bleu institutionnel et accent doré) */

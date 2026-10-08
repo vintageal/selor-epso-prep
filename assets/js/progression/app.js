@@ -4,7 +4,7 @@
  * Toutes les données viennent du stockage du navigateur (store.js) : rien n'est envoyé.
  */
 import { createElement, moveFocusTo } from '../lib/dom.js';
-import { frenchTypography } from '../verbal/quiz.js';
+import { t, typography } from '../lib/i18n.js';
 import { examChart } from './chart.js';
 import { REVIEW_ALL, reviewHref } from './review.js';
 import {
@@ -26,10 +26,7 @@ const ROOT = '../';
 const HISTORY_SIZE = 10;
 const CHART_SIZE = 20;
 /** Libellé court d'un module : « Abstrait », « Verbal », « Numérique », « Jugement situationnel ». */
-const shortLabel = (module) => {
-  const label = MODULES[module].label.replace('Raisonnement ', '');
-  return label.charAt(0).toUpperCase() + label.slice(1);
-};
+const shortLabel = (module) => MODULES[module].shortLabel;
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
@@ -58,7 +55,6 @@ const ui = {
 };
 
 const store = createStore();
-const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
 const link = (href, text, className = 'font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-900') => {
   const anchor = createElement('a', className, text);
   anchor.href = href;
@@ -78,10 +74,10 @@ const renderOverview = (data, stats, review) => {
   const rated = MODULE_IDS.map((module) => stats[module]).filter((entry) => entry.answered > 0);
   const globalRate = answered ? rated.reduce((sum, entry) => sum + entry.rate * entry.answered, 0) / answered : null;
   ui.overview.replaceChildren(
-    tile('Questions faites', String(answered)),
-    tile('Taux de réussite', globalRate === null ? '–' : formatPercent(globalRate * 100)),
-    tile('Examens blancs', String(data.exams.length)),
-    tile('Erreurs à revoir', String(review.total)),
+    tile(t('progression.tiles.answered'), String(answered)),
+    tile(t('progression.tiles.rate'), globalRate === null ? '–' : formatPercent(globalRate * 100)),
+    tile(t('progression.tiles.exams'), String(data.exams.length)),
+    tile(t('progression.tiles.toReview'), String(review.total)),
   );
 };
 
@@ -89,30 +85,30 @@ const renderWeakPoint = (data) => {
   const weak = weakestModule(data);
   if (!weak) {
     ui.weakPoint.replaceChildren(
-      createElement('p', 'text-sm text-slate-600', frenchTypography(`Répondez à au moins ${WEAK_POINT_MIN_ANSWERS} questions d'un module pour identifier votre point faible.`)),
+      createElement('p', 'text-sm text-slate-600', typography(t('progression.weak.notEnough', { count: WEAK_POINT_MIN_ANSWERS }))),
     );
     return;
   }
   const { label, path } = MODULES[weak.module];
   ui.weakPoint.replaceChildren(
     createElement('p', 'text-lg font-semibold text-slate-900', label),
-    createElement('p', 'mt-1 text-sm text-slate-600', frenchTypography(`Votre catégorie la moins réussie : ${formatPercent(weak.rate * 100)} de réussite sur ${plural(weak.answered, 'question faite', 'questions faites')}.`)),
-    link(`${ROOT}${path}`, `Travailler le module « ${label} »`, 'mt-4 inline-flex items-center justify-center rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800'),
+    createElement('p', 'mt-1 text-sm text-slate-600', typography(t('progression.weak.text', { rate: formatPercent(weak.rate * 100), count: weak.answered }))),
+    link(`${ROOT}${path}`, typography(t('progression.weak.work', { module: label })), 'mt-4 inline-flex items-center justify-center rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800'),
   );
 };
 
 const renderReviewAll = (review) => {
   if (review.total === 0) {
-    ui.reviewAll.replaceChildren(createElement('p', 'text-sm text-slate-600', 'Aucune erreur à revoir pour le moment. Bravo !'));
+    ui.reviewAll.replaceChildren(createElement('p', 'text-sm text-slate-600', typography(t('progression.reviewAll.none'))));
     return;
   }
   const details = MODULE_IDS.filter((module) => review.counts[module] > 0)
-    .map((module) => `${shortLabel(module)} : ${review.counts[module]}`)
+    .map((module) => t('progression.reviewAll.count', { module: shortLabel(module), count: review.counts[module] }))
     .join(' · ');
   ui.reviewAll.replaceChildren(
-    createElement('p', 'text-lg font-semibold text-slate-900', plural(review.total, 'question ratée', 'questions ratées')),
-    createElement('p', 'mt-1 text-sm text-slate-600', frenchTypography(`${details}. Une question sort de la liste après ${REVIEW_STREAK} bonnes réponses consécutives.`)),
-    link(reviewHref(review.first, REVIEW_ALL, ROOT), `Revoir toutes mes erreurs (${review.total})`, 'mt-4 inline-flex items-center justify-center rounded-lg bg-accent-400 px-4 py-2.5 text-sm font-semibold text-brand-950 transition hover:bg-accent-300'),
+    createElement('p', 'text-lg font-semibold text-slate-900', t('progression.reviewAll.missed', { count: review.total })),
+    createElement('p', 'mt-1 text-sm text-slate-600', typography(t('progression.reviewAll.details', { details, streak: REVIEW_STREAK }))),
+    link(reviewHref(review.first, REVIEW_ALL, ROOT), t('progression.reviewAll.button', { count: review.total }), 'mt-4 inline-flex items-center justify-center rounded-lg bg-accent-400 px-4 py-2.5 text-sm font-semibold text-brand-950 transition hover:bg-accent-300'),
   );
 };
 
@@ -132,15 +128,15 @@ const renderModules = (stats) => {
       const { label, path } = MODULES[module];
       const card = createElement('li', 'flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm');
       const head = createElement('div', 'flex items-baseline justify-between gap-3');
-      head.append(createElement('h3', 'font-semibold text-slate-900', label), createElement('span', 'shrink-0 text-sm text-slate-500', plural(answered, 'question faite', 'questions faites')));
+      head.append(createElement('h3', 'font-semibold text-slate-900', label), createElement('span', 'shrink-0 text-sm text-slate-500', t('progression.module.answered', { count: answered })));
       const score = createElement('p', 'mt-3 flex items-baseline gap-2');
       score.append(
         createElement('span', 'text-2xl font-bold text-brand-900', rate === null ? '–' : formatPercent(rate * 100)),
-        createElement('span', 'text-sm text-slate-500', rate === null ? 'pas encore de réponse' : 'de réussite'),
+        createElement('span', 'text-sm text-slate-500', rate === null ? t('progression.module.noAnswer') : t('progression.module.success')),
       );
       const actions = createElement('p', 'mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm');
-      if (toReview > 0) actions.append(link(reviewHref(module, '1', ROOT), `Revoir mes erreurs (${toReview})`));
-      actions.append(link(`${ROOT}${path}`, answered ? 'S\'entraîner' : 'Commencer'));
+      if (toReview > 0) actions.append(link(reviewHref(module, '1', ROOT), t('review.start', { count: toReview })));
+      actions.append(link(`${ROOT}${path}`, answered ? t('progression.module.train') : t('progression.module.start')));
       card.append(head, score, meter(rate), actions);
       return card;
     }),
@@ -150,11 +146,11 @@ const renderModules = (stats) => {
 const renderExams = (data) => {
   const points = recentExams(data, CHART_SIZE)
     .reverse()
-    .map((exam) => ({ date: exam.date, percent: examPercent(exam), label: `${formatNumber(exam.score)} / ${exam.total} points` }));
+    .map((exam) => ({ date: exam.date, percent: examPercent(exam), label: t('progression.chart.points', { score: formatNumber(exam.score), total: exam.total }) }));
   if (points.length === 0) {
     ui.examChart.replaceChildren(
-      createElement('p', 'text-sm text-slate-600', 'Aucun examen blanc pour le moment. Votre score apparaîtra ici après chaque examen.'),
-      link(`${ROOT}modules/examen/index.html`, 'Passer un examen blanc', 'mt-3 inline-flex font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-900'),
+      createElement('p', 'text-sm text-slate-600', t('progression.examsEmpty')),
+      link(`${ROOT}modules/examen/index.html`, t('progression.takeExam'), 'mt-3 inline-flex font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-900'),
     );
     ui.historyTitle.hidden = true;
     ui.history.replaceChildren();
@@ -164,12 +160,12 @@ const renderExams = (data) => {
 
   const exams = recentExams(data, HISTORY_SIZE);
   ui.historyTitle.hidden = false;
-  ui.historyTitle.textContent = exams.length > 1 ? `Historique des ${exams.length} derniers examens` : 'Historique';
+  ui.historyTitle.textContent = exams.length > 1 ? t('progression.history.title', { count: exams.length }) : t('progression.history.titleOne');
   const wrapper = createElement('div', 'data-table-wrap');
   const table = createElement('table', 'data-table progress-table');
-  table.append(createElement('caption', 'sr-only', 'Historique des derniers examens blancs, du plus récent au plus ancien'));
+  table.append(createElement('caption', 'sr-only', t('progression.history.caption')));
   const head = createElement('tr');
-  for (const label of ['Date', 'Score', 'Réussite', 'Durée', ...MODULE_IDS.map(shortLabel)]) {
+  for (const label of [t('progression.history.date'), t('progression.history.score'), t('progression.history.rate'), t('progression.history.duration'), ...MODULE_IDS.map(shortLabel)]) {
     const cell = createElement('th', '', label);
     cell.scope = 'col';
     head.append(cell);
@@ -185,7 +181,7 @@ const renderExams = (data) => {
       date,
       createElement('td', '', `${formatNumber(exam.score)} / ${exam.total}`),
       createElement('td', '', formatPercent(examPercent(exam))),
-      createElement('td', '', `${formatDuration(exam.durationMs)}${exam.endReason === 'timeout' ? ' (temps écoulé)' : ''}`),
+      createElement('td', '', `${formatDuration(exam.durationMs)}${exam.endReason === 'timeout' ? ` ${t('progression.history.timeout')}` : ''}`),
       ...MODULE_IDS.map((module) => {
         const section = exam.sections[module];
         return createElement('td', '', section ? `${formatNumber(section.score)} / ${section.total}` : '–');
@@ -201,10 +197,10 @@ const renderExams = (data) => {
 const render = () => {
   ui.dataSection.hidden = !store.available;
   if (!store.available) {
-    ui.unavailable.textContent = frenchTypography(
+    ui.unavailable.textContent = typography(
       store.reason === 'newer'
-        ? 'Votre progression a été enregistrée par une version plus récente du site. Rechargez la page (ou videz le cache du navigateur) pour la consulter.'
-        : 'Le suivi de progression est désactivé : ce navigateur bloque le stockage local (navigation privée ou données bloquées). Les exercices et l\'examen restent utilisables normalement.',
+        ? t('progression.unavailable.newer')
+        : t('progression.unavailable.blocked'),
     );
     ui.unavailable.hidden = false;
     ui.empty.hidden = true;
@@ -232,7 +228,7 @@ const render = () => {
 
 const showStatus = (kind, message, details = []) => {
   const box = createElement('div', `data-status data-status--${kind}`);
-  box.append(createElement('p', 'font-semibold', frenchTypography(message)));
+  box.append(createElement('p', 'font-semibold', typography(message)));
   if (details.length > 0) {
     const list = createElement('ul', 'mt-2 list-disc space-y-1 pl-5');
     list.append(...details.map((detail) => createElement('li', '', detail)));
@@ -245,7 +241,7 @@ const showStatus = (kind, message, details = []) => {
 const confirmAction = ({ title, text, ok }) =>
   new Promise((resolve) => {
     ui.confirmTitle.textContent = title;
-    ui.confirmText.textContent = frenchTypography(text);
+    ui.confirmText.textContent = typography(text);
     ui.confirmOk.textContent = ok;
     const close = (result) => {
       ui.confirmOk.removeEventListener('click', onOk);
@@ -269,12 +265,12 @@ ui.exportButton.addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
   const anchor = createElement('a');
   anchor.href = url;
-  anchor.download = `progression-selor-epso-${new Date().toISOString().slice(0, 10)}.json`;
+  anchor.download = `${t('progression.data.fileName')}-${new Date().toISOString().slice(0, 10)}.json`;
   document.body.append(anchor);
   anchor.click();
   anchor.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  showStatus('success', 'Fichier exporté. Conservez-le, puis importez-le sur un autre appareil pour y retrouver votre progression.');
+  showStatus('success', t('progression.data.exported'));
 });
 
 ui.importButton.addEventListener('click', () => ui.importInput.click());
@@ -287,15 +283,15 @@ ui.importInput.addEventListener('change', async () => {
   try {
     text = await file.text();
   } catch {
-    showStatus('error', 'Impossible de lire ce fichier.');
+    showStatus('error', t('progression.data.unreadable'));
     return;
   }
   const current = store.getData();
   if (current && (current.answers.length > 0 || current.exams.length > 0)) {
     const confirmed = await confirmAction({
-      title: 'Remplacer votre progression ?',
-      text: 'La progression enregistrée sur cet appareil sera remplacée par celle du fichier. Exportez-la d\'abord si vous souhaitez la conserver.',
-      ok: 'Remplacer',
+      title: typography(t('progression.data.replaceTitle')),
+      text: t('progression.data.replaceText'),
+      ok: t('progression.data.replaceOk'),
     });
     if (!confirmed) {
       ui.importButton.focus();
@@ -305,18 +301,18 @@ ui.importInput.addEventListener('change', async () => {
   const result = store.importJson(text);
   if (result.ok) {
     render();
-    showStatus('success', `Progression importée : ${plural(result.data.answers.length, 'réponse')}, ${plural(result.data.exams.length, 'examen')} et ${plural(Object.keys(result.data.review).length, 'erreur')} à revoir.`);
+    showStatus('success', t('progression.data.imported', { answers: result.data.answers.length, exams: result.data.exams.length, review: Object.keys(result.data.review).length }));
   } else {
-    showStatus('error', 'Fichier refusé : il ne correspond pas à un export de progression valide. Votre progression actuelle n\'a pas été modifiée.', result.errors);
+    showStatus('error', t('progression.data.rejected'), result.errors);
   }
   ui.importButton.focus();
 });
 
 ui.reset.addEventListener('click', async () => {
   const confirmed = await confirmAction({
-    title: 'Réinitialiser votre progression ?',
-    text: 'Toutes vos réponses, vos examens et vos erreurs à revoir seront effacés de cet appareil. Cette action est définitive.',
-    ok: 'Tout effacer',
+    title: typography(t('progression.data.resetTitle')),
+    text: t('progression.data.resetText'),
+    ok: t('progression.data.resetOk'),
   });
   if (!confirmed) {
     ui.reset.focus();
@@ -324,7 +320,7 @@ ui.reset.addEventListener('click', async () => {
   }
   const done = store.reset();
   render();
-  showStatus(done ? 'success' : 'error', done ? 'Progression réinitialisée : toutes les données de suivi ont été effacées de cet appareil.' : 'La réinitialisation a échoué.');
+  showStatus(done ? 'success' : 'error', done ? t('progression.data.resetDone') : t('progression.data.resetFailed'));
   moveFocusTo(ui.title);
 });
 

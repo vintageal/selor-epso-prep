@@ -4,9 +4,9 @@
  */
 import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { t, typography } from '../lib/i18n.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
-import { frenchTypography } from '../verbal/quiz.js';
 import { OPTION_LETTERS, createQuestionStream, questionFromId } from './generator.js';
 import { optionButton, revealedFigureCell, sequenceCells } from './view.js';
 
@@ -74,16 +74,16 @@ const renderFeedback = ({ correctIndex, ruleTitle, explanation }, chosenIndex) =
   const box = createElement('div', 'feedback');
   box.dataset.result = isCorrect ? 'correct' : 'wrong';
   box.append(
-    createElement('p', 'feedback__title', isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse'),
+    createElement('p', 'feedback__title', t(isCorrect ? 'common.correctTitle' : 'common.wrongTitle')),
     createElement(
       'p',
       'feedback__answer',
       isCorrect
-        ? `La proposition ${correctLetter} complète bien la série.`
-        : `Vous avez choisi ${OPTION_LETTERS[chosenIndex]} ; la bonne réponse était ${correctLetter}.`,
+        ? t('abstrait.correctAnswer', { letter: correctLetter })
+        : t('common.wrongChoice', { chosen: OPTION_LETTERS[chosenIndex], correct: correctLetter }),
     ),
-    createElement('p', 'feedback__rule', `Règle : ${ruleTitle}`),
-    createElement('p', 'feedback__text', frenchTypography(explanation)),
+    createElement('p', 'feedback__rule', t('abstrait.rule', { title: ruleTitle })),
+    createElement('p', 'feedback__text', typography(explanation)),
   );
   ui.feedback.replaceChildren(box);
 };
@@ -107,8 +107,8 @@ const answer = (chosenIndex) => {
 
   ui.options.querySelectorAll('.option').forEach((button, index) => {
     button.disabled = true;
-    if (index === question.correctIndex) markOption(button, 'correct', 'Bonne réponse');
-    else if (index === chosenIndex) markOption(button, 'wrong', 'Votre choix');
+    if (index === question.correctIndex) markOption(button, 'correct', t('common.correctMark'));
+    else if (index === chosenIndex) markOption(button, 'wrong', t('common.yourChoice'));
     else button.dataset.state = 'dimmed';
   });
 
@@ -116,7 +116,7 @@ const answer = (chosenIndex) => {
   renderFeedback(question, chosenIndex);
   updateStats();
   const lastReviewed = reviewing() && state.reviewIndex === state.reviewQueue.length - 1;
-  ui.nextLabel.textContent = lastReviewed ? 'Terminer la révision' : 'Question suivante';
+  ui.nextLabel.textContent = t(lastReviewed ? 'common.finishReview' : 'common.nextQuestion');
   ui.nextWrapper.hidden = false;
   ui.next.focus();
 };

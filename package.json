@@ -1,14 +1,14 @@
 {
   "name": "selor-epso-prep",
   "private": true,
-  "description": "Entraînement gratuit aux tests de raisonnement SELOR (Travaillerpour.be) et EPSO",
+  "description": "Entraînement gratuit aux tests de raisonnement SELOR (Travaillerpour.be) et EPSO, en français et en néerlandais",
   "type": "module",
   "scripts": {
     "build:css": "tailwindcss -i src/css/main.css -o assets/css/app.css --minify",
     "watch:css": "tailwindcss -i src/css/main.css -o assets/css/app.css --watch",
     "build": "npm run build:css && node scripts/build-site.js",
-    "start": "npm run build:css && http-server -c-1 -p 8000 .",
-    "preview": "npm run build && http-server -c-1 -p 8000 dist",
+    "watch:site": "node scripts/build-site.js --watch",
+    "start": "npm run build && http-server -c-1 -p 8000 dist",
     "calculer:numerique": "node scripts/calculer-numerique.js",
     "test": "node --test"
   },

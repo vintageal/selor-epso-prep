@@ -2,6 +2,7 @@
  * Générateur de questions du module « Raisonnement abstrait ».
  * Aucune dépendance au DOM : réutilisable par le futur mode examen et testable sous Node.
  */
+import { getLocale } from '../lib/i18n.js';
 import { createSeededRandom, shuffle } from '../lib/random.js';
 import { figureKey, isValidFigure } from './figures.js';
 import { RULES } from './rules.js';
@@ -40,7 +41,7 @@ export function createQuestion(rule, random = Math.random) {
     answer,
     options,
     correctIndex: options.indexOf(answer),
-    explanation,
+    explanation: typeof explanation === 'string' ? explanation : explanation[getLocale()],
   };
 }
 

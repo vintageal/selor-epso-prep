@@ -1,0 +1,302 @@
+{
+  "site": {
+    "brand": "SELOR &amp; EPSO Prep",
+    "tagline": "Redeneertests",
+    "skipLink": "Naar de hoofdinhoud",
+    "navLabel": "Navigatie",
+    "myProgress": "Mijn voortgang",
+    "modules": "Modules",
+    "home": "Startpagina",
+    "breadcrumb": "Kruimelpad",
+    "languageLabel": "Taal van de website",
+    "fileWarning": "Deze module moet via een lokale webserver worden aangeboden (bijvoorbeeld met <code class=\"font-mono\">npm start</code>) en daarna via <code class=\"font-mono\">http://localhost</code> worden geopend. Zie de README.",
+    "fileWarningPage": "Deze pagina moet via een lokale webserver worden aangeboden (bijvoorbeeld met <code class=\"font-mono\">npm start</code>) en daarna via <code class=\"font-mono\">http://localhost</code> worden geopend. Zie de README.",
+    "transparency": "Je resultaten blijven op dit toestel: er wordt niets verzonden of gedeeld.",
+    "independence": "Onafhankelijk platform, niet verbonden aan de FOD BOSA (Werkenvoor.be, vroeger Selor) en evenmin aan het Europees Bureau voor personeelsselectie (EPSO).",
+    "footerNote": {
+      "numerique": "De gegevens in de oefeningen zijn fictief.",
+      "jugement": "De situaties zijn fictief en de antwoordsleutel werd opgesteld om mee te oefenen."
+    }
+  },
+  "meta": {
+    "ogImageAlt": "SELOR &amp; EPSO Prep: gratis oefenen voor logica- en redeneertests",
+    "home": {
+      "title": "SELOR &amp; EPSO Prep — Gratis oefenen voor redeneertests",
+      "description": "Oefen gratis voor de logica- en redeneertests bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: abstract, verbaal en numeriek redeneren, situationeel beoordelen en een examenmodus met tijdslimiet.",
+      "ogTitle": "SELOR &amp; EPSO Prep — Redeneertests",
+      "ogDescription": "Gratis oefenen voor tests in abstract, verbaal en numeriek redeneren en situationeel beoordelen, met een examenmodus met tijdslimiet."
+    },
+    "abstrait": {
+      "title": "Abstract redeneren — SELOR &amp; EPSO Prep",
+      "description": "Oefen gratis abstract redeneren (reeksen figuren) voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, met meteen de oplossing en uitleg.",
+      "ogTitle": "Abstract redeneren — SELOR &amp; EPSO Prep",
+      "ogDescription": "Oefen gratis abstract redeneren (reeksen figuren) voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, met meteen de oplossing en uitleg."
+    },
+    "verbal": {
+      "title": "Verbaal redeneren — SELOR &amp; EPSO Prep",
+      "description": "Oefen gratis verbaal redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: teksten, beweringen “Waar / Niet waar / Kan niet worden bepaald” en verbeteringen die de exacte zin uit de tekst citeren.",
+      "ogTitle": "Verbaal redeneren — SELOR &amp; EPSO Prep",
+      "ogDescription": "Oefen gratis verbaal redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: teksten, beweringen “Waar / Niet waar / Kan niet worden bepaald” en verbeteringen die de exacte zin uit de tekst citeren."
+    },
+    "numerique": {
+      "title": "Numeriek redeneren — SELOR &amp; EPSO Prep",
+      "description": "Oefen gratis numeriek redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: tabellen en grafieken, procentuele veranderingen, verhoudingen, gewogen gemiddelden en extrapolaties, met de berekening stap voor stap uitgelegd.",
+      "ogTitle": "Numeriek redeneren — SELOR &amp; EPSO Prep",
+      "ogDescription": "Oefen gratis numeriek redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: tabellen en grafieken, procentuele veranderingen, verhoudingen, gewogen gemiddelden en extrapolaties, met de berekening stap voor stap uitgelegd."
+    },
+    "jugement": {
+      "title": "Situationeel beoordelen — SELOR &amp; EPSO Prep",
+      "description": "Oefen gratis voor de situationele beoordelingstests (SJT) bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: realistische werksituaties, keuze van de meest en de minst gepaste actie, uitleg bij elke actie en bij de getoetste competenties.",
+      "ogTitle": "Situationeel beoordelen — SELOR &amp; EPSO Prep",
+      "ogDescription": "Oefen gratis voor de situationele beoordelingstests (SJT) bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: realistische werksituaties, keuze van de meest en de minst gepaste actie, uitleg bij elke actie en bij de getoetste competenties."
+    },
+    "examen": {
+      "title": "Examenmodus — SELOR &amp; EPSO Prep",
+      "description": "Leg een getimed proefexamen af: een mix van abstract, verbaal en numeriek redeneren en situationeel beoordelen, in omstandigheden zoals bij de tests van Werkenvoor.be (vroeger Selor) en EPSO, met een uitgebreide verbetering op het einde.",
+      "ogTitle": "Examenmodus — SELOR &amp; EPSO Prep",
+      "ogDescription": "Leg een getimed proefexamen af: een mix van abstract, verbaal en numeriek redeneren en situationeel beoordelen, in omstandigheden zoals bij de tests van Werkenvoor.be (vroeger Selor) en EPSO, met een uitgebreide verbetering op het einde."
+    },
+    "progression": {
+      "title": "Mijn voortgang — SELOR &amp; EPSO Prep",
+      "description": "Volg je voortgang voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, zonder registratie: score per module, evolutie van je proefexamens, je zwakke punt en het herbekijken van je fouten. Je resultaten blijven op je toestel.",
+      "ogTitle": "Mijn voortgang — SELOR &amp; EPSO Prep",
+      "ogDescription": "Volg je voortgang voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, zonder registratie: score per module, evolutie van je proefexamens, je zwakke punt en het herbekijken van je fouten. Je resultaten blijven op je toestel."
+    }
+  },
+  "pages": {
+    "abstrait": "Abstract redeneren",
+    "verbal": "Verbaal redeneren",
+    "numerique": "Numeriek redeneren",
+    "jugement": "Situationeel beoordelen",
+    "examen": "Examenmodus",
+    "progression": "Mijn voortgang"
+  },
+  "abstrait": {
+    "intro": "Bekijk de vier figuren, zoek de regel die ze met elkaar verbindt en kies daarna de figuur die de reeks aanvult.",
+    "question": "Welke figuur vult de reeks aan?",
+    "sequenceLabel": "Reeks figuren",
+    "options": "Antwoordmogelijkheden",
+    "shortcuts": "Tip: antwoord met de toetsen <kbd class=\"kbd\">1</kbd> tot <kbd class=\"kbd\">4</kbd> (of <kbd class=\"kbd\">A</kbd> tot <kbd class=\"kbd\">D</kbd>) en druk daarna op <kbd class=\"kbd\">Enter</kbd> om verder te gaan."
+  },
+  "common": {
+    "question": "Vraag",
+    "score": "Score",
+    "nextQuestion": "Volgende vraag",
+    "guidelines": "Nog even de instructies",
+    "loading": "Laden…",
+    "summaryTitle": "Resultaat van de reeks",
+    "restart": "Een nieuwe reeks starten",
+    "otherModules": "Andere modules"
+  },
+  "verbal": {
+    "intro": "Lees de tekst en geef aan of de bewering waar of niet waar is, of dat het niet kan worden bepaald. Baseer je daarbij <strong class=\"font-semibold text-slate-800\">uitsluitend</strong> op de tekst.",
+    "statText": "Tekst",
+    "loadingTexts": "Teksten laden…",
+    "fictional": "Originele tekst, geschreven om mee te oefenen: de vermelde organisaties en cijfers zijn fictief.",
+    "statement": "Bewering",
+    "choicesTitle": "Volgens de tekst is deze bewering…",
+    "nextStatement": "Volgende bewering",
+    "shortcuts": "Sneltoetsen: <kbd class=\"kbd\">W</kbd> <kbd class=\"kbd\">N</kbd> <kbd class=\"kbd\">?</kbd> (of <kbd class=\"kbd\">1</kbd> tot <kbd class=\"kbd\">3</kbd>), daarna <kbd class=\"kbd\">Enter</kbd>."
+  },
+  "numerique": {
+    "intro": "Analyseer de tabel of de grafiek en kies het juiste antwoord uit de vier mogelijkheden. Bij elke verbetering wordt de berekening stap voor stap uitgelegd.",
+    "statData": "Gegevens",
+    "loadingData": "Gegevens laden…",
+    "yourAnswer": "Je antwoord",
+    "shortcuts": "Sneltoetsen: <kbd class=\"kbd\">A</kbd> tot <kbd class=\"kbd\">D</kbd> (of <kbd class=\"kbd\">1</kbd> tot <kbd class=\"kbd\">4</kbd>), daarna <kbd class=\"kbd\">Enter</kbd>."
+  },
+  "jugement": {
+    "intro": "Lees de werksituatie en duid de <strong class=\"font-semibold text-slate-800\">meest gepaste</strong> en de <strong class=\"font-semibold text-slate-800\">minst gepaste</strong> actie aan. Daarna wordt elke actie toegelicht en gekoppeld aan de geëvalueerde competenties.",
+    "statSituation": "Situatie",
+    "statPoints": "Punten",
+    "loading": "Situaties laden…",
+    "validate": "Mijn keuzes bevestigen",
+    "nextSituation": "Volgende situatie"
+  },
+  "examen": {
+    "title": "Examenmodus met tijdslimiet",
+    "intro": "Een proefexamen in de omstandigheden van de echte test: gemengde vragen, beperkte tijd en geen verbetering vóór het einde.",
+    "statQuestions": "Vragen",
+    "statDuration": "Duur",
+    "statSections": "Onderdelen",
+    "mix": "10 vragen over abstract redeneren, 10 over verbaal redeneren, 10 over numeriek redeneren en 5 werksituaties, in willekeurige volgorde.",
+    "rules": {
+      "timer": "Eén strikte timer voor het hele examen: bij nul stopt het examen onmiddellijk en worden je antwoorden beoordeeld zoals ze op dat moment zijn.",
+      "navigation": "Ga vrij heen en weer tussen de vragen, laat een vraag open of markeer ze om ze later na te kijken.",
+      "scoring": "Elke vraag is 1 punt waard en een vraag zonder antwoord levert nul op, zonder bijkomende strafpunten. Een werksituatie levert tot 1 punt op, afhankelijk van hoe dicht je twee keuzes (“meest” en “minst gepast”) bij de antwoordsleutel liggen.",
+      "noCorrection": "Net als bij een echte selectieproef krijg je tijdens het examen geen verbetering: de score en de uitgebreide verbetering verschijnen op het einde."
+    },
+    "loadingQuestions": "Vragen laden…",
+    "loadError": "De vragen kunnen niet worden geladen. Controleer of de pagina via een webserver wordt aangeboden (zie de README) en laad ze daarna opnieuw.",
+    "paletteLabel": "Rechtstreeks naar een vraag",
+    "legend": {
+      "answered": "Beantwoord",
+      "partial": "Onvolledig",
+      "blank": "Niet beantwoord",
+      "flagged": "Na te kijken"
+    },
+    "questionTitle": "Vraag 1 van 35",
+    "flag": "Markeren om na te kijken",
+    "clear": "Mijn antwoord wissen",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "shortcuts": "Sneltoetsen: <kbd class=\"kbd\">←</kbd> <kbd class=\"kbd\">→</kbd> om te navigeren; <kbd class=\"kbd\">A</kbd>–<kbd class=\"kbd\">D</kbd> (abstract, numeriek) of <kbd class=\"kbd\">W</kbd> <kbd class=\"kbd\">N</kbd> <kbd class=\"kbd\">?</kbd> (verbaal) om te antwoorden; <kbd class=\"kbd\">Tab</kbd> en de pijltoetsen voor de werksituaties.",
+    "resultsTitle": "Examenresultaat",
+    "progressNote": "Resultaat bewaard in <a href=\"{{home}}progression/index.html\" class=\"font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-900\">Mijn voortgang</a>, alleen op dit toestel. Je fouten worden toegevoegd aan de te herbekijken fouten van de betreffende module.",
+    "restart": "Een nieuw examen afleggen",
+    "correctionTitle": "Uitgebreide verbetering",
+    "correctionIntro": "De gemiste of onbeantwoorde vragen zijn opengeklapt; klik op een vraag om ze te openen of te sluiten.",
+    "confirm": {
+      "title": "Het examen beëindigen?",
+      "cancel": "Verder met het examen",
+      "ok": "Beëindigen en mijn resultaten bekijken"
+    },
+    "bar": {
+      "answers": "antwoorden",
+      "answersShort": "antw.",
+      "timeLeft": "Resterende tijd",
+      "finish": "Klaar<span class=\"hidden sm:inline\"> met het examen</span>"
+    }
+  },
+  "progression": {
+    "cancel": "Annuleren",
+    "intro": "Je persoonlijke opvolging, zonder registratie: score per module, evolutie van je proefexamens en het herbekijken van je fouten.",
+    "empty": {
+      "title": "Nog geen resultaten",
+      "text": "Beantwoord enkele vragen in een module of leg een proefexamen af: je score, je examens en de fouten die je nog moet herbekijken, verschijnen dan hier.",
+      "chooseModule": "Kies een module",
+      "takeExam": "Een proefexamen afleggen"
+    },
+    "overview": "Overzicht",
+    "weakPoint": "Zwak punt",
+    "toReview": "Te herbekijken fouten",
+    "byModule": "Per module",
+    "byModuleIntro": "Vragen beantwoord bij het oefenen, het herbekijken van fouten en in proefexamens.",
+    "exams": "Proefexamens",
+    "examsIntro": "Score van elk examen, als percentage van de punten.",
+    "historyTitle": "Historiek van de laatste 10 examens",
+    "data": {
+      "title": "Mijn gegevens",
+      "intro": "Exporteer je voortgang naar een bestand om die te bewaren of over te zetten naar een ander toestel, en importeer dat bestand daarna op het toestel van je keuze.",
+      "export": "Mijn voortgang exporteren",
+      "import": "Een bestand importeren",
+      "reset": "Op nul zetten"
+    }
+  },
+  "home": {
+    "nav": {
+      "main": "Hoofdnavigatie",
+      "mobile": "Mobiele navigatie",
+      "how": "Hoe werkt het?",
+      "about": "Over deze website",
+      "openMenu": "Menu openen",
+      "closeMenu": "Menu sluiten"
+    },
+    "hero": {
+      "badge": "Werkenvoor.be (vroeger Selor) · EPSO",
+      "title": "Oefen <span class=\"text-accent-400\">gratis</span> voor logica- en redeneertests",
+      "text": "Bereid je voor op de selectieproeven van de Belgische overheid en de Europese instellingen met oefeningen in abstract, verbaal en numeriek redeneren en met werksituaties, in je eigen tempo of in examenomstandigheden.",
+      "start": "Beginnen met oefenen",
+      "discoverExam": "Ontdek de examenmodus",
+      "free": "100% gratis",
+      "noSignup": "Zonder registratie",
+      "devices": "Smartphone &amp; computer"
+    },
+    "preview": {
+      "question": "Welke figuur vult de reeks aan?",
+      "progress": "Vraag 3 van 20"
+    },
+    "modules": {
+      "kicker": "Oefenmodules",
+      "title": "Kies je test",
+      "intro": "Oefen elke vaardigheid apart en test jezelf daarna in echte omstandigheden met de examenmodus.",
+      "program": "Op het programma",
+      "abstrait": {
+        "text": "Bekijk een reeks figuren, ontdek de logische regel die ze verbindt en kies de figuur die de reeks aanvult.",
+        "tag1": "Reeksen figuren",
+        "tag2": "Rotaties &amp; patronen",
+        "tag3": "Correctie met uitleg",
+        "startLabel": " met abstract redeneren"
+      },
+      "start": "Beginnen",
+      "verbal": {
+        "text": "Lees een korte tekst en bepaal of elke bewering waar of niet waar is, of dat dit op basis van de tekst alleen niet kan worden bepaald.",
+        "tag1": "Teksten &amp; beweringen",
+        "tag2": "Waar · Niet waar · Kan niet worden bepaald",
+        "tag3": "Met citaat uit de tekst",
+        "startLabel": " met verbaal redeneren"
+      },
+      "numerique": {
+        "text": "Analyseer tabellen en grafieken met administratieve gegevens en bereken veranderingen, verhoudingen, gewogen gemiddelden en prognoses.",
+        "tag1": "Tabellen &amp; grafieken",
+        "tag2": "Stapsgewijze berekening",
+        "startLabel": " met numeriek redeneren"
+      },
+      "jugement": {
+        "text": "Kies in realistische kantoorsituaties (conflict, prioriteiten, relatie met je leidinggevende) de meest en de minst gepaste actie uit vier mogelijkheden.",
+        "tag1": "Meest · Minst gepast",
+        "tag2": "Gedragscompetenties",
+        "tag3": "Correctie met toelichting",
+        "startLabel": " met situationeel beoordelen"
+      },
+      "examen": {
+        "text": "Een test met tijdslimiet die abstracte, verbale en numerieke vragen en werksituaties combineert, zodat je oefent in omstandigheden die dicht bij de echte test liggen.",
+        "tag1": "35 vragen · 40 min",
+        "tag2": "Gemengde vragen",
+        "tag3": "Uitgebreide verbetering",
+        "start": "Een examen starten"
+      }
+    },
+    "progress": {
+      "title": "Volg je voortgang, zonder registratie",
+      "text": "Score per module, evolutie van je proefexamens, je zwakke punt en het herbekijken van je fouten tot je ze onder de knie hebt. Je resultaten blijven op dit toestel: er wordt niets verzonden of gedeeld."
+    },
+    "method": {
+      "kicker": "Methode",
+      "title": "Hoe werkt het?",
+      "step1": {
+        "title": "Kies een module",
+        "text": "Begin met de vaardigheid die je wil versterken: abstract, verbaal of numeriek redeneren, of situationeel beoordelen."
+      },
+      "step2": {
+        "title": "Oefen in je eigen tempo",
+        "text": "Beantwoord de vragen zonder druk en maak kennis met de verschillende soorten oefeningen."
+      },
+      "step3": {
+        "title": "Test jezelf in echte omstandigheden",
+        "text": "De examenmodus mengt de vragen en legt een tijdslimiet op, net als op de dag van de test."
+      }
+    },
+    "footer": {
+      "about": "Gratis oefentool die kandidaten helpt om vertrouwd te raken met de redeneertests die worden gebruikt bij de selecties voor de Belgische overheid en de Europese instellingen.",
+      "independence": "Onafhankelijk platform, niet verbonden aan de FOD BOSA (Werkenvoor.be, vroeger Selor) en evenmin aan het Europees Bureau voor personeelsselectie (EPSO). De oefeningen zijn origineel en geïnspireerd op de formats van openbare selectietests.",
+      "official": "Officiële websites",
+      "officialSelection": "Werkenvoor.be",
+      "newTab": "(nieuw tabblad)",
+      "backToTop": "Terug naar boven ↑",
+      "officialSelectionUrl": "https://werkenvoor.be/nl",
+      "epsoUrl": "https://eu-careers.europa.eu/nl"
+    }
+  },
+  "ogImage": {
+    "pageTitle": "Deelafbeelding",
+    "title": "Oefen <em>gratis</em> voor logica- en redeneertests",
+    "chips": {
+      "abstrait": "Abstract redeneren",
+      "verbal": "Verbaal",
+      "numerique": "Numeriek",
+      "jugement": "Situationeel beoordelen",
+      "examen": "Examenmodus"
+    },
+    "footer": "Onafhankelijk platform · 100% gratis · zonder registratie"
+  },
+  "notFound": {
+    "kicker": "Fout 404",
+    "title": "Pagina niet gevonden",
+    "description": "Deze pagina bestaat niet of werd verplaatst. Je vindt de oefenmodules voor de tests van Werkenvoor.be (vroeger Selor) en EPSO terug via de startpagina.",
+    "text": "De gevraagde pagina bestaat niet of werd verplaatst. Controleer het adres of ga verder met oefenen vanaf de startpagina.",
+    "backHome": "Terug naar de startpagina",
+    "startExam": "Een examen starten",
+    "modules": "Oefenmodules"
+  }
+}

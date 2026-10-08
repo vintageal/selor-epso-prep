@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{lang}}"{{#if htmlClass}} class="{{htmlClass}}"{{/if}}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{t:$metaTitle}}</title>
+  <meta name="description" content="{{t:$metaDescription}}">
+  <meta name="theme-color" content="#132a50">
+{{#if noindex}}  <meta name="robots" content="noindex">
+{{/if}}  <link rel="canonical" href="{{url}}">
+{{#if hasAlternates}}  {{alternates}}
+{{/if}}  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ogLocale}}">
+{{#if hasAlternates}}  <meta property="og:locale:alternate" content="{{ogLocaleAlternate}}">
+{{/if}}  <meta property="og:title" content="{{t:$metaOgTitle}}">
+  <meta property="og:description" content="{{t:$metaOgDescription}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{t:meta.ogImageAlt}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="{{root}}assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Feuille générée par Tailwind CSS (npm run build:css) à partir de src/css/ -->
+  <link rel="stylesheet" href="{{root}}assets/css/app.css">

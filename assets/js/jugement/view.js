@@ -4,12 +4,12 @@
  * (boutons radio natifs, accessibles au clavier) et correction détaillée.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
-import { frenchTypography } from '../verbal/quiz.js';
+import { t, typography } from '../lib/i18n.js';
 import { COMPETENCIES, OPTION_LETTERS, RANK_LABELS, scoreChoice } from './quiz.js';
 
 const PICKS = [
-  { kind: 'best', label: 'Plus adéquate', icon: 'M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3Zm0 0 4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1 6A2 2 0 0 1 17 20H7' },
-  { kind: 'worst', label: 'Moins adéquate', icon: 'M17 13V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-3Zm0 0-4 7a2 2 0 0 1-2-2v-3H6a2 2 0 0 1-2-2.3l1-6A2 2 0 0 1 7 4h10' },
+  { kind: 'best', icon: 'M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3Zm0 0 4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1 6A2 2 0 0 1 17 20H7' },
+  { kind: 'worst', icon: 'M17 13V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-3Zm0 0-4 7a2 2 0 0 1-2-2v-3H6a2 2 0 0 1-2-2.3l1-6A2 2 0 0 1 7 4h10' },
 ];
 
 const icon = (path) => {
@@ -20,7 +20,7 @@ const icon = (path) => {
 
 const competencyChips = (ids) => {
   const list = createElement('ul', 'sjt-chips');
-  list.setAttribute('aria-label', 'Compétences');
+  list.setAttribute('aria-label', t('jugement.competenciesLabel'));
   for (const id of ids) list.append(createElement('li', 'sjt-chip', COMPETENCIES[id].label));
   return list;
 };
@@ -28,9 +28,9 @@ const competencyChips = (ids) => {
 /** Contexte et situation, suivis de la consigne. */
 export function situationContent(scenario) {
   return [
-    createElement('p', 'sjt-context', frenchTypography(scenario.context)),
-    ...scenario.situation.map((paragraph) => createElement('p', 'sjt-situation', frenchTypography(paragraph))),
-    createElement('p', 'sjt-prompt', 'Parmi les actions suivantes, laquelle est la plus adéquate, et laquelle est la moins adéquate ?'),
+    createElement('p', 'sjt-context', typography(scenario.context)),
+    ...scenario.situation.map((paragraph) => createElement('p', 'sjt-situation', typography(paragraph))),
+    createElement('p', 'sjt-prompt', typography(t('jugement.prompt'))),
   ];
 }
 
@@ -55,16 +55,16 @@ export function actionPicker(scenario, order, { name, picks = {}, onChange = () 
     const letter = OPTION_LETTERS[position];
     const item = createElement('li', 'sjt-action');
     const body = createElement('div', 'sjt-action__body');
-    body.append(hiddenFromScreenReaders(createElement('span', 'sjt-action__letter', letter)), createElement('p', 'sjt-action__text', frenchTypography(action.text)));
+    body.append(hiddenFromScreenReaders(createElement('span', 'sjt-action__letter', letter)), createElement('p', 'sjt-action__text', typography(action.text)));
 
     const choices = createElement('div', 'sjt-action__picks');
-    for (const { kind, label, icon: path } of PICKS) {
+    for (const { kind, icon: path } of PICKS) {
       const pick = createElement('label', 'sjt-pick');
       pick.dataset.kind = kind;
       const input = createElement('input');
       Object.assign(input, { type: 'radio', name: `${name}-${kind}`, value: String(actionIndex), checked: picks[kind] === actionIndex });
       input.dataset.kind = kind;
-      pick.append(input, icon(path), createElement('span', 'sr-only', `Action ${letter} : `), label);
+      pick.append(input, icon(path), createElement('span', 'sr-only', typography(t('jugement.actionLabel', { letter }))), t(`jugement.picks.${kind}`));
       choices.append(pick);
     }
     item.append(body, choices);
@@ -86,15 +86,15 @@ export function actionPicker(scenario, order, { name, picks = {}, onChange = () 
 export function scoreLines(scenario, order, picks) {
   const { bestPoints, worstPoints, points, max } = scoreChoice(scenario, picks);
   const describe = (index, earned) => {
-    if (!Number.isInteger(index)) return 'aucun choix (0 point sur 2)';
+    if (!Number.isInteger(index)) return t('jugement.score.none');
     const letter = OPTION_LETTERS[order.indexOf(index)];
     const rank = RANK_LABELS[scenario.actions[index].rank].toLowerCase();
-    return `action ${letter}, classée « ${rank} » par la grille (${earned} point${earned > 1 ? 's' : ''} sur 2)`;
+    return t('jugement.score.action', { letter, rank, points: earned });
   };
   const list = createElement('ul', 'sjt-score-lines');
   list.append(
-    createElement('li', '', frenchTypography(`Plus adéquate : ${describe(picks?.best, bestPoints)}`)),
-    createElement('li', '', frenchTypography(`Moins adéquate : ${describe(picks?.worst, worstPoints)}`)),
+    createElement('li', '', typography(t('jugement.score.line', { pick: t('jugement.picks.best'), detail: describe(picks?.best, bestPoints) }))),
+    createElement('li', '', typography(t('jugement.score.line', { pick: t('jugement.picks.worst'), detail: describe(picks?.worst, worstPoints) }))),
   );
   return { points, max, list };
 }
@@ -112,13 +112,13 @@ export function correctionList(scenario, order, picks = {}) {
       hiddenFromScreenReaders(createElement('span', 'sjt-action__letter', OPTION_LETTERS[position])),
       createElement('span', 'sjt-rank', RANK_LABELS[action.rank]),
     );
-    if (picks?.best === actionIndex) head.append(createElement('span', 'sjt-yours', 'Votre choix : plus adéquate'));
-    if (picks?.worst === actionIndex) head.append(createElement('span', 'sjt-yours', 'Votre choix : moins adéquate'));
+    if (picks?.best === actionIndex) head.append(createElement('span', 'sjt-yours', typography(t('jugement.yourPick.best'))));
+    if (picks?.worst === actionIndex) head.append(createElement('span', 'sjt-yours', typography(t('jugement.yourPick.worst'))));
 
     item.append(
       head,
-      createElement('p', 'sjt-action__text', frenchTypography(action.text)),
-      createElement('p', 'sjt-explanation', frenchTypography(action.explanation)),
+      createElement('p', 'sjt-action__text', typography(action.text)),
+      createElement('p', 'sjt-explanation', typography(action.explanation)),
       competencyChips(action.competencies),
     );
     list.append(item);
@@ -133,14 +133,14 @@ export function debriefContent(scenario) {
   const ordered = [scenario.competency, ...scenario.competencies.filter((id) => id !== scenario.competency)];
   for (const id of ordered) {
     const item = createElement('li');
-    const main = id === scenario.competency ? ' (compétence principale)' : '';
-    item.append(createElement('strong', '', `${COMPETENCIES[id].label}${main} : `), frenchTypography(COMPETENCIES[id].description));
+    const label = id === scenario.competency ? t('jugement.mainCompetency', { label: COMPETENCIES[id].label }) : COMPETENCIES[id].label;
+    item.append(createElement('strong', '', typography(t('jugement.competencyLabel', { label }))), typography(COMPETENCIES[id].description));
     competencies.append(item);
   }
   return [
-    createElement('p', 'feedback__label', 'À retenir'),
-    createElement('p', 'feedback__text', frenchTypography(scenario.debrief)),
-    createElement('p', 'feedback__label', 'Compétences évaluées'),
+    createElement('p', 'feedback__label', t('jugement.keyPoint')),
+    createElement('p', 'feedback__text', typography(scenario.debrief)),
+    createElement('p', 'feedback__label', t('jugement.assessed')),
     competencies,
   ];
 }

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://selor-epso-prep.eu/sitemap.xml

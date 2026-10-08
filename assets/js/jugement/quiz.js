@@ -12,6 +12,7 @@
  * Les identifiants ne changent jamais : la progression enregistrée des candidats y fait référence.
  */
 import { isDifficulty } from '../lib/difficulty.js';
+import { t } from '../lib/i18n.js';
 import { shuffle } from '../lib/random.js';
 
 export const ACTION_COUNT = 4;
@@ -23,54 +24,25 @@ export const MAX_POINTS = 2 * PICK_POINTS;
 
 /**
  * Compétences comportementales, inspirées des compétences génériques évaluées lors des
- * sélections européennes (EPSO) et fédérales belges.
+ * sélections européennes (EPSO) et fédérales belges. Libellés et descriptions suivent la langue de la page.
  */
-export const COMPETENCIES = {
-  problemes: {
-    label: 'Résolution de problèmes',
-    description: 'Analyser une situation, en identifier les causes et choisir une solution adaptée et réaliste.',
-  },
-  equipe: {
-    label: 'Travail en équipe',
-    description: 'Coopérer, partager l\'information, soutenir ses collègues et traiter les désaccords de manière constructive.',
-  },
-  resultats: {
-    label: 'Orientation résultats',
-    description: 'Assumer ses responsabilités et viser l\'objectif, dans les délais et avec la qualité attendue.',
-  },
-  communication: {
-    label: 'Communication',
-    description: 'Transmettre une information claire et au bon moment, écouter et adapter son message à son interlocuteur.',
-  },
-  priorites: {
-    label: 'Organisation et priorités',
-    description: 'Hiérarchiser les tâches selon l\'urgence et l\'importance, et anticiper les conflits d\'agenda.',
-  },
-  service: {
-    label: 'Orientation service',
-    description: 'Répondre aux besoins des usagers avec respect, clarté et équité.',
-  },
-  integrite: {
-    label: 'Intégrité',
-    description: 'Agir de manière loyale, impartiale et transparente, dans le respect des règles et de la confidentialité.',
-  },
-  resilience: {
-    label: 'Résilience',
-    description: 'Garder son calme et son efficacité sous la pression, face aux critiques, aux imprévus et aux échecs, et en tirer des enseignements.',
-  },
-  leadership: {
-    label: 'Leadership',
-    description: 'Guider et mobiliser une équipe : fixer un cap, déléguer, soutenir chacun et assumer les décisions.',
-  },
-};
+export const COMPETENCIES = Object.fromEntries(
+  ['problemes', 'equipe', 'resultats', 'communication', 'priorites', 'service', 'integrite', 'resilience', 'leadership'].map((id) => [
+    id,
+    {
+      get label() {
+        return t(`jugement.competencies.${id}.label`);
+      },
+      get description() {
+        return t(`jugement.competencies.${id}.description`);
+      },
+    },
+  ]),
+);
 
-/** Libellé de la place d'une action dans la grille de référence. */
-export const RANK_LABELS = {
-  1: 'La plus adéquate',
-  2: 'Deuxième choix',
-  3: 'Troisième choix',
-  4: 'La moins adéquate',
-};
+/** Libellé de la place d'une action dans la grille de référence (dans la langue de la page). */
+export const RANK_LABELS = {};
+for (const rank of [1, 2, 3, 4]) Object.defineProperty(RANK_LABELS, rank, { enumerable: true, get: () => t(`jugement.ranks.${rank}`) });
 
 /** Index (dans `scenario.actions`) des actions attendues : la plus et la moins adéquate. */
 export const expectedPicks = (scenario) => ({

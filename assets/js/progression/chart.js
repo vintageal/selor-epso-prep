@@ -5,6 +5,7 @@
  * Alternative textuelle : résumé dans l'attribut aria-label, et tableau des données à côté.
  */
 import { createElement } from '../lib/dom.js';
+import { t } from '../lib/i18n.js';
 import { createTooltip, svgElement } from '../lib/viz.js';
 import { describeExamSeries, formatDate, formatPercent } from './stats.js';
 
@@ -20,7 +21,7 @@ export function examChart(points) {
   let geometry = null;
 
   const svg = svgElement('svg', { class: 'line-chart__svg', role: 'img', tabindex: 0 });
-  svg.setAttribute('aria-label', `${describeExamSeries(points)} Utilisez les flèches gauche et droite pour lire chaque examen.`);
+  svg.setAttribute('aria-label', `${describeExamSeries(points)} ${t('progression.chart.keyboard')}`);
   stage.append(svg);
 
   const showAt = (index) => {
@@ -33,7 +34,7 @@ export function examChart(points) {
     markers.forEach((marker, i) => marker.classList.toggle('is-active', i === activeIndex));
     const point = points[activeIndex];
     tooltip.show(
-      `Examen ${activeIndex + 1} · ${formatDate(point.date)}`,
+      t('progression.chart.tooltip', { index: activeIndex + 1, date: formatDate(point.date) }),
       [{ label: point.label, value: formatPercent(point.percent), key: 'line', series: 1 }],
       x(activeIndex),
       y(point.percent),

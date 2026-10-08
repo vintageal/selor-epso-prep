@@ -5,14 +5,14 @@
  */
 import { renderDifficulty } from '../lib/difficulty.js';
 import { createElement, moveFocusTo } from '../lib/dom.js';
+import { bankUrl, t, typography } from '../lib/i18n.js';
 import { createReviewControls, requestedReview } from '../progression/review.js';
 import { createStore } from '../progression/store.js';
-import { frenchTypography } from '../verbal/quiz.js';
 import { COMPETENCIES, MAX_POINTS, buildSteps, isComplete, scoreChoice, summarize } from './quiz.js';
 import { actionPicker, correctionList, debriefContent, scoreLines, situationContent } from './view.js';
 
 const MODULE = 'jugement';
-const BANK_URL = new URL('../../../data/jugement.json', import.meta.url);
+const BANK_URL = bankUrl('jugement');
 
 const $ = (selector) => document.querySelector(selector);
 const ui = {
@@ -49,13 +49,8 @@ const currentStep = () => state.steps[state.index];
 /* ----- Rendu ----- */
 
 const renderGuidelines = () => {
-  const items = [
-    'Lisez la situation, puis désignez l\'action la plus adéquate et l\'action la moins adéquate parmi les quatre proposées.',
-    `Chaque choix rapporte jusqu'à 2 points selon sa proximité avec la grille de référence, soit ${MAX_POINTS} points par situation : 2 points pour l'action attendue, 1 point pour sa voisine dans le classement, 0 sinon.`,
-    'Répondez comme vous agiriez réellement, dans le respect de votre rôle, de la ligne hiérarchique et des règles de l\'administration.',
-    'La grille a été élaborée pour l\'entraînement à partir des compétences génériques évaluées lors des sélections ; elle ne reproduit pas une grille officielle.',
-  ];
-  ui.guidelines.replaceChildren(...items.map((text) => createElement('li', '', frenchTypography(text))));
+  const items = [t('jugement.guidelines.read'), t('jugement.guidelines.points', { max: MAX_POINTS }), t('jugement.guidelines.honest'), t('jugement.guidelines.grid')];
+  ui.guidelines.replaceChildren(...items.map((text) => createElement('li', '', typography(text))));
 };
 
 const updateStats = () => {
@@ -68,7 +63,7 @@ const updateStats = () => {
 const updateValidate = () => {
   const complete = isComplete(state.picks);
   ui.validate.disabled = !complete;
-  ui.hint.textContent = complete ? '' : 'Choisissez une action « plus adéquate » et une action « moins adéquate ».';
+  ui.hint.textContent = complete ? '' : typography(t('jugement.validateHint'));
 };
 
 const showStep = () => {
@@ -77,8 +72,8 @@ const showStep = () => {
   ui.theme.textContent = scenario.theme;
   renderDifficulty(scenario.difficulty, ui.level);
   ui.level.hidden = false;
-  ui.count.textContent = `Situation ${index + 1} sur ${count}`;
-  ui.title.textContent = frenchTypography(scenario.title);
+  ui.count.textContent = t('jugement.situationCount', { index: index + 1, count });
+  ui.title.textContent = typography(scenario.title);
   ui.situation.replaceChildren(...situationContent(scenario));
   ui.actions.replaceChildren(
     actionPicker(scenario, order, {
@@ -99,9 +94,9 @@ const showStep = () => {
 };
 
 const verdict = (points) => {
-  if (points === MAX_POINTS) return 'Excellent jugement : vos deux choix correspondent à la grille.';
-  if (points >= MAX_POINTS / 2) return 'Bon jugement, à affiner : relisez les explications des actions les mieux classées.';
-  return 'Jugement à retravailler : comparez votre raisonnement aux explications ci-dessous.';
+  if (points === MAX_POINTS) return t('jugement.verdict.max');
+  if (points >= MAX_POINTS / 2) return t('jugement.verdict.half');
+  return t('jugement.verdict.low');
 };
 
 const validate = () => {
@@ -127,8 +122,8 @@ const validate = () => {
   box.dataset.result = points === MAX_POINTS ? 'correct' : points === 0 ? 'wrong' : 'partial';
   const lines = scoreLines(scenario, order, state.picks);
   box.append(
-    createElement('p', 'feedback__title', `${points} point${points > 1 ? 's' : ''} sur ${max}`),
-    createElement('p', 'feedback__answer', verdict(points)),
+    createElement('p', 'feedback__title', t('jugement.points', { points, max })),
+    createElement('p', 'feedback__answer', typography(verdict(points))),
     lines.list,
     ...debriefContent(scenario),
   );
@@ -136,7 +131,7 @@ const validate = () => {
   ui.feedback.replaceChildren(box);
 
   ui.validateWrapper.hidden = true;
-  ui.nextLabel.textContent = state.steps[state.index + 1] ? 'Situation suivante' : 'Voir le bilan';
+  ui.nextLabel.textContent = t(state.steps[state.index + 1] ? 'jugement.nextSituation' : 'common.seeSummary');
   ui.nextWrapper.hidden = false;
   updateStats();
   moveFocusTo(box);
@@ -148,14 +143,9 @@ const showSummary = () => {
   ui.summaryScore.textContent = `${points} / ${max}`;
   const assessed = Object.entries(byCompetency).filter(([, stats]) => stats.max > 0);
   const weakest = [...assessed].sort(([, a], [, b]) => a.points / a.max - b.points / b.max)[0];
-  const message =
-    rate >= 0.8
-      ? 'Excellent : vos choix reflètent un jugement professionnel solide et loyal.'
-      : rate >= 0.6
-        ? 'Bon résultat : relisez les situations où vous avez perdu des points pour affiner votre jugement.'
-        : 'Continuez à vous entraîner : les explications montrent les réflexes attendus d\'un agent public.';
-  const focus = weakest && weakest[1].points < weakest[1].max ? ` Compétence à travailler : ${COMPETENCIES[weakest[0]].label.toLowerCase()}.` : '';
-  ui.summaryMessage.textContent = frenchTypography(message + focus);
+  const message = rate >= 0.8 ? t('jugement.summary.excellent') : rate >= 0.6 ? t('jugement.summary.good') : t('jugement.summary.keepGoing');
+  const focus = weakest && weakest[1].points < weakest[1].max ? ` ${t('jugement.summary.focus', { label: COMPETENCIES[weakest[0]].label.toLowerCase() })}` : '';
+  ui.summaryMessage.textContent = typography(message + focus);
   ui.summaryDetails.replaceChildren(
     ...assessed.map(([id, stats]) => {
       const tile = createElement('div', 'summary-stat');
@@ -242,8 +232,6 @@ try {
   else startSeries();
 } catch (error) {
   console.error('Chargement de la banque de situations impossible :', error);
-  ui.theme.textContent = 'Erreur';
-  ui.situation.replaceChildren(
-    createElement('p', 'text-red-700', 'Impossible de charger les situations. Vérifiez que la page est servie par un serveur web (voir le README), puis rechargez-la.'),
-  );
+  ui.theme.textContent = t('common.error');
+  ui.situation.replaceChildren(createElement('p', 'text-red-700', t('jugement.loadError')));
 }

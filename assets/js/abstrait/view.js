@@ -3,6 +3,7 @@
  * partagés par le module d'entraînement et le mode examen.
  */
 import { createElement, hiddenFromScreenReaders } from '../lib/dom.js';
+import { t } from '../lib/i18n.js';
 import { describeFigure, renderFigure } from './figures.js';
 import { OPTION_LETTERS } from './generator.js';
 
@@ -14,7 +15,7 @@ const figureCell = (position, description, fillBox) => {
   cell.append(
     box,
     hiddenFromScreenReaders(createElement('span', 'figure-cell__index', String(position))),
-    createElement('span', 'sr-only', `Figure ${position} : ${description}`),
+    createElement('span', 'sr-only', t('abstrait.figure', { position, description })),
   );
   return cell;
 };
@@ -38,7 +39,7 @@ export const sequenceCells = ({ sequence, answer }, { reveal = false } = {}) => 
   if (reveal) {
     last = revealedFigureCell(answer, position);
   } else {
-    last = figureCell(position, 'à trouver', (box) => {
+    last = figureCell(position, t('abstrait.missing'), (box) => {
       box.append(createElement('span', 'figure-cell__mark', '?'));
     });
     last.classList.add('figure-cell--missing');
@@ -54,6 +55,6 @@ export const optionButton = (figure, index) => {
   button.dataset.index = String(index);
   button.append(hiddenFromScreenReaders(createElement('span', 'option__letter', OPTION_LETTERS[index])));
   button.insertAdjacentHTML('beforeend', renderFigure(figure));
-  button.append(createElement('span', 'sr-only', `Proposition ${OPTION_LETTERS[index]} : ${describeFigure(figure)}`));
+  button.append(createElement('span', 'sr-only', t('common.option', { letter: OPTION_LETTERS[index], text: describeFigure(figure) })));
   return button;
 };

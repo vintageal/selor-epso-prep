@@ -1,0 +1,302 @@
+{
+  "site": {
+    "brand": "Prépa SELOR &amp; EPSO",
+    "tagline": "Tests de raisonnement",
+    "skipLink": "Aller au contenu principal",
+    "navLabel": "Navigation",
+    "myProgress": "Ma progression",
+    "modules": "Modules",
+    "home": "Accueil",
+    "breadcrumb": "Fil d'Ariane",
+    "languageLabel": "Langue du site",
+    "fileWarning": "Ce module doit être servi par un serveur web local (par exemple avec <code class=\"font-mono\">npm start</code>), puis ouvert via <code class=\"font-mono\">http://localhost</code>. Voir le README.",
+    "fileWarningPage": "Cette page doit être servie par un serveur web local (par exemple avec <code class=\"font-mono\">npm start</code>), puis ouverte via <code class=\"font-mono\">http://localhost</code>. Voir le README.",
+    "transparency": "Vos résultats restent sur cet appareil&nbsp;: rien n'est envoyé ni partagé.",
+    "independence": "Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO).",
+    "footerNote": {
+      "numerique": "Les données des exercices sont fictives.",
+      "jugement": "Les situations sont fictives et la grille de correction a été élaborée pour l'entraînement."
+    }
+  },
+  "meta": {
+    "ogImageAlt": "Prépa SELOR &amp; EPSO : entraînement gratuit aux tests de logique et de raisonnement",
+    "home": {
+      "title": "Prépa SELOR &amp; EPSO — Entraînement gratuit aux tests de raisonnement",
+      "description": "Entraînez-vous gratuitement aux tests de logique et de raisonnement des sélections SELOR (Travaillerpour.be) et EPSO : raisonnement abstrait, verbal et numérique, jugement situationnel et mode examen chronométré.",
+      "ogTitle": "Prépa SELOR &amp; EPSO — Tests de raisonnement",
+      "ogDescription": "Entraînement gratuit aux tests de raisonnement abstrait, verbal et numérique et de jugement situationnel, avec un mode examen chronométré."
+    },
+    "abstrait": {
+      "title": "Raisonnement abstrait — Prépa SELOR &amp; EPSO",
+      "description": "Entraînez-vous gratuitement au raisonnement abstrait (séries de formes) des tests SELOR (Travaillerpour.be) et EPSO, avec correction et explication immédiates.",
+      "ogTitle": "Raisonnement abstrait — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Entraînez-vous gratuitement au raisonnement abstrait (séries de formes) des tests SELOR (Travaillerpour.be) et EPSO, avec correction et explication immédiates."
+    },
+    "verbal": {
+      "title": "Raisonnement verbal — Prépa SELOR &amp; EPSO",
+      "description": "Entraînez-vous gratuitement au raisonnement verbal des tests SELOR (Travaillerpour.be) et EPSO : textes, affirmations « Vrai / Faux / On ne peut pas savoir » et corrections citant la phrase exacte du texte.",
+      "ogTitle": "Raisonnement verbal — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Entraînez-vous gratuitement au raisonnement verbal des tests SELOR (Travaillerpour.be) et EPSO : textes, affirmations « Vrai / Faux / On ne peut pas savoir » et corrections citant la phrase exacte du texte."
+    },
+    "numerique": {
+      "title": "Raisonnement numérique — Prépa SELOR &amp; EPSO",
+      "description": "Entraînez-vous gratuitement au raisonnement numérique des tests SELOR (Travaillerpour.be) et EPSO : tableaux et graphiques, taux de variation, ratios, moyennes pondérées et extrapolations, avec le calcul détaillé étape par étape.",
+      "ogTitle": "Raisonnement numérique — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Entraînez-vous gratuitement au raisonnement numérique des tests SELOR (Travaillerpour.be) et EPSO : tableaux et graphiques, taux de variation, ratios, moyennes pondérées et extrapolations, avec le calcul détaillé étape par étape."
+    },
+    "jugement": {
+      "title": "Jugement situationnel — Prépa SELOR &amp; EPSO",
+      "description": "Entraînez-vous gratuitement aux tests de jugement situationnel (SJT) des sélections SELOR (Travaillerpour.be) et EPSO : situations professionnelles réalistes, choix de l'action la plus et la moins adéquate, explication de chaque action et des compétences évaluées.",
+      "ogTitle": "Jugement situationnel — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Entraînez-vous gratuitement aux tests de jugement situationnel (SJT) des sélections SELOR (Travaillerpour.be) et EPSO : situations professionnelles réalistes, choix de l'action la plus et la moins adéquate, explication de chaque action et des compétences évaluées."
+    },
+    "examen": {
+      "title": "Mode examen — Prépa SELOR &amp; EPSO",
+      "description": "Passez un examen blanc chronométré mêlant raisonnement abstrait, verbal, numérique et jugement situationnel, dans les conditions des tests SELOR (Travaillerpour.be) et EPSO, avec correction détaillée à la fin.",
+      "ogTitle": "Mode examen — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Passez un examen blanc chronométré mêlant raisonnement abstrait, verbal, numérique et jugement situationnel, dans les conditions des tests SELOR (Travaillerpour.be) et EPSO, avec correction détaillée à la fin."
+    },
+    "progression": {
+      "title": "Ma progression — Prépa SELOR &amp; EPSO",
+      "description": "Suivez votre progression aux tests SELOR (Travaillerpour.be) et EPSO, sans inscription : réussite par module, évolution de vos examens blancs, point faible et révision de vos erreurs. Vos résultats restent sur votre appareil.",
+      "ogTitle": "Ma progression — Prépa SELOR &amp; EPSO",
+      "ogDescription": "Suivez votre progression aux tests SELOR (Travaillerpour.be) et EPSO, sans inscription : réussite par module, évolution de vos examens blancs, point faible et révision de vos erreurs. Vos résultats restent sur votre appareil."
+    }
+  },
+  "pages": {
+    "abstrait": "Raisonnement abstrait",
+    "verbal": "Raisonnement verbal",
+    "numerique": "Raisonnement numérique",
+    "jugement": "Jugement situationnel",
+    "examen": "Mode examen",
+    "progression": "Ma progression"
+  },
+  "abstrait": {
+    "intro": "Observez les quatre figures, trouvez la règle qui les relie, puis choisissez celle qui complète la série.",
+    "question": "Quelle figure complète la série&nbsp;?",
+    "sequenceLabel": "Série de figures",
+    "options": "Propositions",
+    "shortcuts": "Astuce&nbsp;: répondez avec les touches <kbd class=\"kbd\">1</kbd> à <kbd class=\"kbd\">4</kbd> (ou <kbd class=\"kbd\">A</kbd> à <kbd class=\"kbd\">D</kbd>), puis <kbd class=\"kbd\">Entrée</kbd> pour continuer."
+  },
+  "common": {
+    "question": "Question",
+    "score": "Score",
+    "nextQuestion": "Question suivante",
+    "guidelines": "Rappel des consignes",
+    "loading": "Chargement…",
+    "summaryTitle": "Bilan de la série",
+    "restart": "Recommencer une série",
+    "otherModules": "Autres modules"
+  },
+  "verbal": {
+    "intro": "Lisez le texte, puis indiquez si l'affirmation est vraie, fausse, ou si l'on ne peut pas savoir, en vous fondant <strong class=\"font-semibold text-slate-800\">uniquement</strong> sur le texte.",
+    "statText": "Texte",
+    "loadingTexts": "Chargement des textes…",
+    "fictional": "Texte original rédigé pour l'entraînement : les organismes et les chiffres cités sont fictifs.",
+    "statement": "Affirmation",
+    "choicesTitle": "Selon le texte, cette affirmation est…",
+    "nextStatement": "Affirmation suivante",
+    "shortcuts": "Raccourcis&nbsp;: <kbd class=\"kbd\">V</kbd> <kbd class=\"kbd\">F</kbd> <kbd class=\"kbd\">?</kbd> (ou <kbd class=\"kbd\">1</kbd> à <kbd class=\"kbd\">3</kbd>), puis <kbd class=\"kbd\">Entrée</kbd>."
+  },
+  "numerique": {
+    "intro": "Analysez le tableau ou le graphique, puis choisissez la bonne réponse parmi les quatre propositions. Chaque correction détaille le calcul étape par étape.",
+    "statData": "Données",
+    "loadingData": "Chargement des données…",
+    "yourAnswer": "Votre réponse",
+    "shortcuts": "Raccourcis&nbsp;: <kbd class=\"kbd\">A</kbd> à <kbd class=\"kbd\">D</kbd> (ou <kbd class=\"kbd\">1</kbd> à <kbd class=\"kbd\">4</kbd>), puis <kbd class=\"kbd\">Entrée</kbd>."
+  },
+  "jugement": {
+    "intro": "Lisez la situation professionnelle, puis désignez l'action <strong class=\"font-semibold text-slate-800\">la plus adéquate</strong> et l'action <strong class=\"font-semibold text-slate-800\">la moins adéquate</strong>. Chaque action est ensuite expliquée et reliée aux compétences évaluées.",
+    "statSituation": "Situation",
+    "statPoints": "Points",
+    "loading": "Chargement des situations…",
+    "validate": "Valider mes choix",
+    "nextSituation": "Situation suivante"
+  },
+  "examen": {
+    "title": "Mode examen chronométré",
+    "intro": "Un examen blanc dans les conditions de l'épreuve&nbsp;: questions mélangées, temps limité, et aucune correction avant la fin.",
+    "statQuestions": "Questions",
+    "statDuration": "Durée",
+    "statSections": "Épreuves",
+    "mix": "10 questions de raisonnement abstrait, 10 de raisonnement verbal, 10 de raisonnement numérique et 5 situations de jugement, dans un ordre aléatoire.",
+    "rules": {
+      "timer": "Un chronomètre global strict&nbsp;: à zéro, l'examen s'arrête immédiatement et vos réponses sont notées en l'état.",
+      "navigation": "Naviguez librement entre les questions, laissez-en une vide ou marquez-la «&nbsp;à revoir&nbsp;» pour y revenir plus tard.",
+      "scoring": "Chaque question vaut 1&nbsp;point et une question sans réponse vaut zéro, sans pénalité supplémentaire. Une situation de jugement rapporte jusqu'à 1&nbsp;point selon la proximité de vos deux choix («&nbsp;plus&nbsp;» et «&nbsp;moins adéquate&nbsp;») avec la grille de référence.",
+      "noCorrection": "Comme au concours, aucune correction pendant l'épreuve&nbsp;: le score et la correction détaillée s'affichent à la fin."
+    },
+    "loadingQuestions": "Chargement des questions…",
+    "loadError": "Impossible de charger les questions. Vérifiez que la page est servie par un serveur web (voir le README), puis rechargez-la.",
+    "paletteLabel": "Accès direct aux questions",
+    "legend": {
+      "answered": "Répondue",
+      "partial": "Incomplète",
+      "blank": "Sans réponse",
+      "flagged": "À revoir"
+    },
+    "questionTitle": "Question 1 sur 35",
+    "flag": "Marquer à revoir",
+    "clear": "Effacer ma réponse",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "shortcuts": "Raccourcis&nbsp;: <kbd class=\"kbd\">←</kbd> <kbd class=\"kbd\">→</kbd> pour naviguer&nbsp;; <kbd class=\"kbd\">A</kbd>–<kbd class=\"kbd\">D</kbd> (abstrait, numérique) ou <kbd class=\"kbd\">V</kbd> <kbd class=\"kbd\">F</kbd> <kbd class=\"kbd\">?</kbd> (verbal) pour répondre&nbsp;; <kbd class=\"kbd\">Tab</kbd> et flèches pour les situations de jugement.",
+    "resultsTitle": "Bilan d'examen",
+    "progressNote": "Résultat enregistré dans <a href=\"{{home}}progression/index.html\" class=\"font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-900\">Ma progression</a>, sur cet appareil uniquement. Vos erreurs rejoignent la révision de chaque module.",
+    "restart": "Passer un nouvel examen",
+    "correctionTitle": "Correction détaillée",
+    "correctionIntro": "Les questions manquées ou laissées sans réponse sont dépliées&nbsp;; cliquez sur une question pour l'ouvrir ou la refermer.",
+    "confirm": {
+      "title": "Terminer l'examen&nbsp;?",
+      "cancel": "Continuer l'examen",
+      "ok": "Terminer et voir mes résultats"
+    },
+    "bar": {
+      "answers": "réponses",
+      "answersShort": "rép.",
+      "timeLeft": "Temps restant",
+      "finish": "Terminer<span class=\"hidden sm:inline\"> l'examen</span>"
+    }
+  },
+  "progression": {
+    "cancel": "Annuler",
+    "intro": "Votre suivi personnel, sans inscription&nbsp;: réussite par module, évolution de vos examens blancs et révision de vos erreurs.",
+    "empty": {
+      "title": "Pas encore de résultats",
+      "text": "Répondez à quelques questions dans un module ou passez un examen blanc&nbsp;: votre réussite, vos examens et vos erreurs à revoir apparaîtront ici.",
+      "chooseModule": "Choisir un module",
+      "takeExam": "Passer un examen blanc"
+    },
+    "overview": "Vue d'ensemble",
+    "weakPoint": "Point faible",
+    "toReview": "Erreurs à revoir",
+    "byModule": "Par module",
+    "byModuleIntro": "Questions faites en entraînement, en révision et en examen blanc.",
+    "exams": "Examens blancs",
+    "examsIntro": "Score de chaque examen, en pourcentage des points.",
+    "historyTitle": "Historique des 10 derniers examens",
+    "data": {
+      "title": "Mes données",
+      "intro": "Exportez votre progression dans un fichier pour la sauvegarder ou la transférer sur un autre appareil, puis importez ce fichier sur l'appareil de votre choix.",
+      "export": "Exporter ma progression",
+      "import": "Importer un fichier",
+      "reset": "Réinitialiser"
+    }
+  },
+  "home": {
+    "nav": {
+      "main": "Navigation principale",
+      "mobile": "Navigation mobile",
+      "how": "Comment ça marche",
+      "about": "À propos",
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu"
+    },
+    "hero": {
+      "badge": "SELOR (Travaillerpour.be) · EPSO",
+      "title": "Entraînez-vous <span class=\"text-accent-400\">gratuitement</span> aux tests de logique et de raisonnement",
+      "text": "Préparez les épreuves de sélection de la fonction publique belge et des institutions européennes avec des exercices de raisonnement abstrait, verbal et numérique et des mises en situation professionnelles, à votre rythme ou en conditions d'examen.",
+      "start": "Commencer l'entraînement",
+      "discoverExam": "Découvrir le mode examen",
+      "free": "100&nbsp;% gratuit",
+      "noSignup": "Sans inscription",
+      "devices": "Mobile &amp; ordinateur"
+    },
+    "preview": {
+      "question": "Quelle figure complète la série&nbsp;?",
+      "progress": "Question 3 sur 20"
+    },
+    "modules": {
+      "kicker": "Modules d'entraînement",
+      "title": "Choisissez votre épreuve",
+      "intro": "Travaillez chaque compétence séparément, puis mesurez-vous aux conditions réelles avec le mode examen.",
+      "program": "Au programme",
+      "abstrait": {
+        "text": "Observez une série de formes, identifiez la règle logique qui les relie et choisissez la figure qui la complète.",
+        "tag1": "Séries de formes",
+        "tag2": "Rotations &amp; motifs",
+        "tag3": "Correction expliquée",
+        "startLabel": " le raisonnement abstrait"
+      },
+      "start": "Commencer",
+      "verbal": {
+        "text": "Lisez un court texte et déterminez si chaque affirmation est vraie, fausse ou impossible à vérifier sur la seule base du texte.",
+        "tag1": "Textes &amp; affirmations",
+        "tag2": "Vrai · Faux · On ne peut pas savoir",
+        "tag3": "Preuve citée",
+        "startLabel": " le raisonnement verbal"
+      },
+      "numerique": {
+        "text": "Analysez des tableaux et des graphiques de données administratives, puis calculez variations, ratios, moyennes pondérées et projections.",
+        "tag1": "Tableaux &amp; graphiques",
+        "tag2": "Calcul détaillé pas à pas",
+        "startLabel": " le raisonnement numérique"
+      },
+      "jugement": {
+        "text": "Face à des situations de bureau réalistes (conflit, priorités, relation avec la hiérarchie), désignez l'action la plus et la moins adéquate parmi quatre propositions.",
+        "tag1": "Plus · Moins adéquate",
+        "tag2": "Compétences comportementales",
+        "tag3": "Correction commentée",
+        "startLabel": " le jugement situationnel"
+      },
+      "examen": {
+        "text": "Un test chronométré qui mélange questions abstraites, verbales, numériques et situations de jugement pour vous placer dans des conditions proches de l'épreuve réelle.",
+        "tag1": "35 questions · 40 min",
+        "tag2": "Questions mélangées",
+        "tag3": "Correction détaillée",
+        "start": "Lancer un examen"
+      }
+    },
+    "progress": {
+      "title": "Suivez vos progrès, sans inscription",
+      "text": "Taux de réussite par module, évolution de vos examens blancs, point faible et révision de vos erreurs jusqu'à les maîtriser. Vos résultats restent sur cet appareil&nbsp;: rien n'est envoyé ni partagé."
+    },
+    "method": {
+      "kicker": "Méthode",
+      "title": "Comment ça marche&nbsp;?",
+      "step1": {
+        "title": "Choisissez un module",
+        "text": "Commencez par la compétence que vous souhaitez renforcer&nbsp;: raisonnement abstrait, verbal, numérique ou jugement situationnel."
+      },
+      "step2": {
+        "title": "Entraînez-vous à votre rythme",
+        "text": "Répondez aux questions sans pression et familiarisez-vous avec les types d'exercices."
+      },
+      "step3": {
+        "title": "Passez en conditions réelles",
+        "text": "Le mode examen mélange les questions et impose un temps limité, comme le jour de l'épreuve."
+      }
+    },
+    "footer": {
+      "about": "Outil d'entraînement gratuit pour aider les candidats à se familiariser avec les tests de raisonnement utilisés lors des sélections de la fonction publique belge et des institutions européennes.",
+      "independence": "Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO). Les exercices proposés sont originaux et inspirés des formats de tests publics.",
+      "official": "Sites officiels",
+      "officialSelection": "Travaillerpour.be",
+      "newTab": "(nouvel onglet)",
+      "backToTop": "Retour en haut ↑",
+      "officialSelectionUrl": "https://travaillerpour.be/fr",
+      "epsoUrl": "https://eu-careers.europa.eu/fr"
+    }
+  },
+  "ogImage": {
+    "pageTitle": "Image de partage",
+    "title": "Entraînez-vous <em>gratuitement</em> aux tests de logique et de raisonnement",
+    "chips": {
+      "abstrait": "Raisonnement abstrait",
+      "verbal": "Verbal",
+      "numerique": "Numérique",
+      "jugement": "Jugement situationnel",
+      "examen": "Mode examen"
+    },
+    "footer": "Plateforme indépendante · 100&nbsp;% gratuit · sans inscription"
+  },
+  "notFound": {
+    "kicker": "Erreur 404",
+    "title": "Page introuvable",
+    "description": "Cette page n'existe pas ou a été déplacée. Retrouvez les modules d'entraînement aux tests SELOR (Travaillerpour.be) et EPSO depuis la page d'accueil.",
+    "text": "La page demandée n'existe pas ou a été déplacée. Vérifiez l'adresse, ou reprenez votre entraînement depuis la page d'accueil.",
+    "backHome": "Retour à l'accueil",
+    "startExam": "Lancer un examen",
+    "modules": "Modules d'entraînement"
+  }
+}

@@ -4,6 +4,8 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 
 **En ligne : https://selor-epso-prep.eu**
 
+Le site est bilingue : français à la racine, néerlandais de Belgique sous `/nl/` (en préparation, voir [Site bilingue](#site-bilingue-fr--nl)).
+
 ## Modules
 
 | Module | Contenu | Statut |
@@ -163,9 +165,37 @@ Un examen blanc dans les conditions de l'épreuve :
 
 Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`). Chaque examen terminé est enregistré dans Ma progression, sur l'appareil.
 
+## Site bilingue (FR / NL)
+
+La version néerlandaise (`nl-BE`) reprend exactement l'arborescence française sous `/nl/` : `/nl/`, `/nl/modules/<nom>/`, `/nl/progression/`.
+
+**Les pages ne sont pas écrites à la main dans chaque langue.** `scripts/build-site.js` les génère à partir de :
+
+- **gabarits communs** : `src/pages/` (une page par fichier) et `src/partials/` (en-tête, pied de page, `<head>`, sélecteur de langue…) ;
+- **dictionnaires de textes** : `src/i18n/fr.json` et `src/i18n/nl.json`, avec exactement les mêmes clés.
+
+Pourquoi ce choix :
+
+- une seule structure HTML à maintenir : une correction de mise en page vaut pour les deux langues, sans risque de divergence ;
+- le site reste statique et sans dépendance : le moteur de gabarits tient en quelques dizaines de lignes (`scripts/site/templates.js`) et tourne à la construction, pas dans le navigateur ;
+- chaque page publiée est un fichier HTML complet dans sa langue, lisible par les moteurs de recherche, sans JavaScript ;
+- les tests vérifient que les deux dictionnaires ont les mêmes clés, les mêmes variables et les mêmes balises HTML.
+
+Syntaxe des gabarits : `{{> fragment}}`, `{{t:cle}}` (texte de la langue de la page), `{{t.nl:cle}}` (texte d'une langue précise, pour la page 404 bilingue), `{{#if variable}}…{{else}}…{{/if}}` et `{{variable}}` (chemins, adresses).
+
+Les textes produits par le JavaScript (corrections, bilans, graphiques) sont dans `assets/js/i18n/fr.js` et `nl.js`. `assets/js/lib/i18n.js` choisit la langue d'après `<html lang>` ; il fournit aussi la typographie et le format des nombres de chaque langue (`fr-BE`, `nl-BE`).
+
+Contenus :
+
+- **Questions** : chaque question garde le même identifiant en français et en néerlandais. Les banques néerlandaises sont dans `data/nl/` ; tant qu'une banque n'est pas traduite (`TRANSLATED_BANKS`, `assets/js/lib/i18n.js`), la version néerlandaise utilise la banque française.
+- **Raisonnement abstrait** : les questions sont générées ; seuls l'interface, les titres des règles, les explications et les descriptions des figures sont traduits.
+- **Progression** : elle est commune aux deux langues (même stockage, mêmes identifiants).
+
+Mise en ligne progressive : tant que `NL_PUBLIC` vaut `false` (`scripts/site/config.js`), les pages `/nl/` sont générées mais pas découvrables : balise `noindex`, absentes du sitemap, ni sélecteur de langue ni balises `hreflang`, et la page 404 reste en français. Avec `NL_PUBLIC = true`, chaque page reçoit le sélecteur FR | NL (vers la page équivalente), les balises `hreflang` `fr-BE`, `nl-BE` et `x-default` (vers le français), et le sitemap ses alternances de langue. Aucune redirection automatique selon la langue du navigateur.
+
 ## Stack
 
-- **HTML5** statique
+- **HTML5** statique, généré dans chaque langue à partir de gabarits et de dictionnaires (`scripts/build-site.js`)
 - **Tailwind CSS v4**, compilé par Tailwind CLI en une seule feuille minifiée (`assets/css/app.css`, environ 8 Ko compressée) ; thème et composants dans `src/css/`
 - **JavaScript ES6+** natif, sans framework ni dépendance d'exécution (modules ES)
 - **Tests** avec le lanceur intégré à Node.js (`node --test`)
@@ -177,35 +207,35 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 
 ```
 .
-├── index.html                  # Page d'accueil
-├── 404.html                    # Page « introuvable » servie par GitHub Pages
-├── robots.txt                  # Consignes aux moteurs de recherche, renvoi vers le sitemap
-├── sitemap.xml                 # Plan du site : accueil, 5 modules et Ma progression
 ├── CLAUDE.md                   # Présentation et règles du projet pour Claude Code
-├── modules/
-│   ├── abstrait/index.html     # Module « Raisonnement abstrait »
-│   ├── verbal/index.html       # Module « Raisonnement verbal »
-│   ├── numerique/index.html    # Module « Raisonnement numérique »
-│   ├── jugement/index.html     # Module « Jugement situationnel »
-│   └── examen/index.html       # Mode examen chronométré
-├── progression/index.html      # Page « Ma progression »
 ├── src/
+│   ├── pages/                  # Gabarits des pages (communs aux deux langues)
+│   │   ├── index.html          # Page d'accueil
+│   │   ├── 404.html            # Page « introuvable », bilingue
+│   │   ├── modules/<nom>.html  # abstrait, verbal, numerique, jugement, examen
+│   │   └── progression.html    # Page « Ma progression »
+│   ├── partials/               # Fragments partagés : <head>, en-tête, sélecteur de langue, pied de page…
+│   ├── i18n/fr.json, nl.json   # Textes des pages, mêmes clés dans les deux langues
 │   ├── css/main.css            # Point d'entrée Tailwind : thème, fichiers analysés
 │   ├── css/components.css      # Composants propres au site
-│   └── og-image.html           # Source de l'image de partage (non publiée)
+│   └── og-image.html           # Gabarit des images de partage (non publié)
 ├── assets/
 │   ├── css/app.css             # Feuille générée par `npm run build:css` (non versionnée)
 │   ├── img/favicon.svg         # Logo / favicon
-│   ├── img/og-image.png        # Image de partage (réseaux sociaux), 1200 × 630
+│   ├── img/og-image.png        # Image de partage française, 1200 × 630
+│   ├── img/og-image-nl.png     # Image de partage néerlandaise, 1200 × 630
 │   └── js/
-│       ├── main.js             # Page d'accueil : menu mobile, notifications
+│       ├── main.js             # Page d'accueil : menu mobile
+│       ├── i18n/fr.js, nl.js   # Textes de l'interface produits par le JavaScript
 │       ├── lib/
+│       │   ├── i18n.js         # Langue de la page, textes, typographie, banque de la langue
+│       │   ├── typography.js   # Typographie française et néerlandaise
 │       │   ├── random.js       # Tirages aléatoires (graine reproductible pour les tests)
 │       │   ├── dom.js          # Petits utilitaires DOM partagés
 │       │   └── viz.js          # Graphiques SVG : éléments et infobulle
 │       ├── abstrait/
-│       │   ├── figures.js      # Formes, description textuelle, rendu SVG
-│       │   ├── rules.js        # Règles logiques
+│       │   ├── figures.js      # Formes, description textuelle (FR, NL), rendu SVG
+│       │   ├── rules.js        # Règles logiques, explications en français et en néerlandais
 │       │   ├── generator.js    # Assemblage des questions (sans DOM)
 │       │   ├── view.js         # Série et propositions (partagé avec le mode examen)
 │       │   └── app.js          # Interface du module
@@ -233,14 +263,20 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 ├── data/
 │   ├── verbal.json             # Banque de textes et d'affirmations
 │   ├── numerique.json          # Banque de jeux de données et de questions chiffrées
-│   └── jugement.json           # Banque de situations professionnelles et grilles de correction
+│   ├── jugement.json           # Banque de situations professionnelles et grilles de correction
+│   └── nl/                     # Banques traduites en néerlandais (mêmes identifiants, mêmes réponses)
 ├── tests/                      # Tests automatisés (node --test)
 ├── scripts/
-│   ├── build-site.js           # Assemble le site publiable dans dist/
+│   ├── build-site.js           # Génère les pages des deux langues, la 404, le sitemap et robots.txt dans dist/
+│   ├── site/config.js          # Langues, pages générées, drapeau NL_PUBLIC
+│   ├── site/templates.js       # Moteur de gabarits minimal
+│   ├── og-image.js             # Génère les images de partage des deux langues
 │   └── calculer-numerique.js   # Calcule les propositions du raisonnement numérique
 ├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
 └── package.json                # Scripts npm (build, start, test…)
 ```
+
+Le site publié (`dist/`, non versionné) contient les pages générées (`index.html`, `modules/…`, `progression/…`, `nl/…`), `404.html`, `sitemap.xml`, `robots.txt`, et une copie de `assets/` et `data/`, partagés par les deux langues.
 
 ## Lancer en local
 
@@ -248,16 +284,19 @@ Prérequis : Node.js 20 ou plus. Les modules ES ne se chargent pas depuis `file:
 
 ```bash
 npm install          # une seule fois
-npm start            # compile le CSS puis sert le site sur http://localhost:8000
+npm start            # construit le site (CSS + pages FR et NL) et le sert sur http://localhost:8000
 ```
 
-Pendant le développement, lancez `npm run watch:css` dans un second terminal : le CSS est recompilé à chaque modification des pages, des scripts ou de `src/css/`. Les classes Tailwind utilisées dans le JavaScript (`assets/js/`) sont détectées automatiquement.
+Version française : http://localhost:8000/ ; version néerlandaise : http://localhost:8000/nl/.
+
+Pendant le développement, lancez aussi `npm run watch:css` et `npm run watch:site` dans deux autres terminaux : le CSS est recompilé et `dist/` reconstruit à chaque modification des gabarits, des dictionnaires, des scripts ou des données. Les classes Tailwind utilisées dans les gabarits, les dictionnaires et le JavaScript sont détectées automatiquement.
 
 | Commande | Rôle |
 | --- | --- |
 | `npm run build:css` | Compile `src/css/main.css` en `assets/css/app.css` (minifié) |
-| `npm run build` | Compile le CSS et assemble le site publiable dans `dist/` |
-| `npm run preview` | Construit `dist/` et le sert localement, comme en production |
+| `npm run build` | Compile le CSS et génère le site publiable dans `dist/` (les deux langues) |
+| `npm run watch:site` | Reconstruit `dist/` à chaque modification |
+| `node scripts/og-image.js` | Régénère les images de partage des deux langues (nécessite Playwright, voir le script) |
 | `npm run calculer:numerique` | Recalcule les propositions du raisonnement numérique à partir des données |
 | `npm test` | Lance tous les tests |
 
@@ -267,7 +306,7 @@ Pendant le développement, lancez `npm run watch:css` dans un second terminal : 
 npm test
 ```
 
-Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progression et le site :
+Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progression, le site et ses deux langues :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série (invariant propre à chaque règle), des descriptions accessibles distinctes et une explication complète. S'y ajoutent l'empreinte de chaque règle (identifiants stables), la répartition de trois règles par niveau et le nombre de sommets des polygones.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -314,16 +353,25 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   - chaque question a un identifiant unique et stable : aucun doublon, dans un module comme entre modules ;
   - les séries abstraites sont régénérées à l'identique à partir de leur identifiant ;
   - les questions d'examen gardent l'identifiant de leur question d'origine.
-- **Site** :
+- **Site** (pages générées dans les deux langues) :
+  - chaque page existe en français et en néerlandais, avec son attribut `lang` et sans balise de gabarit non résolue ;
   - chaque page charge la feuille CSS compilée (plus aucun CDN) ;
   - tous les liens et ressources locaux existent et sont en chemins relatifs ;
-  - chaque page déclare son adresse canonique, `og:url` et `og:image` sur https://selor-epso-prep.eu ;
-  - le sitemap liste exactement les pages, et robots.txt y renvoie ;
-  - la page 404 n'est pas indexée et ses liens visent des fichiers existants ;
+  - chaque page déclare son adresse canonique, `og:url`, `og:locale` (`fr_BE` ou `nl_BE`) et l'image de partage de sa langue ;
+  - avant activation : pages néerlandaises en `noindex`, absentes du sitemap, ni sélecteur ni `hreflang` ;
+  - après activation : sélecteur FR | NL vers la page équivalente, `hreflang` `fr-BE`, `nl-BE` et `x-default`, alternances dans le sitemap ;
+  - aucune redirection selon la langue du navigateur ;
+  - la page 404 est bilingue, non indexée, et ses liens visent des pages existantes ;
   - plus aucune référence à l'ancienne adresse github.io ;
-  - la mention de non-affiliation et la phrase « Vos résultats restent sur cet appareil » figurent sur chaque page ;
+  - la mention d'indépendance et la phrase de transparence figurent sur chaque page, dans sa langue ;
   - Ma progression est accessible depuis le menu principal et chaque module ;
   - un seul module accède au stockage du navigateur.
+- **Traductions** :
+  - les dictionnaires des pages et de l'interface ont les mêmes clés, les mêmes variables et les mêmes balises dans les deux langues, et chaque texte est traduit ;
+  - chaque texte utilisé par le code existe dans les deux langues ;
+  - noms officiels belges et européens, pas de typographie française dans les textes néerlandais, nombres au format `nl-BE` ;
+  - raisonnement abstrait : mêmes questions dans les deux langues, explications et descriptions traduites ;
+  - chaque langue charge sa banque traduite (ou la banque française tant qu'elle n'est pas traduite).
 
 ## Hébergement
 
@@ -337,9 +385,10 @@ L'application est publiée sur **GitHub Pages** par le workflow `.github/workflo
   L'ancienne adresse GitHub Pages du dépôt redirige automatiquement vers ce domaine (comportement standard de GitHub Pages).
 - **Pas de fichier `CNAME`** : avec une publication par GitHub Actions, le domaine est enregistré dans les réglages de Pages, et un fichier `CNAME` dans le dépôt serait ignoré.
 - **Référencement** :
-  - chaque page déclare son adresse canonique et ses balises Open Graph, dont l'image `assets/img/og-image.png` ;
-  - `sitemap.xml` et `robots.txt` sont publiés à la racine.
-- **Page 404** : `404.html` est servie pour toute adresse inexistante, à n'importe quelle profondeur. C'est pourquoi ses liens utilisent l'adresse absolue du site, seule exception à la règle des chemins relatifs.
+  - chaque page déclare son adresse canonique et ses balises Open Graph, dont l'image de sa langue (`assets/img/og-image.png` ou `og-image-nl.png`) ;
+  - une fois la version néerlandaise activée : balises `hreflang` sur chaque page et alternances de langue dans le sitemap ;
+  - `sitemap.xml` et `robots.txt` sont générés à la racine de `dist/`.
+- **Page 404** : `404.html`, bilingue, est servie pour toute adresse inexistante, à n'importe quelle profondeur. C'est pourquoi ses liens utilisent l'adresse absolue du site, seule exception à la règle des chemins relatifs.
 - **Redéployer sans nouveau commit** : onglet *Actions* → « Déploiement GitHub Pages » → *Run workflow*.
 - **Dépôt privé** : GitHub Pages n'est disponible sur un dépôt privé qu'avec une offre payante (Pro, Team ou Enterprise). Avec un compte gratuit, le dépôt doit être public. Dans tous les cas, le site publié est public.
 
@@ -351,16 +400,18 @@ Le dossier `dist/` étant un site statique autonome, il peut aussi être déploy
 
 Les cinq modules sont en ligne. Pour en ajouter un nouveau :
 
-- créer sa carte sur la page d'accueil, avec un lien vers `modules/<nom>/index.html` ;
-- ajouter son adresse à `sitemap.xml` ;
-- ajouter dans son `<head>` la balise `canonical` et les balises Open Graph, sur le modèle des autres modules ;
+- créer son gabarit `src/pages/modules/<nom>.html` et l'ajouter à `PAGES` (`scripts/site/config.js`) : il est alors généré dans les deux langues, avec sa balise `canonical`, ses balises Open Graph et son entrée dans le sitemap ;
+- ajouter ses textes dans `src/i18n/fr.json` et `nl.json` (et, pour le JavaScript, dans `assets/js/i18n/fr.js` et `nl.js`), avec les mêmes clés ;
+- créer sa carte sur la page d'accueil (`src/pages/index.html`) ;
 - pour le suivi de progression :
   - ajouter le module à `MODULE_IDS` (`assets/js/progression/store.js`) et à `MODULES` (`stats.js`) ;
-  - enregistrer chaque réponse avec `recordAnswer` et un identifiant de question stable ;
+  - enregistrer chaque réponse avec `recordAnswer` et un identifiant de question stable, identique dans les deux langues ;
   - installer le bouton de révision avec `createReviewControls`, comme dans les modules existants.
 
-Les tests vérifient les trois premiers points. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
+Les tests vérifient les pages générées, les dictionnaires et le sitemap.
 
 ## Avertissement
 
 Plateforme indépendante, non affiliée au SPF BOSA (Travaillerpour.be, anciennement SELOR) ni à l'Office européen de sélection du personnel (EPSO). Les textes du module verbal sont des créations originales à visée pédagogique : les organismes et les chiffres cités sont fictifs.
+
+*Onafhankelijk platform, niet verbonden aan de FOD BOSA (Werkenvoor.be, vroeger Selor) en evenmin aan het Europees Bureau voor personeelsselectie (EPSO).*

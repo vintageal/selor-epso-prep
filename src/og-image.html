@@ -1,15 +1,15 @@
 <!doctype html>
 <!--
-  Source de l'image de partage (Open Graph) : assets/img/og-image.png, 1200 × 630 px.
-  Non publiée. Pour régénérer l'image : ouvrir ce fichier dans un navigateur avec une
-  fenêtre de 1200 × 630 px et faire une capture de la page (par exemple avec Playwright :
-  page.setViewportSize({ width: 1200, height: 630 }) puis page.screenshot()).
+  Gabarit des images de partage (Open Graph), 1200 × 630 px, une par langue :
+  assets/img/og-image.png (français) et assets/img/og-image-nl.png (néerlandais).
+  Non publié. Les textes viennent des dictionnaires src/i18n/<langue>.json (même syntaxe que src/pages/).
+  Pour régénérer les images : node scripts/og-image.js (voir ce script).
   Couleurs et motifs repris de la page d'accueil (bandeau .hero-backdrop et logo).
 -->
-<html lang="fr">
+<html lang="{{lang}}">
 <head>
   <meta charset="utf-8">
-  <title>Image de partage — Prépa SELOR &amp; EPSO</title>
+  <title>{{t:ogImage.pageTitle}} — {{t:site.brand}}</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 1200px; height: 630px; overflow: hidden; }
@@ -72,19 +72,19 @@
       <path d="M16 17.5 22 26H10Z" fill="#ffffff"/>
     </svg>
     <div>
-      <strong>Prépa SELOR &amp; EPSO</strong>
-      <span>Tests de raisonnement</span>
+      <strong>{{t:site.brand}}</strong>
+      <span>{{t:site.tagline}}</span>
     </div>
   </div>
 
-  <p class="badge">SELOR (Travaillerpour.be) · EPSO</p>
-  <h1>Entraînez-vous <em>gratuitement</em> aux tests de logique et de raisonnement</h1>
+  <p class="badge">{{t:home.hero.badge}}</p>
+  <h1>{{t:ogImage.title}}</h1>
   <ul class="chips">
-    <li>Raisonnement abstrait</li>
-    <li>Verbal</li>
-    <li>Numérique</li>
-    <li>Jugement situationnel</li>
-    <li>Mode examen</li>
+    <li>{{t:ogImage.chips.abstrait}}</li>
+    <li>{{t:ogImage.chips.verbal}}</li>
+    <li>{{t:ogImage.chips.numerique}}</li>
+    <li>{{t:ogImage.chips.jugement}}</li>
+    <li>{{t:ogImage.chips.examen}}</li>
   </ul>
 
   <!-- Motif du logo, en grand -->
@@ -96,7 +96,7 @@
 
   <div class="footer">
     <strong>selor-epso-prep.eu</strong>
-    <span>Plateforme indépendante · 100&nbsp;% gratuit · sans inscription</span>
+    <span>{{t:ogImage.footer}}</span>
   </div>
 </body>
 </html>
