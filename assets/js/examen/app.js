@@ -16,11 +16,15 @@ import {
   optionButton as numericOptionButton,
   scenarioVisual,
 } from '../numerique/view.js';
-import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam } from './exam.js';
+import { MAX_POINTS } from '../jugement/quiz.js';
+import { actionPicker, correctionList, debriefContent, scoreLines, situationContent } from '../jugement/view.js';
+import { EXAM_CONFIG, ExamSession, SECTIONS, createExam, formatClock, gradeExam, isAnswered } from './exam.js';
 
-const BANK_URLS = {
-  passages: new URL('../../../data/verbal.json', import.meta.url),
-  scenarios: new URL('../../../data/numerique.json', import.meta.url),
+/** Banques chargées au démarrage : nom dans l'examen → fichier et clé du tableau dans le JSON. */
+const BANKS = {
+  passages: { url: new URL('../../../data/verbal.json', import.meta.url), key: 'passages' },
+  scenarios: { url: new URL('../../../data/numerique.json', import.meta.url), key: 'scenarios' },
+  situations: { url: new URL('../../../data/jugement.json', import.meta.url), key: 'scenarios' },
 };
 const TICK_MS = 250;
 const WARNING_MS = 5 * 60 * 1000;
@@ -34,6 +38,7 @@ const VERBAL_KEYS = Object.fromEntries(ANSWERS.flatMap(({ id, keys }) => keys.ma
 const REVIEW_STATUS = {
   correct: { icon: '✓', label: 'Bonne réponse' },
   wrong: { icon: '✕', label: 'Mauvaise réponse' },
+  partial: { icon: '½', label: 'Réponse partielle' },
   blank: { icon: '–', label: 'Sans réponse' },
 };
 
@@ -83,6 +88,9 @@ const ui = {
 const state = { banks: null, session: null, index: 0, running: false, timerId: null, announced: new Set() };
 const currentItem = () => state.session.items[state.index];
 const plural = (count, singular, pluralForm = `${singular}s`) => `${count} ${count > 1 ? pluralForm : singular}`;
+const pointsLabel = (points) => `${points} point${points > 1 ? 's' : ''} sur ${MAX_POINTS}`;
+/** Score éventuellement fractionnaire (jugement situationnel), à la française : 31,75. */
+const formatScore = (value) => value.toLocaleString('fr-BE', { maximumFractionDigits: 2 });
 
 const warnBeforeLeaving = (event) => {
   event.preventDefault();
@@ -179,7 +187,31 @@ const renderNumericQuestion = ({ scenario, question }, answer) => {
   return [layout];
 };
 
-const QUESTION_RENDERERS = { abstrait: renderAbstractQuestion, verbal: renderVerbalQuestion, numerique: renderNumericQuestion };
+const renderJudgementQuestion = ({ id, scenario, order }, answer) => {
+  const content = situationContent(scenario);
+  const prompt = content.pop();
+  const article = createElement('article', 'exam-passage');
+  article.append(
+    createElement('span', 'exam-passage__theme', scenario.theme),
+    createElement('h3', 'exam-passage__title', frenchTypography(scenario.title)),
+    ...content,
+  );
+
+  // Les choix sont enregistrés à chaque clic ; un seul des deux choix est une réponse incomplète.
+  const picker = actionPicker(scenario, order, {
+    name: `examen-${id}`,
+    picks: answer ?? {},
+    onChange: (picks) => selectAnswer(Number.isInteger(picks.best) || Number.isInteger(picks.worst) ? picks : null),
+  });
+  return [article, prompt, picker];
+};
+
+const QUESTION_RENDERERS = {
+  abstrait: renderAbstractQuestion,
+  verbal: renderVerbalQuestion,
+  numerique: renderNumericQuestion,
+  jugement: renderJudgementQuestion,
+};
 
 /** Valeur d'un bouton de réponse : identifiant (verbal) ou index de la proposition (abstrait, numérique). */
 const buttonValue = (button) => button.dataset.answer ?? Number(button.dataset.index);
@@ -188,18 +220,17 @@ const renderPalette = () => {
   const { session } = state;
   ui.palette.replaceChildren(
     ...session.items.map((item, index) => {
-      const answered = session.answers[index] !== null;
+      const answered = isAnswered(item, session.answers[index]);
+      const started = session.answers[index] !== null;
       const flagged = session.flags[index];
       const button = createElement('button', 'palette-item', String(index + 1));
       button.type = 'button';
       button.dataset.index = String(index);
-      button.dataset.state = answered ? 'answered' : 'blank';
+      button.dataset.state = answered ? 'answered' : started ? 'partial' : 'blank';
       if (flagged) button.dataset.flagged = '';
       if (index === state.index) button.setAttribute('aria-current', 'step');
-      button.setAttribute(
-        'aria-label',
-        `Question ${index + 1}, ${SECTIONS[item.type].toLowerCase()}, ${answered ? 'répondue' : 'sans réponse'}${flagged ? ', à revoir' : ''}`,
-      );
+      const status = answered ? 'répondue' : started ? 'réponse incomplète' : 'sans réponse';
+      button.setAttribute('aria-label', `Question ${index + 1}, ${SECTIONS[item.type].toLowerCase()}, ${status}${flagged ? ', à revoir' : ''}`);
       const entry = createElement('li');
       entry.append(button);
       return entry;
@@ -244,6 +275,12 @@ const selectAnswer = (value) => {
   ui.body.querySelectorAll('.option, .choice').forEach((button) => {
     button.setAttribute('aria-pressed', String(buttonValue(button) === value));
   });
+  // Effacement d'une situation de jugement : décoche les choix.
+  if (value === null) {
+    ui.body.querySelectorAll('input:checked').forEach((input) => {
+      input.checked = false;
+    });
+  }
   updateQuestionControls();
 };
 
@@ -291,12 +328,17 @@ const startExam = () => {
 const askToFinish = () => {
   if (!state.running) return;
   const { session } = state;
-  const blank = session.items.length - session.answeredCount;
+  const incomplete = session.items.filter((item, index) => session.answers[index] !== null && !isAnswered(item, session.answers[index])).length;
+  const blank = session.items.length - session.answeredCount - incomplete;
   const flagged = session.flags.filter(Boolean).length;
   const parts = [
-    blank === 0
-      ? 'Vous avez répondu à toutes les questions.'
-      : `${plural(blank, 'question')} sans réponse ${blank > 1 ? 'seront comptées' : 'sera comptée'} comme ${blank > 1 ? 'fausses' : 'fausse'}.`,
+    blank + incomplete === 0 ? 'Vous avez répondu à toutes les questions.' : '',
+    blank > 0
+      ? `${plural(blank, 'question')} sans réponse ${blank > 1 ? 'seront comptées' : 'sera comptée'} comme ${blank > 1 ? 'fausses' : 'fausse'}.`
+      : '',
+    incomplete > 0
+      ? `${plural(incomplete, 'situation de jugement', 'situations de jugement')} ${incomplete > 1 ? 'n\'ont' : 'n\'a'} qu'un choix sur deux : seul ce choix sera noté.`
+      : '',
     flagged > 0 ? `${plural(flagged, 'question marquée', 'questions marquées')} « à revoir ».` : '',
     'Une fois l\'examen terminé, vous ne pourrez plus modifier vos réponses.',
   ];
@@ -329,7 +371,7 @@ const statTile = (label, value) => {
 };
 
 const verdictMessage = (grade, session) => {
-  const rate = grade.correct / grade.total;
+  const rate = grade.score / grade.total;
   const parts = [
     rate >= 0.8
       ? 'Excellent résultat dans les conditions de l\'épreuve.'
@@ -337,10 +379,13 @@ const verdictMessage = (grade, session) => {
         ? 'Bon résultat : analysez la correction des questions manquées pour gagner encore quelques points.'
         : 'Continuez à vous entraîner dans les modules d\'entraînement, puis retentez l\'examen.',
   ];
-  const sections = Object.entries(grade.bySection).map(([id, { correct, total }]) => ({ id, rate: correct / total, correct, total }));
-  const [weakest, strongest] = [...sections].sort((a, b) => a.rate - b.rate);
+  const sections = Object.entries(grade.bySection)
+    .filter(([, { total }]) => total > 0)
+    .map(([id, { score, total }]) => ({ id, rate: score / total, score, total }));
+  const sorted = [...sections].sort((a, b) => a.rate - b.rate);
+  const [weakest, strongest] = [sorted[0], sorted.at(-1)];
   if (weakest && strongest && weakest.rate < strongest.rate) {
-    parts.push(`Section à travailler en priorité : ${SECTIONS[weakest.id].toLowerCase()} (${weakest.correct} sur ${weakest.total}).`);
+    parts.push(`Section à travailler en priorité : ${SECTIONS[weakest.id].toLowerCase()} (${formatScore(weakest.score)} sur ${weakest.total}).`);
   }
   if (session.endReason === 'timeout' && grade.blank > 0) {
     parts.push(`${plural(grade.blank, 'question est restée', 'questions sont restées')} sans réponse : travaillez aussi votre gestion du temps.`);
@@ -447,7 +492,29 @@ const reviewNumeric = ({ item: { scenario, question }, answer }) => {
   ];
 };
 
-const REVIEW_RENDERERS = { abstrait: reviewAbstract, verbal: reviewVerbal, numerique: reviewNumeric };
+const reviewJudgement = ({ item: { scenario, order }, answer, points }) => {
+  const situation = createElement('details', 'review-passage');
+  situation.append(
+    createElement('summary', '', 'Afficher la situation'),
+    createElement('p', 'exam-passage__title', frenchTypography(scenario.title)),
+    ...situationContent(scenario).slice(0, -1),
+  );
+  const verdict = answer === null ? `Sans réponse : 0 point sur ${MAX_POINTS}.` : `Vous obtenez ${pointsLabel(points)}, soit ${formatScore(points / MAX_POINTS)} point à l'examen.`;
+
+  return [
+    createElement('p', 'exam-label', frenchTypography(`Situation : ${scenario.title}`)),
+    situation,
+    createElement('p', 'review-answer', frenchTypography(verdict)),
+    scoreLines(scenario, order, answer).list,
+    correctionList(scenario, order, answer),
+    ...debriefContent(scenario),
+  ];
+};
+
+const REVIEW_RENDERERS = { abstrait: reviewAbstract, verbal: reviewVerbal, numerique: reviewNumeric, jugement: reviewJudgement };
+
+/** Libellé du statut : points obtenus pour une situation de jugement, sinon bonne / mauvaise réponse. */
+const statusLabel = ({ item, status, points }) => (item.type === 'jugement' && status !== 'blank' ? pointsLabel(points) : REVIEW_STATUS[status].label);
 
 const reviewItem = (result, index) => {
   const { item, status } = result;
@@ -460,7 +527,7 @@ const reviewItem = (result, index) => {
     hiddenFromScreenReaders(createElement('span', 'review-item__badge', REVIEW_STATUS[status].icon)),
     createElement('span', 'review-item__title', `Question ${index + 1}`),
     createElement('span', 'review-item__section', SECTIONS[item.type]),
-    createElement('span', 'review-item__status', REVIEW_STATUS[status].label),
+    createElement('span', 'review-item__status', statusLabel(result)),
   );
 
   const body = createElement('div', 'review-item__body');
@@ -480,13 +547,13 @@ const renderResults = () => {
   ui.endBanner.textContent = frenchTypography(
     session.endReason === 'timeout' ? 'Temps écoulé : l\'examen s\'est arrêté automatiquement.' : 'Examen terminé.',
   );
-  ui.resultScore.textContent = `${grade.correct} / ${grade.total}`;
-  ui.resultPercent.textContent = frenchTypography(`${Math.round((grade.correct / grade.total) * 100)} % de bonnes réponses`);
+  ui.resultScore.textContent = `${formatScore(grade.score)} / ${grade.total}`;
+  ui.resultPercent.textContent = frenchTypography(`${Math.round((grade.score / grade.total) * 100)} % des points`);
   ui.resultMessage.textContent = verdictMessage(grade, session);
   ui.resultStats.replaceChildren(
     statTile('Temps utilisé', `${formatClock(session.elapsedMs(), Math.floor)} / ${formatClock(session.durationMs)}`),
     statTile('Sans réponse', String(grade.blank)),
-    ...Object.entries(grade.bySection).map(([id, { correct, total }]) => statTile(SECTIONS[id], `${correct} / ${total}`)),
+    ...Object.entries(grade.bySection).map(([id, { score, total }]) => statTile(SECTIONS[id], `${formatScore(score)} / ${total}`)),
   );
   ui.reviewList.replaceChildren(...grade.results.map(reviewItem));
 };
@@ -524,8 +591,11 @@ ui.body.addEventListener('click', (event) => {
 });
 
 // Raccourcis : flèches pour naviguer, A-D / 1-4 (abstrait, numérique) ou V, F, ? / 1-3 (verbal) pour répondre.
+// Les situations de jugement se répondent avec Tab et les flèches, comme tout groupe de boutons radio :
+// on laisse donc le navigateur gérer les touches quand le focus est sur un choix.
 document.addEventListener('keydown', (event) => {
   if (!state.running || ui.confirm.open || event.altKey || event.ctrlKey || event.metaKey) return;
+  if (event.target instanceof HTMLInputElement) return;
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
     const target = state.index + (event.key === 'ArrowLeft' ? -1 : 1);
     if (target >= 0 && target < state.session.items.length) {
@@ -534,6 +604,7 @@ document.addEventListener('keydown', (event) => {
     }
     return;
   }
+  if (currentItem().type === 'jugement') return;
   const keys = currentItem().type === 'verbal' ? VERBAL_KEYS : OPTION_KEYS;
   const value = keys[event.key.toLowerCase()];
   if (value === undefined) return;
@@ -543,24 +614,24 @@ document.addEventListener('keydown', (event) => {
 
 /* ----- Démarrage ----- */
 
-const { abstractCount, verbalCount, numericCount, durationMs } = EXAM_CONFIG;
-ui.introCount.textContent = String(abstractCount + verbalCount + numericCount);
+const { abstractCount, verbalCount, numericCount, judgementCount, durationMs } = EXAM_CONFIG;
+ui.introCount.textContent = String(abstractCount + verbalCount + numericCount + judgementCount);
 ui.introSections.textContent = String(Object.keys(SECTIONS).length);
 ui.introDuration.textContent = `${durationMs / 60000} min`;
 ui.introMix.textContent = frenchTypography(
-  `${abstractCount} questions de raisonnement abstrait, ${verbalCount} de raisonnement verbal et ${numericCount} de raisonnement numérique, dans un ordre aléatoire.`,
+  `${abstractCount} questions de raisonnement abstrait, ${verbalCount} de raisonnement verbal, ${numericCount} de raisonnement numérique et ${judgementCount} situations de jugement, dans un ordre aléatoire.`,
 );
 ui.timerValue.textContent = formatClock(durationMs);
 
 try {
-  const [passages, scenarios] = await Promise.all(
-    Object.entries(BANK_URLS).map(async ([key, url]) => {
+  const entries = await Promise.all(
+    Object.entries(BANKS).map(async ([name, { url, key }]) => {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`${url.pathname} : HTTP ${response.status}`);
-      return (await response.json())[key];
+      return [name, (await response.json())[key]];
     }),
   );
-  state.banks = { passages, scenarios };
+  state.banks = Object.fromEntries(entries);
   ui.start.disabled = false;
   ui.startLabel.textContent = 'Commencer l\'examen';
 } catch (error) {
