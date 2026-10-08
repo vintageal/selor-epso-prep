@@ -320,8 +320,10 @@
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
+  background-color: #f1f5f9;
   font-size: 0.95rem;
   font-weight: 700;
+  color: #334155;
 }
 
 .choice[data-answer="vrai"] .choice__icon { background-color: #ecfdf5; color: #047857; }
@@ -577,13 +579,14 @@
 
 .option[aria-pressed="true"] .option__letter { background-color: #2f5fae; color: #fff; }
 
-.exam-verbal {
+/* Deux colonnes sur grand écran : texte ou données à gauche, question à droite */
+.exam-split {
   display: grid;
   gap: 1.5rem;
 }
 
 @media (min-width: 64rem) {
-  .exam-verbal {
+  .exam-split {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     align-items: start;
   }
@@ -604,6 +607,12 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: #1d4080;
+}
+
+.exam-passage__note {
+  margin: -0.25rem 0 1rem;
+  font-size: 0.8125rem;
+  color: #64748b;
 }
 
 .exam-passage__title {
@@ -723,6 +732,328 @@
   font-weight: 600;
   color: #1d4080;
 }
+
+/* ----- Module « Raisonnement numérique » : visuels de données ----- */
+
+/* Couleurs des séries (palette validée : contrastes et daltonisme) et mobilier des graphiques */
+.viz {
+  --series-1: #2f5fae;
+  --series-2: #eb6834;
+  --viz-grid: #e2e8f0;
+  --viz-axis: #cbd5e1;
+  --viz-muted: #64748b;
+  --viz-ink: #0f172a;
+  position: relative;
+}
+
+.viz [data-series="1"] { --series: var(--series-1); }
+.viz [data-series="2"] { --series: var(--series-2); }
+
+.viz-toggle {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  padding: 0.2rem;
+  border-radius: 0.6rem;
+  background-color: #f1f5f9;
+}
+
+.viz-toggle__button {
+  padding: 0.3rem 0.85rem;
+  border-radius: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.viz-toggle__button[aria-pressed="true"] {
+  background-color: #fff;
+  color: #132a50;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.12);
+}
+
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  color: #334155;
+}
+
+.viz-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.viz-key {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: var(--series);
+}
+
+.viz-key--bar { width: 0.75rem; height: 0.75rem; border-radius: 0.2rem; }
+.viz-key--line { width: 1rem; height: 2px; border-radius: 1px; }
+
+.viz-tooltip {
+  position: absolute;
+  z-index: 10;
+  min-width: 9rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.12);
+  font-size: 0.8125rem;
+  pointer-events: none;
+}
+
+.viz-tooltip__title {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: var(--viz-muted);
+}
+
+.viz-tooltip__row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.viz-tooltip__row strong {
+  color: var(--viz-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-tooltip__label { color: var(--viz-muted); }
+
+/* Tableau de données */
+.data-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
+}
+
+.data-table thead th {
+  border-bottom-color: #e2e8f0;
+  white-space: normal;
+  vertical-align: bottom;
+  background-color: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  text-align: right;
+}
+
+.data-table thead th:first-child,
+.data-table tbody th {
+  text-align: left;
+}
+
+.data-table tbody th {
+  font-weight: 500;
+  color: #0f172a;
+  white-space: normal;
+}
+
+.data-table td {
+  color: #0f172a;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td { border-bottom: none; }
+
+.data-table .is-total th,
+.data-table .is-total td {
+  border-top: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-weight: 700;
+}
+
+/* Barres horizontales : extrémité arrondie, valeur en bout de barre */
+.bar-chart__plot {
+  display: grid;
+  gap: 0.25rem;
+  border-left: 1px solid var(--viz-axis);
+}
+
+.bar-group {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  cursor: default;
+}
+
+.bar-group:hover { background-color: #f8fafc; }
+
+.bar-group__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.bar-group__bars {
+  display: grid;
+  gap: 2px;
+}
+
+.bar-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-right: 3rem;
+}
+
+.bar {
+  flex: none;
+  height: 0.875rem;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--series);
+  transition: filter 0.15s ease;
+}
+
+.bar-group:hover .bar,
+.bar-group:focus-visible .bar { filter: brightness(1.12); }
+
+.bar__value {
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #334155;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 40rem) {
+  .bar-group {
+    grid-template-columns: minmax(9rem, 13rem) 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Courbes */
+.line-chart__stage { position: relative; }
+.line-chart__svg { display: block; overflow: visible; }
+.line-chart__grid { stroke: var(--viz-grid); stroke-width: 1; }
+.line-chart__tick { fill: var(--viz-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.line-chart__end { fill: #334155; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.line-chart__crosshair { stroke: var(--viz-axis); stroke-width: 1; }
+.line-chart__hit { fill: transparent; }
+
+.line-chart__line {
+  fill: none;
+  stroke: var(--series);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-chart__marker {
+  fill: var(--series);
+  stroke: #fff;
+  stroke-width: 2;
+  transition: r 0.1s ease;
+}
+
+.line-chart__marker.is-active { r: 6; }
+
+/* ----- Module « Raisonnement numérique » : correction détaillée ----- */
+
+.error-hint {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid #dc2626;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: rgb(255 255 255 / 0.75);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #7f1d1d;
+}
+
+.calc-data {
+  display: grid;
+  gap: 0.15rem 1rem;
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  color: #334155;
+}
+
+.calc-data li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px dotted #cbd5e1;
+}
+
+.calc-data strong {
+  flex-shrink: 0;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-formula {
+  margin-top: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: rgb(255 255 255 / 0.8);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #132a50;
+}
+
+.calc-steps {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: decimal;
+  font-size: 0.875rem;
+}
+
+.calc-steps li::marker {
+  font-weight: 700;
+  color: #2f5fae;
+}
+
+.calc-step__label {
+  display: block;
+  color: #334155;
+}
+
+.calc-step__math {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  color: #0f172a;
+  overflow-wrap: anywhere;
+}
+
+.calc-result {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  color: #0f172a;
+}
+
+.calc-result strong { color: #132a50; }
 
 @media (prefers-reduced-motion: reduce) {
   html {

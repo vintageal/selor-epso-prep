@@ -9,29 +9,36 @@ import {
   expectedAnswer,
   formatClock,
   gradeExam,
-  pickVerbalItems,
+  pickSpread,
 } from '../assets/js/examen/exam.js';
 import { createSeededRandom } from '../assets/js/lib/random.js';
 
-const bank = JSON.parse(readFileSync(new URL('../data/verbal.json', import.meta.url), 'utf8'));
+const readBank = (file) => JSON.parse(readFileSync(new URL(`../data/${file}`, import.meta.url), 'utf8'));
+const bank = readBank('verbal.json');
+const numericBank = readBank('numerique.json');
+const banks = { passages: bank.passages, scenarios: numericBank.scenarios };
+const TOTAL = EXAM_CONFIG.abstractCount + EXAM_CONFIG.verbalCount + EXAM_CONFIG.numericCount;
 const MINUTE = 60 * 1000;
 
 /* ----- Composition de l'examen ----- */
 
-test('un examen compte 20 questions : 10 abstraites et 10 verbales, mélangées', () => {
+test('un examen compte 30 questions : 10 abstraites, 10 verbales et 10 numériques, mélangées', () => {
+  assert.equal(TOTAL, 30);
+  assert.equal(EXAM_CONFIG.durationMs, 30 * MINUTE);
   for (let seed = 1; seed <= 50; seed += 1) {
-    const items = createExam(bank.passages, { random: createSeededRandom(seed) });
-    assert.equal(items.length, 20);
+    const items = createExam(banks, { random: createSeededRandom(seed) });
+    assert.equal(items.length, TOTAL);
     assert.equal(items.filter((item) => item.type === 'abstrait').length, EXAM_CONFIG.abstractCount);
     assert.equal(items.filter((item) => item.type === 'verbal').length, EXAM_CONFIG.verbalCount);
-    assert.equal(new Set(items.map((item) => item.id)).size, 20);
-    const firstHalf = new Set(items.slice(0, 10).map((item) => item.type));
-    assert.equal(firstHalf.size, 2, `graine ${seed} : les deux types doivent être mélangés`);
+    assert.equal(items.filter((item) => item.type === 'numerique').length, EXAM_CONFIG.numericCount);
+    assert.equal(new Set(items.map((item) => item.id)).size, TOTAL);
+    const firstHalf = new Set(items.slice(0, TOTAL / 2).map((item) => item.type));
+    assert.ok(firstHalf.size >= 2, `graine ${seed} : les types de questions doivent être mélangés`);
   }
 });
 
 test('les affirmations verbales sont distinctes et réparties entre les textes', () => {
-  const items = createExam(bank.passages, { random: createSeededRandom(8) }).filter((item) => item.type === 'verbal');
+  const items = createExam(banks, { random: createSeededRandom(8) }).filter((item) => item.type === 'verbal');
   assert.equal(new Set(items.map((item) => item.statement.id)).size, items.length);
   const perPassage = Math.ceil(EXAM_CONFIG.verbalCount / bank.passages.length);
   for (const passage of bank.passages) {
@@ -41,29 +48,43 @@ test('les affirmations verbales sont distinctes et réparties entre les textes',
   }
 });
 
-test('pickVerbalItems s’arrête au nombre demandé ou à l’épuisement de la banque', () => {
-  const random = createSeededRandom(3);
-  const total = bank.passages.reduce((sum, passage) => sum + passage.statements.length, 0);
-  assert.equal(pickVerbalItems(bank.passages, 3, random).length, 3);
-  assert.equal(pickVerbalItems(bank.passages, total + 10, random).length, total);
-  assert.deepEqual(pickVerbalItems([], 5, random), []);
+test('les questions numériques sont distinctes et réparties entre les jeux de données', () => {
+  const items = createExam(banks, { random: createSeededRandom(8) }).filter((item) => item.type === 'numerique');
+  assert.equal(new Set(items.map((item) => item.question.id)).size, items.length);
+  const perScenario = Math.ceil(EXAM_CONFIG.numericCount / numericBank.scenarios.length);
+  for (const scenario of numericBank.scenarios) {
+    const own = items.filter((item) => item.scenario === scenario);
+    assert.ok(own.length <= perScenario, `« ${scenario.id} » : ${own.length} questions`);
+    own.forEach((item) => assert.ok(scenario.questions.includes(item.question)));
+  }
 });
 
-test('la banque verbale suffit pour un examen', () => {
+test('pickSpread s’arrête au nombre demandé ou à l’épuisement de la banque', () => {
+  const random = createSeededRandom(3);
   const total = bank.passages.reduce((sum, passage) => sum + passage.statements.length, 0);
-  assert.ok(total >= EXAM_CONFIG.verbalCount);
+  assert.equal(pickSpread(bank.passages, 'statements', 3, random).length, 3);
+  assert.equal(pickSpread(bank.passages, 'statements', total + 10, random).length, total);
+  assert.deepEqual(pickSpread([], 'statements', 5, random), []);
+  const picked = pickSpread(numericBank.scenarios, 'questions', 5, random);
+  assert.equal(new Set(picked.map(({ group }) => group.id)).size, 5, 'une question par jeu de données au premier tour');
+});
+
+test('les banques suffisent pour un examen', () => {
+  const count = (groups, key) => groups.reduce((sum, group) => sum + group[key].length, 0);
+  assert.ok(count(bank.passages, 'statements') >= EXAM_CONFIG.verbalCount);
+  assert.ok(count(numericBank.scenarios, 'questions') >= EXAM_CONFIG.numericCount);
 });
 
 test('la composition est reproductible avec une même graine', () => {
-  const first = createExam(bank.passages, { random: createSeededRandom(21) });
-  const second = createExam(bank.passages, { random: createSeededRandom(21) });
+  const first = createExam(banks, { random: createSeededRandom(21) });
+  const second = createExam(banks, { random: createSeededRandom(21) });
   assert.deepEqual(first, second);
 });
 
 /* ----- Session et chronomètre ----- */
 
 const newSession = () => {
-  const items = createExam(bank.passages, { random: createSeededRandom(5) });
+  const items = createExam(banks, { random: createSeededRandom(5) });
   return new ExamSession(items, { durationMs: 20 * MINUTE, startedAt: 0 });
 };
 
@@ -120,33 +141,36 @@ test('terminer l’examen fige le chrono ; une remise tardive compte comme temps
 /* ----- Notation ----- */
 
 test('la notation distingue bonnes réponses, erreurs et questions vides', () => {
-  const items = createExam(bank.passages, { random: createSeededRandom(13) });
+  const items = createExam(banks, { random: createSeededRandom(13) });
   const answers = items.map(() => null);
   const abstractIndex = items.findIndex((item) => item.type === 'abstrait');
   const verbalIndexes = items.flatMap((item, index) => (item.type === 'verbal' ? [index] : []));
+  const numericIndex = items.findIndex((item) => item.type === 'numerique');
 
   answers[abstractIndex] = expectedAnswer(items[abstractIndex]);
+  answers[numericIndex] = expectedAnswer(items[numericIndex]);
   answers[verbalIndexes[0]] = expectedAnswer(items[verbalIndexes[0]]);
   const wrongVerbal = ['vrai', 'faux', 'impossible'].find((id) => id !== expectedAnswer(items[verbalIndexes[1]]));
   answers[verbalIndexes[1]] = wrongVerbal;
 
   const grade = gradeExam(items, answers);
-  assert.equal(grade.total, 20);
-  assert.equal(grade.correct, 2);
+  assert.equal(grade.total, TOTAL);
+  assert.equal(grade.correct, 3);
   assert.equal(grade.wrong, 1);
-  assert.equal(grade.blank, 17);
+  assert.equal(grade.blank, TOTAL - 4);
   assert.deepEqual(grade.bySection.abstrait, { total: 10, correct: 1 });
   assert.deepEqual(grade.bySection.verbal, { total: 10, correct: 1 });
+  assert.deepEqual(grade.bySection.numerique, { total: 10, correct: 1 });
   assert.equal(grade.results[verbalIndexes[1]].status, 'wrong');
   assert.equal(grade.results[verbalIndexes[1]].answer, wrongVerbal);
 });
 
-test('expectedAnswer renvoie l’index abstrait ou l’identifiant verbal', () => {
-  const items = createExam(bank.passages, { random: createSeededRandom(2) });
+test('expectedAnswer renvoie l’index de la proposition (abstrait, numérique) ou l’identifiant verbal', () => {
+  const items = createExam(banks, { random: createSeededRandom(2) });
   for (const item of items) {
     const expected = expectedAnswer(item);
-    if (item.type === 'abstrait') assert.ok(Number.isInteger(expected) && expected >= 0 && expected < 4);
-    else assert.ok(['vrai', 'faux', 'impossible'].includes(expected));
+    if (item.type === 'verbal') assert.ok(['vrai', 'faux', 'impossible'].includes(expected));
+    else assert.ok(Number.isInteger(expected) && expected >= 0 && expected < 4, `${item.type} : ${expected}`);
   }
 });
 

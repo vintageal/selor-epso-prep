@@ -8,7 +8,8 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 | --- | --- | --- |
 | Raisonnement abstrait | Séries de formes : trouver la figure qui complète la série | Disponible |
 | Raisonnement verbal | Textes et affirmations : vrai, faux ou on ne peut pas savoir | Disponible |
-| Mode examen | Examen blanc chronométré mélangeant questions abstraites et verbales | Disponible |
+| Raisonnement numérique | Tableaux et graphiques : variations, ratios, moyennes pondérées, extrapolations | Disponible |
+| Mode examen | Examen blanc chronométré mélangeant questions abstraites, verbales et numériques | Disponible |
 
 ### Raisonnement abstrait
 
@@ -40,16 +41,43 @@ Un bilan de fin de série détaille les résultats par type de réponse, pour re
 
 **Ajouter un texte :** compléter `data/verbal.json` (format décrit en tête de `assets/js/verbal/quiz.js`), puis lancer `npm test`. Les tests refusent notamment toute citation qui ne figure pas mot pour mot dans le texte ou qui ne correspond pas à une phrase complète.
 
+### Raisonnement numérique
+
+Le candidat analyse des données administratives fictives (à gauche sur ordinateur, en haut sur mobile) et choisit la bonne réponse parmi quatre propositions chiffrées (à droite, ou en bas). La banque `data/numerique.json` contient 5 jeux de données : budget d'un SPF, effectifs par direction, demandes de permis, résultats d'une sélection et achats de fournitures. Ils totalisent 17 questions réparties entre les quatre compétences clés :
+
+| Compétence | Exemples |
+| --- | --- |
+| Taux de variation | hausse d'un budget, variation d'une dépense (avec son signe) |
+| Ratio et proportion | part d'un poste dans un total, « combien de A pour un B » |
+| Moyenne pondérée | note moyenne de centres de tailles différentes, prix moyen pondéré par les quantités |
+| Extrapolation de tendance | projection linéaire (hausse constante) ou composée (taux constant) |
+
+Les données s'affichent en **tableau**, en **barres horizontales** ou en **courbes**, dessinés en HTML et SVG légers. Les couleurs sont validées pour les contrastes et le daltonisme, avec une infobulle au survol et au clavier. Chaque graphique dispose aussi d'une **vue « Tableau »** équivalente.
+
+À chaque réponse, la correction affiche :
+
+- les **données utilisées** ;
+- la **formule** mathématique ;
+- le **calcul étape par étape**, avec les vraies valeurs ;
+- le résultat arrondi.
+
+Si la réponse est fausse, elle explique aussi **l'erreur de logique** correspondant à la proposition choisie : mauvaise année, division par la valeur d'arrivée, moyenne non pondérée, croissance simple au lieu de composée…
+
+**Ajouter un jeu de données :** compléter `data/numerique.json` (format décrit en tête de `assets/js/numerique/quiz.js`), puis lancer `npm test`.
+- Les calculs s'écrivent sous forme d'expressions, par exemple `({total.2024} - {total.2023}) / {total.2023} * 100`, qui sont évaluées et jamais exécutées.
+- Les tests vérifient que la bonne réponse correspond au résultat du calcul, et que chaque proposition fautive correspond au calcul de l'erreur décrite.
+- Ils vérifient aussi que les lignes « total » sont bien la somme des autres lignes.
+
 ### Mode examen
 
 Un examen blanc dans les conditions de l'épreuve :
 
-- **20 questions** : 10 de raisonnement abstrait (générées, 2 par règle) et 10 affirmations verbales (réparties entre les textes), mélangées dans un ordre aléatoire ;
-- **chronomètre global strict de 20 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
+- **30 questions** : 10 de raisonnement abstrait (générées, 2 par règle), 10 affirmations verbales (réparties entre les textes) et 10 questions numériques (réparties entre les jeux de données), mélangées dans un ordre aléatoire ;
+- **chronomètre global strict de 30 minutes**, toujours visible en haut de l'écran. Il passe à l'orange à 5 minutes et au rouge à 1 minute, avec des annonces pour les lecteurs d'écran. À zéro, l'examen s'arrête immédiatement et les réponses sont notées en l'état ;
 - **navigation libre** : boutons « Précédent » / « Suivant », accès direct par la grille des questions, réponses modifiables ou effaçables, questions marquées « à revoir » ;
 - **aucune correction pendant l'épreuve** : après confirmation de « Terminer l'examen » (ou à la fin du temps), le bilan affiche :
   - le score, le temps utilisé et le résultat par section ;
-  - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal.
+  - la correction détaillée de chaque question : série complétée et règle pour l'abstrait, citation exacte et explication pour le verbal, calcul étape par étape pour le numérique.
 
 Le nombre de questions et la durée se règlent dans `EXAM_CONFIG` (`assets/js/examen/exam.js`).
 
@@ -71,6 +99,7 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 ├── modules/
 │   ├── abstrait/index.html     # Module « Raisonnement abstrait »
 │   ├── verbal/index.html       # Module « Raisonnement verbal »
+│   ├── numerique/index.html    # Module « Raisonnement numérique »
 │   └── examen/index.html       # Mode examen chronométré
 ├── src/css/
 │   ├── main.css                # Point d'entrée Tailwind : thème, fichiers analysés
@@ -93,10 +122,16 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │       │   ├── quiz.js         # Logique de l'exercice et validation de la banque (sans DOM)
 │       │   ├── view.js         # Texte, boutons de réponse, citations (partagé avec le mode examen)
 │       │   └── app.js          # Interface du module
+│       ├── numerique/
+│       │   ├── quiz.js         # Moteur de calcul, formatage, validation de la banque (sans DOM)
+│       │   ├── view.js         # Tableau, graphiques, propositions, correction détaillée (partagé avec le mode examen)
+│       │   └── app.js          # Interface du module
 │       └── examen/
 │           ├── exam.js         # Composition, session chronométrée, notation (sans DOM)
 │           └── app.js          # Interface de l'examen et bilan
-├── data/verbal.json            # Banque de textes et d'affirmations
+├── data/
+│   ├── verbal.json             # Banque de textes et d'affirmations
+│   └── numerique.json          # Banque de jeux de données et de questions chiffrées
 ├── tests/                      # Tests automatisés (node --test)
 ├── scripts/build-site.js       # Assemble le site publiable dans dist/
 ├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
@@ -127,7 +162,7 @@ Pendant le développement, lancez `npm run watch:css` dans un second terminal : 
 npm test
 ```
 
-Les tests (Node.js 20 ou plus) couvrent les trois modules et le site :
+Les tests (Node.js 20 ou plus) couvrent les quatre modules et le site :
 
 - **Raisonnement abstrait** : des centaines de questions générées par règle. Chacune doit avoir 4 propositions distinctes, une seule bonne réponse qui prolonge réellement la série, des descriptions accessibles distinctes et une explication complète.
 - **Raisonnement verbal** : validation de la banque de questions :
@@ -137,8 +172,15 @@ Les tests (Node.js 20 ou plus) couvrent les trois modules et le site :
   - équilibre entre les trois réponses et explications détaillées.
 
   S'y ajoutent les tests de l'enchaînement des questions, du surlignage, de la typographie et du bilan.
+- **Raisonnement numérique** : validation de la banque :
+  - chaque bonne réponse est recalculée à partir des données ;
+  - chaque piège correspond au calcul de l'erreur qu'il décrit ;
+  - les totaux sont cohérents ;
+  - au moins 4 jeux de données de 3 à 4 questions, et les quatre compétences toutes présentes.
+
+  S'y ajoutent les tests du moteur de calcul (priorités, puissances, refus des expressions invalides), du formatage à la française, de l'enchaînement et du bilan.
 - **Mode examen** :
-  - composition : 10 + 10 questions mélangées, affirmations distinctes et réparties entre les textes, tirage reproductible ;
+  - composition : 10 + 10 + 10 questions mélangées, réparties entre les textes et les jeux de données, tirage reproductible ;
   - navigation libre : réponses modifiées ou effacées, questions marquées ;
   - chronomètre : décompte, arrêt strict à zéro avec refus des réponses tardives, temps figé à la remise ;
   - notation (bonnes réponses, erreurs, questions vides, par section) et affichage du temps.
@@ -159,7 +201,7 @@ Le dossier `dist/` étant un site statique autonome, il peut aussi être déploy
 
 ## Publier un module
 
-Les trois modules sont en ligne. Pour en ajouter un nouveau, créer sa carte sur la page d'accueil avec un lien vers `modules/<nom>/index.html`. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
+Les quatre modules sont en ligne. Pour en ajouter un nouveau, créer sa carte sur la page d'accueil avec un lien vers `modules/<nom>/index.html`. Tant que le module n'est pas prêt, ce lien porte l'attribut `data-coming-soon` (il affiche alors un message « bientôt disponible », géré par `assets/js/main.js`), et la carte porte un badge « Bientôt disponible ». Une fois le module publié, retirer l'attribut et le badge.
 
 ## Avertissement
 
