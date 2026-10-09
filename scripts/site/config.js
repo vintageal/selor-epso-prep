@@ -16,10 +16,11 @@ export const LANGUAGES = {
 export const DEFAULT_LANGUAGE = 'fr';
 
 /**
- * Version néerlandaise publique ? Tant que ce drapeau vaut false, les pages /nl/ sont générées
- * mais non découvrables : balise noindex, absentes du sitemap, ni sélecteur de langue ni hreflang.
+ * Version néerlandaise publique : sélecteur de langue, hreflang, sitemap et 404 bilingues. Avec false,
+ * les pages /nl/ seraient générées mais non découvrables : balise noindex, absentes du sitemap,
+ * ni sélecteur de langue ni hreflang (mode utilisé pendant la mise en ligne progressive).
  */
-export const NL_PUBLIC = false;
+export const NL_PUBLIC = true;
 
 /** Langues découvrables (sélecteur, hreflang, sitemap). */
 export const publicLanguages = (nlPublic = NL_PUBLIC) => (nlPublic ? ['fr', 'nl'] : ['fr']);
