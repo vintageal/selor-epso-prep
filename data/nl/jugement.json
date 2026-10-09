@@ -1,0 +1,1325 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "priorites-contradictoires",
+      "title": "Twee dringende en tegenstrijdige vragen",
+      "theme": "Relatie met de hiërarchie",
+      "competency": "priorites",
+      "competencies": ["priorites", "communication", "resultats"],
+      "difficulty": 2,
+      "context": "Je bent dossierbeheerder bij een federale overheidsdienst.",
+      "situation": [
+        "Maandagochtend vraagt je teamleider je om tegen woensdag een rapport voor het kabinet van de minister af te werken.",
+        "Een uur later vraagt het hoofd van een andere dienst, met een hogere graad dan je teamleider, je om voorrang te geven aan een reeks dringende dossiers van burgers, eveneens tegen woensdag. Je schat in dat je die twee taken binnen die termijn niet tegelijk kan uitvoeren."
+      ],
+      "debrief": "Bij tegenstrijdige vragen is het een goede praktijk om het conflict vroeg aan je rechtstreekse leidinggevende te melden, met objectieve gegevens, in plaats van zelf te beslissen of te hopen dat je alles klaarkrijgt. Kiezen tussen prioriteiten is de taak van de hiërarchie; jouw rol is die keuze tijdig mogelijk te maken.",
+      "actions": [
+        {
+          "id": "parallele",
+          "text": "Je werkt tegelijk aan de twee taken, zo goed als je kan, en woensdag lever je wat je hebt kunnen afwerken.",
+          "rank": 3,
+          "competencies": ["priorites", "resultats"],
+          "explanation": "Weinig gepaste reactie. Ze vertrekt vanuit goede wil, maar komt erop neer dat je een probleem negeert dat je nochtans al op maandag had opgemerkt. Door je inspanningen te versnipperen, riskeer je twee onvolledige taken af te leveren, en niemand heeft de kans gekregen om te anticiperen of het werk anders te organiseren. Psychologisch gezien is dit een vermijdingsstrategie: je hoopt dat het probleem vanzelf verdwijnt. Deze reactie scoort slecht op organisatie en prioriteiten en op resultaatgericht werken."
+        },
+        {
+          "id": "arbitrage",
+          "text": "Je brengt je teamleider snel op de hoogte van het prioriteitenconflict, met een inschatting van de tijd die elke taak vraagt, en je vraagt haar een keuze te maken, zo nodig samen met het andere diensthoofd.",
+          "rank": 1,
+          "competencies": ["priorites", "communication", "resultats"],
+          "explanation": "Dit is de meest gepaste actie. Je blijft niet alleen zitten met een dilemma dat je beslissingsbevoegdheid overstijgt: je maakt het probleem vroeg zichtbaar (op maandag, en niet op woensdag), je objectiveert het met een inschatting van de werklast en je legt het voor aan de persoon die bevoegd is om te kiezen, je rechtstreekse leidinggevende. Vanuit leidinggevend oogpunt respecteer je de hiërarchische lijn en maak je de beslissing tegelijk gemakkelijker. Aangetoonde competenties: organisatie en prioriteiten (anticiperen op het conflict tussen termijnen), communicatie (feitelijke en tijdige informatie) en resultaatgericht werken (het op te leveren werk veiligstellen in plaats van op beide taken te falen)."
+        },
+        {
+          "id": "negociation-directe",
+          "text": "Je stelt het diensthoofd rechtstreeks voor om een deel van zijn dossiers te behandelen en de rest naar de week erna te verschuiven, en daarna breng je je teamleider op de hoogte.",
+          "rank": 2,
+          "competencies": ["problemes", "communication"],
+          "explanation": "Aanvaardbare reactie, maar niet optimaal. Je zoekt een concrete oplossing en je brengt je teamleider op de hoogte, wat positief is voor het oplossen van problemen. Toch onderhandel je in je eentje over uitstel met een leidinggevende van een andere dienst, zonder te weten of het rapport voor het kabinet nog meer voorrang heeft: je neemt een beslissing over prioriteiten die aan je hiërarchie toekomt, en je stelt je teamleider voor een voldongen feit."
+        },
+        {
+          "id": "grade",
+          "text": "Je geeft voorrang aan de dossiers van het diensthoofd, omdat hij een hogere graad heeft, zonder er met je teamleider over te praten.",
+          "rank": 4,
+          "competencies": ["communication", "priorites"],
+          "explanation": "Dit is de minst gepaste actie. Je beslist in je eentje, alleen op basis van de graad, zonder de persoon te verwittigen die je de eerste taak had gegeven: je teamleider ontdekt op woensdag dat het rapport voor het kabinet niet klaar is. Je gaat voorbij aan de hiërarchische lijn, je schaadt de vertrouwensrelatie en je brengt gevoelig werk in gevaar. De graad van wie iets vraagt, vervangt geen beslissing over prioriteiten; het gebrek aan communicatie is hier de voornaamste fout."
+        }
+      ]
+    },
+    {
+      "id": "collegue-en-retard",
+      "title": "Een collega die zijn termijnen niet meer haalt",
+      "theme": "Conflicthantering",
+      "competency": "equipe",
+      "competencies": ["equipe", "communication", "resultats"],
+      "difficulty": 2,
+      "context": "Je werkt in een team van vijf personen dat een regionale projectoproep voorbereidt.",
+      "situation": [
+        "Sinds drie weken levert een collega, Marc, zijn bijdragen te laat en van wisselende kwaliteit in. De andere teamleden vangen dat op door overuren te maken en beginnen onder elkaar over hem te klagen.",
+        "De publicatiedatum van de projectoproep komt dichterbij. Je leidinggevende is niet op de hoogte van de situatie."
+      ],
+      "debrief": "Bij een conflict in een team kies je eerst voor een rechtstreeks en feitelijk gesprek onder vier ogen, daarna voor gezamenlijke oplossingen; pas als de situatie niet verbetert, schakel je discreet de hiërarchie in.",
+      "actions": [
+        {
+          "id": "courriel-equipe",
+          "text": "Je meldt je leidinggevende meteen per e-mail dat Marc zijn werk niet doet, met het hele team in kopie.",
+          "rank": 4,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Een collega schriftelijk aanklagen tegenover het hele team, zonder eerst met hem te praten, vernedert hem publiekelijk en lokt een defensieve reactie uit. Het bericht is geformuleerd als een oordeel over de persoon (“doet zijn werk niet”) in plaats van als een vaststelling van feiten, en verergert het conflict in plaats van het op te lossen. Het kan nodig worden om de hiërarchie in te lichten, maar dan onder vier ogen en nadat je een gesprek hebt geprobeerd."
+        },
+        {
+          "id": "replanifier",
+          "text": "Je stelt op de volgende teamvergadering voor om samen de taakverdeling en de planning te herbekijken, zodat iedereen zijn termijnen kan halen.",
+          "rank": 2,
+          "competencies": ["equipe", "resultats"],
+          "explanation": "Goede reactie, maar onvolledig. De taakverdeling en de planning samen herbekijken is een constructieve en resultaatgerichte aanpak als team, die vermijdt dat er met de vinger naar iemand wordt gewezen. Ze pakt de situatie van Marc echter niet rechtstreeks aan: als hij met een specifiek probleem kampt, dreigt een nieuwe verdeling dat probleem eerder te verdoezelen dan op te lossen."
+        },
+        {
+          "id": "dialogue",
+          "text": "Je stelt Marc een gesprek onder vier ogen voor, om hem feitelijk te vertellen welke gevolgen de vertragingen voor het team hebben en hem te vragen of hij met een specifiek probleem kampt.",
+          "rank": 1,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Voor je verdere stappen zet, ga je een rechtstreeks en respectvol gesprek aan dat over de feiten gaat (de vertragingen en hun gevolgen) en niet over de persoon. Je geeft Marc de kans om een eventueel probleem uit te leggen (te veel werk, een persoonlijk probleem, een taak die hij niet goed beheerst) en de situatie zelf recht te zetten. Psychologisch gezien beperkt feedback onder vier ogen gezichtsverlies en een defensieve reactie. Aangetoonde competenties: samenwerken (een meningsverschil constructief aanpakken) en communicatie (feitelijke feedback en actief luisteren)."
+        },
+        {
+          "id": "compenser",
+          "text": "Je blijft samen met je collega’s zijn vertragingen opvangen, om de publicatie van de projectoproep niet in gevaar te brengen.",
+          "rank": 3,
+          "competencies": ["equipe", "resultats"],
+          "explanation": "Weinig gepaste reactie. Ze beschermt de publicatiedatum op korte termijn, maar ze creëert een onrechtvaardige en uitputtende situatie: de extra werklast en het geklaag onder collega’s tasten uiteindelijk de sfeer in het team en de kwaliteit van het werk aan. Een probleem vermijden is het niet oplossen; bovendien blijft je leidinggevende onwetend over een risico voor het project."
+        }
+      ]
+    },
+    {
+      "id": "erreur-dossier",
+      "title": "Een fout in een dossier dat al werd verstuurd",
+      "theme": "Deontologie",
+      "competency": "integrite",
+      "competencies": ["integrite", "resultats", "problemes"],
+      "difficulty": 1,
+      "context": "Je bent dossierbeheerder bij een dienst die uitkeringen berekent.",
+      "situation": [
+        "Bij het nalezen van een dossier dat je vorige week hebt behandeld, stel je vast dat je een rekenfout hebt gemaakt: een burger heeft een brief gekregen met een lager bedrag dan het bedrag waarop hij recht heeft.",
+        "Niemand anders heeft het gemerkt, en de volgende interne controle vindt pas over zes maanden plaats."
+      ],
+      "debrief": "Een fout erkennen, je hiërarchie inlichten, de fout voor de burger rechtzetten en nagaan of ze zich ook elders heeft voorgedaan: dat is de verwachte combinatie van integriteit, servicegerichtheid en probleemoplossend vermogen. Verbergen of afwachten maakt de situatie altijd erger.",
+      "actions": [
+        {
+          "id": "corriger-discretement",
+          "text": "Je verbetert het dossier ongemerkt in het systeem, zonder iemand te verwittigen, aangezien voortaan het juiste bedrag wordt toegepast.",
+          "rank": 3,
+          "competencies": ["integrite", "service"],
+          "explanation": "Weinig gepaste reactie. Het bedrag rechtzetten is nodig, maar dat in stilte doen levert twee problemen op. Enerzijds weet de burger niet dat hij een foutieve brief heeft gekregen en dat hij nog een bedrag tegoed heeft. Anderzijds is je leidinggevende niet op de hoogte van het incident en kan die de verbetering niet controleren en niet voorkomen dat de fout zich herhaalt. Het gebrek aan transparantie gaat in tegen de integriteit die van een ambtenaar wordt verwacht, ook als de bedoeling goed is."
+        },
+        {
+          "id": "courrier-direct",
+          "text": "Je verbetert het dossier en stuurt zelf een rechtzettingsbrief naar de burger, en daarna vertel je het aan je leidinggevende tijdens je volgende individuele gesprek.",
+          "rank": 2,
+          "competencies": ["service", "resultats"],
+          "explanation": "Goede reactie, maar niet de beste. Je neemt de verantwoordelijkheid voor je fout op en je herstelt ze voor de burger, wat getuigt van echte servicegerichtheid. Je stelt het informeren van je leidinggevende echter uit, terwijl een rechtzettingsbrief de administratie verbindt en misschien eerst moet worden goedgekeurd. Je gaat ook niet na of dezelfde fout andere dossiers heeft kunnen treffen."
+        },
+        {
+          "id": "attendre",
+          "text": "Je wacht af of de burger een klacht indient voor je iets doet.",
+          "rank": 4,
+          "competencies": ["integrite", "service"],
+          "explanation": "Dit is de minst gepaste actie. Je weet dat een burger een deel van zijn rechten misloopt en je kiest ervoor niets te doen: dat is een ernstige tekortkoming op het vlak van integriteit en van de opdracht van een openbare dienst. De rechtzetting laten afhangen van de oplettendheid van de burger is onrechtvaardig, vooral voor de kwetsbaarste personen, die het minst vaak klagen. Hoe meer tijd er verstrijkt, hoe duurder de fout is om recht te zetten en hoe meer het vertrouwen in de administratie afneemt."
+        },
+        {
+          "id": "transparence",
+          "text": "Je brengt je leidinggevende op de hoogte van de fout, stelt de verbetering en een rechtzettingsbrief aan de burger voor, en gaat na of andere dossiers door dezelfde fout kunnen zijn getroffen.",
+          "rank": 1,
+          "competencies": ["integrite", "problemes", "resultats"],
+          "explanation": "Dit is de meest gepaste actie. Je bent transparant door je fout bij je leidinggevende te erkennen, je stelt een volledige oplossing voor (verbetering en rechtzettingsbrief) en je kijkt verder dan het afzonderlijke geval door na te gaan of de oorzaak ook andere dossiers kan hebben getroffen. Psychologisch gezien versterkt het meteen erkennen van een fout het vertrouwen van de hiërarchie veel meer dan foutloos presteren. Aangetoonde competenties: integriteit, problemen oplossen (oorzaak en omvang van de fout) en resultaatgericht werken (kwaliteit van de dienstverlening)."
+        }
+      ]
+    },
+    {
+      "id": "usager-mecontent",
+      "title": "Een burger aan het loket die zijn geduld kwijt is",
+      "theme": "Relatie met de burgers",
+      "competency": "service",
+      "competencies": ["service", "communication", "problemes"],
+      "difficulty": 1,
+      "context": "Je werkt aan het onthaal van een gewestelijke administratie die renovatiepremies beheert.",
+      "situation": [
+        "Een burger komt voor de derde keer langs voor hetzelfde dossier. Hij wordt boos, verheft zijn stem en beweert dat de administratie “hem voor de gek houdt”. Achter hem wachten verschillende mensen.",
+        "Volgens het systeem ontbreekt er nog altijd een attest dat de burger naar eigen zeggen al heeft opgestuurd."
+      ],
+      "debrief": "Bij een boze burger breng je eerst de emotie tot bedaren (luisteren, erkennen) en daarna pak je het concrete probleem nauwkeurig aan. Op dezelfde toon antwoorden of de burger naar elders doorsturen houdt het conflict en het verlies aan vertrouwen in stand.",
+      "actions": [
+        {
+          "id": "ecoute-active",
+          "text": "Je luistert naar hem zonder hem te onderbreken, erkent zijn frustratie, toont hem daarna precies welk stuk ontbreekt en gaat samen met hem na of het attest niet onder een ander referentienummer werd geregistreerd.",
+          "rank": 1,
+          "competencies": ["service", "communication", "problemes"],
+          "explanation": "Dit is de meest gepaste actie. Luisteren zonder te onderbreken en de frustratie erkennen doen de spanning dalen: wie zich gehoord voelt, staat opnieuw open voor een oplossing. Daarna ga je over tot het concrete, door precies uit te leggen wat er ontbreekt, en je overweegt een geloofwaardige verklaring (een stuk dat wel ontvangen maar verkeerd geklasseerd werd) in plaats van ervan uit te gaan dat de burger zich vergist. Aangetoonde competenties: servicegericht werken, communicatie (actief luisteren, duidelijke uitleg) en problemen oplossen."
+        },
+        {
+          "id": "meme-ton",
+          "text": "Je antwoordt hem streng dat de regels voor iedereen dezelfde zijn en dat hij alleen maar de brief moet lezen die hij heeft gekregen.",
+          "rank": 4,
+          "competencies": ["service", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Op woede reageren met strengheid en een impliciet verwijt (“u hoeft alleen maar de brief te lezen”) drijft de spanning op: de burger voelt zich geminacht, wat zijn gevoel bevestigt dat de administratie “hem voor de gek houdt”. Het eigenlijke probleem, een attest dat misschien zoek is, wordt niet onderzocht. Deze reactie gaat in tegen servicegerichtheid en professionele communicatie, ook tegenover moeilijk gedrag."
+        },
+        {
+          "id": "espace-calme",
+          "text": "Je stelt hem voor om enkele minuten in een rustige ruimte apart te wachten, zodat je intussen de volgende mensen kan helpen, en daarna rustig samen met hem zijn dossier te bekijken.",
+          "rank": 2,
+          "competencies": ["service", "communication"],
+          "explanation": "Goede reactie, maar niet de beste. Een rustigere ruimte voorstellen is een nuttige de-escalatietechniek, die ook rekening houdt met de andere burgers. Iemand die zijn geduld al kwijt is en voor de derde keer langskomt, vragen om te wachten, kan echter aanvoelen alsof hij aan de kant wordt geschoven; het is beter eerst zijn frustratie te erkennen en hem te tonen dat zijn dossier wordt opgevolgd."
+        },
+        {
+          "id": "autre-service",
+          "text": "Je legt hem uit dat het onthaal de premies niet behandelt en je geeft hem het telefoonnummer van de bevoegde dienst.",
+          "rank": 3,
+          "competencies": ["service", "problemes"],
+          "explanation": "Weinig gepaste reactie. Ze is technisch juist, maar de burger komt voor de derde keer langs en in het systeem kan je zien wat er vastzit: hem naar een andere dienst doorsturen zonder iets na te gaan, stuurt hem van het kastje naar de muur en voedt zijn frustratie. Servicegericht werken betekent een vraag binnen de grenzen van je rol vooruithelpen, niet ze van je afschuiven."
+        }
+      ]
+    },
+    {
+      "id": "information-confidentielle",
+      "title": "Een collega vraagt vertrouwelijke informatie",
+      "theme": "Deontologie",
+      "competency": "integrite",
+      "competencies": ["integrite", "communication"],
+      "difficulty": 1,
+      "context": "Je werkt bij de personeelsdienst van een federale administratie en je hebt toegang tot de resultaten van een lopende interne selectieprocedure.",
+      "situation": [
+        "Een collega van een andere dienst, met wie je goed overeenkomt, heeft aan die selectie deelgenomen.",
+        "Tijdens een pauze vraagt ze je om haar “gewoon te zeggen of ze goed gerangschikt is”. De officiële resultaten worden pas volgende week aan alle kandidaten meegedeeld."
+      ],
+      "debrief": "De vertrouwelijkheid van een selectieprocedure beschermt de gelijke behandeling van de kandidaten: geen enkele informatie, zelfs geen vage, mag vóór de officiële bekendmaking worden meegedeeld. Je kan de weigering wel tactvol formuleren, zonder de relatie te schaden.",
+      "actions": [
+        {
+          "id": "indice",
+          "text": "Je geeft haar alleen een algemene aanwijzing, zoals “maak je geen zorgen”, zonder een cijfer te noemen.",
+          "rank": 3,
+          "competencies": ["integrite"],
+          "explanation": "Weinig gepaste reactie. Ook een “algemene aanwijzing” blijft het prijsgeven van vertrouwelijke informatie: ze geeft je collega informatie waarover de andere kandidaten niet beschikken en ondermijnt de gelijke behandeling. Je stelt jezelf er ook mee bloot: als de aanwijzing misleidend blijkt, of als ze wordt doorverteld, wordt jouw loyaliteit in twijfel getrokken. De goede bedoeling weegt niet op tegen de schending van de vertrouwelijkheid."
+        },
+        {
+          "id": "refus-bienveillant",
+          "text": "Je legt haar vriendelijk uit dat je vóór de officiële bekendmaking geen enkele informatie mag meedelen, en je vertelt haar op welke datum alle kandidaten hun resultaten krijgen.",
+          "rank": 1,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je respecteert de vertrouwelijkheid van de procedure strikt en je vrijwaart tegelijk de relatie: de weigering is duidelijk, wordt verklaard door een regel die alle kandidaten beschermt (ook haar) en gaat samen met nuttige informatie, de datum van de bekendmaking. Psychologisch gezien doet dit soort antwoord iemand minder aandringen, omdat het geen ruimte laat voor twijfel. Aangetoonde competenties: integriteit en communicatie (standvastig over de inhoud, tactvol in de vorm)."
+        },
+        {
+          "id": "classement",
+          "text": "Je deelt haar haar rangschikking mee en vraagt haar die informatie voor zich te houden.",
+          "rank": 4,
+          "competencies": ["integrite"],
+          "explanation": "Dit is de minst gepaste actie. Een rangschikking meedelen vóór de bekendmaking is een duidelijke schending van de vertrouwelijkheid en van de gelijkheid tussen kandidaten, die tot tuchtsancties kan leiden en de hele procedure juridisch kwetsbaar kan maken. Dat je om geheimhouding vraagt, toont trouwens dat je weet dat het verboden is. Een persoonlijke relatie rechtvaardigt nooit een voorkeursbehandeling."
+        },
+        {
+          "id": "refus-et-signalement",
+          "text": "Je antwoordt haar dat je niets mag zeggen, en daarna meld je aan je leidinggevende dat ze je erom heeft gevraagd.",
+          "rank": 2,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Goede reactie wat de inhoud betreft, maar buiten verhouding. De weigering is correct en de vertrouwelijkheid wordt gerespecteerd. Een eenmalige, informele vraag melden, zonder aandringen of druk, gaat echter te ver: zo riskeer je de werkrelatie nodeloos te schaden. Een melding zou wel verantwoord zijn als de vraag terugkwam of met druk gepaard ging."
+        }
+      ]
+    },
+    {
+      "id": "nouvel-outil",
+      "title": "Een nieuwe IT-toepassing die het werk vertraagt",
+      "theme": "Verandering en verbetering",
+      "competency": "problemes",
+      "competencies": ["problemes", "resultats", "equipe"],
+      "difficulty": 3,
+      "context": "Je maakt deel uit van een team dat subsidieaanvragen behandelt. Je directie heeft een maand geleden een nieuwe IT-toepassing ingevoerd.",
+      "situation": [
+        "Je stelt vast dat je met de toepassing dezelfde gegevens twee keer moet invoeren, waardoor elk personeelslid ongeveer een uur per dag verliest.",
+        "Verschillende collega’s klagen, en sommigen zijn opnieuw hun oude Excelbestanden beginnen te gebruiken naast de toepassing, wat tot tegenstrijdigheden tussen de gegevens leidt."
+      ],
+      "debrief": "Bij een probleem met een werkinstrument verwacht men dat je als personeelslid het probleem objectiveert, een oplossing voorstelt en die via het juiste kanaal aanbrengt, samen met de betrokkenen. De toepassing omzeilen of het probleem lijdzaam ondergaan, lost niets op.",
+      "actions": [
+        {
+          "id": "subir",
+          "text": "Je blijft de toepassing gebruiken zoals ze is, in de veronderstelling dat de moeilijkheden met de gewoonte zullen verdwijnen.",
+          "rank": 3,
+          "competencies": ["problemes", "resultats"],
+          "explanation": "Weinig gepaste reactie. Je respecteert de beslissing van de directie, wat positief is, maar je aanvaardt passief een groot tijdverlies en tegenstrijdige gegevens die niet zullen verdwijnen naarmate je eraan gewend raakt: de dubbele invoer is een gebrek van de toepassing, geen gebrek aan oefening. Resultaatgericht werken betekent ook melden wat het team belet zijn doelstellingen te halen."
+        },
+        {
+          "id": "liste-collective",
+          "text": "Je stelt je collega’s voor om samen een lijst op te stellen van de moeilijkheden die jullie ondervinden, om die op de volgende dienstvergadering voor te leggen.",
+          "rank": 2,
+          "competencies": ["equipe", "problemes"],
+          "explanation": "Goede reactie, maar minder doeltreffend. De gezamenlijke aanpak is positief: hij zet de klachten om in een constructieve actie en betrekt het team erbij. Maar een lijst met moeilijkheden, zonder becijferde analyse of voorstel tot oplossing, dreigt een loutere opsomming van grieven te worden, en wachten tot de volgende dienstvergadering vertraagt de aanpak."
+        },
+        {
+          "id": "excel",
+          "text": "Ook jij begint opnieuw met de Excelbestanden te werken, omdat dat sneller gaat.",
+          "rank": 4,
+          "competencies": ["resultats", "equipe"],
+          "explanation": "Dit is de minst gepaste actie. De officiële toepassing omzeilen verergert het probleem dat je zelf hebt vastgesteld: de tegenstrijdigheden in de gegevens nemen toe en worden moeilijker recht te zetten, ten koste van de kwaliteit van de behandeling van de aanvragen. Je omzeilt ook een beslissing van de directie in plaats van ze via de voorziene kanalen te laten bijsturen. Tijdwinst op korte termijn rechtvaardigt niet dat de betrouwbaarheid van de gegevens achteruitgaat."
+        },
+        {
+          "id": "analyse-proposition",
+          "text": "Je documenteert het probleem nauwkeurig (dubbele stappen, verloren tijd, voorbeelden van tegenstrijdigheden) en bezorgt het aan je leidinggevende met een voorstel tot oplossing, waarbij je voorstelt de betrokken collega’s erbij te betrekken.",
+          "rank": 1,
+          "competencies": ["problemes", "resultats", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je zet een vage klacht om in een geobjectiveerd en becijferd probleem (een uur per dag per personeelslid, voorbeelden van tegenstrijdigheden), waardoor je leidinggevende de middelen krijgt om op te treden. Je stelt een oplossing voor in plaats van alleen te melden, en je betrekt de gebruikers erbij, die de toepassing het best kennen. Aangetoonde competenties: problemen oplossen (analyse en voorstel), resultaatgericht werken (productiviteitswinst en kwaliteit van de gegevens) en samenwerken."
+        }
+      ]
+    },
+    {
+      "id": "nouvelle-collegue-seule",
+      "title": "Een nieuwe collega die aan haar lot wordt overgelaten",
+      "theme": "Samenwerken",
+      "competency": "equipe",
+      "competencies": ["equipe", "communication", "resultats"],
+      "difficulty": 1,
+      "context": "Je bent dossierbeheerder bij de dienst Bevolking van een gemeentebestuur.",
+      "situation": [
+        "Amina is twee weken geleden in je team begonnen. Bij gebrek aan tijd heeft niemand haar de procedures echt uitgelegd: ze stelt weinig vragen en je merkt dat ze fouten maakt bij het invoeren van adreswijzigingen.",
+        "Je teamleider, die het erg druk heeft met de verhuizing van de dienst, lijkt het niet te hebben gemerkt. Sommige collega’s moeten nu al dossiers van Amina verbeteren."
+      ],
+      "debrief": "Een nieuwe collega helpen integreren is een gezamenlijke verantwoordelijkheid: haar op een vriendelijke en concrete manier helpen de procedures te begrijpen, komt het hele team en de burgers ten goede. De hiërarchie inlichten is zinvol om een duurzame begeleiding te organiseren, niet om de persoon zelf te melden.",
+      "actions": [
+        {
+          "id": "accompagner",
+          "text": "Je stelt Amina voor om haar de lastige punten van de invoer te tonen en haar vragen te beantwoorden, en daarna stel je je teamleider een peterschap voor nieuwe medewerkers voor.",
+          "rank": 1,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je treedt vroeg, rechtstreeks en welwillend op: Amina krijgt de concrete hulp die ze mist, zonder dat ze tegenover de anderen in verlegenheid wordt gebracht. Psychologisch gezien is een nieuwe medewerker die weinig vragen stelt vaak bang om te storen; een uitdrukkelijk aanbod van hulp neemt die drempel weg. Vanuit leidinggevend oogpunt maakt je voorstel van peterschap van een eenmalige oplossing een duurzame teampraktijk. Aangetoonde competenties: samenwerken en communicatie, ten dienste van de kwaliteit van de dossiers."
+        },
+        {
+          "id": "signaler-cheffe",
+          "text": "Je meldt je teamleider dat Amina onvoldoende opgeleid is en fouten maakt bij het invoeren, en je vraagt haar om een begeleiding te organiseren.",
+          "rank": 2,
+          "competencies": ["communication", "resultats"],
+          "explanation": "Aanvaardbare reactie. Je teamleider inlichten maakt het mogelijk een gepaste opleiding te organiseren en nieuwe fouten te voorkomen, wat nuttig is voor de kwaliteit van de dienstverlening. Maar je schuift hulp die je zelf meteen zou kunnen bieden volledig door, en Amina dreigt je stap eerder als een melding dan als steun te ervaren. Rechtstreekse hulp, aangevuld met deze informatie, zou doeltreffender zijn geweest."
+        },
+        {
+          "id": "renvoyer-au-manuel",
+          "text": "Je raadt Amina aan om de procedurehandleiding op het intranet opnieuw te lezen en elk dossier twee keer na te kijken voor ze het invoert, zodat ze leert zichzelf te verbeteren.",
+          "rank": 3,
+          "competencies": ["communication", "equipe"],
+          "explanation": "Weinig gepaste reactie. Je wijst haar op haar fouten, wat beter is dan zwijgen, maar je verwijst haar in haar eentje naar een document, terwijl haar probleem net voortkomt uit een gebrek aan uitleg. Een handleiding beantwoordt geen praktische vragen die een nieuwe medewerker niet durft te stellen, en de dubbele controle vertraagt haar werk zonder haar te leren wat er misloopt. Je maakt van een nood aan begeleiding een individuele eis, en de collega’s zullen haar dossiers blijven verbeteren."
+        },
+        {
+          "id": "reunion-equipe",
+          "text": "Tijdens de teamvergadering som je in het bijzijn van iedereen de fouten van Amina op, zodat iedereen gewaarschuwd is en zijn dossiers nakijkt.",
+          "rank": 4,
+          "competencies": ["communication", "equipe"],
+          "explanation": "Dit is de minst gepaste actie. De fouten van een nieuwe collega publiekelijk aanwijzen stelt haar bloot en vernedert haar, terwijl die fouten in de eerste plaats te verklaren zijn door een gebrek aan begeleiding. Psychologisch gezien dreigt die terechtwijzing haar te ontmoedigen en haar nog minder vragen te doen stellen. Vanuit leidinggevend oogpunt behandel je een organisatieprobleem als een individuele fout en tast je de sfeer in het team aan."
+        }
+      ]
+    },
+    {
+      "id": "desaccord-methode-rapport",
+      "title": "Twee collega’s die het oneens zijn over de methode",
+      "theme": "Conflicthantering",
+      "competency": "equipe",
+      "competencies": ["equipe", "problemes", "communication"],
+      "difficulty": 3,
+      "context": "Je maakt deel uit van een team van vier analisten dat het jaarverslag van een agentschap van de Europese Unie voorbereidt.",
+      "situation": [
+        "Pieter en Sofia, twee ervaren collega’s, zijn het niet eens over de opbouw van het verslag: Pieter wil het per land voorstellen, Sofia per thema. De laatste twee vergaderingen zijn zonder beslissing geëindigd, in een gespannen sfeer.",
+        "De coördinator van het team is deze week op dienstreis, maar is bereikbaar. Het eerste ontwerp van het verslag moet over twee weken worden ingediend."
+      ],
+      "debrief": "Een meningsverschil over de methode is op zich geen probleem: het wordt er een wanneer het team erdoor vastloopt. De discussie terugbrengen naar objectieve criteria en de persoon die beslist erbij betrekken, zonder partij te kiezen, maakt het mogelijk vooruit te gaan en de relaties te vrijwaren.",
+      "actions": [
+        {
+          "id": "criteres-communs",
+          "text": "Je stelt Pieter en Sofia voor om de twee opbouwvarianten te vergelijken aan de hand van gemeenschappelijke criteria, zoals de verwachtingen van de lezers en de termijn, en de gekozen optie daarna aan de coördinator voor te leggen.",
+          "rank": 1,
+          "competencies": ["equipe", "problemes", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je verlegt het debat van de personen naar gedeelde criteria, wat de spanning doet afnemen: niemand “wint” van de ander, het team kiest de oplossing die het best past bij de lezers en de planning. Uitdrukkelijke criteria brengen concrete elementen aan in plaats van meningen. Door de coördinator bij de eindbeslissing te betrekken, respecteer je haar rol zonder al het werk naar haar door te schuiven. Aangetoonde competenties: samenwerken, problemen oplossen en communicatie."
+        },
+        {
+          "id": "demander-coordinatrice",
+          "text": "Je schrijft de coördinator om de argumenten van Pieter en Sofia samen te vatten, en je vraagt haar om vóór het einde van de week tussen de twee opbouwvarianten te kiezen, zodat de termijn niet in gevaar komt.",
+          "rank": 2,
+          "competencies": ["communication"],
+          "explanation": "Aanvaardbare reactie. De impasse bedreigt de termijn, en de coördinator is bevoegd om te beslissen: haar inlichten is nuttig. Je speelt het probleem echter naar haar door zonder het team een methode te hebben voorgesteld om uit de impasse te raken, terwijl objectieve criteria misschien al hadden volstaan om tot een akkoord te komen. Een beslissing die van op afstand wordt opgelegd, dreigt bovendien een van de twee collega’s gefrustreerd achter te laten."
+        },
+        {
+          "id": "chacun-sa-partie",
+          "text": "Je werkt verder aan je eigen hoofdstukken met de opbouw die jou het meest logisch lijkt, en je laat Pieter en Sofia hun meningsverschil onder elkaar uitpraten.",
+          "rank": 3,
+          "competencies": ["resultats"],
+          "explanation": "Weinig gepaste reactie. Je blijft productief, maar je trekt je terug uit een probleem dat het hele team aanbelangt. Zonder gemeenschappelijke opbouw moeten je hoofdstukken misschien worden herschreven, en de impasse dreigt aan te houden tot de termijn in gevaar komt. Geen partij kiezen is goed, maar onverschilligheid tegenover een conflict dat het project verlamt, getuigt niet van samenwerking."
+        },
+        {
+          "id": "prendre-parti",
+          "text": "Je steunt openlijk het voorstel van Sofia, met wie je beter overeenkomt, en je wijst Pieter erop dat hij de enige is die de vooruitgang tegenhoudt.",
+          "rank": 4,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Je kiest een kamp op basis van persoonlijke sympathie en niet op basis van argumenten, en daarna wijs je publiekelijk een schuldige voor de impasse aan. Pieter zal zich geïsoleerd voelen, en het conflict, dat tot dan toe over de methode ging, wordt persoonlijk. Vanuit leidinggevend oogpunt raakt het team verdeeld op het moment dat het moet samenwerken, en verliest de beslissing elke legitimiteit."
+        }
+      ]
+    },
+    {
+      "id": "merite-analyse-commune",
+      "title": "De verdienste van gezamenlijk werk",
+      "theme": "Samenwerken",
+      "competency": "equipe",
+      "competencies": ["equipe", "communication", "integrite"],
+      "difficulty": 3,
+      "context": "Je bent attaché bij een studiedienst van een federale overheidsdienst.",
+      "situation": [
+        "Samen met je collega Thomas heb je een maand lang aan een statistische analyse gewerkt waarvan jij de methode hebt uitgewerkt. Bij de voorstelling aan de directeur praat Thomas alleen, zegt hij de hele uiteenzetting lang “ik” en vermeldt hij jouw rol niet.",
+        "De directeur feliciteert hem hartelijk en stelt hem voor om het werk volgende maand op een interfederaal comité te presenteren. Het is de eerste keer dat zoiets met Thomas gebeurt."
+      ],
+      "debrief": "Bij een gebrek aan erkenning is het de prioriteit om de zaak rechtstreeks en onder vier ogen met de betrokkene uit te klaren, zonder kwade trouw te veronderstellen, en daarna afspraken te maken voor de toekomst. Een publieke reactie of stille wrok schaadt de samenwerking blijvend.",
+      "actions": [
+        {
+          "id": "entretien-thomas",
+          "text": "Na de vergadering vraag je Thomas om even onder vier ogen te praten, zeg je hem rustig dat je had gewild dat je rol werd vermeld, en spreek je met hem af om de directeur voor te stellen het werk samen op het comité te presenteren.",
+          "rank": 1,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je pakt het probleem aan bij de bron, met de betrokkene, zonder hem te beschuldigen: het kan om een onhandigheid door stress gaan en niet om de wil om zich het werk toe te eigenen. In een gesprek onder vier ogen kan hij de zaak rechtzetten zonder gezichtsverlies. Door een concrete afspraak te maken voor de volgende voorstelling, vrijwaar je de samenwerking en maak je jouw bijdrage zichtbaar. Aangetoonde competenties: samenwerken en assertieve communicatie."
+        },
+        {
+          "id": "courriel-directrice",
+          "text": "Je stuurt de directeur, met Thomas in kopie, een feitelijke e-mail waarin je de taakverdeling samenvat en voorstelt om de analyse samen op het comité te presenteren.",
+          "rank": 2,
+          "competencies": ["communication", "integrite"],
+          "explanation": "Aanvaardbare reactie. Het bericht is feitelijk en transparant, aangezien Thomas in kopie staat, en het herstelt de werkelijke taakverdeling. Maar je stapt meteen naar de hiërarchie zonder eerst met je collega te praten: hij dreigt dat als een beschuldiging te ervaren, terwijl een eenvoudig gesprek misschien had volstaan. Dit is een nuttige stap als het rechtstreekse gesprek mislukt, niet de eerste."
+        },
+        {
+          "id": "se-taire",
+          "text": "Je zegt niets om de goede verstandhouding te bewaren, maar in de toekomst vermijd je om nog met Thomas in duo te werken.",
+          "rank": 3,
+          "competencies": ["equipe"],
+          "explanation": "Weinig gepaste reactie. Je vermijdt een onmiddellijk conflict, maar de frustratie blijft en uit zich in het afbouwen van de samenwerking, ten koste van het team. Thomas zal nooit weten wat je stoorde en kan zijn houding dus niet bijsturen. Psychologisch gezien voedt zo’n stilzwijgen vaak wrok, die zich uiteindelijk op een meer conflictueuze manier uit. Je bijdrage blijft bovendien onzichtbaar voor de directeur."
+        },
+        {
+          "id": "interrompre",
+          "text": "Je komt meteen tussenbeide, in het bijzijn van de directeur, om te zeggen dat Thomas zich werk toe-eigent waarvan jij de hele methode hebt uitgewerkt.",
+          "rank": 4,
+          "competencies": ["communication", "equipe"],
+          "explanation": "Dit is de minst gepaste actie. Een collega beschuldigen in het bijzijn van de hiërarchie, zonder eerst met hem te praten, brengt hem in verlegenheid en maakt van een kwestie van erkenning een openlijke confrontatie. Ook al is jouw rol reëel, de vorm werkt in je nadeel: je komt over alsof je meer bekommerd bent om je eigen imago dan om het gezamenlijke werk. De relatie met Thomas raakt blijvend beschadigd, en de directeur onthoudt vooral de spanning."
+        }
+      ]
+    },
+    {
+      "id": "retour-de-conge",
+      "title": "Terug van verlof en een overvolle mailbox",
+      "theme": "Werkorganisatie",
+      "competency": "priorites",
+      "competencies": ["priorites", "resultats", "communication"],
+      "difficulty": 1,
+      "context": "Je bent projectbeheerder bij een gewestelijke administratie.",
+      "situation": [
+        "Je bent terug aan het werk na twee weken verlof. In je mailbox staan meer dan tweehonderd ongelezen berichten.",
+        "Om 10 uur is er een projectvergadering gepland, en je leidinggevende heeft je gisterenavond geschreven: hij heeft tegen de middag geactualiseerde cijfers over je project nodig. Je collega Lucas heeft je tijdens je afwezigheid vervangen."
+      ],
+      "debrief": "Na een afwezigheid kan je niet alles tegelijk afhandelen: je begint met de vaste deadlines van de dag, je rekent op de persoon die je heeft vervangen om de dringende zaken op te sporen, en daarna sorteer je de rest methodisch.",
+      "actions": [
+        {
+          "id": "echeances-du-jour",
+          "text": "Je vraagt Lucas of er dringende zaken waren, je bereidt de vergadering van 10 uur en de cijfers voor de middag voor, en daarna sorteer je je berichten volgens deadline.",
+          "rank": 1,
+          "competencies": ["priorites", "resultats", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je brengt eerst de vaste deadlines van de dag in kaart, de vergadering en de vraag van je leidinggevende, en je stelt ze veilig. Het overleg met Lucas geeft je in enkele minuten zicht op de dringende zaken die tweehonderd berichten voor je verborgen zouden hebben gehouden. Door de rest daarna methodisch te sorteren, vermijd je dat je versnipperd raakt. Aangetoonde competenties: organisatie en prioriteiten, resultaatgericht werken en communicatie binnen het team."
+        },
+        {
+          "id": "trier-dabord",
+          "text": "Je besteedt het eerste uur aan het sorteren van je berichten per afzender en volgens belang, om een volledig beeld van de situatie te hebben voor je de vergadering en de cijfers voorbereidt.",
+          "rank": 2,
+          "competencies": ["priorites"],
+          "explanation": "Aanvaardbare reactie. Je berichten sorteren is een goede methode, en een overzicht helpt om prioriteiten te stellen. Maar je besteedt je eerste uur aan een taak zonder deadline, terwijl de vergadering van 10 uur en de cijfers voor de middag al bekend zijn. Je dreigt slecht voorbereid op de vergadering te komen, en je maakt geen gebruik van de hulp van Lucas, die de dringende zaken van die twee weken kent."
+        },
+        {
+          "id": "reporter-reunion",
+          "text": "Je vraagt om de vergadering van 10 uur uit te stellen, zodat je de tijd hebt om al je berichten te lezen voor je aan de cijfers begint.",
+          "rank": 3,
+          "competencies": ["priorites", "communication"],
+          "explanation": "Weinig gepaste reactie. Je erkent dat je tijd nodig hebt, maar je laat de andere deelnemers, voor wie de vergadering gepland was, opdraaien voor je terugkeer. Al je berichten lezen is niet dringender dan een projectvergadering. Dat uitstel verstoort de werking van het team zonder gegronde reden en geeft een weinig betrouwbaar beeld van je tijdsbeheer."
+        },
+        {
+          "id": "ordre-chronologique",
+          "text": "Je leest en behandelt je berichten een voor een, in de volgorde waarin ze zijn binnengekomen, en je bereidt de cijfers voor je leidinggevende voor wanneer je bij zijn bericht komt.",
+          "rank": 4,
+          "competencies": ["priorites", "resultats"],
+          "explanation": "Dit is de minst gepaste actie. De berichten in chronologische volgorde behandelen komt erop neer dat je het toeval je prioriteiten laat bepalen: je besteedt de ochtend aan oude berichten die misschien al geregeld zijn, terwijl de vraag van je leidinggevende, die je op voorhand kende, dreigt niet klaar te zijn tegen de middag. Dat is het omgekeerde van de prioritering volgens dringendheid en belang die van een projectbeheerder wordt verwacht."
+        }
+      ]
+    },
+    {
+      "id": "delai-irrealiste",
+      "title": "Een termijn die niet haalbaar is",
+      "theme": "Relatie met de hiërarchie",
+      "competency": "resultats",
+      "competencies": ["resultats", "priorites", "communication"],
+      "difficulty": 2,
+      "context": "Je bent analist bij een directoraat-generaal van een federale overheidsdienst.",
+      "situation": [
+        "Je directeur vraagt je om binnen vijf werkdagen een volledige analyse van vierhonderd subsidiedossiers te maken: de minister moet de week daarop een parlementaire vraag beantwoorden.",
+        "Volgens jouw inschatting vraagt een volledige en betrouwbare analyse minstens vijftien werkdagen. Je andere lopende dossiers hebben ook deadlines."
+      ],
+      "debrief": "Bij een onrealistische termijn zijn stilzwijgend aanvaarden en botweg weigeren twee doodlopende wegen. Een professionele reactie offert de betrouwbaarheid van het resultaat niet op: je objectiveert de werklast en stelt daarna realistische opties voor, bijvoorbeeld een betrouwbaar deelresultaat binnen de termijn, zodat de hiërarchie met kennis van zaken kan beslissen.",
+      "actions": [
+        {
+          "id": "proposer-options",
+          "text": "Je legt je directeur je inschatting van de werklast voor en stelt hem voor om tegen de deadline een representatieve steekproef te analyseren en daarna alle dossiers, of om extra hulp te krijgen.",
+          "rank": 1,
+          "competencies": ["resultats", "priorites", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je weigert te kiezen tussen de termijn en de betrouwbaarheid: je becijferde inschatting objectiveert de werklast, en je opties beantwoorden aan de werkelijke behoefte, namelijk de minister tijdig gegevens bezorgen waarop hij kan steunen. Een goed geanalyseerde representatieve steekproef is beter dan een afgeraffelde volledige analyse. Zo kan de directeur met kennis van zaken beslissen. Aangetoonde competenties: resultaatgericht werken, organisatie en prioriteiten, communicatie met de hiërarchie."
+        },
+        {
+          "id": "demander-report",
+          "text": "Je meldt je directeur dat de termijn onrealistisch is en je vraagt hem de deadline een week uit te stellen.",
+          "rank": 2,
+          "competencies": ["communication", "priorites"],
+          "explanation": "Aanvaardbare reactie. Je bent transparant over wat haalbaar is, en dat is essentieel. Maar je stelt maar één oplossing voor, die geen rekening houdt met de werkelijke beperking: het antwoord op de parlementaire vraag kan niet worden verschoven. Zonder tussenoplossing, zoals een betrouwbaar deelresultaat, stel je je directeur voor een moeilijke keuze in plaats van hem te helpen het probleem op te lossen. Bovendien zou één week extra niet volstaan volgens je eigen inschatting."
+        },
+        {
+          "id": "aide-collegues",
+          "text": "Je vraagt in alle stilte aan twee collega’s om samen met jou een deel van de dossiers te behandelen, zonder er met je directeur over te praten, om hem toch een volledige analyse te bezorgen tegen de deadline.",
+          "rank": 3,
+          "competencies": ["resultats", "equipe"],
+          "explanation": "Weinig gepaste reactie. Hulp zoeken is op zich een goed idee, maar je reorganiseert het werk van anderen zonder het akkoord van de hiërarchie, wat hun eigen deadlines in gevaar kan brengen. Je directeur weet niets van het probleem en kan dus geen keuze maken of zijn verwachtingen bijstellen. Als de termijnen van je collega’s op hun beurt verschuiven, is het probleem alleen maar verplaatst."
+        },
+        {
+          "id": "baclage",
+          "text": "Je aanvaardt zonder discussie en behandelt de dossiers zo snel mogelijk, waarbij je de controles overslaat, om tegen de deadline een volledige analyse in te dienen.",
+          "rank": 4,
+          "competencies": ["resultats", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Schijnbaar lever je op tijd, maar ten koste van de betrouwbaarheid: de minister dreigt zich in het Parlement op foutieve cijfers te baseren, wat veel erger is dan een termijn waarover onderhandeld werd. Psychologisch gezien is zonder discussie aanvaarden om een ongemakkelijk gesprek te vermijden een vermijdingsstrategie. Vanuit leidinggevend oogpunt weet je directeur niets van het risico dat hij neemt."
+        }
+      ]
+    },
+    {
+      "id": "interruptions-incessantes",
+      "title": "Van alle kanten aangeklampt",
+      "theme": "Werkorganisatie",
+      "competency": "priorites",
+      "competencies": ["priorites", "equipe", "communication"],
+      "difficulty": 2,
+      "context": "Je bent de meest ervaren persoon in een team van acht personeelsleden dat overheidsopdrachten beheert.",
+      "situation": [
+        "Je collega’s komen je voortdurend vragen stellen: je wordt een vijftiental keer per dag onderbroken. Je geeft je ervaring graag door, maar je eigen dossiers lopen vertraging op.",
+        "Twee van die dossiers moeten tegen het einde van de maand afgerond zijn, en je teamleider heeft je al gevraagd hoe ver je ermee staat."
+      ],
+      "debrief": "Een aanspreekpunt zijn is een troef voor het team, op voorwaarde dat die hulp georganiseerd wordt. Het probleem zichtbaar maken en een gezamenlijk kader voorstellen, zoals vaste momenten voor vragen en gedeelde antwoorden, beschermt zowel het team als je eigen deadlines.",
+      "actions": [
+        {
+          "id": "cadre-collectif",
+          "text": "Je legt het probleem voor aan je teamleider en stelt haar voor om vaste momenten voor vragen in te plannen, een gedeeld document met veelgestelde vragen op te stellen en tijd voor je dossiers af te schermen.",
+          "rank": 1,
+          "competencies": ["priorites", "equipe", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je pakt de oorzaak aan in plaats van de symptomen: de onderbrekingen wijzen op een reële behoefte van het team, die je beter organiseert dan schrapt. Via het gedeelde document circuleert je expertise zonder dat ze van jouw beschikbaarheid afhangt, en je teamleider wordt betrokken bij een beslissing die het hele team aanbelangt. Aangetoonde competenties: organisatie en prioriteiten, samenwerken en communicatie."
+        },
+        {
+          "id": "plages-bloquees",
+          "text": "Zonder er met je teamleider over te praten, blokkeer je in je agenda twee halve dagen per week voor je dossiers en verwittig je je collega’s dat je op die momenten niet zult antwoorden.",
+          "rank": 2,
+          "competencies": ["priorites"],
+          "explanation": "Aanvaardbare reactie. Je maakt tijd vrij voor je deadlines, wat nodig is, en je kondigt dat duidelijk aan. Maar je lost maar een deel van het probleem op: de rest van de tijd gaan de onderbrekingen door, en de informatiebehoefte van je collega’s is niet beter georganiseerd. Doordat je er niet met je teamleider over praat, handel je in je eentje in een kwestie die de kennisdeling in het hele team aanbelangt."
+        },
+        {
+          "id": "soirs",
+          "text": "Je blijft overdag alle vragen beantwoorden, omdat je hulp waardevol is voor het team, en je haalt je achterstand in door tot het einde van de maand ’s avonds langer te blijven.",
+          "rank": 3,
+          "competencies": ["resultats", "equipe"],
+          "explanation": "Weinig gepaste reactie. Je beschikbaarheid wordt gewaardeerd en je dossiers vorderen, maar de prijs is een werkdruk die niet vol te houden is. Psychologisch gezien leidt zo’n werkwijze vaak tot uitputting en tot groeiende ergernis tegenover de collega’s. Vanuit leidinggevend oogpunt blijft het probleem onzichtbaar: je teamleider kan niet reageren, en het team blijft afhankelijk van één persoon."
+        },
+        {
+          "id": "refus-sec",
+          "text": "Je deelt je collega’s mee dat je hun vragen niet meer zult beantwoorden en dat ze zich met de schriftelijke procedures moeten behelpen.",
+          "rank": 4,
+          "competencies": ["equipe", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Je trekt bruusk een steun in waarvan het team afhankelijk is, zonder alternatief: de fouten dreigen toe te nemen, ten koste van de dossiers en van de betrokken ondernemingen. De toon van die aankondiging schaadt ook de werkrelaties. Je behoefte om je tijd te beschermen is gerechtvaardigd, maar door de manier waarop je het aanpakt, wordt een organisatieprobleem een conflict."
+        }
+      ]
+    },
+    {
+      "id": "courrier-incomprehensible",
+      "title": "Een brief die niemand begrijpt",
+      "theme": "Communicatie",
+      "competency": "problemes",
+      "competencies": ["problemes", "communication", "service"],
+      "difficulty": 2,
+      "context": "Je werkt in het contactcenter van een gewestelijke belastingadministratie.",
+      "situation": [
+        "Sinds een nieuwe standaardbrief werd verstuurd die een gewijzigde procedure aankondigt, nemen de oproepen toe: heel wat belastingplichtigen begrijpen niet wat ze moeten doen, en ook niet vóór welke datum.",
+        "De brief werd opgesteld door de juridische dienst en goedgekeurd door de directie. Je beantwoordt elke dag tientallen identieke vragen."
+      ],
+      "debrief": "Personeelsleden die in contact staan met het publiek merken vaak als eersten dat een boodschap slecht wordt begrepen. Die vaststellingen doorgeven, met concrete voorbeelden en een voorstel, maakt het mogelijk de communicatie voor iedereen te verbeteren, met respect voor de goedkeuringsprocedure.",
+      "actions": [
+        {
+          "id": "remonter-propositions",
+          "text": "Je noteert de vragen die het vaakst terugkomen en bezorgt ze aan je leidinggevende, samen met een duidelijkere formulering om aan de juridische dienst voor te stellen.",
+          "rank": 1,
+          "competencies": ["problemes", "communication", "service"],
+          "explanation": "Dit is de meest gepaste actie. De terugkerende vragen zijn waardevolle informatie: ze tonen precies wat de belastingplichtigen niet begrijpen. Door via je leidinggevende te gaan en een formulering voor te stellen, maak je het makkelijker om de brief te verbeteren en respecteer je tegelijk de rol van de juridische dienst, die verantwoordelijk blijft voor de juistheid ervan. Het probleem wordt bij de bron aangepakt, voor alle bestemmelingen. Aangetoonde competenties: problemen oplossen, communicatie en servicegericht werken."
+        },
+        {
+          "id": "fiche-reponses",
+          "text": "Samen met je collega’s stel je een fiche met standaardantwoorden op die de procedure en de uiterste datum uitlegt, zodat het hele contactcenter op een eenvormige en snellere manier antwoordt.",
+          "rank": 2,
+          "competencies": ["service", "communication"],
+          "explanation": "Aanvaardbare reactie. De fiche verbetert de kwaliteit en de samenhang van de antwoorden van het contactcenter, wat de belastingplichtigen rechtstreeks ten goede komt. Maar ze pakt alleen de gevolgen aan: de brief wordt verder ongewijzigd verstuurd, en elke nieuwe bestemmeling zal nog moeten bellen. De dienst die de brief heeft opgesteld, weet niet dat de brief problemen veroorzaakt."
+        },
+        {
+          "id": "version-personnelle",
+          "text": "Je schrijft zelf een vereenvoudigde versie van de procedure en stuurt die per e-mail naar de belastingplichtigen die je bellen.",
+          "rank": 3,
+          "competencies": ["problemes"],
+          "explanation": "Weinig gepaste reactie. Je wil helpen, maar je verspreidt in naam van de administratie een tekst die niemand heeft goedgekeurd: bij een onnauwkeurigheid zouden belastingplichtigen op basis van jouw versie een termijn kunnen missen. Er circuleren dan twee verschillende boodschappen, wat de verwarring vergroot. Een inhoudelijk goed idee wordt een risico omdat het niet via de goedkeuringsprocedure loopt."
+        },
+        {
+          "id": "critiquer-service",
+          "text": "Je legt de belastingplichtigen uit dat de brief slecht werd opgesteld door een andere dienst en dat ze zich er niet te veel zorgen over moeten maken.",
+          "rank": 4,
+          "competencies": ["communication", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je kleineert een andere dienst tegenover het publiek, wat de geloofwaardigheid van de hele administratie schaadt, en je minimaliseert een procedure die misschien reële gevolgen heeft voor de belastingplichtigen. Deontologisch moet een personeelslid loyaal blijven tegenover zijn instelling en correcte informatie geven, ook als het een document onvolmaakt vindt."
+        }
+      ]
+    },
+    {
+      "id": "consigne-mal-comprise",
+      "title": "Een slecht begrepen opdracht",
+      "theme": "Communicatie",
+      "competency": "communication",
+      "competencies": ["communication", "resultats", "integrite"],
+      "difficulty": 1,
+      "context": "Je bent assistent bij de communicatiecel van een federale overheidsdienst.",
+      "situation": [
+        "Je leidinggevende, Nathalie, heeft je gevraagd een boordtabel van de persvragen op te stellen. Na twee dagen werk ontdek je in een oud bericht dat ze een gedetailleerde maandelijkse tabel per thema verwachtte, en niet het driemaandelijkse overzicht dat jij hebt gemaakt.",
+        "De tabel moet vrijdag klaar zijn, over drie dagen."
+      ],
+      "debrief": "Een misverstand dat vroeg wordt ontdekt, is makkelijk recht te zetten. De verwachte houding is het meteen te melden, de verwachtingen precies na te gaan en een realistisch plan voor te stellen, in plaats van te hopen dat het verschil niet opvalt.",
+      "actions": [
+        {
+          "id": "clarifier-vite",
+          "text": "Je brengt Nathalie nog vandaag op de hoogte van het misverstand, je gaat samen met haar na welk formaat ze verwacht en je zegt haar wat je vrijdag kan opleveren.",
+          "rank": 1,
+          "competencies": ["communication", "resultats"],
+          "explanation": "Dit is de meest gepaste actie. Je erkent het misverstand zonder omwegen, op een moment dat het nog makkelijk recht te zetten is. Door de verwachtingen na te gaan, vermijd je een tweede interpretatiefout, en door aan te kondigen wat haalbaar is, laat je je leidinggevende toe zo nodig bij te sturen. Aangetoonde competenties: duidelijke communicatie, eerlijkheid over je eigen werk en resultaatgericht werken."
+        },
+        {
+          "id": "refaire-seul",
+          "text": "Je begint het werk volledig opnieuw volgens het maandelijkse formaat per thema, desnoods ’s avonds, om vrijdag een tabel in te dienen die aan de vraag voldoet zonder Nathalie ongerust te maken.",
+          "rank": 2,
+          "competencies": ["resultats"],
+          "explanation": "Aanvaardbare reactie. Je stuurt bij en mikt op het juiste resultaat, wat getuigt van inzet. Maar je doet dat zonder met Nathalie na te gaan of je het deze keer wel goed begrepen hebt: je riskeert opnieuw naast de vraag te werken. Je geeft haar ook niet de kans om je te zeggen of het overzicht dat je al hebt gemaakt bruikbaar is, of dat de termijn kan worden aangepast."
+        },
+        {
+          "id": "melanger-les-deux",
+          "text": "Je werkt het driemaandelijkse overzicht af en voegt er enkele maandcijfers aan toe, in de hoop dat dat volstaat.",
+          "rank": 3,
+          "competencies": ["resultats", "communication"],
+          "explanation": "Weinig gepaste reactie. Je probeert de twee versies te verzoenen, maar zonder te weten wat werkelijk verwacht wordt: het resultaat dreigt aan geen van beide vragen te beantwoorden. Hopen dat het verschil niet opvalt, is een vorm van vermijding, die het probleem uitstelt tot vrijdag, wanneer het te laat is om het correct recht te zetten."
+        },
+        {
+          "id": "rejeter-la-faute",
+          "text": "Je dient vrijdag het driemaandelijkse overzicht in en, als Nathalie verbaasd is, antwoord je haar dat haar opdracht niet duidelijk was.",
+          "rank": 4,
+          "competencies": ["communication", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je weet vandaag al dat het werk niet overeenstemt met de vraag, en toch kies je ervoor het zo in te dienen en een rechtvaardiging klaar te houden. Je leidinggevende ontdekt het probleem te laat om nog te reageren. De verantwoordelijkheid op de ander afschuiven in plaats van een misverstand recht te zetten, schaadt het vertrouwen en de kwaliteit van het werk."
+        }
+      ]
+    },
+    {
+      "id": "avis-presentation-collegue",
+      "title": "Een eerlijke mening over de presentatie van een collega",
+      "theme": "Communicatie",
+      "competency": "communication",
+      "competencies": ["communication", "equipe"],
+      "difficulty": 3,
+      "context": "Je bent projectmedewerker bij een administratie van het Brussels Hoofdstedelijk Gewest.",
+      "situation": [
+        "Je collega Inès moet morgen een project waaraan ze al maanden werkt, voorstellen aan het directiecomité. Ze vraagt je om je oprechte mening over haar dia’s.",
+        "Je vindt de presentatie te lang: veertig dia’s voor twintig minuten, veel tekst, en de hoofdboodschap komt pas op het einde. Inès lijkt moe en gestrest."
+      ],
+      "debrief": "Nuttige feedback is eerlijk, precies en gericht op actie: ze erkent de sterke punten, benoemt de belangrijkste moeilijkheden en stelt verbeteringen voor die in de beschikbare tijd haalbaar zijn. Welwillendheid betekent niet dat je problemen verzwijgt, maar dat je de ander helpt te slagen.",
+      "actions": [
+        {
+          "id": "retour-constructif",
+          "text": "Je benadrukt de kwaliteit van haar inhoudelijke werk, en daarna stel je haar twee verbeteringen voor die tegen morgen haalbaar zijn: de hoofdboodschap al bij het begin aankondigen en de drukste dia’s lichter maken, met de details in bijlage.",
+          "rank": 1,
+          "competencies": ["communication", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je beantwoordt de vraag van Inès eerlijk en houdt tegelijk rekening met haar vermoeidheid: je geeft haar geen lijst met gebreken, maar enkele prioriteiten die ze op één avond kan toepassen. Doordat je de kwaliteit van haar werk erkent, kan ze de kritiek makkelijker aanvaarden. Aangetoonde competenties: constructieve communicatie en steun aan een collega, ten voordele van het project dat aan de directie wordt voorgesteld."
+        },
+        {
+          "id": "liste-complete",
+          "text": "Je bezorgt haar een gedetailleerde lijst van alle mogelijke verbeteringen, dia per dia, waarbij je elke te drukke passage aanduidt, zodat ze een volledige en oprechte mening krijgt.",
+          "rank": 2,
+          "competencies": ["communication"],
+          "explanation": "Aanvaardbare reactie. Je feedback is oprecht en precies, wat aan de vraag beantwoordt. Maar een volledige lijst, de avond voor een presentatie, dreigt een collega die al gestrest is te ontmoedigen en haar ertoe te brengen alles in allerijl om te gooien. Zonder je opmerkingen te rangschikken, help je haar niet te beslissen waar ze moet beginnen. Goede feedback houdt rekening met wat de persoon er werkelijk mee kan doen."
+        },
+        {
+          "id": "refaire-a-sa-place",
+          "text": "Je laat haar weten dat je vanavond zelf haar dia’s zult herwerken om ze in te korten, zodat zij dat werk niet hoeft te doen.",
+          "rank": 3,
+          "competencies": ["equipe"],
+          "explanation": "Weinig gepaste reactie. De bedoeling is genereus, maar je eigent je een presentatie toe die Inès morgen alleen moet verdedigen: ze dreigt er tegenover de directie de weg in kwijt te raken. Door het in haar plaats te verbeteren, ontneem je haar ook een nuttige leerervaring voor haar volgende presentaties. Helpen betekent niet het werk in de plaats van de ander doen."
+        },
+        {
+          "id": "tout-va-bien",
+          "text": "Je zegt haar dat de presentatie heel goed is, om haar stress de avond voor de vergadering niet te vergroten.",
+          "rank": 4,
+          "competencies": ["communication"],
+          "explanation": "Dit is de minst gepaste actie. Inès heeft je om een oprechte mening gevraagd en je geeft haar een geruststellende maar valse mening. Ze zal voor de directie verschijnen met een presentatie die jij weinig doeltreffend vindt, terwijl eenvoudige verbeteringen nog mogelijk waren. Op relationeel vlak ontneemt die valse welwillendheid haar echte hulp en vermindert ze het vertrouwen dat ze in jouw mening zal hebben."
+        }
+      ]
+    },
+    {
+      "id": "rumeur-reorganisation",
+      "title": "Een gerucht over een reorganisatie",
+      "theme": "Communicatie",
+      "competency": "communication",
+      "competencies": ["communication", "leadership", "equipe"],
+      "difficulty": 2,
+      "context": "Je coördineert een team van zes personen bij een gemeentebestuur.",
+      "situation": [
+        "Sinds enkele dagen doet een gerucht de ronde: je dienst zou met een andere dienst samengevoegd worden en sommige functies zouden verdwijnen. Je medewerkers zijn ongerust, hun concentratie daalt en verschillenden komen je vragen wat je weet.",
+        "Je hebt geen enkele officiële informatie gekregen. Over drie weken is er een infosessie voor het personeel gepland."
+      ],
+      "debrief": "Bij een gerucht voeden zowel zwijgen als speculeren de ongerustheid. Wie een team coördineert, zegt eerlijk wat hij weet en wat hij niet weet, zoekt informatie bij de directie en blijft luisteren, zonder te beloven wat hij niet kan waarmaken.",
+      "actions": [
+        {
+          "id": "transparence",
+          "text": "Je brengt het team samen om te zeggen wat je weet en wat je niet weet, je verzamelt de vragen van het team en bezorgt ze aan de directie, met de vraag om snel informatie te geven.",
+          "rank": 1,
+          "competencies": ["communication", "leadership", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je erkent de ongerustheid in plaats van ze te ontkennen, je bent eerlijk over de grenzen van wat je weet en je onderneemt actie om antwoorden te krijgen. Door de vragen aan de directie te bezorgen, help je haar de impact van het gerucht in te schatten en sneller te communiceren. Aangetoonde competenties: transparante communicatie, leidinggeven van dichtbij en steun aan het team in een periode van onzekerheid."
+        },
+        {
+          "id": "attendre-officiel",
+          "text": "Aan elke medewerker die je iets vraagt, zeg je dat je geen enkele informatie hebt en dat jullie de officiële infosessie over drie weken moeten afwachten.",
+          "rank": 2,
+          "competencies": ["communication"],
+          "explanation": "Aanvaardbare reactie. Je bent eerlijk en je verspreidt het gerucht niet, wat belangrijk is. Maar je blijft drie weken passief terwijl de ongerustheid op het team weegt: je zoekt geen informatie bij de directie en je creëert geen ruimte om de bezorgdheden te uiten. Geruchten gedijen net in zo’n gebrek aan informatie."
+        },
+        {
+          "id": "rassurer",
+          "text": "Je stelt je medewerkers gerust door hen te verzekeren dat er in je team geen enkele functie zal verdwijnen en dat de samenvoeging niets aan hun werk zal veranderen, om de sfeer snel te kalmeren.",
+          "rank": 3,
+          "competencies": ["communication", "leadership"],
+          "explanation": "Weinig gepaste reactie. Je wil je team beschermen, maar je beweert iets wat je niet weet. Als de reorganisatie uiteindelijk toch tot gewijzigde functies leidt, is je geloofwaardigheid blijvend aangetast. Vanuit leidinggevend oogpunt kalmeert een ongefundeerde belofte op korte termijn, maar ondermijnt ze het vertrouwen op het moment dat je dat het meest nodig hebt."
+        },
+        {
+          "id": "relayer-rumeurs",
+          "text": "Je vertelt je medewerkers wat je in de cafetaria hebt gehoord over de functies die zouden verdwijnen, zodat ze zich kunnen voorbereiden.",
+          "rank": 4,
+          "competencies": ["communication", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Als verantwoordelijke van het team weegt jouw woord door: wie niet-gecontroleerde informatie doorgeeft, maakt er bijna-zekerheden van en vergroot de angst. Sommige medewerkers zouden op basis van geruchten persoonlijke beslissingen kunnen nemen. Je voedt het gerucht in plaats van het in te dijken, wat tegen je rol ingaat."
+        }
+      ]
+    },
+    {
+      "id": "critique-en-reunion",
+      "title": "Scherpe kritiek in het bijzijn van collega’s",
+      "theme": "Omgaan met stress",
+      "competency": "resilience",
+      "competencies": ["resilience", "communication"],
+      "difficulty": 3,
+      "context": "Je bent dossierbeheerder bij een directoraat-generaal van de Europese Commissie.",
+      "situation": [
+        "Tijdens de wekelijkse vergadering bekritiseert het hoofd van je eenheid, Marta, in het bijzijn van het hele team scherp een nota die jij hebt geschreven: er stond een foutief cijfer in, waardoor zij in verlegenheid werd gebracht tijdens een vergadering met een ander directoraat-generaal.",
+        "De fout is reëel. Ze komt uit een tabel die een andere dienst had bezorgd en die jij niet opnieuw had gecontroleerd."
+      ],
+      "debrief": "Publieke kritiek krijgen is onaangenaam, zeker als de toon hard is. De verwachte reactie is kalm blijven, je deel van de verantwoordelijkheid opnemen, de fout snel rechtzetten en daarna zo nodig in een gesprek onder vier ogen terugkomen op de manier waarop de kritiek werd geuit. Je in het heetst van het moment verantwoorden of blijven piekeren, lost niets op.",
+      "actions": [
+        {
+          "id": "calme-et-suite",
+          "text": "Je erkent de fout rustig en zet ze nog dezelfde dag recht; later in de week vraag je Marta om een gesprek over de controle van de gegevens en over de manier waarop de kritiek werd geformuleerd.",
+          "rank": 1,
+          "competencies": ["resilience", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je blijft kalm onder druk en je neemt je deel van de verantwoordelijkheid op, aangezien je de gegevens niet opnieuw had gecontroleerd. Het gesprek onder vier ogen, met de nodige afstand, maakt het mogelijk twee nuttige onderwerpen aan te kaarten: hoe je kan voorkomen dat de fout zich herhaalt en hoe kritiek wordt geformuleerd. Aangetoonde competenties: veerkracht, zelfbeheersing en assertieve communicatie."
+        },
+        {
+          "id": "corriger-en-silence",
+          "text": "Je antwoordt niet tijdens de vergadering, verbetert binnen het uur de nota en stuurt ze naar Marta met een kort excuusbericht, zonder er daarna nog op terug te komen.",
+          "rank": 2,
+          "competencies": ["resilience", "resultats"],
+          "explanation": "Aanvaardbare reactie. Je blijft kalm en je zet de fout snel recht, en dat is het belangrijkste. Maar je stilzwijgen tijdens de vergadering kan overkomen als ongemak of als een teken dat je de opmerking niet ter harte neemt, en je trekt er als team geen les uit: de controle van gegevens die andere diensten bezorgen, komt niet ter sprake. Ook de gebruikte toon blijft onbesproken, wat op de relatie kan wegen."
+        },
+        {
+          "id": "se-plaindre",
+          "text": "Na de vergadering leg je je collega’s uit dat Marta onrechtvaardig was en dat de fout eigenlijk van een andere dienst kwam.",
+          "rank": 3,
+          "competencies": ["resilience", "equipe"],
+          "explanation": "Weinig gepaste reactie. Je zoekt steun, wat begrijpelijk is, maar je verplaatst het probleem in plaats van het aan te pakken: Marta zal er niets van weten, de nota is nog niet verbeterd en je minimaliseert je eigen deel van de verantwoordelijkheid. Op relationeel vlak creëert kritiek op je leidinggevende bij het team een klimaat van wantrouwen, zonder dat de situatie verbetert."
+        },
+        {
+          "id": "contre-attaquer",
+          "text": "Je antwoordt meteen, in het bijzijn van het team, dat de fout niet van jou komt maar uit de tabel van de andere dienst.",
+          "rank": 4,
+          "competencies": ["communication", "resilience"],
+          "explanation": "Dit is de minst gepaste actie. Je reageert in het heetst van het moment en je schuift de schuld af, terwijl het aan jou was om de gegevens te controleren die je gebruikte. Het gesprek dreigt te ontsporen in het bijzijn van het hele team, wat zowel je leidinggevende als jezelf in verlegenheid brengt. Psychologisch gezien wijst die onmiddellijke verdediging op moeite om kritiek te aanvaarden, terwijl de fout, eenmaal erkend, makkelijk recht te zetten was."
+        }
+      ]
+    },
+    {
+      "id": "projet-abandonne",
+      "title": "Zes maanden werk opgeborgen",
+      "theme": "Verandering en verbetering",
+      "competency": "resilience",
+      "competencies": ["resilience", "equipe", "resultats"],
+      "difficulty": 2,
+      "context": "Je werkt in het projectteam dat een nieuw onlineformulier ontwikkelt voor een gewestelijk agentschap.",
+      "situation": [
+        "Na zes maanden werk kondigt de directie aan dat het project om budgettaire redenen wordt stopgezet: in de plaats daarvan wordt binnen twee jaar een gemeenschappelijke oplossing voor verschillende administraties ontwikkeld.",
+        "Het team is ontmoedigd. Tijdens de vergadering na de aankondiging zeggen verschillende collega’s dat ze het nut niet meer inzien om zich in te zetten."
+      ],
+      "debrief": "De stopzetting van een project is een terechte teleurstelling. Veerkracht bestaat erin die teleurstelling op een constructieve manier te uiten, de beslissing te begrijpen en te benutten wat nog bruikbaar is, in plaats van af te haken. Een team dat zich herpakt, behoudt zijn geloofwaardigheid voor de volgende projecten.",
+      "actions": [
+        {
+          "id": "valoriser-acquis",
+          "text": "Je erkent de teleurstelling van het team en stelt daarna voor om het geleverde werk te documenteren, zodat het kan worden doorgegeven aan de verantwoordelijken van de toekomstige gemeenschappelijke oplossing.",
+          "rank": 1,
+          "competencies": ["resilience", "equipe", "resultats"],
+          "explanation": "Dit is de meest gepaste actie. Je erkent de teleurstelling zonder ze te ontkennen, waardoor het team de bladzijde kan omslaan, en daarna richt je het op een nuttige actie: zes maanden werk bevatten analyses en feedback van gebruikers die waardevol zijn voor het toekomstige project. Zo blijft het geleverde werk zinvol. Aangetoonde competenties: veerkracht, samenwerken en resultaatgericht werken."
+        },
+        {
+          "id": "demander-explications",
+          "text": "Je vraagt de directie om tijdens een vergadering met het hele team uit te leggen waarom het project wordt stopgezet en wat er de komende maanden voor ieder van jullie gepland is.",
+          "rank": 2,
+          "competencies": ["communication", "resilience"],
+          "explanation": "Aanvaardbare reactie. Een beslissing begrijpen helpt om ze te aanvaarden, en de vraag naar de toekomst van het team is terecht. Maar je blijft wachten op antwoorden van hogerhand, zonder zelf een constructief vervolg voor te stellen. De ontmoediging van je collega’s wordt niet aangepakt, en het geleverde werk dreigt verloren te gaan omdat het niet werd gedocumenteerd."
+        },
+        {
+          "id": "chercher-ailleurs",
+          "text": "Je leidt daaruit af dat je inspanningen niet worden erkend en je begint meteen naar andere functies te solliciteren.",
+          "rank": 3,
+          "competencies": ["resilience"],
+          "explanation": "Weinig gepaste reactie. Professioneel willen groeien is terecht, maar die beslissing nemen onder invloed van de teleurstelling komt erop neer dat je uit één gebeurtenis een algemene conclusie trekt. Je trekt je terug op het moment dat het team nood heeft aan inzet. Een budgettaire beslissing betekent niet dat je werk geen waarde heeft: precies dat onderscheid kan je maken met een veerkrachtige houding."
+        },
+        {
+          "id": "desengagement",
+          "text": "Je geeft je collega’s gelijk: aangezien het project wordt stopgezet, is er geen reden meer om je in te zetten voor de taken die overblijven.",
+          "rank": 4,
+          "competencies": ["resilience", "equipe"],
+          "explanation": "Dit is de minst gepaste actie. Je versterkt de gezamenlijke ontmoediging in plaats van het team te helpen zich te herpakken, en je rechtvaardigt een gebrek aan inzet dat de andere opdrachten van de dienst benadeelt. Psychologisch gezien maakt deze reactie van een teleurstelling een blijvende demotivatie. Vanuit leidinggevend oogpunt brengt ze het vertrouwen in gevaar dat de directie het team voor de volgende projecten kan geven."
+        }
+      ]
+    },
+    {
+      "id": "pic-de-demandes-ete",
+      "title": "Alleen tegenover een piek aan aanvragen",
+      "theme": "Omgaan met stress",
+      "competency": "resilience",
+      "competencies": ["resilience", "priorites", "communication"],
+      "difficulty": 1,
+      "context": "Je bent maatschappelijk werker in een OCMW en je onderzoekt hulpaanvragen.",
+      "situation": [
+        "In juli zijn twee collega’s met verlof en is een derde afwezig wegens ziekte. Je moet bijna alleen twee keer zoveel aanvragen behandelen als gewoonlijk.",
+        "Verschillende aanvragen gaan over dringende situaties, zoals een dreigende uithuiszetting of onbetaalde energiefacturen. Je begint je erg vermoeid te voelen."
+      ],
+      "debrief": "Onder druk moet je zowel het belangrijkste afhandelen als je eigen krachten sparen. Prioriteiten stellen volgens de dringendheid van de situaties en je hiërarchie vroeg verwittigen, maakt het mogelijk hulp te krijgen en de kwaliteit van de dienstverlening te beschermen, in plaats van jezelf in stilte uit te putten.",
+      "actions": [
+        {
+          "id": "prioriser-alerter",
+          "text": "Je behandelt eerst de dringendste situaties en je brengt je leidinggevende op de hoogte van de overbelasting, met de vraag welke aanvragen kunnen wachten en of er versterking mogelijk is.",
+          "rank": 1,
+          "competencies": ["resilience", "priorites", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je concentreert je energie op de situaties waarin een vertraging de ernstigste gevolgen zou hebben voor de betrokkenen, en je maakt de overbelasting zichtbaar: zo kan je leidinggevende het werk reorganiseren of versterking regelen. Psychologisch gezien is tijdig om hulp vragen een teken van professionaliteit, niet van zwakte. Aangetoonde competenties: veerkracht, organisatie en prioriteiten, communicatie."
+        },
+        {
+          "id": "prioriser-seul",
+          "text": "Je rangschikt de aanvragen volgens dringendheid en behandelt ze in die volgorde, zonder er met je leidinggevende over te praten om hem tijdens de vakantieperiode niet lastig te vallen.",
+          "rank": 2,
+          "competencies": ["priorites"],
+          "explanation": "Aanvaardbare reactie. Prioriteiten stellen volgens dringendheid is de juiste methode, en de ernstigste situaties worden eerst behandeld. Maar door de overbelasting voor jezelf te houden, belet je je leidinggevende te reageren en laat je de minder dringende aanvragen zich opstapelen zonder dat iemand het weet. Op langere termijn verhoogt die eenzame werkwijze het risico op uitputting."
+        },
+        {
+          "id": "ordre-arrivee",
+          "text": "Je behandelt alle aanvragen in de volgorde waarin ze binnenkomen, om tegenover elke aanvrager rechtvaardig te blijven.",
+          "rank": 3,
+          "competencies": ["priorites", "service"],
+          "explanation": "Weinig gepaste reactie. De zorg voor rechtvaardigheid is lovenswaardig, maar aanvragen waarvan de dringendheid sterk verschilt in volgorde van binnenkomst behandelen, komt erop neer dat mensen die met uithuiszetting worden bedreigd moeten wachten achter dossiers die konden wachten. In een sociale dienst bestaat rechtvaardigheid er net in rekening te houden met de ernst van de situaties. Je lost ook het probleem van de overbelasting niet op."
+        },
+        {
+          "id": "tout-porter-seul",
+          "text": "Je werkt elke avond en tijdens het weekend om alle aanvragen zelf te behandelen naarmate ze binnenkomen, zonder er met iemand over te praten.",
+          "rank": 4,
+          "competencies": ["resilience"],
+          "explanation": "Dit is de minst gepaste actie. Dat ritme is niet vol te houden: de vermoeidheid die je nu al voelt, verhoogt het risico op fouten in gevoelige dossiers, en daarna op een burn-out. Omdat je geen prioriteiten stelt, worden de ernstigste situaties ook niet eerst behandeld. Je leidinggevende weet niets van de situatie en kan geen versterking organiseren. Psychologisch gezien is alles alleen willen dragen een vaak voorkomend mechanisme bij geëngageerde professionals, maar het brengt zowel de persoon als de kwaliteit van de dienstverlening in gevaar."
+        }
+      ]
+    },
+    {
+      "id": "echec-selection-interne",
+      "title": "Niet geslaagd voor een interne selectie",
+      "theme": "Omgaan met stress",
+      "competency": "resilience",
+      "competencies": ["resilience", "equipe", "communication"],
+      "difficulty": 2,
+      "context": "Je werkt al acht jaar bij een gewestelijke administratie.",
+      "situation": [
+        "Je hebt deelgenomen aan een interne selectie om teamleider te worden. Je verneemt dat je niet werd geselecteerd: je collega Elif, die drie jaar geleden bij de dienst is gekomen, krijgt de functie.",
+        "Volgende maand wordt zij je rechtstreekse leidinggevende. Je bent teleurgesteld en je vindt dat je ervaring zwaarder had moeten doorwegen."
+      ],
+      "debrief": "Niet geslaagd zijn voor een selectie is een harde dobber, zeker als je daarna onder de verantwoordelijkheid werkt van de persoon die werd gekozen. Veerkracht bestaat erin je teleurstelling te erkennen, te proberen het resultaat te begrijpen en er een hefboom voor groei van te maken, en daarbij loyaal en bereid tot samenwerking te blijven.",
+      "actions": [
+        {
+          "id": "feedback-et-cooperation",
+          "text": "Je feliciteert Elif, je vraagt de jury om gedetailleerde feedback over je resultaten en je stelt op basis daarvan een ontwikkelingsplan op om te bespreken tijdens je volgende evaluatiegesprek.",
+          "rank": 1,
+          "competencies": ["resilience", "equipe", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je maakt een onderscheid tussen je teleurstelling, die terecht is, en je professionele houding: door Elif te feliciteren, leg je de basis voor een gezonde samenwerking. De feedback van de jury maakt van de mislukking nuttige informatie over wat er werd geëvalueerd, los van de anciënniteit. Psychologisch gezien is dit de aanpak waarmee je je herpakt in plaats van te blijven piekeren. Aangetoonde competenties: veerkracht, samenwerken en communicatie."
+        },
+        {
+          "id": "feliciter-tourner-la-page",
+          "text": "Je feliciteert Elif en verzekert haar van je steun, en je besluit niet meer aan die selectie te denken.",
+          "rank": 2,
+          "competencies": ["equipe", "resilience"],
+          "explanation": "Aanvaardbare reactie. Je houding tegenover Elif is professioneel en loyaal, wat essentieel is voor de toekomst. Maar door de selectie te willen vergeten, ontneem je jezelf de lessen die ze je zou kunnen leren: je weet niet waarom je niet werd geselecteerd, en ook niet hoe je de volgende keer kan slagen. Te snel de bladzijde omslaan kan ook een onuitgesproken teleurstelling achterlaten."
+        },
+        {
+          "id": "demander-mutation",
+          "text": "Je vraagt meteen een overplaatsing naar een andere dienst aan, waarbij je je directeur uitlegt dat je niet wil werken onder de verantwoordelijkheid van een minder ervaren collega.",
+          "rank": 3,
+          "competencies": ["resilience"],
+          "explanation": "Weinig gepaste reactie. Van dienst veranderen kan een weloverwogen keuze zijn, maar als je die beslissing in het heetst van het moment neemt, wijst ze vooral op moeite om het resultaat te aanvaarden. Je vertrekt zonder te begrijpen wat er ontbrak en je ontneemt het team je ervaring op het moment dat er een nieuwe leidinggevende komt. Psychologisch gezien belet vluchten voor de situatie dat je ze te boven komt, en hetzelfde probleem dreigt zich opnieuw voor te doen."
+        },
+        {
+          "id": "contester-aupres-equipe",
+          "text": "Je laat je collega’s weten dat de selectie onrechtvaardig was en dat je niet van plan bent het Elif makkelijk te maken.",
+          "rank": 4,
+          "competencies": ["equipe", "resilience"],
+          "explanation": "Dit is de minst gepaste actie. Je maakt van een persoonlijke teleurstelling een conflict in het team, door de legitimiteit van je toekomstige leidinggevende in twijfel te trekken nog voor ze haar functie opneemt. Dat gedrag schaadt de werking van de dienst en je eigen reputatie. Als je vindt dat de procedure onregelmatig verliep, bestaan er officiële beroepsmogelijkheden; kwaadspreken en dwarsliggen zijn nooit een professioneel antwoord."
+        }
+      ]
+    },
+    {
+      "id": "cadeau-soumissionnaire",
+      "title": "Een geschenk tijdens een overheidsopdracht",
+      "theme": "Deontologie",
+      "competency": "integrite",
+      "competencies": ["integrite", "communication"],
+      "difficulty": 1,
+      "context": "Je bent lid van het comité dat de offertes beoordeelt voor een overheidsopdracht voor IT-diensten van een federale administratie.",
+      "situation": [
+        "Tijdens de beoordelingsperiode krijg je op je kantoor een pakket van een van de inschrijvende bedrijven: een fles champagne en twee concerttickets, met een bedankkaartje “voor uw medewerking”.",
+        "Het reglement van je administratie verbiedt geschenken te aanvaarden die een beslissing kunnen beïnvloeden."
+      ],
+      "debrief": "Bij een overheidsopdracht moet de onpartijdigheid echt en zichtbaar zijn. Een geschenk van een inschrijver tijdens de beoordeling moet worden geweigerd en volgens de interne regels gemeld, ook als je zeker bent dat het je oordeel niet zou beïnvloeden.",
+      "actions": [
+        {
+          "id": "refuser-signaler",
+          "text": "Je stuurt het pakket terug naar het bedrijf met een hoffelijk bericht waarin je aan de regels herinnert, en je brengt je hiërarchie en de integriteitsadviseur van je administratie op de hoogte.",
+          "rank": 1,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je weigert het geschenk duidelijk, zonder agressiviteit, en je maakt je stap transparant door je hiërarchie en de integriteitsadviseur in te lichten. De melding beschermt de procedure, het comité en jezelf: als de offerte van dit bedrijf wordt gekozen, kan niemand een voorkeursbehandeling vermoeden. Aangetoonde competenties: integriteit, onpartijdigheid en transparante communicatie."
+        },
+        {
+          "id": "refuser-sans-signaler",
+          "text": "Je stuurt het pakket terug naar het bedrijf met een bericht waarin je eraan herinnert dat je niets mag aanvaarden, zonder er met je hiërarchie of met de andere leden van het comité over te praten, om geen ophef te maken.",
+          "rank": 2,
+          "competencies": ["integrite"],
+          "explanation": "Aanvaardbare reactie. Het belangrijkste is gebeurd: je weigert het geschenk en je herinnert het bedrijf aan de regels. Maar door je stap voor jezelf te houden, ontneem je je hiërarchie belangrijke informatie: het bedrijf heeft misschien dezelfde aanpak geprobeerd bij andere leden van het comité, en de procedure moet daar misschien rekening mee houden. Transparantie maakt deel uit van integriteit."
+        },
+        {
+          "id": "partager-avec-equipe",
+          "text": "Je houdt de fles om ze met je team te delen op een drink, en je gebruikt de concerttickets niet.",
+          "rank": 3,
+          "competencies": ["integrite", "equipe"],
+          "explanation": "Weinig gepaste reactie. Het geschenk delen verandert niets aan de aard ervan: je hebt het aanvaard tijdens een procedure waarin jij de offertes beoordeelt. Dat je er zelf niet van profiteert, neemt de schijn van een belangenconflict niet weg, en je betrekt je collega’s bij een situatie die tegen de regels ingaat. Wat telt, is van wie het geschenk komt en op welk moment, niet wat je ermee doet."
+        },
+        {
+          "id": "garder-le-cadeau",
+          "text": "Je houdt het geschenk, omdat je vindt dat het niets zal veranderen aan je beoordeling, die objectief zal blijven.",
+          "rank": 4,
+          "competencies": ["integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je overtreedt het reglement en je creëert een belangenconflict, op zijn minst in schijn, in het hart van een procedure voor een overheidsopdracht. Je overtuiging dat je objectief blijft, volstaat niet: de onpartijdigheid moet ook zichtbaar zijn voor de andere inschrijvers en bij controles. Psychologisch gezien geeft een geschenk vaak het gevoel dat je iets verschuldigd bent, zelfs onbewust: precies daarom verbieden de regels het."
+        }
+      ]
+    },
+    {
+      "id": "dossier-dun-proche",
+      "title": "Het dossier van een vereniging uit je naaste omgeving",
+      "theme": "Deontologie",
+      "competency": "integrite",
+      "competencies": ["integrite", "communication"],
+      "difficulty": 3,
+      "context": "Je onderzoekt aanvragen voor cultuursubsidies bij een administratie van de Vlaamse Gemeenschap.",
+      "situation": [
+        "Je krijgt het dossier toegewezen van een vzw die een subsidie aanvraagt voor een festival. Bij het lezen ontdek je dat je schoonzus er de penningmeester van is.",
+        "Het dossier lijkt je degelijk en in overeenstemming met de criteria. Je collega’s zijn overbelast, en de termijn voor het onderzoek verstrijkt over tien dagen."
+      ],
+      "debrief": "Een belangenconflict veronderstelt geen fout: het volstaat dat een persoonlijke band twijfel kan doen rijzen over je onpartijdigheid. De regel is dat je die band aan je hiërarchie meldt en je uit het dossier terugtrekt, ook als je ervan overtuigd bent dat je het objectief kan behandelen.",
+      "actions": [
+        {
+          "id": "declarer-se-retirer",
+          "text": "Je meldt de familieband aan je leidinggevende en vraagt om het dossier aan een collega toe te vertrouwen, waarbij je voorstelt in ruil een ander dossier over te nemen.",
+          "rank": 1,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je past het basisprincipe toe voor het omgaan met belangenconflicten: de band melden en je uit de beslissing terugtrekken. Door een ruil van dossiers voor te stellen, houd je rekening met de werklast van je collega’s en met de termijn, wat de oplossing vergemakkelijkt. Als de subsidie wordt toegekend, kan niemand de legitimiteit ervan in twijfel trekken. Aangetoonde competenties: integriteit en transparante communicatie."
+        },
+        {
+          "id": "traiter-avec-relecture",
+          "text": "Je behandelt het dossier, maar je vraagt een collega om je analyse na te lezen voor je ze doorstuurt, en je legt die collega de familieband uit.",
+          "rank": 2,
+          "competencies": ["integrite"],
+          "explanation": "Aanvaardbare reactie. Je bent transparant tegenover je collega en je bouwt een controle in, wat het risico beperkt. Maar jij blijft de auteur van de analyse, en het is niet aan jou om te beslissen of je je rol behoudt: daarover moet de hiërarchie oordelen. Een buitenstaander zou altijd kunnen vinden dat de analyse gekleurd was. De melding aan je leidinggevende had voorrang moeten krijgen."
+        },
+        {
+          "id": "rendre-sans-expliquer",
+          "text": "Je vraagt een collega om het dossier over te nemen omdat je het te druk hebt, zonder de familieband te vermelden, en je zegt erbij dat het dossier degelijk is en snel kan worden goedgekeurd.",
+          "rank": 3,
+          "competencies": ["integrite", "communication"],
+          "explanation": "Weinig gepaste reactie. Formeel trek je je terug uit het dossier, maar je geeft een valse reden en je beïnvloedt het advies van je collega, die je band met de vzw niet kent: je invloed op de beslissing blijft bestaan. De band wordt niet gemeld, zodat je hiërarchie er geen spoor van kan bijhouden en er bij andere dossiers van dezelfde vereniging geen rekening mee kan houden. Integriteit veronderstelt transparantie over de redenen, niet alleen een andere handtekening."
+        },
+        {
+          "id": "traiter-normalement",
+          "text": "Je behandelt het dossier zoals gewoonlijk, aangezien het aan de criteria voldoet en je er zeker van bent dat je objectief blijft.",
+          "rank": 4,
+          "competencies": ["integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je beslist in je eentje dat een nauwe familieband geen probleem is, terwijl dit een typisch geval van belangenconflict is. Ook al is het dossier degelijk, de subsidie zou kunnen worden betwist als zou blijken dat de penningmeester van de vzw je schoonzus is, ten nadele van de vereniging zelf. De objectiviteit die je zelf ervaart, vervangt geen controleerbare onpartijdigheid."
+        }
+      ]
+    },
+    {
+      "id": "demarche-en-ligne-seulement",
+      "title": "Een aanvraag die alleen nog digitaal kan",
+      "theme": "Relatie met de burgers",
+      "competency": "service",
+      "competencies": ["service", "communication", "problemes"],
+      "difficulty": 1,
+      "context": "Je werkt aan het loket van een gemeentebestuur.",
+      "situation": [
+        "Een oudere man komt een document halen dat sinds kort in principe online moet worden aangevraagd met de elektronische identiteitskaart. Hij heeft geen computer of smartphone en kan niet met het internet werken.",
+        "Volgens de procedure van je gemeente mogen de personeelsleden de aanvraag aan het loket indienen voor mensen die de onlinedienst niet kunnen gebruiken. In de onthaalruimte staat een computer ter vrije beschikking, en het is rustig vanochtend."
+      ],
+      "debrief": "De digitalisering van de dienstverlening mag niemand uitsluiten. Als er een alternatief bestaat, past het personeelslid dat toe en legt het de stappen duidelijk uit, waarbij het de persoon met respect behandelt in plaats van haar door te verwijzen naar een instrument dat ze niet beheerst.",
+      "actions": [
+        {
+          "id": "introduire-au-guichet",
+          "text": "Je dient de aanvraag voor hem in aan het loket, zoals de procedure toelaat, en je legt hem elke stap uit en zegt hem binnen welke termijn het document wordt afgeleverd.",
+          "rank": 1,
+          "competencies": ["service", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je past het alternatief toe dat bedoeld is voor mensen die digitaal minder mee zijn, en je neemt de tijd om uitleg te geven, waardoor de aanvraag begrijpelijk en geruststellend wordt. De burger vertrekt met een ingediende aanvraag en duidelijke informatie. Aangetoonde competenties: servicegericht werken voor de burger, communicatie die is afgestemd op de persoon en oog voor gelijke toegang tot de openbare dienstverlening."
+        },
+        {
+          "id": "aider-en-libre-service",
+          "text": "Je zet hem aan de computer in de onthaalruimte en helpt hem om de aanvraag zelf online in te dienen, waarbij je hem stap voor stap begeleidt met zijn identiteitskaart.",
+          "rank": 2,
+          "competencies": ["service", "communication"],
+          "explanation": "Aanvaardbare reactie. De aanvraag raakt vandaag in orde en je begeleidt de burger geduldig, wat toont dat je wil helpen. Maar je legt hem een instrument op dat hij niet beheerst, terwijl de procedure net voorziet dat jij de aanvraag voor hem indient. Het duurt langer, kan hem een ongemakkelijk gevoel geven en veronderstelt dat hij de pincode van zijn identiteitskaart kent. Het alternatief dat de gemeente voorziet, is eenvoudiger en respectvoller."
+        },
+        {
+          "id": "espace-public-numerique",
+          "text": "Je raadt hem aan om naar een openbare computerruimte te gaan, waar begeleiders hem kunnen helpen de aanvraag online in te dienen.",
+          "rank": 3,
+          "competencies": ["service"],
+          "explanation": "Weinig gepaste reactie. Doorverwijzen naar een openbare computerruimte kan iemand helpen die wil leren, maar hier legt het een extra verplaatsing en extra wachttijd op, terwijl je de aanvraag zelf kan indienen. De burger is naar het loket gekomen om een document te krijgen, niet om een opleiding te volgen. Je verschuift de last van de aanvraag naar hem en naar een andere dienst."
+        },
+        {
+          "id": "renvoyer-vers-un-proche",
+          "text": "Je legt hem uit dat de aanvraag voortaan online gebeurt en dat hij iemand uit zijn omgeving moet vragen om het voor hem te regelen.",
+          "rank": 4,
+          "competencies": ["service", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Je weigert hem te helpen terwijl de procedure het toelaat, en je laat de aanvraag afhangen van naasten die de persoon misschien niet heeft. Zo’n antwoord versterkt de digitale uitsluiting en geeft het beeld van een ontoegankelijke administratie. Gelijke toegang tot de openbare dienstverlening veronderstelt dat je rekening houdt met burgers die de digitale instrumenten niet beheersen."
+        }
+      ]
+    },
+    {
+      "id": "reclamation-justifiee",
+      "title": "Een terechte klacht",
+      "theme": "Relatie met de burgers",
+      "competency": "service",
+      "competencies": ["service", "problemes", "integrite"],
+      "difficulty": 2,
+      "context": "Bij een gemeentebestuur behandel je de aanvragen voor een premie voor de aankoop van een fiets.",
+      "situation": [
+        "Een inwoonster schrijft je een ontevreden bericht: haar premieaanvraag, die ze vijf maanden geleden heeft ingediend, heeft nog altijd geen antwoord gekregen, terwijl het reglement een beslissing binnen drie maanden voorschrijft.",
+        "Bij nazicht stel je vast dat haar dossier, dat volledig is, is blijven liggen na het vertrek van een collega, zonder opnieuw te worden toegewezen. Andere dossiers van die collega zouden in dezelfde situatie kunnen zitten."
+      ],
+      "debrief": "Op een gegronde klacht moet je op drie manieren reageren: het probleem tegenover de burger erkennen, het dossier snel afhandelen en de oorzaak aanpakken, hier de dossiers die niet opnieuw werden toegewezen, om te vermijden dat andere burgers dezelfde vertraging oplopen.",
+      "actions": [
+        {
+          "id": "regler-et-signaler",
+          "text": "Je erkent de vertraging tegenover de burger en geeft haar een precieze termijn, je behandelt haar dossier met voorrang en je meldt je leidinggevende de andere dossiers van de vertrokken collega.",
+          "rank": 1,
+          "competencies": ["service", "problemes", "integrite"],
+          "explanation": "Dit is de meest gepaste actie. Je erkent eerlijk dat er iets is misgelopen, wat het vertrouwen herstelt, en je lost de situatie van de burger concreet op. Bovenal pak je de oorzaak aan: door de dossiers te melden die mogelijk zijn blijven liggen, bespaar je andere burgers dezelfde vertraging. Aangetoonde competenties: servicegericht werken, problemen oplossen en integriteit."
+        },
+        {
+          "id": "regler-le-dossier",
+          "text": "Je behandelt meteen haar dossier en meldt je leidinggevende de dossiers die niet opnieuw werden toegewezen, zonder de burger te antwoorden voor je haar de beslissing stuurt.",
+          "rank": 2,
+          "competencies": ["service", "problemes"],
+          "explanation": "Aanvaardbare reactie. Je handelt haar dossier snel af en je pakt de oorzaak aan door de niet opnieuw toegewezen dossiers te melden, wat essentieel is. Maar de burger, die al vijf maanden wacht en de moeite heeft gedaan je te schrijven, krijgt in afwachting van de beslissing geen antwoord en geen verontschuldiging: ze weet niet dat haar klacht gehoord werd en dat haar dossier vooruitgaat. De vertraging meteen erkennen hoort bij een goede dienstverlening en herstelt het vertrouwen."
+        },
+        {
+          "id": "transferer-au-responsable",
+          "text": "Je bezorgt de klacht aan je leidinggevende, met de vermelding dat het dossier van een collega was die de dienst heeft verlaten.",
+          "rank": 3,
+          "competencies": ["communication"],
+          "explanation": "Weinig gepaste reactie. Je leidinggevende inlichten is niet nutteloos, maar je schuift een dossier naar hem door dat je zelf kan behandelen, en de burger wacht nog altijd. Je bericht legt de nadruk op het feit dat het dossier niet het jouwe was in plaats van op de oplossing, en het bredere probleem van de niet opnieuw toegewezen dossiers wordt niet duidelijk gemeld."
+        },
+        {
+          "id": "reponse-evasive",
+          "text": "Je stuurt haar het standaardantwoord dat haar dossier in behandeling is en dat ze te gelegener tijd op de hoogte wordt gebracht van de beslissing.",
+          "rank": 4,
+          "competencies": ["service", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je weet dat het dossier al maanden vastzit, maar je stuurt een antwoord dat het tegendeel doet geloven. De burger blijft wachten zonder vooruitzicht, terwijl de reglementaire termijn al overschreden is. Zo’n ontwijkend antwoord voedt het wantrouwen tegenover de administratie, en doordat je niets meldt, blijven andere dossiers in dezelfde situatie."
+        }
+      ]
+    },
+    {
+      "id": "question-hors-competence",
+      "title": "Een vraag die onder een andere instelling valt",
+      "theme": "Relatie met de burgers",
+      "competency": "service",
+      "competencies": ["service", "communication"],
+      "difficulty": 2,
+      "context": "Je beantwoordt telefoonoproepen voor een gewestelijke dienst voor arbeidsbemiddeling.",
+      "situation": [
+        "Een werkzoekende, Fatou, belt over de uitbetaling van haar werkloosheidsuitkering. Die uitbetaling valt niet onder jouw dienst, maar onder de uitbetalingsinstelling waarbij ze is aangesloten, en je kent de contactgegevens daarvan.",
+        "Ze is ongerust en zegt dat ze al twee keer van de ene dienst naar de andere werd doorgestuurd. Je krijgt vaak zulke oproepen."
+      ],
+      "debrief": "Als een vraag niet onder je dienst valt, verwijst het personeelslid de burger nauwkeurig en nuttig door: bij wie moet hij zich melden, hoe en met welke documenten. Veelvoorkomende verwarring opmerken en voorstellen om de informatie te verbeteren, voorkomt andere nutteloze oproepen.",
+      "actions": [
+        {
+          "id": "orienter-precisement",
+          "text": "Je geeft haar de naam en de contactgegevens van de bevoegde instelling en zegt haar welke documenten ze moet klaarleggen, en daarna meld je je leidinggevende dat zulke oproepen vaak voorkomen.",
+          "rank": 1,
+          "competencies": ["service", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je kan de vraag niet behandelen, maar je zorgt ervoor dat de oproep nuttig is: Fatou weet precies tot wie ze zich moet richten en hoe, waardoor er een einde komt aan het doorsturen van de ene dienst naar de andere. Door te melden hoe vaak zulke oproepen voorkomen, maak je betere informatie voor alle burgers mogelijk. Aangetoonde competenties: servicegericht werken en duidelijke communicatie."
+        },
+        {
+          "id": "transferer-appel",
+          "text": "Je stelt haar voor om haar oproep meteen door te schakelen naar het algemene nummer van de bevoegde instelling, zodat ze niet zelf de juiste gesprekspartner hoeft te zoeken.",
+          "rank": 2,
+          "competencies": ["service"],
+          "explanation": "Aanvaardbare reactie. Door het doorschakelen hoeft ze het juiste nummer niet te zoeken, en het toont dat je wil helpen. Maar een algemeen nummer betekent vaak opnieuw wachten en een nieuwe gesprekspartner aan wie ze alles opnieuw moet uitleggen, terwijl Fatou al twee keer werd doorgestuurd. Zonder haar te zeggen welke documenten ze moet klaarleggen of naar welke precieze dienst ze moet vragen, stel je het vervolg van haar aanvraag niet veilig."
+        },
+        {
+          "id": "repondre-sans-competence",
+          "text": "Om haar een nieuwe doorverwijzing te besparen, beantwoord je zelf haar vragen over de uitbetaling van haar uitkering, op basis van wat je erover weet.",
+          "rank": 3,
+          "competencies": ["service", "integrite"],
+          "explanation": "Weinig gepaste reactie. Je wil haar een nieuwe doorverwijzing besparen, wat goedbedoeld is. Maar je antwoordt over een materie die niet de jouwe is, zonder toegang tot haar dossier: onjuiste informatie over haar uitkering zou financiële gevolgen voor haar kunnen hebben. Een personeelslid moet de grenzen van zijn bevoegdheid kennen en correct doorverwijzen in plaats van te veronderstellen."
+        },
+        {
+          "id": "pas-chez-nous",
+          "text": "Je antwoordt haar dat die vraag niet onder je dienst valt, zonder haar te zeggen tot wie ze zich moet richten, en je beëindigt het gesprek.",
+          "rank": 4,
+          "competencies": ["service", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Je antwoord is inhoudelijk juist, maar het laat een ongeruste persoon achter zonder enig aanknopingspunt, terwijl ze al twee keer werd doorgestuurd. Voor de burger vormt de overheid één geheel: zo’n antwoord versterkt het gevoel van het kastje naar de muur te worden gestuurd. Correct doorverwijzen hoort bij de dienstverlening, ook als de vraag niet onder je bevoegdheid valt."
+        }
+      ]
+    },
+    {
+      "id": "chef-anciens-collegues",
+      "title": "Leidinggevende van je vroegere collega’s",
+      "theme": "Teammanagement",
+      "competency": "leadership",
+      "competencies": ["leadership", "communication", "equipe"],
+      "difficulty": 3,
+      "context": "Je bent net benoemd tot verantwoordelijke van een team van zes personen bij een federale overheidsdienst, nadat je er drie jaar als dossierbeheerder hebt gewerkt.",
+      "situation": [
+        "Bram, de meest ervaren collega van het team, die zich ook kandidaat had gesteld voor de functie, stelt je beslissingen openlijk in vraag tijdens vergaderingen. Vorige week bleef hij de oude klasseerprocedure toepassen, die jij had beslist te wijzigen.",
+        "De andere teamleden volgen de situatie aandachtig."
+      ],
+      "debrief": "Leiding geven aan vroegere collega’s vraagt dat je de rollen tactvol uitklaart. Een individueel gesprek, waarin je de deskundigheid van de persoon erkent en tegelijk duidelijk je verwachtingen stelt, werkt beter dan een machtsvertoon of het vermijden van het conflict.",
+      "actions": [
+        {
+          "id": "entretien-individuel",
+          "text": "Je stelt Bram een individueel gesprek voor: je erkent zijn deskundigheid, je betrekt hem bij het verbeteren van de procedure en je herinnert hem eraan dat de genomen beslissingen voor iedereen gelden.",
+          "rank": 1,
+          "competencies": ["leadership", "communication", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je pakt de situatie rechtstreeks aan, onder vier ogen, zodat Bram zich kan uiten zonder gezichtsverlies tegenover het team. Door zijn deskundigheid te erkennen en hem bij de verbeteringen te betrekken, speel je in op een mogelijke frustratie over de selectie, en tegelijk stel je een duidelijk kader voor het toepassen van beslissingen. Aangetoonde competenties: leidinggeven, assertieve communicatie en samenwerken."
+        },
+        {
+          "id": "consulter-directeur",
+          "text": "Je beschrijft aan je directeur precies welke feiten met Bram je problemen bezorgen, en je vraagt hem raad over hoe je moet reageren voor je zelf optreedt.",
+          "rank": 2,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Aanvaardbare reactie. Je hiërarchie om raad vragen is nuttig in een nieuwe functie, en je directeur moet worden ingelicht als de situatie aanhoudt. Maar door bij hem te beginnen, stel je het rechtstreekse gesprek met Bram uit, terwijl dat de eerste stap blijft die van een leidinggevende wordt verwacht. Als Bram verneemt dat je hem hebt gemeld voor je met hem praatte, kan de relatie nog meer onder spanning komen te staan."
+        },
+        {
+          "id": "laisser-faire",
+          "text": "Je laat Bram op zijn manier werken om het conflict te vermijden, in de hoop dat hij de situatie uiteindelijk zal aanvaarden.",
+          "rank": 3,
+          "competencies": ["leadership"],
+          "explanation": "Weinig gepaste reactie. Je vermijdt een onmiddellijke confrontatie, maar je laat twee regels in het team ontstaan: de jouwe en die van Bram. De andere leden, die de situatie volgen, zullen daaruit besluiten dat over je beslissingen kan worden onderhandeld. Vanuit leidinggevend oogpunt verzwakt vermijden je legitimiteit net op het moment dat je die opbouwt, en het probleem dreigt te verergeren."
+        },
+        {
+          "id": "recadrer-en-public",
+          "text": "Op de volgende vergadering herinner je iedereen eraan dat jij nu verantwoordelijk bent voor het team, dat er over je beslissingen niet meer wordt gediscussieerd zodra ze genomen zijn en dat Bram ze net als de anderen moet toepassen.",
+          "rank": 4,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Een ervaren collega publiekelijk terechtwijzen vernedert hem en maakt van een meningsverschil een krachtmeting. Je doet je gezag gelden via je statuut in plaats van via vertrouwen, wat Bram dreigt tegen je in te nemen en het team een ongemakkelijk gevoel geeft. Vanuit leidinggevend oogpunt geef je een individuele opmerking onder vier ogen; gezag bouw je op met duidelijkheid en respect, niet met machtsvertoon."
+        }
+      ]
+    },
+    {
+      "id": "deleguer-plutot-que-tout-faire",
+      "title": "Alles zelf doen",
+      "theme": "Teammanagement",
+      "competency": "leadership",
+      "competencies": ["leadership", "priorites", "equipe"],
+      "difficulty": 1,
+      "context": "Je geeft leiding aan een team van vijf dossierbeheerders bij een gewestelijke administratie.",
+      "situation": [
+        "Sinds enkele weken neem je zelf een groot deel van het werk van je medewerkers over om er zeker van te zijn dat het perfect is. Je werkt elke avond tot laat door, en over twee weken moet een belangrijk rapport worden ingediend.",
+        "Je medewerkers hebben van hun kant tijd over, en een van hen, Mehdi, heeft je gevraagd om meer verantwoordelijkheid te mogen opnemen."
+      ],
+      "debrief": "Delegeren hoort bij de rol van een leidinggevende: het betekent taken toevertrouwen met duidelijke instructies en opvolgmomenten, in plaats van alles zelf over te nemen. Het team wordt zelfstandiger, en de leidinggevende krijgt weer tijd om te sturen.",
+      "actions": [
+        {
+          "id": "deleguer-avec-suivi",
+          "text": "Je verdeelt de delen van het rapport onder je medewerkers en vertrouwt Mehdi de coördinatie van een ervan toe, met duidelijke instructies en tussentijdse opvolgmomenten.",
+          "rank": 1,
+          "competencies": ["leadership", "priorites", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je delegeert echt, met een kader dat de kwaliteit verzekert: duidelijke instructies en tussentijdse opvolgmomenten. Je gaat ook in op de vraag van Mehdi, wat hem motiveert en zijn competenties ontwikkelt. Je krijgt weer tijd om het rapport te sturen in plaats van alles zelf te produceren. Aangetoonde competenties: leidinggeven, organisatie en prioriteiten, samenwerken."
+        },
+        {
+          "id": "deleguer-en-corrigeant",
+          "text": "Je vertrouwt de eenvoudigste delen van het rapport aan je medewerkers toe, maar je blijft elk van hun bijdragen zelf nalezen en verbeteren.",
+          "rank": 2,
+          "competencies": ["leadership", "priorites"],
+          "explanation": "Aanvaardbare reactie. Je begint te delegeren, wat een deel van je werklast verlicht en het team bij het rapport betrekt. Maar je vertrouwt alleen eenvoudige taken toe en je blijft alles verbeteren: je houdt het grootste deel van het werk zelf, je medewerkers leren weinig bij en de vraag van Mehdi blijft onbeantwoord. Echt delegeren steunt op duidelijke instructies en tussentijdse opvolgmomenten, niet op een systematische verbetering die het team laat voelen dat je het niet vertrouwt."
+        },
+        {
+          "id": "deleguer-sans-consignes",
+          "text": "Je vertrouwt in één keer het hele rapport aan je team toe, met de uitleg dat je er volledig op vertrouwt dat het zich zelf organiseert, en je houdt alleen het eindnazicht voor jezelf.",
+          "rank": 3,
+          "competencies": ["leadership"],
+          "explanation": "Weinig gepaste reactie. Je delegeert eindelijk, maar zonder kader: zonder instructies of opvolgmomenten dreigt het team ongelijk werk af te leveren, dat je pas bij het eindnazicht ontdekt, te laat om het rustig te verbeteren. Delegeren betekent niet dat je het werk van je afschuift, maar dat je een taak toevertrouwt en de middelen geeft om ze tot een goed einde te brengen. Die bruuske overgang van het ene uiterste naar het andere kan je medewerkers ook in verwarring brengen en een belangrijk rapport in gevaar brengen."
+        },
+        {
+          "id": "tout-reprendre-seul",
+          "text": "Je blijft alles zelf overnemen en je weigert de vraag van Mehdi, met de uitleg dat het rapport te belangrijk is om aan iemand anders toe te vertrouwen.",
+          "rank": 4,
+          "competencies": ["leadership", "resilience"],
+          "explanation": "Dit is de minst gepaste actie. Je houdt een werkwijze in stand die je uitput en het team elke zelfstandigheid ontneemt: je medewerkers leren niets bij, en Mehdi, wiens vraag je uitdrukkelijk weigert, dreigt gedemotiveerd te raken. Vanuit leidinggevend oogpunt maakt een leidinggevende die voor elke taak onmisbaar is de dienst kwetsbaar, want die valt stil zodra hij afwezig is. Psychologisch gezien leidt dat perfectionisme vaak tot uitputting."
+        }
+      ]
+    },
+    {
+      "id": "collaborateur-en-difficulte",
+      "title": "Een medewerker van wie de houding verandert",
+      "theme": "Teammanagement",
+      "competency": "leadership",
+      "competencies": ["leadership", "communication", "service"],
+      "difficulty": 3,
+      "context": "Je bent verantwoordelijk voor een team van acht personeelsleden bij een dienst die pensioenen berekent.",
+      "situation": [
+        "Karim, een personeelslid dat gewoonlijk betrouwbaar en gewaardeerd is, lijkt al enkele weken vermoeid. Hij maakt ongewone fouten in zijn berekeningen en zondert zich af tijdens de pauzes.",
+        "Gisteren heeft een burger een klacht ingediend: Karim zou hem aan de telefoon kortaf te woord hebben gestaan. Het jaarlijkse evaluatiegesprek vindt pas over vier maanden plaats."
+      ],
+      "debrief": "Als een betrouwbare medewerker plots van houding verandert, is de eerste reflex van een leidinggevende om te begrijpen voor hij sanctioneert. Een welwillend en vertrouwelijk gesprek, dat de feiten benoemt en verwachtingen vastlegt, opent de deur naar gepaste steun.",
+      "actions": [
+        {
+          "id": "entretien-bienveillant",
+          "text": "Je stelt Karim snel een vertrouwelijk gesprek voor, om hem de vastgestelde feiten te beschrijven, hem te vragen hoe het met hem gaat en samen af te spreken hoe het verder moet.",
+          "rank": 1,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Dit is de meest gepaste actie. Je reageert snel, op basis van feiten, en je geeft Karim de kans om uit te leggen wat er aan de hand is: een bruuske verandering bij een betrouwbaar personeelslid heeft vaak een oorzaak, professioneel of persoonlijk. In het gesprek kan je mogelijke steun ter sprake brengen, zoals een tijdelijke aanpassing of de sociale dienst, zonder je met zijn privéleven te bemoeien, en doelstellingen afspreken die ook de burgers en het werk van het team beschermen. Aangetoonde competenties: leidinggeven en communicatie."
+        },
+        {
+          "id": "retirer-du-telephone",
+          "text": "Je haalt Karim stilletjes voor enkele weken uit de telefonische permanentie, zonder er met hem over te praten, om nieuwe klachten te vermijden.",
+          "rank": 2,
+          "competencies": ["leadership", "service"],
+          "explanation": "Aanvaardbare reactie. Je beschermt de burgers en je beperkt het risico op nieuwe klachten, wat een terechte bekommernis is. Maar je handelt zonder de situatie te begrijpen en zonder er met Karim over te praten: hij dreigt die verandering als een stille sanctie te ervaren. De oorzaak van zijn moeilijkheden blijft onbekend, zijn rekenfouten gaan door, en niemand biedt hem hulp aan."
+        },
+        {
+          "id": "attendre-evaluation",
+          "text": "Je noteert de fouten en de klacht om ze met Karim te bespreken tijdens zijn jaarlijkse evaluatiegesprek, over vier maanden.",
+          "rank": 3,
+          "competencies": ["leadership"],
+          "explanation": "Weinig gepaste reactie. De feiten documenteren is nuttig, maar vier maanden wachten komt erop neer dat je de situatie laat verslechteren, voor Karim en voor de burgers. Een leidinggevende wacht niet op de jaarlijkse evaluatie om een probleem aan te kaarten dat zich vandaag stelt. Op de dag zelf zou Karim een reeks opgespaarde verwijten te horen krijgen die hij nooit heeft kunnen uitleggen of rechtzetten."
+        },
+        {
+          "id": "avertissement-ecrit",
+          "text": "Je stuurt Karim een formele e-mail waarin je hem terechtwijst voor zijn fouten en voor de klacht van de burger, met de directie in kopie, om duidelijk te maken dat dit gedrag niet aanvaardbaar is.",
+          "rank": 4,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Je grijpt meteen naar een formele maatregel, zonder met Karim te hebben gepraat en zonder te proberen een zo plotse gedragsverandering bij een betrouwbaar personeelslid te begrijpen. Als zijn moeilijkheden een persoonlijke of medische oorzaak hebben, dreigt dit antwoord hem nog zwaarder te belasten. Vanuit leidinggevend oogpunt vernietigt een formele terechtwijzing als eerste stap het vertrouwen, en de oorzaak van het probleem wordt er niet mee opgelost."
+        }
+      ]
+    },
+    {
+      "id": "annoncer-decision-impopulaire",
+      "title": "Een beslissing aankondigen die je niet zelf hebt genomen",
+      "theme": "Teammanagement",
+      "competency": "leadership",
+      "competencies": ["leadership", "communication", "equipe"],
+      "difficulty": 3,
+      "context": "Je bent verantwoordelijk voor een team van tien personen bij een agentschap van de Europese Unie.",
+      "situation": [
+        "De directie heeft beslist dat je team over twee maanden overstapt naar gedeelde kantoren zonder vaste werkplek, met twee dagen telewerk per week, omdat er niet genoeg plaatsen zijn. Je werd niet geraadpleegd en je vindt sommige regelingen voor discussie vatbaar.",
+        "Je moet die beslissing morgen aan je team aankondigen. Verschillende medewerkers zijn erg gehecht aan hun huidige kantoor."
+      ],
+      "debrief": "Een leidinggevende draagt de beslissingen van zijn directie loyaal uit, ook als hij ze niet zelf heeft genomen. Hij legt ze transparant uit, betrekt het team bij de uitvoering en uit zijn bedenkingen via de interne kanalen, in plaats van er zich tegenover het team van te distantiëren.",
+      "actions": [
+        {
+          "id": "annoncer-loyalement",
+          "text": "Je kondigt de beslissing op een vergadering aan, met de redenen ervoor, je stelt voor om samen met het team de verdeling van de telewerkdagen te organiseren en je uit je bedenkingen bij de directie in een apart gesprek.",
+          "rank": 1,
+          "competencies": ["leadership", "communication", "equipe"],
+          "explanation": "Dit is de meest gepaste actie. Je neemt je rol als schakel tussen directie en team op: de beslissing wordt mondeling, duidelijk en loyaal aangekondigd, en het team krijgt weer vat op de verandering door zelf de verdeling van de telewerkdagen te organiseren. Je persoonlijke bedenkingen uit je op de juiste plaats, bij de directie, waardoor de regelingen kunnen verbeteren zonder het team te verzwakken. Aangetoonde competenties: leidinggeven, communicatie en begeleiding van het team bij verandering."
+        },
+        {
+          "id": "annonce-par-courriel",
+          "text": "Je stuurt het team een gedetailleerde e-mail met de beslissing van de directie, de redenen ervoor en de praktische regelingen, en je nodigt iedereen uit om contact met je op te nemen bij vragen.",
+          "rank": 2,
+          "competencies": ["communication"],
+          "explanation": "Aanvaardbare reactie. De informatie wordt duidelijk en volledig doorgegeven, en je blijft beschikbaar. Maar een e-mail is weinig geschikt om een verandering aan te kondigen die het dagelijkse leven van iedereen raakt: je kan de redenen niet mondeling toelichten en de reacties niet horen. De ongerustheid dreigt zich in de gangen te uiten in plaats van bij jou, en het team wordt niet betrokken bij de organisatie van de verandering."
+        },
+        {
+          "id": "retarder-annonce",
+          "text": "Je stelt de aankondiging enkele weken uit, zodat je de directie kan vragen sommige regelingen te herzien.",
+          "rank": 3,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Weinig gepaste reactie. De regelingen willen verbeteren is terecht, maar informatie achterhouden die het team rechtstreeks aanbelangt, is niet jouw rol. De verandering gaat over twee maanden in: elke week vertraging verkort de tijd die je medewerkers hebben om zich te organiseren. Als ze de beslissing via andere kanalen vernemen, zouden ze je kunnen verwijten dat je ze verborgen hebt gehouden."
+        },
+        {
+          "id": "se-desolidariser",
+          "text": "Je kondigt de beslissing aan en zegt erbij dat jij er niets mee te maken hebt, dat je ze slecht doordacht vindt en dat de directie je niet heeft geraadpleegd.",
+          "rank": 4,
+          "competencies": ["leadership", "communication"],
+          "explanation": "Dit is de minst gepaste actie. Door je publiekelijk van de directie te distantiëren, verzwak je zowel de beslissing als je eigen rol: het team begrijpt dat zijn leidinggevende geen vat heeft op de beslissing en dat ze slecht is, wat de weerstand tegen de verandering voedt. Vanuit leidinggevend oogpunt sluit loyaliteit tegenover de instelling onenigheid niet uit, maar die uit je bij de directie, niet tegenover het team."
+        }
+      ]
+    },
+    {
+      "id": "quantite-ou-qualite",
+      "title": "De doelstelling halen of het werk goed doen?",
+      "theme": "Kwaliteit van het werk",
+      "competency": "resultats",
+      "competencies": ["resultats", "integrite", "communication"],
+      "difficulty": 3,
+      "context": "Je bent dossierbeheerder bij een federale dienst die aanvragen tot schadevergoeding behandelt.",
+      "situation": [
+        "Je dienst moet veertig dossiers per week en per dossierbeheerder behandelen. Je stelt vast dat verschillende collega’s, om die doelstelling te halen, een controle die de procedure voorschrijft niet meer uitvoeren.",
+        "Die dossiers komen daarna vaker terug om te worden verbeterd, wat het hele team tijd kost. Zelf behandel je, met de volledige procedure, vijfendertig dossiers per week."
+      ],
+      "debrief": "Een becijferde doelstelling dient de kwaliteit van de dienstverlening, ze vervangt die niet. Als een indicator ertoe aanzet een procedure te omzeilen, is de verwachte reactie het probleem te documenteren en met voorstellen aan de hiërarchie voor te leggen, in plaats van de anderen te volgen of schuldigen aan te wijzen.",
+      "actions": [
+        {
+          "id": "documenter-et-proposer",
+          "text": "Je blijft de volledige procedure toepassen en je legt je leidinggevende gegevens voor over de dossiers die voor verbetering worden teruggestuurd, met het voorstel om de doelstelling of de procedure te herzien.",
+          "rank": 1,
+          "competencies": ["resultats", "communication", "integrite"],
+          "explanation": "Dit is de meest gepaste actie. Je blijft trouw aan de procedure en erkent tegelijk dat er een organisatieprobleem op te lossen is. De gegevens over de verbeteringen tonen dat de schijnbare tijdwinst later duur wordt betaald, wat je leidinggevende objectieve elementen geeft om te beslissen. Je hebt het over de werking, niet over personen. Aangetoonde competenties: resultaatgericht werken, in de zin van de werkelijke kwaliteit van de dienstverlening, communicatie en integriteit."
+        },
+        {
+          "id": "respecter-sans-rien-dire",
+          "text": "Je blijft de volledige procedure toepassen, ook al blijf je daardoor onder de doelstelling, en je zegt niets tegen je leidinggevende, aangezien je eigen werk onberispelijk is.",
+          "rank": 2,
+          "competencies": ["integrite", "resultats"],
+          "explanation": "Aanvaardbare reactie. Je respecteert de procedure, wat de kwaliteit van je eigen dossiers garandeert. Maar je doet niets om een probleem op te lossen dat het hele team raakt: de dossiers die voor verbetering worden teruggestuurd, blijven tijd kosten, en je leidinggevende weet niet waarom je productie onder de doelstelling ligt. Door te zwijgen over een praktijk die tegen de procedure ingaat, laat je ook een risico voor de burgers bestaan, en je stilzwijgen dreigt bij je evaluatie verkeerd te worden geïnterpreteerd."
+        },
+        {
+          "id": "signaler-les-collegues",
+          "text": "Je bezorgt je leidinggevende de lijst met de namen van de collega’s die de controle niet meer uitvoeren, met de vraag dat ze worden gesanctioneerd.",
+          "rank": 3,
+          "competencies": ["integrite", "equipe"],
+          "explanation": "Weinig gepaste reactie. Het probleem verdient het om gemeld te worden, maar je stelt het voor als een individuele fout en je eist sancties, terwijl het voortvloeit uit een doelstelling die ertoe aanzet de procedure te omzeilen. Die aanpak verslechtert de sfeer in het team zonder de oorzaak aan te pakken: nieuwe collega’s zouden aan dezelfde druk worden blootgesteld. Je meldt beter de werking en de gevolgen ervan, met gegevens als ondersteuning, en laat het aan de hiërarchie over om individuele situaties te beoordelen."
+        },
+        {
+          "id": "suivre-le-mouvement",
+          "text": "Ook jij voert de controle niet meer uit, omdat dat de enige manier is om de doelstelling van de directie te halen.",
+          "rank": 4,
+          "competencies": ["resultats", "integrite"],
+          "explanation": "Dit is de minst gepaste actie. Je laat bewust een stap van de procedure vallen om aan een indicator te voldoen, ten koste van de kwaliteit van de dossiers en van de betrokken burgers. De latere verbeteringen zullen meer kosten dan de gewonnen tijd. Deontologisch schrapt een personeelslid niet op eigen initiatief een controle; als de procedure ongeschikt lijkt, meldt het dat, zodat ze kan worden herzien."
+        }
+      ]
+    }
+  ]
+}

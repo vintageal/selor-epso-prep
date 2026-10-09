@@ -46,7 +46,7 @@ export const typography = (text) => (current === 'nl' ? dutchTypography(text) : 
  * Banques de questions traduites. Tant qu'une banque n'est pas traduite, la version néerlandaise
  * du site utilise la banque française (la version NL n'est pas encore publique).
  */
-export const TRANSLATED_BANKS = { fr: ['verbal', 'numerique', 'jugement'], nl: [] };
+export const TRANSLATED_BANKS = { fr: ['verbal', 'numerique', 'jugement'], nl: ['jugement'] };
 
 /** Adresse de la banque `name` (verbal, numerique, jugement) dans la langue de la page. */
 export const bankUrl = (name, locale = current) =>
