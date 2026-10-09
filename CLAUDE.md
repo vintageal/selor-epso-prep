@@ -47,7 +47,8 @@ src/og-image.html       Gabarit des images de partage (non publié ; node script
 data/*.json             Banques d'exercices en français : verbal, numerique, jugement (validées par les tests)
 data/nl/*.json          Banques traduites en néerlandais : mêmes identifiants, mêmes réponses
 tests/                  Tests node --test (un fichier par module + site.test.js + i18n.test.js)
-scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json (npm run calculer:numerique)
+scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json et data/nl/numerique.json,
+                        et vérifie que les deux langues ont les mêmes calculs (npm run calculer:numerique)
 ```
 
 ## Commandes

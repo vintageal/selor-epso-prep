@@ -8,8 +8,10 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { validateBank as validateJudgementBank } from '../assets/js/jugement/quiz.js';
+import { validateBank as validateNumericBank } from '../assets/js/numerique/quiz.js';
 import { validateBank as validateVerbalBank } from '../assets/js/verbal/quiz.js';
 import { TRANSLATED_BANKS } from '../assets/js/lib/i18n.js';
+import { calculationDifferences, computeBank, serialize } from '../scripts/calculer-numerique.js';
 import { NL_PUBLIC } from '../scripts/site/config.js';
 
 const readBank = (path) => JSON.parse(readFileSync(new URL(`../data/${path}`, import.meta.url), 'utf8'));
@@ -32,6 +34,25 @@ function assertTranslated(french, dutch, where) {
  * langue, si son identifiant ou sa bonne réponse diffère, ou si un texte n'est pas traduit.
  */
 const BANK_CHECKS = {
+  numerique(fr, nl) {
+    assert.deepEqual(validateNumericBank(nl), [], 'banque néerlandaise invalide');
+    // Mêmes données, mêmes valeurs, mêmes expressions, mêmes réponses : seuls les textes diffèrent.
+    assert.deepEqual(calculationDifferences(fr, nl), [], 'calculs différents entre les deux langues');
+    assert.equal(serialize(computeBank(nl)), readFileSync(new URL('../data/nl/numerique.json', import.meta.url), 'utf8'), 'data/nl/numerique.json n’est pas à jour : lancez « node scripts/calculer-numerique.js »');
+    fr.scenarios.forEach((french, index) => {
+      const dutch = nl.scenarios[index];
+      const at = `numérique « ${french.id} »`;
+      for (const key of ['title', 'theme', 'note']) assertTranslated(french[key], dutch[key], `${at}, ${key}`);
+      french.rows.forEach((row, i) => assertTranslated(row.label, dutch.rows[i].label, `${at}, ligne ${row.key}`));
+      french.questions.forEach((question, i) => {
+        const translated = dutch.questions[i];
+        const where = `${at}/${question.id}`;
+        for (const key of ['text', 'formula', 'explanation']) assertTranslated(question[key], translated[key], `${where}, ${key}`);
+        question.steps.forEach((step, j) => assertTranslated(step.label, translated.steps[j].label, `${where}, étape ${j + 1}`));
+        question.options.forEach((option, j) => option.why && assertTranslated(option.why, translated.options[j].why, `${where}, erreur ${j + 1}`));
+      });
+    });
+  },
   jugement(fr, nl) {
     assert.deepEqual(validateJudgementBank(nl), [], 'banque néerlandaise invalide');
     assert.deepEqual(ids(nl.scenarios), ids(fr.scenarios), 'situations manquantes ou en trop');
