@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
 import { validateBank as validateJudgementBank } from '../assets/js/jugement/quiz.js';
+import { validateBank as validateVerbalBank } from '../assets/js/verbal/quiz.js';
 import { TRANSLATED_BANKS } from '../assets/js/lib/i18n.js';
 import { NL_PUBLIC } from '../scripts/site/config.js';
 
@@ -55,6 +56,35 @@ const BANK_CHECKS = {
       // Un même thème français a toujours la même traduction.
       if (!themes.has(french.theme)) themes.set(french.theme, dutch.theme);
       assert.equal(dutch.theme, themes.get(french.theme), `${at} : thème « ${french.theme} » traduit de deux façons`);
+    });
+  },
+  verbal(fr, nl) {
+    assert.deepEqual(validateVerbalBank(nl), [], 'banque néerlandaise invalide');
+    assert.deepEqual(ids(nl.passages), ids(fr.passages), 'textes manquants ou en trop');
+    fr.passages.forEach((french, index) => {
+      const dutch = nl.passages[index];
+      const at = `verbal « ${french.id} »`;
+      assert.deepEqual(ids(dutch.statements), ids(french.statements), `${at} : affirmations manquantes ou en trop`);
+      assert.equal(dutch.paragraphs.length, french.paragraphs.length, `${at} : paragraphes`);
+      for (const key of ['title', 'theme']) assertTranslated(french[key], dutch[key], `${at}, ${key}`);
+      french.paragraphs.forEach((paragraph, i) => assertTranslated(paragraph, dutch.paragraphs[i], `${at}, paragraphe ${i + 1}`));
+      french.statements.forEach((statement, i) => {
+        const translated = dutch.statements[i];
+        const where = `${at}/${statement.id}`;
+        // La bonne réponse et la difficulté restent identiques dans les deux langues.
+        assert.equal(translated.answer, statement.answer, `${where} : réponse`);
+        assert.equal(translated.difficulty, statement.difficulty, `${where} : difficulté`);
+        assert.equal(translated.quotes.length, statement.quotes.length, `${where} : nombre de citations`);
+        for (const key of ['text', 'explanation']) assertTranslated(statement[key], translated[key], `${where}, ${key}`);
+        for (const quote of translated.quotes) {
+          assert.match(quote, /^[A-ZÀ-Ý“]/, `${where} : la citation doit commencer une phrase`);
+          assert.match(quote, /[.!?”]$/, `${where} : la citation doit finir une phrase`);
+        }
+        assert.match(translated.explanation, /“[^”]+”/, `${where} : l'explication doit citer le texte`);
+        if (statement.answer === 'impossible') assert.match(translated.explanation, /kan (dus )?niet worden bepaald/i, `${where} : « Kan niet worden bepaald » non justifié`);
+        const ratio = translated.explanation.length / statement.explanation.length;
+        assert.ok(ratio > 0.7 && ratio < 1.5, `${where} : explication de longueur suspecte (${ratio.toFixed(2)})`);
+      });
     });
   },
 };

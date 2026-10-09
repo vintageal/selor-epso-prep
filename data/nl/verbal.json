@@ -1,0 +1,720 @@
+{
+  "version": 1,
+  "passages": [
+    {
+      "id": "teletravail-structurel",
+      "title": "Dienstnota: structureel telewerk",
+      "theme": "Openbaar bestuur",
+      "paragraphs": [
+        "Sinds 1 maart mogen de personeelsleden van de Federale Dienst voor Documentbeheer tot drie dagen per week telewerken, op voorwaarde dat hun hiërarchische meerdere hun functie verenigbaar heeft verklaard met werken op afstand. Functies waarbij het publiek fysiek wordt onthaald, zijn daar in principe van uitgesloten. De betrokken personeelsleden kunnen echter wel occasioneel telewerk aanvragen, beperkt tot tien dagen per jaar, om naar behoren gestaafde persoonlijke redenen.",
+        "De aanvraag moet schriftelijk worden ingediend, minstens vijftien werkdagen vóór de gewenste begindatum. De hiërarchische meerdere heeft daarna tien werkdagen om zich uit te spreken; als er binnen die termijn geen antwoord komt, wordt de aanvraag geacht te zijn aanvaard. Elke weigering moet worden gemotiveerd en kan worden aangevochten bij de personeelsdienst, die binnen de maand uitspraak doet.",
+        "Personeelsleden die structureel telewerken, krijgen een maandelijkse forfaitaire vergoeding voor hun verbindings- en verwarmingskosten. Die vergoeding wordt gehalveerd voor personeelsleden die minder dan twee dagen per week telewerken. Na een periode van twaalf maanden wordt aan het directiecomité een evaluatie van de regeling voorgelegd, die onder meer betrekking heeft op de productiviteit en het welzijn van de personeelsleden."
+      ],
+      "statements": [
+        {
+          "id": "teletravail-accueil",
+          "text": "Een personeelslid dat instaat voor het fysieke onthaal van het publiek, mag in principe twee dagen per week telewerken.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Functies waarbij het publiek fysiek wordt onthaald, zijn daar in principe van uitgesloten.",
+            "De betrokken personeelsleden kunnen echter wel occasioneel telewerk aanvragen, beperkt tot tien dagen per jaar, om naar behoren gestaafde persoonlijke redenen."
+          ],
+          "explanation": "De tekst sluit functies met fysiek onthaal van het publiek “in principe” uit van structureel telewerk: dat twee dagen onder het algemene maximum van drie dagen blijft, doet er niet toe, want die uitsluiting geldt nog vóór het maximum. De enige opening voor die personeelsleden is occasioneel telewerk, beperkt tot tien dagen per jaar en voorbehouden aan gestaafde persoonlijke redenen, wat onverenigbaar is met een vast ritme van twee dagen per week (bijna honderd dagen per jaar). De bewering spreekt de tekst dus tegen: ze is niet waar. Klassieke valkuil: de uitdrukking “in principe” in de bewering herneemt de woorden van de tekst, maar om precies het omgekeerde te zeggen."
+        },
+        {
+          "id": "teletravail-silence",
+          "text": "Als de hiërarchische meerdere na afloop van de gestelde termijn zwijgt, geldt dat als akkoord met de telewerkaanvraag.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De hiërarchische meerdere heeft daarna tien werkdagen om zich uit te spreken; als er binnen die termijn geen antwoord komt, wordt de aanvraag geacht te zijn aanvaard."],
+          "explanation": "De bewering herformuleert de regel uit de tekst met andere woorden. “Als de hiërarchische meerdere na afloop van de gestelde termijn zwijgt” stemt overeen met “als er binnen die termijn geen antwoord komt” (tien werkdagen), en “geldt als akkoord” is het juridische equivalent van “wordt de aanvraag geacht te zijn aanvaard”. Het gaat niet om een gewaagde afleiding maar om een getrouwe parafrase: de bewering is waar. Oefen je bij dit soort tests om eenzelfde idee te herkennen dat met een andere woordenschat wordt uitgedrukt: de opsteller van de test vermijdt bijna altijd de exacte woorden van de tekst."
+        },
+        {
+          "id": "teletravail-majorite",
+          "text": "De meerderheid van de personeelsleden van de Dienst telewerkt voortaan drie dagen per week.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": ["Sinds 1 maart mogen de personeelsleden van de Federale Dienst voor Documentbeheer tot drie dagen per week telewerken, op voorwaarde dat hun hiërarchische meerdere hun functie verenigbaar heeft verklaard met werken op afstand."],
+          "explanation": "De tekst beschrijft wat toegestaan is (“mogen […] tot drie dagen per week telewerken”), dus een toegestaan maximum dat aan een voorwaarde is gebonden, en niet wat de personeelsleden werkelijk doen. Geen enkel cijfer vermeldt hoeveel personeelsleden een aanvraag hebben ingediend, hoeveel functies verenigbaar werden verklaard of hoeveel dagen er effectief thuis worden gewerkt. Op basis van de tekst kan je dus niet bevestigen en ook niet weerleggen dat de meerderheid van de personeelsleden drie dagen telewerkt: dit kan niet worden bepaald. Wees op je hoede voor beweringen die een mogelijkheid (“mogen”) voorstellen als een vaststaand feit, of een maximum (“tot”) als een algemene praktijk."
+        },
+        {
+          "id": "teletravail-indemnite",
+          "text": "Een personeelslid dat één dag per week telewerkt, krijgt een lagere vergoeding dan een collega die drie dagen per week telewerkt.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": ["Die vergoeding wordt gehalveerd voor personeelsleden die minder dan twee dagen per week telewerken."],
+          "explanation": "Hier moet je de regel uit de tekst toepassen op twee concrete gevallen. Eén dag per week is “minder dan twee dagen”: de vergoeding van dat personeelslid wordt gehalveerd. Drie dagen per week is niet “minder dan twee dagen”: de collega krijgt de volledige vergoeding. De eerste krijgt dus wel degelijk een lagere vergoeding dan de tweede. De bewering staat niet letterlijk in de tekst, maar volgt er logisch uit, zonder dat je externe informatie nodig hebt: ze is waar. Een bewering kan “waar” zijn door afleiding, en niet alleen wanneer ze de tekst overneemt."
+        }
+      ]
+    },
+    {
+      "id": "inflation-pouvoir-achat",
+      "title": "Economisch rapport: inflatie en koopkracht",
+      "theme": "Economie",
+      "paragraphs": [
+        "Volgens het jongste rapport van het Instituut voor Conjunctuuronderzoek bedroeg de jaarlijkse inflatie vorig jaar 6,2%, het hoogste peil in drie decennia. De stijging van de energieprijzen verklaart alleen al bijna de helft van die toename, terwijl voedingsmiddelen er ongeveer een kwart toe hebben bijgedragen.",
+        "Dankzij het mechanisme van automatische indexering zijn de brutolonen in dezelfde periode gemiddeld met 5,8% gestegen. De koopkracht van de gezinnen van werknemers is dus licht gedaald, maar minder sterk dan in de buurlanden die geen dergelijk mechanisme hebben. De auteurs benadrukken echter dat de indexering met een vertraging van enkele maanden gebeurt, wat zwaarder weegt op gezinnen met een laag inkomen, die een groter deel van hun budget aan energie en voeding besteden.",
+        "Voor dit jaar voorspelt het Instituut een vertraging van de inflatie tot 3,1%, op voorwaarde dat de energieprijzen stabiliseren. Het waarschuwt wel voor het risico van een “loon-prijsspiraal” als de bedrijven de stijging van hun loonkosten volledig zouden doorrekenen in hun verkoopprijzen."
+      ],
+      "statements": [
+        {
+          "id": "inflation-energie",
+          "text": "Energie woog vorig jaar zwaarder door in de prijsstijging dan voeding.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De stijging van de energieprijzen verklaart alleen al bijna de helft van die toename, terwijl voedingsmiddelen er ongeveer een kwart toe hebben bijgedragen."],
+          "explanation": "De tekst schrijft “bijna de helft” van de prijsstijging toe aan energie en “ongeveer een kwart” aan voedingsmiddelen. Ook met die benaderingen (“bijna”, “ongeveer”) blijft een bijdrage van bijna 50% duidelijk groter dan een bijdrage van ongeveer 25%: het verschil is te groot om de volgorde te kunnen omkeren. De bewering vergelijkt alleen die twee aandelen: ze is waar. Onthoud dat een benadering een vergelijking niet onzeker maakt wanneer de grootteordes duidelijk verschillen."
+        },
+        {
+          "id": "inflation-recul-pouvoir-achat",
+          "text": "Dankzij de indexering is de koopkracht van de gezinnen van werknemers vorig jaar gestegen.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Dankzij het mechanisme van automatische indexering zijn de brutolonen in dezelfde periode gemiddeld met 5,8% gestegen.",
+            "De koopkracht van de gezinnen van werknemers is dus licht gedaald, maar minder sterk dan in de buurlanden die geen dergelijk mechanisme hebben."
+          ],
+          "explanation": "De tekst vermeldt dat de brutolonen met 5,8% zijn gestegen, terwijl de prijzen met 6,2% zijn gestegen: de inkomens zijn dus minder snel gestegen dan de prijzen. De tekst trekt daar zelf de conclusie uit dat de koopkracht “dus licht gedaald” is. De indexering heeft de koopkracht niet doen stijgen; ze heeft de daling alleen beperkt in vergelijking met de buurlanden die geen indexering hebben. De bewering zegt het omgekeerde van de tekst: ze is niet waar. De valkuil bestaat erin het woord “dankzij”, dat wel in de tekst staat, te koppelen aan een verkeerde conclusie."
+        },
+        {
+          "id": "inflation-prevision",
+          "text": "De inflatie zal dit jaar 3,1% bedragen.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Voor dit jaar voorspelt het Instituut een vertraging van de inflatie tot 3,1%, op voorwaarde dat de energieprijzen stabiliseren."],
+          "explanation": "De tekst stelt dat cijfer niet voor als een feit, maar als een voorspelling (“voorspelt het Instituut”), die bovendien aan een voorwaarde is gebonden (“op voorwaarde dat de energieprijzen stabiliseren”). De tekst zegt echter niet of de energieprijzen werkelijk zullen stabiliseren. De bewering maakt van een voorwaardelijke voorspelling een zekerheid: op basis van de tekst kan je ze bevestigen noch weerleggen, dus dit kan niet worden bepaald. Onthoud dat de toekomende tijd (“zal … bedragen”) een zekerheid uitdrukt die de tekst niet biedt."
+        },
+        {
+          "id": "inflation-menages-modestes",
+          "text": "Gezinnen met een laag inkomen besteden een groter deel van hun budget aan energie en voeding dan andere gezinnen.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De auteurs benadrukken echter dat de indexering met een vertraging van enkele maanden gebeurt, wat zwaarder weegt op gezinnen met een laag inkomen, die een groter deel van hun budget aan energie en voeding besteden."],
+          "explanation": "De informatie staat in een bijzin die je makkelijk over het hoofd ziet: “die een groter deel van hun budget aan energie en voeding besteden”. Het betrekkelijk voornaamwoord “die” verwijst naar de “gezinnen met een laag inkomen”, en de vergrotende trap “groter” vergelijkt hen met de andere gezinnen. De bewering geeft dat idee getrouw weer: ze is waar. In dichte teksten zitten de beslissende gegevens vaak verstopt in bijzinnen of tussenzinnen: lees elke zin helemaal uit."
+        }
+      ]
+    },
+    {
+      "id": "qualite-air-ecoles",
+      "title": "Voorstel voor een richtlijn: luchtkwaliteit in scholen",
+      "theme": "Milieu en gezondheid",
+      "paragraphs": [
+        "Het voorstel voor een richtlijn dat het Europees Parlement momenteel bespreekt, legt voor het eerst een bindende grenswaarde vast voor de concentratie van koolstofdioxide (CO₂) in klaslokalen. De gekozen drempel, 1.000 delen per miljoen (ppm), wordt door deskundigen beschouwd als een betrouwbare indicator van de luchtverversing, en niet als een toxiciteitsdrempel voor CO₂ zelf.",
+        "De lidstaten zouden na de inwerkingtreding van de tekst vier jaar de tijd krijgen om elk klaslokaal met een CO₂-sensor uit te rusten. Scholen die na 2030 worden gebouwd, zouden bovendien met een mechanisch ventilatiesysteem moeten worden uitgerust. Voor bestaande gebouwen zou natuurlijke ventilatie door het openen van ramen toegestaan blijven, op voorwaarde dat de metingen aantonen dat de drempel gedurende minstens 90% van de gebruikstijd wordt nageleefd.",
+        "Verschillende studies die in de effectbeoordeling worden aangehaald, leggen een verband tussen een betere ventilatie en een daling van het absenteïsme door luchtweginfecties. De auteurs van de analyse erkennen echter dat die studies, die vooral in Noord-Europese landen werden uitgevoerd, het niet mogelijk maken een rechtstreeks oorzakelijk verband vast te stellen."
+      ],
+      "statements": [
+        {
+          "id": "air-toxicite",
+          "text": "De drempel van 1.000 ppm werd gekozen omdat CO₂ boven die concentratie giftig wordt voor de leerlingen.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": ["De gekozen drempel, 1.000 delen per miljoen (ppm), wordt door deskundigen beschouwd als een betrouwbare indicator van de luchtverversing, en niet als een toxiciteitsdrempel voor CO₂ zelf."],
+          "explanation": "De bewering geeft een verantwoording die de tekst uitdrukkelijk afwijst. De drempel van 1.000 ppm wordt voorgesteld als “een betrouwbare indicator van de luchtverversing, en niet als een toxiciteitsdrempel voor CO₂ zelf”. Met andere woorden: een overschrijding van die drempel wijst op onvoldoende verluchting, niet op een giftig gevaar van CO₂ zelf. De tekst spreekt het “omdat” van de bewering dus rechtstreeks tegen: ze is niet waar. Let op oorzakelijke verbanden (“omdat”, “dankzij”, “door”): een bewering kan juiste elementen vermelden en ze toch met een verkeerde oorzaak verbinden."
+        },
+        {
+          "id": "air-capteurs",
+          "text": "Als de richtlijn zou worden aangenomen, zou elk klaslokaal op termijn met een CO₂-sensor moeten worden uitgerust.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": ["De lidstaten zouden na de inwerkingtreding van de tekst vier jaar de tijd krijgen om elk klaslokaal met een CO₂-sensor uit te rusten."],
+          "explanation": "De tekst bepaalt dat de lidstaten vier jaar de tijd zouden krijgen “om elk klaslokaal met een CO₂-sensor uit te rusten”. Een termijn toekennen om iets te installeren, betekent dat de installatie na afloop van die termijn verplicht is: “op termijn” stemt overeen met die vier jaar. De bewering respecteert bovendien het hypothetische karakter van de tekst (“als de richtlijn zou worden aangenomen”), aangezien het gaat om een voorstel dat het Europees Parlement nog bespreekt. Ze is waar. Let op het belang van de voorwaardelijke wijs: zonder de precisering “als de richtlijn zou worden aangenomen” zou de bewering een tekst die nog niet is aangenomen, hebben voorgesteld alsof hij al definitief was."
+        },
+        {
+          "id": "air-ventilation",
+          "text": "Alle bestaande scholen zullen een mechanisch ventilatiesysteem moeten installeren.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "Scholen die na 2030 worden gebouwd, zouden bovendien met een mechanisch ventilatiesysteem moeten worden uitgerust.",
+            "Voor bestaande gebouwen zou natuurlijke ventilatie door het openen van ramen toegestaan blijven, op voorwaarde dat de metingen aantonen dat de drempel gedurende minstens 90% van de gebruikstijd wordt nageleefd."
+          ],
+          "explanation": "De verplichting tot mechanische ventilatie geldt alleen voor “scholen die na 2030 worden gebouwd”. Voor bestaande gebouwen bepaalt de tekst integendeel dat “natuurlijke ventilatie door het openen van ramen toegestaan” zou blijven, op voorwaarde dat de drempel gedurende minstens 90% van de gebruikstijd wordt nageleefd. Een bestaande school die aan die voorwaarde voldoet, hoeft dus geen mechanische ventilatie te installeren. Met het woord “alle” veralgemeent de bewering een verplichting die de tekst tot nieuwe gebouwen beperkt: ze is niet waar. Absolute woorden (“alle”, “altijd”, “nooit”) moeten altijd je aandacht trekken."
+        },
+        {
+          "id": "air-absenteisme",
+          "text": "Een betere ventilatie van de klaslokalen vermindert het absenteïsme door luchtweginfecties.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Verschillende studies die in de effectbeoordeling worden aangehaald, leggen een verband tussen een betere ventilatie en een daling van het absenteïsme door luchtweginfecties.",
+            "De auteurs van de analyse erkennen echter dat die studies, die vooral in Noord-Europese landen werden uitgevoerd, het niet mogelijk maken een rechtstreeks oorzakelijk verband vast te stellen."
+          ],
+          "explanation": "De tekst vermeldt dat studies “een verband” leggen tussen een betere ventilatie en een daling van het absenteïsme, en preciseert daarna dat die studies het “niet mogelijk maken een rechtstreeks oorzakelijk verband vast te stellen”. Een verband (correlatie) is geen bewijs van oorzaak en gevolg: beter verluchte scholen kunnen bijvoorbeeld op heel wat andere punten van de andere scholen verschillen. De bewering legt wel een oorzakelijk verband (“vermindert”). De tekst laat niet toe ze te bevestigen, maar evenmin ze te weerleggen, aangezien hij niet zegt dat het effect onbestaande is: dit kan niet worden bepaald. Dit is de klassieke valkuil van de verwarring tussen correlatie en oorzakelijkheid."
+        }
+      ]
+    },
+    {
+      "id": "acces-documents",
+      "title": "Huishoudelijk reglement van een Europees agentschap: toegang van het publiek tot documenten",
+      "theme": "Recht en instellingen",
+      "paragraphs": [
+        "Elke natuurlijke persoon of rechtspersoon kan toegang vragen tot de documenten die het Agentschap in zijn bezit heeft, zonder zijn verzoek te moeten motiveren. Het Agentschap bevestigt de ontvangst van het verzoek binnen vijf werkdagen en neemt een beslissing binnen vijftien werkdagen na de registratie ervan.",
+        "In uitzonderlijke gevallen, met name wanneer het verzoek betrekking heeft op een zeer lang document of op een groot aantal documenten, kan die termijn slechts één keer met vijftien werkdagen worden verlengd, op voorwaarde dat de aanvrager daarvan vooraf op de hoogte wordt gebracht en dat de verlenging naar behoren wordt gemotiveerd.",
+        "De toegang wordt geweigerd wanneer de openbaarmaking afbreuk zou doen aan de bescherming van de persoonlijke levenssfeer of aan de openbare veiligheid. Wanneer slechts bepaalde delen van een document onder een uitzondering vallen, worden de overige delen openbaar gemaakt. Documenten die een lidstaat aan het Agentschap heeft bezorgd, mogen niet openbaar worden gemaakt zonder de voorafgaande toestemming van die lidstaat."
+      ],
+      "statements": [
+        {
+          "id": "documents-justification",
+          "text": "Om een document te krijgen, moet de aanvrager de redenen voor zijn verzoek uitleggen.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["Elke natuurlijke persoon of rechtspersoon kan toegang vragen tot de documenten die het Agentschap in zijn bezit heeft, zonder zijn verzoek te moeten motiveren."],
+          "explanation": "De tekst preciseert dat iedereen toegang tot de documenten kan vragen “zonder zijn verzoek te moeten motiveren”. Eisen dat de aanvrager zijn redenen uitlegt, zou precies betekenen dat hij zijn verzoek moet motiveren. De bewering wordt dus rechtstreeks tegengesproken door de tekst: ze is niet waar. Merk ook op dat de tekst het heeft over “elke natuurlijke persoon of rechtspersoon”: een bedrijf of een vereniging heeft hetzelfde recht als een particulier, wat het onderwerp van een andere vraag zou kunnen zijn."
+        },
+        {
+          "id": "documents-delai",
+          "text": "In het langste geval waarin de tekst voorziet, heeft het Agentschap dertig werkdagen om een beslissing te nemen.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "Het Agentschap bevestigt de ontvangst van het verzoek binnen vijf werkdagen en neemt een beslissing binnen vijftien werkdagen na de registratie ervan.",
+            "In uitzonderlijke gevallen, met name wanneer het verzoek betrekking heeft op een zeer lang document of op een groot aantal documenten, kan die termijn slechts één keer met vijftien werkdagen worden verlengd, op voorwaarde dat de aanvrager daarvan vooraf op de hoogte wordt gebracht en dat de verlenging naar behoren wordt gemotiveerd."
+          ],
+          "explanation": "Je moet twee passages combineren. De gewone termijn voor de beslissing is vijftien werkdagen na de registratie van het verzoek. In uitzonderlijke gevallen “kan die termijn slechts één keer met vijftien werkdagen worden verlengd”. De maximale termijn is dus 15 + 15 = 30 werkdagen, en de vermelding “slechts één keer” sluit elke bijkomende verlenging uit. De bewering is waar. Laat je niet afleiden door de termijn van vijf werkdagen: die gaat over de ontvangstbevestiging, niet over de beslissing."
+        },
+        {
+          "id": "documents-acces-partiel",
+          "text": "Een document waarvan één enkele pagina informatie over de persoonlijke levenssfeer bevat, wordt in zijn geheel geweigerd.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": [
+            "De toegang wordt geweigerd wanneer de openbaarmaking afbreuk zou doen aan de bescherming van de persoonlijke levenssfeer of aan de openbare veiligheid.",
+            "Wanneer slechts bepaalde delen van een document onder een uitzondering vallen, worden de overige delen openbaar gemaakt."
+          ],
+          "explanation": "De bescherming van de persoonlijke levenssfeer is wel degelijk een reden tot weigering. Maar de volgende zin beperkt de draagwijdte van die weigering: “Wanneer slechts bepaalde delen van een document onder een uitzondering vallen, worden de overige delen openbaar gemaakt.” Alleen de betrokken pagina mag dus worden afgeschermd, en de rest van het document moet worden meegedeeld. De bewering (“in zijn geheel”) spreekt dat principe van gedeeltelijke toegang tegen: ze is niet waar. Lees altijd de zin die op een regel volgt: die beperkt vaak de draagwijdte ervan."
+        },
+        {
+          "id": "documents-statistiques",
+          "text": "De meeste verzoeken om toegang die het Agentschap ontvangt, krijgen een gunstig antwoord.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": ["De toegang wordt geweigerd wanneer de openbaarmaking afbreuk zou doen aan de bescherming van de persoonlijke levenssfeer of aan de openbare veiligheid."],
+          "explanation": "De tekst zet de procedureregels en de redenen tot weigering uiteen (persoonlijke levenssfeer, openbare veiligheid, geen toestemming van een lidstaat), maar geeft geen enkel gegeven over de werkelijke afloop van de verzoeken: geen aantallen en geen aandeel van aanvaardingen of weigeringen. Weten in welke gevallen de toegang wordt geweigerd, zegt niets over hoe vaak die gevallen voorkomen. Op basis van de tekst kan je dus niet bevestigen en ook niet weerleggen dat de meeste verzoeken worden ingewilligd: dit kan niet worden bepaald. Een kwantitatieve bewering (“de meeste”, “de meerderheid”) vereist kwantitatieve informatie in de tekst."
+        }
+      ]
+    },
+    {
+      "id": "declin-pollinisateurs",
+      "title": "Wetenschappelijk rapport: de achteruitgang van bestuivende insecten",
+      "theme": "Wetenschap",
+      "paragraphs": [
+        "Een rapport van een consortium van elf Europese universiteiten schat dat de populaties bestuivende insecten in de onderzochte landbouwgebieden in twintig jaar met ongeveer 30% zijn afgenomen. De achteruitgang is duidelijk minder uitgesproken in beschermde gebieden, waar hij over dezelfde periode niet meer dan 10% bedraagt.",
+        "De onderzoekers wijzen drie hoofdfactoren aan: het verdwijnen van hagen en bloemrijke graslanden, het gebruik van bepaalde pesticiden en het toenemende aantal periodes van extreme hitte. Ze preciseren dat geen van die factoren op zich volstaat om de omvang van het waargenomen fenomeen te verklaren.",
+        "Ongeveer driekwart van de gewassen voor menselijke voeding is minstens gedeeltelijk afhankelijk van bestuiving door dieren. Het rapport beveelt daarom aan om minstens 7% van de oppervlakte van elk landbouwbedrijf te bestemmen voor elementen die gunstig zijn voor de biodiversiteit, zoals bloemstroken of hagen. Het becijfert echter niet wat die maatregel de landbouwers kost."
+      ],
+      "statements": [
+        {
+          "id": "pollinisateurs-zones",
+          "text": "In de onderzochte gebieden zijn de bestuivers sterker achteruitgegaan in landbouwgebieden dan in beschermde gebieden.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": [
+            "Een rapport van een consortium van elf Europese universiteiten schat dat de populaties bestuivende insecten in de onderzochte landbouwgebieden in twintig jaar met ongeveer 30% zijn afgenomen.",
+            "De achteruitgang is duidelijk minder uitgesproken in beschermde gebieden, waar hij over dezelfde periode niet meer dan 10% bedraagt."
+          ],
+          "explanation": "De tekst becijfert de achteruitgang op “ongeveer 30%” in de onderzochte landbouwgebieden en preciseert dat hij in beschermde gebieden “niet meer dan 10%” bedraagt, over dezelfde periode van twintig jaar. De tekst noemt die achteruitgang in beschermde gebieden trouwens zelf “duidelijk minder uitgesproken”. De vergelijking in de bewering wordt dus zowel door de cijfers als door de commentaar van de tekst bevestigd: ze is waar. Ga altijd na of beide termen van een vergelijking over dezelfde periode en hetzelfde gebied gaan, wat hier wel degelijk het geval is."
+        },
+        {
+          "id": "pollinisateurs-pesticides",
+          "text": "Volgens de onderzoekers is het gebruik van pesticiden de voornaamste oorzaak van de achteruitgang van de bestuivers.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "De onderzoekers wijzen drie hoofdfactoren aan: het verdwijnen van hagen en bloemrijke graslanden, het gebruik van bepaalde pesticiden en het toenemende aantal periodes van extreme hitte.",
+            "Ze preciseren dat geen van die factoren op zich volstaat om de omvang van het waargenomen fenomeen te verklaren."
+          ],
+          "explanation": "De onderzoekers noemen het gebruik van bepaalde pesticiden als een van “drie hoofdfactoren”, zonder een rangorde tussen die factoren vast te leggen. Ze voegen eraan toe dat geen enkele factor “op zich” volstaat om het fenomeen te verklaren: dat betekent dat geen enkele factor alles verklaart, maar niet dat geen enkele factor doorweegt. Op basis van de tekst kan je dus niet beweren dat pesticiden de voornaamste oorzaak zijn, maar je kan het evenmin uitsluiten: dit kan niet worden bepaald. Opgelet: “Niet waar” antwoorden is een veelgemaakte fout, want “niet op zich volstaan” en “niet de voornaamste oorzaak zijn” zijn twee verschillende ideeën."
+        },
+        {
+          "id": "pollinisateurs-cultures",
+          "text": "Ongeveer de helft van de gewassen voor menselijke voeding is helemaal niet afhankelijk van bestuiving door dieren.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": ["Ongeveer driekwart van de gewassen voor menselijke voeding is minstens gedeeltelijk afhankelijk van bestuiving door dieren."],
+          "explanation": "Als ongeveer driekwart van de voedingsgewassen “minstens gedeeltelijk” afhankelijk is van bestuiving door dieren, dan kan alleen het resterende kwart, ongeveer, er helemaal niet van afhangen. Het is dus onmogelijk dat ongeveer de helft van de gewassen er “helemaal niet” van afhankelijk is. De bewering is onverenigbaar met het cijfer uit de tekst: ze is niet waar. Dit soort vraag vereist een kleine bijkomende berekening: redeneer over het resterende deel (100% − 75% = 25%) in plaats van over het vermelde cijfer."
+        },
+        {
+          "id": "pollinisateurs-revenus",
+          "text": "De door het rapport aanbevolen maatregel zou de inkomens van de landbouwers verminderen.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Het becijfert echter niet wat die maatregel de landbouwers kost."],
+          "explanation": "De tekst beveelt aan om minstens 7% van de oppervlakte van elk landbouwbedrijf voor te behouden aan elementen die gunstig zijn voor de biodiversiteit, maar preciseert: “Het becijfert echter niet wat die maatregel de landbouwers kost.” Hij zegt ook niets over eventuele compensaties of over de gevolgen voor de opbrengsten. Ook al lijkt een inkomensverlies aannemelijk, niets in de tekst laat toe het te bevestigen of uit te sluiten: dit kan niet worden bepaald. Vul de tekst nooit aan met wat jou waarschijnlijk lijkt of met je algemene kennis: alleen de tekst is bepalend."
+        }
+      ]
+    },
+    {
+      "id": "plan-mobilite-agents",
+      "title": "Omzendbrief: mobiliteitsplan voor het personeel",
+      "theme": "Openbaar bestuur",
+      "paragraphs": [
+        "Vanaf 1 september betaalt het Gewestelijk Agentschap voor Lokale Belastingen het trein- of busabonnement van zijn personeelsleden voor de verplaatsing tussen hun woonplaats en hun werkplek volledig terug. Personeelsleden die met de fiets naar het werk komen, krijgen een kilometervergoeding, met een maximum van veertig kilometer per dag heen en terug. Beide voordelen kunnen niet voor dezelfde maand worden gecumuleerd.",
+        "Het aantal parkeerplaatsen voor het personeel wordt tegen het einde van volgend jaar met een derde verminderd. De resterende plaatsen worden bij voorrang toegekend aan personeelsleden met een beperkte mobiliteit, daarna aan personeelsleden van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend. De andere personeelsleden kunnen in uitzonderlijke omstandigheden een plaats voor een beperkte duur aanvragen.",
+        "Uit een bevraging van het personeel in maart bleek dat 38% van de personeelsleden voornamelijk met de auto naar het werk komt. Het plan wil dat aandeel binnen drie jaar onder de 30% brengen. Na achttien maanden wordt een eerste balans opgemaakt, op basis van een nieuwe bevraging."
+      ],
+      "statements": [
+        {
+          "id": "mobilite-cumul",
+          "text": "Een personeelslid kan voor dezelfde maand zijn busabonnement laten terugbetalen en de fietsvergoeding krijgen.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["Beide voordelen kunnen niet voor dezelfde maand worden gecumuleerd."],
+          "explanation": "De tekst voorziet wel degelijk in twee voordelen, de terugbetaling van het trein- of busabonnement en de kilometervergoeding voor de fiets, maar preciseert: “Beide voordelen kunnen niet voor dezelfde maand worden gecumuleerd.” De bewering beschrijft precies de verboden cumulatie: ze spreekt de tekst tegen en is dus niet waar. Als een tekst meerdere voordelen toekent, ga dan altijd na of ze kunnen worden gecombineerd: één enkele regel die cumulatie verbiedt, volstaat om de bewering onwaar te maken."
+        },
+        {
+          "id": "mobilite-parking-priorite",
+          "text": "Bij de toekenning van een parkeerplaats gaat een personeelslid met een beperkte mobiliteit voor op een collega van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De resterende plaatsen worden bij voorrang toegekend aan personeelsleden met een beperkte mobiliteit, daarna aan personeelsleden van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend."],
+          "explanation": "De tekst legt een volgorde van voorrang vast: de plaatsen worden “bij voorrang toegekend aan personeelsleden met een beperkte mobiliteit, daarna aan personeelsleden van wie de woonplaats vóór 7 uur niet door het openbaar vervoer wordt bediend”. Het woord “daarna” geeft aan dat de tweede categorie pas na de eerste komt. De bewering geeft die volgorde getrouw weer: ze is waar. Spoor in dit soort zinnen de woorden op die een rangorde aangeven (“eerst”, “daarna”, “bij gebrek daaraan”): ze dragen vaak alle informatie."
+        },
+        {
+          "id": "mobilite-avant-septembre",
+          "text": "Vóór 1 september betaalde het Agentschap slechts een deel van het trein- of busabonnement van zijn personeelsleden terug.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Vanaf 1 september betaalt het Gewestelijk Agentschap voor Lokale Belastingen het trein- of busabonnement van zijn personeelsleden voor de verplaatsing tussen hun woonplaats en hun werkplek volledig terug."],
+          "explanation": "De tekst vermeldt dat het Agentschap “vanaf 1 september” het trein- of busabonnement “volledig terug” betaalt. De uitdrukking “vanaf” geeft het begin van die regel aan, maar de tekst zegt niets over de vroegere situatie: het Agentschap betaalde misschien niets terug, of een deel van het abonnement, of paste andere voorwaarden toe. Niets laat toe tussen die hypotheses te kiezen. De bewering wordt bevestigd noch tegengesproken: dit kan niet worden bepaald. Een nieuwe regel geeft geen informatie over de regel die hij vervangt."
+        },
+        {
+          "id": "mobilite-train-bus",
+          "text": "Bij de bevraging in maart kwamen meer dan zes op de tien personeelsleden voornamelijk met de trein of de bus naar het werk.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": ["Uit een bevraging van het personeel in maart bleek dat 38% van de personeelsleden voornamelijk met de auto naar het werk komt."],
+          "explanation": "De bevraging toont dat “38% van de personeelsleden voornamelijk met de auto naar het werk komt”. De overige 62% komen dus niet voornamelijk met de auto, maar de tekst zegt niet hoe zij verdeeld zijn: trein, bus, fiets, te voet of een ander vervoermiddel. De tekst vermeldt trouwens zelf de fietsers. Het is verleidelijk die 62% aan het openbaar vervoer toe te schrijven, maar niets laat dat toe: de bewering wordt bevestigd noch tegengesproken, dit kan niet worden bepaald. Het complement van een aandeel omvat vaak verschillende afzonderlijke categorieën."
+        }
+      ]
+    },
+    {
+      "id": "archives-numerisation",
+      "title": "Reglement: bewaring en digitalisering van het gemeentearchief",
+      "theme": "Openbaar bestuur",
+      "paragraphs": [
+        "De documenten die de gemeentediensten opmaken, worden bewaard volgens een selectielijst die voor elke categorie een administratieve bewaartermijn vastlegt. Na afloop van die termijn worden de documenten ofwel vernietigd, ofwel overgebracht naar het historisch archief van de gemeente. Geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris.",
+        "De registers van de burgerlijke stand worden zonder tijdslimiet bewaard. De dossiers van stedenbouwkundige vergunningen worden minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief. Boekhoudkundige stukken worden tien jaar bewaard, waarna ze mogen worden vernietigd.",
+        "Sinds vorig jaar worden papieren dossiers gedigitaliseerd wanneer ze meer dan drie keer per jaar worden geraadpleegd. De digitale versie heeft dezelfde waarde als het origineel, op voorwaarde dat ze door de gemeentearchivaris werd gecertificeerd. Gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd, behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard."
+      ],
+      "statements": [
+        {
+          "id": "archives-etat-civil",
+          "text": "Een gedigitaliseerd en gecertificeerd register van de burgerlijke stand moet toch op papier worden bewaard.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": [
+            "De registers van de burgerlijke stand worden zonder tijdslimiet bewaard.",
+            "Gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd, behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard."
+          ],
+          "explanation": "De tekst staat toe dat gedigitaliseerde en gecertificeerde originelen worden vernietigd, maar voorziet in een uitdrukkelijke uitzondering: “behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard”. Hij preciseert ook dat die registers “zonder tijdslimiet bewaard” worden. Ook als het gedigitaliseerd en gecertificeerd is, moet een register van de burgerlijke stand dus op papier worden bewaard: de bewering is waar. Dit soort vraag test je aandacht voor uitzonderingen die worden ingeleid met “behalve”, “met uitzondering van” of “uitgezonderd”."
+        },
+        {
+          "id": "archives-versement-permis",
+          "text": "Het dossier van een stedenbouwkundige vergunning die vijfendertig jaar geleden werd afgegeven, is al naar het historisch archief overgebracht.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["De dossiers van stedenbouwkundige vergunningen worden minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief."],
+          "explanation": "De tekst legt een minimumduur vast: de dossiers van stedenbouwkundige vergunningen worden “minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief”. “Minstens” betekent dat de bewaring langer dan dertig jaar kan duren: de tekst zegt niet wanneer de overbrenging plaatsvindt. Na vijfendertig jaar kan het dossier dus al overgebracht zijn, maar het kan ook nog door de diensten worden bewaard. Op basis van de tekst kan je de bewering bevestigen noch weerleggen: dit kan niet worden bepaald. Een minimumduur is geen datum."
+        },
+        {
+          "id": "archives-original-permis",
+          "text": "Het papieren origineel van een dossier van een stedenbouwkundige vergunning mag in sommige gevallen minder dan dertig jaar na de afgifte van de vergunning worden vernietigd.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "De dossiers van stedenbouwkundige vergunningen worden minstens dertig jaar na de afgifte van de vergunning bewaard en daarna overgebracht naar het historisch archief.",
+            "De digitale versie heeft dezelfde waarde als het origineel, op voorwaarde dat ze door de gemeentearchivaris werd gecertificeerd.",
+            "Gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd, behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard.",
+            "Geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris."
+          ],
+          "explanation": "De minimumduur van dertig jaar zet je ertoe aan “Niet waar” te antwoorden, maar je moet verschillende passages combineren. Het dossier moet “minstens dertig jaar” worden bewaard, en de gecertificeerde digitale versie ervan “heeft dezelfde waarde als het origineel”. De tekst voegt eraan toe dat “gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd”, met één enkele uitzondering, de registers van de burgerlijke stand, en zonder een termijn vast te leggen. Mits de schriftelijke toestemming van de archivaris mag het papieren origineel van een gedigitaliseerd en gecertificeerd vergunningsdossier dus vóór dertig jaar worden vernietigd, terwijl het dossier in digitale vorm bewaard blijft: de bewering, die het over “sommige gevallen” heeft, is waar."
+        },
+        {
+          "id": "archives-dossier-consulte",
+          "text": "Een papieren dossier dat vorig jaar vier keer werd geraadpleegd, is vernietigd.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Sinds vorig jaar worden papieren dossiers gedigitaliseerd wanneer ze meer dan drie keer per jaar worden geraadpleegd.",
+            "Gedigitaliseerde en gecertificeerde originelen mogen worden vernietigd, behalve de registers van de burgerlijke stand, die altijd op papier worden bewaard.",
+            "Geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris."
+          ],
+          "explanation": "Een dossier dat vorig jaar vier keer werd geraadpleegd, valt wel degelijk onder de digitaliseringsregel, die geldt voor dossiers die “meer dan drie keer per jaar worden geraadpleegd”. Maar digitalisering leidt niet tot vernietiging: de tekst vermeldt dat gedigitaliseerde en gecertificeerde originelen “mogen worden vernietigd”, wat louter een mogelijkheid is, en dat “geen enkele vernietiging mag plaatsvinden zonder de schriftelijke toestemming van de gemeentearchivaris”. De tekst zegt niet of dat dossier werd gecertificeerd, en ook niet of de archivaris zijn toestemming heeft gegeven. Op basis van de tekst kan je de bewering dus bevestigen noch weerleggen: dit kan niet worden bepaald."
+        }
+      ]
+    },
+    {
+      "id": "procedure-marches-publics",
+      "title": "Interne gids: de procedure voor een overheidsopdracht kiezen",
+      "theme": "Recht en instellingen",
+      "paragraphs": [
+        "Voor elke aankoop van leveringen of diensten raamt de aankopende dienst eerst het totale bedrag van de opdracht, exclusief btw, over de hele looptijd ervan. Dat bedrag bepaalt welke procedure van toepassing is. Het is verboden een opdracht op te splitsen in verschillende bestellingen om aan een strengere procedure te ontsnappen.",
+        "Onder 25.000 euro mag de dienst de opdracht gunnen via een aanvaarde factuur, nadat hij, waar mogelijk, minstens drie leveranciers heeft geraadpleegd. Tussen 25.000 en 120.000 euro is een onderhandelingsprocedure zonder voorafgaande bekendmaking toegestaan, waarbij minstens drie leveranciers verplicht moeten worden geraadpleegd. Boven 120.000 euro moet de opdracht officieel worden bekendgemaakt.",
+        "De keuze van de offerte steunt op criteria die van bij het begin aan de geraadpleegde leveranciers worden meegedeeld. De prijs moet altijd een van die criteria zijn, maar is niet noodzakelijk het enige. Elke gunningsbeslissing wordt schriftelijk gemotiveerd en in het dossier van de opdracht bewaard."
+      ],
+      "statements": [
+        {
+          "id": "marches-scission",
+          "text": "Om via een aanvaarde factuur te kunnen werken, mag een dienst een opdracht van 40.000 euro opsplitsen in twee bestellingen van 20.000 euro.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["Het is verboden een opdracht op te splitsen in verschillende bestellingen om aan een strengere procedure te ontsnappen."],
+          "explanation": "De tekst verbiedt precies die constructie: “Het is verboden een opdracht op te splitsen in verschillende bestellingen om aan een strengere procedure te ontsnappen.” Een opdracht van 40.000 euro opdelen in twee bestellingen van 20.000 euro om onder de drempel van de aanvaarde factuur te blijven, is precies een opsplitsing om de procedure te vermijden die tussen 25.000 en 120.000 euro van toepassing is. De bewering spreekt de tekst tegen: ze is niet waar."
+        },
+        {
+          "id": "marches-prix-exclu",
+          "text": "Wanneer de kwaliteit doorslaggevend is, mag de prijs uit de criteria voor de keuze van de offerte worden weggelaten.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": ["De prijs moet altijd een van die criteria zijn, maar is niet noodzakelijk het enige."],
+          "explanation": "De tekst is duidelijk: “De prijs moet altijd een van die criteria zijn, maar is niet noodzakelijk het enige.” Kwaliteit kan dus naast de prijs als criterium worden toegevoegd, maar de prijs nooit vervangen. De bewering, die overweegt de prijs weg te laten, spreekt het woord “altijd” tegen: ze is niet waar. Veelvoorkomende valkuil: de tweede helft van de zin (“niet noodzakelijk het enige”) opent de deur voor andere criteria, maar doet niets af aan de eerste helft."
+        },
+        {
+          "id": "marches-trois-fournisseurs",
+          "text": "Een dienst die zonder voorafgaande bekendmaking een opdracht gunt die op 100.000 euro exclusief btw is geraamd, moet minstens drie leveranciers hebben geraadpleegd.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": ["Tussen 25.000 en 120.000 euro is een onderhandelingsprocedure zonder voorafgaande bekendmaking toegestaan, waarbij minstens drie leveranciers verplicht moeten worden geraadpleegd."],
+          "explanation": "Een opdracht van 100.000 euro valt in de schijf tussen 25.000 en 120.000 euro, waarvoor de tekst een procedure “zonder voorafgaande bekendmaking” toestaat, “waarbij minstens drie leveranciers verplicht moeten worden geraadpleegd”. Het woord “verplicht” onderscheidt die schijf van de vorige, waar de raadpleging alleen vereist is “waar mogelijk”. De bewering, die wel degelijk gaat over een opdracht die zonder bekendmaking wordt gegund, is waar."
+        },
+        {
+          "id": "marches-ponderation",
+          "text": "De geraadpleegde leveranciers weten van bij het begin welk gewicht de prijs krijgt bij de keuze van de offerte.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": ["De keuze van de offerte steunt op criteria die van bij het begin aan de geraadpleegde leveranciers worden meegedeeld."],
+          "explanation": "De tekst vermeldt dat de criteria “van bij het begin aan de geraadpleegde leveranciers worden meegedeeld”, en dat de prijs daar altijd bij hoort. Maar hij zegt niets over hun weging: de criteria meedelen betekent niet noodzakelijk dat je ook het relatieve belang van elk criterium meedeelt. Op basis van de tekst kan je niet bevestigen en ook niet ontkennen dat de leveranciers het gewicht van de prijs kennen. Dit kan dus niet worden bepaald. Let op dat je de lijst van de criteria en hun gewicht, twee verschillende gegevens, niet door elkaar haalt."
+        }
+      ]
+    },
+    {
+      "id": "compte-formation",
+      "title": "Nota aan het personeel: de opleidingsrekening",
+      "theme": "Personeelsbeleid",
+      "paragraphs": [
+        "Elk personeelslid beschikt over een opleidingsrekening waarop op 1 januari van elk jaar veertig uur wordt bijgeschreven. De uren die op 31 december niet zijn gebruikt, worden naar het volgende jaar overgedragen, maar het saldo van de rekening mag nooit hoger zijn dan tachtig uur. Verplichte opleidingen in verband met veiligheid worden niet van de rekening afgetrokken.",
+        "Om een opleiding tijdens de diensturen te volgen, dient het personeelslid minstens een maand vóór de begindatum een aanvraag in bij zijn leidinggevende. De leidinggevende mag alleen weigeren om redenen die verband houden met de continuïteit van de dienst, en eenzelfde weigering mag niet meer dan twee keer na elkaar worden gegeven. Opleidingen die buiten de diensturen worden gevolgd, worden financieel ten laste genomen, maar geven geen recht op recuperatie.",
+        "Op het einde van het jaar publiceert de personeelsdienst het gemiddelde aantal opleidingsuren per personeelslid in elke directie. Vorig jaar varieerde dat gemiddelde van twaalf uur in de directie Infrastructuur tot eenendertig uur in de juridische directie."
+      ],
+      "statements": [
+        {
+          "id": "formation-plafond",
+          "text": "Een personeelslid dat twee volledige jaren geen enkele opleiding heeft gevolgd, heeft op 1 januari van het derde jaar honderdtwintig uur op zijn rekening.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": [
+            "Elk personeelslid beschikt over een opleidingsrekening waarop op 1 januari van elk jaar veertig uur wordt bijgeschreven.",
+            "De uren die op 31 december niet zijn gebruikt, worden naar het volgende jaar overgedragen, maar het saldo van de rekening mag nooit hoger zijn dan tachtig uur."
+          ],
+          "explanation": "Zonder maximum zouden drie opeenvolgende bijschrijvingen van veertig uur wel degelijk honderdtwintig uur opleveren: veertig uur het eerste jaar, tachtig na de overdracht van het tweede jaar, en daarna honderdtwintig. Maar de tekst preciseert: “het saldo van de rekening mag nooit hoger zijn dan tachtig uur”. Op 1 januari van het derde jaar beschikt het personeelslid dus over tachtig uur, en niet over honderdtwintig. De bewering spreekt die grens tegen: ze is niet waar. Ga bij vragen die een berekening vereisen altijd na of de tekst een maximum of een minimum vastlegt dat het resultaat verandert."
+        },
+        {
+          "id": "formation-securite",
+          "text": "Een verplichte opleiding over veiligheid vermindert het aantal beschikbare uren op de opleidingsrekening niet.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["Verplichte opleidingen in verband met veiligheid worden niet van de rekening afgetrokken."],
+          "explanation": "De tekst vermeldt: “Verplichte opleidingen in verband met veiligheid worden niet van de rekening afgetrokken.” Niet worden afgetrokken betekent precies dat het saldo van de beschikbare uren niet vermindert. De bewering herformuleert die regel met andere woorden: ze is waar. Onthoud het patroon: een algemene regel (de gevolgde opleidingen worden van de rekening afgetrokken) gevolgd door een uitzondering (de verplichte opleidingen in verband met veiligheid); de bewering gaat hier over de uitzondering."
+        },
+        {
+          "id": "formation-motif-refus",
+          "text": "Een leidinggevende mag een opleiding tijdens de diensturen weigeren omdat hij vindt dat ze niets te maken heeft met de functie van het personeelslid.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": ["De leidinggevende mag alleen weigeren om redenen die verband houden met de continuïteit van de dienst, en eenzelfde weigering mag niet meer dan twee keer na elkaar worden gegeven."],
+          "explanation": "De tekst beperkt de redenen tot weigering strikt: de leidinggevende “mag alleen weigeren om redenen die verband houden met de continuïteit van de dienst”. Het woord “alleen” sluit elke andere reden uit, ook het ontbreken van een verband tussen de opleiding en de functie van het personeelslid. Een weigering om die reden is dus niet toegestaan: de bewering spreekt de tekst tegen en is niet waar. Spoor de beperkingen op die worden uitgedrukt met “alleen”, “uitsluitend” of “enkel”: ze sluiten alle gevallen uit die ze niet vermelden."
+        },
+        {
+          "id": "formation-minimum-juridique",
+          "text": "Vorig jaar heeft elk personeelslid van de juridische directie minstens twaalf uur opleiding gevolgd.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Vorig jaar varieerde dat gemiddelde van twaalf uur in de directie Infrastructuur tot eenendertig uur in de juridische directie."],
+          "explanation": "De tekst geeft voor de juridische directie een gemiddelde van “eenendertig uur” per personeelslid. Een gemiddelde zegt niets over de situatie van elk personeelslid: sommigen kunnen veel meer uren hebben gevolgd, anderen veel minder, of zelfs geen enkel uur. Niets garandeert dus dat elk personeelslid twaalf uur heeft bereikt, maar niets laat ook toe het tegendeel te beweren. Dit kan niet worden bepaald. Klassieke valkuil: uit een gemiddelde informatie over elk individu afleiden."
+        }
+      ]
+    },
+    {
+      "id": "protection-donnees-cpas",
+      "title": "Praktische fiche: gegevensbescherming bij het OCMW",
+      "theme": "Recht en instellingen",
+      "paragraphs": [
+        "De maatschappelijk werkers van het OCMW mogen alleen de dossiers raadplegen van de personen die zij opvolgen. Elke raadpleging van een dossier wordt automatisch geregistreerd, met de datum en de identiteit van het personeelslid. Die registraties worden elk kwartaal gecontroleerd door de functionaris voor gegevensbescherming.",
+        "Elke persoon die hulp krijgt, kan vragen om de gegevens over hem of haar in te kijken. Het OCMW heeft een maand om te antwoorden, een termijn die met twee maanden kan worden verlengd wanneer het verzoek complex is, op voorwaarde dat de aanvrager daarvan in de loop van de eerste maand op de hoogte wordt gebracht. De inzage is gratis.",
+        "De gegevens van een afgesloten dossier worden vijf jaar bewaard en daarna verwijderd. Een dossier wordt afgesloten wanneer de persoon twaalf opeenvolgende maanden geen enkele hulp meer heeft gekregen."
+      ],
+      "statements": [
+        {
+          "id": "donnees-acces-collegue",
+          "text": "Een maatschappelijk werker mag het dossier raadplegen van een persoon die door een collega wordt opgevolgd, op voorwaarde dat de raadpleging wordt geregistreerd.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": ["De maatschappelijk werkers van het OCMW mogen alleen de dossiers raadplegen van de personen die zij opvolgen."],
+          "explanation": "De tekst beperkt de toegang strikt: de maatschappelijk werkers “mogen alleen de dossiers raadplegen van de personen die zij opvolgen”. De automatische registratie van de raadplegingen is een controlemiddel, geen toestemming: ze geeft geen toegang tot het dossier van een persoon die door een collega wordt opgevolgd. De bewering spreekt de regel tegen: ze is niet waar. Verwar een controlemaatregel niet met een voorwaarde die de toegang rechtmatig zou maken."
+        },
+        {
+          "id": "donnees-gratuite",
+          "text": "Een persoon die hulp krijgt, hoeft niets te betalen om de gegevens over hem of haar in te kijken, ook niet als het verzoek complex is.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De inzage is gratis."],
+          "explanation": "De tekst maakt geen enkel voorbehoud: “De inzage is gratis.” De complexiteit van het verzoek heeft alleen gevolgen voor de antwoordtermijn, die met twee maanden kan worden verlengd, en de tekst legt in dat geval geen enkele kost op. Een persoon die hulp krijgt, hoeft dus niets te betalen om zijn of haar gegevens in te kijken, of het verzoek nu eenvoudig of complex is: de bewering is waar. Laat een voorwaarde die over een ander aspect van de regel gaat, hier de termijn, je lezing van de vraag die je wordt gesteld niet beïnvloeden."
+        },
+        {
+          "id": "donnees-conservation",
+          "text": "De gegevens van een persoon die vijfenhalf jaar geleden voor het laatst hulp heeft gekregen, worden nog door het OCMW bewaard.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": [
+            "De gegevens van een afgesloten dossier worden vijf jaar bewaard en daarna verwijderd.",
+            "Een dossier wordt afgesloten wanneer de persoon twaalf opeenvolgende maanden geen enkele hulp meer heeft gekregen."
+          ],
+          "explanation": "Je moet de twee regels combineren. Het dossier wordt pas afgesloten wanneer de persoon “twaalf opeenvolgende maanden geen enkele hulp meer heeft gekregen”, dus een jaar na de laatste hulp. Daarna worden de gegevens “vijf jaar bewaard en daarna verwijderd”, dus tot zes jaar na de laatste hulp. Vijfenhalf jaar na de laatste hulp worden de gegevens dus nog altijd bewaard: de bewering is waar. De valkuil bestaat erin de vijf jaar te laten lopen vanaf de laatste hulp in plaats van vanaf de afsluiting: dan zou je ten onrechte besluiten dat de gegevens al verwijderd zijn."
+        },
+        {
+          "id": "donnees-abus-detectes",
+          "text": "Met de driemaandelijkse controles van de functionaris voor gegevensbescherming werden al onrechtmatige raadplegingen opgespoord.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": ["Die registraties worden elk kwartaal gecontroleerd door de functionaris voor gegevensbescherming."],
+          "explanation": "De tekst beschrijft een controlesysteem: de registraties “worden elk kwartaal gecontroleerd door de functionaris voor gegevensbescherming”. Hij zegt niets over de resultaten van die controles, en ook niet over het eventuele bestaan van onrechtmatige raadplegingen. De bewering gaat over een feit dat de tekst niet behandelt: dit kan niet worden bepaald. Het bestaan van een controle bewijst niet dat er misbruik werd vastgesteld, en ook niet dat er geen werd vastgesteld."
+        }
+      ]
+    },
+    {
+      "id": "rapport-mediateur",
+      "title": "Jaarverslag van de gewestelijke ombudsdienst (uittreksel)",
+      "theme": "Openbaar bestuur",
+      "paragraphs": [
+        "Vorig jaar ontving de ombudsdienst van het Gewest 4.200 klachten, dat is 12% meer dan het jaar daarvoor. Daarvan werden er 1.300 onontvankelijk verklaard, meestal omdat de klager niet eerst contact had opgenomen met de betrokken administratie. De andere klachten werden onderzocht.",
+        "Bijna de helft van de onderzochte klachten ging over de behandelingstermijnen van de dossiers. In 62% van de onderzochte gevallen kon de bemiddeling een volledige of gedeeltelijke oplossing voor de burger opleveren. De gemiddelde onderzoekstermijn daalde van 75 tot 68 dagen.",
+        "De ombudsman beveelt aan dat elke gewestelijke administratie voor haar belangrijkste procedures een indicatieve behandelingstermijn bekendmaakt. Hij stelt vast dat de administraties die dat al doen, verhoudingsgewijs minder klachten over termijnen ontvangen."
+      ],
+      "statements": [
+        {
+          "id": "mediation-part-instruite",
+          "text": "Meer dan driekwart van de klachten die vorig jaar werden ontvangen, werd onderzocht.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": [
+            "Vorig jaar ontving de ombudsdienst van het Gewest 4.200 klachten, dat is 12% meer dan het jaar daarvoor.",
+            "Daarvan werden er 1.300 onontvankelijk verklaard, meestal omdat de klager niet eerst contact had opgenomen met de betrokken administratie.",
+            "De andere klachten werden onderzocht."
+          ],
+          "explanation": "De dienst ontving “4.200 klachten”, waarvan er “1.300 onontvankelijk verklaard” werden; “de andere klachten werden onderzocht”. Er werden dus 4.200 − 1.300 = 2.900 klachten onderzocht. Driekwart van 4.200 is 3.150: 2.900 ligt onder die drempel, want het is ongeveer 69% van de ontvangen klachten. De bewering is dus niet waar. Als een bewering een verhouding bevat, maak dan de berekening opnieuw in plaats van op een indruk te vertrouwen."
+        },
+        {
+          "id": "mediation-annee-precedente",
+          "text": "Het jaar daarvoor had de ombudsdienst meer dan 3.700 klachten ontvangen.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": ["Vorig jaar ontving de ombudsdienst van het Gewest 4.200 klachten, dat is 12% meer dan het jaar daarvoor."],
+          "explanation": "De tekst vermeldt dat de “4.200 klachten” van vorig jaar “12% meer dan het jaar daarvoor” vertegenwoordigen. Het aantal van het jaar daarvoor is dus 4.200 ÷ 1,12 = 3.750 klachten, wat wel degelijk meer is dan 3.700: de bewering is waar. De valkuil bestaat erin 12% van 4.200 af te trekken, wat 3.696 oplevert en je “Niet waar” doet antwoorden: de stijging van 12% wordt berekend op het jaar daarvoor, niet op het jaar met 4.200 klachten."
+        },
+        {
+          "id": "mediation-delai-allonge",
+          "text": "De gemiddelde onderzoekstermijn van de klachten is langer geworden in vergelijking met het jaar daarvoor.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["De gemiddelde onderzoekstermijn daalde van 75 tot 68 dagen."],
+          "explanation": "De tekst preciseert: “De gemiddelde onderzoekstermijn daalde van 75 tot 68 dagen.” Van 75 naar 68 dagen gaan, is een daling met zeven dagen: de termijn is korter geworden, niet langer. De bewering spreekt de tekst tegen: ze is niet waar. Lees ook bij een eenvoudige vraag de volgorde van de waarden opnieuw: de uitdrukking “van … tot …” geeft eerst de beginwaarde en daarna de eindwaarde."
+        },
+        {
+          "id": "mediation-plaintes-valeur-absolue",
+          "text": "De administraties die al een indicatieve termijn bekendmaken, ontvangen in absolute aantallen minder klachten over termijnen dan de andere.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": ["Hij stelt vast dat de administraties die dat al doen, verhoudingsgewijs minder klachten over termijnen ontvangen."],
+          "explanation": "De tekst vermeldt dat die administraties “verhoudingsgewijs minder klachten over termijnen ontvangen”. “Verhoudingsgewijs” betekent dat de vergelijking over een aandeel gaat, bijvoorbeeld het aandeel van de klachten over termijnen in al hun klachten, en niet over een aantal klachten. Een grote administratie kan een kleiner aandeel klachten over termijnen ontvangen, maar een groter aantal. De tekst geeft geen enkel aantal: dit kan niet worden bepaald. Verwar een verhouding niet met een absolute waarde."
+        }
+      ]
+    },
+    {
+      "id": "renovation-batiments-publics",
+      "title": "Gewestelijk plan: energierenovatie van de openbare gebouwen",
+      "theme": "Milieu en energie",
+      "paragraphs": [
+        "Het Gewest heeft zich tot doel gesteld het energieverbruik van zijn administratieve gebouwen tegen 2035 met 40% te verminderen ten opzichte van 2019. Om dat te bereiken, wordt elk gebouw van meer dan 1.000 m² vóór eind 2026 aan een energieaudit onderworpen. Gebouwen die als monument beschermd zijn, krijgen een aangepaste audit, die rekening houdt met de beperkingen van de erfgoedzorg.",
+        "De werken worden gepland volgens de verhouding tussen de kosten van de renovatie en de verwachte energiebesparing: de meest rendabele renovaties worden eerst uitgevoerd. Een gebouw waarvan de verkoop of de afbraak binnen vijf jaar gepland is, wordt niet gerenoveerd.",
+        "De eerste audits hadden betrekking op 85 gebouwen. Ze tonen aan dat het vervangen van de verwarmingssystemen alleen al het verbruik van die gebouwen gemiddeld met 18% zou kunnen verminderen."
+      ],
+      "statements": [
+        {
+          "id": "renovation-ordre",
+          "text": "Een dure renovatie kan worden uitgevoerd vóór een minder dure renovatie.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": ["De werken worden gepland volgens de verhouding tussen de kosten van de renovatie en de verwachte energiebesparing: de meest rendabele renovaties worden eerst uitgevoerd."],
+          "explanation": "Het planningscriterium is niet alleen de kostprijs, maar “de verhouding tussen de kosten van de renovatie en de verwachte energiebesparing”: “de meest rendabele renovaties worden eerst uitgevoerd”. Een dure renovatie die zeer grote besparingen oplevert, kan dus rendabeler zijn en voorgaan op een goedkope renovatie met bescheiden besparingen. De bewering, geformuleerd met “kan”, is verenigbaar met de tekst en volgt uit het criterium ervan: ze is waar. Verwar de kostprijs van een renovatie niet met de rendabiliteit ervan."
+        },
+        {
+          "id": "renovation-vente",
+          "text": "Een gebouw waarvan de verkoop binnen drie jaar gepland is, wordt gerenoveerd als de audit een zeer rendabele renovatie aantoont.",
+          "answer": "faux",
+          "difficulty": 2,
+          "quotes": ["Een gebouw waarvan de verkoop of de afbraak binnen vijf jaar gepland is, wordt niet gerenoveerd."],
+          "explanation": "De tekst sluit dat geval zonder uitzondering uit: “Een gebouw waarvan de verkoop of de afbraak binnen vijf jaar gepland is, wordt niet gerenoveerd.” Een verkoop die binnen drie jaar gepland is, valt binnen die termijn van vijf jaar, ongeacht hoe rendabel de renovatie is. De bewering spreekt de tekst tegen: ze is niet waar. Een algemene uitsluitingsregel gaat voor op het criterium van de voorrang, dat alleen geldt voor de gebouwen die gerenoveerd moeten worden."
+        },
+        {
+          "id": "renovation-monuments",
+          "text": "Gebouwen die als monument beschermd zijn, zullen na de andere administratieve gebouwen worden gerenoveerd.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Gebouwen die als monument beschermd zijn, krijgen een aangepaste audit, die rekening houdt met de beperkingen van de erfgoedzorg."],
+          "explanation": "De tekst vermeldt alleen dat beschermde gebouwen “een aangepaste audit” krijgen, “die rekening houdt met de beperkingen van de erfgoedzorg”. Hij zegt niets over hun plaats in de planning van de werken, die afhangt van de verhouding tussen kosten en besparingen. Je zou kunnen veronderstellen dat de erfgoedbeperkingen die renovaties minder rendabel en dus later maken, maar de tekst laat niet toe dat te beweren. Dit kan niet worden bepaald."
+        },
+        {
+          "id": "renovation-surface-audites",
+          "text": "De 85 gebouwen die al een audit kregen, hebben allemaal een oppervlakte van meer dan 1.000 m².",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Om dat te bereiken, wordt elk gebouw van meer dan 1.000 m² vóór eind 2026 aan een energieaudit onderworpen.",
+            "De eerste audits hadden betrekking op 85 gebouwen."
+          ],
+          "explanation": "De tekst legt een audit op voor “elk gebouw van meer dan 1.000 m²”, maar verbiedt niet om kleinere gebouwen aan een audit te onderwerpen. Hij preciseert alleen: “De eerste audits hadden betrekking op 85 gebouwen.” Hun oppervlakte wordt niet vermeld. Niets laat dus toe te bevestigen of te ontkennen dat die 85 gebouwen allemaal groter zijn dan 1.000 m². Dit kan niet worden bepaald. Een verplichting voor een bepaalde categorie betekent niet dat alleen die categorie betrokken is."
+        }
+      ]
+    },
+    {
+      "id": "echange-fonctionnaires",
+      "title": "Oproep tot kandidaten: Europees uitwisselingsprogramma voor ambtenaren",
+      "theme": "Europese instellingen",
+      "paragraphs": [
+        "Met het programma kunnen nationale, regionale of lokale ambtenaren drie tot zes maanden werken bij een administratie van een andere lidstaat van de Europese Unie. De kandidaten moeten minstens twee jaar anciënniteit hebben in hun administratie en de werktaal van de ontvangende dienst beheersen.",
+        "De administratie van herkomst blijft tijdens de uitwisseling de wedde van de ambtenaar uitbetalen. Het programma neemt een maandelijks verblijfsforfait ten laste, waarvan het bedrag afhangt van de levensduurte in het ontvangende land, en daarnaast een heen- en terugreis bij het begin en op het einde van de uitwisseling. Verhuiskosten worden niet terugbetaald.",
+        "De kandidaturen worden door een selectiecomité gerangschikt op basis van de kwaliteit van het uitwisselingsproject en het belang ervan voor de administratie van herkomst. Eenzelfde persoon kan maar één keer aan het programma deelnemen."
+      ],
+      "statements": [
+        {
+          "id": "echange-traitement",
+          "text": "Tijdens de uitwisseling wordt de ambtenaar nog altijd door zijn administratie van herkomst betaald.",
+          "answer": "vrai",
+          "difficulty": 1,
+          "quotes": ["De administratie van herkomst blijft tijdens de uitwisseling de wedde van de ambtenaar uitbetalen."],
+          "explanation": "De tekst vermeldt: “De administratie van herkomst blijft tijdens de uitwisseling de wedde van de ambtenaar uitbetalen.” “Nog altijd door zijn administratie van herkomst betaald worden” herformuleert precies die regel, aangezien de wedde de bezoldiging van de ambtenaar is. De bewering is waar. Het verblijfsforfait dat het programma ten laste neemt, komt bovenop die wedde: het vervangt ze niet."
+        },
+        {
+          "id": "echange-anciennete",
+          "text": "Een ambtenaar die achttien maanden geleden in dienst is getreden, kan aan het programma deelnemen als hij de taal van de ontvangende dienst beheerst.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["De kandidaten moeten minstens twee jaar anciënniteit hebben in hun administratie en de werktaal van de ontvangende dienst beheersen."],
+          "explanation": "De tekst stelt twee cumulatieve voorwaarden: de kandidaten moeten “minstens twee jaar anciënniteit hebben in hun administratie en de werktaal van de ontvangende dienst beheersen”. Met achttien maanden anciënniteit is aan de eerste voorwaarde niet voldaan, ook al is aan de tweede wel voldaan. De bewering spreekt de tekst dus tegen: ze is niet waar. Het woord “en” wijst op cumulatieve voorwaarden: als er maar één ontbreekt, is de kandidatuur uitgesloten."
+        },
+        {
+          "id": "echange-forfaits-differents",
+          "text": "Twee deelnemers die naar verschillende landen zijn vertrokken, kunnen maandelijkse verblijfsforfaits van verschillende bedragen krijgen.",
+          "answer": "vrai",
+          "difficulty": 3,
+          "quotes": ["Het programma neemt een maandelijks verblijfsforfait ten laste, waarvan het bedrag afhangt van de levensduurte in het ontvangende land, en daarnaast een heen- en terugreis bij het begin en op het einde van de uitwisseling."],
+          "explanation": "De tekst preciseert dat het bedrag van het verblijfsforfait “afhangt van de levensduurte in het ontvangende land”. Twee deelnemers die worden ontvangen in landen waar de levensduurte verschilt, kunnen dus verschillende forfaits krijgen. De bewering, voorzichtig geformuleerd met “kunnen”, volgt rechtstreeks uit die regel: ze is waar. Ze zou betwistbaar zijn als ze beweerde dat de bedragen altijd verschillen, want twee landen kunnen een vergelijkbare levensduurte hebben."
+        },
+        {
+          "id": "echange-loyer",
+          "text": "Het verblijfsforfait volstaat om de huur van de deelnemer in het ontvangende land te dekken.",
+          "answer": "impossible",
+          "difficulty": 1,
+          "quotes": ["Het programma neemt een maandelijks verblijfsforfait ten laste, waarvan het bedrag afhangt van de levensduurte in het ontvangende land, en daarnaast een heen- en terugreis bij het begin en op het einde van de uitwisseling."],
+          "explanation": "De tekst vermeldt dat het bedrag van het verblijfsforfait “afhangt van de levensduurte in het ontvangende land”, maar geeft het bedrag niet, en ook niet dat van de huurprijzen. Een forfait afstemmen op de levensduurte garandeert niet dat het een huur dekt, die sterk kan verschillen naargelang van de stad en de gekozen woning. Niets laat dus toe te bevestigen of te ontkennen dat het forfait volstaat: dit kan niet worden bepaald. Wees op je hoede voor beweringen die een praktisch gevolg toevoegen aan een berekeningsregel."
+        }
+      ]
+    },
+    {
+      "id": "sommeil-travail-nuit",
+      "title": "Studie: de slaap van personeelsleden die ’s nachts werken",
+      "theme": "Wetenschap",
+      "paragraphs": [
+        "Een studie volgde een jaar lang 600 personeelsleden van hulp- en onderhoudsdiensten, van wie de helft geregeld ’s nachts werkte. De deelnemers droegen een polsbandje dat hun slaapduur mat, en ze vulden elke maand een vragenlijst over hun vermoeidheid in.",
+        "De personeelsleden die ’s nachts werkten, sliepen gemiddeld vijfenvijftig minuten per dag minder dan hun collega’s met dagwerk. Ze gaven ook aan meer vermoeidheid te ervaren, vooral in de eerste twee maanden na een wijziging van hun uurrooster. Er werd daarentegen geen significant verschil tussen de twee groepen vastgesteld wat het aantal arbeidsongevallen betreft.",
+        "De auteurs benadrukken dat de deelnemers niet willekeurig over dag- en nachtwerk werden verdeeld: iedereen had zijn uurrooster zelf gekozen of werkte al lang volgens dat uurrooster. Ze bevelen aan een aanvullende studie uit te voeren voordat de organisatie van de uurroosters wordt gewijzigd."
+      ],
+      "statements": [
+        {
+          "id": "sommeil-ecart",
+          "text": "De personeelsleden met nachtwerk sliepen gemiddeld bijna twee uur per dag minder dan hun collega’s met dagwerk.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": ["De personeelsleden die ’s nachts werkten, sliepen gemiddeld vijfenvijftig minuten per dag minder dan hun collega’s met dagwerk."],
+          "explanation": "De tekst becijfert het verschil nauwkeurig: de personeelsleden die ’s nachts werkten, sliepen “gemiddeld vijfenvijftig minuten per dag minder dan hun collega’s met dagwerk”. Vijfenvijftig minuten is minder dan een uur, en niet bijna twee uur. De bewering spreekt dat cijfer tegen: ze is niet waar. Vergelijk bij vragen met cijfers zorgvuldig de grootteorde in de bewering met de exacte waarde in de tekst."
+        },
+        {
+          "id": "sommeil-effectifs",
+          "text": "De studie ging over 300 personeelsleden met nachtwerk en 600 personeelsleden met dagwerk.",
+          "answer": "faux",
+          "difficulty": 3,
+          "quotes": ["Een studie volgde een jaar lang 600 personeelsleden van hulp- en onderhoudsdiensten, van wie de helft geregeld ’s nachts werkte."],
+          "explanation": "De tekst vermeldt dat de studie “600 personeelsleden” volgde, “van wie de helft geregeld ’s nachts werkte”. De 600 personeelsleden vormen dus het totale aantal: 300 werkten ’s nachts en 300 overdag. De bewering telt ten onrechte 300 personeelsleden met nachtwerk en 600 met dagwerk op, samen 900 deelnemers: ze spreekt de tekst tegen en is niet waar. Veelvoorkomende valkuil: een totaal aanzien voor de omvang van een van de groepen."
+        },
+        {
+          "id": "sommeil-fatigue-changement",
+          "text": "De personeelsleden met nachtwerk zeiden dat ze zich vooral kort na een wijziging van hun uurrooster vermoeid voelden.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": ["Ze gaven ook aan meer vermoeidheid te ervaren, vooral in de eerste twee maanden na een wijziging van hun uurrooster."],
+          "explanation": "Over de personeelsleden met nachtwerk vermeldt de tekst: “Ze gaven ook aan meer vermoeidheid te ervaren, vooral in de eerste twee maanden na een wijziging van hun uurrooster.” “Zeiden dat ze zich vermoeid voelden” stemt overeen met “gaven aan meer vermoeidheid te ervaren”, en “kort na een wijziging van hun uurrooster” verwijst naar de “eerste twee maanden” na die wijziging. De bewering geeft de tekst getrouw weer: ze is waar. Merk op dat ze het heeft over aangegeven vermoeidheid, gemeten met een vragenlijst, wat goed overeenstemt met de opzet van de studie."
+        },
+        {
+          "id": "sommeil-cause",
+          "text": "Het nachtwerk is de oorzaak van de kortere slaapduur die bij die personeelsleden werd vastgesteld.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": ["De auteurs benadrukken dat de deelnemers niet willekeurig over dag- en nachtwerk werden verdeeld: iedereen had zijn uurrooster zelf gekozen of werkte al lang volgens dat uurrooster."],
+          "explanation": "De studie stelt vast dat de personeelsleden met nachtwerk minder slapen, maar de auteurs benadrukken zelf dat “de deelnemers niet willekeurig over dag- en nachtwerk werden verdeeld”. De twee groepen kunnen dus verschillen in andere kenmerken, bijvoorbeeld leeftijd of gezinssituatie, die ook de slaap beïnvloeden. Op basis van de tekst kan je niet bevestigen en ook niet uitsluiten dat het nachtwerk de oorzaak is van het vastgestelde verschil: dit kan niet worden bepaald. Een vastgesteld verschil is op zich geen bewijs van een oorzaak."
+        }
+      ]
+    },
+    {
+      "id": "commerce-de-proximite",
+      "title": "Bevraging: het bezoek aan de winkels in het stadscentrum",
+      "theme": "Economie",
+      "paragraphs": [
+        "Op vraag van het college van burgemeester en schepenen werd in mei een bevraging gehouden bij 1.200 inwoners van de gemeente. Van hen zegt 54% minstens een keer per week aankopen te doen in een winkel in het centrum. Dat aandeel bedraagt 71% bij de inwoners ouder dan 65 jaar, maar daalt tot 38% bij de inwoners jonger dan 30 jaar.",
+        "Op de vraag wat hen ertoe zou aanzetten vaker naar het centrum te komen, noemen de inwoners eerst langere openingsuren ’s avonds en daarna meer kortparkeerplaatsen. Slechts 9% vermeldt lagere prijzen.",
+        "Het aantal leegstaande handelspanden in het centrum is in vijf jaar gestegen van 14 tot 23. Het college overweegt de gemeentebelasting te verlagen voor handelaars die zich vestigen in een pand dat al meer dan een jaar leegstaat."
+      ],
+      "statements": [
+        {
+          "id": "commerce-moins-de-30-ans",
+          "text": "Van de ondervraagde inwoners jonger dan 30 jaar zeggen minder dan vier op de tien minstens een keer per week aankopen te doen in een winkel in het centrum.",
+          "answer": "vrai",
+          "difficulty": 2,
+          "quotes": ["Dat aandeel bedraagt 71% bij de inwoners ouder dan 65 jaar, maar daalt tot 38% bij de inwoners jonger dan 30 jaar."],
+          "explanation": "Het aandeel van de inwoners die zeggen wekelijks aankopen te doen in het centrum, “daalt tot 38% bij de inwoners jonger dan 30 jaar”. Vier op de tien is 40%: 38% ligt wel degelijk onder die drempel. De bewering neemt het cijfer uit de tekst correct over en heeft het, net als de tekst, over wat de mensen zeggen: ze is waar. In de tests wordt een percentage vaak omgezet in een breuk (“vier op de tien”, “een derde”, “de helft”): oefen je om die omzettingen snel te maken."
+        },
+        {
+          "id": "commerce-prix",
+          "text": "Lagere prijzen worden het vaakst genoemd als middel om de inwoners vaker naar het centrum te laten komen.",
+          "answer": "faux",
+          "difficulty": 1,
+          "quotes": [
+            "Op de vraag wat hen ertoe zou aanzetten vaker naar het centrum te komen, noemen de inwoners eerst langere openingsuren ’s avonds en daarna meer kortparkeerplaatsen.",
+            "Slechts 9% vermeldt lagere prijzen."
+          ],
+          "explanation": "De tekst rangschikt de verwachtingen van de inwoners: ze noemen “eerst langere openingsuren ’s avonds en daarna meer kortparkeerplaatsen”, en de tekst voegt eraan toe: “Slechts 9% vermeldt lagere prijzen.” Lagere prijzen zijn dus niet het vaakst genoemde middel, aangezien twee andere middelen voorgaan. De bewering spreekt de tekst tegen: ze is niet waar. Het woord “slechts” benadrukt trouwens dat het om een minderheidsantwoord gaat."
+        },
+        {
+          "id": "commerce-cellules-chaque-annee",
+          "text": "Het aantal leegstaande handelspanden in het centrum is de voorbije vijf jaar elk jaar gestegen.",
+          "answer": "impossible",
+          "difficulty": 2,
+          "quotes": ["Het aantal leegstaande handelspanden in het centrum is in vijf jaar gestegen van 14 tot 23."],
+          "explanation": "De tekst vergelijkt alleen twee waarden: het aantal leegstaande panden “is in vijf jaar gestegen van 14 tot 23”. Die globale stijging zegt niets over de evolutie van jaar tot jaar: het aantal kan elk jaar zijn gestegen, maar ook in sommige jaren gelijk zijn gebleven of gedaald voordat het weer steeg. De tekst geeft geen enkel tussentijds cijfer. Op basis van de tekst kan je de bewering dus bevestigen noch weerleggen: dit kan niet worden bepaald. Een evolutie tussen twee data zegt niets over het verloop daartussen."
+        },
+        {
+          "id": "commerce-age-population",
+          "text": "De meerderheid van de inwoners van de gemeente is ouder dan 65 jaar.",
+          "answer": "impossible",
+          "difficulty": 3,
+          "quotes": [
+            "Van hen zegt 54% minstens een keer per week aankopen te doen in een winkel in het centrum.",
+            "Dat aandeel bedraagt 71% bij de inwoners ouder dan 65 jaar, maar daalt tot 38% bij de inwoners jonger dan 30 jaar."
+          ],
+          "explanation": "De percentages in de tekst zijn aandelen die binnen elke groep werden gemeten: “71%” van de ondervraagde 65-plussers en “38%” van de jongeren onder 30 doen hun aankopen in het centrum, tegenover “54%” van alle ondervraagden. Het zijn geen aandelen van de bevolking: ze zeggen niet hoeveel inwoners tot elke leeftijdsgroep behoren. Bovendien gaat de bevraging over 1.200 ondervraagde personen, niet over alle inwoners van de gemeente. Op basis van de tekst kan je niet bevestigen en ook niet ontkennen dat de meerderheid van de inwoners ouder is dan 65 jaar: dit kan niet worden bepaald."
+        }
+      ]
+    }
+  ]
+}
