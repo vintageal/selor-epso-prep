@@ -4,7 +4,7 @@ Application web gratuite pour s'entraîner aux tests de logique et de raisonneme
 
 **En ligne : https://selor-epso-prep.eu**
 
-Le site est bilingue : français à la racine, néerlandais de Belgique sous `/nl/` (en préparation, voir [Site bilingue](#site-bilingue-fr--nl)).
+Le site est bilingue : français à la racine, néerlandais de Belgique sous `/nl/`, avec un sélecteur FR | NL dans l'en-tête (voir [Site bilingue](#site-bilingue-fr--nl)).
 
 ## Modules
 
@@ -193,7 +193,7 @@ Contenus :
 - **Raisonnement abstrait** : les questions sont générées ; seuls l'interface, les titres des règles, les explications et les descriptions des figures sont traduits.
 - **Progression** : elle est commune aux deux langues (même stockage, mêmes identifiants).
 
-Mise en ligne progressive : tant que `NL_PUBLIC` vaut `false` (`scripts/site/config.js`), les pages `/nl/` sont générées mais pas découvrables : balise `noindex`, absentes du sitemap, ni sélecteur de langue ni balises `hreflang`, et la page 404 reste en français. Avec `NL_PUBLIC = true`, chaque page reçoit le sélecteur FR | NL (vers la page équivalente), les balises `hreflang` `fr-BE`, `nl-BE` et `x-default` (vers le français), et le sitemap ses alternances de langue. Aucune redirection automatique selon la langue du navigateur.
+Publication : la version néerlandaise est publique (`NL_PUBLIC = true`, `scripts/site/config.js`). Chaque page reçoit le sélecteur FR | NL (vers la page équivalente), les balises `hreflang` `fr-BE`, `nl-BE` et `x-default` (vers le français), et le sitemap ses alternances de langue ; la page 404 est bilingue. Aucune redirection automatique selon la langue du navigateur. Avec `NL_PUBLIC = false` (mode de la mise en ligne progressive), les pages `/nl/` restent générées mais ne sont pas découvrables : balise `noindex`, absentes du sitemap, ni sélecteur de langue ni balises `hreflang`, et la page 404 en français seulement.
 
 ## Stack
 

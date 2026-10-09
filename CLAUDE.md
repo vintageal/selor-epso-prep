@@ -79,7 +79,7 @@ scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json e
    - nombres au format `fr-BE` ou `nl-BE` (`intlLocale()`) ;
    - néerlandais de Belgique, registre de l'administration flamande et fédérale, avec les noms officiels : FOD BOSA, Werkenvoor.be (vroeger Selor), EPSO (Europees Bureau voor personeelsselectie, eu-careers.europa.eu/nl) ;
    - pas de redirection automatique selon la langue du navigateur ; la progression est commune aux deux langues ;
-   - tant que `NL_PUBLIC` vaut `false` (`scripts/site/config.js`), les pages `/nl/` ne sont pas découvrables (`noindex`, hors sitemap, sans sélecteur de langue ni `hreflang`).
+   - la version néerlandaise est publique (`NL_PUBLIC = true`, `scripts/site/config.js`) : sélecteur FR | NL, `hreflang` `fr-BE`, `nl-BE` et `x-default`, alternances dans le sitemap, 404 bilingue. Avec `false`, les pages `/nl/` ne seraient pas découvrables (`noindex`, hors sitemap, sans sélecteur de langue ni `hreflang`).
 4. **Exercices originaux uniquement**, jamais copiés ni adaptés de tests officiels (EPSO, SPF BOSA / Travaillerpour.be) ou d'ouvrages protégés. Les organismes, chiffres et situations cités sont fictifs. La grille du jugement situationnel est une grille d'entraînement, présentée comme telle, et non une grille officielle.
 5. **Conserver la mention « non affiliée au SPF BOSA ni à l'EPSO »** dans le pied de page de chaque page, et sa traduction « niet verbonden aan de FOD BOSA … en evenmin aan het Europees Bureau voor personeelsselectie (EPSO) » sur les pages néerlandaises. Elle figure aussi dans le README et sur les images de partage (« Plateforme indépendante » / « Onafhankelijk platform »). Un test vérifie sa présence.
 6. **Pas de dépendance externe sans nécessité** :
