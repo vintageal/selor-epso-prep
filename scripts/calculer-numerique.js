@@ -1,6 +1,7 @@
 /*
- * Calcule les propositions du raisonnement numérique à partir des données de chaque question
- * (data/numerique.json). Aucune valeur de proposition n'est écrite à la main :
+ * Calcule les propositions du raisonnement numérique à partir des données de chaque question,
+ * dans les deux langues : data/numerique.json (français) et data/nl/numerique.json (néerlandais).
+ * Aucune valeur de proposition n'est écrite à la main :
  *
  * - la bonne réponse est le résultat de la dernière étape du calcul (`steps`) ;
  * - chaque proposition fautive est le résultat de son `expression`, qui reproduit une erreur
@@ -8,9 +9,13 @@
  * - les valeurs sont arrondies au format de la question, les propositions triées par ordre
  *   croissant, et `answer` désigne la bonne (la seule proposition sans `expression`).
  *
+ * La banque néerlandaise doit avoir exactement les mêmes calculs que la française : mêmes jeux de
+ * données, mêmes valeurs, mêmes expressions, mêmes formats et mêmes réponses. Seuls les textes
+ * (titres, libellés, unités, énoncés, explications) diffèrent ; le script refuse tout autre écart.
+ *
  * Usage :
- *   node scripts/calculer-numerique.js          met à jour data/numerique.json
- *   node scripts/calculer-numerique.js --check  échoue si le fichier n'est pas à jour (utilisé par les tests)
+ *   node scripts/calculer-numerique.js          met à jour les deux banques
+ *   node scripts/calculer-numerique.js --check  échoue si une banque n'est pas à jour ou si les calculs diffèrent
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -18,6 +23,31 @@ import { fileURLToPath } from 'node:url';
 import { columnFormat, computeSteps, dataValue, distractorValue, evaluate, formatAnswer } from '../assets/js/numerique/quiz.js';
 
 export const BANK_PATH = fileURLToPath(new URL('../data/numerique.json', import.meta.url));
+export const NL_BANK_PATH = fileURLToPath(new URL('../data/nl/numerique.json', import.meta.url));
+
+/** Champs de texte, propres à chaque langue ; tout le reste doit être identique dans les deux banques. */
+const TEXT_KEYS = new Set(['title', 'theme', 'note', 'rowHeader', 'unit', 'label', 'text', 'formula', 'why', 'explanation']);
+
+/**
+ * Écarts de calcul entre la banque française et sa traduction (liste vide si elles concordent) :
+ * même structure, mêmes clés, mêmes nombres, mêmes expressions ; seuls les champs de TEXT_KEYS peuvent différer.
+ */
+export function calculationDifferences(french, translated, path = 'banque') {
+  if (Array.isArray(french) || Array.isArray(translated)) {
+    if (!Array.isArray(french) || !Array.isArray(translated) || french.length !== translated.length) return [`${path} : nombre d'éléments différent`];
+    return french.flatMap((item, index) => calculationDifferences(item, translated[index], `${path}[${item?.id ?? item?.key ?? index}]`));
+  }
+  if (french !== null && typeof french === 'object') {
+    if (translated === null || typeof translated !== 'object') return [`${path} : structure différente`];
+    const keys = [...new Set([...Object.keys(french), ...Object.keys(translated)])];
+    return keys.flatMap((key) => {
+      if (!(key in french) || !(key in translated)) return [`${path}.${key} : présent dans une seule langue`];
+      if (TEXT_KEYS.has(key)) return typeof translated[key] === typeof french[key] ? [] : [`${path}.${key} : texte manquant`];
+      return calculationDifferences(french[key], translated[key], `${path}.${key}`);
+    });
+  }
+  return Object.is(french, translated) ? [] : [`${path} : ${JSON.stringify(french)} ≠ ${JSON.stringify(translated)}`];
+}
 
 /** Arrondi décimal (le petit epsilon évite qu'un 2,45 stocké 2,4499999… soit arrondi à 2,4). */
 const round = (value, decimals) => {
@@ -146,16 +176,27 @@ export const serialize = (bank) => `${format(withFixedNumbers(bank))}\n`;
 /* ----- Ligne de commande ----- */
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const text = readFileSync(BANK_PATH, 'utf8');
-  const expected = serialize(computeBank(JSON.parse(text)));
-  if (process.argv.includes('--check')) {
-    if (expected !== text) {
-      console.error('data/numerique.json n’est pas à jour : lancez « node scripts/calculer-numerique.js ».');
-      process.exit(1);
+  const check = process.argv.includes('--check');
+  let failed = false;
+  const banks = {};
+  for (const [name, path] of [['data/numerique.json', BANK_PATH], ['data/nl/numerique.json', NL_BANK_PATH]]) {
+    const text = readFileSync(path, 'utf8');
+    const expected = serialize(computeBank(JSON.parse(text)));
+    banks[name] = JSON.parse(expected);
+    if (check) {
+      if (expected !== text) {
+        console.error(`${name} n’est pas à jour : lancez « node scripts/calculer-numerique.js ».`);
+        failed = true;
+      } else console.log(`${name} est à jour.`);
+    } else {
+      writeFileSync(path, expected);
+      console.log(expected === text ? `${name} était déjà à jour.` : `${name} mis à jour.`);
     }
-    console.log('data/numerique.json est à jour.');
-  } else {
-    writeFileSync(BANK_PATH, expected);
-    console.log(expected === text ? 'data/numerique.json était déjà à jour.' : 'data/numerique.json mis à jour.');
   }
+  const differences = calculationDifferences(banks['data/numerique.json'], banks['data/nl/numerique.json']);
+  if (differences.length) {
+    console.error(`Les calculs de la banque néerlandaise diffèrent de la banque française :\n  ${differences.slice(0, 20).join('\n  ')}`);
+    failed = true;
+  } else console.log('Les deux langues ont exactement les mêmes calculs et les mêmes réponses.');
+  if (failed) process.exit(1);
 }

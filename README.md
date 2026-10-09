@@ -78,6 +78,8 @@ Chaque question a un **niveau de difficulté** (1, 2 ou 3 ; 17, 18 et 18 questio
 
 Le script refuse deux propositions identiques, toute valeur à mi-chemin entre deux arrondis, que la correction afficherait autrement que la proposition, et tout calcul détaillé qui, refait avec les résultats intermédiaires arrondis tels qu'ils sont affichés, ne mènerait pas à la bonne réponse. Un test échoue si le fichier n'est pas exactement celui que produit le script.
 
+Le script traite les deux langues : `data/numerique.json` et sa traduction `data/nl/numerique.json`. Il vérifie que les deux fichiers ont exactement les mêmes données, valeurs, expressions, propositions et bonnes réponses : seuls les libellés, les énoncés et les explications sont traduits.
+
 À chaque réponse, la correction affiche :
 
 - les **données utilisées** ;
@@ -271,7 +273,7 @@ Seules deux dépendances de développement sont utilisées : `@tailwindcss/cli` 
 │   ├── site/config.js          # Langues, pages générées, drapeau NL_PUBLIC
 │   ├── site/templates.js       # Moteur de gabarits minimal
 │   ├── og-image.js             # Génère les images de partage des deux langues
-│   └── calculer-numerique.js   # Calcule les propositions du raisonnement numérique
+│   └── calculer-numerique.js   # Calcule les propositions du raisonnement numérique (FR et NL)
 ├── .github/workflows/          # Déploiement GitHub Pages et vérification des pull requests
 └── package.json                # Scripts npm (build, start, test…)
 ```
@@ -319,7 +321,7 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
 
   S'y ajoutent les tests de l'enchaînement des questions, du surlignage, de la typographie et du bilan.
 - **Raisonnement numérique** : validation de la banque :
-  - chaque bonne réponse et chaque piège sont recalculés par `scripts/calculer-numerique.js` : aucun écart toléré avec le fichier ;
+  - chaque bonne réponse et chaque piège sont recalculés par `scripts/calculer-numerique.js` : aucun écart toléré avec le fichier, en français comme en néerlandais ;
   - chaque piège correspond au calcul de l'erreur qu'il décrit, et les erreurs typiques (mauvaise base, ligne oubliée, ratio inversé) sont bien représentées ;
   - les totaux sont cohérents ;
   - au moins 51 questions, identifiants initiaux conservés, les quatre compétences et les quatre formats (tableau, barres, courbes, secteurs) présents ;

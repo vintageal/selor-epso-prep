@@ -147,7 +147,8 @@ test('les nombres suivent le format de la langue : fr-BE et nl-BE', () => {
   setLocale('nl');
   assert.equal(formatNumber(1010), '1.010');
   assert.equal(formatAnswer(5.2083, { decimals: 1, unit: '%' }), '5,2%');
-  assert.equal(formatAnswer(1250, { decimals: 0, unit: 'k€' }), '1.250 k€');
+  assert.equal(formatAnswer(1250, { decimals: 0, unit: 'mln euro' }), '1.250\u00a0mln euro');
+  assert.equal(formatAnswer(7.514, { decimals: 2, unit: '€' }), '€\u00a07,51');
   assert.equal(t('format.percent', { value: 72 }), '72%');
   setLocale('fr');
   assert.equal(formatAnswer(5.2083, { decimals: 1, unit: '%' }), '5,2 %');

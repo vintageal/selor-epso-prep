@@ -196,7 +196,8 @@ export default {
         tip: 'Maak een onderscheid tussen een constante stijging in waarde (elk jaar komt hetzelfde bedrag erbij) en een constante stijging in procent (elk jaar wordt met dezelfde factor vermenigvuldigd).',
       },
     },
-    withUnit: ({ value, unit }) => (unit === '%' ? `${value}%` : `${value} ${unit}`),
+    // % direct na het getal, het euroteken ervoor (€ 7,51), andere eenheden erna.
+    withUnit: ({ value, unit }) => (unit === '%' ? `${value}%` : unit === '€' ? `€\u00a0${value}` : `${value}\u00a0${unit}`),
     guidelineLabel: '{label}: ',
     calculatorTip: 'Een rekenmachine kan helpen: hou ze binnen handbereik, net als op de dag van de test.',
     nextData: 'Volgende gegevensset',

@@ -1,0 +1,1378 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "budget-spf",
+      "title": "Uitgaven van een federale overheidsdienst per post, 2021-2024",
+      "theme": "Overheidsfinanciën",
+      "display": "table",
+      "rowHeader": "Post",
+      "unit": "mln euro",
+      "note": "Bedragen in miljoen euro (mln euro).",
+      "columns": [
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "personnel", "label": "Personeel", "values": { "2021": 412, "2022": 425, "2023": 438, "2024": 461 } },
+        { "key": "fonctionnement", "label": "Werking", "values": { "2021": 168, "2022": 175, "2023": 171, "2024": 180 } },
+        { "key": "investissements", "label": "Investeringen", "values": { "2021": 95, "2022": 88, "2023": 104, "2024": 118 } },
+        { "key": "subsides", "label": "Subsidies", "values": { "2021": 225, "2022": 232, "2023": 247, "2024": 251 } },
+        { "key": "total", "label": "Totaal", "total": true, "values": { "2021": 900, "2022": 920, "2023": 960, "2024": 1010 } }
+      ],
+      "questions": [
+        {
+          "id": "budget-variation-total",
+          "skill": "variation",
+          "difficulty": 1,
+          "text": "Met hoeveel procent is het totale budget tussen 2023 en 2024 gestegen?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "ecart", "label": "Verschil tussen 2024 en 2023", "expression": "{total.2024} - {total.2023}" },
+            { "label": "Verschil ten opzichte van de beginwaarde (2023), in %", "expression": "{@ecart} / {total.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 4.3, "expression": "({total.2023} - {total.2022}) / {total.2022} * 100", "why": "Dat is de stijging van 2022 tot 2023: de periode is een jaar verschoven." },
+            { "value": 5.0, "expression": "{@ecart} / {total.2024} * 100", "why": "Het verschil werd gedeeld door de eindwaarde (2024) in plaats van door de beginwaarde (2023)." },
+            { "value": 5.2 },
+            { "value": 12.2, "expression": "({total.2024} - {total.2021}) / {total.2021} * 100", "why": "Dat is de gecumuleerde stijging sinds 2021, niet de stijging van alleen het laatste jaar." }
+          ],
+          "explanation": "Een procentuele verandering bereken je altijd ten opzichte van het beginjaar, hier 2023. Delen door 1.010 in plaats van door 960 levert een resultaat op dat in de buurt komt, maar fout is: de antwoordmogelijkheden zijn precies ontworpen om die verwarring uit te lokken."
+        },
+        {
+          "id": "budget-part-personnel",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk aandeel van het totale budget vertegenwoordigen de personeelsuitgaven in 2024?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "label": "Personeel 2024 ten opzichte van het totaal 2024, in %", "expression": "{personnel.2024} / {total.2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 0,
+          "options": [
+            { "value": 45.6 },
+            { "value": 45.8, "expression": "{personnel.2021} / {total.2021} * 100", "why": "Dat is het aandeel van het personeel in 2021: de verkeerde kolom van de tabel werd gelezen." },
+            { "value": 54.4, "expression": "({total.2024} - {personnel.2024}) / {total.2024} * 100", "why": "Dat is het aandeel van alle andere posten samen, dus het complement tot 100%." },
+            { "value": 84.0, "expression": "{personnel.2024} / ({total.2024} - {personnel.2024}) * 100", "why": "Het personeel werd vergeleken met de andere posten in plaats van met het totaal: de noemer moet het geheel zijn (1.010 mln euro)." }
+          ],
+          "explanation": "Een aandeel bereken je ten opzichte van het geheel van hetzelfde jaar: hier het totaal van 2024 (1.010 mln euro). Controleer voor je deelt het jaar van de kolom en wat er in de noemer staat."
+        },
+        {
+          "id": "budget-projection-investissements",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "De investeringsuitgaven zijn tussen 2022 en 2024 gestaag gestegen. Hoeveel zullen ze in 2026 bedragen als hun gemiddelde jaarlijkse stijging, in miljoen euro, aanhoudt?",
+          "formula": "Geprojecteerde waarde = laatste waarde + aantal jaren × gemiddelde jaarlijkse stijging",
+          "steps": [
+            { "id": "hausse", "label": "Gemiddelde jaarlijkse stijging van 2022 tot 2024 (2 jaar)", "expression": "({investissements.2024} - {investissements.2022}) / 2" },
+            { "label": "Projectie van 2024 tot 2026 (2 jaar)", "expression": "{investissements.2024} + 2 * {@hausse}" }
+          ],
+          "format": { "decimals": 0, "unit": "mln euro" },
+          "answer": 2,
+          "options": [
+            { "value": 133, "expression": "{investissements.2024} + {@hausse}", "why": "De stijging werd maar één keer opgeteld: dat is de projectie voor 2025, niet voor 2026." },
+            { "value": 146, "expression": "{investissements.2024} + 2 * ({investissements.2024} - {investissements.2023})", "why": "Alleen de laatste stijging (14 mln euro van 2023 tot 2024) werd in aanmerking genomen, in plaats van het gemiddelde over de vermelde periode." },
+            { "value": 148 },
+            { "value": 158, "expression": "{investissements.2024} * {investissements.2024} / {investissements.2022}", "why": "Er werd een procentuele groei toegepast (ongeveer +15,8% per jaar), terwijl de vraag over een constante stijging in miljoen euro gaat." }
+          ],
+          "explanation": "De vraag preciseert dat de stijging “in miljoen euro” aanhoudt: dat is een lineaire trend. Je berekent de gemiddelde jaarlijkse stijging over de vermelde periode en telt die daarna zo vaak op als er jaren te projecteren zijn (2025 en 2026)."
+        },
+        {
+          "id": "budget-ratio-subsides",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel euro subsidies betaalt de dienst in 2024 uit voor elke euro werkingsuitgaven?",
+          "formula": "Verhouding = vergeleken grootheid ÷ referentiegrootheid",
+          "steps": [
+            { "label": "Subsidies 2024 gedeeld door werking 2024", "expression": "{subsides.2024} / {fonctionnement.2024}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 3,
+          "options": [
+            { "value": 0.25, "expression": "{subsides.2024} / {total.2024}", "why": "Dat is het aandeel van de subsidies in het totale budget, niet hun verhouding tot de werkingsuitgaven." },
+            { "value": 0.39, "expression": "({subsides.2024} - {fonctionnement.2024}) / {fonctionnement.2024}", "why": "Dat is het relatieve verschil tussen de twee posten (+39%): de gevraagde verhouding is 251 ÷ 180, niet (251 − 180) ÷ 180." },
+            { "value": 0.72, "expression": "{fonctionnement.2024} / {subsides.2024}", "why": "De verhouding werd omgekeerd: dat is het aantal euro werking per euro subsidies." },
+            { "value": 1.39 }
+          ],
+          "explanation": "“Hoeveel A voor elke B” vertaal je als A ÷ B: de grootheid die als eerste wordt genoemd (de subsidies) staat in de teller, de referentie (“elke euro werking”) in de noemer."
+        }
+      ]
+    },
+    {
+      "id": "effectifs-directions",
+      "title": "Personeelsbestand per directie van een gewestelijke administratie, 2023 en 2024",
+      "theme": "Personeelsbeleid",
+      "display": "bar",
+      "rowHeader": "Directie",
+      "unit": "VTE",
+      "note": "Personeelsbestand in voltijdse equivalenten (VTE) op 31 december van elk jaar.",
+      "columns": [
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "accueil", "label": "Onthaal en dienstverlening aan burgers", "values": { "2023": 240, "2024": 228 } },
+        { "key": "controle", "label": "Controle en inspectie", "values": { "2023": 180, "2024": 207 } },
+        { "key": "informatique", "label": "Informatica", "values": { "2023": 95, "2024": 114 } },
+        { "key": "rh", "label": "Personeelszaken", "values": { "2023": 64, "2024": 62 } },
+        { "key": "juridique", "label": "Juridische zaken", "values": { "2023": 46, "2024": 49 } }
+      ],
+      "questions": [
+        {
+          "id": "effectifs-variation-totale",
+          "skill": "variation",
+          "difficulty": 2,
+          "text": "Met hoeveel procent is het totale personeelsbestand van de administratie tussen 2023 en 2024 gestegen?",
+          "formula": "Procentuele verandering (%) = (eindtotaal − begintotaal) ÷ begintotaal × 100",
+          "steps": [
+            { "id": "t2023", "label": "Totaal personeelsbestand 2023 (som van de vijf directies)", "expression": "{accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}" },
+            { "id": "t2024", "label": "Totaal personeelsbestand 2024 (som van de vijf directies)", "expression": "{accueil.2024} + {controle.2024} + {informatique.2024} + {rh.2024} + {juridique.2024}" },
+            { "label": "Procentuele verandering van het totaal, in %", "expression": "({@t2024} - {@t2023}) / {@t2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 5.3, "expression": "({@t2024} - {@t2023}) / {@t2024} * 100", "why": "Het verschil (35 VTE) werd gedeeld door het totaal van 2024 in plaats van door dat van 2023." },
+            { "value": 5.6 },
+            { "value": 6.7, "expression": "(({accueil.2024} - {accueil.2023}) / {accueil.2023} + ({controle.2024} - {controle.2023}) / {controle.2023} + ({informatique.2024} - {informatique.2023}) / {informatique.2023} + ({rh.2024} - {rh.2023}) / {rh.2023} + ({juridique.2024} - {juridique.2023}) / {juridique.2023}) / 5 * 100", "why": "Dat is het ongewogen gemiddelde van de percentages van de vijf directies: het geeft een kleine directie (46 VTE) hetzelfde gewicht als een grote (240 VTE). Je moet met de totalen redeneren." },
+            { "value": 20.0, "expression": "({informatique.2024} - {informatique.2023}) / {informatique.2023} * 100", "why": "Dat is de stijging van alleen de directie Informatica (de sterkste), niet die van de hele administratie." }
+          ],
+          "explanation": "Voor een globale verandering tel je eerst het personeelsbestand van elk jaar op en bereken je daarna één percentage op de totalen. Het gemiddelde nemen van de percentages per directie komt erop neer dat je hun grootte negeert: dat is de meest voorkomende wegingsfout."
+        },
+        {
+          "id": "effectifs-ratio-accueil-rh",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel personeelsleden telt de directie Onthaal en dienstverlening aan burgers in 2024 per personeelslid van Personeelszaken?",
+          "formula": "Verhouding = vergeleken personeelsbestand ÷ referentiepersoneelsbestand",
+          "steps": [
+            { "label": "Onthaal 2024 gedeeld door Personeelszaken 2024", "expression": "{accueil.2024} / {rh.2024}" }
+          ],
+          "format": { "decimals": 1, "unit": "personeelsleden" },
+          "answer": 1,
+          "options": [
+            { "value": 0.3, "expression": "{rh.2024} / {accueil.2024}", "why": "De verhouding werd omgekeerd: dat is het aantal personeelsleden van Personeelszaken per personeelslid van het onthaal." },
+            { "value": 3.7 },
+            { "value": 3.8, "expression": "{accueil.2023} / {rh.2023}", "why": "Dat zijn de cijfers van 2023 (240 en 64): de verkeerde reeks van de grafiek werd gelezen." },
+            { "value": 4.7, "expression": "{accueil.2024} / {juridique.2024}", "why": "De berekening gebruikt Juridische zaken (49 VTE) in plaats van Personeelszaken." }
+          ],
+          "explanation": "“Hoeveel A per B” vertaal je als A ÷ B. Zoek bij een grafiek met twee reeksen eerst het jaar op in de legende voor je een staaf afleest: elke directie heeft een staaf voor 2023 en een voor 2024."
+        },
+        {
+          "id": "effectifs-part-controle",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van het totale personeelsbestand werkt in 2024 in de directie Controle en inspectie?",
+          "formula": "Aandeel (%) = personeelsbestand van de directie ÷ totaal personeelsbestand × 100",
+          "steps": [
+            { "id": "t2024", "label": "Totaal personeelsbestand 2024 (som van de vijf directies)", "expression": "{accueil.2024} + {controle.2024} + {informatique.2024} + {rh.2024} + {juridique.2024}" },
+            { "label": "Controle en inspectie 2024 ten opzichte van het totaal 2024, in %", "expression": "{controle.2024} / {@t2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 28.8, "expression": "{controle.2023} / ({accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}) * 100", "why": "Dat is het aandeel in 2023 (180 VTE op 625): verkeerd jaar." },
+            { "value": 31.4 },
+            { "value": 33.1, "expression": "{controle.2024} / ({accueil.2023} + {controle.2023} + {informatique.2023} + {rh.2023} + {juridique.2023}) * 100", "why": "Het personeelsbestand van de directie in 2024 werd gedeeld door het totaal van 2023: de twee jaren werden door elkaar gehaald." },
+            { "value": 45.7, "expression": "{controle.2024} / ({@t2024} - {controle.2024}) * 100", "why": "De directie werd vergeleken met de vier andere directies in plaats van met het totale personeelsbestand." }
+          ],
+          "explanation": "Omdat het totaal niet op de grafiek staat, moet je eerst de vijf staven van hetzelfde jaar optellen (660 VTE in 2024). Gebruik in de teller en in de noemer hetzelfde jaar."
+        },
+        {
+          "id": "effectifs-projection-informatique",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Als het personeelsbestand van de directie Informatica elk jaar blijft groeien met hetzelfde percentage als tussen 2023 en 2024, hoe groot zal het dan in 2026 zijn?",
+          "formula": "Geprojecteerde waarde = laatste waarde × (1 + jaarlijks percentage)ⁿ, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "coef", "label": "Jaarlijkse vermenigvuldigingsfactor (1 + percentage van 2023 tot 2024)", "expression": "{informatique.2024} / {informatique.2023}" },
+            { "label": "Projectie over twee jaar (2025 en daarna 2026)", "expression": "{informatique.2024} * {@coef} ^ 2" }
+          ],
+          "format": { "decimals": 0, "unit": "VTE" },
+          "answer": 3,
+          "options": [
+            { "value": 137, "expression": "{informatique.2024} * {@coef}", "why": "Het percentage werd maar één keer toegepast: dat is de projectie voor 2025." },
+            { "value": 152, "expression": "{informatique.2024} + 2 * ({informatique.2024} - {informatique.2023})", "why": "Er werd een constante stijging in aantal personeelsleden (+19 per jaar) toegepast, terwijl de vraag over een constant groeipercentage gaat." },
+            { "value": 160, "expression": "{informatique.2024} * (1 + 2 * ({@coef} - 1))", "why": "De twee stijgingen van 20% werden opgeteld (+40%) in plaats van samengesteld: de tweede stijging geldt voor een personeelsbestand dat al gestegen is." },
+            { "value": 164 }
+          ],
+          "explanation": "Een constant percentage werkt samengesteld: je vermenigvuldigt zo vaak met de factor (1 + percentage) als er jaren zijn. Twee opeenvolgende stijgingen van 20% geven +44% (1,2² = 1,44), en niet +40%."
+        }
+      ]
+    },
+    {
+      "id": "permis-environnement",
+      "title": "Ontvangen en behandelde aanvragen voor een omgevingsvergunning, 2019-2024",
+      "theme": "Dienstverlening aan burgers",
+      "display": "line",
+      "rowHeader": "Reeks",
+      "unit": "aanvragen",
+      "note": "Aantal aanvragen dat een gewestelijke administratie elk jaar heeft ontvangen en behandeld.",
+      "columns": [
+        { "key": "2019", "label": "2019" },
+        { "key": "2020", "label": "2020" },
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "recues", "label": "Ontvangen aanvragen", "values": { "2019": 4200, "2020": 3900, "2021": 4500, "2022": 4800, "2023": 5100, "2024": 5400 } },
+        { "key": "traitees", "label": "Behandelde aanvragen", "values": { "2019": 3900, "2020": 3600, "2021": 4300, "2022": 4600, "2023": 4700, "2024": 5100 } }
+      ],
+      "questions": [
+        {
+          "id": "permis-taux-traitement",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk percentage van de aanvragen die in 2023 werden ontvangen, werd dat jaar behandeld?",
+          "formula": "Behandelingspercentage (%) = behandelde aanvragen ÷ ontvangen aanvragen × 100",
+          "steps": [
+            { "label": "Behandelde aanvragen in 2023 ten opzichte van de ontvangen aanvragen in 2023, in %", "expression": "{traitees.2023} / {recues.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 0,
+          "options": [
+            { "value": 92.2 },
+            { "value": 93.9, "expression": "({traitees.2019} + {traitees.2020} + {traitees.2021} + {traitees.2022} + {traitees.2023} + {traitees.2024}) / ({recues.2019} + {recues.2020} + {recues.2021} + {recues.2022} + {recues.2023} + {recues.2024}) * 100", "why": "Dat is het behandelingspercentage over de hele periode 2019-2024, niet dat van alleen 2023." },
+            { "value": 94.4, "expression": "{traitees.2024} / {recues.2024} * 100", "why": "Dat zijn de cijfers van 2024: verkeerd jaar." },
+            { "value": 108.5, "expression": "{recues.2023} / {traitees.2023} * 100", "why": "De verhouding werd omgekeerd: de behandelde aanvragen staan in de teller, de ontvangen aanvragen in de noemer." }
+          ],
+          "explanation": "Het behandelingspercentage vergelijkt wat werd behandeld met wat in hetzelfde jaar werd ontvangen. Zoek bij een grafiek met twee lijnen eerst elke reeks op in de legende voor je de waarden afleest."
+        },
+        {
+          "id": "permis-variation-recues",
+          "skill": "variation",
+          "difficulty": 2,
+          "text": "Met hoeveel procent is het aantal ontvangen aanvragen tussen 2020 en 2024 gestegen?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "ecart", "label": "Verschil tussen 2024 en 2020", "expression": "{recues.2024} - {recues.2020}" },
+            { "label": "Verschil ten opzichte van de beginwaarde (2020), in %", "expression": "{@ecart} / {recues.2020} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 3,
+          "options": [
+            { "value": 9.6, "expression": "{@ecart} / {recues.2020} * 100 / 4", "why": "De totale stijging werd gedeeld door het aantal jaren: dat is noch de gevraagde stijging, noch een echt gemiddeld jaarlijks percentage (dat je niet met een eenvoudige deling verkrijgt)." },
+            { "value": 27.8, "expression": "{@ecart} / {recues.2024} * 100", "why": "Het verschil werd gedeeld door de eindwaarde (2024) in plaats van door de beginwaarde (2020)." },
+            { "value": 28.6, "expression": "({recues.2024} - {recues.2019}) / {recues.2019} * 100", "why": "De periode begint in 2019 in plaats van in 2020: het vertrekpunt is niet het juiste." },
+            { "value": 38.5 }
+          ],
+          "explanation": "Zoek eerst de twee grenzen van de gevraagde periode op (2020 en 2024) en zet daarna het verschil af tegen de beginwaarde. De vraag gaat over de totale stijging, niet over een jaarlijkse stijging."
+        },
+        {
+          "id": "permis-projection-lineaire",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "Van 2021 tot 2024 is het aantal ontvangen aanvragen elk jaar met hetzelfde aantal gestegen. Hoeveel aanvragen zullen er in 2027 worden ontvangen als die trend zich voortzet?",
+          "formula": "Geprojecteerde waarde = laatste waarde + aantal jaren × jaarlijkse stijging",
+          "steps": [
+            { "id": "hausse", "label": "Jaarlijkse stijging van 2021 tot 2024 (3 jaar)", "expression": "({recues.2024} - {recues.2021}) / 3" },
+            { "label": "Projectie van 2024 tot 2027 (3 jaar)", "expression": "{recues.2024} + 3 * {@hausse}" }
+          ],
+          "format": { "decimals": 0, "unit": "aanvragen" },
+          "answer": 3,
+          "options": [
+            { "value": 5700, "expression": "{recues.2024} + {@hausse}", "why": "De stijging werd maar één keer opgeteld: dat is de projectie voor 2025." },
+            { "value": 6000, "expression": "{recues.2024} + 2 * {@hausse}", "why": "De projectie stopt in 2026: tussen 2024 en 2027 liggen drie jaar, niet twee." },
+            { "value": 6120, "expression": "{recues.2024} + 3 * ({recues.2024} - {recues.2019}) / 5", "why": "De jaarlijkse stijging werd berekend vanaf 2019 (240 per jaar), met inbegrip van de daling in 2020, terwijl de vraag de trend beperkt tot 2021-2024." },
+            { "value": 6300 }
+          ],
+          "explanation": "Een stijging “met hetzelfde aantal” per jaar is een lineaire trend: je telt voor elk van de drie te projecteren jaren dezelfde hoeveelheid (300 aanvragen) op. Tel de jaren zorgvuldig: van 2024 tot 2027 zijn er drie."
+        }
+      ]
+    },
+    {
+      "id": "selection-centres",
+      "title": "Resultaten van een selectieproef per examencentrum",
+      "theme": "Selectie en rekrutering",
+      "display": "table",
+      "rowHeader": "Centrum",
+      "note": "Aantal kandidaten, gemiddelde score en slaagpercentage in elk centrum.",
+      "columns": [
+        { "key": "candidats", "label": "Kandidaten", "unit": "kandidaten" },
+        { "key": "moyenne", "label": "Gemiddelde score (op 20)", "unit": "op 20", "decimals": 1 },
+        { "key": "reussite", "label": "Slaagpercentage (%)", "unit": "%" }
+      ],
+      "rows": [
+        { "key": "bruxelles", "label": "Brussel", "values": { "candidats": 420, "moyenne": 12.5, "reussite": 35 } },
+        { "key": "liege", "label": "Luik", "values": { "candidats": 180, "moyenne": 11.0, "reussite": 30 } },
+        { "key": "namur", "label": "Namen", "values": { "candidats": 150, "moyenne": 13.2, "reussite": 36 } },
+        { "key": "mons", "label": "Bergen", "values": { "candidats": 80, "moyenne": 10.4, "reussite": 25 } }
+      ],
+      "questions": [
+        {
+          "id": "centres-moyenne-generale",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat is de gemiddelde score van alle kandidaten samen, over alle centra heen?",
+          "formula": "Gewogen gemiddelde = Σ (gemiddelde score × aantal kandidaten) ÷ Σ aantal kandidaten",
+          "steps": [
+            { "id": "points", "label": "Som van de punten: gemiddelde score × kandidaten, voor elk centrum", "expression": "{bruxelles.moyenne} * {bruxelles.candidats} + {liege.moyenne} * {liege.candidats} + {namur.moyenne} * {namur.candidats} + {mons.moyenne} * {mons.candidats}" },
+            { "id": "effectif", "label": "Totaal aantal kandidaten", "expression": "{bruxelles.candidats} + {liege.candidats} + {namur.candidats} + {mons.candidats}" },
+            { "label": "Gewogen gemiddelde", "expression": "{@points} / {@effectif}" }
+          ],
+          "format": { "decimals": 1, "unit": "op 20" },
+          "answer": 2,
+          "options": [
+            { "value": 11.8, "expression": "({bruxelles.moyenne} + {liege.moyenne} + {namur.moyenne} + {mons.moyenne}) / 4", "why": "Dat is het ongewogen gemiddelde van de vier centra: het geeft Bergen (80 kandidaten) evenveel gewicht als Brussel (420 kandidaten)." },
+            { "value": 11.9, "expression": "({bruxelles.moyenne} * {bruxelles.reussite} + {liege.moyenne} * {liege.reussite} + {namur.moyenne} * {namur.reussite} + {mons.moyenne} * {mons.reussite}) / ({bruxelles.reussite} + {liege.reussite} + {namur.reussite} + {mons.reussite})", "why": "De scores werden gewogen met de slaagpercentages in plaats van met het aantal kandidaten: het gewicht van elke groep is de omvang ervan." },
+            { "value": 12.1 },
+            { "value": 12.5, "expression": "{bruxelles.moyenne}", "why": "Dat is het gemiddelde van alleen het centrum in Brussel: het grootste centrum weegt zwaar door in het resultaat, maar vat het niet samen." }
+          ],
+          "explanation": "De centra hebben niet evenveel kandidaten: het algemene gemiddelde is een gemiddelde dat gewogen wordt met het aantal kandidaten. Je reconstrueert het totaal van de punten en deelt dat daarna door het totale aantal kandidaten."
+        },
+        {
+          "id": "centres-reussite-globale",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat is het globale slaagpercentage, over alle centra heen?",
+          "formula": "Globaal percentage (%) = totaal aantal geslaagden ÷ totaal aantal kandidaten × 100, met geslaagden = kandidaten × slaagpercentage",
+          "steps": [
+            { "id": "laureats", "label": "Totaal aantal geslaagden: kandidaten × slaagpercentage, voor elk centrum", "expression": "{bruxelles.candidats} * {bruxelles.reussite} / 100 + {liege.candidats} * {liege.reussite} / 100 + {namur.candidats} * {namur.reussite} / 100 + {mons.candidats} * {mons.reussite} / 100" },
+            { "id": "effectif", "label": "Totaal aantal kandidaten", "expression": "{bruxelles.candidats} + {liege.candidats} + {namur.candidats} + {mons.candidats}" },
+            { "label": "Globaal slaagpercentage, in %", "expression": "{@laureats} / {@effectif} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 31.5, "expression": "({bruxelles.reussite} + {liege.reussite} + {namur.reussite} + {mons.reussite}) / 4", "why": "Dat is het ongewogen gemiddelde van de vier percentages: het negeert dat Brussel meer dan vijf keer zoveel kandidaten telt als Bergen." },
+            { "value": 32.5, "expression": "({liege.reussite} + {bruxelles.reussite}) / 2", "why": "Dat is de mediaan van de vier percentages (het gemiddelde van de twee middelste waarden, 30% en 35%), niet het globale percentage." },
+            { "value": 33.1 },
+            { "value": 35.0, "expression": "{bruxelles.reussite}", "why": "Dat is het percentage van alleen het centrum in Brussel." }
+          ],
+          "explanation": "Een globaal percentage bereken je op de totalen: je reconstrueert het aantal geslaagden van elk centrum (kandidaten × percentage), telt die op en deelt daarna door het totale aantal kandidaten."
+        },
+        {
+          "id": "centres-projection-namur",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "Volgend jaar zou het aantal kandidaten in Namen met 20% stijgen, bij hetzelfde slaagpercentage. Hoeveel geslaagden moet je dan in Namen verwachten?",
+          "formula": "Verwachte geslaagden = huidige kandidaten × (1 + stijging) × slaagpercentage",
+          "steps": [
+            { "id": "candidats", "label": "Verwachte kandidaten in Namen (+20%)", "expression": "{namur.candidats} * 1.2" },
+            { "label": "Verwachte geslaagden, bij hetzelfde slaagpercentage", "expression": "{@candidats} * {namur.reussite} / 100" }
+          ],
+          "format": { "decimals": 0, "unit": "geslaagden" },
+          "answer": 1,
+          "options": [
+            { "value": 54, "expression": "{namur.candidats} * {namur.reussite} / 100", "why": "Dat is het huidige aantal geslaagden: de stijging van het aantal kandidaten met 20% werd vergeten." },
+            { "value": 65 },
+            { "value": 74, "expression": "{namur.candidats} * {namur.reussite} / 100 + 20", "why": "De stijging van 20% werd opgeteld als 20 extra geslaagden, in plaats van als een percentage." },
+            { "value": 78, "expression": "{namur.candidats} * 1.2 * 1.2 * {namur.reussite} / 100", "why": "De stijging van 20% werd twee keer toegepast, eerst op de kandidaten en daarna op de geslaagden." }
+          ],
+          "explanation": "Je past eerst de stijging toe op het aantal kandidaten (150 × 1,2 = 180) en daarna het ongewijzigde slaagpercentage (36%). Het resultaat, 64,8, rond je af tot 65 geslaagden."
+        }
+      ]
+    },
+    {
+      "id": "achats-fournitures",
+      "title": "Aankopen van kantoorbenodigdheden: hoeveelheden en eenheidsprijzen, 2023 en 2024",
+      "theme": "Overheidsopdrachten",
+      "display": "table",
+      "rowHeader": "Artikel",
+      "note": "Eenheidsprijzen exclusief btw.",
+      "columns": [
+        { "key": "q2023", "label": "Hoeveelheid 2023", "unit": "eenheden" },
+        { "key": "p2023", "label": "Eenheidsprijs 2023 (€)", "unit": "€", "decimals": 2 },
+        { "key": "q2024", "label": "Hoeveelheid 2024", "unit": "eenheden" },
+        { "key": "p2024", "label": "Eenheidsprijs 2024 (€)", "unit": "€", "decimals": 2 }
+      ],
+      "rows": [
+        { "key": "papier", "label": "Papier (riemen)", "values": { "q2023": 1200, "p2023": 4.20, "q2024": 1000, "p2024": 4.60 } },
+        { "key": "toner", "label": "Toner (cartridges)", "values": { "q2023": 150, "p2023": 62.00, "q2024": 160, "p2024": 58.00 } },
+        { "key": "classeurs", "label": "Ordners", "values": { "q2023": 800, "p2023": 2.50, "q2024": 900, "p2024": 2.40 } }
+      ],
+      "questions": [
+        {
+          "id": "fournitures-prix-moyen",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat is in 2024 de gemiddelde prijs van een aangekocht artikel, over alle benodigdheden heen?",
+          "formula": "Gewogen gemiddelde prijs = Σ (hoeveelheid × eenheidsprijs) ÷ Σ hoeveelheden = totale uitgave ÷ aantal artikelen",
+          "steps": [
+            { "id": "depense", "label": "Totale uitgave 2024: hoeveelheid × prijs, voor elke benodigdheid", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "id": "articles", "label": "Totaal aantal aangekochte artikelen in 2024", "expression": "{papier.q2024} + {toner.q2024} + {classeurs.q2024}" },
+            { "label": "Gemiddelde prijs per artikel", "expression": "{@depense} / {@articles}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 2,
+          "options": [
+            { "value": 7.51, "expression": "({papier.q2023} * {papier.p2024} + {toner.q2023} * {toner.p2024} + {classeurs.q2023} * {classeurs.p2024}) / ({papier.q2023} + {toner.q2023} + {classeurs.q2023})", "why": "De prijzen van 2024 werden gewogen met de hoeveelheden van 2023: de twee jaren werden door elkaar gehaald." },
+            { "value": 7.60, "expression": "({papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}) / ({papier.q2023} + {toner.q2023} + {classeurs.q2023})", "why": "Dat is de gemiddelde prijs van 2023: verkeerd jaar." },
+            { "value": 7.79 },
+            { "value": 21.67, "expression": "({papier.p2024} + {toner.p2024} + {classeurs.p2024}) / 3", "why": "Dat is het ongewogen gemiddelde van de drie prijzen: het geeft de toner (160 cartridges) hetzelfde gewicht als het papier (1.000 riemen)." }
+          ],
+          "explanation": "De gemiddelde prijs van een artikel is de totale uitgave gedeeld door het totale aantal artikelen. Goedkope benodigdheden die in grote hoeveelheden worden aangekocht, trekken het gemiddelde naar beneden: dat is het effect van de weging."
+        },
+        {
+          "id": "fournitures-variation-depense",
+          "skill": "variation",
+          "difficulty": 3,
+          "text": "Met hoeveel procent is de totale uitgave voor benodigdheden tussen 2023 en 2024 veranderd?",
+          "formula": "Procentuele verandering (%) = (uitgave 2024 − uitgave 2023) ÷ uitgave 2023 × 100",
+          "steps": [
+            { "id": "d2023", "label": "Totale uitgave 2023: Σ hoeveelheid × prijs", "expression": "{papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}" },
+            { "id": "d2024", "label": "Totale uitgave 2024: Σ hoeveelheid × prijs", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "label": "Procentuele verandering van de uitgave, in %", "expression": "({@d2024} - {@d2023}) / {@d2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%", "signed": true },
+          "answer": 1,
+          "options": [
+            { "value": -1.9, "expression": "({@d2024} - {@d2023}) / {@d2024} * 100", "why": "Het verschil werd gedeeld door de uitgave van 2024 (eindwaarde) in plaats van door die van 2023." },
+            { "value": -1.8 },
+            { "value": -0.3, "expression": "(({papier.p2024} - {papier.p2023}) / {papier.p2023} + ({toner.p2024} - {toner.p2023}) / {toner.p2023} + ({classeurs.p2024} - {classeurs.p2023}) / {classeurs.p2023}) / 3 * 100", "why": "Dat is het gemiddelde van de prijsveranderingen: het negeert de aangekochte hoeveelheden, die ook veranderd zijn, en het gewicht van elke benodigdheid in de uitgave." },
+            { "value": 1.8, "expression": "({@d2023} - {@d2024}) / {@d2023} * 100", "why": "De richting van de verandering werd omgekeerd: de uitgave is gedaald (van € 16.340 naar € 16.040), het percentage moet dus negatief zijn." }
+          ],
+          "explanation": "Een totale uitgave reconstrueer je door elke hoeveelheid met haar prijs te vermenigvuldigen en daarna op te tellen. De procentuele verandering bereken je vervolgens op die totalen, en het teken ervan geeft de richting aan: hier een daling."
+        },
+        {
+          "id": "fournitures-part-toner",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van de totale uitgave voor benodigdheden vertegenwoordigt de toner in 2024?",
+          "formula": "Aandeel (%) = uitgave voor toner ÷ totale uitgave × 100",
+          "steps": [
+            { "id": "toner", "label": "Uitgave voor toner 2024: hoeveelheid × prijs", "expression": "{toner.q2024} * {toner.p2024}" },
+            { "id": "total", "label": "Totale uitgave 2024", "expression": "{papier.q2024} * {papier.p2024} + {@toner} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "label": "Aandeel van de toner in de uitgave, in %", "expression": "{@toner} / {@total} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 7.8, "expression": "{toner.q2024} / ({papier.q2024} + {toner.q2024} + {classeurs.q2024}) * 100", "why": "Dat is het aandeel van de toner in het aantal aangekochte artikelen, niet in de uitgave: je moet rekening houden met de prijzen." },
+            { "value": 56.9, "expression": "{toner.q2023} * {toner.p2023} / ({papier.q2023} * {papier.p2023} + {toner.q2023} * {toner.p2023} + {classeurs.q2023} * {classeurs.p2023}) * 100", "why": "Dat is het aandeel van de toner in 2023: verkeerd jaar." },
+            { "value": 57.9 },
+            { "value": 137.3, "expression": "{@toner} / ({@total} - {@toner}) * 100", "why": "De toner werd vergeleken met de andere benodigdheden in plaats van met de totale uitgave." }
+          ],
+          "explanation": "Een aandeel in de uitgave bereken je op bedragen (hoeveelheid × prijs), niet op hoeveelheden. Er worden weinig tonercartridges aangekocht, maar ze zijn duur: ze vertegenwoordigen meer dan de helft van de uitgave."
+        }
+      ]
+    },
+    {
+      "id": "budget-commune-fonctions",
+      "title": "Gewone begroting van een gemeente per functie, 2025",
+      "theme": "Lokale financiën",
+      "display": "pie",
+      "pieColumn": "2025",
+      "rowHeader": "Functie",
+      "unit": "mln euro",
+      "decimals": 1,
+      "note": "Gewone uitgaven in miljoen euro (mln euro).",
+      "columns": [
+        { "key": "2025", "label": "2025" }
+      ],
+      "rows": [
+        { "key": "administration", "label": "Algemeen bestuur", "values": { "2025": 11.5 } },
+        { "key": "enseignement", "label": "Onderwijs", "values": { "2025": 18.4 } },
+        { "key": "social", "label": "Sociaal beleid (dotatie aan het OCMW)", "values": { "2025": 15.2 } },
+        { "key": "voirie", "label": "Wegen en netheid", "values": { "2025": 9.6 } },
+        { "key": "culture", "label": "Cultuur en sport", "values": { "2025": 6.5 } },
+        { "key": "securite", "label": "Veiligheid (dotatie aan de politiezone)", "values": { "2025": 12.8 } },
+        { "key": "total", "label": "Totaal", "total": true, "values": { "2025": 74.0 } }
+      ],
+      "questions": [
+        {
+          "id": "commune-part-enseignement",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk aandeel van de gewone begroting besteedt de gemeente aan onderwijs?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "label": "Onderwijs ten opzichte van de totale begroting, in %", "expression": "{enseignement.2025} / {total.2025} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 18.4, "expression": "{enseignement.2025}", "why": "Het bedrag voor onderwijs (in mln euro) werd zonder meer overgenomen, zonder het tegen de totale begroting af te zetten." },
+            { "value": 24.9 },
+            { "value": 27.3, "expression": "{enseignement.2025} / ({total.2025} - {culture.2025}) * 100", "why": "Bij het herberekenen van het totaal werd een regel vergeten (cultuur en sport): de noemer is te klein." },
+            { "value": 33.1, "expression": "{enseignement.2025} / ({total.2025} - {enseignement.2025}) * 100", "why": "Onderwijs werd vergeleken met de rest van de begroting in plaats van met de totale begroting: verkeerde basis voor het percentage." }
+          ],
+          "explanation": "Een aandeel bereken je altijd ten opzichte van het geheel, hier de totale begroting van 74 mln euro. Als je de sectoren zelf optelt, controleer dan of je er geen vergeet."
+        },
+        {
+          "id": "commune-rapport-enseignement-culture",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel geeft de gemeente uit aan onderwijs voor elke € 1 die naar cultuur en sport gaat?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Onderwijs ten opzichte van cultuur en sport", "expression": "{enseignement.2025} / {culture.2025}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 2,
+          "options": [
+            { "value": 0.35, "expression": "{culture.2025} / {enseignement.2025}", "why": "De verhouding werd omgekeerd: dat is de uitgave voor cultuur en sport per € 1 onderwijs." },
+            { "value": 1.92, "expression": "{enseignement.2025} / {voirie.2025}", "why": "De verkeerde functie werd als referentie genomen: wegen en netheid in plaats van cultuur en sport." },
+            { "value": 2.83 },
+            { "value": 11.90, "expression": "{enseignement.2025} - {culture.2025}", "why": "Dat is het verschil tussen de twee bedragen (in mln euro), niet hun verhouding." }
+          ],
+          "explanation": "“Voor elke € 1 die naar B gaat, hoeveel voor A?” vertaal je als A ÷ B: de referentiegrootheid (hier cultuur en sport) staat in de noemer."
+        },
+        {
+          "id": "commune-part-social-securite",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van de gewone begroting vertegenwoordigen sociaal beleid en veiligheid samen?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "id": "somme", "label": "Sociaal beleid en veiligheid samen", "expression": "{social.2025} + {securite.2025}" },
+            { "label": "Som ten opzichte van de totale begroting, in %", "expression": "{@somme} / {total.2025} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 18.9, "expression": "({social.2025} / {total.2025} * 100 + {securite.2025} / {total.2025} * 100) / 2", "why": "Dat is het gemiddelde van de twee aandelen, terwijl de vraag over hun som gaat." },
+            { "value": 20.5, "expression": "{social.2025} / {total.2025} * 100", "why": "Alleen sociaal beleid werd in aanmerking genomen: veiligheid werd vergeten." },
+            { "value": 37.8 },
+            { "value": 60.9, "expression": "{@somme} / ({total.2025} - {@somme}) * 100", "why": "De twee functies werden vergeleken met de rest van de begroting in plaats van met de totale begroting: verkeerde basis voor het percentage." }
+          ],
+          "explanation": "Als een vraag meerdere posten samenneemt, tel je eerst hun bedragen op en zet je die som daarna af tegen het totaal. De twee aandelen in % optellen geeft hetzelfde resultaat; er het gemiddelde van nemen niet."
+        },
+        {
+          "id": "commune-projection-enseignement",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Het budget voor onderwijs moet vijf jaar lang met 3% per jaar stijgen. Hoeveel zal het na die vijf jaar bedragen?",
+          "formula": "Geprojecteerde waarde = laatste waarde × (1 + jaarlijks percentage)ⁿ, waarbij n het aantal jaren is",
+          "steps": [
+            { "label": "Vijf opeenvolgende stijgingen van 3% (vijf keer × 1,03)", "expression": "{enseignement.2025} * 1.03 ^ 5" }
+          ],
+          "format": { "decimals": 1, "unit": "mln euro" },
+          "answer": 3,
+          "options": [
+            { "value": 19.0, "expression": "{enseignement.2025} * 1.03", "why": "De stijging van 3% werd maar één keer toegepast: dat is het budget na één jaar." },
+            { "value": 20.7, "expression": "{enseignement.2025} * 1.03 ^ 4", "why": "Er werden maar vier stijgingen toegepast: er zijn er vijf, één per jaar." },
+            { "value": 21.2, "expression": "{enseignement.2025} * (1 + 5 * 0.03)", "why": "De vijf stijgingen werden opgeteld (+15%) in plaats van samengesteld: elke stijging geldt voor een bedrag dat al gestegen is." },
+            { "value": 21.3 }
+          ],
+          "explanation": "Opeenvolgende stijgingen van 3% stapelen zich op: 1,03⁵ ≈ 1,159, ofwel +15,9% in vijf jaar, en niet +15%. Het verschil lijkt klein, maar dat is precies wat dit soort vragen toetst."
+        }
+      ]
+    },
+    {
+      "id": "centre-contact-appels",
+      "title": "Oproepen naar een contactcenter per reden, eerste semester",
+      "theme": "Relatie met de burgers",
+      "display": "pie",
+      "pieColumn": "appels",
+      "rowHeader": "Reden",
+      "note": "Aantal ontvangen oproepen en gemiddelde duur van een oproep (in minuten), per reden. De grafiek toont het aantal oproepen.",
+      "columns": [
+        { "key": "appels", "label": "Oproepen", "unit": "oproepen" },
+        { "key": "duree", "label": "Gemiddelde duur", "unit": "min", "decimals": 1 }
+      ],
+      "rows": [
+        { "key": "allocations", "label": "Bedrag van de uitkeringen", "values": { "appels": 3420, "duree": 6.5 } },
+        { "key": "attestations", "label": "Aanvragen voor een attest", "values": { "appels": 2160, "duree": 3.0 } },
+        { "key": "situation", "label": "Gewijzigde situatie", "values": { "appels": 1890, "duree": 8.0 } },
+        { "key": "paiements", "label": "Betaaldata", "values": { "appels": 2880, "duree": 5.5 } },
+        { "key": "autres", "label": "Andere redenen", "values": { "appels": 1650, "duree": 4.0 } }
+      ],
+      "questions": [
+        {
+          "id": "appels-part-paiements",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van de ontvangen oproepen ging over de betaaldata?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "id": "total", "label": "Totaal aantal oproepen (som van de vijf redenen)", "expression": "{allocations.appels} + {attestations.appels} + {situation.appels} + {paiements.appels} + {autres.appels}" },
+            { "label": "Oproepen over de betalingen ten opzichte van het totaal, in %", "expression": "{paiements.appels} / {@total} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 0,
+          "options": [
+            { "value": 24.0 },
+            { "value": 27.8, "expression": "{paiements.appels} / ({@total} - {autres.appels}) * 100", "why": "Bij het berekenen van het totaal werd een regel vergeten (andere redenen): de noemer is te klein." },
+            { "value": 28.5, "expression": "{allocations.appels} / {@total} * 100", "why": "Dat is het aandeel van de meest voorkomende reden, het bedrag van de uitkeringen, en niet dat van de betalingen." },
+            { "value": 31.6, "expression": "{paiements.appels} / ({@total} - {paiements.appels}) * 100", "why": "De betalingen werden vergeleken met de andere oproepen in plaats van met alle oproepen: verkeerde basis voor het percentage." }
+          ],
+          "explanation": "De tabel geeft geen totaal: je moet de vijf redenen optellen (12.000 oproepen) voor je het aandeel berekent. Een vergeten regel in die som maakt alle percentages fout."
+        },
+        {
+          "id": "appels-rapport-allocations-attestations",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel oproepen over het bedrag van de uitkeringen heeft het center ontvangen per oproep over een aanvraag voor een attest?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Oproepen over de uitkeringen ten opzichte van de oproepen over de attesten", "expression": "{allocations.appels} / {attestations.appels}" }
+          ],
+          "format": { "decimals": 2 },
+          "answer": 2,
+          "options": [
+            { "value": 0.63, "expression": "{attestations.appels} / {allocations.appels}", "why": "De verhouding werd omgekeerd: dat is het aantal oproepen over de attesten per oproep over de uitkeringen." },
+            { "value": 1.33, "expression": "{paiements.appels} / {attestations.appels}", "why": "Deze verhouding gaat over de betaaldata: de verkeerde regel werd gelezen." },
+            { "value": 1.58 },
+            { "value": 2.17, "expression": "{allocations.duree} / {attestations.duree}", "why": "Dat is de verhouding tussen de gemiddelde duurtijden, en niet tussen de aantallen oproepen." }
+          ],
+          "explanation": "“Hoeveel A per B?” bereken je als A ÷ B. Een verhouding van 1,58 betekent dat het center ongeveer drie oproepen over de uitkeringen ontvangt voor twee over de attesten."
+        },
+        {
+          "id": "appels-part-temps-allocations",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Welk aandeel van de totale tijd aan de telefoon werd besteed aan de oproepen over het bedrag van de uitkeringen?",
+          "formula": "Aandeel van de tijd (%) = (oproepen × duur) van de reden ÷ Σ (oproepen × duur) × 100",
+          "steps": [
+            { "id": "minutes", "label": "Totale tijd aan de telefoon, in minuten (Σ oproepen × duur)", "expression": "{allocations.appels} * {allocations.duree} + {attestations.appels} * {attestations.duree} + {situation.appels} * {situation.duree} + {paiements.appels} * {paiements.duree} + {autres.appels} * {autres.duree}" },
+            { "label": "Tijd van de oproepen over de uitkeringen ten opzichte van de totale tijd, in %", "expression": "{allocations.appels} * {allocations.duree} / {@minutes} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 24.1, "expression": "{allocations.duree} / ({allocations.duree} + {attestations.duree} + {situation.duree} + {paiements.duree} + {autres.duree}) * 100", "why": "Alleen de gemiddelde duurtijden werden vergeleken: het aantal oproepen per reden werd genegeerd." },
+            { "value": 28.5, "expression": "{allocations.appels} / ({allocations.appels} + {attestations.appels} + {situation.appels} + {paiements.appels} + {autres.appels}) * 100", "why": "Dat is het aandeel van de uitkeringen in het aantal oproepen: met de duur van elke oproep werd geen rekening gehouden." },
+            { "value": 33.5 },
+            { "value": 50.5, "expression": "{allocations.appels} * {allocations.duree} / ({@minutes} - {allocations.appels} * {allocations.duree}) * 100", "why": "De tijd voor de uitkeringen werd vergeleken met de tijd voor de andere redenen, en niet met de totale tijd." }
+          ],
+          "explanation": "De tijd die aan een reden wordt besteed, hangt af van zowel het aantal oproepen als hun duur: je moet die twee voor elke reden vermenigvuldigen en daarna de tijd voor de uitkeringen afzetten tegen de totale tijd. De oproepen over de uitkeringen zijn talrijk en eerder lang: hun aandeel in de tijd is groter dan hun aandeel in het aantal oproepen."
+        },
+        {
+          "id": "appels-projection-paiements",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "Een nieuwe onlineomgeving moet het aantal oproepen over de betaaldata met 15% per jaar doen dalen. Hoeveel oproepen zouden er na twee jaar binnenkomen in een vergelijkbaar semester?",
+          "formula": "Geprojecteerde waarde = laatste waarde × (1 + jaarlijks percentage)ⁿ, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "coef", "label": "Jaarlijkse factor (1 − 15%)", "expression": "1 - 0.15" },
+            { "label": "Projectie over twee jaar", "expression": "{paiements.appels} * {@coef} ^ 2" }
+          ],
+          "format": { "decimals": 0, "unit": "oproepen" },
+          "answer": 1,
+          "options": [
+            { "value": 2016, "expression": "{paiements.appels} * (1 - 2 * 0.15)", "why": "De twee dalingen werden opgeteld (−30%) in plaats van samengesteld: de tweede daling geldt voor een aantal dat al verminderd is." },
+            { "value": 2081 },
+            { "value": 2178, "expression": "{paiements.appels} / 1.15 ^ 2", "why": "De daling van 15% werd behandeld als het omgekeerde van een stijging met 15%: delen door 1,15 komt neer op een daling met ongeveer 13%, en niet met 15%." },
+            { "value": 2448, "expression": "{paiements.appels} * {@coef}", "why": "De daling werd maar één keer toegepast: dat is de projectie na één jaar." }
+          ],
+          "explanation": "Twee opeenvolgende dalingen van 15% geven 0,85 × 0,85 = 0,7225, ofwel −27,75%, en niet −30%: de tweede daling geldt voor een volume dat al verminderd is."
+        }
+      ]
+    },
+    {
+      "id": "energie-batiment-usages",
+      "title": "Energieverbruik van een administratief gebouw per toepassing, 2023 en 2024",
+      "theme": "Milieu en energie",
+      "display": "pie",
+      "pieColumn": "2024",
+      "rowHeader": "Toepassing",
+      "unit": "MWh",
+      "note": "Jaarlijks verbruik in megawattuur (MWh). De grafiek toont het jaar 2024.",
+      "columns": [
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "chauffage", "label": "Verwarming", "values": { "2023": 915, "2024": 820 } },
+        { "key": "informatique", "label": "Informatica", "values": { "2023": 250, "2024": 265 } },
+        { "key": "eclairage", "label": "Verlichting", "values": { "2023": 245, "2024": 210 } },
+        { "key": "ventilation", "label": "Ventilatie", "values": { "2023": 150, "2024": 145 } },
+        { "key": "eau", "label": "Warm water", "values": { "2023": 60, "2024": 60 } },
+        { "key": "total", "label": "Totaal", "total": true, "values": { "2023": 1620, "2024": 1500 } }
+      ],
+      "questions": [
+        {
+          "id": "energie-baisse-totale",
+          "skill": "variation",
+          "difficulty": 1,
+          "text": "Met hoeveel procent is het totale verbruik van het gebouw tussen 2023 en 2024 gedaald?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "baisse", "label": "Daling tussen 2023 en 2024", "expression": "{total.2023} - {total.2024}" },
+            { "label": "Daling ten opzichte van de beginwaarde (2023), in %", "expression": "{@baisse} / {total.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 4.4, "expression": "(({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} + ({informatique.2023} - {informatique.2024}) / {informatique.2023} + ({eclairage.2023} - {eclairage.2024}) / {eclairage.2023} + ({ventilation.2023} - {ventilation.2024}) / {ventilation.2023} + ({eau.2023} - {eau.2024}) / {eau.2023}) / 5 * 100", "why": "Dat is het gemiddelde van de dalingspercentages van de vijf toepassingen: het geeft het warme water hetzelfde gewicht als de verwarming." },
+            { "value": 7.4 },
+            { "value": 8.0, "expression": "{@baisse} / {total.2024} * 100", "why": "De daling werd gedeeld door de eindwaarde (2024) in plaats van door de beginwaarde (2023)." },
+            { "value": 10.4, "expression": "({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} * 100", "why": "Dat is de daling van alleen de verwarming, niet die van het totale verbruik." }
+          ],
+          "explanation": "Een procentuele verandering bereken je ten opzichte van de beginwaarde, ook bij een daling: 120 MWh minder ten opzichte van 1.620 MWh, ofwel 7,4%."
+        },
+        {
+          "id": "energie-part-chauffage",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk aandeel van het verbruik van het gebouw kwam in 2024 voor rekening van de verwarming?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "label": "Verwarming 2024 ten opzichte van het totaal 2024, in %", "expression": "{chauffage.2024} / {total.2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 50.6, "expression": "{chauffage.2024} / {total.2023} * 100", "why": "De verwarming van 2024 werd afgezet tegen het totaal van 2023: de twee waarden gaan niet over hetzelfde jaar." },
+            { "value": 54.7 },
+            { "value": 56.5, "expression": "{chauffage.2023} / {total.2023} * 100", "why": "Dat is het aandeel van de verwarming in 2023: de verkeerde kolom werd gelezen." },
+            { "value": 56.9, "expression": "{chauffage.2024} / ({total.2024} - {eau.2024}) * 100", "why": "Bij het herberekenen van het totaal werd een regel vergeten (warm water): de noemer is te klein." }
+          ],
+          "explanation": "In een cirkeldiagram lees je het aandeel van een segment af ten opzichte van het totaal van hetzelfde jaar. De verwarming blijft veruit de grootste verbruikspost."
+        },
+        {
+          "id": "energie-rapport-informatique-eclairage",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel MWh verbruikte de informatica in 2024 per MWh verbruikt door de verlichting?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Informatica 2024 ten opzichte van verlichting 2024", "expression": "{informatique.2024} / {eclairage.2024}" }
+          ],
+          "format": { "decimals": 2, "unit": "MWh" },
+          "answer": 3,
+          "options": [
+            { "value": 0.26, "expression": "({informatique.2024} - {eclairage.2024}) / {eclairage.2024}", "why": "Dat is het relatieve verschil tussen de twee toepassingen, niet hun verhouding." },
+            { "value": 0.79, "expression": "{eclairage.2024} / {informatique.2024}", "why": "De verhouding werd omgekeerd: dat is het verbruik van de verlichting per MWh informatica." },
+            { "value": 1.02, "expression": "{informatique.2023} / {eclairage.2023}", "why": "De waarden van 2023 werden gebruikt in plaats van die van 2024." },
+            { "value": 1.26 }
+          ],
+          "explanation": "De referentiegrootheid, hier de verlichting, staat in de noemer. Een verhouding groter dan 1 geeft aan dat de informatica meer verbruikt dan de verlichting."
+        },
+        {
+          "id": "energie-projection-chauffage",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Als het verbruik van de verwarming elk jaar blijft dalen met hetzelfde percentage als tussen 2023 en 2024, hoeveel zal het dan in 2027 bedragen?",
+          "formula": "Geprojecteerde waarde = laatste waarde × (1 + jaarlijks percentage)ⁿ, waarbij n het aantal jaren is",
+          "steps": [
+            { "label": "Jaarlijkse factor (2024 ÷ 2023), drie keer toegepast (2025, 2026 en 2027)", "expression": "{chauffage.2024} * ({chauffage.2024} / {chauffage.2023}) ^ 3" }
+          ],
+          "format": { "decimals": 0, "unit": "MWh" },
+          "answer": 2,
+          "options": [
+            { "value": 535, "expression": "{chauffage.2024} - 3 * ({chauffage.2023} - {chauffage.2024})", "why": "Er werd een constante daling in MWh (−95 per jaar) toegepast, terwijl de vraag over een constant percentage gaat." },
+            { "value": 565, "expression": "{chauffage.2024} * (1 - 3 * (1 - {chauffage.2024} / {chauffage.2023}))", "why": "De drie dalingen in % werden opgeteld in plaats van samengesteld." },
+            { "value": 590 },
+            { "value": 659, "expression": "{chauffage.2024} * ({chauffage.2024} / {chauffage.2023}) ^ 2", "why": "Het percentage werd maar twee keer toegepast: dat is de projectie voor 2026, niet voor 2027." }
+          ],
+          "explanation": "Een constant percentage werkt samengesteld: je vermenigvuldigt de laatste waarde zo vaak met de jaarlijkse factor (820 ÷ 915) als er jaren te projecteren zijn. Tel de jaren zorgvuldig: van 2024 tot 2027 zijn er drie opeenvolgende dalingen (2025, 2026 en 2027), en niet twee."
+        }
+      ]
+    },
+    {
+      "id": "controles-inspection",
+      "title": "Controles van een gewestelijke inspectie, per sector, 2023 en 2024",
+      "theme": "Controle en inspectie",
+      "display": "bar",
+      "rowHeader": "Sector",
+      "unit": "controles",
+      "note": "Aantal controles ter plaatse.",
+      "columns": [
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "horeca", "label": "Horeca", "values": { "2023": 420, "2024": 465 } },
+        { "key": "construction", "label": "Bouw", "values": { "2023": 380, "2024": 352 } },
+        { "key": "commerce", "label": "Detailhandel", "values": { "2023": 510, "2024": 498 } },
+        { "key": "transport", "label": "Transport", "values": { "2023": 260, "2024": 312 } },
+        { "key": "agriculture", "label": "Landbouw", "values": { "2023": 190, "2024": 205 } }
+      ],
+      "questions": [
+        {
+          "id": "controles-hausse-transport",
+          "skill": "variation",
+          "difficulty": 1,
+          "text": "Met hoeveel procent is het aantal controles in de transportsector tussen 2023 en 2024 gestegen?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "hausse", "label": "Stijging tussen 2023 en 2024", "expression": "{transport.2024} - {transport.2023}" },
+            { "label": "Stijging ten opzichte van de beginwaarde (2023), in %", "expression": "{@hausse} / {transport.2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 10.7, "expression": "({horeca.2024} - {horeca.2023}) / {horeca.2023} * 100", "why": "Dat is de stijging in de horeca: de verkeerde regel werd gelezen." },
+            { "value": 16.7, "expression": "{@hausse} / {transport.2024} * 100", "why": "De stijging werd gedeeld door de eindwaarde (2024) in plaats van door de beginwaarde (2023)." },
+            { "value": 20.0 },
+            { "value": 52.0, "expression": "{@hausse}", "why": "Dat is het verschil in aantal controles (52), ten onrechte voorgesteld als een percentage." }
+          ],
+          "explanation": "52 controles meer op een basis van 260 is een stijging met 20%. Hetzelfde verschil ten opzichte van 312 zou 16,7% geven: de basis is doorslaggevend."
+        },
+        {
+          "id": "controles-retour-construction",
+          "skill": "variation",
+          "difficulty": 2,
+          "text": "Met hoeveel procent zouden de controles in de bouw in 2025 moeten stijgen om weer op hun niveau van 2023 te komen?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "ecart", "label": "Terug te winnen controles (2023 − 2024)", "expression": "{construction.2023} - {construction.2024}" },
+            { "label": "Verschil ten opzichte van het beginniveau (2024), in %", "expression": "{@ecart} / {construction.2024} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 2.4, "expression": "({commerce.2023} - {commerce.2024}) / {commerce.2024} * 100", "why": "Deze berekening gaat over de detailhandel: de verkeerde regel werd gelezen." },
+            { "value": 7.4, "expression": "{@ecart} / {construction.2023} * 100", "why": "Dat is het dalingspercentage van 2023 tot 2024: een daling gevolgd door een stijging met hetzelfde percentage brengt je niet terug naar het vertrekpunt." },
+            { "value": 8.0 },
+            { "value": 28.0, "expression": "{@ecart}", "why": "Dat is het verschil in aantal controles (28), ten onrechte voorgesteld als een percentage." }
+          ],
+          "explanation": "Om terug te keren naar het niveau van 2023, bereken je de stijging vanaf het niveau van 2024, dat het vertrekpunt in 2025 is: 28 controles op 352. Het dalingspercentage hergebruiken (28 op 380) is een veelgemaakte fout: een daling met x% gevolgd door een stijging met x% brengt je nooit terug naar de beginwaarde."
+        },
+        {
+          "id": "controles-horeca-trente-pour-cent",
+          "skill": "ratio",
+          "difficulty": 3,
+          "text": "Hoeveel controles had de horeca in 2024 moeten tellen om 30% van alle controles te vertegenwoordigen, als de andere sectoren ongewijzigd blijven?",
+          "formula": "Als een deel p% van het totaal moet vertegenwoordigen: totaal = andere ÷ (1 − p), en deel = p × totaal",
+          "steps": [
+            { "id": "autres", "label": "Controles van de vier andere sectoren in 2024", "expression": "{construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
+            { "id": "total", "label": "Nieuw totaal: de andere sectoren vertegenwoordigen er 70% van", "expression": "{@autres} / 0.7" },
+            { "label": "Horeca: 30% van het nieuwe totaal", "expression": "0.3 * {@total}" }
+          ],
+          "format": { "decimals": 0, "unit": "controles" },
+          "answer": 3,
+          "options": [
+            { "value": 121, "expression": "0.3 * {@total} - {horeca.2024}", "why": "Dat is het aantal controles dat moet worden toegevoegd, en niet het totale aantal controles van de horeca." },
+            { "value": 410, "expression": "0.3 * {@autres}", "why": "Dat is 30% van alleen de andere sectoren: de horeca moet 30% van het geheel vertegenwoordigen, de horeca inbegrepen." },
+            { "value": 550, "expression": "0.3 * ({horeca.2024} + {@autres})", "why": "Dat is 30% van het huidige totaal: dat totaal stijgt nochtans met de controles die in de horeca worden toegevoegd." },
+            { "value": 586 }
+          ],
+          "explanation": "Als de horeca 30% van het geheel moet uitmaken, vertegenwoordigen de vier andere, ongewijzigde sectoren er 70% van. Het nieuwe totaal is dus hun som gedeeld door 0,7, en de horeca vertegenwoordigt daar 30% van. Wie 30% van het huidige totaal neemt, vergeet dat dat totaal samen met de horeca groeit."
+        },
+        {
+          "id": "controles-projection-total",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Als het totale aantal controles elk jaar met hetzelfde aantal blijft stijgen als tussen 2023 en 2024, hoeveel controles zullen er dan in 2026 worden uitgevoerd?",
+          "formula": "Geprojecteerde waarde = laatste waarde + n × jaarlijkse verandering, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "t2023", "label": "Totaal aantal controles in 2023", "expression": "{horeca.2023} + {construction.2023} + {commerce.2023} + {transport.2023} + {agriculture.2023}" },
+            { "id": "t2024", "label": "Totaal aantal controles in 2024", "expression": "{horeca.2024} + {construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
+            { "label": "Projectie over twee jaar (2025 en daarna 2026)", "expression": "{@t2024} + 2 * ({@t2024} - {@t2023})" }
+          ],
+          "format": { "decimals": 0, "unit": "controles" },
+          "answer": 2,
+          "options": [
+            { "value": 1741, "expression": "({@t2024} - {agriculture.2024}) + 2 * (({@t2024} - {agriculture.2024}) - ({@t2023} - {agriculture.2023}))", "why": "Bij het berekenen van de totalen werd een regel vergeten (landbouw)." },
+            { "value": 1904, "expression": "{@t2024} + ({@t2024} - {@t2023})", "why": "De stijging werd maar één keer opgeteld: dat is de projectie voor 2025." },
+            { "value": 1976 },
+            { "value": 1985, "expression": "{@t2024} * ({@t2024} / {@t2023}) ^ 2", "why": "Er werd een constant stijgingspercentage toegepast, terwijl de vraag over een constante stijging in aantal gaat." }
+          ],
+          "explanation": "De grafiek geeft geen totaal: tel eerst de vijf sectoren op voor elk jaar (1.760 en daarna 1.832). “Elk jaar met hetzelfde aantal” wijst op een lineaire evolutie: je telt 72 controles per jaar op, twee keer om 2026 te bereiken."
+        }
+      ]
+    },
+    {
+      "id": "antennes-dossiers-delais",
+      "title": "Behandelde dossiers en gemiddelde doorlooptijd per gewestelijk kantoor",
+      "theme": "Organisatie van de diensten",
+      "display": "table",
+      "rowHeader": "Kantoor",
+      "note": "Aantal behandelde dossiers over het jaar en gemiddelde doorlooptijd (in dagen).",
+      "columns": [
+        { "key": "dossiers", "label": "Behandelde dossiers", "unit": "dossiers" },
+        { "key": "delai", "label": "Gemiddelde doorlooptijd", "unit": "dagen", "decimals": 1 }
+      ],
+      "rows": [
+        { "key": "nord", "label": "Kantoor Noord", "values": { "dossiers": 1240, "delai": 18.5 } },
+        { "key": "sud", "label": "Kantoor Zuid", "values": { "dossiers": 860, "delai": 24.0 } },
+        { "key": "est", "label": "Kantoor Oost", "values": { "dossiers": 610, "delai": 31.5 } },
+        { "key": "ouest", "label": "Kantoor West", "values": { "dossiers": 1490, "delai": 15.0 } },
+        { "key": "centre", "label": "Kantoor Centrum", "values": { "dossiers": 300, "delai": 42.0 } }
+      ],
+      "questions": [
+        {
+          "id": "antennes-delai-moyen",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat is de gemiddelde doorlooptijd van een dossier, over alle kantoren heen?",
+          "formula": "Gewogen gemiddelde = Σ (aantal × waarde) ÷ Σ aantallen",
+          "steps": [
+            { "id": "jours", "label": "Som van de behandelingsdagen (Σ dossiers × termijn)", "expression": "{nord.dossiers} * {nord.delai} + {sud.dossiers} * {sud.delai} + {est.dossiers} * {est.delai} + {ouest.dossiers} * {ouest.delai} + {centre.dossiers} * {centre.delai}" },
+            { "id": "total", "label": "Totaal aantal dossiers", "expression": "{nord.dossiers} + {sud.dossiers} + {est.dossiers} + {ouest.dossiers} + {centre.dossiers}" },
+            { "label": "Behandelingsdagen ten opzichte van het aantal dossiers", "expression": "{@jours} / {@total}" }
+          ],
+          "format": { "decimals": 1, "unit": "dagen" },
+          "answer": 2,
+          "options": [
+            { "value": 18.9, "expression": "({@jours} - {centre.dossiers} * {centre.delai}) / {@total}", "why": "Kantoor Centrum werd vergeten in de som van de dagen, maar niet in het aantal dossiers." },
+            { "value": 20.3, "expression": "({@jours} - {centre.dossiers} * {centre.delai}) / ({@total} - {centre.dossiers})", "why": "Kantoor Centrum werd in beide sommen vergeten." },
+            { "value": 21.7 },
+            { "value": 26.2, "expression": "({nord.delai} + {sud.delai} + {est.delai} + {ouest.delai} + {centre.delai}) / 5", "why": "Dat is het ongewogen gemiddelde van de vijf doorlooptijden: de kantoren behandelen niet evenveel dossiers." }
+          ],
+          "explanation": "Kantoor Centrum heeft de langste doorlooptijd, maar behandelt weinig dossiers: in een gewogen gemiddelde weegt het weinig door. Het ongewogen gemiddelde van de doorlooptijden (26,2 dagen) overschat dus de werkelijke termijn."
+        },
+        {
+          "id": "antennes-part-ouest",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van alle dossiers heeft kantoor West behandeld?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "id": "total", "label": "Totaal aantal dossiers", "expression": "{nord.dossiers} + {sud.dossiers} + {est.dossiers} + {ouest.dossiers} + {centre.dossiers}" },
+            { "label": "Dossiers van kantoor West ten opzichte van het totaal, in %", "expression": "{ouest.dossiers} / {@total} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 27.6, "expression": "{nord.dossiers} / {@total} * 100", "why": "Dat is het aandeel van kantoor Noord: de verkeerde regel werd gelezen." },
+            { "value": 33.1 },
+            { "value": 35.5, "expression": "{ouest.dossiers} / ({@total} - {centre.dossiers}) * 100", "why": "Bij het berekenen van het totaal werd een regel vergeten (kantoor Centrum)." },
+            { "value": 49.5, "expression": "{ouest.dossiers} / ({@total} - {ouest.dossiers}) * 100", "why": "Kantoor West werd vergeleken met de andere kantoren in plaats van met het geheel: verkeerde basis voor het percentage." }
+          ],
+          "explanation": "Het totaal van de dossiers (4.500) wordt niet gegeven: tel de vijf kantoren op voor je het aandeel berekent. Kantoor West behandelt ongeveer één op de drie dossiers."
+        },
+        {
+          "id": "antennes-transfert-centre",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "De helft van de dossiers van kantoor Centrum wordt overgedragen aan kantoor West, dat ze met zijn eigen gemiddelde doorlooptijd behandelt. De andere doorlooptijden blijven ongewijzigd. Wat wordt de globale gemiddelde doorlooptijd?",
+          "formula": "Gewogen gemiddelde = Σ (aantal × waarde) ÷ Σ aantallen",
+          "steps": [
+            { "id": "jours", "label": "Som van de behandelingsdagen vóór de overdracht", "expression": "{nord.dossiers} * {nord.delai} + {sud.dossiers} * {sud.delai} + {est.dossiers} * {est.delai} + {ouest.dossiers} * {ouest.delai} + {centre.dossiers} * {centre.delai}" },
+            { "id": "total", "label": "Totaal aantal dossiers (ongewijzigd door de overdracht)", "expression": "{nord.dossiers} + {sud.dossiers} + {est.dossiers} + {ouest.dossiers} + {centre.dossiers}" },
+            { "id": "apres", "label": "Behandelingsdagen na de overdracht (150 dossiers gaan van 42 naar 15 dagen)", "expression": "{@jours} - {centre.dossiers} / 2 * ({centre.delai} - {ouest.delai})" },
+            { "label": "Nieuwe gemiddelde doorlooptijd", "expression": "{@apres} / {@total}" }
+          ],
+          "format": { "decimals": 1, "unit": "dagen" },
+          "answer": 1,
+          "options": [
+            { "value": 20.3, "expression": "({@jours} - {centre.dossiers} / 2 * {centre.delai}) / {@total}", "why": "De overgedragen dossiers werden bij kantoor Centrum weggehaald zonder bij kantoor West te worden toegevoegd." },
+            { "value": 20.8 },
+            { "value": 21.5, "expression": "({@jours} - {centre.dossiers} / 2 * ({centre.delai} - {ouest.delai})) / ({@total} - {centre.dossiers} / 2)", "why": "De overgedragen dossiers werden uit het totale aantal weggehaald, terwijl ze nog altijd worden behandeld." },
+            { "value": 21.7, "expression": "{@jours} / {@total}", "why": "Dat is de gemiddelde doorlooptijd vóór de overdracht: met de reorganisatie werd geen rekening gehouden." }
+          ],
+          "explanation": "Het totale aantal dossiers verandert niet: alleen 150 dossiers krijgen een andere doorlooptijd, van 42 naar 15 dagen. Je trekt dus 150 × 27 dagen af van de som van de dagen en deelt daarna door 4.500."
+        },
+        {
+          "id": "antennes-rapport-ouest-centre",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel dossiers behandelt kantoor West per dossier dat kantoor Centrum behandelt?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Dossiers van kantoor West ten opzichte van die van kantoor Centrum", "expression": "{ouest.dossiers} / {centre.dossiers}" }
+          ],
+          "format": { "decimals": 2 },
+          "answer": 3,
+          "options": [
+            { "value": 0.20, "expression": "{centre.dossiers} / {ouest.dossiers}", "why": "De verhouding werd omgekeerd: dat is het aantal dossiers van Centrum per dossier van West." },
+            { "value": 0.83, "expression": "{ouest.dossiers} / ({ouest.dossiers} + {centre.dossiers})", "why": "Kantoor West werd afgezet tegen de som van de twee kantoren in plaats van tegen alleen kantoor Centrum." },
+            { "value": 2.80, "expression": "{centre.delai} / {ouest.delai}", "why": "Dat is de verhouding tussen de gemiddelde doorlooptijden, niet tussen de aantallen dossiers." },
+            { "value": 4.97 }
+          ],
+          "explanation": "Lees de juiste kolom: de vraag gaat over de behandelde dossiers, niet over de doorlooptijden. “Per dossier van Centrum” is de referentie en komt in de noemer."
+        }
+      ]
+    },
+    {
+      "id": "demandes-canal",
+      "title": "Online en aan het loket ingediende aanvragen, 2019-2025",
+      "theme": "Digitale transformatie",
+      "display": "line",
+      "rowHeader": "Kanaal",
+      "unit": "duizend",
+      "note": "Aantal aanvragen dat elk jaar werd ingediend, in duizenden.",
+      "columns": [
+        { "key": "2019", "label": "2019" },
+        { "key": "2020", "label": "2020" },
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" },
+        { "key": "2025", "label": "2025" }
+      ],
+      "rows": [
+        { "key": "enligne", "label": "Online", "values": { "2019": 42, "2020": 51, "2021": 63, "2022": 70, "2023": 78, "2024": 86, "2025": 95 } },
+        { "key": "guichet", "label": "Aan het loket", "values": { "2019": 118, "2020": 104, "2021": 96, "2022": 88, "2023": 82, "2024": 77, "2025": 71 } }
+      ],
+      "questions": [
+        {
+          "id": "canal-part-en-ligne",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk aandeel van de aanvragen werd in 2025 online ingediend?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "id": "total", "label": "Totaal aantal aanvragen in 2025", "expression": "{enligne.2025} + {guichet.2025}" },
+            { "label": "Online aanvragen ten opzichte van het totaal, in %", "expression": "{enligne.2025} / {@total} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 3,
+          "options": [
+            { "value": 42.8, "expression": "{guichet.2025} / {@total} * 100", "why": "Dat is het aandeel van de aanvragen die aan het loket werden ingediend." },
+            { "value": 43.3, "expression": "({enligne.2019} + {enligne.2020} + {enligne.2021} + {enligne.2022} + {enligne.2023} + {enligne.2024} + {enligne.2025}) / ({enligne.2019} + {enligne.2020} + {enligne.2021} + {enligne.2022} + {enligne.2023} + {enligne.2024} + {enligne.2025} + {guichet.2019} + {guichet.2020} + {guichet.2021} + {guichet.2022} + {guichet.2023} + {guichet.2024} + {guichet.2025}) * 100", "why": "Dat is het onlineaandeel over de hele periode 2019-2025, en niet voor alleen het jaar 2025." },
+            { "value": 52.8, "expression": "{enligne.2024} / ({enligne.2024} + {guichet.2024}) * 100", "why": "Dat is het aandeel van de online aanvragen in 2024: het verkeerde jaar werd gelezen." },
+            { "value": 57.2 }
+          ],
+          "explanation": "Het geheel omvat de twee kanalen van hetzelfde jaar: 95 + 71 = 166 duizend aanvragen in 2025."
+        },
+        {
+          "id": "canal-points-part-en-ligne",
+          "skill": "variation",
+          "difficulty": 3,
+          "text": "Met hoeveel procentpunt is het aandeel van de online ingediende aanvragen tussen 2019 en 2025 gestegen?",
+          "formula": "Verschil in procentpunt = eindaandeel (%) − beginaandeel (%)",
+          "steps": [
+            { "id": "p2019", "label": "Onlineaandeel in 2019, in %", "expression": "{enligne.2019} / ({enligne.2019} + {guichet.2019}) * 100" },
+            { "id": "p2025", "label": "Onlineaandeel in 2025, in %", "expression": "{enligne.2025} / ({enligne.2025} + {guichet.2025}) * 100" },
+            { "label": "Verschil tussen de twee aandelen, in procentpunt", "expression": "{@p2025} - {@p2019}" }
+          ],
+          "format": { "decimals": 1, "unit": "procentpunt" },
+          "answer": 1,
+          "options": [
+            { "value": 24.3, "expression": "{@p2025} - {enligne.2020} / ({enligne.2020} + {guichet.2020}) * 100", "why": "De periode begint in 2020 in plaats van in 2019: het vertrekpunt is niet het juiste." },
+            { "value": 31.0 },
+            { "value": 31.9, "expression": "({enligne.2025} - {enligne.2019}) / ({enligne.2025} + {guichet.2025}) * 100", "why": "De stijging van het aantal online aanvragen werd afgezet tegen het totaal van 2025: dat is niet het verschil tussen twee aandelen." },
+            { "value": 33.1, "expression": "{enligne.2025} / ({enligne.2019} + {guichet.2019}) * 100 - {@p2019}", "why": "Het aandeel van 2025 werd berekend op het totaal van 2019: elk aandeel moet worden afgezet tegen het totaal van zijn eigen jaar." }
+          ],
+          "explanation": "Een verschil tussen twee percentages druk je uit in procentpunt: je berekent voor elk jaar het aandeel van de online aanvragen, telkens ten opzichte van het totaal van hetzelfde jaar, en maakt daarna het verschil. Controleer ook de twee grenzen van de periode."
+        },
+        {
+          "id": "canal-projection-guichet",
+          "skill": "extrapolation",
+          "difficulty": 3,
+          "text": "Als het aantal aanvragen aan het loket elk jaar blijft dalen met hetzelfde aantal als gemiddeld tussen 2019 en 2025, hoeveel zullen er dan in 2028 worden ontvangen?",
+          "formula": "Geprojecteerde waarde = laatste waarde + n × jaarlijkse verandering, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "baisse", "label": "Gemiddelde jaarlijkse daling tussen 2019 en 2025 (zes jaar)", "expression": "({guichet.2019} - {guichet.2025}) / 6" },
+            { "label": "Projectie over drie jaar (2026, 2027 en 2028)", "expression": "{guichet.2025} - 3 * {@baisse}" }
+          ],
+          "format": { "decimals": 1, "unit": "duizend" },
+          "answer": 0,
+          "options": [
+            { "value": 47.5 },
+            { "value": 50.9, "expression": "{guichet.2025} - 3 * ({guichet.2019} - {guichet.2025}) / 7", "why": "De daling werd gedeeld door 7 (het aantal waarden) in plaats van door 6 (het aantal intervallen tussen 2019 en 2025)." },
+            { "value": 53.0, "expression": "{guichet.2025} - 3 * ({guichet.2024} - {guichet.2025})", "why": "De daling van het laatste jaar (−6) werd doorgetrokken, en niet de gemiddelde daling." },
+            { "value": 55.1, "expression": "{guichet.2025} * ({guichet.2025} / {guichet.2019}) ^ (3 / 6)", "why": "Er werd een constant dalingspercentage toegepast, terwijl de vraag over een constante daling in aantal gaat." }
+          ],
+          "explanation": "Tussen 2019 en 2025 liggen zes intervallen van een jaar: de gemiddelde daling bedraagt 47 ÷ 6 ≈ 7,83 duizend per jaar. Delen door 7, het aantal waarden op de grafiek, is een veelgemaakte fout."
+        },
+        {
+          "id": "canal-rapport-guichet-2022",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Hoeveel aanvragen aan het loket waren er in 2022 per 10 online ingediende aanvragen?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Aanvragen aan het loket ten opzichte van de online aanvragen, per 10", "expression": "{guichet.2022} / {enligne.2022} * 10" }
+          ],
+          "format": { "decimals": 1 },
+          "answer": 2,
+          "options": [
+            { "value": 7.5, "expression": "{guichet.2025} / {enligne.2025} * 10", "why": "De waarden van 2025 werden gebruikt in plaats van die van 2022." },
+            { "value": 8.0, "expression": "{enligne.2022} / {guichet.2022} * 10", "why": "De verhouding werd omgekeerd: dat is het aantal online aanvragen per 10 aanvragen aan het loket." },
+            { "value": 12.6 },
+            { "value": 15.2, "expression": "{guichet.2021} / {enligne.2021} * 10", "why": "De waarden van 2021 werden gelezen in plaats van die van 2022." }
+          ],
+          "explanation": "“Per 10 online aanvragen” legt de referentie vast: je berekent loket ÷ online en vermenigvuldigt daarna met 10. Lees de waarden af bij het juiste jaar op de grafiek, of toon de tabel."
+        }
+      ]
+    },
+    {
+      "id": "absenteisme-directions",
+      "title": "Absenteïsme in twee directies, 2020-2024",
+      "theme": "Personeelsbeleid",
+      "display": "line",
+      "rowHeader": "Directie",
+      "unit": "%",
+      "decimals": 1,
+      "note": "Absenteïsme in procent van de werkdagen. In 2024 telt de directie Operaties 360 personeelsleden en de directie Ondersteuning 140 personeelsleden.",
+      "columns": [
+        { "key": "2020", "label": "2020" },
+        { "key": "2021", "label": "2021" },
+        { "key": "2022", "label": "2022" },
+        { "key": "2023", "label": "2023" },
+        { "key": "2024", "label": "2024" }
+      ],
+      "rows": [
+        { "key": "operations", "label": "Directie Operaties", "values": { "2020": 6.4, "2021": 6.9, "2022": 7.5, "2023": 7.1, "2024": 6.6 } },
+        { "key": "support", "label": "Directie Ondersteuning", "values": { "2020": 2.8, "2021": 3.1, "2022": 3.6, "2023": 3.9, "2024": 4.2 } }
+      ],
+      "questions": [
+        {
+          "id": "absenteisme-hausse-support",
+          "skill": "variation",
+          "difficulty": 2,
+          "text": "Met hoeveel procent is het absenteïsme van de directie Ondersteuning tussen 2020 en 2024 relatief gestegen?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "points", "label": "Stijging van het percentage, in procentpunt", "expression": "{support.2024} - {support.2020}" },
+            { "label": "Stijging ten opzichte van het beginpercentage (2020), in %", "expression": "{@points} / {support.2020} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 3,
+          "options": [
+            { "value": 1.4, "expression": "{@points}", "why": "Dat is de stijging in procentpunt (1,4 procentpunt), en niet de relatieve stijging van het percentage." },
+            { "value": 3.1, "expression": "({operations.2024} - {operations.2020}) / {operations.2020} * 100", "why": "Dat is de stijging van het percentage van de directie Operaties: de verkeerde lijn werd gelezen." },
+            { "value": 33.3, "expression": "{@points} / {support.2024} * 100", "why": "De stijging werd gedeeld door het eindpercentage (2024) in plaats van door het beginpercentage (2020)." },
+            { "value": 50.0 }
+          ],
+          "explanation": "Een percentage dat van 2,8% naar 4,2% gaat, stijgt met 1,4 procentpunt, maar relatief met 50%. De vraag luidt “met hoeveel procent”: dat is de relatieve verandering."
+        },
+        {
+          "id": "absenteisme-moyenne-2024",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat was in 2024 het gemiddelde absenteïsme van alle personeelsleden van de twee directies samen?",
+          "formula": "Gewogen gemiddelde = Σ (aantal × waarde) ÷ Σ aantallen",
+          "steps": [
+            { "label": "Gemiddelde gewogen met het aantal personeelsleden (360 en 140)", "expression": "({operations.2024} * 360 + {support.2024} * 140) / (360 + 140)" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 4.9, "expression": "({operations.2024} * 140 + {support.2024} * 360) / (360 + 140)", "why": "De aantallen personeelsleden van de twee directies werden omgewisseld." },
+            { "value": 5.4, "expression": "({operations.2024} + {support.2024}) / 2", "why": "Dat is het ongewogen gemiddelde van de twee percentages: de directie Operaties telt veel meer personeelsleden." },
+            { "value": 5.9 },
+            { "value": 6.2, "expression": "({operations.2023} * 360 + {support.2023} * 140) / (360 + 140)", "why": "De percentages van 2023 werden gebruikt in plaats van die van 2024: het verkeerde jaar werd gelezen." }
+          ],
+          "explanation": "Het percentage van het geheel ligt dicht bij dat van de grootste directie. Elk percentage wordt gewogen met het aantal personeelsleden: (6,6 × 360 + 4,2 × 140) ÷ 500."
+        },
+        {
+          "id": "absenteisme-projection-operations",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "Als het percentage van de directie Operaties elk jaar blijft dalen met hetzelfde aantal procentpunt als tussen 2023 en 2024, hoeveel zal het dan in 2026 bedragen?",
+          "formula": "Geprojecteerde waarde = laatste waarde + n × jaarlijkse verandering, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "baisse", "label": "Jaarlijkse daling, in procentpunt", "expression": "{operations.2023} - {operations.2024}" },
+            { "label": "Projectie over twee jaar (2025 en 2026)", "expression": "{operations.2024} - 2 * {@baisse}" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 1,
+          "options": [
+            { "value": 5.1, "expression": "{operations.2024} - 3 * {@baisse}", "why": "Er werden drie jaar geteld in plaats van twee: dat is de projectie voor 2027." },
+            { "value": 5.6 },
+            { "value": 5.7, "expression": "{operations.2024} * ({operations.2024} / {operations.2023}) ^ 2", "why": "Er werd een constante relatieve daling (in %) toegepast, terwijl de vraag over een constante daling in procentpunt gaat." },
+            { "value": 6.1, "expression": "{operations.2024} - {@baisse}", "why": "De daling werd maar één keer toegepast: dat is de projectie voor 2025." }
+          ],
+          "explanation": "“Hetzelfde aantal procentpunt” wijst op een lineaire daling van 0,5 procentpunt per jaar: 6,6 − 2 × 0,5 = 5,6%."
+        },
+        {
+          "id": "absenteisme-rapport-2022",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Hoeveel keer zo hoog was het absenteïsme van de directie Operaties in 2022 als dat van de directie Ondersteuning?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "label": "Percentage van Operaties ten opzichte van het percentage van Ondersteuning (2022)", "expression": "{operations.2022} / {support.2022}" }
+          ],
+          "format": { "decimals": 2 },
+          "answer": 2,
+          "options": [
+            { "value": 0.48, "expression": "{support.2022} / {operations.2022}", "why": "De verhouding werd omgekeerd: dat is het percentage van Ondersteuning ten opzichte van dat van Operaties." },
+            { "value": 1.57, "expression": "{operations.2024} / {support.2024}", "why": "De waarden van 2024 werden gebruikt in plaats van die van 2022." },
+            { "value": 2.08 },
+            { "value": 3.90, "expression": "{operations.2022} - {support.2022}", "why": "Dat is het verschil in procentpunt tussen de twee percentages, niet hun verhouding." }
+          ],
+          "explanation": "“Hoeveel keer zo hoog” vraagt om een verhouding, niet om een verschil: 7,5 ÷ 3,6 ≈ 2,08. Het verschil tussen de twee percentages (3,9 procentpunt) beantwoordt een andere vraag."
+        }
+      ]
+    },
+    {
+      "id": "subsides-sport",
+      "title": "Gemeentelijke subsidies aan sportverenigingen, per categorie",
+      "theme": "Sport en jeugd",
+      "display": "table",
+      "rowHeader": "Categorie",
+      "note": "Ingediende aanvragen, goedgekeurde aanvragen en totaal toegekend bedrag (in duizend euro).",
+      "columns": [
+        { "key": "demandes", "label": "Aanvragen", "unit": "aanvragen" },
+        { "key": "acceptees", "label": "Goedgekeurd", "unit": "aanvragen" },
+        { "key": "montant", "label": "Toegekend bedrag", "unit": "duizend euro", "decimals": 1 }
+      ],
+      "rows": [
+        { "key": "jeunes", "label": "Jeugdclubs", "values": { "demandes": 120, "acceptees": 84, "montant": 336.0 } },
+        { "key": "adapte", "label": "G-sport", "values": { "demandes": 45, "acceptees": 39, "montant": 175.5 } },
+        { "key": "feminin", "label": "Vrouwensport", "values": { "demandes": 60, "acceptees": 36, "montant": 126.0 } },
+        { "key": "quartier", "label": "Buurtsport", "values": { "demandes": 150, "acceptees": 75, "montant": 187.5 } },
+        { "key": "evenements", "label": "Sportevenementen", "values": { "demandes": 75, "acceptees": 30, "montant": 165.0 } },
+        { "key": "total", "label": "Totaal", "total": true, "values": { "demandes": 450, "acceptees": 264, "montant": 990.0 } }
+      ],
+      "questions": [
+        {
+          "id": "subsides-taux-adapte",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Wat is het goedkeuringspercentage van de aanvragen in de categorie “G-sport”?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "label": "Goedgekeurde aanvragen ten opzichte van de ingediende aanvragen, in %", "expression": "{adapte.acceptees} / {adapte.demandes} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 3,
+          "options": [
+            { "value": 8.7, "expression": "{adapte.acceptees} / {total.demandes} * 100", "why": "De goedgekeurde aanvragen werden afgezet tegen alle aanvragen, over alle categorieën heen." },
+            { "value": 14.8, "expression": "{adapte.acceptees} / {total.acceptees} * 100", "why": "Dat is het aandeel van G-sport in de goedgekeurde aanvragen, niet het goedkeuringspercentage ervan." },
+            { "value": 58.7, "expression": "{total.acceptees} / {total.demandes} * 100", "why": "Dat is het goedkeuringspercentage van alle categorieën samen, en niet dat van G-sport." },
+            { "value": 86.7 }
+          ],
+          "explanation": "Een goedkeuringspercentage vergelijkt, voor eenzelfde categorie, de goedgekeurde aanvragen met de ingediende aanvragen: 39 op 45."
+        },
+        {
+          "id": "subsides-montant-moyen",
+          "skill": "moyenne-ponderee",
+          "difficulty": 2,
+          "text": "Wat is het gemiddelde bedrag dat per goedgekeurde aanvraag werd toegekend, over alle categorieën heen?",
+          "formula": "Gemiddeld bedrag = totaal toegekend bedrag ÷ totaal aantal goedgekeurde aanvragen",
+          "steps": [
+            { "label": "Totaal bedrag ten opzichte van het totale aantal goedgekeurde aanvragen", "expression": "{total.montant} / {total.acceptees}" }
+          ],
+          "format": { "decimals": 2, "unit": "duizend euro" },
+          "answer": 2,
+          "options": [
+            { "value": 2.20, "expression": "{total.montant} / {total.demandes}", "why": "Het bedrag werd verdeeld over alle ingediende aanvragen, ook die welke werden geweigerd." },
+            { "value": 3.53, "expression": "({total.montant} - {evenements.montant}) / ({total.acceptees} - {evenements.acceptees})", "why": "De categorie “Sportevenementen” werd vergeten." },
+            { "value": 3.75 },
+            { "value": 4.00, "expression": "({jeunes.montant} / {jeunes.acceptees} + {adapte.montant} / {adapte.acceptees} + {feminin.montant} / {feminin.acceptees} + {quartier.montant} / {quartier.acceptees} + {evenements.montant} / {evenements.acceptees}) / 5", "why": "Dat is het ongewogen gemiddelde van de gemiddelde bedragen van de vijf categorieën: het houdt geen rekening met het aantal goedgekeurde aanvragen in elke categorie." }
+          ],
+          "explanation": "Het globale gemiddelde bedrag bereken je rechtstreeks uit de totalen: 990 duizend euro voor 264 goedgekeurde aanvragen. Het gemiddelde van de gemiddelden per categorie (4,00 duizend euro) overschat het resultaat, omdat de categorieën met hoge bedragen weinig dossiers tellen."
+        },
+        {
+          "id": "subsides-part-jeunes",
+          "skill": "ratio",
+          "difficulty": 1,
+          "text": "Welk aandeel van het totaal toegekende bedrag gaat naar de jeugdclubs?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "label": "Bedrag van de jeugdclubs ten opzichte van het totale bedrag, in %", "expression": "{jeunes.montant} / {total.montant} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 26.7, "expression": "{jeunes.demandes} / {total.demandes} * 100", "why": "Dat is het aandeel van de jeugdclubs in de ingediende aanvragen, niet in het toegekende bedrag." },
+            { "value": 31.8, "expression": "{jeunes.acceptees} / {total.acceptees} * 100", "why": "Dat is het aandeel van de jeugdclubs in de goedgekeurde aanvragen, niet in het toegekende bedrag." },
+            { "value": 33.9 },
+            { "value": 51.4, "expression": "{jeunes.montant} / ({total.montant} - {jeunes.montant}) * 100", "why": "De jeugdclubs werden vergeleken met de andere categorieën in plaats van met het totaal: verkeerde basis voor het percentage." }
+          ],
+          "explanation": "De tabel bevat drie grootheden: aanvragen, goedgekeurde aanvragen en bedragen. Ga na over welke grootheid de vraag gaat voor je begint te rekenen: hier het toegekende bedrag."
+        },
+        {
+          "id": "subsides-projection-moyenne",
+          "skill": "ratio",
+          "difficulty": 3,
+          "text": "Volgend jaar blijft het totale bedrag 990 duizend euro, maar het aantal goedgekeurde aanvragen stijgt met 10%. Wat wordt het gemiddelde bedrag per goedgekeurde aanvraag?",
+          "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
+          "steps": [
+            { "id": "acceptees", "label": "Goedgekeurde aanvragen volgend jaar (+10%)", "expression": "{total.acceptees} * 1.1" },
+            { "label": "Totaal bedrag ten opzichte van het nieuwe aantal goedgekeurde aanvragen", "expression": "{total.montant} / {@acceptees}" }
+          ],
+          "format": { "decimals": 2, "unit": "duizend euro" },
+          "answer": 1,
+          "options": [
+            { "value": 3.38, "expression": "{total.montant} / {total.acceptees} * 0.9", "why": "Het huidige gemiddelde bedrag werd met 10% verminderd: delen door 1,1 is niet hetzelfde als 10% aftrekken." },
+            { "value": 3.41 },
+            { "value": 3.75, "expression": "{total.montant} / {total.acceptees}", "why": "Dat is het huidige gemiddelde bedrag: met de stijging van het aantal goedgekeurde aanvragen werd geen rekening gehouden." },
+            { "value": 4.13, "expression": "{total.montant} / {total.acceptees} * 1.1", "why": "Het gemiddelde bedrag werd met 10% verhoogd in plaats van gedeeld door 1,1." }
+          ],
+          "explanation": "Als het aantal aanvragen bij een constant budget met 1,1 wordt vermenigvuldigd, wordt het gemiddelde bedrag gedeeld door 1,1, wat neerkomt op een daling met ongeveer 9,1%, en niet met 10%."
+        }
+      ]
+    },
+    {
+      "id": "restaurant-administratif",
+      "title": "Verkochte maaltijden en gemiddelde prijs per formule in het restaurant van een administratie, 2023 en 2024",
+      "theme": "Beheer van de diensten",
+      "display": "table",
+      "rowHeader": "Formule",
+      "note": "Aantal verkochte maaltijden over het jaar en gemiddelde betaalde prijs per maaltijd (in euro).",
+      "columns": [
+        { "key": "repas2023", "label": "Maaltijden 2023", "unit": "maaltijden" },
+        { "key": "prix2023", "label": "Prijs 2023", "unit": "€", "decimals": 2 },
+        { "key": "repas2024", "label": "Maaltijden 2024", "unit": "maaltijden" },
+        { "key": "prix2024", "label": "Prijs 2024", "unit": "€", "decimals": 2 }
+      ],
+      "rows": [
+        { "key": "plat", "label": "Dagschotel", "values": { "repas2023": 14200, "prix2023": 6.20, "repas2024": 15100, "prix2024": 6.50 } },
+        { "key": "menu", "label": "Volledig menu", "values": { "repas2023": 6800, "prix2023": 9.40, "repas2024": 6300, "prix2024": 9.90 } },
+        { "key": "salade", "label": "Salade", "values": { "repas2023": 5100, "prix2023": 5.80, "repas2024": 6400, "prix2024": 6.10 } },
+        { "key": "sandwich", "label": "Broodje", "values": { "repas2023": 9400, "prix2023": 3.90, "repas2024": 8900, "prix2024": 4.10 } }
+      ],
+      "questions": [
+        {
+          "id": "restaurant-prix-moyen-repartition-2023",
+          "skill": "moyenne-ponderee",
+          "difficulty": 3,
+          "text": "Wat zou in 2024 de gemiddelde betaalde prijs per maaltijd zijn geweest als de verdeling van de verkoop over de formules dezelfde was gebleven als in 2023?",
+          "formula": "Gewogen gemiddelde = Σ (aantal × waarde) ÷ Σ aantallen",
+          "steps": [
+            { "id": "recettes", "label": "Verkochte maaltijden in 2023 × prijzen van 2024 (Σ)", "expression": "{plat.repas2023} * {plat.prix2024} + {menu.repas2023} * {menu.prix2024} + {salade.repas2023} * {salade.prix2024} + {sandwich.repas2023} * {sandwich.prix2024}" },
+            { "id": "repas", "label": "Aantal verkochte maaltijden in 2023", "expression": "{plat.repas2023} + {menu.repas2023} + {salade.repas2023} + {sandwich.repas2023}" },
+            { "label": "Bedrag ten opzichte van het aantal maaltijden", "expression": "{@recettes} / {@repas}" }
+          ],
+          "format": { "decimals": 2, "unit": "€" },
+          "answer": 2,
+          "options": [
+            { "value": 6.15, "expression": "({plat.repas2023} * {plat.prix2023} + {menu.repas2023} * {menu.prix2023} + {salade.repas2023} * {salade.prix2023} + {sandwich.repas2023} * {sandwich.prix2023}) / {@repas}", "why": "Dat is de gemiddelde prijs die in 2023 werkelijk werd betaald: de prijzen van 2023 werden gebruikt in plaats van die van 2024." },
+            { "value": 6.43, "expression": "({plat.repas2024} * {plat.prix2024} + {menu.repas2024} * {menu.prix2024} + {salade.repas2024} * {salade.prix2024} + {sandwich.repas2024} * {sandwich.prix2024}) / ({plat.repas2024} + {menu.repas2024} + {salade.repas2024} + {sandwich.repas2024})", "why": "Dat is de gemiddelde prijs die in 2024 werkelijk werd betaald: de hoeveelheden van 2024 werden voor de weging gebruikt in plaats van die van 2023." },
+            { "value": 6.46 },
+            { "value": 6.65, "expression": "({plat.prix2024} + {menu.prix2024} + {salade.prix2024} + {sandwich.prix2024}) / 4", "why": "Dat is het ongewogen gemiddelde van de vier prijzen van 2024: de formules worden niet in dezelfde hoeveelheid verkocht." }
+          ],
+          "explanation": "De vraag legt de weging vast (de verkochte hoeveelheden in 2023) en laat de prijzen variëren (die van 2024). Je vermenigvuldigt dus elke prijs van 2024 met het aantal maaltijden van dezelfde formule dat in 2023 werd verkocht, en deelt daarna door het totaal van de maaltijden van 2023. Die berekening isoleert het effect van de prijsstijgingen, zonder het effect van de gewijzigde gewoonten van de klanten."
+        },
+        {
+          "id": "restaurant-variation-recette-menus",
+          "skill": "variation",
+          "difficulty": 3,
+          "text": "Met hoeveel procent is de opbrengst van de volledige menu’s tussen 2023 en 2024 veranderd?",
+          "formula": "Procentuele verandering (%) = (eindwaarde − beginwaarde) ÷ beginwaarde × 100",
+          "steps": [
+            { "id": "r2023", "label": "Opbrengst van de menu’s in 2023 (maaltijden × prijs)", "expression": "{menu.repas2023} * {menu.prix2023}" },
+            { "id": "r2024", "label": "Opbrengst van de menu’s in 2024 (maaltijden × prijs)", "expression": "{menu.repas2024} * {menu.prix2024}" },
+            { "label": "Verandering ten opzichte van de opbrengst van 2023, in %", "expression": "({@r2024} - {@r2023}) / {@r2023} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%", "signed": true },
+          "answer": 1,
+          "options": [
+            { "value": -7.4, "expression": "({menu.repas2024} - {menu.repas2023}) / {menu.repas2023} * 100", "why": "Dat is de verandering van het aantal verkochte menu’s: de prijsstijging werd vergeten." },
+            { "value": -2.4 },
+            { "value": -2.0, "expression": "({menu.prix2024} - {menu.prix2023}) / {menu.prix2023} * 100 + ({menu.repas2024} - {menu.repas2023}) / {menu.repas2023} * 100", "why": "De twee percentages (prijs en hoeveelheid) werden opgeteld, terwijl ze met elkaar worden vermenigvuldigd: de opbrengst is een product." },
+            { "value": 5.3, "expression": "({menu.prix2024} - {menu.prix2023}) / {menu.prix2023} * 100", "why": "Dat is de verandering van de prijs van het menu: de daling van het aantal verkochte menu’s werd vergeten." }
+          ],
+          "explanation": "De opbrengst is het product van het aantal menu’s en hun prijs. De prijs is gestegen, maar er werden duidelijk minder menu’s verkocht: je moet de opbrengst van elk jaar berekenen voor je de verandering ervan meet. De twee percentages optellen geeft een waarde die in de buurt komt, maar fout is, want veranderingspercentages combineer je door de factoren (1 + percentage) met elkaar te vermenigvuldigen."
+        },
+        {
+          "id": "restaurant-part-salades",
+          "skill": "ratio",
+          "difficulty": 2,
+          "text": "Welk aandeel van de verkochte maaltijden vertegenwoordigden de salades in 2024?",
+          "formula": "Aandeel (%) = waarde van het deel ÷ waarde van het geheel × 100",
+          "steps": [
+            { "id": "repas", "label": "Aantal verkochte maaltijden in 2024", "expression": "{plat.repas2024} + {menu.repas2024} + {salade.repas2024} + {sandwich.repas2024}" },
+            { "label": "Salades ten opzichte van het totaal van de maaltijden, in %", "expression": "{salade.repas2024} / {@repas} * 100" }
+          ],
+          "format": { "decimals": 1, "unit": "%" },
+          "answer": 2,
+          "options": [
+            { "value": 14.4, "expression": "{salade.repas2023} / ({plat.repas2023} + {menu.repas2023} + {salade.repas2023} + {sandwich.repas2023}) * 100", "why": "Dat is het aandeel van de salades in 2023: het verkeerde jaar werd gelezen." },
+            { "value": 16.5, "expression": "{salade.repas2024} * {salade.prix2024} / ({plat.repas2024} * {plat.prix2024} + {menu.repas2024} * {menu.prix2024} + {salade.repas2024} * {salade.prix2024} + {sandwich.repas2024} * {sandwich.prix2024}) * 100", "why": "Dat is het aandeel van de salades in de opbrengst, en niet in het aantal maaltijden." },
+            { "value": 17.4 },
+            { "value": 23.0, "expression": "{salade.repas2024} / ({@repas} - {sandwich.repas2024}) * 100", "why": "Bij het berekenen van het totaal werd een regel vergeten (broodjes)." }
+          ],
+          "explanation": "De vraag gaat over het aantal maaltijden: je zet de 6.400 salades af tegen de 36.700 maaltijden die in 2024 werden verkocht, zonder rekening te houden met de prijzen."
+        },
+        {
+          "id": "restaurant-projection-recette-salades",
+          "skill": "extrapolation",
+          "difficulty": 2,
+          "text": "Naar verwachting stijgt het aantal verkochte salades na 2024 met 10% per jaar, terwijl de prijs die van 2024 blijft. Hoeveel zullen de salades in 2026 opbrengen?",
+          "formula": "Geprojecteerde waarde = laatste waarde × (1 + jaarlijks percentage)ⁿ, waarbij n het aantal jaren is",
+          "steps": [
+            { "id": "salades", "label": "Verkochte salades in 2026 (twee stijgingen van 10%)", "expression": "{salade.repas2024} * 1.1 ^ 2" },
+            { "label": "Opbrengst tegen de prijs van 2024", "expression": "{@salades} * {salade.prix2024}" }
+          ],
+          "format": { "decimals": 0, "unit": "€" },
+          "answer": 3,
+          "options": [
+            { "value": 42944, "expression": "{salade.repas2024} * 1.1 * {salade.prix2024}", "why": "De stijging werd maar één keer toegepast: dat is de verwachte opbrengst voor 2025." },
+            { "value": 44915, "expression": "{@salades} * {salade.prix2023}", "why": "De prijs van 2023 werd gebruikt, terwijl de vraag de prijs van 2024 behoudt." },
+            { "value": 46848, "expression": "{salade.repas2024} * 1.2 * {salade.prix2024}", "why": "De twee stijgingen van 10% werden opgeteld (+20%) in plaats van samengesteld." },
+            { "value": 47238 }
+          ],
+          "explanation": "Twee opeenvolgende stijgingen van 10% stapelen zich op: het aantal salades wordt vermenigvuldigd met 1,1 en daarna nog eens met 1,1, dus met 1,21, en niet met 1,2. Daarna vermenigvuldig je dat aantal met de prijs van 2024, die volgens de vraag ongewijzigd blijft."
+        }
+      ]
+    }
+  ]
+}
