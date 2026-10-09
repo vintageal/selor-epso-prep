@@ -12,8 +12,8 @@
       <a href="#top" class="flex items-center gap-2.5 rounded-md">
         <img src="{{root}}assets/img/favicon.svg" alt="" width="36" height="36" class="h-9 w-9">
         <span class="leading-tight">
-          <span class="block text-base font-bold tracking-tight text-brand-900">{{t:site.brand}}</span>
-          <span class="block text-xs text-slate-500">{{t:site.tagline}}</span>
+          <span class="block text-base font-bold tracking-tight text-brand-900 max-[359px]:text-sm">{{t:site.brand}}</span>
+          <span class="block text-xs text-slate-500 max-[359px]:hidden">{{t:site.tagline}}</span>
         </span>
       </a>
 
@@ -278,7 +278,7 @@
             </div>
           </div>
           <a href="{{home}}progression/index.html" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800">
-            Ma progression
+            {{t:site.myProgress}}
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </aside>

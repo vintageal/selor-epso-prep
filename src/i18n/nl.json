@@ -1,6 +1,6 @@
 {
   "site": {
-    "brand": "SELOR &amp; EPSO Prep",
+    "brand": "Oefentests SELOR &amp; EPSO",
     "tagline": "Redeneertests",
     "skipLink": "Naar de hoofdinhoud",
     "navLabel": "Navigatie",
@@ -19,47 +19,47 @@
     }
   },
   "meta": {
-    "ogImageAlt": "SELOR &amp; EPSO Prep: gratis oefenen voor logica- en redeneertests",
+    "ogImageAlt": "Oefentests SELOR &amp; EPSO: gratis oefenen voor logica- en redeneertests",
     "home": {
-      "title": "SELOR &amp; EPSO Prep — Gratis oefenen voor redeneertests",
+      "title": "Oefentests SELOR &amp; EPSO — Gratis oefenen voor redeneertests",
       "description": "Oefen gratis voor de logica- en redeneertests bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: abstract, verbaal en numeriek redeneren, situationeel beoordelen en een examenmodus met tijdslimiet.",
-      "ogTitle": "SELOR &amp; EPSO Prep — Redeneertests",
+      "ogTitle": "Oefentests SELOR &amp; EPSO — Redeneertests",
       "ogDescription": "Gratis oefenen voor tests in abstract, verbaal en numeriek redeneren en situationeel beoordelen, met een examenmodus met tijdslimiet."
     },
     "abstrait": {
-      "title": "Abstract redeneren — SELOR &amp; EPSO Prep",
+      "title": "Abstract redeneren — Oefentests SELOR &amp; EPSO",
       "description": "Oefen gratis abstract redeneren (reeksen figuren) voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, met meteen de oplossing en uitleg.",
-      "ogTitle": "Abstract redeneren — SELOR &amp; EPSO Prep",
+      "ogTitle": "Abstract redeneren — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Oefen gratis abstract redeneren (reeksen figuren) voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, met meteen de oplossing en uitleg."
     },
     "verbal": {
-      "title": "Verbaal redeneren — SELOR &amp; EPSO Prep",
+      "title": "Verbaal redeneren — Oefentests SELOR &amp; EPSO",
       "description": "Oefen gratis verbaal redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: teksten, beweringen “Waar / Niet waar / Kan niet worden bepaald” en verbeteringen die de exacte zin uit de tekst citeren.",
-      "ogTitle": "Verbaal redeneren — SELOR &amp; EPSO Prep",
+      "ogTitle": "Verbaal redeneren — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Oefen gratis verbaal redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: teksten, beweringen “Waar / Niet waar / Kan niet worden bepaald” en verbeteringen die de exacte zin uit de tekst citeren."
     },
     "numerique": {
-      "title": "Numeriek redeneren — SELOR &amp; EPSO Prep",
+      "title": "Numeriek redeneren — Oefentests SELOR &amp; EPSO",
       "description": "Oefen gratis numeriek redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: tabellen en grafieken, procentuele veranderingen, verhoudingen, gewogen gemiddelden en extrapolaties, met de berekening stap voor stap uitgelegd.",
-      "ogTitle": "Numeriek redeneren — SELOR &amp; EPSO Prep",
+      "ogTitle": "Numeriek redeneren — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Oefen gratis numeriek redeneren voor de tests van Werkenvoor.be (vroeger Selor) en EPSO: tabellen en grafieken, procentuele veranderingen, verhoudingen, gewogen gemiddelden en extrapolaties, met de berekening stap voor stap uitgelegd."
     },
     "jugement": {
-      "title": "Situationeel beoordelen — SELOR &amp; EPSO Prep",
+      "title": "Situationeel beoordelen — Oefentests SELOR &amp; EPSO",
       "description": "Oefen gratis voor de situationele beoordelingstests (SJT) bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: realistische werksituaties, keuze van de meest en de minst gepaste actie, uitleg bij elke actie en bij de getoetste competenties.",
-      "ogTitle": "Situationeel beoordelen — SELOR &amp; EPSO Prep",
+      "ogTitle": "Situationeel beoordelen — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Oefen gratis voor de situationele beoordelingstests (SJT) bij de selecties van Werkenvoor.be (vroeger Selor) en EPSO: realistische werksituaties, keuze van de meest en de minst gepaste actie, uitleg bij elke actie en bij de getoetste competenties."
     },
     "examen": {
-      "title": "Examenmodus — SELOR &amp; EPSO Prep",
+      "title": "Examenmodus — Oefentests SELOR &amp; EPSO",
       "description": "Leg een getimed proefexamen af: een mix van abstract, verbaal en numeriek redeneren en situationeel beoordelen, in omstandigheden zoals bij de tests van Werkenvoor.be (vroeger Selor) en EPSO, met een uitgebreide verbetering op het einde.",
-      "ogTitle": "Examenmodus — SELOR &amp; EPSO Prep",
+      "ogTitle": "Examenmodus — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Leg een getimed proefexamen af: een mix van abstract, verbaal en numeriek redeneren en situationeel beoordelen, in omstandigheden zoals bij de tests van Werkenvoor.be (vroeger Selor) en EPSO, met een uitgebreide verbetering op het einde."
     },
     "progression": {
-      "title": "Mijn voortgang — SELOR &amp; EPSO Prep",
+      "title": "Mijn voortgang — Oefentests SELOR &amp; EPSO",
       "description": "Volg je voortgang voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, zonder registratie: score per module, evolutie van je proefexamens, je zwakke punt en het herbekijken van je fouten. Je resultaten blijven op je toestel.",
-      "ogTitle": "Mijn voortgang — SELOR &amp; EPSO Prep",
+      "ogTitle": "Mijn voortgang — Oefentests SELOR &amp; EPSO",
       "ogDescription": "Volg je voortgang voor de tests van Werkenvoor.be (vroeger Selor) en EPSO, zonder registratie: score per module, evolutie van je proefexamens, je zwakke punt en het herbekijken van je fouten. Je resultaten blijven op je toestel."
     }
   },
@@ -118,6 +118,7 @@
     "intro": "Een proefexamen in de omstandigheden van de echte test: gemengde vragen, beperkte tijd en geen verbetering vóór het einde.",
     "statQuestions": "Vragen",
     "statDuration": "Duur",
+    "statDurationValue": "40 min",
     "statSections": "Onderdelen",
     "mix": "10 vragen over abstract redeneren, 10 over verbaal redeneren, 10 over numeriek redeneren en 5 werksituaties, in willekeurige volgorde.",
     "rules": {

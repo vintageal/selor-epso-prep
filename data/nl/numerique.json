@@ -153,7 +153,7 @@
           "steps": [
             { "label": "Onthaal 2024 gedeeld door Personeelszaken 2024", "expression": "{accueil.2024} / {rh.2024}" }
           ],
-          "format": { "decimals": 1, "unit": "personeelsleden" },
+          "format": { "decimals": 1, "unit": "VTE" },
           "answer": 1,
           "options": [
             { "value": 0.3, "expression": "{rh.2024} / {accueil.2024}", "why": "De verhouding werd omgekeerd: dat is het aantal personeelsleden van Personeelszaken per personeelslid van het onthaal." },
@@ -230,7 +230,7 @@
           "id": "permis-taux-traitement",
           "skill": "ratio",
           "difficulty": 1,
-          "text": "Welk percentage van de aanvragen die in 2023 werden ontvangen, werd dat jaar behandeld?",
+          "text": "Wat is het behandelingspercentage in 2023, dat wil zeggen het aantal aanvragen dat in 2023 werd behandeld ten opzichte van het aantal aanvragen dat in 2023 werd ontvangen?",
           "formula": "Behandelingspercentage (%) = behandelde aanvragen ÷ ontvangen aanvragen × 100",
           "steps": [
             { "label": "Behandelde aanvragen in 2023 ten opzichte van de ontvangen aanvragen in 2023, in %", "expression": "{traitees.2023} / {recues.2023} * 100" }
@@ -659,11 +659,11 @@
     },
     {
       "id": "energie-batiment-usages",
-      "title": "Energieverbruik van een administratief gebouw per toepassing, 2023 en 2024",
+      "title": "Energieverbruik van een administratief gebouw per verbruikspost, 2023 en 2024",
       "theme": "Milieu en energie",
       "display": "pie",
       "pieColumn": "2024",
-      "rowHeader": "Toepassing",
+      "rowHeader": "Verbruikspost",
       "unit": "MWh",
       "note": "Jaarlijks verbruik in megawattuur (MWh). De grafiek toont het jaar 2024.",
       "columns": [
@@ -692,7 +692,7 @@
           "format": { "decimals": 1, "unit": "%" },
           "answer": 1,
           "options": [
-            { "value": 4.4, "expression": "(({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} + ({informatique.2023} - {informatique.2024}) / {informatique.2023} + ({eclairage.2023} - {eclairage.2024}) / {eclairage.2023} + ({ventilation.2023} - {ventilation.2024}) / {ventilation.2023} + ({eau.2023} - {eau.2024}) / {eau.2023}) / 5 * 100", "why": "Dat is het gemiddelde van de dalingspercentages van de vijf toepassingen: het geeft het warme water hetzelfde gewicht als de verwarming." },
+            { "value": 4.4, "expression": "(({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} + ({informatique.2023} - {informatique.2024}) / {informatique.2023} + ({eclairage.2023} - {eclairage.2024}) / {eclairage.2023} + ({ventilation.2023} - {ventilation.2024}) / {ventilation.2023} + ({eau.2023} - {eau.2024}) / {eau.2023}) / 5 * 100", "why": "Dat is het gemiddelde van de dalingspercentages van de vijf verbruiksposten: het geeft het warme water hetzelfde gewicht als de verwarming." },
             { "value": 7.4 },
             { "value": 8.0, "expression": "{@baisse} / {total.2024} * 100", "why": "De daling werd gedeeld door de eindwaarde (2024) in plaats van door de beginwaarde (2023)." },
             { "value": 10.4, "expression": "({chauffage.2023} - {chauffage.2024}) / {chauffage.2023} * 100", "why": "Dat is de daling van alleen de verwarming, niet die van het totale verbruik." }
@@ -730,7 +730,7 @@
           "format": { "decimals": 2, "unit": "MWh" },
           "answer": 3,
           "options": [
-            { "value": 0.26, "expression": "({informatique.2024} - {eclairage.2024}) / {eclairage.2024}", "why": "Dat is het relatieve verschil tussen de twee toepassingen, niet hun verhouding." },
+            { "value": 0.26, "expression": "({informatique.2024} - {eclairage.2024}) / {eclairage.2024}", "why": "Dat is het relatieve verschil tussen de twee verbruiksposten, niet hun verhouding." },
             { "value": 0.79, "expression": "{eclairage.2024} / {informatique.2024}", "why": "De verhouding werd omgekeerd: dat is het verbruik van de verlichting per MWh informatica." },
             { "value": 1.02, "expression": "{informatique.2023} / {eclairage.2023}", "why": "De waarden van 2023 werden gebruikt in plaats van die van 2024." },
             { "value": 1.26 }
@@ -1036,9 +1036,9 @@
           "formula": "Geprojecteerde waarde = laatste waarde + n × jaarlijkse verandering, waarbij n het aantal jaren is",
           "steps": [
             { "id": "baisse", "label": "Gemiddelde jaarlijkse daling tussen 2019 en 2025 (zes jaar)", "expression": "({guichet.2019} - {guichet.2025}) / 6" },
-            { "label": "Projectie over drie jaar (2026, 2027 en 2028)", "expression": "{guichet.2025} - 3 * {@baisse}" }
+            { "label": "Projectie over drie jaar (2026, 2027 en 2028), in duizend", "expression": "{guichet.2025} - 3 * {@baisse}" }
           ],
-          "format": { "decimals": 1, "unit": "duizend" },
+          "format": { "decimals": 1, "unit": "aanvragen", "displayScale": 1000 },
           "answer": 0,
           "options": [
             { "value": 47.5 },

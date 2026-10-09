@@ -110,6 +110,8 @@ scripts/calculer-numerique.js  Calcule les propositions de data/numerique.json e
   - les tests de `tests/site.test.js` et `tests/i18n.test.js` le vérifient.
 - **Nouvelles classes Tailwind** : elles sont détectées dans les fichiers listés par `@source` dans `src/css/main.css` (gabarits, fragments, dictionnaires, JavaScript). Si un dossier n'y figure pas, l'ajouter.
 - **Traductions** : chaque traduction néerlandaise d'un module est relue par un second relecteur (contresens, tournures des Pays-Bas plutôt que de Belgique, et pour le verbal, affirmations dont la réponse ne tiendrait plus au regard du texte néerlandais).
+  - En néerlandais : « tests » (jamais « testen ») et tutoiement (« je ») ; nom du site « Oefentests SELOR & EPSO ».
+  - Les points à faire vérifier par une personne néerlandophone sont listés dans `RELECTURE-NL.md` (non publié) : le tenir à jour.
 - **Banques d'exercices** :
   - leur format est décrit en tête du `quiz.js` du module ;
   - `validateBank` et les tests vérifient les identifiants, les réponses, les citations exactes et les calculs.

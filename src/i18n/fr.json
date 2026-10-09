@@ -118,6 +118,7 @@
     "intro": "Un examen blanc dans les conditions de l'épreuve&nbsp;: questions mélangées, temps limité, et aucune correction avant la fin.",
     "statQuestions": "Questions",
     "statDuration": "Durée",
+    "statDurationValue": "40 min",
     "statSections": "Épreuves",
     "mix": "10 questions de raisonnement abstrait, 10 de raisonnement verbal, 10 de raisonnement numérique et 5 situations de jugement, dans un ordre aléatoire.",
     "rules": {

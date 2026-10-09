@@ -146,7 +146,7 @@ export default {
     emptyFile: 'Het bestand is leeg.',
     fileTooLarge: 'Het bestand is te groot om een export van je voortgang te zijn.',
     invalidJson: 'Het bestand is geen geldig JSON-bestand.',
-    foreignFile: 'Dit bestand is niet afkomstig van SELOR & EPSO Prep.',
+    foreignFile: 'Dit bestand is niet afkomstig van Oefentests SELOR & EPSO.',
     moreErrors: '… en nog {count} andere fout(en).',
     unavailable: 'De opslag van deze browser is niet beschikbaar.',
     writeFailed: 'Opslaan in deze browser is mislukt (onvoldoende ruimte?).',
