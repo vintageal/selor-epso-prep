@@ -40,6 +40,7 @@ const SAME_IN_BOTH = new Set([
   'numerique.formula', // « Formule »
   'verbal.keys.impossible', // touche « ? »
   'examen.minutes', // « 40 min »
+  'examen.statDurationValue', // « 40 min » (avant le calcul de la durée par le script)
 ]);
 
 /* ----- Dictionnaires des pages (src/i18n/) ----- */
@@ -125,6 +126,22 @@ test('la version néerlandaise utilise les noms officiels belges et européens',
   assert.equal(site.transparency, 'Je resultaten blijven op dit toestel: er wordt niets verzonden of gedeeld.');
   const all = JSON.stringify(pageDictionaries.nl) + flatten(MESSAGES.nl).map(([, value]) => String(value)).join('\n');
   assert.doesNotMatch(all, /Travaillerpour|SPF BOSA|Office européen/, 'nom français d’un organisme');
+  assert.equal(site.brand, 'Oefentests SELOR &amp; EPSO');
+  assert.doesNotMatch(all, /EPSO Prep/, 'ancien nom du site');
+});
+
+test('la version néerlandaise écrit « tests » et tutoie la lectrice ou le lecteur (« je »)', () => {
+  const strings = (node) => (typeof node === 'string' ? [node] : node && typeof node === 'object' ? Object.values(node).flatMap(strings) : []);
+  const banks = readdirSync(join(root, 'data/nl')).map((file) => [`data/nl/${file}`, JSON.parse(readFileSync(join(root, 'data/nl', file), 'utf8'))]);
+  const sources = [['src/i18n/nl.json', pageDictionaries.nl], ['assets/js/i18n/nl.js', MESSAGES.nl], ...banks];
+  for (const [source, content] of sources) {
+    for (const text of strings(content)) {
+      // Les paroles citées (“…”) peuvent vouvoyer : un agent s'adresse à un citoyen, une carte à un fonctionnaire.
+      const own = text.replace(/“[^”]*”/g, '');
+      assert.doesNotMatch(own, /\btesten\b/i, `${source} : « testen » au lieu de « tests » dans « ${text} »`);
+      assert.doesNotMatch(own, /\b(?:u|uw|U|Uw)\b/, `${source} : vouvoiement dans « ${text} »`);
+    }
+  }
 });
 
 test('les textes néerlandais n’ont pas la typographie française', () => {
@@ -149,6 +166,8 @@ test('les nombres suivent le format de la langue : fr-BE et nl-BE', () => {
   assert.equal(formatAnswer(5.2083, { decimals: 1, unit: '%' }), '5,2%');
   assert.equal(formatAnswer(1250, { decimals: 0, unit: 'mln euro' }), '1.250\u00a0mln euro');
   assert.equal(formatAnswer(7.514, { decimals: 2, unit: '€' }), '€\u00a07,51');
+  // Réponse calculée en milliers, affichée en entier : arrondie à la décimale, puis multipliée.
+  assert.equal(formatAnswer(47.4833, { decimals: 1, unit: 'aanvragen', displayScale: 1000 }), '47.500\u00a0aanvragen');
   assert.equal(t('format.percent', { value: 72 }), '72%');
   setLocale('fr');
   assert.equal(formatAnswer(5.2083, { decimals: 1, unit: '%' }), '5,2 %');

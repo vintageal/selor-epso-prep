@@ -8,7 +8,8 @@ import { dirname, join, posix } from 'node:path';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { pageFile, pageUrl, renderSite } from '../scripts/build-site.js';
+import { MESSAGES } from '../assets/js/lib/i18n.js';
+import { pageFile, pageUrl, readDictionaries, renderSite } from '../scripts/build-site.js';
 import { LANGUAGES, NL_PUBLIC, PAGES, SITE, STATIC_ENTRIES } from '../scripts/site/config.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -217,4 +218,62 @@ test('un seul module accède au stockage du navigateur', () => {
   walk('assets/js');
   const users = sources.filter((path) => /localStorage|sessionStorage|indexedDB/.test(readFileSync(join(root, path), 'utf8')));
   assert.deepEqual(users, ['assets/js/progression/store.js']);
+});
+
+/* ----- Aucune chaîne d'une langue dans les pages de l'autre ----- */
+
+/** Noms propres affichés tels quels dans les deux langues. */
+const PROPER_NOUNS = new Set(['EPSO — EU Careers']);
+
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', hellip: '…' };
+const decode = (text) =>
+  text.replace(/&(#x[0-9a-f]+|#\d+|\w+);/gi, (entity, code) =>
+    code[0] !== '#' ? (ENTITIES[code] ?? entity) : String.fromCodePoint(code[1] === 'x' ? parseInt(code.slice(2), 16) : Number(code.slice(1))),
+  );
+const normalize = (text) => decode(text).replace(/[\s  ]+/g, ' ').trim();
+
+/**
+ * Textes visibles ou lus d'une page (ou d'un fragment) : nœuds de texte, titre, attributs alt, title,
+ * aria-label et placeholder, description et balises de partage. Un élément qui déclare une autre langue
+ * (`lang`, comme le lien du sélecteur de langue) est exclu : son texte est volontairement dans l'autre langue.
+ */
+function textSegments(html, lang) {
+  let source = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<!--[\s\S]*?-->/g, '');
+  if (lang) source = source.replace(new RegExp(`<(\\w+)\\b[^>]*\\slang="(?!${lang}")[^"]*"[^>]*>[\\s\\S]*?<\\/\\1>`, 'g'), '');
+  const segments = [
+    ...[...source.matchAll(/\s(?:alt|title|aria-label|placeholder)="([^"]*)"/g)].map(([, value]) => value),
+    ...[...source.matchAll(/<meta (?:name|property)="(?:description|og:title|og:description|og:image:alt|twitter:title|twitter:description|twitter:image:alt)" content="([^"]*)">/g)].map(([, value]) => value),
+    ...source.split(/<[^>]+>/),
+  ];
+  return segments.map(normalize).filter((text) => /\p{L}.*\p{L}/u.test(text));
+}
+
+const strings = (node) => (typeof node === 'string' ? [node] : node && typeof node === 'object' ? Object.values(node).flatMap(strings) : []);
+const dictionarySegments = (lang) =>
+  new Set([...strings(readDictionaries()[lang]), ...strings(MESSAGES[lang])].flatMap((text) => textSegments(text)));
+
+test('aucune chaîne de l’interface française dans une page néerlandaise construite, ni l’inverse', () => {
+  const own = { fr: dictionarySegments('fr'), nl: dictionarySegments('nl') };
+  const shown = { fr: new Set(), nl: new Set() };
+  for (const { file, lang } of pages) for (const text of textSegments(site[file], lang)) shown[lang].add(text);
+  // Page 404 : chaque partie est dans sa langue.
+  const notFound = Object.fromEntries([...site['404.html'].matchAll(/<section[^>]*lang="(\w+)"[^>]*>([\s\S]*?)<\/section>/g)].map(([, lang, html]) => [lang, html]));
+  const checked = [...pages.map(({ file, lang }) => ({ where: file, lang, html: site[file] })), ...Object.entries(notFound).map(([lang, html]) => ({ where: `404.html (${lang})`, lang, html }))];
+
+  const leaks = [];
+  for (const { where, lang, html } of checked) {
+    const other = lang === 'fr' ? 'nl' : 'fr';
+    for (const text of new Set(textSegments(html, lang))) {
+      const foreign = own[other].has(text) || shown[other].has(text);
+      if (foreign && !own[lang].has(text) && !PROPER_NOUNS.has(text)) leaks.push(`${where} : « ${text} »`);
+    }
+  }
+  assert.deepEqual(leaks, [], `chaînes de l’autre langue :\n${leaks.join('\n')}`);
+});
+
+test('chaque page construite déclare ses versions fr-BE, nl-BE et x-default (link rel="alternate" hreflang)', () => {
+  for (const { file, page } of pages) {
+    const declared = Object.fromEntries(hreflangs(site[file]).map(({ lang, href }) => [lang, href]));
+    assert.deepEqual(declared, { 'fr-BE': pageUrl(page, 'fr'), 'nl-BE': pageUrl(page, 'nl'), 'x-default': pageUrl(page, 'fr') }, `${file} : balises hreflang`);
+  }
 });

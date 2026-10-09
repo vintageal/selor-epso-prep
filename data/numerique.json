@@ -230,7 +230,7 @@
           "id": "permis-taux-traitement",
           "skill": "ratio",
           "difficulty": 1,
-          "text": "En 2023, quel pourcentage des demandes reçues dans l'année a été traité ?",
+          "text": "Quel est le taux de traitement en 2023, c'est-à-dire le nombre de demandes traitées en 2023 rapporté au nombre de demandes reçues en 2023 ?",
           "formula": "Taux de traitement (%) = demandes traitées ÷ demandes reçues × 100",
           "steps": [
             { "label": "Demandes traitées en 2023 rapportées aux demandes reçues en 2023, en %", "expression": "{traitees.2023} / {recues.2023} * 100" }

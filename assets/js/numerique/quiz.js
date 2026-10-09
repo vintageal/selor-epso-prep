@@ -7,8 +7,12 @@
  *       columns: [{ key, label, unit?, decimals? }],
  *       rows: [{ key, label, total?, values: { <colonne>: nombre } }],
  *       questions: [{ id, skill, difficulty: 1 | 2 | 3, text, formula, steps: [{ id?, label, expression }],
- *         format: { decimals, unit?, signed? }, answer, options: [{ value, why?, expression? }],
+ *         format: { decimals, unit?, signed?, displayScale? }, answer, options: [{ value, why?, expression? }],
  *         explanation }] }] }
+ *
+ * `displayScale` multiplie la valeur à l'affichage seulement : une réponse calculée en milliers (47,5)
+ * s'affiche alors en entier (47.500). Il peut ne figurer que dans une langue ; les calculs, les arrondis
+ * et les réponses ne changent pas.
  *
  * Un graphique en secteurs (`pie`) représente la colonne `pieColumn` (hors lignes « total ») ;
  * le tableau complet reste accessible. La difficulté s'affiche avec la question et équilibre le mode examen.
@@ -167,9 +171,15 @@ export const formatNumber = (value, decimals = 0, { signed = false } = {}) =>
 
 const withUnit = (text, unit) => (unit ? t('numerique.withUnit', { value: text, unit }) : text);
 
-/** Valeur d'une proposition ou d'un résultat, au format de la question. */
-export const formatAnswer = (value, { decimals = 0, unit = '', signed = false }) =>
-  withUnit(formatNumber(value, decimals, { signed }), unit);
+/**
+ * Valeur d'une proposition ou d'un résultat, au format de la question. Avec `displayScale`, la valeur est
+ * d'abord arrondie à `decimals`, puis multipliée : 47,48 en milliers à une décimale s'affiche « 47.500 ».
+ */
+export const formatAnswer = (value, { decimals = 0, unit = '', signed = false, displayScale = 1 }) => {
+  if (displayScale === 1) return withUnit(formatNumber(value, decimals, { signed }), unit);
+  const scaled = Number(value.toFixed(decimals)) * displayScale;
+  return withUnit(formatNumber(scaled, Math.max(0, decimals - Math.round(Math.log10(displayScale))), { signed }), unit);
+};
 
 /** Affichage d'un résultat intermédiaire : entier exact, sinon arrondi à 2 décimales (« ≈ »). */
 const formatIntermediate = (value) => {
@@ -376,6 +386,8 @@ export function validateBank(bank) {
       if (!SKILLS[question.skill]) errors.push(`${at} : compétence « ${question.skill} » inconnue.`);
       if (!isDifficulty(question.difficulty)) errors.push(`${at} : difficulté 1, 2 ou 3 attendue.`);
       if (!question.text || !question.formula || !question.explanation) errors.push(`${at} : énoncé, formule ou explication manquant.`);
+      const scale = question.format?.displayScale;
+      if (scale !== undefined && !(scale >= 10 && Number.isInteger(Math.log10(scale)))) errors.push(`${at} : displayScale doit être une puissance de 10 (10, 100, 1000…).`);
       if (!Array.isArray(question.options) || question.options.length !== OPTION_LETTERS.length) {
         errors.push(`${at} : ${OPTION_LETTERS.length} propositions attendues.`);
         continue;

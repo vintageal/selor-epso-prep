@@ -192,6 +192,7 @@ Contenus :
 - **Questions** : chaque question garde le même identifiant en français et en néerlandais. Les banques néerlandaises sont dans `data/nl/` ; tant qu'une banque n'est pas traduite (`TRANSLATED_BANKS`, `assets/js/lib/i18n.js`), la version néerlandaise utilise la banque française.
 - **Raisonnement abstrait** : les questions sont générées ; seuls l'interface, les titres des règles, les explications et les descriptions des figures sont traduits.
 - **Progression** : elle est commune aux deux langues (même stockage, mêmes identifiants).
+- **Relecture** : les points de traduction à faire vérifier par une personne néerlandophone sont listés dans `RELECTURE-NL.md` (non publié).
 
 Publication : la version néerlandaise est publique (`NL_PUBLIC = true`, `scripts/site/config.js`). Chaque page reçoit le sélecteur FR | NL (vers la page équivalente), les balises `hreflang` `fr-BE`, `nl-BE` et `x-default` (vers le français), et le sitemap ses alternances de langue ; la page 404 est bilingue. Aucune redirection automatique selon la langue du navigateur. Avec `NL_PUBLIC = false` (mode de la mise en ligne progressive), les pages `/nl/` restent générées mais ne sont pas découvrables : balise `noindex`, absentes du sitemap, ni sélecteur de langue ni balises `hreflang`, et la page 404 en français seulement.
 
@@ -363,6 +364,8 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   - avant activation : pages néerlandaises en `noindex`, absentes du sitemap, ni sélecteur ni `hreflang` ;
   - après activation : sélecteur FR | NL vers la page équivalente, `hreflang` `fr-BE`, `nl-BE` et `x-default`, alternances dans le sitemap ;
   - aucune redirection selon la langue du navigateur ;
+  - aucune chaîne de l'interface française dans une page néerlandaise construite, ni l'inverse (hors noms propres et sélecteur de langue) ;
+  - chaque page construite déclare ses versions `fr-BE`, `nl-BE` et `x-default` (`<link rel="alternate" hreflang>`) ;
   - la page 404 est bilingue, non indexée, et ses liens visent des pages existantes ;
   - plus aucune référence à l'ancienne adresse github.io ;
   - la mention d'indépendance et la phrase de transparence figurent sur chaque page, dans sa langue ;
@@ -372,6 +375,7 @@ Les tests (Node.js 20 ou plus) couvrent les cinq modules, le suivi de progressio
   - les dictionnaires des pages et de l'interface ont les mêmes clés, les mêmes variables et les mêmes balises dans les deux langues, et chaque texte est traduit ;
   - chaque texte utilisé par le code existe dans les deux langues ;
   - noms officiels belges et européens, pas de typographie française dans les textes néerlandais, nombres au format `nl-BE` ;
+  - en néerlandais : « tests » (jamais « testen ») et tutoiement (« je ») partout, sauf dans les paroles citées ;
   - raisonnement abstrait : mêmes questions dans les deux langues, explications et descriptions traduites ;
   - chaque langue charge sa banque traduite (ou la banque française tant qu'elle n'est pas traduite).
 

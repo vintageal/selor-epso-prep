@@ -28,9 +28,13 @@ export const NL_BANK_PATH = fileURLToPath(new URL('../data/nl/numerique.json', i
 /** Champs de texte, propres à chaque langue ; tout le reste doit être identique dans les deux banques. */
 const TEXT_KEYS = new Set(['title', 'theme', 'note', 'rowHeader', 'unit', 'label', 'text', 'formula', 'why', 'explanation']);
 
+/** Réglages d'affichage propres à une langue, qui peuvent ne figurer que dans une banque (format.displayScale). */
+const DISPLAY_KEYS = new Set(['displayScale']);
+
 /**
  * Écarts de calcul entre la banque française et sa traduction (liste vide si elles concordent) :
- * même structure, mêmes clés, mêmes nombres, mêmes expressions ; seuls les champs de TEXT_KEYS peuvent différer.
+ * même structure, mêmes clés, mêmes nombres, mêmes expressions ; seuls les champs de TEXT_KEYS et DISPLAY_KEYS
+ * peuvent différer.
  */
 export function calculationDifferences(french, translated, path = 'banque') {
   if (Array.isArray(french) || Array.isArray(translated)) {
@@ -41,6 +45,7 @@ export function calculationDifferences(french, translated, path = 'banque') {
     if (translated === null || typeof translated !== 'object') return [`${path} : structure différente`];
     const keys = [...new Set([...Object.keys(french), ...Object.keys(translated)])];
     return keys.flatMap((key) => {
+      if (DISPLAY_KEYS.has(key)) return [];
       if (!(key in french) || !(key in translated)) return [`${path}.${key} : présent dans une seule langue`];
       if (TEXT_KEYS.has(key)) return typeof translated[key] === typeof french[key] ? [] : [`${path}.${key} : texte manquant`];
       return calculationDifferences(french[key], translated[key], `${path}.${key}`);
