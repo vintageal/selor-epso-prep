@@ -99,7 +99,7 @@
             { "value": 0.72, "expression": "{fonctionnement.2024} / {subsides.2024}", "why": "De verhouding werd omgekeerd: dat is het aantal euro werking per euro subsidies." },
             { "value": 1.39 }
           ],
-          "explanation": "“Hoeveel A voor elke B” vertaal je als A ÷ B: de grootheid die als eerste wordt genoemd (de subsidies) staat in de teller, de referentie (“elke euro werking”) in de noemer."
+          "explanation": "“Hoeveel A voor elke B” vertaal je als A ÷ B: de grootheid die als eerste wordt genoemd (de subsidies) staat in de teller, de referentie (“elke euro werkingsuitgaven”) in de noemer."
         }
       ]
     },
@@ -375,7 +375,7 @@
       "title": "Aankopen van kantoorbenodigdheden: hoeveelheden en eenheidsprijzen, 2023 en 2024",
       "theme": "Overheidsopdrachten",
       "display": "table",
-      "rowHeader": "Artikel",
+      "rowHeader": "Product",
       "note": "Eenheidsprijzen exclusief btw.",
       "columns": [
         { "key": "q2023", "label": "Hoeveelheid 2023", "unit": "eenheden" },
@@ -396,7 +396,7 @@
           "text": "Wat is in 2024 de gemiddelde prijs van een aangekocht artikel, over alle benodigdheden heen?",
           "formula": "Gewogen gemiddelde prijs = Σ (hoeveelheid × eenheidsprijs) ÷ Σ hoeveelheden = totale uitgave ÷ aantal artikelen",
           "steps": [
-            { "id": "depense", "label": "Totale uitgave 2024: hoeveelheid × prijs, voor elke benodigdheid", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
+            { "id": "depense", "label": "Totale uitgave 2024: hoeveelheid × prijs, voor elk product", "expression": "{papier.q2024} * {papier.p2024} + {toner.q2024} * {toner.p2024} + {classeurs.q2024} * {classeurs.p2024}" },
             { "id": "articles", "label": "Totaal aantal aangekochte artikelen in 2024", "expression": "{papier.q2024} + {toner.q2024} + {classeurs.q2024}" },
             { "label": "Gemiddelde prijs per artikel", "expression": "{@depense} / {@articles}" }
           ],
@@ -426,7 +426,7 @@
           "options": [
             { "value": -1.9, "expression": "({@d2024} - {@d2023}) / {@d2024} * 100", "why": "Het verschil werd gedeeld door de uitgave van 2024 (eindwaarde) in plaats van door die van 2023." },
             { "value": -1.8 },
-            { "value": -0.3, "expression": "(({papier.p2024} - {papier.p2023}) / {papier.p2023} + ({toner.p2024} - {toner.p2023}) / {toner.p2023} + ({classeurs.p2024} - {classeurs.p2023}) / {classeurs.p2023}) / 3 * 100", "why": "Dat is het gemiddelde van de prijsveranderingen: het negeert de aangekochte hoeveelheden, die ook veranderd zijn, en het gewicht van elke benodigdheid in de uitgave." },
+            { "value": -0.3, "expression": "(({papier.p2024} - {papier.p2023}) / {papier.p2023} + ({toner.p2024} - {toner.p2023}) / {toner.p2023} + ({classeurs.p2024} - {classeurs.p2023}) / {classeurs.p2023}) / 3 * 100", "why": "Dat is het gemiddelde van de prijsveranderingen: het negeert de aangekochte hoeveelheden, die ook veranderd zijn, en het gewicht van elk product in de uitgave." },
             { "value": 1.8, "expression": "({@d2023} - {@d2024}) / {@d2023} * 100", "why": "De richting van de verandering werd omgekeerd: de uitgave is gedaald (van € 16.340 naar € 16.040), het percentage moet dus negatief zijn." }
           ],
           "explanation": "Een totale uitgave reconstrueer je door elke hoeveelheid met haar prijs te vermenigvuldigen en daarna op te tellen. De procentuele verandering bereken je vervolgens op die totalen, en het teken ervan geeft de richting aan: hier een daling."
@@ -500,7 +500,7 @@
           "id": "commune-rapport-enseignement-culture",
           "skill": "ratio",
           "difficulty": 1,
-          "text": "Hoeveel geeft de gemeente uit aan onderwijs voor elke € 1 die naar cultuur en sport gaat?",
+          "text": "Hoeveel geeft de gemeente uit aan onderwijs voor elke euro die naar cultuur en sport gaat?",
           "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
           "steps": [
             { "label": "Onderwijs ten opzichte van cultuur en sport", "expression": "{enseignement.2025} / {culture.2025}" }
@@ -508,12 +508,12 @@
           "format": { "decimals": 2, "unit": "€" },
           "answer": 2,
           "options": [
-            { "value": 0.35, "expression": "{culture.2025} / {enseignement.2025}", "why": "De verhouding werd omgekeerd: dat is de uitgave voor cultuur en sport per € 1 onderwijs." },
+            { "value": 0.35, "expression": "{culture.2025} / {enseignement.2025}", "why": "De verhouding werd omgekeerd: dat is de uitgave voor cultuur en sport per euro onderwijs." },
             { "value": 1.92, "expression": "{enseignement.2025} / {voirie.2025}", "why": "De verkeerde functie werd als referentie genomen: wegen en netheid in plaats van cultuur en sport." },
             { "value": 2.83 },
             { "value": 11.90, "expression": "{enseignement.2025} - {culture.2025}", "why": "Dat is het verschil tussen de twee bedragen (in mln euro), niet hun verhouding." }
           ],
-          "explanation": "“Voor elke € 1 die naar B gaat, hoeveel voor A?” vertaal je als A ÷ B: de referentiegrootheid (hier cultuur en sport) staat in de noemer."
+          "explanation": "“Voor elke euro die naar B gaat, hoeveel voor A?” vertaal je als A ÷ B: de referentiegrootheid (hier cultuur en sport) staat in de noemer."
         },
         {
           "id": "commune-part-social-securite",
@@ -600,7 +600,7 @@
           "id": "appels-rapport-allocations-attestations",
           "skill": "ratio",
           "difficulty": 1,
-          "text": "Hoeveel oproepen over het bedrag van de uitkeringen heeft het center ontvangen per oproep over een aanvraag voor een attest?",
+          "text": "Hoeveel oproepen over het bedrag van de uitkeringen heeft het contactcenter ontvangen per oproep over een aanvraag voor een attest?",
           "formula": "Verhouding = vergeleken waarde ÷ referentiewaarde",
           "steps": [
             { "label": "Oproepen over de uitkeringen ten opzichte van de oproepen over de attesten", "expression": "{allocations.appels} / {attestations.appels}" }
@@ -613,7 +613,7 @@
             { "value": 1.58 },
             { "value": 2.17, "expression": "{allocations.duree} / {attestations.duree}", "why": "Dat is de verhouding tussen de gemiddelde duurtijden, en niet tussen de aantallen oproepen." }
           ],
-          "explanation": "“Hoeveel A per B?” bereken je als A ÷ B. Een verhouding van 1,58 betekent dat het center ongeveer drie oproepen over de uitkeringen ontvangt voor twee over de attesten."
+          "explanation": "“Hoeveel A per B?” bereken je als A ÷ B. Een verhouding van 1,58 betekent dat het contactcenter ongeveer drie oproepen over de uitkeringen ontvangt voor twee over de attesten."
         },
         {
           "id": "appels-part-temps-allocations",
@@ -822,7 +822,7 @@
           "id": "controles-horeca-trente-pour-cent",
           "skill": "ratio",
           "difficulty": 3,
-          "text": "Hoeveel controles had de horeca in 2024 moeten tellen om 30% van alle controles te vertegenwoordigen, als de andere sectoren ongewijzigd blijven?",
+          "text": "Hoeveel controles had de horeca in 2024 moeten tellen om 30% van alle controles te vertegenwoordigen, waarbij de andere sectoren ongewijzigd blijven?",
           "formula": "Als een deel p% van het totaal moet vertegenwoordigen: totaal = andere ÷ (1 − p), en deel = p × totaal",
           "steps": [
             { "id": "autres", "label": "Controles van de vier andere sectoren in 2024", "expression": "{construction.2024} + {commerce.2024} + {transport.2024} + {agriculture.2024}" },
@@ -888,7 +888,7 @@
           "text": "Wat is de gemiddelde doorlooptijd van een dossier, over alle kantoren heen?",
           "formula": "Gewogen gemiddelde = Σ (aantal × waarde) ÷ Σ aantallen",
           "steps": [
-            { "id": "jours", "label": "Som van de behandelingsdagen (Σ dossiers × termijn)", "expression": "{nord.dossiers} * {nord.delai} + {sud.dossiers} * {sud.delai} + {est.dossiers} * {est.delai} + {ouest.dossiers} * {ouest.delai} + {centre.dossiers} * {centre.delai}" },
+            { "id": "jours", "label": "Som van de behandelingsdagen (Σ dossiers × doorlooptijd)", "expression": "{nord.dossiers} * {nord.delai} + {sud.dossiers} * {sud.delai} + {est.dossiers} * {est.delai} + {ouest.dossiers} * {ouest.delai} + {centre.dossiers} * {centre.delai}" },
             { "id": "total", "label": "Totaal aantal dossiers", "expression": "{nord.dossiers} + {sud.dossiers} + {est.dossiers} + {ouest.dossiers} + {centre.dossiers}" },
             { "label": "Behandelingsdagen ten opzichte van het aantal dossiers", "expression": "{@jours} / {@total}" }
           ],
@@ -900,7 +900,7 @@
             { "value": 21.7 },
             { "value": 26.2, "expression": "({nord.delai} + {sud.delai} + {est.delai} + {ouest.delai} + {centre.delai}) / 5", "why": "Dat is het ongewogen gemiddelde van de vijf doorlooptijden: de kantoren behandelen niet evenveel dossiers." }
           ],
-          "explanation": "Kantoor Centrum heeft de langste doorlooptijd, maar behandelt weinig dossiers: in een gewogen gemiddelde weegt het weinig door. Het ongewogen gemiddelde van de doorlooptijden (26,2 dagen) overschat dus de werkelijke termijn."
+          "explanation": "Kantoor Centrum heeft de langste doorlooptijd, maar behandelt weinig dossiers: in een gewogen gemiddelde weegt het weinig door. Het ongewogen gemiddelde van de doorlooptijden (26,2 dagen) overschat dus de werkelijke doorlooptijd."
         },
         {
           "id": "antennes-part-ouest",
